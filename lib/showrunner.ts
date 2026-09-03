@@ -53,7 +53,8 @@ RULES:
 - Write exactly the number of shots requested. Together they form a clear dramatic movement with a beginning, escalation, and a turn, and the final shot must END ON A HOOK that the next batch can pick up.
 - prompt: 2-3 sentences, under 420 characters. Open with a short clause grounding what is on screen right now (the previous shot's ending), then the action and the world's visible reaction across the shot's seconds, ending on a readable frame: key subjects in view a few paces from camera, never an extreme close-up or total darkness. Something must visibly HAPPEN in every shot; the video model fills quiet prompts with idle drift.
 - Recurring characters are described the SAME way every time (name, clothing, one distinguishing feature) so the model keeps them consistent.
-- SPEECH IS ALWAYS SCRIPTED: if anyone speaks, the prompt contains their exact words in double quotes (one short line, under 12 words, plain English) using this delivery grammar: the character acts silently, then 'says exactly "..."', then continues "without another word". Unscripted speech renders as gibberish. Use dialogue in roughly one shot in three, never two speakers in one shot.
+- SPEECH IS ALWAYS SCRIPTED: if anyone speaks, the prompt contains their exact words in double quotes (one short line, under 12 words, plain English) using this delivery grammar: the character acts silently, then 'says, "..."', then continues without another word. Never write the word "exactly" next to the line; the model may speak it. Unscripted speech renders as gibberish. Never two speakers in one shot.
+- DIALOGUE DENSITY: this is talking cinema, not a silent film. At least every other shot has a spoken line, and the FIRST shot of the batch ALWAYS has one. Lines carry the story: a reveal, a threat, a decision, a question. A wordless shot is a deliberate beat, not a default.
 - caption: the quoted spoken line verbatim when the shot has one, else null. Never invent a caption without a quoted line in the prompt.
 - Never mention cameras as equipment, the AI, the viewer, or the service. Never quote dialogue you did not write into the prompt.
 - synopsis: under 60 words, present tense, the story so far INCLUDING this batch, as completed facts, so the next batch can continue it.`;
@@ -67,7 +68,8 @@ RULES:
 - Write exactly the number of shots requested. Each shot is ONE clear absurd gag that a viewer gets in two seconds, and the batch escalates: bigger, weirder, more committed, never repeating a gag.
 - prompt: 2-3 sentences, under 420 characters, fully self-contained: who, where, what happens, in what visual style. Concrete physical comedy over abstract weirdness. Something must visibly HAPPEN across the shot.
 - Keep the channel's premise and cast consistent across shots, described the same way every time.
-- SPEECH IS ALWAYS SCRIPTED: if anyone speaks, the prompt contains their exact words in double quotes (one short punchy line, under 10 words, plain English) using this delivery grammar: the character acts silently, then 'says exactly "..."', then continues "without another word". Unscripted speech renders as gibberish. Roughly one shot in three has a line; never two speakers in one shot.
+- SPEECH IS ALWAYS SCRIPTED: if anyone speaks, the prompt contains their exact words in double quotes (one short punchy line, under 10 words, plain English) using this delivery grammar: the character acts silently, then 'says, "..."', then continues without another word. Never write the word "exactly" next to the line; the model may speak it. Unscripted speech renders as gibberish. Never two speakers in one shot.
+- DIALOGUE DENSITY: at least every other shot has a line (a deadpan anchor read, a shouted verdict, a confession), and the FIRST shot of the batch ALWAYS has one. The line is often the punchline.
 - caption: the quoted spoken line verbatim when the shot has one, else null.
 - Never mention cameras as equipment, the AI, the viewer, or the service.
 - synopsis: under 40 words, what has aired so far, so the next batch keeps escalating instead of repeating.`;
@@ -84,16 +86,29 @@ function parseBatch(raw: string, title: Title, seconds: number): Batch {
     for (const entry of parsed.shots) {
       if (!entry || typeof entry !== "object") continue;
       const raw = entry as { prompt?: unknown; caption?: unknown };
-      const prompt =
+      let prompt =
         typeof raw.prompt === "string" ? raw.prompt.trim().slice(0, 480) : "";
       if (!prompt) continue;
-      const caption =
+      let caption =
         typeof raw.caption === "string" && raw.caption.trim()
-          ? raw.caption.trim().slice(0, 120)
+          ? raw.caption.trim().slice(0, 120).replace(/^["“]|["”]$/g, "")
           : null;
+      if (caption && !QUOTED_LINE.test(prompt)) {
+        // The LLM wrote a line but forgot the quotes (or used single ones).
+        // Without a quoted line the model babbles, so put the line back in
+        // the delivery grammar rather than silencing the shot.
+        const bare = prompt.indexOf(caption);
+        prompt =
+          bare !== -1
+            ? `${prompt.slice(0, bare)}"${caption}"${prompt.slice(bare + caption.length)}`
+            : `${prompt.replace(/[.!?]?\s*$/, ".")} A character says, "${caption}" and continues without another word.`;
+      }
+      // Belt and braces: "says exactly" tends to get spoken aloud.
+      prompt = prompt.replace(/\bsays exactly\b/gi, "says,").replace(/\bexactly,?\s+(?=["“])/gi, "");
+      if (!QUOTED_LINE.test(prompt)) caption = null;
       shots.push({
         prompt: `${prompt} ${soundClause(prompt)} ${title.style}`,
-        caption: QUOTED_LINE.test(prompt) ? caption : null,
+        caption,
         duration: seconds,
         chain,
       });
@@ -120,6 +135,8 @@ export async function writeBatch(args: {
   seconds: number;
   /** What is on screen as the batch begins (the cold open / last shot). */
   onScreen: string;
+  /** First batch of the session: short, and it must open with a voice. */
+  opening?: boolean;
 }): Promise<Batch> {
   const { title } = args;
   const system = title.mode === "story" ? STORY_SYSTEM : CHAOS_SYSTEM;
@@ -132,12 +149,20 @@ export async function writeBatch(args: {
       ? `STORY SO FAR: ${args.synopsis}\n`
       : "STORY SO FAR: nothing yet; this is the opening.\n") +
     `ON SCREEN RIGHT NOW: ${args.onScreen}\n` +
+    (args.opening
+      ? `This is a SHORT opening batch: the viewer has watched a silent cold open and is waiting to hear someone speak. Shot 1 continues directly from what is on screen and contains a spoken line.\n`
+      : "") +
     `Each shot runs ${args.seconds} seconds. Write exactly ${args.count} shots.`;
-  const output = await llm({
-    systemPrompt: system,
-    prompt,
-    maxTokens: 2400,
-    temperature: title.mode === "chaos" ? 0.95 : 0.8,
-  });
-  return parseBatch(output, title, args.seconds);
+  const request = () =>
+    llm({
+      systemPrompt: system,
+      prompt,
+      maxTokens: Math.min(2400, 200 + args.count * 220),
+      temperature: title.mode === "chaos" ? 0.95 : 0.8,
+    }).then((output) => parseBatch(output, title, args.seconds));
+  // The opening shot is on the critical path and LLM latency has a long
+  // tail (2s typical, 10s sometimes). Race two identical requests and take
+  // whichever parses first; the loser costs a fraction of a cent.
+  if (args.opening) return Promise.any([request(), request()]);
+  return request();
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BRAND, POWERED_BY } from "@/lib/brand";
+import { ProfileMenu } from "./profile-menu";
 
 /** Top navigation: transparent over the billboard, solid once you scroll. */
 export function Nav() {
@@ -31,7 +32,7 @@ export function Nav() {
       </div>
       <div className="nav-right">
         <span className="powered">{POWERED_BY}</span>
-        <span className="avatar" aria-hidden="true" />
+        <ProfileMenu />
       </div>
     </header>
   );

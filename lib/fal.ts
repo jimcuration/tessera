@@ -53,7 +53,8 @@ export async function generateClip(args: {
   } else {
     input.aspect_ratio = "16:9";
   }
-  const result = await fal.subscribe(endpoint, { input });
+  // Tight polling: every 250ms of lag is 250ms the buffer does not grow.
+  const result = await fal.subscribe(endpoint, { input, pollInterval: 250 });
   const data = result.data as { video?: { url?: string } };
   const rawUrl = data?.video?.url;
   if (!rawUrl) throw new Error("no video in response");
@@ -79,6 +80,7 @@ export async function llm(args: {
       temperature: args.temperature ?? 0.8,
       max_tokens: args.maxTokens,
     },
+    pollInterval: 250,
   });
   return (result.data as { output?: string }).output ?? "";
 }

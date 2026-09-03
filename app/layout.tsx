@@ -9,6 +9,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+
 export const metadata: Metadata = {
   title: BRAND,
   description: `${BRAND_TAGLINE} Powered by fal and MiniMax H3 Max Turbo.`,
