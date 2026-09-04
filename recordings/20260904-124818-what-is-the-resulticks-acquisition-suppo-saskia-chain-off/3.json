@@ -1,0 +1,41 @@
+{
+  "session": "20260904-124818-what-is-the-resulticks-acquisition-suppo-saskia-chain-off",
+  "n": 3,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "That turns a point solution into an integrated end-to-end platform.",
+    "headline": "END-TO-END",
+    "ground": "violet",
+    "subjects": [
+      "the screen",
+      "paper tiles"
+    ],
+    "action": "The screen widens as paper tiles snap along its edge, forming one continuous band.",
+    "handoff": "the platform band",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "The $1.5B acquisition adds AI-driven customer data capabilities to Diginex's sustainability and compliance platform — transforming it from a point solution into an integrated end-to-end platform."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the screen; paper tiles.\nOpens on the screen, carried over from the previous shot, which transforms as the action begins.\nAction: The screen widens as paper tiles snap along its edge, forming one continuous band.\nEnds holding on the platform band.\nHeadline printed on a paper chip: \"END-TO-END\".\n\nCOPY LIST: \"END-TO-END\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, 2D-animated modern editorial paper collage. The composition is set against a dominant, flat block-color background of soft violet with a matte paper texture. A central subject, a black-and-white halftone photographic cutout of a digital screen with rough white torn-paper edges, is positioned in the center. The scene is lit from the upper-left, casting small, subtle paper-layer shadows beneath every element. From the first frame, the screen cutout begins to widen horizontally. Simultaneously, several smaller rectangular paper tiles—black-and-white halftone photographic cutouts with matching rough white torn-paper edges—snap rapidly into place along the edges of the screen. Each tile enters with a fast motion and a slight overshoot before landing stably, seamlessly merging to form one continuous, long platform band across the violet field. To the side, a large, extra-bold sans-serif headline \"END-TO-END\" appears, printed in black ink on a cream-colored paper chip with a rough torn edge; the text is clean, legible, and stable. The motion settles into a hold, leaving a clear reading window of the finished band and the headline, while a very subtle, slow looping shift in the paper shadows continues until the end of the video.\n\noverall_soundscape: The audio consists of a series of crisp, rhythmic paper-slap sounds as the tiles snap into place, accompanied by the short, tactile sticky sound of tape being pressed down. There is no ambient noise, voice, or dialogue.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91032/P2mPt5dpLrugR8O1chNzx_minimax-h3.mp4",
+  "requestId": "01a06c08-ac02-7f52-876f-418f50f8994e",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 18052,
+  "resolution": "480P",
+  "renderMs": 2577,
+  "timings": {
+    "inference": 0.447573385987198
+  },
+  "renderedAt": "2026-09-04T10:48:24.308Z",
+  "savedAt": "2026-09-04T10:48:24.326Z"
+}

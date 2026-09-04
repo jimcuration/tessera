@@ -1,0 +1,41 @@
+{
+  "session": "20260904-124708-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 3,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "That turns a point solution into an integrated end-to-end platform.",
+    "headline": "END-TO-END",
+    "ground": "violet",
+    "subjects": [
+      "the screen",
+      "paper tiles"
+    ],
+    "action": "The screen widens as paper tiles snap along its edge, forming one continuous band.",
+    "handoff": "the platform band",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "The $1.5B acquisition adds AI-driven customer data capabilities to Diginex's sustainability and compliance platform — transforming it from a point solution into an integrated end-to-end platform."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the screen; paper tiles.\nOpens on the screen, carried over from the previous shot, which transforms as the action begins.\nAction: The screen widens as paper tiles snap along its edge, forming one continuous band.\nEnds holding on the platform band.\nHeadline printed on a paper chip: \"END-TO-END\".\n\nCOPY LIST: \"END-TO-END\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"That turns a point solution into an integrated end-to-end platform.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 2D editorial paper collage animation, Static Shot. Anchoring on <Picture 1>, the scene features a flat soft violet background layered with black-and-white halftone newsprint clippings. An off-screen narrator (S1, adult male with a warm, clear, medium-pitched voice) says in an off-screen voiceover, <d>[English] That turns a point solution into an integrated end-to-end platform.</d> As narration begins, the central cutouts sweep outward and the screen element expands horizontally. Additional halftone paper tiles snap cleanly along its perimeter with subtle overshoot, locking together to form a single continuous platform band under consistent upper-left paper-drop shadows. At 00:02.500, a torn cream paper chip drops firmly into the center, printed with clean, bold black sans-serif text reading \"END-TO-END\". The frame holds steadily on this final layout through the end of the shot.\n\noverall_soundscape: Tactile, rhythmic paper-slap snaps, subtle paper shuffling, and soft tape-placement sounds synchronize with the snapping tiles and landing paper chip.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9102d/Wzd6CXYqxOvORumERbJrb_minimax-h3.mp4",
+  "requestId": "01a06c07-c285-7e22-8f7e-884ea7adb5c5",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 96535,
+  "resolution": "480P",
+  "renderMs": 9017,
+  "timings": {
+    "inference": 0.45931888400082244
+  },
+  "renderedAt": "2026-09-04T10:47:30.817Z",
+  "savedAt": "2026-09-04T10:47:30.833Z"
+}

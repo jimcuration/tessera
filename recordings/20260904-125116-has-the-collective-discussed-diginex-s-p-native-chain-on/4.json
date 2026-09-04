@@ -1,0 +1,43 @@
+{
+  "session": "20260904-125116-has-the-collective-discussed-diginex-s-p-native-chain-on",
+  "n": 4,
+  "question": "Has the collective discussed Diginex's path to profitability given the M&A spend?",
+  "beat": {
+    "line": "In the six months to September, general costs climbed three point four million to eight point one million dollars.",
+    "headline": "G&A $8.1M",
+    "ground": "magenta",
+    "subjects": [
+      "the block row",
+      "a rising paper bar"
+    ],
+    "action": "The block row stacks upward into one tall paper bar that holds at the top of frame.",
+    "handoff": "the tall bar",
+    "source": [
+      12
+    ]
+  },
+  "sources": [
+    "In H1 FY25 (six months to September 2025), general and administrative expenses climbed $3.4M to $8.1M, with $2.2M of that driven by M&A due diligence and legal work."
+  ],
+  "warnings": [
+    "line is 19 words (limit 18)"
+  ],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the block row; a rising paper bar.\nOpens on the block row, carried over from the previous shot, which transforms as the action begins.\nAction: The block row stacks upward into one tall paper bar that holds at the top of frame.\nEnds holding on the tall bar.\nHeadline printed on a paper chip: \"G&A $8.1M\".\n\nCOPY LIST: \"G&A $8.1M\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"In the six months to September, general costs climbed three point four million to eight point one million dollars.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated, modern editorial paper collage. The scene opens on <Picture 1>, featuring a deep magenta flat block-color background with a subtle matte paper texture. In the foreground, a row of three black-and-white halftone photographic cutouts of modern office buildings are arranged horizontally; each cutout has rough, white torn-paper edges and casts a small, soft shadow to the bottom-right, indicating a consistent light source from the upper-left. At the top of the frame, a cream-colored paper chip with rough edges displays the headline \"4 ACQUISITIONS\" in an extra-bold black sans-serif typeface. As the shot begins, the \"4 ACQUISITIONS\" paper chip and the row of building cutouts quickly slide out of frame. Simultaneously, a series of flat matte paper blocks in cream and black enter the frame from the bottom, stacking upward with fast speed and a slight overshoot before snapping into a stable, vertical bar that extends to the top of the frame. As the bar reaches its peak, a new cream-colored paper chip slides in from the right and adheres to the top of the bar with a small piece of clear matte tape. This chip features the text \"G&A $8.1M\" in a clean, extra-bold black sans-serif font, which remains perfectly stable and legible. The camera remains in a Static Shot throughout the 5 seconds. A narrator (S1), a male with a warm, clear, and natural mid-range timbre and a brisk but unhurried speaking rate, says: <d>[English] In the six months to September, general costs climbed three point four million to eight point one million dollars.</d>\n\noverall_soundscape: The audio is dominated by the crisp, tactile sounds of a paper collage: a sharp, rhythmic \"slap\" as the paper blocks stack upward and a subtle, sticky \"tack\" sound when the final paper chip is taped to the bar. There is a clean, studio-quality ambient silence in the background.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91046/K1_ixWmHs16mlhAN92b-t_minimax-h3.mp4",
+  "requestId": "01a06c0b-b52f-77f1-aa9e-99b60f95941d",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 318228,
+  "resolution": "480P",
+  "renderMs": 2732,
+  "timings": {
+    "inference": 0.4615426390009816
+  },
+  "renderedAt": "2026-09-04T10:51:43.241Z",
+  "savedAt": "2026-09-04T10:51:43.262Z"
+}

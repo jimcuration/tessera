@@ -1,0 +1,46 @@
+{
+  "session": "20260904-124742-what-is-diginex-native-chain-on",
+  "n": 5,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Enterprises face fragmented, manual compliance processes — banks and asset managers most of all.",
+    "headline": "ONE-STOP SHOP",
+    "ground": "cyan",
+    "subjects": [
+      "the ribbon band",
+      "torn paper fragments",
+      "a paper building"
+    ],
+    "action": "The ribbon band splinters into torn fragments, then reassembles against a cutout bank facade.",
+    "handoff": "the bank facade",
+    "source": [
+      17,
+      18,
+      19
+    ]
+  },
+  "sources": [
+    "Diginex's platform consolidation addresses a real market need: enterprises face fragmented, manual processes for ESG and supply-chain compliance.",
+    "By unifying carbon accounting, ESG reporting, supply chain transparency and human rights due diligence into one platform, combined with Resulticks' AI-driven customer data capabilities, the company is positioning itself as a one-stop shop for sustainability and compliance workflows.",
+    "This is particularly relevant for regulated entities (banks, asset managers) facing mounting ESG disclosure requirements and climate risk scrutiny."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the ribbon band; torn paper fragments; a paper building.\nOpens on the ribbon band, carried over from the previous shot, which transforms as the action begins.\nAction: The ribbon band splinters into torn fragments, then reassembles against a cutout bank facade.\nEnds holding on the bank facade.\nHeadline printed on a paper chip: \"ONE-STOP SHOP\".\n\nCOPY LIST: \"ONE-STOP SHOP\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Enterprises face fragmented, manual compliance processes — banks and asset managers most of all.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, featuring a flat, matte pale cyan background. In the center is a horizontal ribbon band composed of cream-colored paper tape strips overlapping a black-and-white halftone photographic cutout with rough white torn-paper edges. A headline chip of torn white paper with the text \"END-TO-END\" in extra-bold black sans-serif typography sits above it. The lighting is consistent from the upper-left, casting small, subtle paper-layer shadows beneath the elements. Immediately on the first frame, the \"END-TO-END\" headline chip and the cream ribbon band splinter rapidly into several smaller torn paper fragments. These fragments fly outward with a slight overshoot before quickly reassembling and snapping into a new composition. The fragments merge to form a new black-and-white halftone photographic cutout of a classic bank building facade, complete with rough white torn-paper edges. Simultaneously, a new piece of torn white paper chips into view, bearing the headline \"ONE-STOP SHOP\" in extra-bold black sans-serif typography, placed with safe margins. The camera remains in a Static Shot throughout. The movement concludes by the 4-second mark, holding a clear reading window of the bank facade and the \"ONE-STOP SHOP\" text. A subtle, small loop of the paper elements gently shifting continues until the end of the 5-second duration. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says: <d>[English] Enterprises face fragmented, manual compliance processes — banks and asset managers most of all.</d>\n\noverall_soundscape: The audio features the crisp, tactile sounds of paper being slapped onto a surface and the sticky, short peel and press of adhesive tape. These physical foley effects are synchronized with the splintering and reassembling of the paper elements.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91031/hzREceFV7448Tmbz4O14W_minimax-h3.mp4",
+  "requestId": "01a06c08-8121-79c1-bc0b-eb3284d39806",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 773323,
+  "resolution": "480P",
+  "renderMs": 3052,
+  "timings": {
+    "inference": 0.4600944589910796
+  },
+  "renderedAt": "2026-09-04T10:48:13.653Z",
+  "savedAt": "2026-09-04T10:48:13.669Z"
+}

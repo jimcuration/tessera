@@ -1,0 +1,41 @@
+{
+  "session": "20260904-124908-what-is-the-resulticks-acquisition-suppo-saskia-chain-off",
+  "n": 8,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "General and administrative costs rose three point four million to eight point one million in the first half.",
+    "headline": "$8.1M G&A",
+    "ground": "magenta",
+    "subjects": [
+      "the four buildings",
+      "a rising paper bar"
+    ],
+    "action": "The buildings compress into one rising paper bar that climbs and locks in place.",
+    "handoff": "the rising bar",
+    "source": [
+      12
+    ]
+  },
+  "sources": [
+    "The company's G&A costs rose $3.4M to $8.1M in H1 FY25, with $2.2M driven by M&A legal work — a signal that integration is resource-intensive and ongoing."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the four buildings; a rising paper bar.\nOpens on the four buildings, carried over from the previous shot, which transforms as the action begins.\nAction: The buildings compress into one rising paper bar that climbs and locks in place.\nEnds holding on the rising bar.\nHeadline printed on a paper chip: \"$8.1M G&A\".\n\nCOPY LIST: \"$8.1M G&A\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, 2D-animated modern editorial paper collage. The scene opens on a flat, matte, deep magenta block-color background with no gradients or glows. Four black-and-white halftone photographic cutouts of corporate buildings, each featuring rough white torn-paper edges and small drop shadows cast from a consistent upper-left light source, are arranged across the center. On the first frame, the buildings rapidly compress and merge downward with a fast motion and a slight overshoot, transforming instantly into a single, vertical, cream-colored matte paper bar. This bar then ascends rapidly from the bottom of the frame, climbing upward before locking firmly in place with a slight bounce. As the bar stabilizes, a rectangular cream-colored paper chip slides in quickly from the right, featuring the headline \"$8.1M G&A\" printed in an extra-bold, black sans-serif typeface. The text is clean, legible, and stable. The composition holds for the remainder of the shot, with the paper bar and the headline chip remaining static against the deep magenta ground, though a very subtle, slow-pulsing vertical shift in the bar's height creates a minimal loop. The entire visual is composed of flat matte printed paper textures with visible print dots and small pieces of translucent tape anchoring the elements.\n\noverall_soundscape: A series of quick, crisp paper-slap sounds occur as the buildings compress and the bar ascends. A distinct, sticky sound of adhesive tape being pressed down punctuates the moment the bar and the headline chip lock into their final positions.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91039/O9sfZYbTwK0TttSV--2Ni_minimax-h3.mp4",
+  "requestId": "01a06c09-c1fb-7d01-ad97-1a9ac9a4aafa",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 560308,
+  "resolution": "480P",
+  "renderMs": 1961,
+  "timings": {
+    "inference": 0.4497538110008463
+  },
+  "renderedAt": "2026-09-04T10:49:34.845Z",
+  "savedAt": "2026-09-04T10:49:34.995Z"
+}

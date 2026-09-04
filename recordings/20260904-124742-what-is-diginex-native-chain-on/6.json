@@ -1,0 +1,42 @@
+{
+  "session": "20260904-124742-what-is-diginex-native-chain-on",
+  "n": 6,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "As of early September twenty twenty-six, the stock trades at one dollar sixteen.",
+    "headline": "$1.16",
+    "ground": "magenta",
+    "subjects": [
+      "the bank facade",
+      "a torn-paper arrow",
+      "a paper price tag"
+    ],
+    "action": "The facade drops away as a torn arrow slides down the frame and pins a paper price tag low.",
+    "handoff": "the falling arrow",
+    "source": [
+      14
+    ]
+  },
+  "sources": [
+    "As of early September 2026, Diginex trades at $1.16 per share with a market cap of approximately $34M — a sharp decline from earlier valuations."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the bank facade; a torn-paper arrow; a paper price tag.\nOpens on the bank facade, carried over from the previous shot, which transforms as the action begins.\nAction: The facade drops away as a torn arrow slides down the frame and pins a paper price tag low.\nEnds holding on the falling arrow.\nHeadline printed on a paper chip: \"$1.16\".\n\nCOPY LIST: \"$1.16\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"As of early September twenty twenty-six, the stock trades at one dollar sixteen.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 2D editorial paper collage animation, Static Shot. The video opens on <Picture 1>, featuring a teal backdrop, the torn paper header \"ONE-STOP SHOP\", and the black-and-white halftone bank facade. Immediately, the background shifts to solid flat deep magenta as the top header and bank facade drop rapidly downward out of frame. From the top, a stylized downward-pointing torn-paper arrow slides into the frame at fast speed. A cream-colored torn-paper price tag chip bearing bold black printed text \"$1.16\" enters briskly, pinned low by the arrow tip with a slight overshoot before locking into place. The composition holds cleanly on the downward arrow and the \"$1.16\" paper chip under consistent upper-left lighting and subtle cast paper shadows. From the first frame, an adult male narrator (S1) with a warm, clear, and brisk delivery says in an off-screen voiceover: <d>[English] As of early September twenty twenty-six, the stock trades at one dollar sixteen.</d>\n\noverall_soundscape: Crisp paper rustling and sliding whooshes as cutouts drop out, followed by a sharp paper-slap impact and soft tape-tap sound as the arrow and price chip pin into position.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91032/F4CoYsqmchKNdDYkymSWt_minimax-h3.mp4",
+  "requestId": "01a06c08-9723-7d10-a64e-42f5e2e4de9e",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 773324,
+  "resolution": "480P",
+  "renderMs": 9746,
+  "timings": {
+    "inference": 0.4639156630000798
+  },
+  "renderedAt": "2026-09-04T10:48:26.110Z",
+  "savedAt": "2026-09-04T10:48:26.135Z"
+}

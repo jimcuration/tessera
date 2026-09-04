@@ -1,0 +1,42 @@
+{
+  "session": "20260904-124742-what-is-diginex-native-chain-on",
+  "n": 10,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "The company has signalled a focus on Brazil's seventy-seven billion dollar sustainability market.",
+    "headline": "BRAZIL $77B",
+    "ground": "lime",
+    "subjects": [
+      "the three cards",
+      "a paper map shape",
+      "a paper hand"
+    ],
+    "action": "The three cards slide together into a cutout map shape; a paper hand enters and holds it steady.",
+    "handoff": "the held map",
+    "source": [
+      35
+    ]
+  },
+  "sources": [
+    "Brazil expansion — The company has signalled a focus on Brazil's $77B sustainability market, a geographic diversification and growth vector. benzinga.com"
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: lime green. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: the three cards; a paper map shape; a paper hand.\nOpens on the three cards, carried over from the previous shot, which transforms as the action begins.\nAction: The three cards slide together into a cutout map shape; a paper hand enters and holds it steady.\nEnds holding on the held map.\nHeadline printed on a paper chip: \"BRAZIL $77B\".\n\nCOPY LIST: \"BRAZIL $77B\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The company has signalled a focus on Brazil's seventy-seven billion dollar sustainability market.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial paper collage style, Static Shot. Anchored on <Picture 1>, against a solid lime green background, the torn paper cards slide inward and assemble into a black-and-white halftone paper cutout map of Brazil with rough torn edges. The previous text banner is replaced as a cutout paper hand slides rapidly into frame from the bottom right, pressing down to hold the Brazil map firmly in place with a slight bounce. A cream torn-paper chip snaps on top displaying the clean, bold sans-serif headline \"BRAZIL $77B\". Narrator (S1), an adult English speaker with a warm, articulate, and brisk voice, says in an off-screen voiceover from the first frame: <d>[English] The company has signalled a focus on Brazil's seventy-seven billion dollar sustainability market.</d> The scene holds steady on the secured map and headline until the end.\n\noverall_soundscape: Crisp paper shuffling, sliding sounds, and a firm paper-slap thump as the hand secures the map cutout onto the surface, accompanied by the faint snap of adhesive tape.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91034/txjMuys7P0rbBCwCUadAY_minimax-h3.mp4",
+  "requestId": "01a06c09-0204-7c10-a22a-16d0b9f480d6",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 773328,
+  "resolution": "480P",
+  "renderMs": 6824,
+  "timings": {
+    "inference": 0.4554621290881187
+  },
+  "renderedAt": "2026-09-04T10:48:50.248Z",
+  "savedAt": "2026-09-04T10:48:50.274Z"
+}

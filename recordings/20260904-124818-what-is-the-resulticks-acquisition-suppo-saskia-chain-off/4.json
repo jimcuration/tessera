@@ -1,0 +1,41 @@
+{
+  "session": "20260904-124818-what-is-the-resulticks-acquisition-suppo-saskia-chain-off",
+  "n": 4,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "The move is about expanding addressable market and cross-sell opportunity.",
+    "headline": "CROSS-SELL",
+    "ground": "cyan",
+    "subjects": [
+      "the platform band",
+      "a paper map"
+    ],
+    "action": "The band unrolls into a paper map that spreads flat across the frame.",
+    "handoff": "the map",
+    "source": [
+      3
+    ]
+  },
+  "sources": [
+    "The move is about expanding addressable market and cross-sell opportunity."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the platform band; a paper map.\nOpens on the platform band, carried over from the previous shot, which transforms as the action begins.\nAction: The band unrolls into a paper map that spreads flat across the frame.\nEnds holding on the map.\nHeadline printed on a paper chip: \"CROSS-SELL\".\n\nCOPY LIST: \"CROSS-SELL\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] 2D-animated modern editorial paper collage, Static Shot. The entire frame is set against an unyielding, flat matte pale cyan paper surface with subtle fibrous grain and fine print dots under consistent upper-left directional lighting, which casts thin, crisp paper-layer drop shadows. Centered in the composition, a cream-colored platform paper band begins immediately on the first frame to unroll swiftly across the horizontal plane, snapping open with a firm physical overshoot before flattening out. As it unrolls, it reveals a dense black-and-white halftone photographic cutout map displaying vintage cartographic contours and street grids, bounded by rough, fibrous torn-paper white edges. At 00:01.800, a small rectangular cream paper chip, bordered by uneven torn edges and secured at the corner by a tiny strip of matte translucent tape, lands with a rapid snap in the upper portion of the frame. Printed precisely on the chip in an extra-bold black sans-serif typeface is the clean, legible visible text \"CROSS-SELL\". The paper map and title chip settle firmly into a stable reading hold from 00:02.500 through 00:05.000, retaining absolute typographic clarity and subtle tactile paper depth without gloss, bloom, or camera drift.\n\noverall_soundscape: A sharp, textured swish of dry paper rapidly unrolling across a flat desk, culminating in a firm, tactile paper-slap as the map flattens completely. A brief, light pat and faint sticky tape-adhesion click sound accompany the arrival of the paper chip, resolving into quiet physical stillness.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91033/7WqIcguont7MUWM1odcsU_minimax-h3.mp4",
+  "requestId": "01a06c08-ad70-7b23-b1a7-3f053cb0d0b5",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 18053,
+  "resolution": "480P",
+  "renderMs": 8195,
+  "timings": {
+    "inference": 0.4488845250016311
+  },
+  "renderedAt": "2026-09-04T10:48:30.233Z",
+  "savedAt": "2026-09-04T10:48:30.256Z"
+}

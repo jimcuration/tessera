@@ -1,0 +1,41 @@
+{
+  "session": "20260904-124708-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 2,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "The one point five billion dollar deal adds AI-driven customer data to Diginex's sustainability and compliance platform.",
+    "headline": "$1.5B",
+    "ground": "violet",
+    "subjects": [
+      "the joined documents",
+      "a paper screen"
+    ],
+    "action": "The joined documents fold upward into a paper screen that lights and settles centre frame.",
+    "handoff": "the screen",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "The $1.5B acquisition adds AI-driven customer data capabilities to Diginex's sustainability and compliance platform — transforming it from a point solution into an integrated end-to-end platform."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the joined documents; a paper screen.\nOpens on the joined documents, carried over from the previous shot, which transforms as the action begins.\nAction: The joined documents fold upward into a paper screen that lights and settles centre frame.\nEnds holding on the screen.\nHeadline printed on a paper chip: \"$1.5B\".\n\nCOPY LIST: \"$1.5B\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The one point five billion dollar deal adds AI-driven customer data to Diginex's sustainability and compliance platform.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, anchored by a flat, matte, soft violet background. The composition features black-and-white halftone photographic cutouts with distinct, rough white torn-paper edges, including fragmented documents and text blocks. A consistent light source from the upper-left casts small, subtle paper-layer shadows beneath every element. A male narrator (S1), characterized by a warm, clear, and natural timbre with a brisk but unhurried speaking rate, begins speaking immediately: <d>[English] The one point five billion dollar deal adds AI-driven customer data to Diginex's sustainability and compliance platform.</d> Simultaneously, the joined documents from the initial frame rapidly fold upward with a slight overshoot, transforming into a flat, rectangular paper screen that settles firmly in the center of the frame. As the screen settles, a clean, extra-bold black sans-serif headline \"$1.5B\" appears, printed on a small cream-colored paper chip that is layered onto the screen. The text is stable, legible, and printed with a matte finish. The camera remains in a Static Shot throughout the 5-second duration, maintaining the flat, 2D aesthetic with no glow, neon, or 3D depth. The video ends with the screen and the \"$1.5B\" headline held steadily in the center, with the paper elements exhibiting a very slight, rhythmic floating loop to maintain visual energy.\n\noverall_soundscape: The audio is dominated by the clear voice of the narrator. Beneath the dialogue, synchronized diegetic sound effects include the crisp, tactile sounds of paper slapping against a surface and the sticky, short peel of adhesive tape as the documents fold and the paper chip settles.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9102b/iBQZJDh3ifz888zMRC8zl_minimax-h3.mp4",
+  "requestId": "01a06c07-ae8c-7052-a270-d59eb105ebcf",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 96534,
+  "resolution": "480P",
+  "renderMs": 3075,
+  "timings": {
+    "inference": 0.4719116979977116
+  },
+  "renderedAt": "2026-09-04T10:47:19.469Z",
+  "savedAt": "2026-09-04T10:47:19.487Z"
+}

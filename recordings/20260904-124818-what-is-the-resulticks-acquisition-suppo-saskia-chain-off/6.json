@@ -1,0 +1,43 @@
+{
+  "session": "20260904-124818-what-is-the-resulticks-acquisition-suppo-saskia-chain-off",
+  "n": 6,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Firms buying ESG compliance can now buy customer data from the same vendor, increasing wallet share.",
+    "headline": "WALLET SHARE",
+    "ground": "cyan",
+    "subjects": [
+      "the two folders",
+      "paper coins"
+    ],
+    "action": "The folders tip together and paper coins pour from one into the other, stacking up.",
+    "handoff": "the coin stack",
+    "source": [
+      7,
+      8
+    ]
+  },
+  "sources": [
+    "This creates multiple revenue vectors: enterprises managing ESG compliance can now also buy customer data and marketing automation from the same vendor, reducing switching costs and increasing wallet share.",
+    "It's a classic horizontal expansion play — the same customer base, broader product suite, higher ACV."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the two folders; paper coins.\nOpens on the two folders, carried over from the previous shot, which transforms as the action begins.\nAction: The folders tip together and paper coins pour from one into the other, stacking up.\nEnds holding on the coin stack.\nHeadline printed on a paper chip: \"WALLET SHARE\".\n\nCOPY LIST: \"WALLET SHARE\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] 2D-animated modern editorial paper collage style. The scene opens on a flat, matte pale cyan background with a consistent light source from the upper-left, casting small, subtle shadows beneath every element. Two black-and-white halftone photographic cutouts of office folders, featuring rough white torn-paper edges, are positioned in the center. On the left, a paper chip with a rough white edge displays the headline \"WALLET SHARE\" in an extra-bold black sans-serif typeface, the text clean, legible, and stable. Immediately upon the first frame, the folder on the left tips aggressively toward the right with a slight overshoot before stabilizing. A stream of black-and-white halftone photographic cutouts of coins, each with distinct rough white torn-paper edges, pours from the first folder into the second. The coins tumble with fast, snappy motion, stacking up inside the right folder. Throughout the action, the camera remains in a Static Shot. The elements possess a tactile, printed-paper texture with visible print dots and a few small pieces of matte adhesive tape securing the folder edges. The video ends by holding a clear reading window on the completed stack of coins within the folder, with a very subtle, slow bobbing loop of the folders to maintain motion.\n\noverall_soundscape: The audio consists of crisp, tactile foley sounds. A distinct, light paper-slap occurs as the folder tips, followed by a rapid succession of rhythmic, light paper-clinking and shuffling sounds as the paper coins pour and stack. Occasional short, tacky sounds of adhesive tape being manipulated are audible.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9104a/MuR-YhEct5gKyOIHVETUi_minimax-h3.mp4",
+  "requestId": "01a06c08-db18-7f12-a5ad-df8899d2877c",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 18055,
+  "resolution": "480P",
+  "renderMs": 2619,
+  "timings": {
+    "inference": 0.45184659998631105
+  },
+  "renderedAt": "2026-09-04T10:48:35.986Z",
+  "savedAt": "2026-09-04T10:48:36.001Z"
+}

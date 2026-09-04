@@ -1,0 +1,41 @@
+{
+  "session": "20260904-124818-what-is-the-resulticks-acquisition-suppo-saskia-chain-off",
+  "n": 9,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Two point two million of that came from merger and acquisition legal work — integration is resource-intensive.",
+    "headline": "$2.2M LEGAL",
+    "ground": "magenta",
+    "subjects": [
+      "the rising bar",
+      "stacked paper documents"
+    ],
+    "action": "The bar peels into stacked legal documents that pile heavily and tilt.",
+    "handoff": "the document pile",
+    "source": [
+      12
+    ]
+  },
+  "sources": [
+    "The company's G&A costs rose $3.4M to $8.1M in H1 FY25, with $2.2M driven by M&A legal work — a signal that integration is resource-intensive and ongoing."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the rising bar; stacked paper documents.\nOpens on the rising bar, carried over from the previous shot, which transforms as the action begins.\nAction: The bar peels into stacked legal documents that pile heavily and tilt.\nEnds holding on the document pile.\nHeadline printed on a paper chip: \"$2.2M LEGAL\".\n\nCOPY LIST: \"$2.2M LEGAL\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style. The scene opens with a dominant, flat, deep magenta block-color background with a matte printed paper texture. In the center, a vertical bar—rendered as a black-and-white halftone photographic cutout with rough white torn-paper edges—is already rising. The lighting is consistent from the upper-left, casting small, subtle paper-layer shadows beneath the elements. Immediately, the rising bar peels away and transforms into a series of stacked legal documents. These documents are also black-and-white halftone photographic cutouts with jagged, torn white edges, appearing as physical pieces of paper that pile heavily on top of one another, tilting slightly to the side as the stack grows. Simultaneously, a rectangular cream-colored paper chip slides in quickly from the right with a slight overshoot, landing stably in the upper section of the frame. Printed on this chip in a large, extra-bold black sans-serif typeface is the text \"$2.2M LEGAL\", which remains perfectly legible and stable. Flat matte paper shapes in pale yellow and black ribbons act as diagrammatic accents, appearing with fast, precise movements. The motion concludes with the document pile and the headline holding in a clear reading window, while the elements maintain a subtle, rhythmic hovering loop.\n\noverall_soundscape: A series of crisp, tactile paper-slap sounds as the documents pile up, accompanied by the short, sticky sound of adhesive tape being pressed down. There is no voice, speech, or dialogue.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91035/O5HrwbaMI8TB3c0foflP0_minimax-h3.mp4",
+  "requestId": "01a06c09-1737-7fd3-ac20-77a480d46a48",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 18058,
+  "resolution": "480P",
+  "renderMs": 2131,
+  "timings": {
+    "inference": 0.440185853978619
+  },
+  "renderedAt": "2026-09-04T10:48:51.317Z",
+  "savedAt": "2026-09-04T10:48:51.330Z"
+}

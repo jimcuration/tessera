@@ -1,0 +1,44 @@
+{
+  "session": "20260904-125116-has-the-collective-discussed-diginex-s-p-native-chain-on",
+  "n": 7,
+  "question": "Has the collective discussed Diginex's path to profitability given the M&A spend?",
+  "beat": {
+    "line": "Profitability needs revenue growing thirty to fifty percent while costs stay flat or grow in single digits.",
+    "headline": "+30–50% YOY",
+    "ground": "lime",
+    "subjects": [
+      "the calendar strip",
+      "a climbing paper arrow",
+      "a flat paper line"
+    ],
+    "action": "From the strip a paper arrow climbs steeply while a flat paper line holds level beneath it.",
+    "handoff": "the climbing arrow",
+    "source": [
+      18,
+      19
+    ]
+  },
+  "sources": [
+    "Revenue scaling faster than G&A growth.",
+    "If Diginex can grow top-line revenue 30–50% YoY while holding G&A flat or growing single digits (as integration work tapers), operating leverage kicks in."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: lime green. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: the calendar strip; a climbing paper arrow; a flat paper line.\nOpens on the calendar strip, carried over from the previous shot, which transforms as the action begins.\nAction: From the strip a paper arrow climbs steeply while a flat paper line holds level beneath it.\nEnds holding on the climbing arrow.\nHeadline printed on a paper chip: \"+30–50% YOY\".\n\nCOPY LIST: \"+30–50% YOY\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Profitability needs revenue growing thirty to fifty percent while costs stay flat or grow in single digits.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens as <Picture 1> instantly transitions, replacing the purple background and photo cutout with a dominant, flat lime green background with a matte paper texture. A black-and-white halftone photographic cutout of a calendar strip, featuring rough white torn-paper edges and a small shadow cast from the upper-left, is positioned at the center. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk, professional speaking rate, begins speaking immediately: <d>[English] Profitability needs revenue growing thirty to fifty percent while costs stay flat or grow in single digits.</d> Simultaneously, a flat matte paper arrow in a contrasting cream color emerges from the calendar strip, climbing steeply toward the upper right with a fast motion and a slight overshoot before landing stably. Beneath the arrow, a flat matte cream paper line slides out and holds a perfectly level horizontal position. A large, extra-bold black sans-serif headline \"+30–50% YOY\" printed on a cream-colored paper chip with rough torn edges snaps into the frame with a quick motion, settling in a position with safe margins. Every element is flat matte printed paper with visible print dots and small pieces of clear adhesive tape at the corners. The camera remains in a Static Shot throughout the 5 seconds. The video ends with the climbing arrow and the headline holding a clear reading window, with the elements maintaining a subtle, micro-scale looping jitter to simulate a physical paper collage.\n\noverall_soundscape: The audio is dominated by the crisp, dry voice of the narrator. Beneath the speech, tactile foley sounds are synchronized with the movement: a sharp \"slap\" of paper hitting a surface as the headline appears, and the subtle, sticky sound of tape being pressed down.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91048/Q42Pc8oPZDK0PPUmcFtHe_minimax-h3.mp4",
+  "requestId": "01a06c0b-f646-7ac2-96d9-9bed506a23f3",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 318231,
+  "resolution": "480P",
+  "renderMs": 3409,
+  "timings": {
+    "inference": 0.46241803000157233
+  },
+  "renderedAt": "2026-09-04T10:52:00.709Z",
+  "savedAt": "2026-09-04T10:52:00.723Z"
+}

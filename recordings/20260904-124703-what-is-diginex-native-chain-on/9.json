@@ -1,0 +1,46 @@
+{
+  "session": "20260904-124703-what-is-diginex-native-chain-on",
+  "n": 9,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Winning new logos, proving Resulticks synergies and slowing cost growth would change the story.",
+    "headline": "WHAT CHANGES IT",
+    "ground": "lime",
+    "subjects": [
+      "the receipt pile",
+      "three paper cards",
+      "tape pieces"
+    ],
+    "action": "The receipt pile is taped down and three fresh paper cards fan out above it in a row.",
+    "handoff": "the three cards",
+    "source": [
+      32,
+      33,
+      34
+    ]
+  },
+  "sources": [
+    "Platform adoption acceleration — Evidence that the unified platform is winning net-new logos and expanding within existing customers, particularly in banking and asset management where ESG and climate risk reporting is now mandated.",
+    "Resulticks integration success — Demonstrable revenue synergies and cross-sell traction showing that AI-driven customer data capabilities are driving incremental value for sustainability workflows.",
+    "Path to profitability — Clear evidence of operating leverage as the platform scales, with G&A growing slower than revenue."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: lime green. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: the receipt pile; three paper cards; tape pieces.\nOpens on the receipt pile, carried over from the previous shot, which transforms as the action begins.\nAction: The receipt pile is taped down and three fresh paper cards fan out above it in a row.\nEnds holding on the three cards.\nHeadline printed on a paper chip: \"WHAT CHANGES IT\".\n\nCOPY LIST: \"WHAT CHANGES IT\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Winning new logos, proving Resulticks synergies and slowing cost growth would change the story.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, but the background immediately shifts to a dominant, flat block-color of lime green. The composition features subjects as black-and-white halftone photographic cutouts with rough, white torn-paper edges, all possessing small paper-layer shadows cast from a consistent upper-left light source. Everything is rendered as flat matte printed paper with visible print dots and paper textures; there is no glow, neon, or 3D gloss. At the start, the pile of black-and-white halftone receipts from <Picture 1> is visible on the lime green ground. Instantly, two small pieces of translucent matte adhesive tape snap onto the edges of the receipt pile, pinning it firmly to the background. Simultaneously, three fresh rectangular paper cards, also featuring black-and-white halftone imagery and rough white torn edges, enter the frame from the bottom with a fast motion and a slight overshoot, fanning out in a neat horizontal row above the receipt pile. As the cards land and stabilize, a cream-colored paper chip slides into the upper portion of the frame with the same fast, overshooting motion. Printed on this chip in a large, extra-bold black sans-serif typeface is the headline \"WHAT CHANGES IT\", rendered with clean, stable letterforms and generous margins. The camera remains in a Static Shot throughout the 5-second duration. Towards the end, the cards and the paper chip exhibit a very subtle, slow-pulsing loop of movement to maintain dynamism. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, speaks starting on the first frame: <d>[English] Winning new logos, proving Resulticks synergies and slowing cost growth would change the story.</d>\n\noverall_soundscape: The audio is dominated by a clean, dry voiceover. Beneath the narration, there are synchronized diegetic sound effects including the crisp, sharp slap of paper hitting a surface and the sticky, tactile sound of adhesive tape being pressed down.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9102f/c72LxfTBNOucYa3AK3BD3_minimax-h3.mp4",
+  "requestId": "01a06c08-3715-73a2-b7f7-e3fd982e4f56",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 347481,
+  "resolution": "480P",
+  "renderMs": 3676,
+  "timings": {
+    "inference": 0.46595517988316715
+  },
+  "renderedAt": "2026-09-04T10:47:54.787Z",
+  "savedAt": "2026-09-04T10:47:54.802Z"
+}

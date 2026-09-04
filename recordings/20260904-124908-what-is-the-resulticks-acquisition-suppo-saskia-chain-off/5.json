@@ -1,0 +1,45 @@
+{
+  "session": "20260904-124908-what-is-the-resulticks-acquisition-suppo-saskia-chain-off",
+  "n": 5,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Enterprise customers can be served across two workflows: sustainability and compliance, and customer intelligence.",
+    "headline": "TWO WORKFLOWS",
+    "ground": "cyan",
+    "subjects": [
+      "the map",
+      "two paper folders"
+    ],
+    "action": "The map creases down the middle and lifts into two paper folders standing side by side.",
+    "handoff": "the two folders",
+    "source": [
+      4,
+      5,
+      6
+    ]
+  },
+  "sources": [
+    "By layering Resulticks' customer data and AI capabilities onto the core ESG/compliance infrastructure, Diginex can now serve enterprise customers across two distinct workflows:",
+    "Sustainability & compliance (carbon accounting, ESG reporting, supply chain transparency)",
+    "Customer intelligence & marketing (Resulticks' core strength — AI-driven customer data platforms)"
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the map; two paper folders.\nOpens on the map, carried over from the previous shot, which transforms as the action begins.\nAction: The map creases down the middle and lifts into two paper folders standing side by side.\nEnds holding on the two folders.\nHeadline printed on a paper chip: \"TWO WORKFLOWS\".\n\nCOPY LIST: \"TWO WORKFLOWS\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Modern editorial paper collage style, 2D motion design. The scene opens with a static composition against a dominant, flat block-color background of pale cyan. In the center, a black-and-white halftone photographic cutout of a map, featuring rough white torn-paper edges and a small drop shadow cast from a light source in the upper-left, is positioned flat. As the action begins on the first frame, the map creases sharply down the middle with a crisp, physical fold. The two halves of the map then lift upward and rotate, transforming into two black-and-white halftone photographic paper folders that stand side by side. Both folders maintain the distinct rough white torn-paper edges and subtle paper-layer shadows. Simultaneously, a rectangular paper chip in cream enters the frame quickly from the top, landing with a slight overshoot before stabilizing in the upper section of the layout. Printed on this chip in an extra-bold black sans-serif typeface is the headline \"TWO WORKFLOWS\", clean and legible with no misspellings. The composition holds on the two folders and the headline for the remainder of the video, with a very subtle, slow-pulsing scale loop on the folders to maintain movement. All elements are flat matte printed paper with visible print dots and real paper texture; there are no gradients, glows, or 3D effects.\n\noverall_soundscape: A sharp, tactile paper-crease sound occurs as the map folds, followed by two quick, rhythmic paper-slap sounds as the folders lift and land. A short, sticky sound of adhesive tape is heard as the headline chip snaps into place.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91039/mSqeaBZlu6ee5mt8oy3Ex_minimax-h3.mp4",
+  "requestId": "01a06c09-b8f7-7f21-b30d-8d3d0bd41d4b",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 560305,
+  "resolution": "480P",
+  "renderMs": 2845,
+  "timings": {
+    "inference": 0.44795415201224387
+  },
+  "renderedAt": "2026-09-04T10:49:32.729Z",
+  "savedAt": "2026-09-04T10:49:32.754Z"
+}

@@ -1,0 +1,43 @@
+{
+  "session": "20260904-125116-has-the-collective-discussed-diginex-s-p-native-chain-on",
+  "n": 3,
+  "question": "Has the collective discussed Diginex's path to profitability given the M&A spend?",
+  "beat": {
+    "line": "The company is in active integration mode across four acquisitions.",
+    "headline": "4 ACQUISITIONS",
+    "ground": "violet",
+    "subjects": [
+      "four paper building blocks",
+      "the crossed arrows"
+    ],
+    "action": "The arrows flatten into a base as four paper blocks drop on and lock together.",
+    "handoff": "the block row",
+    "source": [
+      11
+    ]
+  },
+  "sources": [
+    "The company is in active integration mode across four acquisitions."
+  ],
+  "warnings": [
+    "headline number \"4\" not found in cited sentences [11]"
+  ],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: four paper building blocks; the crossed arrows.\nOpens on the crossed arrows, carried over from the previous shot, which transforms as the action begins.\nAction: The arrows flatten into a base as four paper blocks drop on and lock together.\nEnds holding on the block row.\nHeadline printed on a paper chip: \"4 ACQUISITIONS\".\n\nCOPY LIST: \"4 ACQUISITIONS\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The company is in active integration mode across four acquisitions.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens on <Picture 1>, featuring a flat, matte soft violet background. Centered in the composition are two large, crossing arrow cutouts—one cream and one black—each defined by rough white torn-paper edges and a subtle drop shadow cast from an upper-left light source. As the action begins on the first frame, the crossing arrows quickly flatten and slide downward with a slight overshoot, merging into a single horizontal base strip of matte cream paper. Simultaneously, four black-and-white halftone photographic cutouts of modernist buildings, each with jagged white torn-paper edges and thin paper-layer shadows, drop rapidly from the top of the frame. The buildings land one by one from left to right, locking together in a precise row atop the base strip. At the same time, a rectangular cream paper chip slides in from the top-left, landing firmly in the upper margin. Printed on this chip in a large, extra-bold black sans-serif typeface is the text \"4 ACQUISITIONS\", which remains clean, legible, and stable. The camera remains a Static Shot throughout. By the end of the five-second duration, the composition holds on the row of buildings and the headline, with the building cutouts performing a very subtle, slow rhythmic bobbing loop to maintain visual energy. (S1), a narrator with a warm, clear, and natural mid-range adult male voice, speaking at a brisk but unhurried pace, says: <d>[English] The company is in active integration mode across four acquisitions.</d>\n\noverall_soundscape: The audio is characterized by organic, tactile paper foley. A series of distinct, crisp paper-slap sounds occur as the buildings drop and lock into place, accompanied by the short, sticky sound of adhesive tape being pressed down during the landing of the headline chip.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91045/dd_GFL2e6Z_5Vp_BrX75w_minimax-h3.mp4",
+  "requestId": "01a06c0b-9f5c-7701-b5b9-a2152576b6bc",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 318227,
+  "resolution": "480P",
+  "renderMs": 3454,
+  "timings": {
+    "inference": 0.6460115821100771
+  },
+  "renderedAt": "2026-09-04T10:51:38.002Z",
+  "savedAt": "2026-09-04T10:51:38.016Z"
+}

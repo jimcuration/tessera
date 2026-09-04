@@ -1,0 +1,46 @@
+{
+  "session": "20260904-124535-what-is-diginex-native-chain-on",
+  "n": 5,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Enterprises face fragmented, manual compliance processes — banks and asset managers most of all.",
+    "headline": "ONE-STOP SHOP",
+    "ground": "cyan",
+    "subjects": [
+      "the ribbon band",
+      "torn paper fragments",
+      "a paper building"
+    ],
+    "action": "The ribbon band splinters into torn fragments, then reassembles against a cutout bank facade.",
+    "handoff": "the bank facade",
+    "source": [
+      17,
+      18,
+      19
+    ]
+  },
+  "sources": [
+    "Diginex's platform consolidation addresses a real market need: enterprises face fragmented, manual processes for ESG and supply-chain compliance.",
+    "By unifying carbon accounting, ESG reporting, supply chain transparency and human rights due diligence into one platform, combined with Resulticks' AI-driven customer data capabilities, the company is positioning itself as a one-stop shop for sustainability and compliance workflows.",
+    "This is particularly relevant for regulated entities (banks, asset managers) facing mounting ESG disclosure requirements and climate risk scrutiny."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the ribbon band; torn paper fragments; a paper building.\nOpens on the ribbon band, carried over from the previous shot, which transforms as the action begins.\nAction: The ribbon band splinters into torn fragments, then reassembles against a cutout bank facade.\nEnds holding on the bank facade.\nHeadline printed on a paper chip: \"ONE-STOP SHOP\".\n\nCOPY LIST: \"ONE-STOP SHOP\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Enterprises face fragmented, manual compliance processes — banks and asset managers most of all.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens on <Picture 1>, featuring a flat, matte pale cyan background. The composition is dominated by a black-and-white halftone photographic cutout of a modern building complex with rough, white torn-paper edges, casting a subtle, small paper-layer shadow to the bottom-right from a consistent upper-left light source. A cream-colored paper chip is centered in the frame, with the black, extra-bold sans-serif text \"END-TO-END\" printed cleanly upon it. Immediately upon the first frame, a cream-colored matte paper ribbon band, which persists from a previous scene, begins to splinter and break apart into several small, irregular torn paper fragments. The camera remains in a Static Shot. These fragments move with fast, refined 2D motion design, exhibiting a slight overshoot before rapidly reassembling into a new configuration. The fragments merge to form a new black-and-white halftone photographic cutout of a classic bank facade, characterized by stone columns and a structured entrance, again featuring rough white torn-paper edges and a small shadow. Simultaneously, the paper chip containing the text \"END-TO-END\" is quickly replaced by a new cream paper chip featuring the black, extra-bold sans-serif headline \"ONE-STOP SHOP\" in stable, accurate English letterforms. The motion settles into a clear reading window, holding the bank facade and the new headline until the end of the 5-second duration, with a subtle, small looping shift in the paper fragments to maintain a sense of life. (S1), a narrator with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says in an off-screen voiceover: <d>[English] Enterprises face fragmented, manual compliance processes — banks and asset managers most of all.</d> The on-screen subjects' lips remain completely closed as there are no characters.\n\noverall_soundscape: The audio is dominated by the clean, professional voiceover. Beneath the narration, tactile diegetic sounds of paper slapping against a hard surface and the crisp, sticky peel and press of adhesive tape occur in synchronization with the splintering and reassembling of the paper elements.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91026/yfn-gVzY4-G-HgmpQ36ce_minimax-h3.mp4",
+  "requestId": "01a06c06-d520-7ff2-80fb-4276e9471b98",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 230446,
+  "resolution": "480P",
+  "renderMs": 3074,
+  "timings": {
+    "inference": 0.48921779899683315
+  },
+  "renderedAt": "2026-09-04T10:46:23.790Z",
+  "savedAt": "2026-09-04T10:46:23.805Z"
+}

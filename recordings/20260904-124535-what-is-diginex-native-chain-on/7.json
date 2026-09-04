@@ -1,0 +1,41 @@
+{
+  "session": "20260904-124535-what-is-diginex-native-chain-on",
+  "n": 7,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Market cap sits near thirty-four million dollars, a sharp decline from earlier valuations.",
+    "headline": "~$34M",
+    "ground": "magenta",
+    "subjects": [
+      "the falling arrow",
+      "a shrinking paper block"
+    ],
+    "action": "The arrow lands on a paper block, which contracts step by step until it is a small square.",
+    "handoff": "the small square",
+    "source": [
+      14
+    ]
+  },
+  "sources": [
+    "As of early September 2026, Diginex trades at $1.16 per share with a market cap of approximately $34M — a sharp decline from earlier valuations."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the falling arrow; a shrinking paper block.\nOpens on the falling arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The arrow lands on a paper block, which contracts step by step until it is a small square.\nEnds holding on the small square.\nHeadline printed on a paper chip: \"~$34M\".\n\nCOPY LIST: \"~$34M\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Market cap sits near thirty-four million dollars, a sharp decline from earlier valuations.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, featuring a flat, matte, deep magenta background. A cream-colored paper arrow with rough, white torn-paper edges is positioned at the top, pointing downward toward a white rectangular paper chip. The lighting is consistent from the upper-left, casting small, subtle shadows beneath the paper layers. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, begins speaking immediately: <d>[English] Market cap sits near thirty-four million dollars, a sharp decline from earlier valuations.</d> Simultaneously, the cream arrow descends rapidly with a slight overshoot, landing firmly on top of the white paper block. Upon impact, the white paper block abruptly contracts in a stepped, rhythmic motion—shrinking in width and height in three distinct jumps—until it becomes a small, stable square. As the block shrinks, the text on the paper chip instantly changes from \"$1.16\" to a large, extra-bold black sans-serif headline that reads \"~$34M\", printed cleanly and legibly with no garbled characters. The camera remains in a Static Shot throughout the 5 seconds. The composition holds on the small square and the \"~$34M\" text for the final second, with a very subtle, slow pulsing scale loop to maintain visual energy. All elements maintain their flat matte paper texture, print dots, and rough torn edges throughout the motion.\n\noverall_soundscape: The audio is dominated by a clean voiceover. Beneath the narration, distinct diegetic sound effects occur: a sharp, tactile \"slap\" of paper hitting paper when the arrow lands, followed by three quick, rhythmic \"snaps\" or \"clicks\" of paper folding or contracting as the block shrinks. A faint, sticky sound of adhesive tape is audible during the transitions.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91027/yqQHUekm_RiBVZ-BzgUOG_minimax-h3.mp4",
+  "requestId": "01a06c06-f9d8-7632-bd0a-de7dfb0fa37e",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 230448,
+  "resolution": "480P",
+  "renderMs": 2665,
+  "timings": {
+    "inference": 0.47313913493417203
+  },
+  "renderedAt": "2026-09-04T10:46:33.233Z",
+  "savedAt": "2026-09-04T10:46:33.248Z"
+}

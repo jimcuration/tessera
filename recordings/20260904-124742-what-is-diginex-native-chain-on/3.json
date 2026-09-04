@@ -1,0 +1,45 @@
+{
+  "session": "20260904-124742-what-is-diginex-native-chain-on",
+  "n": 3,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Plan A, Matter, The Remedy Project and Resulticks were folded into the company.",
+    "headline": "4 ACQUISITIONS",
+    "ground": "cyan",
+    "subjects": [
+      "four paper building shapes",
+      "the paper screen"
+    ],
+    "action": "The screen flattens as four cutout building shapes slide in from the corners and interlock.",
+    "handoff": "the four-block bloc",
+    "source": [
+      3,
+      25
+    ]
+  },
+  "sources": [
+    "Following acquisitions of Plan A, Matter, The Remedy Project, and the transformative addition of Resulticks, Diginex is evolving from point solutions into a fully integrated end-to-end platform spanning carbon accounting, ESG reporting, supply chain transparency, human rights due diligence, and now AI-driven customer data capabilities — designed to serve banks, asset managers and enterprises.",
+    "Diginex has now absorbed four distinct businesses (Plan A, Matter, The Remedy Project, Resulticks) across multiple jurisdictions — a complex undertaking."
+  ],
+  "warnings": [
+    "headline number \"4\" not found in cited sentences [3,25]"
+  ],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: four paper building shapes; the paper screen.\nOpens on the paper screen, carried over from the previous shot, which transforms as the action begins.\nAction: The screen flattens as four cutout building shapes slide in from the corners and interlock.\nEnds holding on the four-block bloc.\nHeadline printed on a paper chip: \"4 ACQUISITIONS\".\n\nCOPY LIST: \"4 ACQUISITIONS\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Plan A, Matter, The Remedy Project and Resulticks were folded into the company.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, which consists of a central cream-colored paper chip with the text \"ESG DATA\" in bold black sans-serif typography, surrounded by halftone photographic cutouts and arrows on a purple background. Immediately upon the first frame, the purple background snaps to a flat, dominant block-color of pale cyan. The central \"ESG DATA\" paper chip flattens and slides out of frame rapidly. Simultaneously, four separate paper cutout shapes of architectural buildings, rendered as black-and-white halftone photographs with rough, white torn-paper edges, slide in quickly from the four corners of the frame. Each building cutout casts a small, subtle paper-layer shadow extending toward the bottom-right, consistent with a light source from the upper-left. The buildings move with a slight overshoot before landing and interlocking perfectly into a stable four-block cluster in the center of the composition. As they lock into place, a new cream-colored paper chip slides into the upper portion of the frame, featuring the headline \"4 ACQUISITIONS\" in an extra-bold black sans-serif font, clean and legible with no misspellings. The camera remains in a Static Shot throughout. Everything is depicted as flat matte printed paper with visible print dots and real paper textures; there is no glow, neon, or 3D gloss. The final two seconds hold on this stable composition of the four interlocking buildings and the headline, with a very slight, rhythmic pulsing loop of the paper elements to maintain visual energy. An English narrator (S1), a male with a warm, clear, natural timbre and a brisk, professional speaking rate, speaks once from the first frame: <d>[English] Plan A, Matter, The Remedy Project and Resulticks were folded into the company.</d>\n\noverall_soundscape: The audio is dominated by a clean voiceover. Beneath the speech, crisp, tactile foley sounds occur: sharp paper-slap sounds as the building cutouts land, and the sticky, subtle sound of adhesive tape being pressed down as the headline chip settles into place.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9102f/XS2v8Vsb-p-3ucJRA__UK_minimax-h3.mp4",
+  "requestId": "01a06c08-472e-7e91-a6bc-a5dabc151e93",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 773321,
+  "resolution": "480P",
+  "renderMs": 4743,
+  "timings": {
+    "inference": 0.48379368399764644
+  },
+  "renderedAt": "2026-09-04T10:47:59.262Z",
+  "savedAt": "2026-09-04T10:47:59.280Z"
+}

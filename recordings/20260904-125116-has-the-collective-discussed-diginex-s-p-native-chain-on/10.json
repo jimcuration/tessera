@@ -1,0 +1,44 @@
+{
+  "session": "20260904-125116-has-the-collective-discussed-diginex-s-p-native-chain-on",
+  "n": 10,
+  "question": "Has the collective discussed Diginex's path to profitability given the M&A spend?",
+  "beat": {
+    "line": "The next two to three earnings reports must show it — until then, profitability is a narrative.",
+    "headline": "NEXT 2–3 REPORTS",
+    "ground": "cyan",
+    "subjects": [
+      "the map shape",
+      "three paper report pages",
+      "a paper hand"
+    ],
+    "action": "The map folds into three report pages; a paper hand enters and points at the last one.",
+    "handoff": "the pointing hand",
+    "source": [
+      31,
+      32
+    ]
+  },
+  "sources": [
+    "The company needs to show in its next 2–3 earnings reports that revenue is accelerating and G&A is decelerating relative to revenue growth.",
+    "Until then, profitability remains a narrative, not a fact."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the map shape; three paper report pages; a paper hand.\nOpens on the map shape, carried over from the previous shot, which transforms as the action begins.\nAction: The map folds into three report pages; a paper hand enters and points at the last one.\nEnds holding on the pointing hand.\nHeadline printed on a paper chip: \"NEXT 2–3 REPORTS\".\n\nCOPY LIST: \"NEXT 2–3 REPORTS\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The next two to three earnings reports must show it — until then, profitability is a narrative.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens on <Picture 1>, but the background instantly shifts to a dominant flat block-color of pale cyan with a matte paper texture. Centered in the frame is a black-and-white halftone photographic cutout of a map shape, featuring rough white torn-paper edges and a subtle drop shadow cast from an upper-left light source. On the first frame, as the action begins, the map shape quickly folds and transforms with a snappy, refined motion design into three separate rectangular paper report pages. These pages are also black-and-white halftone photographic cutouts with rough white torn edges, landing stably on the pale cyan ground with a slight overshoot. Simultaneously, a large, extra-bold sans-serif headline \"NEXT 2–3 REPORTS\" appears, printed in black ink on a cream-colored paper chip with rough edges, positioned with safe margins. At 00:02.000, an anonymous black-and-white halftone cutout of a paper hand enters the frame from the right with fast speed, pointing its index finger decisively at the third report page. The hand lands with a slight bounce and holds its position. Throughout the shot, the camera remains a Static Shot. The lighting is consistent, with small paper-layer shadows reinforcing the 2D depth. The final two seconds hold on this composition, with the paper elements exhibiting a very subtle, slow-scale pulsing loop to maintain visual energy.\n\noverall_soundscape: The audio features crisp, tactile foley sounds of paper. There are distinct, rhythmic paper-slap sounds as the map folds into pages, accompanied by the sticky, short sound of tape being pressed down when the headline chip appears. A final, light thud accompanies the arrival of the paper hand.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91049/kS4o5bGWys3h8FK5J1Ip__minimax-h3.mp4",
+  "requestId": "01a06c0c-3a88-7812-ad99-ee370df5e1ce",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 318234,
+  "resolution": "480P",
+  "renderMs": 2626,
+  "timings": {
+    "inference": 0.46453137299977243
+  },
+  "renderedAt": "2026-09-04T10:52:17.393Z",
+  "savedAt": "2026-09-04T10:52:17.408Z"
+}
