@@ -1,11 +1,11 @@
 {
-  "translator": "translator-v0.1",
+  "translator": "translator-v0.2",
   "pinned": true,
-  "note": "The six-beat exemplar from briefs/WP0.md, hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
+  "note": "The six-beat exemplar from lib/translator.ts (EXEMPLAR_NDJSON), hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. v0.2 (WP2): every line rewritten to the 12-word budget (v0.1's beat 5 ran 19-20 words); beat 5 is cut, not split, so the spine stays six beats; every action now names how the previous beat's headline chip leaves before the new headline lands. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
   "question": "What is the cash position and runway?",
   "beats": [
     {
-      "line": "At the end of September, Diginex held one point eight five million dollars in cash.",
+      "line": "By September's end, Diginex held one point eight five million in cash.",
       "headline": "$1.85M",
       "ground": "violet",
       "subjects": ["a stack of paper coins", "a cream paper chip"],
@@ -14,11 +14,11 @@
       "source": [9]
     },
     {
-      "line": "Six months earlier it was three point one one million — the burn shows a company mid-transition.",
+      "line": "Six months earlier it was three point one one million.",
       "headline": "$3.11M → $1.85M",
       "ground": "violet",
       "subjects": ["the coin stack", "a torn-paper arrow"],
-      "action": "The stack shrinks coin by coin; a torn-paper arrow slides in and points down.",
+      "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.",
       "handoff": "the arrow",
       "source": [9, 10]
     },
@@ -27,34 +27,34 @@
       "headline": "$1.3M / MONTH",
       "ground": "magenta",
       "subjects": ["a paper calendar strip", "paper coins"],
-      "action": "The arrow unrolls into a paper calendar strip; coins slide off it month by month.",
+      "action": "The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.",
       "handoff": "the strip",
       "source": [22]
     },
     {
-      "line": "At that rate, the cash on hand covered roughly one point four months.",
+      "line": "At that rate, the cash on hand covered one point four months.",
       "headline": "1.4 MONTHS",
       "ground": "magenta",
       "subjects": ["a paper runway", "a cutout aircraft"],
-      "action": "The strip becomes a runway that is torn short; a cutout aircraft rolls toward the torn end and stops.",
+      "action": "The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.",
       "handoff": "the runway",
       "source": [23]
     },
     {
-      "line": "An eleven point four million warrant exercise kept the company afloat — and October added thirteen point eight million more.",
+      "line": "October's warrant exercise added thirteen point eight million in cash.",
       "headline": "+$13.8M",
       "ground": "lime",
       "subjects": ["fresh paper coins", "the runway", "tape pieces"],
-      "action": "Fresh paper coins are taped onto the runway one after another, extending it across the frame.",
+      "action": "The previous chip slides off as fresh paper coins are taped onto the runway one after another, extending it across the frame.",
       "handoff": "the extended runway",
-      "source": [20, 27]
+      "source": [27]
     },
     {
-      "line": "Survival depends on capital markets; the next two quarters show whether revenue can narrow the gap.",
+      "line": "Survival depends on capital markets and the next two quarters.",
       "headline": "NEXT 2 QUARTERS",
       "ground": "lime",
       "subjects": ["two paper calendar pages", "a paper hand"],
-      "action": "Two paper calendar pages land on the runway; a paper hand enters and points at the second.",
+      "action": "The previous chip flips down as two paper calendar pages land on the runway; a paper hand enters and points at the second.",
       "handoff": "the pointing hand",
       "source": [25, 43]
     }

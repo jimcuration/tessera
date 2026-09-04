@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142636-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 2,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Data quality, reliability and comparability pose significant challenges.",
+    "headline": "DATA RELIABILITY",
+    "ground": "violet",
+    "subjects": [
+      "the scattered documents",
+      "a paper magnifying lens"
+    ],
+    "action": "The opening chip slides off the top edge as the scattered documents stack into one sheet; a paper magnifying lens lowers over it and holds.",
+    "handoff": "the lens",
+    "source": [
+      10
+    ]
+  },
+  "sources": [
+    "As such, data quality, reliability and comparability pose significant challenges."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the scattered documents; a paper magnifying lens.\nOpens on the scattered documents, carried over from the previous shot, which transforms as the action begins.\nAction: The opening chip slides off the top edge as the scattered documents stack into one sheet; a paper magnifying lens lowers over it and holds.\nEnds holding on the lens.\nHeadline printed on a paper chip: \"DATA RELIABILITY\".\n\nON-SCREEN TEXT: \"DATA RELIABILITY\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, 2D-animated modern editorial paper collage, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a soft violet, single-color paper ground. The composition consists of black-and-white halftone photographic cutouts with rough white torn-paper edges, including several scattered, blank document fragments. At the top center, a cream paper chip contains the black, extra-bold sans-serif text \"FRAGMENTED RULES\". A consistent light source from the upper left ensures every paper layer casts a small, soft shadow. The camera is a Static Shot. Immediately from the first frame, the cream paper chip containing \"FRAGMENTED RULES\" slides rapidly off the top edge of the frame. Simultaneously, the scattered black-and-white halftone document cutouts slide toward the center with fast speed and a slight overshoot, stacking neatly into a single, rectangular blank sheet of paper. As the documents settle, a new cream paper chip descends from the top, landing firmly in the upper third of the frame; it features the clean, legible, black extra-bold sans-serif text \"DATA RELIABILITY\". Finally, a paper cutout of a magnifying lens—rendered as a black-and-white halftone image with a rough white torn edge—lowers from the top and settles directly over the stacked document. The entire scene maintains a matte printed paper texture with visible print dots, reflecting only the ambient room light with no glow or bloom. The video ends holding on this final composition, with a subtle, small-amplitude loop of the paper elements shifting slightly.\n\noverall_soundscape: A series of crisp, tactile sound effects including light paper-slaps as the documents stack and the headline chip lands. Faint, sticky sounds of adhesive tape are heard during the movement of the paper elements.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91283/NjqH6Zxk4upXDwjdYD2P7_minimax-h3.mp4",
+  "requestId": "01a06c63-2a8b-79b1-9d5c-6f8fefbaed96",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3133,
+  "timings": {
+    "inference": 0.45891479999409057
+  },
+  "savedAt": "2026-09-04T12:27:14.206Z"
+}

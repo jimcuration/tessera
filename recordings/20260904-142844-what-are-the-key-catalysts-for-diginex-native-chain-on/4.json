@@ -1,0 +1,43 @@
+{
+  "session": "20260904-142844-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 4,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Brazil's seventy-seven billion dollar sustainability market is the diversification play.",
+    "headline": "$77B BRAZIL",
+    "ground": "cyan",
+    "subjects": [
+      "a cutout map shape",
+      "a torn-paper arrow"
+    ],
+    "action": "The previous chip is covered as the bound block flattens into a cutout map shape; a torn-paper arrow enters, points into it and stops.",
+    "handoff": "the map shape",
+    "source": [
+      22,
+      23
+    ]
+  },
+  "sources": [
+    "Diginex has signalled focus on Brazil's $77B sustainability market as a geographic diversification play.",
+    "Traction in Brazil would provide a new revenue stream and demonstrate the platform's ability to scale beyond its core markets."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: pale cyan. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: a cutout map shape; a torn-paper arrow.\nOpens on the bound block, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the bound block flattens into a cutout map shape; a torn-paper arrow enters, points into it and stops.\nEnds holding on the map shape.\nHeadline printed on a paper chip: \"$77B BRAZIL\".\n\nON-SCREEN TEXT: \"$77B BRAZIL\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Brazil's seventy-seven billion dollar sustainability market is the diversification play.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage in a 2D motion design style, photographed flat under soft, natural room light. The scene opens on <Picture 1>, featuring a pale cyan flat block-color paper ground. In the upper third of the frame, a cream-colored paper chip with the bold black sans-serif text \"4 BUSINESSES\" is visible. In the lower two-thirds, a bound block composed of black-and-white halftone photographic paper cutouts with rough white torn edges is held together by pale yellow matte paper ribbons. A consistent light source from the upper left casts small, soft shadows beneath every paper layer. Immediately upon the first frame, the cream chip with \"4 BUSINESSES\" is rapidly covered by a new, larger cream paper chip sliding in from the left, which bears the clean, stable, and legible black sans-serif text \"$77B BRAZIL\". Simultaneously, the bound block in the center flattens and transforms with a fast, snappy motion into a single black-and-white halftone photographic cutout of a map shape, maintaining its rough white torn edges. Following this, a small torn-paper arrow cutout enters the frame quickly from the right with a slight overshoot, pointing directly into the map shape before coming to a stable stop. The camera remains in a Static Shot throughout the 5-second duration. All elements, including the map and arrow, are plain and unmarked with no internal lettering or symbols. The video concludes by holding on this final composition of the headline chip, the map, and the arrow against the pale cyan ground, with a subtle, rhythmic floating loop. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says <d>[English] Brazil's seventy-seven billion dollar sustainability market is the diversification play.</d>\n\noverall_soundscape: The audio is dominated by the clean, dry vocal of the narrator. Beneath the voice, tactile foley sounds are audible, including the crisp slap of paper landing on a surface and the sticky, short rip of adhesive tape being applied.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91291/sPhbqWcKi91Oy68BLgoxl_minimax-h3.mp4",
+  "requestId": "01a06c65-4ef9-79c2-8521-41e83ed523b2",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 865913,
+  "resolution": "480P",
+  "renderMs": 3078,
+  "timings": {
+    "inference": 0.4663622290827334
+  },
+  "renderedAt": "2026-09-04T12:29:35.224Z",
+  "savedAt": "2026-09-04T12:29:35.239Z"
+}

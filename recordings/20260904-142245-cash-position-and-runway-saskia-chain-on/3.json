@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142245-cash-position-and-runway-saskia-chain-on",
+  "n": 3,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Operating burn ran about one point three million a month.",
+    "headline": "$1.3M / MONTH",
+    "ground": "magenta",
+    "subjects": [
+      "a paper calendar strip",
+      "paper coins"
+    ],
+    "action": "The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.",
+    "handoff": "the strip",
+    "source": [
+      22
+    ]
+  },
+  "sources": [
+    "The burn rate is roughly $3.9M per half-year in operating losses, or approximately $1.3M per month."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper calendar strip; paper coins.\nOpens on the arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.\nEnds holding on the strip.\nHeadline printed on a paper chip: \"$1.3M / MONTH\".\n\nON-SCREEN TEXT: \"$1.3M / MONTH\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage shot with a locked Static Shot composition, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a deep magenta block-color paper ground. In the center, a black paper arrow cutout with rough white torn edges points downward toward a small pile of black-and-white halftone photographic coin cutouts, also with rough white torn edges. All elements are matte printed paper, casting small, soft shadows from a consistent light source in the upper left. At 00:00.000, the action begins immediately: the black arrow cutout rapidly flips upward and away from the frame with a slight overshoot. Simultaneously, the arrow transforms, unrolling vertically into a long, narrow paper calendar strip. This strip is a black-and-white halftone cutout with rough white torn edges, but the calendar pages are entirely blank, containing no numbers, letters, or symbols. As the strip unrolls, a series of blank, halftone paper coin cutouts slide off the strip one by one in a rhythmic sequence, landing on the magenta ground. In the upper third of the frame, a rectangular cream-colored paper chip slides in quickly from the top edge with a slight overshoot and lands stably. Printed on this chip in a large, extra-bold black sans-serif typeface is the text \"$1.3M / MONTH\", which remains clean, legible, and perfectly stable. The camera remains locked as the composition holds for the final two seconds, showing the blank calendar strip and the scattered blank coins against the deep magenta background, with all elements maintaining their matte paper texture and soft shadows.\n\noverall_soundscape: The soundscape consists of a series of crisp, tactile paper sound effects. A sharp, light paper-slap occurs as the arrow flips away, followed by a textured, rhythmic sliding sound as the calendar strip unrolls and the paper coins glide across the matte surface. A final, soft thud is heard when the headline chip lands.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9126a/lLkqH3Jn6dS7n7EJMuY68_minimax-h3.mp4",
+  "requestId": "01a06c5f-5a53-7191-8a56-e11c492154d6",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3184,
+  "timings": {
+    "inference": 0.4645750589988893
+  },
+  "savedAt": "2026-09-04T12:23:04.849Z"
+}

@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142416-what-is-diginex-saskia-chain-on",
+  "n": 10,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "It is targeting Brazil's seventy-seven billion dollar sustainability market.",
+    "headline": "$77B MARKET",
+    "ground": "lime",
+    "subjects": [
+      "a paper map",
+      "a cutout arrow"
+    ],
+    "action": "The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.",
+    "handoff": "the arrow on the map",
+    "source": [
+      35
+    ]
+  },
+  "sources": [
+    "Brazil expansion — The company has signalled a focus on Brazil's $77B sustainability market, a geographic diversification and growth vector. benzinga.com"
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a paper map; a cutout arrow.\nOpens on the tied ribbon, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.\nEnds holding on the arrow on the map.\nHeadline printed on a paper chip: \"$77B MARKET\".\n\nON-SCREEN TEXT: \"$77B MARKET\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a cinematic, live-action style, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a lime green block-color paper ground. In the upper third, a cream paper chip with the headline \"WHAT CHANGES IT\" in extra-bold black sans-serif typography is visible. In the lower two-thirds, black-and-white halftone photographic cutouts of city buildings with rough white torn-paper edges are partially covered by a tied cream paper ribbon. A consistent light source from the upper left casts small, soft shadows beneath every paper layer. Immediately, the \"WHAT CHANGES IT\" headline chip slides rapidly off-frame to the left. Simultaneously, the tied cream ribbon unfurls and flattens with a slight overshoot, transforming into a blank, unmarked black-and-white halftone paper map with rough white torn edges. As the map settles, a new cream paper chip with the headline \"$77B MARKET\" printed in extra-bold black sans-serif typography slides in from the right and lands stably in the upper third of the frame. Finally, a small, black-and-white halftone cutout of an arrow with rough white torn edges flies in from the top right, landing precisely on the map with a slight bounce before holding still. All elements maintain a matte printed paper texture with visible print dots and no glow or neon effects. The camera remains a Static Shot throughout the 5-second duration.\n\noverall_soundscape: A series of crisp, tactile paper sound effects. A sliding friction sound as the first chip exits, a soft paper-slap and rustle as the ribbon flattens into a map, a distinct \"thump\" as the new headline chip lands, and a final sharp paper-tap as the arrow lands on the map.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91279/vt-rSaophWgLvCMvmK1qx_minimax-h3.mp4",
+  "requestId": "01a06c61-971b-7870-9a5a-4b095b0e0529",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 4010,
+  "timings": {
+    "inference": 0.45698869400075637
+  },
+  "savedAt": "2026-09-04T12:25:32.184Z"
+}

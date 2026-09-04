@@ -1,0 +1,41 @@
+{
+  "session": "20260904-142118-cash-position-and-runway-native-chain-on",
+  "n": 2,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Six months earlier it was three point one one million.",
+    "headline": "$3.11M → $1.85M",
+    "ground": "violet",
+    "subjects": [
+      "the coin stack",
+      "a torn-paper arrow"
+    ],
+    "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.",
+    "handoff": "the arrow",
+    "source": [
+      9,
+      10
+    ]
+  },
+  "sources": [
+    "As of 30th September 2025, Diginex held $1.85M in cash and cash equivalents — a significant decline from $3.11M six months earlier.",
+    "The burn reflects the company's transition phase: heavy integration spending on the Resulticks acquisition and operational losses as the platform consolidates."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the coin stack; a torn-paper arrow.\nOpens on the coin stack, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.\nEnds holding on the arrow.\nHeadline printed on a paper chip: \"$3.11M → $1.85M\".\n\nON-SCREEN TEXT: \"$3.11M → $1.85M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Six months earlier it was three point one one million.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage animation, photographed as a flat lay under soft room light. The scene opens on <Picture 1>, where a soft violet flat block-color paper ground fills the frame. In the upper third, a rectangular cream-colored paper chip features the bold, black sans-serif typography \"$3.11M → $1.85M\" in a clean, stable print. Below this, a stack of coins, rendered as a black-and-white halftone photographic cutout with rough white torn-paper edges, sits atop a cream paper scrap. A consistent light source from the upper left casts small, soft shadows beneath every paper layer. At 00:00.000, as the action begins, a previous paper chip (not fully visible) slides rapidly off the top edge of the frame. Simultaneously, the coin stack begins to shrink, with individual coins disappearing one by one from the top of the stack in a fast, rhythmic motion. As the stack diminishes, a black-and-white halftone cutout of a torn-paper arrow enters the frame from the right with a fast motion and a slight overshoot, landing stably to point downward toward the shrinking coins. The camera remains a Static Shot throughout the 5-second duration. The textures of all elements—the violet ground, the cream chips, and the halftone cutouts—are matte printed paper with visible print dots and a flat finish, devoid of any glow or neon effects. The final frame holds on the composition of the reduced coin stack, the downward-pointing arrow, and the headline chip \"$3.11M → $1.85M\". A narrator (S1), a man with a warm, clear, and natural mid-range timbre and a brisk but unhurried speaking rate, says: <d>[English] Six months earlier it was three point one one million.</d>\n\noverall_soundscape: The audio is characterized by tactile, organic paper sounds. Crisp, rhythmic paper-slap sounds synchronize with the coins disappearing and the arrow landing, accompanied by the subtle, sticky sound of tape being pressed down.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91260/bcDciu7pca_i-Is6ju4zh_minimax-h3.mp4",
+  "requestId": "01a06c5d-e21b-7a90-a98d-fb779c38e16b",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3678,
+  "timings": {
+    "inference": 0.463120593019994
+  },
+  "savedAt": "2026-09-04T12:21:29.258Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-142844-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 7,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Revenue grew two hundred and ninety-three percent to two million dollars.",
+    "headline": "+293% YOY",
+    "ground": "lime",
+    "subjects": [
+      "a rising paper bar",
+      "paper coins"
+    ],
+    "action": "The previous chip slides off as the taped key straightens into a rising paper bar; coins stack along it and settle at the top.",
+    "handoff": "the rising bar",
+    "source": [
+      31
+    ]
+  },
+  "sources": [
+    "Revenue grew 293% YoY to $2.0M in H1 FY25, driven mainly by subscription."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a rising paper bar; paper coins.\nOpens on the taped key, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the taped key straightens into a rising paper bar; coins stack along it and settle at the top.\nEnds holding on the rising bar.\nHeadline printed on a paper chip: \"+293% YOY\".\n\nON-SCREEN TEXT: \"+293% YOY\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Revenue grew two hundred and ninety-three percent to two million dollars.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a 2D motion design style, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a magenta paper ground, a cream paper chip with the text \"CROSS-SELL OR BURDEN\" in bold black sans-serif, and a black-and-white halftone cutout of a key with rough white torn-paper edges, secured by pieces of matte translucent tape. The camera is a Static Shot. Immediately on the first frame, the magenta ground is rapidly covered by a single, unbroken block of lime green paper. Simultaneously, the \"CROSS-SELL OR BURDEN\" chip slides off-frame to the left with a fast motion and slight overshoot. The taped key cutout transforms as it straightens vertically, morphing into a rising paper bar chart element made of cream-colored matte paper. As the bar grows upward from the bottom of the frame, several black-and-white halftone cutouts of coins, each with rough white torn edges and no markings, slide in and stack neatly one by one atop the rising bar. During this motion, a new cream paper chip lands in the upper third of the frame with a fast, snappy movement and a slight overshoot; it features the clean, legible, and stable black sans-serif text \"+293% YOY\". Every element—the lime green ground, the cream bar, the coins, and the headline chip—is made of matte printed paper with visible texture and print dots. A consistent light source from the upper left casts small, soft, realistic shadows beneath every paper layer. The video ends by holding on this final composition of the rising bar, the stacked coins, and the headline chip. A male narrator (S1), with a warm, clear, natural, and brisk timbre, speaks once from the start: <d>[English] Revenue grew two hundred and ninety-three percent to two million dollars.</d>\n\noverall_soundscape: The audio is dominated by the narrator's voice, layered with crisp, tactile diegetic sound effects. These include the distinct, dry \"slap\" of paper hitting a surface and the sticky, shearing sound of adhesive tape being manipulated as elements transition.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91293/LuGPfsz_41OYc5_lBTX1L_minimax-h3.mp4",
+  "requestId": "01a06c65-94c3-7d92-806a-1b07a94c2a99",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 865916,
+  "resolution": "480P",
+  "renderMs": 3603,
+  "timings": {
+    "inference": 0.48952638899936574
+  },
+  "renderedAt": "2026-09-04T12:29:52.682Z",
+  "savedAt": "2026-09-04T12:29:52.698Z"
+}

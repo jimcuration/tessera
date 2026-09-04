@@ -1,0 +1,43 @@
+{
+  "session": "20260904-145346-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 8,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "October's warrant exercise raised thirteen point eight million in cash.",
+    "headline": "+$13.8M",
+    "ground": "lime",
+    "subjects": [
+      "fresh paper coins",
+      "a paper vault door"
+    ],
+    "action": "The previous chip flips away as the rising bar folds into a paper vault door; fresh coins slide in behind it and rest.",
+    "handoff": "the vault door",
+    "source": [
+      34,
+      35
+    ]
+  },
+  "sources": [
+    "The October 2025 warrant exercise generated $13.8M in cash, strengthening net assets to $10.9M+.",
+    "This removes near-term funding pressure and provides dry powder for integration investment or strategic M&A."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: fresh paper coins; a paper vault door.\nOpens on the rising bar, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the rising bar folds into a paper vault door; fresh coins slide in behind it and rest.\nEnds holding on the vault door.\nHeadline printed on a paper chip: \"+$13.8M\".\n\nON-SCREEN TEXT: \"+$13.8M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"October's warrant exercise raised thirteen point eight million in cash.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial paper collage style, top-down locked Static Shot illuminated by soft upper-left light on a flat lime green paper ground, matching <Picture 1>. Immediately at the start, the cream paper headline chip reading \"+293% YOY\" flips upward and off-screen. In its place, a new torn cream paper chip lands with a subtle overshoot, bearing the clean, bold black text \"+$13.8M\". Below, the rising black bar folds inward, transforming cleanly into a circular black-and-white halftone paper vault door cutout with rough torn white edges. Several unmarked, blank paper coins slide briskly from behind the vault door and come to a stable rest beside it. The layout holds steady until the end. An English narrator (S1), adult, warm, clear, and brisk, says in an off-screen voiceover: <d>[English] October's warrant exercise raised thirteen point eight million in cash.</d>\n\noverall_soundscape: Crisp, tactile foley of paper flipping away, followed by gentle creasing and the soft sliding friction of paper cutouts, punctuated by a light paper slap as the new headline chip lands on the ground.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91328/p6T-PfcYtl6sl2rfScUdN_minimax-h3.mp4",
+  "requestId": "01a06c7c-34f1-7431-b743-b48d086c8647",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 931202,
+  "resolution": "480P",
+  "renderMs": 11015,
+  "timings": {
+    "inference": 0.46033064200310037
+  },
+  "renderedAt": "2026-09-04T12:54:43.849Z",
+  "savedAt": "2026-09-04T12:54:43.863Z"
+}

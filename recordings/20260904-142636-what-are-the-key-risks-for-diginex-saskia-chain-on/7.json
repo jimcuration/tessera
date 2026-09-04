@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142636-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 7,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "But the market questions how repeatable that growth really is.",
+    "headline": "ONE-OFF VS SAAS",
+    "ground": "lime",
+    "subjects": [
+      "two paper columns",
+      "a paper hand"
+    ],
+    "action": "The previous chip slides off as the rising bar splits into two paper columns; a paper hand enters and tilts one column back and forth.",
+    "handoff": "the two columns",
+    "source": [
+      16
+    ]
+  },
+  "sources": [
+    "While revenue growth has been strong (+293% to $2.0m), the market is questioning how repeatable that growth is, especially the mix between one-off revenues and recurring SaaS income."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: two paper columns; a paper hand.\nOpens on the rising bar, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the rising bar splits into two paper columns; a paper hand enters and tilts one column back and forth.\nEnds holding on the two columns.\nHeadline printed on a paper chip: \"ONE-OFF VS SAAS\".\n\nON-SCREEN TEXT: \"ONE-OFF VS SAAS\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, captured as a flat-lay photograph under soft, natural room light. The scene opens on <Picture 1>, featuring a solid lime green paper ground. In the upper third, a cream-colored paper chip with black text \"+293% TO $2.0M\" is centered. Below it, a black halftone photographic paper column rises vertically, topped with a stack of overlapping black-and-white halftone circular coin cutouts. Every cutout has rough, white torn-paper edges and casts a small, soft shadow falling to the bottom right, indicating a single light source from the upper left. All surfaces are matte printed paper with no glow or neon effects. Immediately, the camera remains in a Static Shot as the \"+293% TO $2.0M\" chip slides rapidly off-screen to the left. Simultaneously, a new cream paper chip with large, extra-bold black sans-serif typography reading \"ONE-OFF VS SAAS\" slides in from the right, landing firmly in the upper third of the frame with a slight overshoot. Below, the single black paper column splits cleanly into two identical black halftone paper columns standing side-by-side. From the right edge of the frame, a black-and-white halftone photographic cutout of an anonymous paper hand enters quickly. The hand reaches over and tilts the right-most column back and forth in a rhythmic, playful motion. The columns, the hand, and the headline chip all maintain their matte paper texture, print dots, and stable forms throughout the action. The video ends by holding on the composition of the two columns and the \"ONE-OFF VS SAAS\" headline.\n\noverall_soundscape: A series of tactile, physical sounds including a crisp paper slap as the headline chips slide into place, a subtle tearing or sliding friction sound, and the light, rhythmic thumping of paper hitting paper as the hand tilts the column.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9129e/B2nK1wzhVumH-voaePXId_minimax-h3.mp4",
+  "requestId": "01a06c63-bedd-73a0-9bd1-6a897c6ff5ca",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3127,
+  "timings": {
+    "inference": 0.4697770349957864
+  },
+  "savedAt": "2026-09-04T12:27:52.670Z"
+}

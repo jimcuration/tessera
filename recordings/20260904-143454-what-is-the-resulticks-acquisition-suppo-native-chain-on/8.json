@@ -1,0 +1,41 @@
+{
+  "session": "20260904-143454-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 8,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Two point two million of that came from deal legal work.",
+    "headline": "$2.2M LEGAL",
+    "ground": "magenta",
+    "subjects": [
+      "a paper document",
+      "the column"
+    ],
+    "action": "The previous chip is covered as a slice of the column peels away into a single stamped paper document that settles forward.",
+    "handoff": "the peeled document",
+    "source": [
+      12
+    ]
+  },
+  "sources": [
+    "The company's G&A costs rose $3.4M to $8.1M in H1 FY25, with $2.2M driven by M&A legal work — a signal that integration is resource-intensive and ongoing."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper document; the column.\nOpens on the column, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as a slice of the column peels away into a single stamped paper document that settles forward.\nEnds holding on the peeled document.\nHeadline printed on a paper chip: \"$2.2M LEGAL\".\n\nON-SCREEN TEXT: \"$2.2M LEGAL\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Two point two million of that came from deal legal work.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, cinematic and photographed flat under soft, natural room light from the upper left. The scene opens on <Picture 1>, featuring a deep magenta block-color paper ground. In the upper third, a cream-colored paper chip with rough torn edges displays the bold black sans-serif text \"G&A $8.1M\". Below, a central composition of black-and-white halftone photographic cutouts of coin stacks rests on a torn white paper base, each element casting a small, soft shadow onto the magenta ground. Simultaneously, a narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says: <d>[English] Two point two million of that came from deal legal work.</d> As (S1) begins speaking, a new cream-colored paper chip quickly slides in from the top, covering the previous headline and landing with a slight overshoot to reveal the stable, clean, and legible black text \"$2.2M LEGAL\". Below this new headline, a vertical slice of the existing coin column peels away with a fast, snapping motion, transforming into a single, flat, black-and-white halftone photographic cutout of a paper document. This document cutout, featuring rough white torn edges and a blank surface with no visible text or marks, settles forward into the foreground. The camera remains a Static Shot throughout. The final two seconds hold on this composition—the \"$2.2M LEGAL\" chip and the peeled paper document—with a very subtle, slow-pulsing loop of the elements shifting by a few pixels to maintain a sense of physical presence.\n\noverall_soundscape: The audio is dominated by a clear, dry voiceover. Beneath the voice, sharp, tactile foley sounds are synchronized with the motion: a crisp paper-slap as the headline chip lands and a quick, sticky tape-peeling sound as the document slice separates from the column.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912b7/qCfOahYf7xgk_i1KaKjIF_minimax-h3.mp4",
+  "requestId": "01a06c6b-15e0-7091-99f3-6158b9be44f9",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 424720,
+  "resolution": "480P",
+  "renderMs": 3450,
+  "timings": {
+    "inference": 0.46182950300135417
+  },
+  "renderedAt": "2026-09-04T12:35:54.304Z",
+  "savedAt": "2026-09-04T12:35:54.318Z"
+}

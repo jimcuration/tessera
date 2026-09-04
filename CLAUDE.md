@@ -49,28 +49,27 @@ The translator turns one CurationAI answer into a sequence of beats. One beat = 
 
 `source` indexes sentences in the CurationAI answer. The translator prompt lives in `lib/translator.ts` and is versioned alongside the style sheet.
 
-## Tessera Style Sheet v0.1
+## Tessera Style Sheet v0.2
 
-Every clip prompt = STYLE SHEET + BEAT + AUDIO BLOCK. The style sheet is a numbered list because fal's prompt rewriter copies numbered lists and paraphrases prose. Keep it numbered.
+Every clip prompt = STYLE SHEET + BEAT + COPY LIST + AUDIO BLOCK. The style sheet is a numbered list because fal's prompt rewriter copies numbered lists and paraphrases prose. Keep it numbered. WP0 found fal's rewriter drops any line phrased as a prohibition (0/18 survival on "no brands" and "numbers never count up") while descriptive lines survive; v0.2 states everything as a description of the world, with a prohibition appended only where a description alone would not do.
 
-1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.
-2. One dominant flat block-colour background per shot: lime green, pale cyan, soft violet, or deep magenta, as specified by the beat. Never a rainbow, never a gradient.
-3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.
-4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.
-5. Consistent upper-left light. Small paper-layer shadows only.
-6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.
-7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.
-8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.
-9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.
-10. No brands, logos, watermarks, or text beyond the copy list.
-11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.
-12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.
+1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.
+2. One flat block-colour paper ground fills the frame: lime green, pale cyan, soft violet or deep magenta, as the beat specifies. The ground is a single unbroken colour.
+3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.
+4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.
+5. One consistent light from the upper left; each paper layer casts a small soft shadow.
+6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.
+7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.
+8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.
+9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.
+10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.
+11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.
 
-Copy list: state the exact on-screen strings, then "Exact strings; nothing else appears in frame."
+Copy list block (this block survived every render; the number rule and the text rule now live here): "On-screen text: [exact strings]. These strings are printed complete and correct from their first visible frame and never change. They are the only lettering in the frame."
 
-Audio block A (native): "One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: "[LINE]". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music."
+Audio block (default, wordless): "No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music."
 
-Audio block B (wordless, Saskia layered in player): "No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music."
+The native audio block (one narrator speaking the line, `VOICE=native`) stays in `lib/prompt.ts` for comparison but is no longer the default; Saskia (D20) is.
 
 Palette hex values are approximate until Jim confirms. Do not invent new colours.
 

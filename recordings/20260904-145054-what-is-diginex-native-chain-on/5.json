@@ -1,0 +1,43 @@
+{
+  "session": "20260904-145054-what-is-diginex-native-chain-on",
+  "n": 5,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "It is built to serve banks, asset managers and enterprises.",
+    "headline": "BANKS & FUNDS",
+    "ground": "cyan",
+    "subjects": [
+      "cutout buildings",
+      "the conveyor"
+    ],
+    "action": "The previous chip slides down as the conveyor's far end folds up into cutout buildings that line up and hold.",
+    "handoff": "the row of buildings",
+    "source": [
+      3,
+      19
+    ]
+  },
+  "sources": [
+    "Following acquisitions of Plan A, Matter, The Remedy Project, and the transformative addition of Resulticks, Diginex is evolving from point solutions into a fully integrated end-to-end platform spanning carbon accounting, ESG reporting, supply chain transparency, human rights due diligence, and now AI-driven customer data capabilities — designed to serve banks, asset managers and enterprises.",
+    "This is particularly relevant for regulated entities (banks, asset managers) facing mounting ESG disclosure requirements and climate risk scrutiny."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: pale cyan. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: cutout buildings; the conveyor.\nOpens on the conveyor, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides down as the conveyor's far end folds up into cutout buildings that line up and hold.\nEnds holding on the row of buildings.\nHeadline printed on a paper chip: \"BANKS & FUNDS\".\n\nON-SCREEN TEXT: \"BANKS & FUNDS\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"It is built to serve banks, asset managers and enterprises.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a cinematic, live-action style, photographed as a flat lay under soft, consistent room light from the upper left. <Picture 1> establishes the initial composition: a pale cyan, single-color matte paper ground fills the frame. In the upper third, a cream-colored paper chip with a rough torn edge features the black extra-bold sans-serif text \"END-TO-END\". In the lower two-thirds, a black-and-white halftone photographic cutout of a conveyor belt with rough white torn edges spans the width of the frame. On the first frame, the camera is a Static Shot. The \"END-TO-END\" chip quickly slides downward and out of frame, while simultaneously a new cream paper chip slides in from the top, landing stably in the upper third; this new chip features the clean, legible black text \"BANKS & FUNDS\". Simultaneously, the far end of the halftone conveyor belt begins to fold and transform upward, with multiple black-and-white halftone cutouts of anonymous buildings emerging and lining up side-by-side. Each building cutout has rough white torn edges and casts a small, soft shadow onto the pale cyan ground. By the 00:03.000 mark, the buildings have fully deployed into a steady row, and the \"BANKS & FUNDS\" headline is clearly visible and stable. The remaining 2 seconds hold on this composition with a very subtle, slow looping pulse of the paper elements to maintain a sense of life. The textures across all elements—the ground, the halftone cutouts, and the chips—are matte printed paper with visible print dots and no glow or digital effects. A warm, clear, natural adult male narrator (S1) speaks with a brisk but unhurried pace, starting on the first frame: <d>[English] It is built to serve banks, asset managers and enterprises.</d>\n\noverall_soundscape: A series of tactile, organic sound effects occur in synchronization with the motion, including the crisp \"slap\" of heavy paper landing on a surface and the short, sticky sound of adhesive tape being pressed down. The ambient sound is a clean, quiet studio room tone.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9132b/rYoO30QOU7Vi7RNva0KB__minimax-h3.mp4",
+  "requestId": "01a06c79-43cd-7bc0-b06e-32734f9b4b0c",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 362006,
+  "resolution": "480P",
+  "renderMs": 3029,
+  "timings": {
+    "inference": 0.48256211199623067
+  },
+  "renderedAt": "2026-09-04T12:51:23.096Z",
+  "savedAt": "2026-09-04T12:51:23.114Z"
+}

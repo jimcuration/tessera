@@ -14,24 +14,23 @@ import path from "node:path";
 const USD_PER_SECOND = 0.025;
 const CLIP_SECONDS = 5;
 
-/** Mirrors STYLE_SHEET_SIGNALS in lib/prompt.ts. */
+/** Mirrors STYLE_SHEET_SIGNALS in lib/prompt.ts (style sheet v0.2, 11 lines). */
 const SIGNALS = [
   ["paper collage", "collage", "magazine"],
-  ["block-colour", "block color", "block-color", "flat background", "solid background", "lime green", "pale cyan", "soft violet", "deep magenta", "flat, dominant", "dominant flat"],
+  ["block-colour", "block color", "block-color", "flat ground", "solid ground", "flat background", "solid background", "lime green", "pale cyan", "soft violet", "deep magenta"],
   ["halftone", "torn-paper", "torn paper", "cutout"],
   ["paper shapes", "ribbons", "tape", "print dots", "paper texture"],
   ["upper-left", "upper left", "paper-layer shadow", "paper shadow", "layer shadow"],
-  ["flat matte", "no glow", "no neon", "nothing emits light", "not glossy", "no luminous", "non-luminous"],
+  ["flat matte", "no glow", "no neon", "nothing emits light", "not glossy", "no halo", "no luminous", "non-luminous"],
+  ["headline chip", "upper third", "lower two-thirds", "clear ground"],
   ["extra-bold", "sans-serif", "paper chip", "headline"],
-  ["overshoot", "stable landing", "reading window", "no camera shake", "first frame", "static shot"],
-  ["printed complete", "never counting", "never morphing", "complete from", "counting up"],
-  ["no brands", "no logos", "watermark", "no other text", "no additional text"],
+  ["overshoot", "stable landing", "reading window", "no camera shake", "camera is locked", "first frame", "static shot"],
   ["16:9", "5 seconds", "five seconds", "one composition", "crisp cut", "single continuous"],
-  ["torn-paper edges", "torn paper edges", "identity anchor", "rough white"],
+  ["torn-paper edges", "torn paper edges", "torn edges", "identity anchor", "rough white"],
 ];
 const LINE_NAMES = [
   "1 collage", "2 ground", "3 halftone cutouts", "4 paper diagram", "5 upper-left light", "6 flat matte / no glow",
-  "7 headline type", "8 motion", "9 numbers complete", "10 no brands / text", "11 16:9, 5s, one comp", "12 identity anchor",
+  "7 layout law", "8 headline type", "9 motion", "10 16:9, 5s, one comp", "11 identity anchor",
 ];
 
 function readJson(file) {
@@ -95,7 +94,7 @@ for (const dir of sessions) {
     s.forEach((v, i) => {
       if (v) totals[i] += 1;
     });
-    console.log(`| ${c.n} | ${s.map((v) => (v ? "✓" : "·")).join(" | ")} | ${s.filter(Boolean).length}/12 |`);
+    console.log(`| ${c.n} | ${s.map((v) => (v ? "✓" : "·")).join(" | ")} | ${s.filter(Boolean).length}/${SIGNALS.length} |`);
   }
   console.log(`| all | ${totals.map((t) => `${t}/${clips.length}`).join(" | ")} | |`);
   console.log(`\nLines: ${LINE_NAMES.join("; ")}.`);

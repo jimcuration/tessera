@@ -7,15 +7,18 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
+import { Console, type KeyState, type SeamState } from "@/components/console";
 import { Screen } from "@/components/screen";
 import { SPINE_QUESTIONS } from "@/lib/curation";
 import { Session, type SessionState } from "@/lib/programme";
 import { GROUND_HEX } from "@/lib/prompt";
 import type { ReadyClip, Stream, StreamState } from "@/lib/stream";
+import { GROUNDS } from "@/lib/translator";
 
 /**
- * The Tessera player: the screen, the ask line with the square cursor, and
- * the suggestions with the up-next countdown beneath it. Nothing else.
+ * The Tessera player: the console (theatre mode) or a plain 16:9 screen
+ * (plain mode), the ask line with the square cursor, the suggestions with
+ * the up-next countdown, and the strip. Nothing else.
  *
  * A programme is a Session (lib/programme.ts). Asking a question while one
  * runs interrupts it: the picture stays up until the new programme's first
@@ -27,6 +30,12 @@ import type { ReadyClip, Stream, StreamState } from "@/lib/stream";
 const AUTO_CONTINUE_SECONDS = 10;
 /** How many suggestions sit under the screen. */
 const SUGGESTION_LINES = 3;
+/** Theatre mode never renders below this viewport width (CLAUDE.md → WP4). */
+const THEATRE_MIN_WIDTH = 900;
+/** The ask-line cursor when nothing is typed and no question is pending. */
+const IDLE_CURSOR = "#FFEE8C";
+/** The ask-line cursor (theatre) / cursor and key (plain, listening) while a question is pending. */
+const LISTENING_CURSOR = "#F7F7F7";
 
 const noopSubscribe = () => () => {};
 const nullSnapshot = () => null;
@@ -47,12 +56,60 @@ function useStreamState(stream: Stream | null): StreamState | null {
   );
 }
 
+/** THEATRE=on|off from the server, and the live viewport width. */
+function useTheatre(): boolean {
+  const [envOn, setEnvOn] = useState(true);
+  // Deterministic on the first render (server and client agree, avoiding a
+  // hydration mismatch); the effect below corrects it to the real viewport
+  // width immediately after mount.
+  const [wide, setWide] = useState(true);
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/config", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((config: { theatre?: string }) => {
+        if (alive) setEnvOn(config.theatre !== "off");
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    const update = () => setWide(window.innerWidth >= THEATRE_MIN_WIDTH);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  return envOn && wide;
+}
+
 interface Picture {
   clip: ReadyClip;
   sessionId: string;
 }
 
+/** `record.card` values, joined for the strip. Shape is not yet fixed by the platform (WP0: always null); read defensively. */
+function formatCard(card: Record<string, unknown> | null): string | null {
+  if (!card) return null;
+  const parts: string[] = [];
+  const ticker = card.ticker ?? card.symbol;
+  if (typeof ticker === "string") parts.push(ticker.toLowerCase());
+  const price = card.price ?? card.last;
+  if (typeof price === "number") parts.push(`$${price.toFixed(2)}`);
+  const change = card.changePercent ?? card.change;
+  if (typeof change === "number") parts.push(`${change > 0 ? "+" : ""}${change.toFixed(2)}%`);
+  const mcap = card.marketCap ?? card.mcap;
+  if (typeof mcap === "number") parts.push(`$${mcap.toFixed(2)}m`);
+  return parts.length ? parts.join(" · ") : null;
+}
+
 export function Player() {
+  const theatre = useTheatre();
+
   const [session, setSession] = useState<Session | null>(null);
   const sessionState = useSessionState(session);
   const stream = session?.stream ?? null;
@@ -63,6 +120,7 @@ export function Player() {
   const [muted, setMuted] = useState(false);
   const [needsTap, setNeedsTap] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(null);
+  const [inputFocused, setInputFocused] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   /** The live session, outside React state so an ask never runs twice. */
@@ -183,10 +241,21 @@ export function Player() {
     }
   };
 
-  // The cursor is the status indicator: it blinks while listening and
-  // blinks in the next beat's ground colour while rendering.
+  // A question is pending from Enter until its first clip is on screen.
   const renderingShot = streamState?.rendering ? stream?.renderingShot() ?? null : null;
-  const cursorColor = renderingShot ? GROUND_HEX[renderingShot.beat.ground] : "#F7F7F7";
+  const groundColor = renderingShot ? GROUND_HEX[renderingShot.beat.ground] : LISTENING_CURSOR;
+  const pending = session !== null && !picture && !idle;
+  const listening = inputFocused || pending;
+
+  // Theatre: the ask-line cursor only ever shows idle/pending — the square
+  // key on the console carries the rendering state. Plain: the cursor
+  // carries all three, per CLAUDE.md ("the square-key states move to the
+  // cursor" in plain mode, WP4 §Plain mode).
+  const keyState: KeyState = renderingShot ? "rendering" : listening ? "listening" : "off";
+  const cursorRendering = !theatre && Boolean(renderingShot);
+  const cursorColor = cursorRendering ? groundColor : listening ? LISTENING_CURSOR : IDLE_CURSOR;
+
+  const seamState: SeamState = !stream ? "idle" : buffered >= 2 ? "steady" : "filling";
 
   const next = phase === "playing" || phase === "buffering" ? stream?.peekNext() ?? null : null;
   const voice = sessionState?.switches?.voice ?? "native";
@@ -198,57 +267,86 @@ export function Player() {
     return null;
   })();
 
+  const strip = formatCard(sessionState?.answer?.card ?? null);
+
+  const screen = (
+    <Screen
+      picture={picture?.clip ?? null}
+      next={next}
+      className={theatre ? "screen--theatre" : undefined}
+      muted={muted}
+      volume={voice === "saskia" ? 0.5 : 1}
+      onEnded={onEnded}
+      onNeedsTap={onNeedsTap}
+      onStarted={onStarted}
+    />
+  );
+
   return (
-    <main className="tessera">
-      <Screen
-        picture={picture?.clip ?? null}
-        next={next}
-        muted={muted}
-        volume={voice === "saskia" ? 0.5 : 1}
-        onEnded={onEnded}
-        onNeedsTap={onNeedsTap}
-        onStarted={onStarted}
-      />
-
-      <div className="ask" onClick={focusInput}>
-        <span className="typed">{typed}</span>
-        <span
-          className={`cursor${renderingShot ? " rendering" : " listening"}`}
-          style={{ color: cursorColor }}
-          aria-hidden="true"
-        />
-        <input
-          ref={inputRef}
-          className="ghost"
-          type="text"
-          value={typed}
-          onChange={(event) => setTyped(event.target.value)}
-          onKeyDown={onKeyDown}
-          autoComplete="off"
-          autoCorrect="off"
-          spellCheck={false}
-          aria-label="ask curation"
-        />
-      </div>
-
-      {statusLine && <div className="status">{statusLine}</div>}
-      {needsTap && (
-        <div className="status tap" onClick={toggleSound}>
-          tap for sound
-        </div>
+    <main className={`tessera${theatre ? " theatre" : " plain"}`}>
+      {theatre ? (
+        <Console keyState={keyState} groundColor={groundColor} seamState={seamState}>
+          {screen}
+        </Console>
+      ) : (
+        <div className="screen-wrap">{screen}</div>
       )}
 
-      <ul className="suggestions">
-        {suggestions.map((question, i) => (
-          <li key={question} onClick={() => ask(question)}>
-            <span className="sq" aria-hidden="true" />
-            <span className="q">{question}</span>
-            {i === 0 && countdown !== null && !typed.trim() && (
-              <span className="upnext">· up next in {countdown}s</span>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div className="stage">
+        <div className="content">
+          <div className="ask" onClick={focusInput}>
+            <span className="label">curation</span>
+            <span
+              className={`cursor${cursorRendering ? "" : " blink"}`}
+              style={{ color: cursorColor }}
+              aria-hidden="true"
+            />
+            <span className="typed">{typed}</span>
+            <input
+              ref={inputRef}
+              className="ghost"
+              type="text"
+              value={typed}
+              onChange={(event) => setTyped(event.target.value)}
+              onKeyDown={onKeyDown}
+              onFocus={() => setInputFocused(true)}
+              onBlur={() => setInputFocused(false)}
+              autoComplete="off"
+              autoCorrect="off"
+              spellCheck={false}
+              aria-label="ask curation"
+            />
+          </div>
+
+          {statusLine && <div className="status">{statusLine}</div>}
+          {needsTap && (
+            <div className="status tap" onClick={toggleSound}>
+              tap for sound
+            </div>
+          )}
+
+          <ul className="suggestions">
+            {suggestions.map((question, i) => (
+              <li key={question} onClick={() => ask(question)}>
+                <span
+                  className="sq"
+                  style={{ background: GROUND_HEX[GROUNDS[i % GROUNDS.length]] }}
+                  aria-hidden="true"
+                />
+                <span className="q">{question}</span>
+                {i === 0 && countdown !== null && !typed.trim() && (
+                  <span className="upnext">· up next in {countdown}s</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="strip">
+        {strip && <span>{strip} · </span>}
+        information, not investment advice
+      </div>
     </main>
   );
 }

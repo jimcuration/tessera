@@ -127,7 +127,15 @@ export async function POST(req: NextRequest) {
         }
 
         const key = cacheKey(answer.answer);
-        const cached = switches.translateCache ? readCache(key) : null;
+        const cachedRaw = switches.translateCache ? readCache(key) : null;
+        // A cache entry written by an earlier translator version is a stale
+        // hit, not a match: its beats were validated against that version's
+        // rules (e.g. v0.1's 18-word line budget), so it is regenerated live
+        // rather than served as if it were v0.2. Pinned exemplars are kept
+        // current by hand (data/translations/<hash>.json) for exactly this
+        // reason.
+        const cached =
+          cachedRaw && cachedRaw.translator === TRANSLATOR_VERSION ? cachedRaw : null;
         if (cached && Array.isArray(cached.beats) && cached.beats.length > 0) {
           for (const beat of cached.beats) emit(beat);
           send({

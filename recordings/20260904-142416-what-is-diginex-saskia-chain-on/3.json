@@ -1,0 +1,43 @@
+{
+  "session": "20260904-142416-what-is-diginex-saskia-chain-on",
+  "n": 3,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Four separate businesses have now been absorbed into it.",
+    "headline": "4 BUSINESSES",
+    "ground": "cyan",
+    "subjects": [
+      "four paper folders",
+      "tape pieces"
+    ],
+    "action": "The previous chip flips away as the document pile splits into four paper folders; tape pieces bind them into one block.",
+    "handoff": "the taped block",
+    "source": [
+      3,
+      25
+    ]
+  },
+  "sources": [
+    "Following acquisitions of Plan A, Matter, The Remedy Project, and the transformative addition of Resulticks, Diginex is evolving from point solutions into a fully integrated end-to-end platform spanning carbon accounting, ESG reporting, supply chain transparency, human rights due diligence, and now AI-driven customer data capabilities — designed to serve banks, asset managers and enterprises.",
+    "Diginex has now absorbed four distinct businesses (Plan A, Matter, The Remedy Project, Resulticks) across multiple jurisdictions — a complex undertaking."
+  ],
+  "warnings": [
+    "headline number \"4\" not found as a figure in cited sentences [3,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
+  ],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: pale cyan. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: four paper folders; tape pieces.\nOpens on the document pile, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the document pile splits into four paper folders; tape pieces bind them into one block.\nEnds holding on the taped block.\nHeadline printed on a paper chip: \"4 BUSINESSES\".\n\nON-SCREEN TEXT: \"4 BUSINESSES\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, live-action, modern editorial paper collage shot, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a purple paper ground with a cream paper chip at the top displaying the black text \"ESG DATA\" and a pile of black-and-white halftone photographic cutouts with rough white torn-paper edges below. Immediately, the camera remains in a Static Shot as the composition transforms. The purple ground is swiftly replaced by a single, unbroken flat block of pale cyan paper. Simultaneously, the \"ESG DATA\" chip flips away rapidly with a slight overshoot, cleared from the upper third of the frame. A new cream paper chip slides in from the top, landing firmly with the large, extra-bold black sans-serif text \"4 BUSINESSES\" printed cleanly and legibly; this text remains stable and unchanged for the duration of the shot. In the lower two-thirds of the frame, the existing document pile splits apart with fast, snappy motion into four distinct black-and-white halftone paper folder cutouts. Each folder is a plain, unmarked object with no lettering or symbols, characterized by rough white torn edges. Small matte paper tape pieces in cream and black snap into place, binding the four folders into a single, neat block. Every element, including the folders and tape, casts a small, soft shadow consistent with a single light source from the upper left. All surfaces are matte printed paper with visible print dots and no glow or bloom. The video ends holding on this stable, taped block of folders against the pale cyan background.\n\noverall_soundscape: The audio consists of sharp, tactile foley sounds. A crisp paper flip occurs as the first chip vanishes, followed by several light, rhythmic paper-slaps as the folders split and land. The sequence concludes with the distinct, sticky sound of tape being pressed down onto paper.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9128a/o0qbcDgFwLFOZI7taxYto_minimax-h3.mp4",
+  "requestId": "01a06c60-b89b-7f71-84a1-21c7e4ba5cce",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 2540,
+  "timings": {
+    "inference": 0.4630174510020879
+  },
+  "savedAt": "2026-09-04T12:24:34.362Z"
+}

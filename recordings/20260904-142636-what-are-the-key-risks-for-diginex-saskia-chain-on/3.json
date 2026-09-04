@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142636-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 3,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Fail on auditable data, and credibility with clients could suffer.",
+    "headline": "CREDIBILITY AT RISK",
+    "ground": "magenta",
+    "subjects": [
+      "a paper stamp",
+      "a cracked document"
+    ],
+    "action": "The previous chip flips away as the lens folds into a paper stamp; it presses a document and the sheet cracks down the middle.",
+    "handoff": "the cracked document",
+    "source": [
+      11
+    ]
+  },
+  "sources": [
+    "If Diginex’s platforms fail to deliver accurate, auditable, and regulatory-grade data, its credibility with institutional clients or regulators could suffer."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper stamp; a cracked document.\nOpens on the lens, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the lens folds into a paper stamp; it presses a document and the sheet cracks down the middle.\nEnds holding on the cracked document.\nHeadline printed on a paper chip: \"CREDIBILITY AT RISK\".\n\nON-SCREEN TEXT: \"CREDIBILITY AT RISK\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a 2D motion design style, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a deep magenta paper ground. In the upper third, a cream-colored paper chip holds the black extra-bold sans-serif text \"DATA RELIABILITY\". Below it, a black-and-white halftone photographic cutout of a magnifying lens with rough white torn edges rests atop a torn piece of cream paper. A consistent light source from the upper left casts a small, soft shadow beneath every paper layer. On the first frame, the camera remains in a Static Shot. The \"DATA RELIABILITY\" chip quickly flips upward and away out of frame, while the magnifying lens cutout folds and transforms rapidly into a black-and-white halftone paper stamp. Simultaneously, a new cream-colored paper chip slides in from the top with a slight overshoot, landing stably in the upper third with the clean, legible black text \"CREDIBILITY AT RISK\". Below, a blank, unmarked white paper document with rough torn edges slides into the lower two-thirds of the frame. The paper stamp descends quickly and presses firmly onto the document with a sharp motion. Upon impact, the document cutout physically cracks and splits down the middle, dividing into two jagged pieces of paper. The final two seconds hold on this composition: the \"CREDIBILITY AT RISK\" headline at the top and the cracked, blank document below, all maintaining their matte paper textures and soft shadows.\n\noverall_soundscape: A sharp, tactile paper-slap sound occurs as the stamp hits the document, followed immediately by a crisp, dry tearing sound as the paper cracks down the middle. A subtle, sticky sound of adhesive tape is heard during the transition of the headline chip.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91284/WULHSdKCXCHs5H1x7a2ll_minimax-h3.mp4",
+  "requestId": "01a06c63-45c8-75e0-acf4-4ee89668b117",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3376,
+  "timings": {
+    "inference": 0.4832742470316589
+  },
+  "savedAt": "2026-09-04T12:27:21.906Z"
+}

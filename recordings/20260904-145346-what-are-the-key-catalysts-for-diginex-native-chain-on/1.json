@@ -1,0 +1,41 @@
+{
+  "session": "20260904-145346-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 1,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Diginex faces execution milestones deciding whether the platform thesis gains traction.",
+    "headline": "EXECUTION MILESTONES",
+    "ground": "violet",
+    "subjects": [
+      "a paper checklist",
+      "a cream paper chip"
+    ],
+    "action": "A halftone paper checklist unrolls onto a cream chip and settles flat.",
+    "handoff": "the checklist",
+    "source": [
+      8
+    ]
+  },
+  "sources": [
+    "Diginex faces a series of execution milestones that will determine whether the platform consolidation thesis gains traction or stalls."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a paper checklist; a cream paper chip.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: A halftone paper checklist unrolls onto a cream chip and settles flat.\nEnds holding on the checklist.\nHeadline printed on a paper chip: \"EXECUTION MILESTONES\".\n\nON-SCREEN TEXT: \"EXECUTION MILESTONES\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex faces execution milestones deciding whether the platform thesis gains traction.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, modern editorial paper collage style. The frame is a Static Shot of a flat, soft violet block-colour paper ground, photographed under soft room light with a consistent light source coming from the upper left. Every element is matte printed paper with no glow or bloom. In the upper third of the frame, a rectangular cream paper chip slides in rapidly from the left with a slight overshoot, landing stably to reveal the large, extra-bold black sans-serif text \"EXECUTION MILESTONES\" printed cleanly and legibly on its surface. Simultaneously, in the lower two-thirds of the frame, a cream paper chip lands on the violet ground, and a black-and-white halftone photographic cutout of a paper checklist—featuring rough white torn-paper edges and no printed text or marks—unrolls quickly across the cream chip, settling flat with a slight bounce. The checklist and the chips each cast a small, soft shadow to the bottom right. The composition holds steady for the remaining duration, with a very subtle, slow-amplitude oscillating drift of the elements to create a living loop. A narrator (S1), a male with a warm, clear, and natural mid-range timbre speaking at a brisk but unhurried pace, says: <d>[English] Diginex faces execution milestones deciding whether the platform thesis gains traction.</d>\n\noverall_soundscape: The audio features the crisp, tactile sounds of paper manipulation, including a sharp paper-slap as the chips land and the distinctive, dry crinkle and sliding sound of the halftone checklist unrolling. A subtle, sticky sound of adhesive tape is heard as elements settle into place.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91323/nQtMl2iiicVxJospi7O7E_minimax-h3.mp4",
+  "requestId": "01a06c7b-87ac-7e50-9a86-aec24c28a918",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 931195,
+  "resolution": "480P",
+  "renderMs": 3647,
+  "timings": {
+    "inference": 0.45861901598982513
+  },
+  "renderedAt": "2026-09-04T12:53:51.457Z",
+  "savedAt": "2026-09-04T12:53:51.472Z"
+}

@@ -1,0 +1,43 @@
+{
+  "session": "20260904-142844-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 8,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "October's warrant exercise raised thirteen point eight million in cash.",
+    "headline": "+$13.8M",
+    "ground": "lime",
+    "subjects": [
+      "fresh paper coins",
+      "a paper vault door"
+    ],
+    "action": "The previous chip flips away as the rising bar folds into a paper vault door; fresh coins slide in behind it and rest.",
+    "handoff": "the vault door",
+    "source": [
+      34,
+      35
+    ]
+  },
+  "sources": [
+    "The October 2025 warrant exercise generated $13.8M in cash, strengthening net assets to $10.9M+.",
+    "This removes near-term funding pressure and provides dry powder for integration investment or strategic M&A."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: fresh paper coins; a paper vault door.\nOpens on the rising bar, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the rising bar folds into a paper vault door; fresh coins slide in behind it and rest.\nEnds holding on the vault door.\nHeadline printed on a paper chip: \"+$13.8M\".\n\nON-SCREEN TEXT: \"+$13.8M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"October's warrant exercise raised thirteen point eight million in cash.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage, photographed flat under soft room light with a consistent light source from the upper left creating small soft shadows. The scene opens on <Picture 1>, where a lime green paper ground fills the frame. In the upper third, a cream paper chip features the black bold sans-serif text \"+293% YOY\". In the lower two-thirds, three cream paper bars of increasing height are topped with black-and-white halftone photographic cutouts of coins, all featuring rough white torn-paper edges. Immediately upon the first frame, the camera remains in a Static Shot as the existing composition transforms. The cream paper chip in the upper third flips away quickly with a slight overshoot, replaced instantly by a new cream paper chip featuring the stable, bold black sans-serif text \"+$13.8M\". Simultaneously, the rising bars of the previous composition fold and merge with a fast, refined motion to form a large, circular black-and-white halftone paper cutout of a vault door, complete with rough white torn edges and a soft shadow cast to the right. As the vault door settles into place, several blank, unmarked black-and-white halftone paper coin cutouts slide in from the sides and settle behind the vault door. All elements are matte printed paper with no glow or bloom. The animation concludes with the vault door and the \"+$13.8M\" headline holding a clear reading window, with a very subtle, slow looping oscillation of the paper elements to maintain a sense of physical presence. (S1), a narrator with a warm, clear, natural, and brisk English voice, says in an off-screen voiceover: <d>[English] October's warrant exercise raised thirteen point eight million in cash.</d> The narrator's delivery is professional and unhurried, starting exactly on the first frame.\n\noverall_soundscape: The audio features a series of crisp, tactile paper sound effects, including the sharp slap of paper chips hitting the surface and the subtle, sticky sound of tape being pressed down, synchronized with the movement of the headline and vault door.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912aa/B3l9h4qJ2q1UqvwIaMoTO_minimax-h3.mp4",
+  "requestId": "01a06c65-a67b-7cf3-a271-788f439ec733",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 865917,
+  "resolution": "480P",
+  "renderMs": 3104,
+  "timings": {
+    "inference": 0.4577268549983273
+  },
+  "renderedAt": "2026-09-04T12:29:57.637Z",
+  "savedAt": "2026-09-04T12:29:57.652Z"
+}

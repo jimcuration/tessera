@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142636-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 1,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Diginex faces a fragmented reporting landscape across jurisdictions and industries.",
+    "headline": "FRAGMENTED RULES",
+    "ground": "violet",
+    "subjects": [
+      "torn paper documents",
+      "a paper map"
+    ],
+    "action": "Torn paper documents scatter across a paper map and settle unevenly.",
+    "handoff": "the scattered documents",
+    "source": [
+      9
+    ]
+  },
+  "sources": [
+    "The ESG reporting landscape remains highly fragmented, with varying standards across jurisdictions and industries."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: torn paper documents; a paper map.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: Torn paper documents scatter across a paper map and settle unevenly.\nEnds holding on the scattered documents.\nHeadline printed on a paper chip: \"FRAGMENTED RULES\".\n\nON-SCREEN TEXT: \"FRAGMENTED RULES\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] 2D editorial paper collage animation, overhead flat-lay perspective, Static Shot. The entire background is a continuous, unbroken ground of matte soft violet paper with subtle fibrous texture, evenly illuminated by a gentle overhead key light originating from the upper left that casts crisp, delicate drop shadows beneath every paper layer. On the first frame, a rectangular cream-colored paper chip swiftly snaps into the center of the upper third of the frame, overshooting slightly before coming to a rigid halt. Printed boldly on the chip in an extra-bold black sans-serif typeface is the clean, ungarbled text \"FRAGMENTED RULES\", positioned with generous margins and remaining perfectly stable without redrawing. Simultaneously in the lower two-thirds of the frame, a black-and-white halftone photographic cutout of a folded paper map—completely unprinted and blank of any legible text or symbols, showing only topographic contour tones and raw white torn borders—slides horizontally into place. Between 00:01.000 and 00:02.800, a volley of seven blank, torn paper document cutouts in varying shades of cream and newsprint-gray with rough, fibrous white edges scatter rapidly outward across the map. Each document fragment zips across the violet paper ground with rapid velocity, snaps with a faint tactile bounce, and settles into an uneven, overlapping editorial composition. From 00:03.000 through 00:05.000, the composition holds steady in a pristine display, with tiny micro-vibrations in the paper edges maintaining organic paper weight until the shot ends on the scattered documents.\n\noverall_soundscape: Crisp and dry tactile paper foley dominates the sequence, opening with the swift snap of a firm cardstock chip landing, followed immediately by rapid, airy paper-sliding whooshes and sharp, percussive paper-slap impacts as the torn document fragments scatter and land unevenly against the flat surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91282/73TVBJSYvk6X6aJvSMtdH_minimax-h3.mp4",
+  "requestId": "01a06c62-e3d5-7e00-b000-4f75d20f0428",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "resolution": "480P",
+  "renderMs": 12331,
+  "timings": {
+    "inference": 0.45453955497941934
+  },
+  "savedAt": "2026-09-04T12:27:06.048Z"
+}

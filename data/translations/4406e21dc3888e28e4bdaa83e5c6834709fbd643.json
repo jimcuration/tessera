@@ -1,73 +1,59 @@
 {
-  "translator": "translator-v0.1",
+  "translator": "translator-v0.2",
   "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
   "beats": [
     {
-      "line": "The Resulticks acquisition is positioned as a revenue synergy play, not cost savings.",
+      "line": "Resulticks is a revenue synergy play, not cost savings.",
       "headline": "REVENUE SYNERGY",
       "ground": "violet",
       "subjects": [
-        "two paper documents",
-        "a torn-paper arrow"
+        "a paper document",
+        "a cream paper chip"
       ],
-      "action": "Two halftone documents slide together from opposite edges; an arrow drops between them and holds.",
-      "handoff": "the joined documents",
+      "action": "A halftone paper document drops onto a cream chip and settles flat.",
+      "handoff": "the document",
       "source": [
         0
       ]
     },
     {
-      "line": "The one point five billion dollar deal adds AI-driven customer data to Diginex's sustainability and compliance platform.",
+      "line": "The one point five billion dollar deal adds AI customer data.",
       "headline": "$1.5B",
       "ground": "violet",
       "subjects": [
-        "the joined documents",
-        "a paper screen"
+        "a stack of paper coins",
+        "a cutout screen"
       ],
-      "action": "The joined documents fold upward into a paper screen that lights and settles centre frame.",
+      "action": "The document folds into a stack of paper coins; a cutout screen rises behind it and holds.",
       "handoff": "the screen",
       "source": [
         1
       ]
     },
     {
-      "line": "That turns a point solution into an integrated end-to-end platform.",
+      "line": "Diginex moves from a point solution to an integrated platform.",
       "headline": "END-TO-END",
       "ground": "violet",
       "subjects": [
-        "the screen",
-        "paper tiles"
+        "two paper tiles",
+        "a strip of tape"
       ],
-      "action": "The screen widens as paper tiles snap along its edge, forming one continuous band.",
-      "handoff": "the platform band",
+      "action": "The previous chip slides off the top edge as the screen splits into two paper tiles; tape binds them into one panel.",
+      "handoff": "the bound panel",
       "source": [
         1
       ]
     },
     {
-      "line": "The move is about expanding addressable market and cross-sell opportunity.",
-      "headline": "CROSS-SELL",
+      "line": "Now two workflows: sustainability compliance, and customer intelligence.",
+      "headline": "2 WORKFLOWS",
       "ground": "cyan",
       "subjects": [
-        "the platform band",
-        "a paper map"
+        "a paper ledger",
+        "a cutout screen"
       ],
-      "action": "The band unrolls into a paper map that spreads flat across the frame.",
-      "handoff": "the map",
-      "source": [
-        3
-      ]
-    },
-    {
-      "line": "Enterprise customers can be served across two workflows: sustainability and compliance, and customer intelligence.",
-      "headline": "TWO WORKFLOWS",
-      "ground": "cyan",
-      "subjects": [
-        "the map",
-        "two paper folders"
-      ],
-      "action": "The map creases down the middle and lifts into two paper folders standing side by side.",
-      "handoff": "the two folders",
+      "action": "The previous chip flips away as the bound panel opens into a paper ledger on the left and a screen on the right, both holding.",
+      "handoff": "the open pair",
       "source": [
         4,
         5,
@@ -75,76 +61,88 @@
       ]
     },
     {
-      "line": "Firms buying ESG compliance can now buy customer data from the same vendor, increasing wallet share.",
+      "line": "One vendor, broader suite, more of each customer's wallet.",
       "headline": "WALLET SHARE",
       "ground": "cyan",
       "subjects": [
-        "the two folders",
-        "paper coins"
+        "paper coins",
+        "a torn-paper arrow"
       ],
-      "action": "The folders tip together and paper coins pour from one into the other, stacking up.",
-      "handoff": "the coin stack",
+      "action": "The previous chip is covered as the open pair collapses into paper coins; a torn-paper arrow enters beneath and points up.",
+      "handoff": "the arrow",
       "source": [
         7,
         8
       ]
     },
     {
-      "line": "The risk is integration complexity — four distinct acquisitions absorbed across multiple geographies.",
+      "line": "The risk is integration complexity across four absorbed acquisitions.",
       "headline": "4 ACQUISITIONS",
       "ground": "magenta",
       "subjects": [
-        "the coin stack",
-        "four paper buildings"
+        "four paper folders",
+        "a paper map"
       ],
-      "action": "The coin stack scatters and four paper buildings land apart, each on its own patch.",
-      "handoff": "the four buildings",
+      "action": "The previous chip slides off as the arrow unfolds into a paper map; four folders land on it one by one and stack unevenly.",
+      "handoff": "the folder stack",
       "source": [
         10,
         11
       ]
     },
     {
-      "line": "General and administrative costs rose three point four million to eight point one million in the first half.",
-      "headline": "$8.1M G&A",
+      "line": "General costs rose three point four million, to eight point one.",
+      "headline": "G&A $8.1M",
       "ground": "magenta",
       "subjects": [
-        "the four buildings",
-        "a rising paper bar"
+        "a growing paper column",
+        "paper coins"
       ],
-      "action": "The buildings compress into one rising paper bar that climbs and locks in place.",
-      "handoff": "the rising bar",
+      "action": "The previous chip flips down as the folder stack rises into a tall paper column; coins pile at its base and hold.",
+      "handoff": "the column",
       "source": [
         12
       ]
     },
     {
-      "line": "Two point two million of that came from merger and acquisition legal work — integration is resource-intensive.",
+      "line": "Two point two million of that came from deal legal work.",
       "headline": "$2.2M LEGAL",
       "ground": "magenta",
       "subjects": [
-        "the rising bar",
-        "stacked paper documents"
+        "a paper document",
+        "the column"
       ],
-      "action": "The bar peels into stacked legal documents that pile heavily and tilt.",
-      "handoff": "the document pile",
+      "action": "The previous chip is covered as a slice of the column peels away into a single stamped paper document that settles forward.",
+      "handoff": "the peeled document",
       "source": [
         12
       ]
     },
     {
-      "line": "What matters next is cross-sell traction, and growth outpacing the cost of integration.",
-      "headline": "CROSS-SELL TRACTION",
+      "line": "What matters next is cross-sell traction from Resulticks customers.",
+      "headline": "CROSS-SELL",
       "ground": "lime",
       "subjects": [
-        "the document pile",
         "a paper hand",
-        "a calendar page"
+        "two paper tiles"
       ],
-      "action": "The pile flattens into a calendar page; a paper hand enters and points at it.",
+      "action": "The previous chip slides off as the peeled document becomes a paper hand passing a tile from one side to the other, then holding.",
       "handoff": "the pointing hand",
       "source": [
-        13,
+        13
+      ]
+    },
+    {
+      "line": "Without it, this becomes financial engineering, not a strategic unlock.",
+      "headline": "OR VALUE-DESTRUCTIVE",
+      "ground": "lime",
+      "subjects": [
+        "a torn paper ribbon",
+        "a cream paper chip"
+      ],
+      "action": "The previous chip flips away as the pointing hand unrolls into a paper ribbon that tears at its centre and hangs still.",
+      "handoff": "the torn ribbon",
+      "source": [
         14
       ]
     }
@@ -154,16 +152,18 @@
     [],
     [],
     [],
-    [],
-    [],
+    [
+      "headline number \"2\" not found as a figure in cited sentences [4,5,6] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
     [],
     [
-      "headline number \"4\" not found in cited sentences [10,11]"
+      "headline number \"4\" not found as a figure in cited sentences [10,11] (fine if it is a count of items those sentences enumerate; flagged either way)"
     ],
+    [],
     [],
     [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 13509
+  "ms": 15588
 }

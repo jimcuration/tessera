@@ -1,156 +1,147 @@
 {
-  "translator": "translator-v0.1",
+  "translator": "translator-v0.2",
   "question": "What is Diginex",
   "beats": [
     {
-      "line": "Diginex is repositioning itself as a unified sustainability, data and compliance platform.",
+      "line": "Diginex is repositioning as one sustainability, data and compliance platform.",
       "headline": "ONE PLATFORM",
       "ground": "violet",
       "subjects": [
-        "a paper document stack",
-        "a cream paper tile"
+        "a paper screen",
+        "a cream paper chip"
       ],
-      "action": "Loose halftone paper documents drift down and lock together into one tile at centre frame.",
-      "handoff": "the stacked tile",
+      "action": "A halftone paper screen lowers onto a cream chip and holds centre frame.",
+      "handoff": "the paper screen",
       "source": [
         1
       ]
     },
     {
-      "line": "Its software helps organisations collect, manage and report ESG, climate and supply-chain data.",
+      "line": "Its software helps organisations collect, manage and report climate data.",
       "headline": "ESG DATA",
       "ground": "violet",
       "subjects": [
-        "the stacked tile",
-        "a paper screen",
-        "paper arrows"
+        "the paper screen",
+        "stacked documents"
       ],
-      "action": "The stacked tile tilts up into a paper screen; small arrows feed data strips into its edge.",
-      "handoff": "the paper screen",
+      "action": "The previous chip slides off the left edge as the screen tilts back and stacked documents feed into it, settling in a neat pile.",
+      "handoff": "the document pile",
       "source": [
         2
       ]
     },
     {
-      "line": "Plan A, Matter, The Remedy Project and Resulticks were folded into the company.",
-      "headline": "4 ACQUISITIONS",
+      "line": "Four separate businesses have now been absorbed into it.",
+      "headline": "4 BUSINESSES",
       "ground": "cyan",
       "subjects": [
-        "four paper building shapes",
-        "the paper screen"
+        "four paper folders",
+        "tape pieces"
       ],
-      "action": "The screen flattens as four cutout building shapes slide in from the corners and interlock.",
-      "handoff": "the four-block bloc",
+      "action": "The previous chip flips away as the document pile splits into four paper folders; tape pieces bind them into one block.",
+      "handoff": "the taped block",
       "source": [
         3,
         25
       ]
     },
     {
-      "line": "That turns point solutions into an end-to-end platform, from carbon accounting to human rights due diligence.",
+      "line": "Carbon accounting, supply chains, human rights, now AI customer data.",
       "headline": "END-TO-END",
       "ground": "cyan",
       "subjects": [
-        "the four-block bloc",
-        "a paper ribbon"
+        "the taped block",
+        "a paper conveyor"
       ],
-      "action": "A paper ribbon threads through the four blocks and pulls them into a single continuous band.",
-      "handoff": "the ribbon band",
+      "action": "The previous chip is covered as the taped block unfolds into a paper conveyor that runs from one edge to the other and stops.",
+      "handoff": "the conveyor",
       "source": [
-        3,
-        18
+        3
       ]
     },
     {
-      "line": "Enterprises face fragmented, manual compliance processes — banks and asset managers most of all.",
-      "headline": "ONE-STOP SHOP",
+      "line": "It is built to serve banks, asset managers and enterprises.",
+      "headline": "BANKS & FUNDS",
       "ground": "cyan",
       "subjects": [
-        "the ribbon band",
-        "torn paper fragments",
-        "a paper building"
+        "cutout buildings",
+        "the conveyor"
       ],
-      "action": "The ribbon band splinters into torn fragments, then reassembles against a cutout bank facade.",
-      "handoff": "the bank facade",
+      "action": "The previous chip slides down as the conveyor's far end folds up into cutout buildings that line up and hold.",
+      "handoff": "the row of buildings",
       "source": [
-        17,
-        18,
+        3,
         19
       ]
     },
     {
-      "line": "As of early September twenty twenty-six, the stock trades at one dollar sixteen.",
+      "line": "The stock trades at one dollar sixteen, capitalised near thirty-four million.",
       "headline": "$1.16",
       "ground": "magenta",
       "subjects": [
-        "the bank facade",
         "a torn-paper arrow",
-        "a paper price tag"
+        "paper coins"
       ],
-      "action": "The facade drops away as a torn arrow slides down the frame and pins a paper price tag low.",
-      "handoff": "the falling arrow",
+      "action": "The previous chip flips off as the buildings collapse into paper coins; a torn-paper arrow enters and points down at them.",
+      "handoff": "the down arrow",
       "source": [
         14
       ]
     },
     {
-      "line": "Market cap sits near thirty-four million dollars, a sharp decline from earlier valuations.",
-      "headline": "~$34M",
+      "line": "Administrative costs rose three point four million, to eight point one.",
+      "headline": "$8.1M G&A",
       "ground": "magenta",
       "subjects": [
-        "the falling arrow",
-        "a shrinking paper block"
+        "a rising paper column",
+        "the paper coins"
       ],
-      "action": "The arrow lands on a paper block, which contracts step by step until it is a small square.",
-      "handoff": "the small square",
+      "action": "The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.",
+      "handoff": "the tall column",
       "source": [
-        14
-      ]
-    },
-    {
-      "line": "Integration is the main risk; general and administrative costs rose three point four million to eight point one million.",
-      "headline": "G&A $8.1M",
-      "ground": "magenta",
-      "subjects": [
-        "the small square",
-        "stacked paper receipts",
-        "a paper calendar strip"
-      ],
-      "action": "The small square unfolds into stacked receipts that pile upward across a calendar strip.",
-      "handoff": "the receipt pile",
-      "source": [
-        24,
         26
       ]
     },
     {
-      "line": "Winning new logos, proving Resulticks synergies and slowing cost growth would change the story.",
-      "headline": "WHAT CHANGES IT",
-      "ground": "lime",
+      "line": "Integration execution across those four businesses is the primary risk.",
+      "headline": "EXECUTION RISK",
+      "ground": "magenta",
       "subjects": [
-        "the receipt pile",
-        "three paper cards",
-        "tape pieces"
+        "four leaning folders",
+        "a paper hand"
       ],
-      "action": "The receipt pile is taped down and three fresh paper cards fan out above it in a row.",
-      "handoff": "the three cards",
+      "action": "The previous chip is covered as the column topples into four leaning folders; a paper hand enters and steadies them.",
+      "handoff": "the steadying hand",
       "source": [
-        32,
-        33,
-        34
+        24,
+        25
       ]
     },
     {
-      "line": "The company has signalled a focus on Brazil's seventy-seven billion dollar sustainability market.",
-      "headline": "BRAZIL $77B",
+      "line": "Winning banks and proving Resulticks synergies would change the story.",
+      "headline": "WHAT CHANGES IT",
       "ground": "lime",
       "subjects": [
-        "the three cards",
-        "a paper map shape",
-        "a paper hand"
+        "a paper ribbon",
+        "cutout buildings"
       ],
-      "action": "The three cards slide together into a cutout map shape; a paper hand enters and holds it steady.",
-      "handoff": "the held map",
+      "action": "The previous chip flips away as the steadying hand unrolls a paper ribbon that loops around cutout buildings and ties.",
+      "handoff": "the tied ribbon",
+      "source": [
+        32,
+        33
+      ]
+    },
+    {
+      "line": "It is targeting Brazil's seventy-seven billion dollar sustainability market.",
+      "headline": "$77B MARKET",
+      "ground": "lime",
+      "subjects": [
+        "a paper map",
+        "a cutout arrow"
+      ],
+      "action": "The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.",
+      "handoff": "the arrow on the map",
       "source": [
         35
       ]
@@ -161,18 +152,16 @@
     [],
     [],
     [
-      "headline number \"4\" not found in cited sentences [3,25]"
+      "headline number \"4\" not found as a figure in cited sentences [3,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
     ],
     [],
     [],
     [],
     [],
-    [
-      "line is 19 words (limit 18)"
-    ],
+    [],
     [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 17632
+  "ms": 24396
 }

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-145228-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 3,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Diginex moves from a point solution to an integrated platform.",
+    "headline": "END-TO-END",
+    "ground": "violet",
+    "subjects": [
+      "two paper tiles",
+      "a strip of tape"
+    ],
+    "action": "The previous chip slides off the top edge as the screen splits into two paper tiles; tape binds them into one panel.",
+    "handoff": "the bound panel",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "The $1.5B acquisition adds AI-driven customer data capabilities to Diginex's sustainability and compliance platform — transforming it from a point solution into an integrated end-to-end platform."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: two paper tiles; a strip of tape.\nOpens on the screen, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the top edge as the screen splits into two paper tiles; tape binds them into one panel.\nEnds holding on the bound panel.\nHeadline printed on a paper chip: \"END-TO-END\".\n\nON-SCREEN TEXT: \"END-TO-END\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex moves from a point solution to an integrated platform.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a 2D motion design style, photographed flat under soft room light. <Picture 1> anchors the initial composition: a soft violet, single-colour flat paper ground fills the frame. In the upper third, a cream paper chip features the bold black text \"$1.5B\". In the lower two-thirds, a black-and-white halftone photographic cutout of a computer monitor and a stack of coins are visible, both featuring rough white torn-paper edges and casting small, soft shadows from a light source in the upper left. Every surface has a matte printed paper texture with no glow or bloom. \n\nImmediately upon the first frame, the camera remains in a Static Shot as the action begins. The \"$1.5B\" chip slides quickly off the top edge of the frame. Simultaneously, the computer monitor cutout splits cleanly into two separate rectangular paper tiles. A strip of cream-coloured matte paper tape quickly slides in and binds these two tiles together into one single integrated panel. As this happens, a new cream paper chip descends from the top, landing with a slight overshoot in the upper third of the frame. This chip features the extra-bold black sans-serif text \"END-TO-END\", which is clean, legible, and remains stable. By the end of the 5-second duration, the frame holds on this final composition: the \"END-TO-END\" headline above the taped paper panel, all resting on the soft violet ground. (S1), a narrator with a warm, clear, natural, and brisk English voice, says in an off-screen voiceover: <d>[English] Diginex moves from a point solution to an integrated platform.</d> The on-screen characters' lips remain completely closed as there are no living subjects.\n\noverall_soundscape: The audio features tactile, organic foley sounds. A crisp, sliding paper friction sound occurs as the first chip exits, followed by two distinct, light \"slap\" sounds as the tiles split and the new headline lands. A short, sticky adhesive peeling and pressing sound accompanies the application of the tape.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9131d/W-nOshEqRIvo6AdxZOytA_minimax-h3.mp4",
+  "requestId": "01a06c7a-99c3-74d2-ab85-507cb539bfff",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 722951,
+  "resolution": "480P",
+  "renderMs": 2585,
+  "timings": {
+    "inference": 0.4745353260077536
+  },
+  "renderedAt": "2026-09-04T12:52:50.042Z",
+  "savedAt": "2026-09-04T12:52:50.057Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-143322-what-is-diginex-native-chain-on",
+  "n": 7,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Administrative costs rose three point four million, to eight point one.",
+    "headline": "$8.1M G&A",
+    "ground": "magenta",
+    "subjects": [
+      "a rising paper column",
+      "the paper coins"
+    ],
+    "action": "The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.",
+    "handoff": "the tall column",
+    "source": [
+      26
+    ]
+  },
+  "sources": [
+    "General and administrative expenses rose $3.4M to $8.1M in the six months to September 2025, with $2.2M of that driven by M&A due diligence and legal work."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a rising paper column; the paper coins.\nOpens on the down arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.\nEnds holding on the tall column.\nHeadline printed on a paper chip: \"$8.1M G&A\".\n\nON-SCREEN TEXT: \"$8.1M G&A\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Administrative costs rose three point four million, to eight point one.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Static Shot, modern editorial paper collage style photographed flat against a matte deep magenta background under soft upper-left lighting, starting precisely on <Picture 1>. The frame opens on the cluster of black-and-white halftone paper coins, the downward arrow cutout, and the torn paper chip above displaying \"$1.16\". An adult narrator (S1) with a warm, clear, and brisk delivery says in an off-screen voiceover: <d>[English] Administrative costs rose three point four million, to eight point one.</d> Immediately, the top paper chip slides swiftly upward out of frame. The down arrow pivots and extends upward, transforming into a tall vertical paper column, while the paper coins restack neatly alongside it. A new torn cream paper chip enters rapidly from above and lands with slight overshoot in the upper third, cleanly printed with bold black text reading \"$8.1M G&A\". The tall column and stacked coins lock into position and hold steady through the final second.\n\noverall_soundscape: Crisp paper rustles and smooth sliding sounds as cutouts move across the matte surface, followed by light paper-slap impacts when the column and headline chip lock into place.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912ad/XCCejBLI6F3FU-jSiS4jw_minimax-h3.mp4",
+  "requestId": "01a06c69-7d80-7133-8a6e-cce503859133",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 472335,
+  "resolution": "480P",
+  "renderMs": 7316,
+  "timings": {
+    "inference": 0.4633794520050287
+  },
+  "renderedAt": "2026-09-04T12:34:13.631Z",
+  "savedAt": "2026-09-04T12:34:13.654Z"
+}

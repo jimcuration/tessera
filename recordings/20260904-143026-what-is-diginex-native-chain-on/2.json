@@ -1,0 +1,41 @@
+{
+  "session": "20260904-143026-what-is-diginex-native-chain-on",
+  "n": 2,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Its software helps organisations collect, manage and report climate data.",
+    "headline": "ESG DATA",
+    "ground": "violet",
+    "subjects": [
+      "the paper screen",
+      "stacked documents"
+    ],
+    "action": "The previous chip slides off the left edge as the screen tilts back and stacked documents feed into it, settling in a neat pile.",
+    "handoff": "the document pile",
+    "source": [
+      2
+    ]
+  },
+  "sources": [
+    "The company provides software and advisory solutions helping organisations collect, manage and report ESG, climate and supply-chain data."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the paper screen; stacked documents.\nOpens on the paper screen, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the left edge as the screen tilts back and stacked documents feed into it, settling in a neat pile.\nEnds holding on the document pile.\nHeadline printed on a paper chip: \"ESG DATA\".\n\nON-SCREEN TEXT: \"ESG DATA\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Its software helps organisations collect, manage and report climate data.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage, photographed as a flat lay under soft, consistent room light originating from the upper left. <Picture 1> serves as the first frame: a soft violet, flat block-color paper ground fills the frame. In the upper third, a cream-colored paper chip with a rough torn edge features the bold black sans-serif text \"ONE PLATFORM\". In the lower two-thirds, a black-and-white halftone photographic cutout of a computer screen with rough white torn-paper edges is centered, its screen blank and unmarked. As the shot begins, the camera remains in a Static Shot. Simultaneously, the \"ONE PLATFORM\" chip slides quickly off the left edge of the frame with a slight overshoot. A new cream-colored paper chip with the bold black sans-serif text \"ESG DATA\" slides in from the right, landing stably in the upper third; the text \"ESG DATA\" is clean, legible, and remains constant. In the lower section, the paper screen cutout tilts back slightly, and a series of black-and-white halftone photographic cutouts of blank, unprinted documents slide rapidly into the screen area, settling into a neat, overlapping pile. Each paper element, including the documents and the headline chip, casts a small, soft shadow onto the violet ground. All materials have a matte printed paper texture with visible print dots and rough edges, reflecting only the ambient room light with no glow or bloom. The sequence ends by holding on this new composition of the \"ESG DATA\" headline and the pile of documents. A warm, clear, natural male narrator (S1) speaks with a brisk but unhurried pace: <d>[English] Its software helps organisations collect, manage and report climate data.</d>\n\noverall_soundscape: The audio is dominated by the clean voiceover, layered with diegetic foley sounds of physical paper. Crisp, rhythmic paper-slap sounds accompany the sliding of the headline chip and the rapid stacking of the documents, paired with the subtle, tacky sound of adhesive tape being pressed down.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91297/KHoG6ZnFb3cK5gdhojDW2_minimax-h3.mp4",
+  "requestId": "01a06c66-3830-7070-9c14-850a617089ed",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 907365,
+  "resolution": "480P",
+  "renderMs": 3120,
+  "timings": {
+    "inference": 0.4661696969997138
+  },
+  "renderedAt": "2026-09-04T12:30:34.971Z",
+  "savedAt": "2026-09-04T12:30:34.987Z"
+}

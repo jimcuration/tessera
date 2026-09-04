@@ -1,0 +1,41 @@
+{
+  "session": "20260904-145054-what-is-diginex-native-chain-on",
+  "n": 10,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "It is targeting Brazil's seventy-seven billion dollar sustainability market.",
+    "headline": "$77B MARKET",
+    "ground": "lime",
+    "subjects": [
+      "a paper map",
+      "a cutout arrow"
+    ],
+    "action": "The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.",
+    "handoff": "the arrow on the map",
+    "source": [
+      35
+    ]
+  },
+  "sources": [
+    "Brazil expansion — The company has signalled a focus on Brazil's $77B sustainability market, a geographic diversification and growth vector. benzinga.com"
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a paper map; a cutout arrow.\nOpens on the tied ribbon, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.\nEnds holding on the arrow on the map.\nHeadline printed on a paper chip: \"$77B MARKET\".\n\nON-SCREEN TEXT: \"$77B MARKET\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"It is targeting Brazil's seventy-seven billion dollar sustainability market.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial paper collage style, Static Shot. The scene begins exactly on <Picture 1>, featuring a flat lime green paper ground, the cream paper headline chip reading \"WHAT CHANGES IT\" in the upper third, and a wrapped halftone architectural cutout in the lower center. At 00:00.500, the top chip rapidly slides off-frame to the left as a new torn cream paper chip drops in with slight overshoot, displaying bold black printed text \"$77B MARKET\". Simultaneously, the cream paper ribbons untie and unfold flat, transforming into a black-and-white halftone paper map cutout of Brazil with rough torn edges. At 00:02.000, a flat black paper cutout arrow snaps onto the center of the map, casting a soft drop shadow from the upper-left light source. The composition holds completely stable through 00:05.000. An unseen English narrator (S1, adult, warm, clear, brisk timbre) says in an off-screen voiceover: <d>[English] It is targeting Brazil's seventy-seven billion dollar sustainability market.</d>\n\noverall_soundscape: Crisp paper sliding and rustling foley as the headline chip exits, followed by sharp paper slaps and light tape placement snaps as the map unfurls and the arrow lands.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91319/mfzsWUP23Ro85TVKHj4Gm_minimax-h3.mp4",
+  "requestId": "01a06c79-f0f8-7e42-805f-2492e6a86207",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 362011,
+  "resolution": "480P",
+  "renderMs": 5987,
+  "timings": {
+    "inference": 0.45854647998930886
+  },
+  "renderedAt": "2026-09-04T12:52:10.463Z",
+  "savedAt": "2026-09-04T12:52:10.477Z"
+}

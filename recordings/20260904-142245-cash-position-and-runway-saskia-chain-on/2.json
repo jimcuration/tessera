@@ -1,0 +1,41 @@
+{
+  "session": "20260904-142245-cash-position-and-runway-saskia-chain-on",
+  "n": 2,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Six months earlier it was three point one one million.",
+    "headline": "$3.11M → $1.85M",
+    "ground": "violet",
+    "subjects": [
+      "the coin stack",
+      "a torn-paper arrow"
+    ],
+    "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.",
+    "handoff": "the arrow",
+    "source": [
+      9,
+      10
+    ]
+  },
+  "sources": [
+    "As of 30th September 2025, Diginex held $1.85M in cash and cash equivalents — a significant decline from $3.11M six months earlier.",
+    "The burn reflects the company's transition phase: heavy integration spending on the Resulticks acquisition and operational losses as the platform consolidates."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the coin stack; a torn-paper arrow.\nOpens on the coin stack, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.\nEnds holding on the arrow.\nHeadline printed on a paper chip: \"$3.11M → $1.85M\".\n\nON-SCREEN TEXT: \"$3.11M → $1.85M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a cinematic, live-action style, photographed flat under soft, natural room light from the upper left. The scene opens on <Picture 1>, where a soft violet, single-color paper ground fills the entire frame. In the upper third, a rectangular cream-colored paper chip is visible, featuring the bold, black sans-serif text \"$3.11M → $1.85M\" printed in a clean, stable typeface with generous margins. In the lower two-thirds, a stack of black-and-white halftone photographic cutouts of coins rests on the violet ground; the coins are plain and unmarked, with rough white torn-paper edges and a small, soft shadow cast to the bottom right. As the action begins, the initial composition shifts: the cream headline chip slides quickly off the top edge of the frame. Simultaneously, the stack of coins begins to shrink rapidly, with individual coins disappearing one by one in a rhythmic, staggered sequence. As the coin stack diminishes, a second cutout—a black-and-white halftone paper arrow with rough white torn edges—slides in quickly from the right side of the frame with a slight overshoot before landing stably. The arrow points directly downward toward the remaining coins. The camera remains a Static Shot throughout the 5-second duration. By the end of the shot, the frame holds a clear reading window of the diminished coin stack and the downward-pointing arrow against the matte violet paper background. All elements maintain a consistent matte printed paper texture with no glow, bloom, or neon effects.\n\noverall_soundscape: The audio consists of a series of crisp, tactile paper-slap sounds synchronized with the movement of the headline chip and the arrow. Each coin that disappears is accompanied by a short, sharp flicking sound of paper, while a subtle, sticky tape-peeling sound accompanies the landing of the arrow.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91269/dyCkNxsnFJjiu_K1jWPUH_minimax-h3.mp4",
+  "requestId": "01a06c5f-3e82-7880-96af-cfc10dbc065a",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3164,
+  "timings": {
+    "inference": 0.4658668430056423
+  },
+  "savedAt": "2026-09-04T12:22:57.587Z"
+}

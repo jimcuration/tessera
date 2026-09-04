@@ -1,0 +1,41 @@
+{
+  "session": "20260904-143454-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 9,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "What matters next is cross-sell traction from Resulticks customers.",
+    "headline": "CROSS-SELL",
+    "ground": "lime",
+    "subjects": [
+      "a paper hand",
+      "two paper tiles"
+    ],
+    "action": "The previous chip slides off as the peeled document becomes a paper hand passing a tile from one side to the other, then holding.",
+    "handoff": "the pointing hand",
+    "source": [
+      13
+    ]
+  },
+  "sources": [
+    "What matters next: Evidence that Resulticks' customer base is adopting the broader platform (cross-sell traction), and that revenue growth from the combined entity is accelerating faster than the cost of integration."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a paper hand; two paper tiles.\nOpens on the peeled document, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the peeled document becomes a paper hand passing a tile from one side to the other, then holding.\nEnds holding on the pointing hand.\nHeadline printed on a paper chip: \"CROSS-SELL\".\n\nON-SCREEN TEXT: \"CROSS-SELL\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"What matters next is cross-sell traction from Resulticks customers.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a pink paper ground with a cream paper chip displaying the text \"$2.2M LEGAL\" and a peeled gray document cutout below it. Immediately, the camera remains in a Static Shot as the pink ground is instantaneously replaced by a single, unbroken block of lime green paper. The \"$2.2M LEGAL\" chip and the gray document slide rapidly off-screen to the left with a slight overshoot. Simultaneously, a new cream-colored paper chip slides in from the top, landing stably in the upper third of the frame; it features the text \"CROSS-SELL\" printed in a large, extra-bold black sans-serif typeface, clean and legible. In the lower two-thirds of the frame, a black-and-white halftone photographic cutout of an anonymous paper hand (S1) enters from the left. The hand has rough white torn-paper edges and casts a small, soft shadow toward the bottom right, consistent with a light source from the upper left. The hand (S1) carries a small, blank black-and-white paper tile and passes it across the frame to the right, where it is received by another identical paper hand entering from the right. The action concludes with the hand (S1) holding the tile firmly in place. All elements, including the lime green ground and the halftone cutouts, exhibit a matte printed paper texture with visible print dots and no glow or neon effects. A male narrator (S2), with a warm, clear, and natural mid-range timbre and a brisk speaking rate, says <d>[English] What matters next is cross-sell traction from Resulticks customers.</d> starting from the first frame.\n\noverall_soundscape: The audio is dominated by the clear, natural voice of the narrator. Beneath the speech, there are crisp, tactile sound effects of paper slapping against a flat surface and the short, sticky sound of adhesive tape being pressed down as the collage elements slide and land.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912ce/DvbdgAn6s5IANljn3nl3I_minimax-h3.mp4",
+  "requestId": "01a06c6b-2c12-78a1-88f6-d4fb2dc8d76f",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 424721,
+  "resolution": "480P",
+  "renderMs": 3486,
+  "timings": {
+    "inference": 0.4645628290018067
+  },
+  "renderedAt": "2026-09-04T12:35:59.990Z",
+  "savedAt": "2026-09-04T12:36:00.004Z"
+}

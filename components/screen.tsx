@@ -20,6 +20,8 @@ export interface ScreenProps {
   picture: ReadyClip | null;
   /** The clip expected after it, to preload. */
   next: ReadyClip | null;
+  /** Extra class on the outer element: theatre mode fills its bounds and covers instead of the plain 16:9/contain box. */
+  className?: string;
   muted: boolean;
   /** Under a Saskia narration the clip's own audio sits lower. */
   volume: number;
@@ -34,7 +36,7 @@ interface Slot {
   clip: ReadyClip | null;
 }
 
-export function Screen({ picture, next, muted, volume, onEnded, onNeedsTap, onStarted }: ScreenProps) {
+export function Screen({ picture, next, className, muted, volume, onEnded, onNeedsTap, onStarted }: ScreenProps) {
   const refs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
   const [slots, setSlots] = useState<[Slot, Slot]>([{ clip: null }, { clip: null }]);
   const [front, setFront] = useState<0 | 1>(0);
@@ -132,7 +134,7 @@ export function Screen({ picture, next, muted, volume, onEnded, onNeedsTap, onSt
   }, [muted, volume, front]);
 
   return (
-    <div className="screen">
+    <div className={`screen${className ? ` ${className}` : ""}`}>
       {([0, 1] as const).map((i) => (
         <video
           key={i}

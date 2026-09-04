@@ -1,0 +1,41 @@
+{
+  "session": "20260904-144554-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 8,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Two point two million of that came from deal legal work.",
+    "headline": "$2.2M LEGAL",
+    "ground": "magenta",
+    "subjects": [
+      "a paper document",
+      "the column"
+    ],
+    "action": "The previous chip is covered as a slice of the column peels away into a single stamped paper document that settles forward.",
+    "handoff": "the peeled document",
+    "source": [
+      12
+    ]
+  },
+  "sources": [
+    "The company's G&A costs rose $3.4M to $8.1M in H1 FY25, with $2.2M driven by M&A legal work — a signal that integration is resource-intensive and ongoing."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper document; the column.\nOpens on the column, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as a slice of the column peels away into a single stamped paper document that settles forward.\nEnds holding on the peeled document.\nHeadline printed on a paper chip: \"$2.2M LEGAL\".\n\nON-SCREEN TEXT: \"$2.2M LEGAL\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Two point two million of that came from deal legal work.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial paper collage, Static Shot under soft directional lighting from the upper left. The frame opens on <Picture 1>, featuring a deep magenta paper ground with a black-and-white halftone coin stack cutout topped by a cream paper chip. Immediately, a new cream paper headline chip printed with crisp, bold black text \"$2.2M LEGAL\" slaps down to cover the previous banner. Simultaneously, a slice of the halftone coin column peels upward and folds outward, transforming into a blank stamped document cutout with torn white paper edges that springs forward into the center-left foreground. The composition locks into place as the narrator (S1), an adult English speaker with a warm, brisk, articulate tone, says in an off-screen voiceover: <d>[English] Two point two million of that came from deal legal work.</d> The final seconds hold steadily on the settled document and the prominent \"$2.2M LEGAL\" headline.\n\noverall_soundscape: Tactile paper rustling, followed by a crisp, solid paper slap as the headline chip lands, and a faint swooshing flutter as the paper document cutout folds forward.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912f8/xeHn3WrfZs82YWndNA18X_minimax-h3.mp4",
+  "requestId": "01a06c74-e496-7b03-a76e-320c1006d316",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 987602,
+  "resolution": "480P",
+  "renderMs": 7087,
+  "timings": {
+    "inference": 0.4515485820011236
+  },
+  "renderedAt": "2026-09-04T12:46:40.514Z",
+  "savedAt": "2026-09-04T12:46:40.529Z"
+}

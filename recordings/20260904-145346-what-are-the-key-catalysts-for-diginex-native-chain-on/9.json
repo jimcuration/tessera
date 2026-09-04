@@ -1,0 +1,41 @@
+{
+  "session": "20260904-145346-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 9,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "At a thirty-four million market cap, Diginex is priced for scepticism.",
+    "headline": "$34M MARKET CAP",
+    "ground": "magenta",
+    "subjects": [
+      "a shrunken paper coin",
+      "a price tag cutout"
+    ],
+    "action": "The previous chip is covered as the vault door contracts into one shrunken coin; a paper price tag drops onto it and hangs still.",
+    "handoff": "the price tag",
+    "source": [
+      38
+    ]
+  },
+  "sources": [
+    "At a $34M market cap, Diginex is priced for significant scepticism."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a shrunken paper coin; a price tag cutout.\nOpens on the vault door, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the vault door contracts into one shrunken coin; a paper price tag drops onto it and hangs still.\nEnds holding on the price tag.\nHeadline printed on a paper chip: \"$34M MARKET CAP\".\n\nON-SCREEN TEXT: \"$34M MARKET CAP\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"At a thirty-four million market cap, Diginex is priced for scepticism.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, photographed as a flat lay under soft room light from the upper left. The scene opens on <Picture 1>, featuring a lime green paper ground, a cream paper chip with the text \"+$13.8M\", and a black-and-white halftone photographic cutout of a bank vault door with rough white torn-paper edges. Immediately, the lime green ground is covered by a single, unbroken block of deep magenta paper that slides in to fill the frame. Simultaneously, the \"+$13.8M\" chip is covered as a new cream paper chip lands firmly in the upper third of the frame; printed on it in a large, extra-bold black sans-serif font is the text \"$34M MARKET CAP\", which remains stable and legible. In the lower two-thirds, the large bank vault door cutout rapidly contracts and shrinks in size, transforming into a small, shrunken black-and-white halftone paper coin. A small, blank white paper price tag cutout with rough torn edges then drops quickly from above, landing on top of the shrunken coin with a slight overshoot before settling into a still position. Every element—the magenta ground, the cream chip, the coin, and the price tag—is made of matte printed paper with a flat finish, casting a small, soft shadow toward the bottom right. The camera remains a Static Shot throughout the 5-second duration. The motion concludes with a very subtle, slow rhythmic pulse of the elements to create a loop. A warm, clear, natural male narrator (S1) speaks with a brisk but unhurried delivery: <d>[English] At a thirty-four million market cap, Diginex is priced for scepticism.</d>\n\noverall_soundscape: The audio is dominated by the clear, dry voice of the narrator. Underneath the speech, a distinct, sharp paper-slap sound occurs as the headline chip lands, followed by a subtle, sticky tape-peeling sound effect as the price tag drops and adheres to the coin.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91328/97gQbheX-HGY3HAlw9a7s_minimax-h3.mp4",
+  "requestId": "01a06c7c-6887-73c3-9e24-a89259262bb3",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 931203,
+  "resolution": "480P",
+  "renderMs": 2982,
+  "timings": {
+    "inference": 0.4591046589994221
+  },
+  "renderedAt": "2026-09-04T12:54:49.060Z",
+  "savedAt": "2026-09-04T12:54:49.075Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-145411-what-is-diginex-native-chain-on",
+  "n": 1,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Diginex is repositioning as one sustainability, data and compliance platform.",
+    "headline": "ONE PLATFORM",
+    "ground": "violet",
+    "subjects": [
+      "a paper screen",
+      "a cream paper chip"
+    ],
+    "action": "A halftone paper screen lowers onto a cream chip and holds centre frame.",
+    "handoff": "the paper screen",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "Diginex (DGNX) is repositioning itself as a unified sustainability, data and compliance platform."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a paper screen; a cream paper chip.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: A halftone paper screen lowers onto a cream chip and holds centre frame.\nEnds holding on the paper screen.\nHeadline printed on a paper chip: \"ONE PLATFORM\".\n\nON-SCREEN TEXT: \"ONE PLATFORM\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex is repositioning as one sustainability, data and compliance platform.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Modern editorial paper collage, top-down flat-lay Static Shot. The entire 16:9 frame is filled with a seamless, matte soft violet paper ground displaying subtle physical fiber grain, lit evenly by soft room light arriving from the upper left so that layered collage elements cast shallow, soft directional drop shadows. The camera remains strictly locked. Starting immediately on the first frame, an English narrator (S1) with a warm, articulate, neutral-pitched voice and a brisk, unhurried cadence says in an off-screen voiceover: <d>[English] Diginex is repositioning as one sustainability, data and compliance platform.</d> Concurrently on the opening frame, a crisp cream paper banner chip slides down quickly from the top edge into the upper third of the frame, coming to rest with a subtle mechanical overshoot; the chip features the clean, bold sans-serif text \"ONE PLATFORM\" printed in solid black ink, perfectly legible and completely stable without redrawing. Directly below in the lower two-thirds, a broad geometric cream paper chip slides inward. At 00:01.200, a black-and-white halftone photographic cutout of an unbranded, plain desktop computer monitor—featuring thick fibrous, rough white torn-paper edges and a completely blank, unprinted grey screen—lowers smoothly from above onto the center of the cream paper chip. It lands with a subtle physical bounce and comes to a full stop. All paper surfaces maintain an authentic, unglossed printed paper texture with visible halftone dots under the diffuse upper-left illumination, holding the balanced editorial layout steadily through the end of the shot.\n\noverall_soundscape: A crisp, dry paper-sliding whoosh sounds as the cards enter, followed by a tight, muted paper-on-paper tap as the headline chip settles. A distinct, soft physical slap occurs as the monitor cutout drops and makes contact with the cream paper surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9133d/NzAaQOPm_mK0ENhHQdNoS_minimax-h3.mp4",
+  "requestId": "01a06c7b-e163-7232-bd74-3617685fcebb",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 561169,
+  "resolution": "480P",
+  "renderMs": 9494,
+  "timings": {
+    "inference": 0.4438612110025133
+  },
+  "renderedAt": "2026-09-04T12:54:20.818Z",
+  "savedAt": "2026-09-04T12:54:20.836Z"
+}

@@ -1,0 +1,43 @@
+{
+  "session": "20260904-144417-what-is-diginex-native-chain-on",
+  "n": 9,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Winning banks and proving Resulticks synergies would change the story.",
+    "headline": "WHAT CHANGES IT",
+    "ground": "lime",
+    "subjects": [
+      "a paper ribbon",
+      "cutout buildings"
+    ],
+    "action": "The previous chip flips away as the steadying hand unrolls a paper ribbon that loops around cutout buildings and ties.",
+    "handoff": "the tied ribbon",
+    "source": [
+      32,
+      33
+    ]
+  },
+  "sources": [
+    "Platform adoption acceleration — Evidence that the unified platform is winning net-new logos and expanding within existing customers, particularly in banking and asset management where ESG and climate risk reporting is now mandated.",
+    "Resulticks integration success — Demonstrable revenue synergies and cross-sell traction showing that AI-driven customer data capabilities are driving incremental value for sustainability workflows."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a paper ribbon; cutout buildings.\nOpens on the steadying hand, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the steadying hand unrolls a paper ribbon that loops around cutout buildings and ties.\nEnds holding on the tied ribbon.\nHeadline printed on a paper chip: \"WHAT CHANGES IT\".\n\nON-SCREEN TEXT: \"WHAT CHANGES IT\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Winning banks and proving Resulticks synergies would change the story.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial paper collage animation, Static Shot. Anchored on <Picture 1>, the previous magenta paper ground, grey folder cutouts, and cream headline chip quickly flip and slide off-frame. A vibrant, flat lime green paper ground replaces the backdrop under soft upper-left lighting. In the upper third, a cream torn-paper chip snaps down firmly displaying the bold black text \"WHAT CHANGES IT\". In the lower frame, unmarked black-and-white halftone cutout buildings emerge. The monochrome paper cutout hand rapidly unrolls a cream paper ribbon, looping it smoothly around the miniature buildings and tying it into a neat hold. Off-screen narrator (S1), an articulate adult voice with a warm, measured tone, speaks from the first frame: <d>[English] Winning banks and proving Resulticks synergies would change the story.</d> The motion finishes on the securely tied ribbon resting against the lime green surface.\n\noverall_soundscape: Rhythmic, tactile sound design featuring a sharp paper flip and slide, followed by the crisp, sliding friction of unrolling paper ribbon, concluding with light paper-slap rustles.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912f0/pcqJxLIYnVrx5HXEwaLKj_minimax-h3.mp4",
+  "requestId": "01a06c73-b853-7430-899d-7bf5b194a937",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 256720,
+  "resolution": "480P",
+  "renderMs": 9879,
+  "timings": {
+    "inference": 0.477007201872766
+  },
+  "renderedAt": "2026-09-04T12:45:26.452Z",
+  "savedAt": "2026-09-04T12:45:26.469Z"
+}

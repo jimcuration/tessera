@@ -1,0 +1,43 @@
+{
+  "session": "20260904-143322-what-is-diginex-native-chain-on",
+  "n": 8,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Integration execution across those four businesses is the primary risk.",
+    "headline": "EXECUTION RISK",
+    "ground": "magenta",
+    "subjects": [
+      "four leaning folders",
+      "a paper hand"
+    ],
+    "action": "The previous chip is covered as the column topples into four leaning folders; a paper hand enters and steadies them.",
+    "handoff": "the steadying hand",
+    "source": [
+      24,
+      25
+    ]
+  },
+  "sources": [
+    "Integration execution is the primary risk.",
+    "Diginex has now absorbed four distinct businesses (Plan A, Matter, The Remedy Project, Resulticks) across multiple jurisdictions — a complex undertaking."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: four leaning folders; a paper hand.\nOpens on the tall column, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the column topples into four leaning folders; a paper hand enters and steadies them.\nEnds holding on the steadying hand.\nHeadline printed on a paper chip: \"EXECUTION RISK\".\n\nON-SCREEN TEXT: \"EXECUTION RISK\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Integration execution across those four businesses is the primary risk.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage shot, presented as a flat-lay photographed under soft room light. The scene begins with <Picture 1>, featuring a deep magenta single-color paper ground. In the upper third of the frame, a cream-colored paper chip with rough torn edges displays the black bold sans-serif text \"$8.1M G&A\". In the lower two-thirds, a tall column composed of black-and-white halftone photographic cutouts—including a stack of blank coins and a textured document—stands vertically. The camera is a Static Shot. Immediately upon the start of the video, a new cream paper chip slides in from the top to cover the previous headline; this new chip features the extra-bold black sans-serif text \"EXECUTION RISK\" in clean, legible lettering. Simultaneously, the tall column of cutouts topples over with a fast, slight overshoot, transforming into four leaning folders, all rendered as black-and-white halftone photographic cutouts with rough white torn-paper edges and no markings. As the folders settle, a cutout of an anonymous black-and-white paper hand enters the frame from the right and reaches over to steady the folders. Every element, including the hand and folders, casts a small, soft shadow toward the bottom right, indicating a consistent light source from the upper left. All materials have a matte printed paper texture with visible print dots. The motion stabilizes, holding the final composition of the \"EXECUTION RISK\" headline and the steadying hand. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says <d>[English] Integration execution across those four businesses is the primary risk.</d>\n\noverall_soundscape: The audio features a series of tactile, diegetic foley sounds: a crisp, light paper-slap as the headline chip lands, a soft shuffling sound as the column topples into folders, and a subtle, sticky tape-like peel and press sound as the paper hand enters and steadies the objects.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912ad/MEWiFdgIUixrCTiRe29-b_minimax-h3.mp4",
+  "requestId": "01a06c69-a3e2-7851-b51c-00ea2baacae4",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 472336,
+  "resolution": "480P",
+  "renderMs": 3216,
+  "timings": {
+    "inference": 0.4689745759824291
+  },
+  "renderedAt": "2026-09-04T12:34:19.475Z",
+  "savedAt": "2026-09-04T12:34:19.489Z"
+}

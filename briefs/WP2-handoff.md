@@ -1,0 +1,66 @@
+# WP2 — Handoff
+
+Builder: Claude (Sonnet 5), 4 September 2026. Companion documents: `briefs/WP2-report.md` (the numbers and reels), `briefs/WP0-report.md` (what these are compared against).
+
+Criteria are not marked passed here; that is the reviewer's job. Where `WP2-report.md` shows a criterion's threshold was not met (survival grid, §6; saskia beat 2's headline, §7), I have said so plainly rather than rounding up.
+
+## What I built
+
+**Style Sheet v0.2** (`CLAUDE.md`, `lib/prompt.ts`). Replaced the 12-line v0.1 sheet with the brief's 11-line v0.2: every line stated as a description of the world, with a short prohibition appended only where a description alone wouldn't do (line 6); the two lines that were pure prohibitions in v0.1 (numbers never count up, no brands/text) are gone as standalone lines — their content now lives in the copy-list block and in line 3's "every cutout is a plain, unmarked object" respectively. New line 7 is the layout law (headline chip owns the upper third and stays uncovered; a chained beat's inherited composition clears in the first second so the new headline lands on clear ground). `STYLE_SHEET_SIGNALS` (used by `scripts/report.mjs` too) was rewritten to the new 11 lines; I kept both files' signal lists identical since a report that grades against a different rulebook than the one the model was given would be meaningless.
+
+**Translator v0.2** (`lib/translator.ts`, `scripts/check.mjs` mirrors it). Line budget dropped from 18 to **12 words, hard**: `validateBeat` now drops (not warns on) a beat whose line exceeds it, same as it already dropped a beat with no source. Added `subjectNamesPerson`/`PEOPLE_LEXICON`: a beat whose `subjects` names a person (the brief's lexicon — person, people, man, woman, face, figure, executive, CEO, worker, customer, crowd, character, etc. — plus a proper-name heuristic: two or more capitalised words, or one capitalised word that isn't the first word of the subject) is dropped in code, not just discouraged in the prompt. Headline-number-not-in-cited-sentence stays a soft warning (this already covered the "derived count" case the brief asks for — a headline figure that's a count of items a sentence enumerates rather than a figure it states — I reworded the warning to name that explicitly, but the underlying check was already correct in v0.1). `TRANSLATOR_SYSTEM` rule 9 (action) now requires each beat to say how the previous beat's headline chip leaves (slides off / flips away / is covered) before describing how the handoff shape transforms — the "exit instruction" the brief asks for. The six-beat exemplar (`EXEMPLAR_NDJSON` and the pinned cache, `data/translations/a14c3cdf12f849c0042f91f76b36ac9b41ea65ba.json`) is rewritten to the 12-word budget; beat 5 (19–20 words in v0.1) is **cut, not split**, so the spine stays six beats / 18 clips, matching the "≥15/18" and "18 spine clips" language the brief and WP0 both use.
+
+**Cache versioning** (`app/api/translate/route.ts`). A translation cache entry is now only served when `cached.translator === TRANSLATOR_VERSION`; a v0.1 entry under v0.2 code is treated as a cache miss and regenerated live. This wasn't in the brief's checklist explicitly but is load-bearing for "the translator rewrites to fit" actually happening — without it, the five non-spine v0.1 cache files already in `data/translations/` would keep serving 18-word-era beats forever under `TRANSLATE_CACHE=on`.
+
+**Saskia as default** (`lib/config.ts`, `.env.example`, and this machine's `.env.local`). `readSwitches()`'s fallback for `VOICE` is now `"saskia"`; `native` stays behind `VOICE=native` for comparison. I did not touch the per-beat narration architecture (`lib/voice.ts`'s `Narrator`, `components/player.tsx`'s `onStarted` → `narrator.play(clip.shot.n)`) — it already fetches and plays one ElevenLabs line per beat, starting on that beat's clip, from WP0; the brief's "generate audio per line, not per programme, starting on the clip's first frame" was already true, so there was nothing to change there.
+
+**Saskia settings pass** (`scripts/saskia-settings.mts`, new). Three ElevenLabs `voice_settings` profiles (account default; stability 0.35/style 0.35; stability 0.2/style 0.6) re-narrate one rendered session's six lines and cut three reels against the same video clips. `recordings/reels/spine-saskia-v0.2-{a,b,c}.mp4` — Robin picks by ear.
+
+**Headless render harness** (`scripts/render.mts`, new). See the report's "How these were produced" note: WP4 was live-editing this same checkout in parallel and its saves were triggering my dev server's Fast Refresh mid-session, discarding the browser's client-side `Session`/`Stream` state before a programme finished rendering. `scripts/render.mts` drives the same pipeline (`/api/translate` → `compilePrompt` → fal directly → `/api/record`) from Node instead, so `recordings/<session>/` comes out identical to what the browser would have produced and every existing script (`check`/`report`/`reel`/`contact`/`whisper`) works on it unmodified. Not wired into `package.json`; run with `npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--suffix name]` against a running dev server (`--base` defaults to `http://localhost:3100`, this session's own server — pass `--base http://localhost:3000` or wherever if using the app's normal port).
+
+**Recordings and reels.** Five new sessions under `recordings/` (not committed, per existing `.gitignore`), five reels and contact sheets that are (`recordings/reels/*.mp4`, `briefs/WP2-contact-sheet-*.jpg`). Full list and what each shows is in `WP2-report.md`.
+
+## How to run
+
+```bash
+npm install
+npm run dev                    # or: point the Browser pane at .claude/launch.json's "tessera" config
+```
+
+Ask a captured question (spine or otherwise); `VOICE=saskia` is now the default, so a fresh `.env.local` (copied from `.env.example`) needs no flip to see it. `CHAIN`/`RENDER`/`TRANSLATE_CACHE` unchanged. `npm run check` after a session (now enforces the 12-word/no-people rules; expect it to flag anything left over from WP0's v0.1 recordings if you run it with no arguments — that's the old standard being held to the new one, not a new bug).
+
+To reproduce this WP's renders without the browser (useful if another session is editing the player concurrently):
+
+```bash
+npx tsx scripts/render.mts --question "What is the cash position and runway?" --voice native --chain on
+npx tsx scripts/saskia-settings.mts --session recordings/<a saskia chain-on session> --out-prefix recordings/reels/spine-saskia-v0.2
+```
+
+## What is untested
+
+- **Browser-side UX timings** (WP0 §1's "time to first frame after Enter", autoplay-with-sound, `readyState` at swap). This round's renders went through `scripts/render.mts`, not the player, for the reason above. The player itself is WP4's surface this WP and I did not touch `components/player.tsx`, `components/screen.tsx`, or `lib/stream.ts`, so I have no reason to think these regressed, but I did not re-verify them.
+- **Whether `scripts/render.mts` faithfully reproduces every corner of `lib/stream.ts`'s scheduling.** It matches shot-for-shot (chain: sequential, one `lastFrame` grab per shot via `ffmpeg` instead of a `<canvas>` grab; unchained: two at a time via `Promise.all`), and the resulting recordings pass the same checks the browser's would, but it does not implement the render buffer, the interrupt/cancel path, or the failed-shot skip logic — it is a measurement tool, not an alternative runtime, and should not be mistaken for one.
+- **The Saskia settings pass, by ear.** Same limitation WP0 flagged for voice consistency: I cannot listen. The three reels exist and are attached; which one sounds best is Robin's call.
+- **Whether the two live translations' answers still read correctly end to end in the actual player** (suggestions, auto-continue, interrupt) — I did not exercise those through the UI this round, for the same concurrent-session reason.
+- **`npm run build`** passes clean (checked once), but see the report's runtime-observations note: running it again while a `next dev` process (yours or anyone else's) is pointed at this same checkout will 500 that process until it's restarted. I would not re-run it in a shared working directory without coordinating first.
+
+## What I could not do, and why
+
+- **Saskia's delivery and sentence-to-clip feel, subjectively.** Same as WP0: no ears. The report gives the objective proxies (Whisper confirms 6/6 wordless across the sessions I rendered; the alignment logic itself is unchanged code from WP0).
+- **A clean pass on the survival-grid criterion (≥15/18 per line).** Style sheet lines 6 (flat matte / no glow), 10 (16:9 / 5 s / one composition) and 11 (identity anchor) measured under that threshold this run (7/18, 6/18, 14/18 — see `WP2-report.md` §6). Lines 6 and 10 carry over v0.1's weak spots essentially unchanged in wording (line 6 still ends in an appended prohibition sentence per the brief's own v0.2 text; line 10 restates format parameters — aspect ratio, duration — that are already separate API fields, which may be why fal's rewriter keeps dropping it regardless of phrasing). Line 11 fell from v0.1's 17/18 to 14/18 on nearly identical wording, which reads as sampling noise rather than a regression I introduced, but I have not run enough sessions to be sure it isn't systematic.
+- **A clean pass on saskia chain-on's headline exact-at-mid-clip.** Beat 2's headline chip never appears in that specific clip (frames pulled at five points through the clip show none) — a rendering miss on that one beat, not a layout-law failure (the chip that IS present in every other saskia beat this run is clean). I have not re-rolled the render to see if it's a one-off (fal is nondeterministic per the seed handling in `lib/stream.ts`) or a recurring weak spot for that particular beat's prompt.
+
+## Things the PM should decide (not relitigating, flagging)
+
+- **Style sheet lines 6 and 10 may need different treatment than "state it as a description."** That fix demonstrably works (line 7, written fresh as a description, survived 17/18) but did not rescue 6 or 10, which were already descriptive-ish in v0.1 and got worse or stayed flat. Worth a WP3-scale look at whether these two are worth fighting for in the prompt at all, versus accepting them as fal-rewriter noise and judging the frames directly (as §7's headline/number accuracy already does independently of what `expanded_prompt` says).
+- **Coin-rim pseudo-text is the most persistent "extra lettering" offender** (present in all three spine sessions this run, on the same subject — paper coins — every time). The aircraft's brand-like tail mark (beat 4, 2 of 3 sessions) is the second. Both are the same named subjects as WP0 flagged; v0.2's stronger wording on line 3 ("every cutout is a plain, unmarked object... blank and unprinted") measurably reduced extra lettering overall (6/18 clips vs WP0's "every calendar, coins, documents, aircraft") but didn't reach zero on these two subjects specifically.
+- **Native voice reliability is unchanged and still roughly 1 silent clip in 6** (this run: 0/6 chain-on, 2/6 chain-off — a different pair of beats than WP0's). This WP didn't touch the native path since Saskia is now the default; flagging only so it isn't read as "fixed."
+- **The live-translation cache being pre-populated by another process** (§8): under a shared working directory with two builders, a translation cache entry can be written by whichever dev server first serves that question under current code, not necessarily the session that asked for it. Worth knowing if a future WP wants translation timing numbers to be trustworthy without controlling for this.
+
+## Housekeeping
+
+- `.claude/launch.json` gained a second configuration, `tessera-wp2` (port 3100), so this session's Browser pane wouldn't collide with the concurrently-running dev server on port 3000. The original `tessera` entry (port 3000) is untouched.
+- `scripts/render.mts` and `scripts/saskia-settings.mts` are new, TypeScript (`.mts`, run via `npx tsx`), not added to `package.json` — see "How to run."
+- `.env.local`'s `VOICE` line was flipped from `native` to `saskia` on this machine to match the new default (and back to `native`/`CHAIN=on` and other combinations transiently while rendering each spine session — it is currently left at `VOICE=saskia CHAIN=on`, the shipped default).
+- `data/translations/a14c3cdf12f849c0042f91f76b36ac9b41ea65ba.json` (pinned spine exemplar) is updated to v0.2 by hand — same filename (hash of the *answer* text, which didn't change), new beats. Of the other five, four (`30800f9e…` "key risks", `4406e21d…` "Resulticks unlock", `7e304c63…` "key catalysts", `91389ad5…` "What is Diginex") were regenerated to v0.2 live during this session — one by my own live call (§8), the other three most likely by the concurrent WP4 session's own testing against the same version-gated code. Only `d34c6c89…` ("path to profitability") is still a v0.1 artifact; it will regenerate live the next time that question is asked.
+- `recordings/` stays gitignored except `recordings/reels/` (six new files this WP, ~35 MB). New session folders are local only.

@@ -1,0 +1,43 @@
+{
+  "session": "20260904-144858-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 5,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "One vendor, broader suite, more of each customer's wallet.",
+    "headline": "WALLET SHARE",
+    "ground": "cyan",
+    "subjects": [
+      "paper coins",
+      "a torn-paper arrow"
+    ],
+    "action": "The previous chip is covered as the open pair collapses into paper coins; a torn-paper arrow enters beneath and points up.",
+    "handoff": "the arrow",
+    "source": [
+      7,
+      8
+    ]
+  },
+  "sources": [
+    "This creates multiple revenue vectors: enterprises managing ESG compliance can now also buy customer data and marketing automation from the same vendor, reducing switching costs and increasing wallet share.",
+    "It's a classic horizontal expansion play — the same customer base, broader product suite, higher ACV."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: pale cyan. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: paper coins; a torn-paper arrow.\nOpens on the open pair, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the open pair collapses into paper coins; a torn-paper arrow enters beneath and points up.\nEnds holding on the arrow.\nHeadline printed on a paper chip: \"WALLET SHARE\".\n\nON-SCREEN TEXT: \"WALLET SHARE\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"One vendor, broader suite, more of each customer's wallet.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage with a refined 2D motion design, photographed as a flat lay under soft, diffused room light coming from the upper left. <Picture 1> serves as the initial composition: a pale cyan, single-color paper ground fills the frame. In the upper third, a cream-colored rectangular paper chip is taped down, featuring the extra-bold black sans-serif text \"2 WORKFLOWS\". Below, two black-and-white halftone photographic cutouts with rough, white torn-paper edges—a blank document and a blank computer monitor—sit on the cyan ground, each casting a small, soft shadow to the bottom right. \n\nImmediately at 00:00.000, the camera remains in a Static Shot as the composition transforms. A new cream paper chip rapidly slides in from the top to cover the \"2 WORKFLOWS\" chip; it is printed with the clean, legible, extra-bold black sans-serif text \"WALLET SHARE\". Simultaneously, the document and monitor cutouts collapse and are replaced by a cluster of several black-and-white halftone paper coins. The coins enter with a fast motion and a slight overshoot before landing stably. Just as the coins settle, a flat, matte cream paper arrow with rough torn edges slides in from the bottom, pointing upward toward the headline. All elements maintain a matte printed paper texture with visible print dots and no digital glow. The video ends with a hold on this final composition: the \"WALLET SHARE\" headline at the top and the paper coins with the upward-pointing arrow below. A subtle, rhythmic pulsing loop of the elements' positions continues until the end of the 5-second duration.\n\nA narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says in an off-screen voiceover: <d>[English] One vendor, broader suite, more of each customer's wallet.</d>\n\noverall_soundscape: The audio features a sequence of tactile, physical foley sounds synchronized with the motion: crisp, light paper-slaps as the chips and coins land, and the subtle, sticky sound of adhesive tape being pressed down. The ambient background is a clean, silent room tone.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91309/0BmkCDUBvkK4qznvalhzv_minimax-h3.mp4",
+  "requestId": "01a06c77-a724-7e03-9594-ea0e194b65a4",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 324485,
+  "resolution": "480P",
+  "renderMs": 2723,
+  "timings": {
+    "inference": 0.4874821339981281
+  },
+  "renderedAt": "2026-09-04T12:49:37.027Z",
+  "savedAt": "2026-09-04T12:49:37.044Z"
+}

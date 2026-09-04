@@ -34,10 +34,77 @@ video {
 }
 
 .tessera {
+  min-height: 100vh;
+  padding-bottom: 64px;
+  text-transform: lowercase;
+}
+
+.tessera.plain {
   width: min(100% - 48px, 1100px);
   margin: 6vh auto 0;
-  padding-bottom: 6vh;
-  text-transform: lowercase;
+}
+
+.tessera.theatre {
+  width: 100%;
+}
+
+/* theatre mode: the console frame, screen/key/seam positioned as fractions
+   of public/console.png (see components/console.tsx for the bounds) */
+
+.console {
+  position: relative;
+  width: 70%;
+  max-width: 1400px;
+  margin: 6vh auto 0;
+}
+
+.console-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+.console-screen {
+  position: absolute;
+  overflow: hidden;
+  background: #000;
+}
+
+.console-key {
+  position: absolute;
+  background: transparent;
+}
+
+.console-key.listening {
+  background: var(--text);
+  animation: blink 1s steps(1, end) infinite;
+}
+
+.console-key.rendering {
+  background: var(--ground, var(--text));
+}
+
+.console-seam {
+  position: absolute;
+  background: #ffee8c;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.console-seam.filling {
+  animation: seamPulse 2s ease-in-out infinite;
+}
+
+@keyframes seamPulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.45;
+  }
 }
 
 /* the screen: two stacked videos, the next one preloading behind */
@@ -48,6 +115,17 @@ video {
   aspect-ratio: 16 / 9;
   background: #000;
   overflow: hidden;
+}
+
+/* theatre mode: fills the console-screen bounds exactly, cropping to fit */
+.screen.screen--theatre {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: unset;
+}
+
+.screen.screen--theatre .reel {
+  object-fit: cover;
 }
 
 .reel {
@@ -65,6 +143,22 @@ video {
   pointer-events: none;
 }
 
+.tessera.plain .content {
+  margin-top: 28px;
+}
+
+/* the stage matches the console's own width so the content's percentage
+   padding below lines up with the screen inside it, not the viewport */
+.tessera.theatre .stage {
+  width: 70%;
+  max-width: 1400px;
+  margin: 28px auto 0;
+}
+
+.tessera.theatre .content {
+  padding-left: 13.17%;
+}
+
 /* the ask line */
 
 .ask {
@@ -72,7 +166,6 @@ video {
   display: flex;
   align-items: baseline;
   gap: 0.35em;
-  margin-top: 28px;
   min-height: 1.5em;
   cursor: text;
   font-size: 20px;
@@ -89,6 +182,11 @@ video {
   height: 0.62em;
   background: currentColor;
   transform: translateY(0.02em);
+}
+
+/* not set while the plain-mode cursor is standing in for the console's
+   square key and holding a steady ground-colour fill during a render */
+.cursor.blink {
   animation: blink 1s steps(1, end) infinite;
 }
 
@@ -156,4 +254,17 @@ video {
 .upnext {
   margin-left: 0.5em;
   opacity: 0.6;
+}
+
+/* the strip: one disclosure line at the bottom of the viewport */
+
+.strip {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 24px;
+  font-size: 13px;
+  opacity: 0.6;
+  background: var(--bg);
 }

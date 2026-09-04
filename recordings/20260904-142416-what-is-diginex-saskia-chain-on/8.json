@@ -1,0 +1,41 @@
+{
+  "session": "20260904-142416-what-is-diginex-saskia-chain-on",
+  "n": 8,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Integration execution across those four businesses is the primary risk.",
+    "headline": "EXECUTION RISK",
+    "ground": "magenta",
+    "subjects": [
+      "four leaning folders",
+      "a paper hand"
+    ],
+    "action": "The previous chip is covered as the column topples into four leaning folders; a paper hand enters and steadies them.",
+    "handoff": "the steadying hand",
+    "source": [
+      24,
+      25
+    ]
+  },
+  "sources": [
+    "Integration execution is the primary risk.",
+    "Diginex has now absorbed four distinct businesses (Plan A, Matter, The Remedy Project, Resulticks) across multiple jurisdictions — a complex undertaking."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: four leaning folders; a paper hand.\nOpens on the tall column, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the column topples into four leaning folders; a paper hand enters and steadies them.\nEnds holding on the steadying hand.\nHeadline printed on a paper chip: \"EXECUTION RISK\".\n\nON-SCREEN TEXT: \"EXECUTION RISK\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style, photographed as a flat lay under soft room light. The scene opens with <Picture 1>, featuring a deep magenta block-color paper ground. A cream paper chip with black bold sans-serif text \" $8.1M G&A \" is positioned in the upper third, while the lower two-thirds contains various black-and-white halftone photographic cutouts: blank coins, a downward-pointing arrow, and a tall column of stacked elements, all characterized by rough white torn-paper edges and casting small soft shadows from a light source in the upper left. Immediately, the camera remains in a Static Shot as the existing composition is cleared; the coins and arrow slide quickly off-frame to the left and right, while a new cream paper chip with black extra-bold sans-serif text \"EXECUTION RISK\" slides in from the top to cover the previous headline, landing with a slight overshoot and becoming stable. Simultaneously, the tall column of halftone cutouts in the center topples over, splitting and leaning into four distinct, blank black-and-white halftone photographic folders that lean against each other. A black-and-white halftone cutout of an anonymous paper hand enters rapidly from the right edge of the frame, reaching out to steady the leaning folders. The hand lands with a slight overshoot and holds the folders firmly in place. Every element, including the \"EXECUTION RISK\" chip, the folders, and the hand, is made of matte printed paper with visible print dots and a flat finish, maintaining consistent identity and rough white torn edges throughout the 5-second duration.\n\noverall_soundscape: A series of crisp, tactile paper sound effects. The motion of the sliding chips and toppling folders is accompanied by light paper-slaps, soft frictional slides, and the distinct, sticky sound of tape being pressed down.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91277/T0-bDY0Kf2vJkZwhm3HH-_minimax-h3.mp4",
+  "requestId": "01a06c61-5ab4-7e13-81a0-6e64cb8b58b8",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3115,
+  "timings": {
+    "inference": 0.45831966499827104
+  },
+  "savedAt": "2026-09-04T12:25:15.833Z"
+}

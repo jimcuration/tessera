@@ -1,0 +1,43 @@
+{
+  "session": "20260904-142636-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 10,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Adoption stays uneven, so sales cycles may lengthen, slowing growth.",
+    "headline": "LONGER SALES CYCLES",
+    "ground": "magenta",
+    "subjects": [
+      "a stretching paper track",
+      "a cutout vehicle"
+    ],
+    "action": "The previous chip slides off as the peeling strip stretches into a long paper track; a cutout vehicle crawls partway along it and halts.",
+    "handoff": "the stretched track",
+    "source": [
+      20,
+      21,
+      23
+    ]
+  },
+  "sources": [
+    "Although regulatory pressure is mounting, ESG adoption remains uneven across sectors and geographies.",
+    "Smaller enterprises may delay adoption due to cost, complexity, or lack of immediate incentives.",
+    "If ESG remains underprioritised, especially in weaker macro environments, Diginex’s sales cycles may lengthen, slowing ARR growth."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a stretching paper track; a cutout vehicle.\nOpens on the peeling strip, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the peeling strip stretches into a long paper track; a cutout vehicle crawls partway along it and halts.\nEnds holding on the stretched track.\nHeadline printed on a paper chip: \"LONGER SALES CYCLES\".\n\nON-SCREEN TEXT: \"LONGER SALES CYCLES\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, 2D-animated modern editorial paper collage, photographed flat under soft room light with a consistent light source from the upper left. The scene opens on <Picture 1>, featuring a light blue paper ground with a cream paper chip reading \"SLOW INTEGRATION\" in bold black sans-serif typography and a torn white paper strip held by a piece of yellowed tape. Immediately, the camera remains in a Static Shot as the composition transforms. In the first second, the cream \"SLOW INTEGRATION\" chip and the light blue ground are rapidly slid off-frame to the left, revealed to be layers of paper. They are replaced by a new, single unbroken block-colour paper ground in deep magenta. Simultaneously, a new cream paper chip enters from the top with a fast motion and a slight overshoot before landing stably in the upper third of the frame; it features the clean, legible black text \"LONGER SALES CYCLES\" in a bold sans-serif font. In the lower two-thirds of the frame, the peeling white paper strip from the first frame rapidly stretches horizontally, transforming into a long, straight paper track with rough white torn-paper edges. A black-and-white halftone photographic cutout of a vehicle, also featuring rough white torn edges and no markings or liveries, enters from the left, crawls partway along the stretching track, and comes to a sudden halt. Every element—the magenta ground, the cream chip, the white track, and the vehicle cutout—has a matte printed paper texture and casts a small, soft shadow toward the bottom right. The video ends by holding this final composition, with the \"LONGER SALES CYCLES\" headline and the halted vehicle remaining stable.\n\noverall_soundscape: The audio consists of crisp, tactile foley sounds. A sharp, rhythmic paper-slap occurs as the background layers shift and the headline chip lands. This is accompanied by the sticky, subtle sound of adhesive tape peeling and the dry, sliding friction of paper rubbing against paper.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912a0/pgFzkr3lZmaqyujBwiDBX_minimax-h3.mp4",
+  "requestId": "01a06c64-0d1c-7392-9bd6-d63e8e69bff2",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3752,
+  "timings": {
+    "inference": 0.46000389099936
+  },
+  "savedAt": "2026-09-04T12:28:13.327Z"
+}

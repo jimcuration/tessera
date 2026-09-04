@@ -1,0 +1,41 @@
+{
+  "session": "20260904-144417-what-is-diginex-native-chain-on",
+  "n": 1,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Diginex is repositioning as one sustainability, data and compliance platform.",
+    "headline": "ONE PLATFORM",
+    "ground": "violet",
+    "subjects": [
+      "a paper screen",
+      "a cream paper chip"
+    ],
+    "action": "A halftone paper screen lowers onto a cream chip and holds centre frame.",
+    "handoff": "the paper screen",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "Diginex (DGNX) is repositioning itself as a unified sustainability, data and compliance platform."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a paper screen; a cream paper chip.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: A halftone paper screen lowers onto a cream chip and holds centre frame.\nEnds holding on the paper screen.\nHeadline printed on a paper chip: \"ONE PLATFORM\".\n\nON-SCREEN TEXT: \"ONE PLATFORM\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex is repositioning as one sustainability, data and compliance platform.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, 2D-animated modern editorial paper collage. The scene opens on a flat, unbroken block-color paper ground of soft violet, photographed from a top-down perspective under soft room light. A consistent light source from the upper left creates small, soft shadows beneath every layer. On the first frame, a rectangular cream-colored paper chip with a matte printed texture enters the frame from the top, landing in the center of the lower two-thirds of the screen with a fast motion and a slight overshoot before stabilizing. Simultaneously, a black-and-white halftone photographic cutout of a computer screen, featuring rough white torn-paper edges and a completely blank, unprinted display, lowers from above. The screen cutout lands precisely on top of the cream chip, centering the composition. In the upper third of the frame, a large, rectangular black paper chip slides in rapidly from the left, landing on the clear violet ground. Printed on this chip in a large, extra-bold, cream-colored sans-serif typeface is the text \"ONE PLATFORM\", which remains clean, legible, and stable throughout the shot. The camera remains a Static Shot. The elements hold their final position for the remainder of the video, with a very subtle, slow-amplitude floating loop to maintain a sense of tactile life.\n\noverall_soundscape: A crisp, tactile paper-slap sound coincides with the landing of the cream chip and the halftone screen. A short, sticky sound of adhesive tape being pressed down punctuates the arrival of the headline chip. The environment is a quiet, dead-air room tone.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912ea/MmceeUNAwXdpUjQPwU8iz_minimax-h3.mp4",
+  "requestId": "01a06c72-d325-71c2-aa64-0f42551b30f5",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 256712,
+  "resolution": "480P",
+  "renderMs": 3020,
+  "timings": {
+    "inference": 0.5038895490579307
+  },
+  "renderedAt": "2026-09-04T12:44:20.951Z",
+  "savedAt": "2026-09-04T12:44:20.966Z"
+}

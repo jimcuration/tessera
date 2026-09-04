@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142636-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 9,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Slow integration of Resulticks could keep investor confidence weak.",
+    "headline": "SLOW INTEGRATION",
+    "ground": "cyan",
+    "subjects": [
+      "a paper calendar strip",
+      "a peeling tape edge"
+    ],
+    "action": "The previous chip flips down as the taped seam unrolls into a calendar strip; one tape edge peels back and curls away.",
+    "handoff": "the peeling strip",
+    "source": [
+      18
+    ]
+  },
+  "sources": [
+    "If the integration takes longer than expected or fails to deliver clear revenue growth, investor confidence could remain weak."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: pale cyan. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: a paper calendar strip; a peeling tape edge.\nOpens on the taped seam, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips down as the taped seam unrolls into a calendar strip; one tape edge peels back and curls away.\nEnds holding on the peeling strip.\nHeadline printed on a paper chip: \"SLOW INTEGRATION\".\n\nON-SCREEN TEXT: \"SLOW INTEGRATION\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, photographed flat under soft room light with a consistent light source from the upper left casting small, soft shadows beneath every layer. The scene opens on <Picture 1>, where a pale cyan, single-color paper ground fills the frame. In the upper third, a cream-colored paper chip features the headline \"EXECUTION RISK\" in a bold, black, extra-bold sans-serif typeface. In the lower two-thirds, a black-and-white halftone photographic cutout of a dark, textured surface is held in place by two strips of translucent yellowed tape with rough white torn edges. The camera is a Static Shot. Immediately, the \"EXECUTION RISK\" headline chip flips downward and slides off-frame with a fast motion and a slight overshoot. Simultaneously, a new cream-colored paper chip with the text \"SLOW INTEGRATION\" printed in bold black sans-serif lands cleanly in the upper third, remaining stable and legible throughout the rest of the video. In the center, the taped seam begins to transform: the black halftone cutout unrolls and expands into a long, blank paper calendar strip, while the adhesive tape edges peel back and curl away from the surface in a refined 2D motion. All elements maintain a matte printed paper texture with visible print dots and rough torn edges. The video concludes with the \"SLOW INTEGRATION\" headline and the partially curled tape strip holding a clear, stable position on the pale cyan background.\n\noverall_soundscape: The soundscape consists of crisp, tactile paper sound effects. A light, sharp paper-slap occurs as the headline chips transition, accompanied by the sticky, slow stretching and peeling sound of adhesive tape being lifted from a matte surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91288/2O93A6roifE7bMMM1SKXT_minimax-h3.mp4",
+  "requestId": "01a06c63-f283-79e3-826e-486bdafe64a7",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3129,
+  "timings": {
+    "inference": 0.4635736730051576
+  },
+  "savedAt": "2026-09-04T12:28:05.764Z"
+}

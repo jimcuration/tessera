@@ -1,0 +1,41 @@
+{
+  "session": "20260904-145411-what-is-diginex-native-chain-on",
+  "n": 4,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Carbon accounting, supply chains, human rights, now AI customer data.",
+    "headline": "END-TO-END",
+    "ground": "cyan",
+    "subjects": [
+      "the taped block",
+      "a paper conveyor"
+    ],
+    "action": "The previous chip is covered as the taped block unfolds into a paper conveyor that runs from one edge to the other and stops.",
+    "handoff": "the conveyor",
+    "source": [
+      3
+    ]
+  },
+  "sources": [
+    "Following acquisitions of Plan A, Matter, The Remedy Project, and the transformative addition of Resulticks, Diginex is evolving from point solutions into a fully integrated end-to-end platform spanning carbon accounting, ESG reporting, supply chain transparency, human rights due diligence, and now AI-driven customer data capabilities — designed to serve banks, asset managers and enterprises."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: pale cyan. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the taped block; a paper conveyor.\nOpens on the taped block, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the taped block unfolds into a paper conveyor that runs from one edge to the other and stops.\nEnds holding on the conveyor.\nHeadline printed on a paper chip: \"END-TO-END\".\n\nON-SCREEN TEXT: \"END-TO-END\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Carbon accounting, supply chains, human rights, now AI customer data.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage with 2D motion design, photographed as a flat lay under soft, natural room light. <Picture 1> anchors the scene: a pale cyan, single-color paper ground fills the frame. In the upper third, a cream-colored paper chip with a rough torn edge displays the black, extra-bold sans-serif text \"4 BUSINESSES\". In the lower two-thirds, a black-and-white halftone photographic cutout of a grey paper folder, secured with strips of matte yellowed masking tape, rests in the center. Every cutout has rough white torn-paper edges and casts a small, soft shadow falling toward the bottom right, indicating a consistent light source from the upper left. The entire scene consists of matte printed paper with a flat finish; there are no glows or neon effects.\n\nStarting on the first frame, a new cream paper chip slides in rapidly from the top, covering the \"4 BUSINESSES\" chip completely. This new chip features the large, stable, and accurate black text \"END-TO-END\" in an extra-bold sans-serif typeface. Simultaneously, the taped folder in the center unfolds with a fast, snapping motion and a slight overshoot, transforming into a long, black-and-white halftone photographic cutout of a paper conveyor belt. The conveyor stretches horizontally from the left edge to the right edge of the frame, landing with a stable thud. The conveyor is a plain, unmarked object with no symbols or text. The camera remains a Static Shot throughout the 5 seconds. The video ends holding on this final composition of the \"END-TO-END\" headline and the spanning conveyor belt. (S1), a narrator with a warm, clear, and natural adult voice and a brisk, professional delivery, says in an off-screen voiceover: <d>[English] Carbon accounting, supply chains, human rights, now AI customer data.</d> The narrator's voice begins exactly on the first frame.\n\noverall_soundscape: The audio features crisp, tactile foley sounds of paper: a sharp slap as the headline chip covers the previous one, the rhythmic rustle of paper unfolding, and a muted thumping sound as the conveyor belt snaps into place. A faint, sticky peeling sound accompanies the transformation of the taped block.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9133f/AQAHCRiCTufJFqGoeHytV_minimax-h3.mp4",
+  "requestId": "01a06c7c-63a5-7153-8379-21af4505d141",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 561172,
+  "resolution": "480P",
+  "renderMs": 2765,
+  "timings": {
+    "inference": 0.4926217469983385
+  },
+  "renderedAt": "2026-09-04T12:54:47.439Z",
+  "savedAt": "2026-09-04T12:54:47.453Z"
+}

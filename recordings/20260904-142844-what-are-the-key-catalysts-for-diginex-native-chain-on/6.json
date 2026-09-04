@@ -1,0 +1,44 @@
+{
+  "session": "20260904-142844-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 6,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Without cross-sell evidence, it becomes a burden, not an unlock.",
+    "headline": "CROSS-SELL OR BURDEN",
+    "ground": "magenta",
+    "subjects": [
+      "the large coin",
+      "a paper key",
+      "tape pieces"
+    ],
+    "action": "The previous chip flips down as the large coin splits; half becomes a paper key that fails to turn, taped shut at frame centre.",
+    "handoff": "the taped key",
+    "source": [
+      19,
+      20
+    ]
+  },
+  "sources": [
+    "The catalyst is straightforward: does Resulticks' customer data and AI capabilities drive incremental revenue from existing Diginex customers, and vice versa?",
+    "Without cross-sell evidence, the acquisition becomes a financial burden rather than a strategic unlock."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the large coin; a paper key; tape pieces.\nOpens on the large coin, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips down as the large coin splits; half becomes a paper key that fails to turn, taped shut at frame centre.\nEnds holding on the taped key.\nHeadline printed on a paper chip: \"CROSS-SELL OR BURDEN\".\n\nON-SCREEN TEXT: \"CROSS-SELL OR BURDEN\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Without cross-sell evidence, it becomes a burden, not an unlock.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage shot, photographed as a flat lay under soft room lighting from the upper left. <Picture 1> establishes the initial composition: a deep magenta block-color paper ground fills the frame. In the upper third, a cream-colored paper chip features the black, extra-bold sans-serif text \"$1.5B BET\". Below it, a black-and-white halftone photographic cutout of a large coin with rough white torn edges is positioned on the left, and a blank, unmarked grey paper rectangle is on the right. Every paper layer casts a small, soft shadow to the bottom right. At 00:00.000, the camera is a Static Shot. The action begins immediately: the headline chip \"$1.5B BET\" flips downward rapidly with a slight overshoot, disappearing from view. Simultaneously, the large coin splits apart; one half morphs and slides into a new black-and-white halftone cutout of a paper key with rough white torn edges. As the key lands in the center of the frame, two small pieces of semi-transparent matte paper tape snap across the key's bow, effectively taping it shut against the magenta ground. At 00:01.500, a new cream-colored paper chip slides in from the top edge and lands firmly in the upper third of the frame, featuring the stable, clean, and legible black extra-bold sans-serif text \"CROSS-SELL OR BURDEN\". A narrator (S1), a male with a warm, clear, natural timbre and a brisk, professional speaking rate, says <d>[English] Without cross-sell evidence, it becomes a burden, not an unlock.</d> The composition holds on the taped key and the new headline until the end of the video, with a subtle, minute pulsing motion of the paper elements to maintain a loop.\n\noverall_soundscape: A sequence of tactile foley sounds: a crisp, snappy paper flip, the sliding friction of paper on paper, and two distinct, sticky \"thwips\" as the tape pieces adhere to the surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91292/wpXiTtft1OcODFQC1urQF_minimax-h3.mp4",
+  "requestId": "01a06c65-7bef-7641-91b3-0281c7834955",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 865915,
+  "resolution": "480P",
+  "renderMs": 2934,
+  "timings": {
+    "inference": 0.4625286379887257
+  },
+  "renderedAt": "2026-09-04T12:29:46.718Z",
+  "savedAt": "2026-09-04T12:29:46.733Z"
+}

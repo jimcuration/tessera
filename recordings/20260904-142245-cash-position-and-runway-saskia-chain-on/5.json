@@ -1,0 +1,40 @@
+{
+  "session": "20260904-142245-cash-position-and-runway-saskia-chain-on",
+  "n": 5,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "October's warrant exercise added thirteen point eight million in cash.",
+    "headline": "+$13.8M",
+    "ground": "lime",
+    "subjects": [
+      "fresh paper coins",
+      "the runway",
+      "tape pieces"
+    ],
+    "action": "The previous chip slides off as fresh paper coins are taped onto the runway one after another, extending it across the frame.",
+    "handoff": "the extended runway",
+    "source": [
+      27
+    ]
+  },
+  "sources": [
+    "The October 2025 warrant exercise generated $13.8M in cash, which materially strengthened the balance sheet beyond the September 30 snapshot."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: fresh paper coins; the runway; tape pieces.\nOpens on the runway, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as fresh paper coins are taped onto the runway one after another, extending it across the frame.\nEnds holding on the extended runway.\nHeadline printed on a paper chip: \"+$13.8M\".\n\nON-SCREEN TEXT: \"+$13.8M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage style video, photographed as a flat lay under soft, natural room light. The scene opens on <Picture 1>, which features a bright pink paper ground, a cream paper chip with black text \"1.4 MONTHS\", and a black-and-white halftone photographic cutout of an airplane with rough white torn-paper edges. Immediately upon the first frame, a transition begins: the pink ground is covered by a solid, unbroken block of lime green matte paper. Simultaneously, the \"1.4 MONTHS\" chip and the airplane cutout slide rapidly off-screen to the left with a slight overshoot. A new headline chip, a cream-colored matte paper rectangle, slides in quickly from the top and lands stably in the upper third of the frame; it bears the bold, black, extra-bold sans-serif text \"+$13.8M\", which is clean, legible, and perfectly stable. In the lower two-thirds of the frame, a long, narrow strip of white paper representing a runway is positioned horizontally. One by one, small, circular black-and-white halftone paper coins, each with a rough white torn edge, are rapidly \"taped\" onto the runway surface from left to right. Small, translucent matte paper tape pieces appear instantly over each coin as they land. The coins extend the visual length of the runway across the frame. A consistent light source from the upper left ensures that every paper layer—the coins, the tape, the headline chip, and the runway—casts a small, soft, realistic drop shadow onto the lime green ground. The camera remains in a Static Shot throughout the 5 seconds. The video ends by holding on the final composition of the extended runway and the \"+$13.8M\" headline.\n\noverall_soundscape: A series of quick, rhythmic paper-slap sounds occur as each coin lands on the runway. These are accompanied by the crisp, tactile sound of adhesive tape being pressed down onto paper. The background is a silent, clean studio environment with no ambient noise.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91282/yAu7LyY8RDynDtkzQP21P_minimax-h3.mp4",
+  "requestId": "01a06c5f-9641-7382-bfc8-8a283da27165",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 2544,
+  "timings": {
+    "inference": 0.4576763689983636
+  },
+  "savedAt": "2026-09-04T12:23:20.035Z"
+}

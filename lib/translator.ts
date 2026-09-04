@@ -6,23 +6,29 @@
  * calls Claude (app/api/translate), the client that stages the beats, and
  * the checker (scripts/check.mjs mirrors `validateBeat`).
  *
- * Version: translator v0.1, paired with Tessera Style Sheet v0.1 (lib/prompt.ts).
+ * Version: translator v0.2, paired with Tessera Style Sheet v0.2
+ * (lib/prompt.ts). WP0 found: a native narrator rushed an exemplar line at
+ * 19-20 words, so the line budget is now 12 words, hard; two clips showed a
+ * face despite "never a recognisable face", so a beat whose `subjects`
+ * names a person, a body part that reads as a person, or a proper name is
+ * now dropped in code, not just discouraged in the prompt (CLAUDE.md rule
+ * 6, decision D23).
  */
 
-export const TRANSLATOR_VERSION = "translator-v0.1";
+export const TRANSLATOR_VERSION = "translator-v0.2";
 
 export type Ground = "lime" | "cyan" | "violet" | "magenta";
 export const GROUNDS: Ground[] = ["lime", "cyan", "violet", "magenta"];
 
 export interface Beat {
-  /** Spoken sentence, 18 words or fewer. */
+  /** Spoken sentence, 12 words or fewer. */
   line: string;
   /** On-screen words, 4 or fewer, or null. */
   headline: string | null;
   ground: Ground;
-  /** Halftone cutout objects, 1–3. */
+  /** Halftone cutout objects, 1–3. Never a person. */
   subjects: string[];
-  /** One clear cause-and-effect movement. */
+  /** One clear cause-and-effect movement, including how the previous handoff exits. */
   action: string;
   /** The named shape this beat ends on, which the next beat transforms. */
   handoff: string;
@@ -39,12 +45,80 @@ export interface BeatCheck {
   warnings: string[];
 }
 
-const MAX_LINE_WORDS = 18;
+const MAX_LINE_WORDS = 12;
 const MAX_HEADLINE_WORDS = 4;
 const MAX_SUBJECTS = 3;
 
+/**
+ * Terms that mean a beat's subjects depict a person rather than an object.
+ * CLAUDE.md rule 6: no recognisable people in generated imagery; anonymous
+ * paper hands are the one allowed human trace (they carry no identity).
+ * Mirrored in scripts/check.mjs.
+ */
+export const PEOPLE_LEXICON = [
+  "person",
+  "people",
+  "man",
+  "men",
+  "woman",
+  "women",
+  "face",
+  "faces",
+  "figure",
+  "figures",
+  "executive",
+  "executives",
+  "ceo",
+  "cfo",
+  "coo",
+  "cto",
+  "worker",
+  "workers",
+  "customer",
+  "customers",
+  "crowd",
+  "character",
+  "characters",
+  "employee",
+  "employees",
+  "founder",
+  "founders",
+  "staff",
+  "spokesperson",
+  "presenter",
+  "narrator",
+  "analyst",
+  "analysts",
+  "investor",
+  "investors",
+  "chairman",
+  "chairwoman",
+  "boy",
+  "girl",
+];
+
 export function wordCount(text: string): number {
   return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+/**
+ * Does any subject read as a person? Checked against the lexicon (whole
+ * words, case-insensitive) and, separately, against the shape of a proper
+ * name: two or more capitalised words (a person's name), or one capitalised
+ * word that is not the first word of the subject (an object named at the
+ * start of a phrase, e.g. "Diginex nameplate", reads as an object; a
+ * capital appearing mid-phrase reads as someone's name).
+ */
+export function subjectNamesPerson(subject: string): string | null {
+  const lower = subject.toLowerCase();
+  for (const term of PEOPLE_LEXICON) {
+    if (new RegExp(`\\b${term}\\b`).test(lower)) return `matches "${term}"`;
+  }
+  const words = subject.trim().split(/\s+/);
+  const capWords = words.filter((w) => /^[A-Z][a-z]+$/.test(w));
+  if (capWords.length >= 2) return "looks like a proper name";
+  if (capWords.length === 1 && words.indexOf(capWords[0]) > 0) return "looks like a proper name";
+  return null;
 }
 
 /** Digit groups in a headline, normalised for the soft number check. */
@@ -53,9 +127,13 @@ function numbersIn(text: string): string[] {
 }
 
 /**
- * The translator rule, in code. Hard: a beat without a valid `source` is
- * dropped. Soft: length and number findings are recorded as warnings so the
- * report can show them; they never silently rewrite the text.
+ * The translator rule, in code. Hard: a beat without a valid `source`, a
+ * line over 12 words, or a subject that names a person is dropped. Soft:
+ * headline length and headline numbers not found in the cited sentences
+ * are recorded as warnings so the report can show them (a warning also
+ * covers the one allowed derivation: a headline count of items the cited
+ * sentence enumerates rather than states as a figure); they never silently
+ * rewrite the text.
  */
 export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
   const warnings: string[] = [];
@@ -66,6 +144,10 @@ export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
 
   const line = typeof b.line === "string" ? b.line.trim() : "";
   if (!line) return { ok: false, beat: null, dropped: "no line", warnings };
+  const lineWords = wordCount(line);
+  if (lineWords > MAX_LINE_WORDS) {
+    return { ok: false, beat: null, dropped: `line is ${lineWords} words (limit ${MAX_LINE_WORDS})`, warnings };
+  }
 
   const sourceRaw = Array.isArray(b.source) ? b.source : [];
   const source = Array.from(
@@ -93,6 +175,12 @@ export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
   if (subjects.length === 0) {
     return { ok: false, beat: null, dropped: "no subjects", warnings };
   }
+  for (const subject of subjects) {
+    const person = subjectNamesPerson(subject);
+    if (person) {
+      return { ok: false, beat: null, dropped: `subject "${subject}" names a person (${person})`, warnings };
+    }
+  }
   if (subjects.length > MAX_SUBJECTS) {
     warnings.push(`${subjects.length} subjects; keeping the first ${MAX_SUBJECTS}`);
     subjects = subjects.slice(0, MAX_SUBJECTS);
@@ -102,10 +190,6 @@ export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
   const handoff = typeof b.handoff === "string" ? b.handoff.trim() : "";
   if (!handoff) return { ok: false, beat: null, dropped: "no handoff", warnings };
 
-  const lineWords = wordCount(line);
-  if (lineWords > MAX_LINE_WORDS) {
-    warnings.push(`line is ${lineWords} words (limit ${MAX_LINE_WORDS})`);
-  }
   if (headline && wordCount(headline) > MAX_HEADLINE_WORDS) {
     warnings.push(`headline is ${wordCount(headline)} words (limit ${MAX_HEADLINE_WORDS})`);
   }
@@ -113,7 +197,10 @@ export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
     const cited = source.map((i) => sentences[i]).join(" ").replace(/,/g, "");
     for (const n of numbersIn(headline)) {
       if (!cited.includes(n)) {
-        warnings.push(`headline number "${n}" not found in cited sentences ${JSON.stringify(source)}`);
+        warnings.push(
+          `headline number "${n}" not found as a figure in cited sentences ${JSON.stringify(source)} ` +
+            `(fine if it is a count of items those sentences enumerate; flagged either way)`
+        );
       }
     }
   }
@@ -161,14 +248,23 @@ export function deflectionBeat(sentences: string[], link: string): Beat {
   };
 }
 
-/** The six-beat exemplar from briefs/WP0.md, used in the prompt as the tone reference. */
+/**
+ * The six-beat exemplar, hand-mapped to the sentence indexes of the
+ * captured answer to "What is the cash position and runway?" (see
+ * data/translations/<hash>.json, pinned). v0.2: every line rewritten to
+ * the 12-word budget (v0.1's beat 5 ran 19-20 words and made the native
+ * narrator rush it); beat 5 is cut rather than split, so the spine stays
+ * six beats (18 clips across the three spine sessions, matching WP0's
+ * denominators). Every action now names what leaves from the previous
+ * beat's headline chip and how, per rule 9.
+ */
 export const EXEMPLAR_NDJSON = [
-  `{"line":"At the end of September, Diginex held one point eight five million dollars in cash.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","handoff":"the coin stack","source":[9]}`,
-  `{"line":"Six months earlier it was three point one one million — the burn shows a company mid-transition.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The stack shrinks coin by coin; a torn-paper arrow slides in and points down.","handoff":"the arrow","source":[9,10]}`,
-  `{"line":"Operating burn ran about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The arrow unrolls into a paper calendar strip; coins slide off it month by month.","handoff":"the strip","source":[22]}`,
-  `{"line":"At that rate, the cash on hand covered roughly one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The strip becomes a runway that is torn short; a cutout aircraft rolls toward the torn end and stops.","handoff":"the runway","source":[23]}`,
-  `{"line":"An eleven point four million warrant exercise kept the company afloat — and October added thirteen point eight million more.","headline":"+$13.8M","ground":"lime","subjects":["fresh paper coins","the runway","tape pieces"],"action":"Fresh paper coins are taped onto the runway one after another, extending it across the frame.","handoff":"the extended runway","source":[20,27]}`,
-  `{"line":"Survival depends on capital markets; the next two quarters show whether revenue can narrow the gap.","headline":"NEXT 2 QUARTERS","ground":"lime","subjects":["two paper calendar pages","a paper hand"],"action":"Two paper calendar pages land on the runway; a paper hand enters and points at the second.","handoff":"the pointing hand","source":[25,43]}`,
+  `{"line":"By September's end, Diginex held one point eight five million in cash.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","handoff":"the coin stack","source":[9]}`,
+  `{"line":"Six months earlier it was three point one one million.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","handoff":"the arrow","source":[9,10]}`,
+  `{"line":"Operating burn ran about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","handoff":"the strip","source":[22]}`,
+  `{"line":"At that rate, the cash on hand covered one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","handoff":"the runway","source":[23]}`,
+  `{"line":"October's warrant exercise added thirteen point eight million in cash.","headline":"+$13.8M","ground":"lime","subjects":["fresh paper coins","the runway","tape pieces"],"action":"The previous chip slides off as fresh paper coins are taped onto the runway one after another, extending it across the frame.","handoff":"the extended runway","source":[27]}`,
+  `{"line":"Survival depends on capital markets and the next two quarters.","headline":"NEXT 2 QUARTERS","ground":"lime","subjects":["two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages land on the runway; a paper hand enters and points at the second.","handoff":"the pointing hand","source":[25,43]}`,
 ].join("\n");
 
 /**
@@ -188,14 +284,14 @@ Beat shape, exactly these keys:
 
 RULES
 1. Translator rule. You may compress, reorder and select. You may not add a fact, number, date, comparison, cause, or characterisation that is not in the numbered sentences. If the sentences do not say it, the beat does not say it. No "roughly", "sharply", "strong" unless the sentence uses that word or an equivalent.
-2. source. Every beat lists the index(es) of the sentence(s) it draws on, at least one. Every number and every claim in the line and headline must appear in a cited sentence. A beat without a source is discarded by the player, so never omit it.
+2. source. Every beat lists the index(es) of the sentence(s) it draws on, at least one. Every number and every claim in the line and headline must appear in a cited sentence. A beat without a source is discarded by the player, so never omit it. A headline figure that is a count of items a cited sentence enumerates (e.g. four named acquisitions → "4") is allowed but is flagged for review, so prefer a figure the sentence states outright when one exists.
 3. Skip boilerplate. Headings, the ticker card (company name, "Technology", "Sector", price, "% today", market cap), citation fragments ("Diginex HY25 results", "2 sources", "benzinga.com"), and sign-offs are not content. Do not cite them.
 4. Count. Write 6 to 10 beats. Follow the answer's own arc: where we stand, the mechanism, the dependency or risk, what changes it. If the answer is a short refusal or a redirect, write 2 to 4 beats that say exactly what it says.
-5. line. One spoken sentence, 18 words or fewer, plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.
-6. headline. The words printed on screen: 4 words or fewer, uppercase, digits and symbols allowed ("$1.85M", "1.4 MONTHS", "+293% YOY", "Q2 2026"). One figure or a two-to-four word label, never a sentence. Use null when nothing is worth printing. Every headline figure must appear in a cited sentence.
+5. line. One spoken sentence, 12 words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.
+6. headline. The words printed on screen: 4 words or fewer, uppercase, digits and symbols allowed ("$1.85M", "1.4 MONTHS", "+293% YOY", "Q2 2026"). One figure or a two-to-four word label, never a sentence. Use null when nothing is worth printing. Every headline figure must appear in a cited sentence (rule 2 covers the one allowed exception).
 7. ground. One of lime, cyan, violet, magenta. Hold a ground for two or three consecutive beats, then change; never alternate every beat. Tone: violet sets the scene, magenta is pressure or risk, lime is relief or growth, cyan is structure or explanation.
-8. subjects. One to three halftone paper cutout objects: coins, calendars, documents, screens, machines, buildings, maps, vehicles, arrows, ribbons, tape, anonymous paper hands. Never a person, a face, a logo, a brand, a flag.
-9. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat opens by transforming the previous beat's handoff shape, so the whole programme cuts on matching shapes.
+8. subjects. One to three halftone paper cutout objects: coins, calendars, documents, screens, machines, buildings, maps, vehicles, arrows, ribbons, tape, anonymous paper hands. Never a person, a face, a body, a name, a logo, a brand, a flag — a person in the answer (an executive, a founder, a customer) is represented by an object standing for them (a nameplate, a chair, a signature, a desk), never by a figure. A beat whose subjects name a person is discarded, so do not write one.
+9. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat states, in this order: (a) how the previous beat's headline chip leaves — it slides off, flips away, or is covered, so the new headline lands on clear ground — then (b) how the previous handoff shape itself transforms into this beat's subjects. The whole programme cuts on matching handoff shapes, with a clean headline change each time.
 10. handoff. The named shape the beat ends on ("the coin stack", "the torn runway", "the pointing hand"). The next beat's action begins from it.
 11. No people, no faces, no logos, no client colours, no text other than the headline.
 

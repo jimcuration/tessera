@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142245-cash-position-and-runway-saskia-chain-on",
+  "n": 1,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "By September's end, Diginex held one point eight five million in cash.",
+    "headline": "$1.85M",
+    "ground": "violet",
+    "subjects": [
+      "a stack of paper coins",
+      "a cream paper chip"
+    ],
+    "action": "A single halftone stack of paper coins drops onto a cream chip and settles.",
+    "handoff": "the coin stack",
+    "source": [
+      9
+    ]
+  },
+  "sources": [
+    "As of 30th September 2025, Diginex held $1.85M in cash and cash equivalents — a significant decline from $3.11M six months earlier."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a stack of paper coins; a cream paper chip.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: A single halftone stack of paper coins drops onto a cream chip and settles.\nEnds holding on the coin stack.\nHeadline printed on a paper chip: \"$1.85M\".\n\nON-SCREEN TEXT: \"$1.85M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, live-action, modern editorial paper collage style. The scene opens with a Static Shot of a flat, unbroken soft violet paper ground that fills the entire 16:9 frame. The lighting is a consistent, soft room light coming from the upper left, creating subtle depth. On the first frame, a rectangular cream-colored paper chip with a matte printed texture slides quickly into the upper third of the frame from the left with a slight overshoot before landing stably. Printed on this chip in a large, extra-bold black sans-serif typeface is the text \"$1.85M\", which remains clean, legible, and stable. Simultaneously, in the lower two-thirds of the frame, a halftone black-and-white photographic cutout of a stack of coins enters from the top. The coin cutout features rough white torn-paper edges and is entirely unmarked, with no numerals or symbols on the coins. The stack drops quickly and lands with a slight bounce onto a second, smaller cream paper chip resting on the violet ground. Both the headline chip and the coin stack cast small, soft shadows toward the bottom right, emphasizing their physical layers. Every element maintains a flat, matte paper finish with no glow or bloom. The shot holds on this composition for the remainder of the duration, with a very subtle, slow-motion drift of the coin stack to create a continuous loop.\n\noverall_soundscape: A crisp, singular paper-slap sound occurs as the coin stack hits the cream chip. This is accompanied by a short, tactile adhesive peeling or tape-sticking sound as the headline chip locks into place against the violet background.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9127f/5DUrsE4XUxaUBVArBkgmd_minimax-h3.mp4",
+  "requestId": "01a06c5f-1ab0-7d33-9a99-7abbafb3555a",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "resolution": "480P",
+  "renderMs": 4385,
+  "timings": {
+    "inference": 0.45548826397862285
+  },
+  "savedAt": "2026-09-04T12:22:49.961Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-145346-what-are-the-key-catalysts-for-diginex-native-chain-on",
+  "n": 10,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "The next six to nine months are make-or-break.",
+    "headline": "6–9 MONTHS",
+    "ground": "magenta",
+    "subjects": [
+      "nine paper calendar pages",
+      "a paper hand"
+    ],
+    "action": "The previous chip slides off as the price tag fans into nine calendar pages; a paper hand enters and holds over the last one.",
+    "handoff": "the pointing hand",
+    "source": [
+      41
+    ]
+  },
+  "sources": [
+    "The next 6–9 months are make-or-break for the investment thesis."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: nine paper calendar pages; a paper hand.\nOpens on the price tag, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the price tag fans into nine calendar pages; a paper hand enters and holds over the last one.\nEnds holding on the pointing hand.\nHeadline printed on a paper chip: \"6–9 MONTHS\".\n\nON-SCREEN TEXT: \"6–9 MONTHS\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The next six to nine months are make-or-break.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial paper collage style, Static Shot locked overhead. The scene begins exactly on <Picture 1> against a flat, deep magenta paper background illuminated by soft light from the upper left. A male narrator (S1) with a warm, clear, and brisk tone immediately speaks in an off-screen voiceover: <d>[English] The next six to nine months are make-or-break.</d> At the first frame, the cream paper strip reading \"$34M MARKET CAP\" and the underlying halftone coin slide swiftly off-screen. The blank white torn paper tag rapidly multiplies and fans out into nine blank, torn-edge paper calendar sheets arranged neatly across the lower half. Simultaneously, a fresh cream paper chip slides into the upper third, cleanly printed with the black text \"6–9 MONTHS\". A black-and-white halftone cutout of a paper hand enters from the right with a slight overshoot, settling into a stable hold pointing directly at the final calendar sheet until the end.\n\noverall_soundscape: Crisp, tactile stop-motion paper sound effects including swift sliding swooshes, light paper flaps, and clean paper slaps as the collage elements animate across the surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91329/Jt7DIeP3_pkhcoivbQI1U_minimax-h3.mp4",
+  "requestId": "01a06c7c-8234-72b3-b812-03cedbac15cd",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 931204,
+  "resolution": "480P",
+  "renderMs": 8091,
+  "timings": {
+    "inference": 0.4662125860049855
+  },
+  "renderedAt": "2026-09-04T12:54:59.712Z",
+  "savedAt": "2026-09-04T12:54:59.727Z"
+}

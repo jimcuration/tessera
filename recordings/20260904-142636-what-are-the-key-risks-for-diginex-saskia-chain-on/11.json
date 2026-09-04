@@ -1,0 +1,41 @@
+{
+  "session": "20260904-142636-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 11,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Diginex must educate the market and demonstrate return on investment.",
+    "headline": "PROVE ROI",
+    "ground": "lime",
+    "subjects": [
+      "a paper ledger",
+      "a paper hand"
+    ],
+    "action": "The previous chip flips away as the stretched track folds into a paper ledger; a paper hand enters and taps its final line.",
+    "handoff": "the tapping hand",
+    "source": [
+      22,
+      24
+    ]
+  },
+  "sources": [
+    "Moreover, many corporates still view ESG compliance as a box-ticking exercise, rather than a strategic imperative.",
+    "The company must continue to educate the market, streamline onboarding and demonstrate ROI to accelerate mainstream adoption."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a paper ledger; a paper hand.\nOpens on the stretched track, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the stretched track folds into a paper ledger; a paper hand enters and taps its final line.\nEnds holding on the tapping hand.\nHeadline printed on a paper chip: \"PROVE ROI\".\n\nON-SCREEN TEXT: \"PROVE ROI\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with refined 2D motion design, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a bright pink paper ground with a cream paper chip bearing the text \"LONGER SALES CYCLES\" in a bold black sans-serif font, and a black-and-white halftone photographic cutout of a car with rough white torn edges. As the action begins, the pink ground is instantly covered by a single unbroken block of lime green paper. Simultaneously, the \"LONGER SALES CYCLES\" chip flips upward and away out of frame. The white paper strip beneath the car folds and transforms rapidly into a black-and-white halftone cutout of a paper ledger, which lands with a slight overshoot in the lower two-thirds of the frame. The car cutout slides off-screen to the left. A new cream-colored paper chip descends rapidly from the top, landing stably in the upper third of the frame; it features the text \"PROVE ROI\" printed in a large, extra-bold black sans-serif font, clean and legible with no misspellings. The ledger remains blank and unprinted. A black-and-white halftone cutout of an anonymous paper hand enters from the right side of the frame and taps the final line of the ledger with a quick, decisive motion. The camera remains in a Static Shot throughout. A consistent light source from the upper left ensures every paper layer, including the \"PROVE ROI\" chip, the ledger, and the hand, casts a small, soft shadow onto the lime green ground. All surfaces are matte printed paper with no glow or neon effects. The video ends holding on the tapping hand.\n\noverall_soundscape: The audio consists of crisp, tactile paper foley. A quick, rhythmic paper-slap sound occurs as the chips flip and land, accompanied by the short, sticky sound of adhesive tape being pressed down. A final, distinct thumping paper tap is heard when the hand hits the ledger.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa912a0/q_Z7J66SqIVPZe9FQltDb_minimax-h3.mp4",
+  "requestId": "01a06c64-29e1-7d42-8a9e-2b8f2a4ed406",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3131,
+  "timings": {
+    "inference": 0.46036211700265994
+  },
+  "savedAt": "2026-09-04T12:28:20.302Z"
+}

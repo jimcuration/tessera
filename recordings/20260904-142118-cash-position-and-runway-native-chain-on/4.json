@@ -1,0 +1,39 @@
+{
+  "session": "20260904-142118-cash-position-and-runway-native-chain-on",
+  "n": 4,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "At that rate, the cash on hand covered one point four months.",
+    "headline": "1.4 MONTHS",
+    "ground": "magenta",
+    "subjects": [
+      "a paper runway",
+      "a cutout aircraft"
+    ],
+    "action": "The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.",
+    "handoff": "the runway",
+    "source": [
+      23
+    ]
+  },
+  "sources": [
+    "At that rate, the $1.85M cash on hand provides 1.4 months of runway — dangerously thin."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper runway; a cutout aircraft.\nOpens on the strip, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.\nEnds holding on the runway.\nHeadline printed on a paper chip: \"1.4 MONTHS\".\n\nON-SCREEN TEXT: \"1.4 MONTHS\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"At that rate, the cash on hand covered one point four months.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial paper collage style, Static Shot. The frame opens on <Picture 1> displaying a solid deep magenta paper background with soft upper-left lighting. Immediately, a new cream paper chip firmly slaps down over the top paper, displaying clean, bold black text reading \"1.4 MONTHS\". Concurrently, the bottom segmented cream paper strip tears off short to form a truncated runway. A black-and-white halftone cutout airplane with torn white paper edges slides quickly in from the left along the paper strip, braking to an abrupt halt just before the ragged torn edge. An English narrator (S1, adult, warm, clear, brisk) says in an off-screen voiceover: <d>[English] At that rate, the cash on hand covered one point four months.</d> The composition holds steadily on this final layout through the end of the five-second shot.\n\noverall_soundscape: A crisp paper-slap sound as the new text chip lands, followed by the light friction whoosh and soft stop of a paper cutout sliding across the surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9127a/ZEAXULNxCZ0cg6FxKoJDz_minimax-h3.mp4",
+  "requestId": "01a06c5e-3feb-78c1-a664-6ef21845b313",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 11311,
+  "timings": {
+    "inference": 0.4563420699851122
+  },
+  "savedAt": "2026-09-04T12:22:00.277Z"
+}
