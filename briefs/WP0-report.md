@@ -45,7 +45,7 @@ When the model speaks, it speaks the line word for word: 10 of 10 spoken clips a
 
 ## 4. Voice consistency 1–5 across the six spine clips
 
-Subjective, needs listening; I cannot. Left for Robin, with the proxies I can give:
+Scored by Robin after listening to the reels; the proxies are the builder's:
 
 | | native | saskia |
 |---|---|---|
@@ -53,7 +53,9 @@ Subjective, needs listening; I cannot. Left for Robin, with the proxies I can gi
 | same voice clip to clip | not measurable here (a different narrator is possible per clip; the prompt asks for one) | by construction (one voice id) |
 | words as written | 100% on the spoken clips | not measured (TTS) |
 | timing | tied to the clip | sentence-to-clip, no tight sync; the reel and the player start line N at clip N or when line N−1 ends |
-| voice consistency 1–5 | ☐ | ☐ |
+| voice consistency 1–5 | **3** — female voice on clip 1, then male and consistent for the rest; one clip rushed | **5** — a single voice throughout |
+
+Follow-ups noted on Saskia: the delivery is flat, and the sentence-to-clip alignment is loose.
 
 ## 5. Contact sheets
 
