@@ -1,16 +1,21 @@
 {
-  "name": "unreel",
+  "name": "tessera",
   "version": "0.1.0",
   "private": true,
-  "description": "UNREEL: an endless streaming service where every title is generated as you watch. Powered by fal + MiniMax H3 Max Turbo.",
+  "description": "Tessera: CurationAI's video surface. A CurationAI answer, rendered live as a short Curation-collage programme by MiniMax H3 Max Turbo on fal.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "catalog": "node scripts/generate-catalog.mjs"
+    "check": "node scripts/check.mjs",
+    "reel": "node scripts/reel.mjs",
+    "contact": "node scripts/contact-sheet.mjs",
+    "whisper": "python scripts/whisper-match.py",
+    "report": "node scripts/report.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.123.0",
     "@fal-ai/client": "^1.5.0",
     "@fal-ai/server-proxy": "^1.1.1",
     "next": "^15.5.4",
@@ -21,6 +26,7 @@
     "@types/node": "^22.10.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
+    "ffmpeg-static": "^5.3.0",
     "typescript": "^5.7.3"
   }
 }

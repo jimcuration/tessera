@@ -1,0 +1,9 @@
+loading whisper medium…
+ 1  100.0%  15/15  heard: At the end of September, Diginex held $1.85 million in cash.
+ 2  100.0%  17/17  heard: Six months earlier, it was $3.11 million. The burn shows a company mid-transition.
+ 3  100.0%  10/10  heard: Operating burn ran about 1.3 million a month.
+ 4  100.0%  13/13  heard: At that rate, the cash on hand covered roughly 1.4 months.
+ 5  100.0%  19/19  heard: An 11.4 million warrant exercise kept the company afloat, and October added 13.8 million more.
+ 6    0.0%  0/16  heard: 
+
+mean word recall 83.3% -> recordings\20260904-120800-what-is-the-cash-position-and-runway-native-chain-on\whisper.json

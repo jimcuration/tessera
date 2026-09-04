@@ -1,0 +1,42 @@
+{
+  "session": "20260904-121611-what-are-the-key-catalysts-for-diginex-saskia-chain-on",
+  "n": 8,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Revenue grew two hundred and ninety-three percent to two million dollars, driven mainly by subscription.",
+    "headline": "+293% YOY",
+    "ground": "lime",
+    "subjects": [
+      "the map shape",
+      "paper coins",
+      "a ribbon"
+    ],
+    "action": "The map shape unrolls into a ribbon; paper coins climb it step by step and rest at the top.",
+    "handoff": "the coin ribbon",
+    "source": [
+      31
+    ]
+  },
+  "sources": [
+    "Revenue grew 293% YoY to $2.0M in H1 FY25, driven mainly by subscription."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: lime green. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: the map shape; paper coins; a ribbon.\nOpens on the map shape, carried over from the previous shot, which transforms as the action begins.\nAction: The map shape unrolls into a ribbon; paper coins climb it step by step and rest at the top.\nEnds holding on the coin ribbon.\nHeadline printed on a paper chip: \"+293% YOY\".\n\nCOPY LIST: \"+293% YOY\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens on <Picture 1>, but the background is a solid, flat matte lime green paper surface. The composition features black-and-white halftone photographic cutouts with distinct, rough white torn-paper edges. A black halftone map shape, anchored from the first frame, is positioned centrally. An extra-bold sans-serif headline \"+293% YOY\" is printed in black ink on a cream-colored paper chip with rough edges, positioned in a safe margin of the frame. Lighting is consistent from the upper-left, casting very small, subtle paper-layer shadows beneath every element. As the action begins immediately on the first frame, the map shape rapidly unrolls and transforms into a long, flat matte cream paper ribbon that curves upward across the screen. Several black-and-white halftone paper coins, each with a rough white torn-paper edge, enter the frame quickly with a slight overshoot and begin to climb the ribbon step-by-step in a rhythmic, mechanical motion. The coins move upward and eventually come to a stable rest at the top of the ribbon. The camera remains in a Static Shot throughout the duration, ensuring a clear reading window for the headline and the final arrangement of coins. By the end of the 5-second duration, the elements hold their position with a very subtle, rhythmic looping pulse in their placement to maintain visual energy. All materials are flat matte printed paper; there are no glows, no gradients, and no 3D gloss.\n\noverall_soundscape: The audio consists of crisp, tactile foley sounds. Each movement of the paper elements is accompanied by a light, sharp paper-slap sound and the subtle, sticky peel of adhesive tape.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f76/dU215VbAInvxVP2gqNvE0_minimax-h3.mp4",
+  "requestId": "01a06bec-1280-7ab1-8d84-68e5b605ec95",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 71249,
+  "resolution": "480P",
+  "renderMs": 3395,
+  "timings": {
+    "inference": 0.6707965300884098
+  },
+  "renderedAt": "2026-09-04T10:17:10.767Z",
+  "savedAt": "2026-09-04T10:17:10.785Z"
+}

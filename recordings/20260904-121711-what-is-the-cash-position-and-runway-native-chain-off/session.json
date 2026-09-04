@@ -1,0 +1,172 @@
+{
+  "session": "20260904-121711-what-is-the-cash-position-and-runway-native-chain-off",
+  "question": "What is the cash position and runway?",
+  "matchedQuestion": "What is the cash position and runway?",
+  "answerKind": "answer",
+  "link": null,
+  "followups": [
+    "What is the revenue run-rate and gross margin trajectory?",
+    "Has the company guided to profitability or cash breakeven?",
+    "What happens if warrant exercises dry up and the stock price stays depressed?"
+  ],
+  "fromSpine": false,
+  "sentences": [
+    "Diginex — Cash Position & Runway",
+    "DiginexPartner",
+    "Technology",
+    "Sector",
+    "$1.38 USD",
+    "+1.47% today",
+    "$37.83 m USD",
+    "Market Cap",
+    "Where we stand",
+    "As of 30th September 2025, Diginex held $1.85M in cash and cash equivalents — a significant decline from $3.11M six months earlier.",
+    "The burn reflects the company's transition phase: heavy integration spending on the Resulticks acquisition and operational losses as the platform consolidates.",
+    "Diginex HY25 results",
+    "Net current assets stood at $10.6M (up from $4.4M), providing a buffer — but the composition matters.",
+    "The improvement is driven largely by deferred revenues ($611k) and other payables ($2.7M), not by cash generation.",
+    "True liquidity is the $1.85M cash balance.",
+    "The cash burn picture",
+    "Six months to 30th September 2025:",
+    "Operating cash burn: $3.9M",
+    "Investing cash outflow: $8.8M (primarily $8M advance to Resulticks Group Companies and $759k loan to Matter DK)",
+    "Total cash consumed: $12.7M",
+    "This was offset by $11.4M raised from warrant exercises (IPO Warrants Tranche 1), which kept the company afloat.",
+    "Without that financing, cash would have fallen to near zero.",
+    "The burn rate is roughly $3.9M per half-year in operating losses, or approximately $1.3M per month.",
+    "At that rate, the $1.85M cash on hand provides 1.4 months of runway — dangerously thin.",
+    "The critical dependency",
+    "Diginex's survival hinges on continued access to capital markets.",
+    "The company has demonstrated ability to raise via warrant exercises and equity issuance.",
+    "The October 2025 warrant exercise generated $13.8M in cash, which materially strengthened the balance sheet beyond the September 30 snapshot.",
+    "However, reliance on capital raises to fund operations (rather than cash generation) is a structural weakness.",
+    "The company is not yet self-sustaining, and at a $34M market cap with a collapsed stock price, future equity raises will be dilutive.",
+    "Path to cash sustainability",
+    "Diginex needs to achieve one of two things:",
+    "Revenue acceleration + margin improvement.",
+    "If subscription revenue growth (currently 293% YoY in H1 FY25) continues and operating losses narrow, the company can extend runway and eventually reach cash flow breakeven.",
+    "This is the bull case — platform traction drives scale.",
+    "Strategic capital event.",
+    "Acquisition, partnership, or debt financing that extends the runway while the business scales.",
+    "At current burn rates and micro-cap valuation, this is plausible but uncertain.",
+    "The risk",
+    "The company is in a classic cash-constrained growth phase.",
+    "Integration spending on Resulticks, geographic expansion into Brazil, and platform consolidation all require capital.",
+    "If revenue growth disappoints or customer acquisition costs spike, the company may need to raise capital at unfavourable terms — or cut costs aggressively, which undermines the growth thesis.",
+    "The next 6–9 months are critical.",
+    "Evidence of revenue acceleration and narrowing operating losses in Q3 and Q4 2026 results will determine whether Diginex can extend runway organically or faces dilutive capital raises."
+  ],
+  "switches": {
+    "voice": "native",
+    "chain": "off",
+    "render": "queue"
+  },
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "translateSource": "pinned",
+  "translateMs": 0,
+  "firstBeatMs": 105,
+  "beats": [
+    {
+      "line": "At the end of September, Diginex held one point eight five million dollars in cash.",
+      "headline": "$1.85M",
+      "ground": "violet",
+      "subjects": [
+        "a stack of paper coins",
+        "a cream paper chip"
+      ],
+      "action": "A single halftone stack of paper coins drops onto a cream chip and settles.",
+      "handoff": "the coin stack",
+      "source": [
+        9
+      ]
+    },
+    {
+      "line": "Six months earlier it was three point one one million — the burn shows a company mid-transition.",
+      "headline": "$3.11M → $1.85M",
+      "ground": "violet",
+      "subjects": [
+        "the coin stack",
+        "a torn-paper arrow"
+      ],
+      "action": "The stack shrinks coin by coin; a torn-paper arrow slides in and points down.",
+      "handoff": "the arrow",
+      "source": [
+        9,
+        10
+      ]
+    },
+    {
+      "line": "Operating burn ran about one point three million a month.",
+      "headline": "$1.3M / MONTH",
+      "ground": "magenta",
+      "subjects": [
+        "a paper calendar strip",
+        "paper coins"
+      ],
+      "action": "The arrow unrolls into a paper calendar strip; coins slide off it month by month.",
+      "handoff": "the strip",
+      "source": [
+        22
+      ]
+    },
+    {
+      "line": "At that rate, the cash on hand covered roughly one point four months.",
+      "headline": "1.4 MONTHS",
+      "ground": "magenta",
+      "subjects": [
+        "a paper runway",
+        "a cutout aircraft"
+      ],
+      "action": "The strip becomes a runway that is torn short; a cutout aircraft rolls toward the torn end and stops.",
+      "handoff": "the runway",
+      "source": [
+        23
+      ]
+    },
+    {
+      "line": "An eleven point four million warrant exercise kept the company afloat — and October added thirteen point eight million more.",
+      "headline": "+$13.8M",
+      "ground": "lime",
+      "subjects": [
+        "fresh paper coins",
+        "the runway",
+        "tape pieces"
+      ],
+      "action": "Fresh paper coins are taped onto the runway one after another, extending it across the frame.",
+      "handoff": "the extended runway",
+      "source": [
+        20,
+        27
+      ]
+    },
+    {
+      "line": "Survival depends on capital markets; the next two quarters show whether revenue can narrow the gap.",
+      "headline": "NEXT 2 QUARTERS",
+      "ground": "lime",
+      "subjects": [
+        "two paper calendar pages",
+        "a paper hand"
+      ],
+      "action": "Two paper calendar pages land on the runway; a paper hand enters and points at the second.",
+      "handoff": "the pointing hand",
+      "source": [
+        25,
+        43
+      ]
+    }
+  ],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "line is 20 words (limit 18)"
+    ],
+    []
+  ],
+  "dropped": [],
+  "askedAt": "2026-09-04T10:17:11.870Z",
+  "savedAt": "2026-09-04T10:17:12.006Z"
+}

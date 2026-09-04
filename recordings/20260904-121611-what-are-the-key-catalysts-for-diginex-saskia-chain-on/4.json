@@ -1,0 +1,44 @@
+{
+  "session": "20260904-121611-what-are-the-key-catalysts-for-diginex-saskia-chain-on",
+  "n": 4,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "They also want cross-sell traction and a path to the two hundred and eighty million dollar revenue target.",
+    "headline": "$280M BY 2027",
+    "ground": "cyan",
+    "subjects": [
+      "the taped block",
+      "a torn-paper arrow",
+      "paper coins"
+    ],
+    "action": "The taped block extends a torn-paper arrow upward; paper coins stack along its length and hold.",
+    "handoff": "the rising arrow",
+    "source": [
+      15,
+      16
+    ]
+  },
+  "sources": [
+    "Cross-sell traction — customers adopting multiple products from the platform",
+    "Revenue run-rate and path to the $280M group revenue target by 2027 diginex dgnx"
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the taped block; a torn-paper arrow; paper coins.\nOpens on the taped block, carried over from the previous shot, which transforms as the action begins.\nAction: The taped block extends a torn-paper arrow upward; paper coins stack along its length and hold.\nEnds holding on the rising arrow.\nHeadline printed on a paper chip: \"$280M BY 2027\".\n\nCOPY LIST: \"$280M BY 2027\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated, modern editorial paper collage. The scene opens on <Picture 1>, featuring a flat, pale cyan background. The central focus is a composite \"taped block\" consisting of black-and-white halftone photographic cutouts of office environments and documents, characterized by rough white torn-paper edges and held in place by pieces of translucent matte tape. A bold, extra-bold sans-serif headline \"4 BUSINESSES\" is printed in black on a cream-colored paper chip. Lighting is consistent from the upper-left, casting small, subtle paper-layer shadows. Immediately, the \"4 BUSINESSES\" text chip is replaced by a new cream paper chip with the stable, printed text \"$280M BY 2027\". Simultaneously, the taped block transforms: a flat matte, torn-paper arrow in black emerges from the top of the block and extends rapidly upward with a slight overshoot before snapping into a stable vertical position. As the arrow rises, several black-and-white halftone paper coins, each with rough white torn edges, snap into place, stacking neatly along the length of the arrow's shaft. The camera remains in a Static Shot throughout. By the end of the five seconds, the composition holds on the rising arrow and the stacked coins, with a very slight, rhythmic bobbing loop to maintain visual energy. Every element remains flat matte printed paper; there is no glow, no 3D depth, and no gradients.\n\noverall_soundscape: A series of rhythmic, tactile foley sounds. Crisp, light paper-slap sounds occur as the arrow extends and each coin snaps into place. Short, sticky peeling and pressing sounds of adhesive tape accompany the initial transformation of the block.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f74/HbiTglO7jVTrpGWxORglm_minimax-h3.mp4",
+  "requestId": "01a06beb-a715-7b93-8fb7-5900e549d24f",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 71245,
+  "resolution": "480P",
+  "renderMs": 3502,
+  "timings": {
+    "inference": 0.4635176660012803
+  },
+  "renderedAt": "2026-09-04T10:16:42.853Z",
+  "savedAt": "2026-09-04T10:16:42.872Z"
+}

@@ -1,0 +1,43 @@
+{
+  "session": "20260904-121611-what-are-the-key-catalysts-for-diginex-saskia-chain-on",
+  "n": 3,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Investors want proof the four acquired businesses are operationally unified, not run as silos.",
+    "headline": "4 BUSINESSES",
+    "ground": "cyan",
+    "subjects": [
+      "four paper blocks",
+      "strips of tape"
+    ],
+    "action": "The calendar page splits into four paper blocks; tape strips cross them and pull the blocks together.",
+    "handoff": "the taped block",
+    "source": [
+      14
+    ]
+  },
+  "sources": [
+    "Evidence that the four acquired businesses (Plan A, Matter, The Remedy Project, Resulticks) are operationally unified rather than run as silos"
+  ],
+  "warnings": [
+    "headline number \"4\" not found in cited sentences [14]"
+  ],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: four paper blocks; strips of tape.\nOpens on the calendar page, carried over from the previous shot, which transforms as the action begins.\nAction: The calendar page splits into four paper blocks; tape strips cross them and pull the blocks together.\nEnds holding on the taped block.\nHeadline printed on a paper chip: \"4 BUSINESSES\".\n\nCOPY LIST: \"4 BUSINESSES\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens on <Picture 1>, featuring a black paper cutout with a rough white torn-paper edge containing the text \"Q2 2026\" in a bold cream sans-serif font, resting on a purple background. Immediately upon onset, the purple background snaps to a flat, dominant block of pale cyan. The central black paper element swiftly splits and transforms into four distinct rectangular paper blocks of various sizes, each maintaining a rough white torn-paper edge and a subtle drop shadow cast from a consistent upper-left light source. The blocks are arranged in a loose grid, featuring black-and-white halftone photographic textures of anonymous business-related imagery like architectural fragments and office machines. Simultaneously, four strips of flat matte cream paper tape fly into the frame from the edges with a fast motion and a slight overshoot, crossing over the blocks diagonally and pinning them together into a tight, organized cluster. A final piece of cream paper chip slides into the composition, featuring the headline \"4 BUSINESSES\" printed in a large, extra-bold black sans-serif font with clean, legible letterforms. The camera remains in a Static Shot throughout the five seconds. By the end of the shot, the composition holds steady on the taped blocks and the headline, with a very subtle, slow rhythmic pulsing of the paper layers to create a minimal loop. Every element is flat matte printed paper with visible print dots and texture; there are no glows, gradients, or 3D effects.\n\noverall_soundscape: A sequence of crisp, tactile sound effects including the sharp slap of heavy paper hitting a surface, the rhythmic sticking and peeling sounds of adhesive tape being applied, and a soft, dry paper rustle as the blocks shift.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f73/4ho1dvzps5Z72_p1DVyvt_minimax-h3.mp4",
+  "requestId": "01a06beb-7658-79d2-9744-e5564242a7d8",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 71244,
+  "resolution": "480P",
+  "renderMs": 4314,
+  "timings": {
+    "inference": 0.4660976540762931
+  },
+  "renderedAt": "2026-09-04T10:16:30.769Z",
+  "savedAt": "2026-09-04T10:16:30.802Z"
+}

@@ -1,5 +1,5 @@
-import { Browse } from "@/components/browse";
+import { Player } from "@/components/player";
 
 export default function Home() {
-  return <Browse />;
+  return <Player />;
 }

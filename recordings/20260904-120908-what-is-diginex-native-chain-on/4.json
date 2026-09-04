@@ -1,0 +1,43 @@
+{
+  "session": "20260904-120908-what-is-diginex-native-chain-on",
+  "n": 4,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "That turns point solutions into an end-to-end platform, from carbon accounting to human rights due diligence.",
+    "headline": "END-TO-END",
+    "ground": "cyan",
+    "subjects": [
+      "the four-block bloc",
+      "a paper ribbon"
+    ],
+    "action": "A paper ribbon threads through the four blocks and pulls them into a single continuous band.",
+    "handoff": "the ribbon band",
+    "source": [
+      3,
+      18
+    ]
+  },
+  "sources": [
+    "Following acquisitions of Plan A, Matter, The Remedy Project, and the transformative addition of Resulticks, Diginex is evolving from point solutions into a fully integrated end-to-end platform spanning carbon accounting, ESG reporting, supply chain transparency, human rights due diligence, and now AI-driven customer data capabilities — designed to serve banks, asset managers and enterprises.",
+    "By unifying carbon accounting, ESG reporting, supply chain transparency and human rights due diligence into one platform, combined with Resulticks' AI-driven customer data capabilities, the company is positioning itself as a one-stop shop for sustainability and compliance workflows."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the four-block bloc; a paper ribbon.\nOpens on the four-block bloc, carried over from the previous shot, which transforms as the action begins.\nAction: A paper ribbon threads through the four blocks and pulls them into a single continuous band.\nEnds holding on the ribbon band.\nHeadline printed on a paper chip: \"END-TO-END\".\n\nCOPY LIST: \"END-TO-END\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"That turns point solutions into an end-to-end platform, from carbon accounting to human rights due diligence.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style. The scene opens on <Picture 1>, featuring a dominant flat block-color background of pale cyan. Centered is a black-and-white halftone photographic cutout of a building with rough white torn-paper edges, partially obscured by a cream-colored paper chip with the text \"4 ACQUISITIONS\" printed in an extra-bold black sans-serif font. A consistent light source from the upper-left casts small, subtle paper-layer shadows beneath the elements. Immediately upon the first frame, the composition transforms: the single building cutout splits and rearranges into a \"four-block bloc\" of four distinct black-and-white halftone photographic cutouts of architectural structures, each with rough white torn-paper edges. Simultaneously, a flat matte paper ribbon in a contrasting cream color enters the frame fast with a slight overshoot. The ribbon threads fluidly through the center of the four blocks, acting as a tether that pulls them together into a single, continuous horizontal band. As the blocks align, the \"4 ACQUISITIONS\" chip is replaced by a new, clean paper chip featuring the headline \"END-TO-END\" in the same extra-bold black sans-serif typography, positioned with safe margins. The camera remains in a Static Shot throughout the 5 seconds, with no shake or zoom. The movement settles into a stable landing, holding the final image of the ribbon band and the \"END-TO-END\" headline, with a subtle, small loop of the paper elements shifting slightly at the end to maintain dynamism. All materials are flat matte printed paper with visible print dots and textures; there are no glows, neon effects, or 3D gradients. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says: <d>[English] That turns point solutions into an end-to-end platform, from carbon accounting to human rights due diligence.</d>\n\noverall_soundscape: The audio features the tactile sounds of a physical collage being assembled, including light paper-slap sounds as the blocks shift and the distinct, sticky sound of tape being applied and peeled. These foley effects are layered subtly beneath the narrator's voice.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f49/VmF4lz3K6KCRDxuEtVZZG_minimax-h3.mp4",
+  "requestId": "01a06be5-279a-7142-8c26-9546ff31de84",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 453100,
+  "resolution": "480P",
+  "renderMs": 2775,
+  "timings": {
+    "inference": 0.48573623411357403
+  },
+  "renderedAt": "2026-09-04T10:09:36.716Z",
+  "savedAt": "2026-09-04T10:09:36.731Z"
+}

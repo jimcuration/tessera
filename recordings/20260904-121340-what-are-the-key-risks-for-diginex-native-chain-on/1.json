@@ -1,0 +1,41 @@
+{
+  "session": "20260904-121340-what-are-the-key-risks-for-diginex-native-chain-on",
+  "n": 1,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Diginex faces a first risk in the data itself.",
+    "headline": "DATA RELIABILITY",
+    "ground": "violet",
+    "subjects": [
+      "a paper document",
+      "a halftone screen"
+    ],
+    "action": "A paper document slides onto a halftone screen and locks into place.",
+    "handoff": "the document on screen",
+    "source": [
+      8
+    ]
+  },
+  "sources": [
+    "Data reliability risk"
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a paper document; a halftone screen.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: A paper document slides onto a halftone screen and locks into place.\nEnds holding on the document on screen.\nHeadline printed on a paper chip: \"DATA RELIABILITY\".\n\nCOPY LIST: \"DATA RELIABILITY\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex faces a first risk in the data itself.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, 2D-animated modern editorial paper collage. The scene opens on a flat, matte, soft violet block-color background with a consistent light source coming from the upper-left, casting subtle, small paper-layer shadows. On the first frame, a black-and-white halftone photographic cutout of a computer screen—featuring rough white torn-paper edges—slides rapidly from the right edge of the frame into the center, landing with a slight overshoot before stabilizing. Simultaneously, a second cutout of a paper document, also a black-and-white halftone image with rough white torn-paper edges, slides in from the left. The document moves with fast, refined motion, overlapping the screen and locking into place centrally upon it. A paper chip in cream color, featuring large, extra-bold black sans-serif typography that reads \"DATA RELIABILITY\", enters from the top and snaps into a stable position in the upper-right quadrant, maintaining safe margins. All elements exhibit a real printed paper texture with visible print dots and small pieces of matte tape securing the edges. A narrator (S1), a male with a warm, clear, natural timbre and a brisk, professional speaking rate, says <d>[English] Diginex faces a first risk in the data itself.</d> as the elements enter. The composition holds steady for the remainder of the video, with a subtle, almost imperceptible looping float of the paper layers.\n\noverall_soundscape: The audio is dominated by the narrator's voice, layered with tactile diegetic sound effects. A crisp, physical paper-slap sound occurs the moment the document locks onto the screen, accompanied by the short, sticky sound of adhesive tape being pressed down.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f62/RX-VRW5G5Zj1udJTiFK53_minimax-h3.mp4",
+  "requestId": "01a06be8-f653-7500-9365-1d152dfb5b64",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 533555,
+  "resolution": "480P",
+  "renderMs": 2696,
+  "timings": {
+    "inference": 0.46311680901271757
+  },
+  "renderedAt": "2026-09-04T10:13:46.180Z",
+  "savedAt": "2026-09-04T10:13:46.207Z"
+}

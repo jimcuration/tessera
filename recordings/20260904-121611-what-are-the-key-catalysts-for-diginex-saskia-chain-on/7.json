@@ -1,0 +1,43 @@
+{
+  "session": "20260904-121611-what-are-the-key-catalysts-for-diginex-saskia-chain-on",
+  "n": 7,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Brazil's seventy-seven billion dollar sustainability market is the geographic diversification play to watch.",
+    "headline": "$77B MARKET",
+    "ground": "magenta",
+    "subjects": [
+      "the tipped scale",
+      "a cutout map shape"
+    ],
+    "action": "The tipped scale flattens into a cutout map shape that slides across and settles at the right edge.",
+    "handoff": "the map shape",
+    "source": [
+      22,
+      23
+    ]
+  },
+  "sources": [
+    "Diginex has signalled focus on Brazil's $77B sustainability market as a geographic diversification play.",
+    "Traction in Brazil would provide a new revenue stream and demonstrate the platform's ability to scale beyond its core markets."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the tipped scale; a cutout map shape.\nOpens on the tipped scale, carried over from the previous shot, which transforms as the action begins.\nAction: The tipped scale flattens into a cutout map shape that slides across and settles at the right edge.\nEnds holding on the map shape.\nHeadline printed on a paper chip: \"$77B MARKET\".\n\nCOPY LIST: \"$77B MARKET\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 2D editorial paper collage animation, Static Shot, originating precisely from <Picture 1>. Against the flat, deep magenta background, the paper tape, halftone cutouts, and the tipped balance scale with the \"BURDEN OR UNLOCK\" paper chip rapidly peel back and collapse flat. The scale structure transforms into a black-and-white halftone paper map cutout with torn white edges, which quickly slides horizontally to settle against the right frame edge with a slight overshoot. Concurrently, a cream paper chip printed with bold black sans-serif text reading \"$77B MARKET\" snaps firmly into place on the left. Subtle paper drop shadows fall toward the bottom-right from an upper-left light source. The layout holds completely steady on the map and headline text through 00:05.000.\n\noverall_soundscape: Tactile paper sliding, dry flutter friction, and sharp paper-slap sounds as elements transform and tack into position against the cardstock.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f76/k_Gjx1sHSdA53lZHEBUvx_minimax-h3.mp4",
+  "requestId": "01a06beb-ed39-78e2-a67d-68ebfd84bbb9",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 71248,
+  "resolution": "480P",
+  "renderMs": 7472,
+  "timings": {
+    "inference": 0.4629038560015033
+  },
+  "renderedAt": "2026-09-04T10:17:05.294Z",
+  "savedAt": "2026-09-04T10:17:05.314Z"
+}

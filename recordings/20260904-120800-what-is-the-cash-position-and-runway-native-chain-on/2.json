@@ -1,0 +1,43 @@
+{
+  "session": "20260904-120800-what-is-the-cash-position-and-runway-native-chain-on",
+  "n": 2,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Six months earlier it was three point one one million — the burn shows a company mid-transition.",
+    "headline": "$3.11M → $1.85M",
+    "ground": "violet",
+    "subjects": [
+      "the coin stack",
+      "a torn-paper arrow"
+    ],
+    "action": "The stack shrinks coin by coin; a torn-paper arrow slides in and points down.",
+    "handoff": "the arrow",
+    "source": [
+      9,
+      10
+    ]
+  },
+  "sources": [
+    "As of 30th September 2025, Diginex held $1.85M in cash and cash equivalents — a significant decline from $3.11M six months earlier.",
+    "The burn reflects the company's transition phase: heavy integration spending on the Resulticks acquisition and operational losses as the platform consolidates."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the coin stack; a torn-paper arrow.\nOpens on the coin stack, carried over from the previous shot, which transforms as the action begins.\nAction: The stack shrinks coin by coin; a torn-paper arrow slides in and points down.\nEnds holding on the arrow.\nHeadline printed on a paper chip: \"$3.11M → $1.85M\".\n\nCOPY LIST: \"$3.11M → $1.85M\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Six months earlier it was three point one one million — the burn shows a company mid-transition.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens on <Picture 1>, featuring a flat, matte soft violet background with a consistent light source from the upper-left casting small, subtle shadows beneath the paper elements. The composition contains a black-and-white halftone photographic cutout of a stack of coins, defined by rough white torn-paper edges. To the left of the coins is a cream-colored paper chip with the bold, black sans-serif text \"$3.11M → $1.85M\" printed cleanly and legibly. As the shot begins, a narrator (S1), a man with a warm, clear, and natural mid-range timbre speaking at a brisk but unhurried rate, says: <d>[English] Six months earlier it was three point one one million — the burn shows a company mid-transition.</d> Simultaneously, the coin stack begins to shrink rapidly, with individual coins disappearing one by one in a rhythmic, stepped motion. As the stack decreases in height, a flat matte cream paper arrow with rough white torn-paper edges slides in quickly from the right with a slight overshoot, coming to a stable stop while pointing downward toward the shrinking coins. The movement is precise and mechanical, typical of refined motion design. The camera remains a Static Shot throughout the 5-second duration, maintaining the flat 2D perspective. The video ends by holding on the final reduced stack of coins and the downward-pointing arrow, with the headline text remaining stable and legible on its paper chip.\n\noverall_soundscape: The audio is dominated by a clean, dry voiceover. Beneath the narration, there are synchronized diegetic sound effects including the rhythmic, crisp \"slap\" of paper being placed on a surface and the sticky, tactile sound of adhesive tape being pressed down as the arrow slides into frame.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f58/c_vL0GTuSCfS95Jg8n4Lg_minimax-h3.mp4",
+  "requestId": "01a06be3-f341-7360-baf8-468529939c91",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 998980,
+  "resolution": "480P",
+  "renderMs": 2356,
+  "timings": {
+    "inference": 0.4644385860010516
+  },
+  "renderedAt": "2026-09-04T10:08:17.331Z",
+  "savedAt": "2026-09-04T10:08:17.346Z"
+}

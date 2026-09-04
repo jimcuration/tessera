@@ -1,0 +1,41 @@
+{
+  "session": "20260904-121916-what-is-the-cash-position-and-runway-native-chain-off",
+  "n": 1,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "At the end of September, Diginex held one point eight five million dollars in cash.",
+    "headline": "$1.85M",
+    "ground": "violet",
+    "subjects": [
+      "a stack of paper coins",
+      "a cream paper chip"
+    ],
+    "action": "A single halftone stack of paper coins drops onto a cream chip and settles.",
+    "handoff": "the coin stack",
+    "source": [
+      9
+    ]
+  },
+  "sources": [
+    "As of 30th September 2025, Diginex held $1.85M in cash and cash equivalents — a significant decline from $3.11M six months earlier."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a stack of paper coins; a cream paper chip.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: A single halftone stack of paper coins drops onto a cream chip and settles.\nEnds holding on the coin stack.\nHeadline printed on a paper chip: \"$1.85M\".\n\nCOPY LIST: \"$1.85M\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"At the end of September, Diginex held one point eight five million dollars in cash.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style. The entire shot features a single, dominant flat block-color background of soft violet with a matte paper texture and print dots. The lighting is consistent from the upper-left, casting small, subtle paper-layer shadows beneath every element. On the first frame, a cream-colored paper chip with rough white torn-paper edges enters the frame quickly from the top and lands with a slight overshoot in the center, settling firmly. Simultaneously, a black-and-white halftone photographic cutout of a stack of coins, also featuring rough white torn-paper edges, drops rapidly from above, landing squarely on top of the cream chip. The coin stack settles with a small bounce and then remains static, creating a clear reading window. Floating near the composition, a large, extra-bold black sans-serif headline \"$1.85M\" is printed on a separate white paper chip with a torn edge, positioned with safe margins. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says: <d>[English] At the end of September, Diginex held one point eight five million dollars in cash.</d> The movement is crisp and mechanical, with no camera shake, and a subtle, slow-pulsing scale loop continues on the coin stack until the end of the five-second duration.\n\noverall_soundscape: A crisp, tactile paper-slap sound occurs exactly as the coin stack hits the paper chip. A subtle, sticky sound of adhesive tape being pressed down accompanies the landing of the elements. The ambient environment is a dead, studio-like silence, emphasizing the physical textures of the paper.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f83/kFFs_ftGmay4fF51Pi6l-_minimax-h3.mp4",
+  "requestId": "01a06bee-0d1c-7b01-8af0-f631b2c9f96f",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 599248,
+  "resolution": "480P",
+  "renderMs": 2913,
+  "timings": {
+    "inference": 0.44164720800472423
+  },
+  "renderedAt": "2026-09-04T10:19:19.858Z",
+  "savedAt": "2026-09-04T10:19:19.876Z"
+}

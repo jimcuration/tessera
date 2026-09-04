@@ -1,0 +1,41 @@
+{
+  "session": "20260904-121105-what-is-diginex-native-chain-on",
+  "n": 1,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Diginex is repositioning itself as a unified sustainability, data and compliance platform.",
+    "headline": "ONE PLATFORM",
+    "ground": "violet",
+    "subjects": [
+      "a paper document stack",
+      "a cream paper tile"
+    ],
+    "action": "Loose halftone paper documents drift down and lock together into one tile at centre frame.",
+    "handoff": "the stacked tile",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "Diginex (DGNX) is repositioning itself as a unified sustainability, data and compliance platform."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a paper document stack; a cream paper tile.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: Loose halftone paper documents drift down and lock together into one tile at centre frame.\nEnds holding on the stacked tile.\nHeadline printed on a paper chip: \"ONE PLATFORM\".\n\nCOPY LIST: \"ONE PLATFORM\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex is repositioning itself as a unified sustainability, data and compliance platform.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] 2D-animated modern editorial paper collage style, Static Shot in a 16:9 composition set entirely against an unyielding, flat matte soft violet paper background with fine print fiber texture. The entire scene is illuminated by consistent upper-left directional lighting, creating thin, tight paper-layer cast shadows without any glow or bloom. From the very first frame, several black-and-white halftone photographic cutouts of paper documents, statistical charts, and compliance report sheets—each framed by rough white torn-paper edges—rapidly drift down into the frame with organic flutter. Simultaneously, an unseen narrator (S1), an adult with a warm, clear, brisk, and unhurried English timbre at medium pitch, says in an off-screen voiceover: <d>[English] Diginex is repositioning itself as a unified sustainability, data and compliance platform.</d> By 00:02.000, the floating halftone cutouts converge swiftly toward the center with a slight dynamic overshoot, locking together tightly beneath a flat, thick cream-colored paper tile. Instantly atop this consolidated stack, a crisp cream paper chip drops with precision into the visual center, affixed by a tiny matte translucent tape strip on its edge. Printed boldly across the paper chip is the clean, extra-bold sans-serif headline \"ONE PLATFORM\", rendered with immaculate letterforms, stark black ink, and zero typographic artifacts. From 00:03.500 to 00:05.000, the camera holds steady on the centered, stacked arrangement, preserving an uncluttered reading window where only a faint, subtle print-paper grain breathes beneath the firm, finished collage.\n\noverall_soundscape: Crisp, tactile paper-handling sounds featuring an airy flutter of loose sheets sailing downwards, followed by a firm, rhythmic paper slap as the sheets consolidate, accompanied by the gentle, dry snap of adhesive tape pressing flat against paper cardstock.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f6a/481etWUDZ2uW-KJuHOGMH_minimax-h3.mp4",
+  "requestId": "01a06be6-8d85-7782-994c-77372d9e696f",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 570504,
+  "resolution": "480P",
+  "renderMs": 8199,
+  "timings": {
+    "inference": 0.45993409199581947
+  },
+  "renderedAt": "2026-09-04T10:11:13.762Z",
+  "savedAt": "2026-09-04T10:11:13.780Z"
+}

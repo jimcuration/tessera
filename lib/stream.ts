@@ -1,80 +1,85 @@
 "use client";
 
 /**
- * The Stream: turns a title into an endless sequence of clips.
+ * The Stream: turns a programme's beats into a sequence of clips.
  *
- *   cold open (pre-generated preview) plays immediately
- *        │  showrunner writes a SHORT first batch (fast), then a full one
+ *   the translator hands over shots one by one (addShots) as it writes them
+ *        │
  *        ▼
  *   shot N generates from shot N-1's last frame while N-1 plays
  *        │  (Turbo renders faster than realtime, so the buffer grows)
  *        ▼
  *   player swaps to the next ready clip the instant the current one ends
  *
- * Story titles chain every shot (continuity = the frame). Chaos channels
- * hard-cut, so their shots generate in parallel.
+ * This is unreel's runtime. The shot queue, render buffer, last-frame chain
+ * and the player handshake (peekNext/advance) are unchanged. What changed
+ * for Tessera, and only this:
+ *   - shots arrive from the translator via addShots()/finish() instead of
+ *     the showrunner's refill() batches; there is no cold open, the first
+ *     beat is a text-to-video shot;
+ *   - CHAIN=on|off replaces the story/chaos title mode;
+ *   - a terminal "ended" phase, set when the last shot has played, so the
+ *     programme guide can start its auto-continue countdown;
+ *   - renderingShot() exposes the beat in flight so the cursor can blink in
+ *     its ground colour.
  */
 
 import { generateClip, type Resolution } from "./fal";
 import { lastFrameOf } from "./frames";
-import { mediaUrl, type ManifestEntry, type Title } from "./catalog";
-import { writeBatch, type Shot } from "./showrunner";
+import type { Beat } from "./translator";
+
+export interface Shot {
+  /** 1-based beat number within the session. */
+  n: number;
+  beat: Beat;
+  /** Full compiled clip prompt (style sheet + beat + copy list + audio). */
+  prompt: string;
+  /** Seconds. */
+  duration: number;
+  /** Chain from the previous shot's last frame (false = hard cut). */
+  chain: boolean;
+}
 
 export interface ReadyClip {
   index: number;
+  shot: Shot;
   videoUrl: string;
-  caption: string | null;
-  /** Generation wall-clock, ms; null for the pre-generated cold open. */
-  renderMs: number | null;
+  /** Generation wall-clock, ms. */
+  renderMs: number;
   duration: number;
-  /** Native render resolution; null for the pre-generated cold open. */
-  resolution: Resolution | null;
+  resolution: Resolution;
 }
 
 export interface StreamState {
-  phase: "starting" | "playing" | "buffering" | "error";
-  title: Title;
-  episodeTitle: string;
+  phase: "starting" | "playing" | "buffering" | "ended" | "error";
   /** Clip on screen. */
   current: ReadyClip | null;
   /** Clips generated and waiting. */
   buffered: number;
-  /** Shots written by the showrunner but not yet rendered. */
+  /** Shots handed over but not yet rendered. */
   pending: number;
   /** Total shots rendered so far this session. */
   rendered: number;
+  /** Shots that failed to render (logged; the programme skips them). */
+  failed: number;
   /** Rolling average render time, ms. */
   avgRenderMs: number | null;
   /** Whether a render is in flight right now. */
   rendering: boolean;
-  /** Whether the showrunner is writing right now. */
-  writing: boolean;
+  /** Whether the translator has finished handing over shots. */
+  finished: boolean;
   error: string | null;
 }
 
-const SHOT_SECONDS_STORY = 8;
-const SHOT_SECONDS_CHAOS = 5;
-/**
- * Batch sizes cascade: 1 shot, then 4, then 10 from there on. The LLM
- * takes ~2s for one shot and ~10s for ten, and the first live shot must be
- * rendered before the 6s cold open ends. One shot gets rendering started
- * at ~2s; the 4-shot batch lands while it renders; the 10-shot batches
- * stay far ahead once the buffer exists.
- */
-const BATCH_SIZES = [1, 4, 10];
-/** Ask for the next batch when this many shots remain unrendered. */
-const REFILL_AT = 3;
 /** Keep at most this many rendered clips waiting. */
 const MAX_BUFFER = 3;
-/** Chaos channels render this many hard cuts at once. */
-const CHAOS_PARALLEL = 2;
+/** Unchained programmes render this many hard cuts at once. */
+const UNCHAINED_PARALLEL = 2;
 /**
  * Render resolution. Measured on Turbo: an 8s shot renders in ~5.0s at
- * 768P but ~2.4s at 480P, and a story shot also needs ~1.5s to download
- * and grab its last frame before the next can start. At 768P the chain
- * barely keeps pace with playback; at 480P the buffer fills in two shots.
- * Fixed at 480P for now; flip to "768P" (or make it adaptive on
- * queue.length) once the chain has more headroom.
+ * 768P but ~2.4s at 480P, and a chained shot also needs ~1.5s to download
+ * and grab its last frame before the next can start. Fixed at 480P
+ * (CLAUDE.md hard rule 4).
  */
 const RESOLUTION: Resolution = "480P";
 
@@ -87,34 +92,33 @@ export class Stream {
 
   private shots: Shot[] = [];
   private nextShotIndex = 0;
+  /**
+   * Rendered clips waiting to play. Unchained programmes render two at a
+   * time, so clips can land out of order; the player only ever takes the
+   * shot at `playIndex`, so beats play in the order they were written.
+   */
   private queue: ReadyClip[] = [];
-  private synopsis = "";
+  private playIndex = 0;
+  private failedShots = new Set<Shot>();
   private lastFrame: string | null = null;
-  private lastOnScreen: string;
   private clipCounter = 0;
   private shotCounter = 0;
   private inFlight = 0;
-  private writing = false;
+  private finished = false;
   private renderTimes: number[] = [];
-  private batches = 0;
   private seed = Math.floor(Math.random() * 1_000_000);
 
-  constructor(
-    private readonly title: Title,
-    private readonly asset: ManifestEntry | null
-  ) {
-    this.lastOnScreen = title.previewPrompt;
+  constructor(private readonly chain: boolean) {
     this.state = {
       phase: "starting",
-      title,
-      episodeTitle: title.title,
       current: null,
       buffered: 0,
       pending: 0,
       rendered: 0,
+      failed: 0,
       avgRenderMs: null,
       rendering: false,
-      writing: false,
+      finished: false,
       error: null,
     };
   }
@@ -134,14 +138,14 @@ export class Stream {
       buffered: this.queue.length,
       pending: this.shots.length - this.nextShotIndex,
       rendering: this.inFlight > 0,
-      writing: this.writing,
+      finished: this.finished,
     };
     for (const listener of this.listeners) listener();
   }
 
-  /** Begin: cold open + first batch + first renders. */
+  /** Begin rendering whatever shots exist; more may arrive via addShots. */
   start() {
-    void this.openCold();
+    this.pump();
   }
 
   stop() {
@@ -149,116 +153,36 @@ export class Stream {
     this.listeners.clear();
   }
 
-  private get isStory() {
-    return this.title.mode === "story";
+  /** The translator hands over shots as it writes them. */
+  addShots(shots: Shot[]) {
+    if (!this.alive || shots.length === 0) return;
+    this.shots.push(...shots);
+    this.pump();
   }
 
-  private async openCold() {
-    try {
-      // The showrunner starts writing the moment Play is pressed; it does
-      // not wait for the cold open to load or for its frame grab.
-      const firstBatch = this.refill();
-
-      let videoUrl: string;
-      if (this.asset) {
-        // The pre-generated preview IS the cold open: instant playback, and
-        // the first live shot chains from its last frame.
-        videoUrl = mediaUrl(this.asset.preview);
-        const cold: ReadyClip = {
-          index: this.clipCounter++,
-          videoUrl,
-          caption: null,
-          renderMs: null,
-          duration: this.asset.previewSeconds,
-          resolution: null,
-        };
-        this.set({ phase: "playing", current: cold });
-      } else {
-        // No catalog built: render the cold open live.
-        const resolution = this.pickResolution();
-        const clip = await generateClip({
-          prompt: this.title.previewPrompt,
-          duration: this.seconds(),
-          resolution,
-          seed: this.seed,
-        });
-        if (!this.alive) return;
-        videoUrl = clip.videoUrl;
-        const cold: ReadyClip = {
-          index: this.clipCounter++,
-          videoUrl,
-          caption: null,
-          renderMs: clip.ms,
-          duration: this.seconds(),
-          resolution,
-        };
-        this.noteRender(clip.ms);
-        this.set({ phase: "playing", current: cold });
-      }
-
-      if (this.isStory) {
-        try {
-          this.lastFrame = await lastFrameOf(videoUrl);
-        } catch {
-          // Continuity is nice to have; the first shot becomes a hard cut.
-          this.lastFrame = null;
-        }
-        if (!this.alive) return;
-      }
-      await firstBatch;
-      this.pump();
-    } catch (cause) {
-      this.set({
-        phase: "error",
-        error: cause instanceof Error ? cause.message : "The stream failed to start.",
-      });
+  /** No more shots will arrive. */
+  finish() {
+    if (!this.alive) return;
+    this.finished = true;
+    if (this.shots.length === 0) {
+      this.set({ phase: "ended" });
+      return;
     }
+    this.set({});
   }
 
-  private seconds() {
-    return this.isStory ? SHOT_SECONDS_STORY : SHOT_SECONDS_CHAOS;
+  private get isStory() {
+    return this.chain;
   }
 
   private pickResolution(): Resolution {
     return RESOLUTION;
   }
 
-  /** Ask the showrunner for more shots. */
-  private async refill() {
-    if (this.writing) return;
-    this.writing = true;
-    this.set({});
-    const count = BATCH_SIZES[Math.min(this.batches, BATCH_SIZES.length - 1)];
-    try {
-      const batch = await writeBatch({
-        title: this.title,
-        synopsis: this.synopsis,
-        count,
-        seconds: this.seconds(),
-        onScreen: this.lastOnScreen,
-        opening: this.synopsis === "",
-      });
-      if (!this.alive) return;
-      this.synopsis = batch.synopsis;
-      this.shots.push(...batch.shots);
-      this.batches += 1;
-      this.writing = false;
-      this.set({ episodeTitle: batch.episodeTitle });
-    } catch {
-      // A failed batch is not fatal: the pump retries on the next tick.
-      this.writing = false;
-      this.set({});
-    }
-  }
-
   /** Keep the buffer full. Called after every state change that frees work. */
   private pump() {
     if (!this.alive) return;
-    const remaining = this.shots.length - this.nextShotIndex;
-    if (remaining <= REFILL_AT && !this.writing) {
-      void this.refill().then(() => this.pump());
-    }
-    const parallel = this.isStory ? 1 : CHAOS_PARALLEL;
+    const parallel = this.isStory ? 1 : UNCHAINED_PARALLEL;
     while (
       this.inFlight < parallel &&
       this.queue.length + this.inFlight < MAX_BUFFER &&
@@ -289,19 +213,17 @@ export class Stream {
         resolution,
         seed: this.seed + this.shotCounter++,
         fromFrame,
-        expand: !shot.chain && !shot.caption,
       });
       if (!this.alive) return;
       const ready: ReadyClip = {
         index: this.clipCounter++,
+        shot,
         videoUrl: clip.videoUrl,
-        caption: shot.caption,
         renderMs: clip.ms,
         duration: shot.duration,
         resolution,
       };
       this.noteRender(clip.ms);
-      this.lastOnScreen = shot.prompt;
       // Playable the instant it exists. The player decides when to swap (at
       // the end of the clip on screen), so a clip landing mid-replay never
       // causes a jump cut.
@@ -320,9 +242,12 @@ export class Stream {
       this.inFlight -= 1;
       this.set({});
       this.pump();
-    } catch {
+    } catch (cause) {
       this.inFlight -= 1;
       if (!this.alive) return;
+      console.warn(`[stream] beat ${shot.n} failed to render:`, cause instanceof Error ? cause.message : cause);
+      this.failedShots.add(shot);
+      this.set({ failed: this.state.failed + 1 });
       if (shot.chain && !this.lastFrame) {
         // Recover continuity by re-grabbing the frame from what is on screen.
         const current = this.state.current;
@@ -350,23 +275,47 @@ export class Stream {
     });
   }
 
-  /** The clip that will play next, so the player can preload it. */
+  /** Skip shots that failed to render; the programme carries on without them. */
+  private skipFailed() {
+    while (this.playIndex < this.shots.length && this.failedShots.has(this.shots[this.playIndex])) {
+      this.playIndex += 1;
+    }
+  }
+
+  /** The clip that will play next (the next shot in writing order), so the player can preload it. */
   peekNext(): ReadyClip | null {
-    return this.queue[0] ?? null;
+    this.skipFailed();
+    const wanted = this.shots[this.playIndex];
+    if (!wanted) return null;
+    return this.queue.find((clip) => clip.shot === wanted) ?? null;
+  }
+
+  /** The shot most recently sent to render, or null when nothing is in flight. */
+  renderingShot(): Shot | null {
+    if (this.inFlight === 0) return null;
+    return this.shots[this.nextShotIndex - 1] ?? null;
   }
 
   /**
    * Called by the player when the on-screen clip ends. Returns false when
-   * nothing is ready yet, in which case the player replays the current clip
-   * (a loop beats a spinner) and tries again at its end.
+   * nothing is ready yet, in which case the player holds the last frame
+   * and tries again when a clip lands. Once the translator has finished and
+   * every shot has played, the phase becomes "ended".
    */
   advance(): boolean {
     if (!this.alive) return false;
-    const next = this.queue.shift();
+    const next = this.peekNext();
     if (next) {
+      this.queue.splice(this.queue.indexOf(next), 1);
+      this.playIndex += 1;
       this.set({ phase: "playing", current: next });
       this.pump();
       return true;
+    }
+    this.skipFailed();
+    if (this.finished && this.playIndex >= this.shots.length && this.inFlight === 0) {
+      this.set({ phase: "ended" });
+      return false;
     }
     this.set({ phase: "buffering" });
     this.pump();

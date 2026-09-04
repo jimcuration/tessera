@@ -1,0 +1,44 @@
+{
+  "session": "20260904-121340-what-are-the-key-risks-for-diginex-native-chain-on",
+  "n": 8,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Third, adoption stays uneven, and smaller firms may delay on cost or complexity.",
+    "headline": "UNEVEN ADOPTION",
+    "ground": "cyan",
+    "subjects": [
+      "the taped seam",
+      "a paper map",
+      "small cutout buildings"
+    ],
+    "action": "The seam unfolds into a paper map; small cutout buildings land unevenly across it, some tipping back.",
+    "handoff": "the uneven map",
+    "source": [
+      20,
+      21
+    ]
+  },
+  "sources": [
+    "Although regulatory pressure is mounting, ESG adoption remains uneven across sectors and geographies.",
+    "Smaller enterprises may delay adoption due to cost, complexity, or lack of immediate incentives."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the taped seam; a paper map; small cutout buildings.\nOpens on the taped seam, carried over from the previous shot, which transforms as the action begins.\nAction: The seam unfolds into a paper map; small cutout buildings land unevenly across it, some tipping back.\nEnds holding on the uneven map.\nHeadline printed on a paper chip: \"UNEVEN ADOPTION\".\n\nCOPY LIST: \"UNEVEN ADOPTION\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Third, adoption stays uneven, and smaller firms may delay on cost or complexity.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style. The scene opens with <Picture 1> as the anchor, but immediately transitions to a dominant flat block-color background of pale cyan. A vertical taped seam, consisting of two small pieces of translucent matte cream tape with rough edges, is centered. As the action begins, the seam unfolds rapidly with a slight overshoot, transforming into a black-and-white halftone photographic cutout of a paper map. The map has rough white torn-paper edges and a visible print-dot texture. Simultaneously, several small black-and-white halftone photographic cutouts of buildings, also with rough white torn-paper edges, fly into the frame and land unevenly across the map; some buildings land flat, while others tip backward at an angle. A large paper chip in cream enters from the side, featuring the headline \"UNEVEN ADOPTION\" printed in a stable, extra-bold black sans-serif typeface. The lighting is consistent from the upper-left, casting small, subtle paper-layer shadows beneath the buildings and the headline chip. Everything is flat matte printed paper with no glow or luminosity. The camera remains in a Static Shot throughout the 5 seconds. By the end, the composition holds on the unevenly distributed buildings and the headline, with a very subtle, slow-scale looping pulse of the buildings to maintain life. A male narrator (S1), with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says: <d>[English] Third, adoption stays uneven, and smaller firms may delay on cost or complexity.</d>\n\noverall_soundscape: The audio is dominated by the narrator's voice, layered with tactile foley sounds. Crisp, light paper-slap sounds occur as the map unfolds and the buildings land, accompanied by the sticky, subtle peel and press sound of adhesive tape.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f7e/FwmOwvIQZTMSKIhabK50Q_minimax-h3.mp4",
+  "requestId": "01a06be9-b5f8-7290-a171-1389aa0277c3",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 533562,
+  "resolution": "480P",
+  "renderMs": 2956,
+  "timings": {
+    "inference": 0.4662877890004893
+  },
+  "renderedAt": "2026-09-04T10:14:35.578Z",
+  "savedAt": "2026-09-04T10:14:35.597Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-121711-what-is-the-cash-position-and-runway-native-chain-off",
+  "n": 3,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Operating burn ran about one point three million a month.",
+    "headline": "$1.3M / MONTH",
+    "ground": "magenta",
+    "subjects": [
+      "a paper calendar strip",
+      "paper coins"
+    ],
+    "action": "The arrow unrolls into a paper calendar strip; coins slide off it month by month.",
+    "handoff": "the strip",
+    "source": [
+      22
+    ]
+  },
+  "sources": [
+    "The burn rate is roughly $3.9M per half-year in operating losses, or approximately $1.3M per month."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper calendar strip; paper coins.\nOpens on the arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The arrow unrolls into a paper calendar strip; coins slide off it month by month.\nEnds holding on the strip.\nHeadline printed on a paper chip: \"$1.3M / MONTH\".\n\nCOPY LIST: \"$1.3M / MONTH\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Operating burn ran about one point three million a month.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Modern editorial 2D paper collage animation, Static Shot framed in 16:9 against a completely flat, non-gradient deep magenta paper background with subtle fiber texture. Consistent directional lighting from the upper left casts delicate, razor-thin drop shadows beneath layered paper cutouts. At the start, an off-screen narrator (S1, adult, warm, clear, natural, brisk yet unhurried speaking rate) says in an off-screen voiceover: <d>[English] Operating burn ran about one point three million a month.</d> Right on the first frame, a folded cream paper arrow at center smoothly and swiftly unfolds, unrolling horizontally with slight elastic overshoot into an elongated, segmented matte cream calendar strip featuring tactile, rough white torn-paper edges and fine black printed halftone grid ticks. As the strip snaps flat, a sequence of black-and-white photographic halftone cut-out coins—each bordered by raw, torn white paper edges—slides briskly off the calendar strip month by month, cascading downward at a slight diagonal before floating to a halt near the lower frame. Above the calendar strip, a crisp cream paper chip held by a small piece of semi-opaque matte drafting tape slaps down firmly into the upper-center frame, displaying fully printed, extra-bold black sans-serif typography that reads cleanly and legibly: \"$1.3M / MONTH\". The letters and numerals remain perfectly stable without morphing or glow. During the final two seconds, the composition holds steady on the complete calendar strip, settled paper coins, and headline chip, exhibiting only tiny, continuous, tactile micro-fluttering loops of physical paper edges.\n\noverall_soundscape: Tactile foley of physical paper manipulation unfolds crisply, opening with a snappy, dry unrolling flick and friction rustle as the paper strip extends. Consecutive light, muted paper taps and fluttering slides accompany each tumbling paper coin, complemented by a soft, matte snap of paper tape adhering firmly to the background.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f78/TtHHBZNHK64IAsYE0pA62_minimax-h3.mp4",
+  "requestId": "01a06bec-2de9-7001-b354-0942a905f397",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 713650,
+  "resolution": "480P",
+  "renderMs": 11225,
+  "timings": {
+    "inference": 0.476823991863057
+  },
+  "renderedAt": "2026-09-04T10:17:25.760Z",
+  "savedAt": "2026-09-04T10:17:25.774Z"
+}

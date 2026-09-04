@@ -1,0 +1,42 @@
+{
+  "session": "20260904-121340-what-are-the-key-risks-for-diginex-native-chain-on",
+  "n": 10,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Diginex must educate the market, streamline onboarding and show return on investment.",
+    "headline": "PROVE THE ROI",
+    "ground": "cyan",
+    "subjects": [
+      "the calendar strip",
+      "a paper hand",
+      "a document"
+    ],
+    "action": "A paper hand enters, rolls the calendar strip shorter and sets a document down on it.",
+    "handoff": "the settled document",
+    "source": [
+      24
+    ]
+  },
+  "sources": [
+    "The company must continue to educate the market, streamline onboarding and demonstrate ROI to accelerate mainstream adoption."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the calendar strip; a paper hand; a document.\nOpens on the calendar strip, carried over from the previous shot, which transforms as the action begins.\nAction: A paper hand enters, rolls the calendar strip shorter and sets a document down on it.\nEnds holding on the settled document.\nHeadline printed on a paper chip: \"PROVE THE ROI\".\n\nCOPY LIST: \"PROVE THE ROI\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex must educate the market, streamline onboarding and show return on investment.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style. The scene opens with <Picture 1>, featuring a pale cyan flat block-color background. In the center is a black-and-white halftone photographic cutout of a calendar strip with rough white torn-paper edges, upon which the text \"LONGER SALES CYCLES\" is printed in a bold sans-serif font on a cream paper chip. Every element has a small, subtle paper-layer shadow cast from a consistent upper-left light source. Simultaneously with the first frame, a narrator (S1), an adult with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says: <d>[English] Diginex must educate the market, streamline onboarding and show return on investment.</d> As S1 speaks, an anonymous paper hand—a black-and-white halftone photographic cutout with rough white torn-paper edges—enters the frame quickly from the right with a slight overshoot. The hand grips the calendar strip, rolling it horizontally to make it shorter. As the strip compresses, the previous text vanishes, and the hand sets down a new document cutout—a flat matte white paper sheet with halftone print dots—directly onto the shortened strip. On this document, a new headline \"PROVE THE ROI\" is printed in a large, extra-bold black sans-serif font on a clean paper chip. The camera remains in a Static Shot throughout. The motion settles into a stable landing, holding the final composition of the document and the \"PROVE THE ROI\" text for the remainder of the video, with a very subtle, slow pulsing loop of the paper's position to maintain dynamism.\n\noverall_soundscape: The audio is dominated by the clean, dry voice of the narrator. Beneath the speech, synchronized tactile sound effects occur: a crisp, rhythmic paper-slap as the hand enters and rolls the strip, followed by a soft, sticky tape-like sound and a light thud as the document is set down on the surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f7f/I8G08BNFYzqdSNTc_JjWL_minimax-h3.mp4",
+  "requestId": "01a06be9-e05d-7bb2-9845-b2761838739b",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 533564,
+  "resolution": "480P",
+  "renderMs": 3106,
+  "timings": {
+    "inference": 0.45934169300016947
+  },
+  "renderedAt": "2026-09-04T10:14:46.050Z",
+  "savedAt": "2026-09-04T10:14:46.065Z"
+}

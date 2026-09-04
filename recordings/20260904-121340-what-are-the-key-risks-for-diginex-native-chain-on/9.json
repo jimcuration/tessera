@@ -1,0 +1,44 @@
+{
+  "session": "20260904-121340-what-are-the-key-risks-for-diginex-native-chain-on",
+  "n": 9,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Many corporates still treat compliance as box-ticking, so sales cycles may lengthen.",
+    "headline": "LONGER SALES CYCLES",
+    "ground": "cyan",
+    "subjects": [
+      "the uneven map",
+      "a paper calendar strip",
+      "a checkbox cutout"
+    ],
+    "action": "A checkbox cutout stamps the map, then the map stretches into a long calendar strip.",
+    "handoff": "the calendar strip",
+    "source": [
+      22,
+      23
+    ]
+  },
+  "sources": [
+    "Moreover, many corporates still view ESG compliance as a box-ticking exercise, rather than a strategic imperative.",
+    "If ESG remains underprioritised, especially in weaker macro environments, Diginex’s sales cycles may lengthen, slowing ARR growth."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the uneven map; a paper calendar strip; a checkbox cutout.\nOpens on the uneven map, carried over from the previous shot, which transforms as the action begins.\nAction: A checkbox cutout stamps the map, then the map stretches into a long calendar strip.\nEnds holding on the calendar strip.\nHeadline printed on a paper chip: \"LONGER SALES CYCLES\".\n\nCOPY LIST: \"LONGER SALES CYCLES\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Many corporates still treat compliance as box-ticking, so sales cycles may lengthen.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, featuring a flat, matte pale cyan background with a large, unevenly torn black-and-white halftone map as the central element. Various black-and-white halftone architectural cutouts with rough white torn-paper edges are scattered across the map, and a cream-colored paper chip displays the black, extra-bold sans-serif text \"UNEVEN ADOPTION\". A consistent light source from the upper-left creates small, subtle paper-layer shadows beneath each element. Immediately on the first frame, the text \"UNEVEN ADOPTION\" is swiftly replaced by a new cream paper chip with the large, stable, black sans-serif headline \"LONGER SALES CYCLES\". Simultaneously, a small, black-and-white halftone checkbox cutout enters the frame rapidly from the top, stamping down onto the center of the map with a slight overshoot before landing stably. As the checkbox lands, the uneven map beneath it physically stretches and transforms, its edges extending horizontally and morphing into a long, narrow paper calendar strip with a halftone print texture and rough white torn edges. The camera remains in a Static Shot throughout the 5-second duration, ensuring no camera shake. The final 2 seconds hold on the resulting composition: the pale cyan background, the \"LONGER SALES CYCLES\" headline, and the elongated calendar strip. A narrator (S1), an adult with a warm, clear, and natural timbre speaking at a brisk but unhurried rate, says: <d>[English] Many corporates still treat compliance as box-ticking, so sales cycles may lengthen.</d>\n\noverall_soundscape: The audio features the crisp, tactile sound of a paper-slap as the checkbox stamps the map, followed by a subtle, dry sliding sound and a faint adhesive tape peel as the map stretches into the calendar strip.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f68/_4mPm6aMATq4OBRQH-Ezd_minimax-h3.mp4",
+  "requestId": "01a06be9-cb27-7263-b52e-e8f0fc34922d",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 533563,
+  "resolution": "480P",
+  "renderMs": 2810,
+  "timings": {
+    "inference": 0.47007247399596963
+  },
+  "renderedAt": "2026-09-04T10:14:40.710Z",
+  "savedAt": "2026-09-04T10:14:40.726Z"
+}

@@ -1,279 +1,254 @@
 "use client";
 
-import Link from "next/link";
 import {
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
   useSyncExternalStore,
 } from "react";
-import { loadManifest, type Title } from "@/lib/catalog";
-import { Stream, type StreamState } from "@/lib/stream";
+import { Screen } from "@/components/screen";
+import { SPINE_QUESTIONS } from "@/lib/curation";
+import { Session, type SessionState } from "@/lib/programme";
+import { GROUND_HEX } from "@/lib/prompt";
+import type { ReadyClip, Stream, StreamState } from "@/lib/stream";
 
 /**
- * The theater. Two stacked <video> elements: the one on screen, and the
- * next clip preloading silently behind it, so the swap at clip end is a
- * hard cut with no gap. The stream keeps the queue fed.
+ * The Tessera player: the screen, the ask line with the square cursor, and
+ * the suggestions with the up-next countdown beneath it. Nothing else.
+ *
+ * A programme is a Session (lib/programme.ts). Asking a question while one
+ * runs interrupts it: the picture stays up until the new programme's first
+ * clip exists, then cuts. Once a programme ends, the top suggestion counts
+ * down from ten seconds and continues on its own.
  */
-export function Player({ title }: { title: Title }) {
-  const [stream, setStream] = useState<Stream | null>(null);
 
-  useEffect(() => {
-    let live: Stream | null = null;
-    let cancelled = false;
-    void loadManifest().then((manifest) => {
-      if (cancelled) return;
-      live = new Stream(title, manifest?.titles[title.id] ?? null);
-      setStream(live);
-      live.start();
-    });
-    return () => {
-      cancelled = true;
-      live?.stop();
-    };
-  }, [title]);
+/** Auto-continue into the top suggestion after this long idle. */
+const AUTO_CONTINUE_SECONDS = 10;
+/** How many suggestions sit under the screen. */
+const SUGGESTION_LINES = 3;
 
-  if (!stream) return <div className="theater" />;
-  return <Theater stream={stream} />;
-}
+const noopSubscribe = () => () => {};
+const nullSnapshot = () => null;
 
-/** A clip that lands this early into a replay swaps in at once. */
-const EARLY_SWAP_SECONDS = 1.5;
-/** Hold the last frame this long waiting for the next shot before replaying. */
-const HOLD_MAX_MS = 4000;
-
-function Theater({ stream }: { stream: Stream }) {
-  const state = useSyncExternalStore(stream.subscribe, stream.getSnapshot, stream.getSnapshot);
-  const next = stream.peekNext();
-  const [muted, setMuted] = useState(false);
-  /** The browser refused unmuted autoplay; we fell back to muted playback. */
-  const [needsTap, setNeedsTap] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [idle, setIdle] = useState(false);
-  const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Controls fade after a few seconds without mouse movement.
-  const wake = useCallback(() => {
-    setIdle(false);
-    if (idleTimer.current) clearTimeout(idleTimer.current);
-    idleTimer.current = setTimeout(() => setIdle(true), 3200);
-  }, []);
-  useEffect(() => {
-    wake();
-    return () => {
-      if (idleTimer.current) clearTimeout(idleTimer.current);
-    };
-  }, [wake]);
-
-  const current = state.current;
-
-  // Start each clip explicitly. If the browser blocks autoplay with sound
-  // (a direct load of /watch with no prior click), fall back to muted
-  // playback and show a "tap for sound" pill instead of a frozen frame.
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || !current) return;
-    let cancelled = false;
-    const attempt = video.play();
-    if (!attempt) return;
-    attempt.catch(() => {
-      if (cancelled) return;
-      video.muted = true;
-      setMuted(true);
-      setNeedsTap(true);
-      video.play().catch(() => {
-        /* nothing left to try; the user can press the pill */
-      });
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [current]);
-
-  // While holding on a last frame, or in the first moment of a replay, a
-  // clip that becomes ready cuts in at once. Later in a replay we wait for
-  // its end so the cut stays clean.
-  useEffect(() => {
-    if (state.phase !== "buffering" || !next) return;
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.ended || video.currentTime < EARLY_SWAP_SECONDS) {
-      clearHold();
-      stream.advance();
-    }
-  }, [state.phase, next, stream]);
-
-  const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const clearHold = () => {
-    if (holdTimer.current) clearTimeout(holdTimer.current);
-    holdTimer.current = null;
-  };
-  useEffect(() => clearHold, []);
-
-  const onEnded = (event: React.SyntheticEvent<HTMLVideoElement>) => {
-    if (stream.advance()) return;
-    // Nothing rendered yet. Hold the last frame: the next shot chains from
-    // this exact image, so a short hold reads as a beat and the cut is
-    // seamless. If the wait runs long, replay the clip instead of freezing.
-    const video = event.currentTarget;
-    clearHold();
-    holdTimer.current = setTimeout(() => {
-      holdTimer.current = null;
-      if (stream.getSnapshot().phase !== "buffering") return;
-      video.currentTime = 0;
-      void video.play().catch(() => {});
-    }, HOLD_MAX_MS);
-  };
-  const onTime = (event: React.SyntheticEvent<HTMLVideoElement>) => {
-    const video = event.currentTarget;
-    if (video.duration > 0) setProgress(video.currentTime / video.duration);
-  };
-
-  const toggleSound = () => {
-    const video = videoRef.current;
-    const nextMuted = !muted;
-    setMuted(nextMuted);
-    setNeedsTap(false);
-    if (video) {
-      video.muted = nextMuted;
-      if (video.paused) void video.play().catch(() => {});
-    }
-  };
-
-  const badge = useMemo(() => renderBadge(state), [state]);
-  const waiting = state.phase === "buffering" || state.phase === "starting";
-
-  return (
-    <div className={`theater${idle ? " idle" : ""}`} onMouseMove={wake} onClick={wake}>
-      {current && (
-        <video
-          key={current.index}
-          ref={videoRef}
-          className="reel"
-          src={current.videoUrl}
-          autoPlay
-          muted={muted}
-          playsInline
-          onEnded={onEnded}
-          onTimeUpdate={onTime}
-        />
-      )}
-      {next && (
-        <video
-          key={`pre-${next.index}`}
-          className="reel preload"
-          src={next.videoUrl}
-          preload="auto"
-          muted
-          playsInline
-        />
-      )}
-
-      {waiting && (
-        <div className={`buffering${current ? " quiet" : ""}`}>
-          <div className="ring" />
-          <span>{waitingLabel(state)}</span>
-        </div>
-      )}
-
-      {state.phase === "error" && (
-        <div className="buffering">
-          <span>{state.error ?? "The stream failed."}</span>
-        </div>
-      )}
-
-      {needsTap && (
-        <button type="button" className="tap-sound" onClick={toggleSound}>
-          Tap for sound
-        </button>
-      )}
-
-      <div className="chrome top">
-        <Link href="/" className="back" aria-label="Back to browse">
-          <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
-            <path
-              d="M15 5l-7 7 7 7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
-        <div className="now">
-          <span className="now-title">{state.title.title}</span>
-          {state.episodeTitle !== state.title.title && (
-            <span className="now-episode">{state.episodeTitle}</span>
-          )}
-        </div>
-        <div className="render-badge" title="Every shot is generated as you watch">
-          <span className="live-dot" aria-hidden="true" />
-          {badge}
-        </div>
-      </div>
-
-      {current?.caption && (
-        <div className="caption" key={`cap-${current.index}`}>
-          {current.caption}
-        </div>
-      )}
-
-      <div className="chrome bottom">
-        <div className="progress">
-          <div className="progress-fill" style={{ width: `${progress * 100}%` }} />
-        </div>
-        <div className="bottom-row">
-          <div className="shots">
-            <span className="shot-num">Shot {current ? current.index + 1 : 0}</span>
-            <span className="buffer-dots" aria-label={`${state.buffered} shots ready`}>
-              {Array.from({ length: 3 }, (_, i) => (
-                <span key={i} className={`dot${i < state.buffered ? " on" : ""}`} />
-              ))}
-            </span>
-            <span className="buffer-label">{bufferLabel(state)}</span>
-          </div>
-          <div className="controls">
-            <button
-              type="button"
-              className="ctl"
-              onClick={toggleSound}
-              aria-label={muted ? "Unmute" : "Mute"}
-            >
-              {muted ? "Unmute" : "Mute"}
-            </button>
-            <span className="credit">MiniMax H3 Max Turbo · fal</span>
-          </div>
-        </div>
-      </div>
-    </div>
+function useSessionState(session: Session | null): SessionState | null {
+  return useSyncExternalStore(
+    session ? session.subscribe : noopSubscribe,
+    session ? session.getSnapshot : nullSnapshot,
+    session ? session.getSnapshot : nullSnapshot
   );
 }
 
-function renderBadge(state: StreamState): string {
-  const current = state.current;
-  if (current?.renderMs) {
-    const res = current.resolution ? ` · ${current.resolution}` : "";
-    return `LIVE${res} · rendered in ${(current.renderMs / 1000).toFixed(1)}s`;
-  }
-  if (state.avgRenderMs) {
-    return `LIVE · rendering ~${(state.avgRenderMs / 1000).toFixed(1)}s per shot`;
-  }
-  return "LIVE · generating";
+function useStreamState(stream: Stream | null): StreamState | null {
+  return useSyncExternalStore(
+    stream ? stream.subscribe : noopSubscribe,
+    stream ? stream.getSnapshot : nullSnapshot,
+    stream ? stream.getSnapshot : nullSnapshot
+  );
 }
 
-function waitingLabel(state: StreamState): string {
-  if (state.phase === "starting") return "Rolling the cold open";
-  if (state.rendering) return "Rendering the next shot";
-  if (state.writing) return "The showrunner is writing";
-  return "Rendering the next shot";
+interface Picture {
+  clip: ReadyClip;
+  sessionId: string;
 }
 
-function bufferLabel(state: StreamState): string {
-  if (state.rendering) return "rendering…";
-  if (state.writing && state.pending === 0) return "writing…";
-  return `${state.buffered} in the can`;
+export function Player() {
+  const [session, setSession] = useState<Session | null>(null);
+  const sessionState = useSessionState(session);
+  const stream = session?.stream ?? null;
+  const streamState = useStreamState(stream);
+
+  const [picture, setPicture] = useState<Picture | null>(null);
+  const [typed, setTyped] = useState("");
+  const [muted, setMuted] = useState(false);
+  const [needsTap, setNeedsTap] = useState(false);
+  const [countdown, setCountdown] = useState<number | null>(null);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  /** The live session, outside React state so an ask never runs twice. */
+  const sessionRef = useRef<Session | null>(null);
+  const pictureRef = useRef<Picture | null>(null);
+  /** Whether the clip on screen has played to its end (holding its last frame). */
+  const endedRef = useRef(false);
+
+  const focusInput = useCallback(() => inputRef.current?.focus(), []);
+  useEffect(() => {
+    focusInput();
+  }, [focusInput]);
+
+  // Ask: interrupt whatever is running and start the new programme. The
+  // picture stays until the new programme's first clip exists.
+  const ask = useCallback(
+    (question: string) => {
+      const q = question.trim();
+      if (!q) return;
+      sessionRef.current?.cancel();
+      const next = new Session(q);
+      sessionRef.current = next;
+      next.start();
+      setSession(next);
+      setTyped("");
+      setCountdown(null);
+      focusInput();
+    },
+    [focusInput]
+  );
+
+  // Leaving the page stops the programme.
+  useEffect(() => () => sessionRef.current?.cancel(), []);
+
+  // The stream's clip on screen becomes the picture.
+  const current = streamState?.current ?? null;
+  useEffect(() => {
+    if (!current || !session) return;
+    const next = { clip: current, sessionId: session.id };
+    pictureRef.current = next;
+    setPicture(next);
+  }, [current, session]);
+
+  // A clip that lands while we hold (nothing on screen, an older
+  // programme's picture, or the last frame of the previous clip) cuts in at
+  // once. Mid-clip we wait for the end so the cut stays clean.
+  const buffered = streamState?.buffered ?? 0;
+  const phase = streamState?.phase ?? null;
+  useEffect(() => {
+    if (!stream || !session || buffered === 0) return;
+    if (phase !== "starting" && phase !== "buffering") return;
+    const stale = !picture || picture.sessionId !== session.id;
+    if (stale || endedRef.current) stream.advance();
+  }, [stream, session, buffered, phase, picture]);
+
+  const onStarted = useCallback((clip: ReadyClip) => {
+    endedRef.current = false;
+    const live = sessionRef.current;
+    const shown = pictureRef.current;
+    // Saskia: the narration for this beat starts with its clip.
+    if (live && shown && shown.sessionId === live.id && shown.clip.videoUrl === clip.videoUrl) {
+      live.narrator?.play(clip.shot.n);
+    }
+  }, []);
+
+  const onEnded = useCallback(() => {
+    endedRef.current = true;
+    // Hold the last frame if nothing is ready: the next shot chains from
+    // this exact image, so the hold reads as a beat and the cut is seamless.
+    sessionRef.current?.stream?.advance();
+  }, []);
+
+  const onNeedsTap = useCallback(() => {
+    setMuted(true);
+    setNeedsTap(true);
+  }, []);
+
+  const toggleSound = () => {
+    setMuted((m) => !m);
+    setNeedsTap(false);
+  };
+
+  // Suggestions: the answer's follow-ups (already spine-backed), or the
+  // spine before anything has been asked.
+  const suggestions = (sessionState?.answer?.followups?.length
+    ? sessionState.answer.followups
+    : SPINE_QUESTIONS
+  ).slice(0, SUGGESTION_LINES);
+
+  // Auto-continue: once the programme has ended (or could not start), count
+  // down from 10 and continue into the top suggestion. Typing pauses it.
+  const status = sessionState?.status ?? null;
+  const idle =
+    session !== null &&
+    (phase === "ended" || status === "none" || status === "error");
+  useEffect(() => {
+    if (!idle || suggestions.length === 0) {
+      setCountdown(null);
+      return;
+    }
+    setCountdown(AUTO_CONTINUE_SECONDS);
+    const timer = setInterval(() => {
+      setCountdown((value) => (value === null ? null : Math.max(0, value - 1)));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [idle, suggestions.length, session]);
+  useEffect(() => {
+    if (countdown !== 0 || typed.trim()) return;
+    if (suggestions[0]) ask(suggestions[0]);
+  }, [countdown, typed, suggestions, ask]);
+
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      ask(typed);
+    } else if (event.key === "Escape") {
+      setTyped("");
+    }
+  };
+
+  // The cursor is the status indicator: it blinks while listening and
+  // blinks in the next beat's ground colour while rendering.
+  const renderingShot = streamState?.rendering ? stream?.renderingShot() ?? null : null;
+  const cursorColor = renderingShot ? GROUND_HEX[renderingShot.beat.ground] : "#F7F7F7";
+
+  const next = phase === "playing" || phase === "buffering" ? stream?.peekNext() ?? null : null;
+  const voice = sessionState?.switches?.voice ?? "native";
+
+  const statusLine = (() => {
+    if (!sessionState) return null;
+    if (sessionState.status === "none") return "no captured answer for that yet";
+    if (sessionState.status === "error") return sessionState.error?.toLowerCase() ?? "something went wrong";
+    return null;
+  })();
+
+  return (
+    <main className="tessera">
+      <Screen
+        picture={picture?.clip ?? null}
+        next={next}
+        muted={muted}
+        volume={voice === "saskia" ? 0.5 : 1}
+        onEnded={onEnded}
+        onNeedsTap={onNeedsTap}
+        onStarted={onStarted}
+      />
+
+      <div className="ask" onClick={focusInput}>
+        <span className="typed">{typed}</span>
+        <span
+          className={`cursor${renderingShot ? " rendering" : " listening"}`}
+          style={{ color: cursorColor }}
+          aria-hidden="true"
+        />
+        <input
+          ref={inputRef}
+          className="ghost"
+          type="text"
+          value={typed}
+          onChange={(event) => setTyped(event.target.value)}
+          onKeyDown={onKeyDown}
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
+          aria-label="ask curation"
+        />
+      </div>
+
+      {statusLine && <div className="status">{statusLine}</div>}
+      {needsTap && (
+        <div className="status tap" onClick={toggleSound}>
+          tap for sound
+        </div>
+      )}
+
+      <ul className="suggestions">
+        {suggestions.map((question, i) => (
+          <li key={question} onClick={() => ask(question)}>
+            <span className="sq" aria-hidden="true" />
+            <span className="q">{question}</span>
+            {i === 0 && countdown !== null && !typed.trim() && (
+              <span className="upnext">· up next in {countdown}s</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 }

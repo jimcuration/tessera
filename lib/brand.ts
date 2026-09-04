@@ -1,4 +1,3 @@
-/** One place to rename the service. */
-export const BRAND = "UNREEL";
-export const BRAND_TAGLINE = "Endless television. Written and rendered while you watch.";
-export const POWERED_BY = "Powered by fal · MiniMax H3 Max Turbo";
+/** One place to rename the surface. Lowercase throughout. */
+export const BRAND = "tessera";
+export const BRAND_TAGLINE = "a more engaging way of talking to curationai.";

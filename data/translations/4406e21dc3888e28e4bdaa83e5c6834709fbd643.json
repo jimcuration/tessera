@@ -1,0 +1,169 @@
+{
+  "translator": "translator-v0.1",
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beats": [
+    {
+      "line": "The Resulticks acquisition is positioned as a revenue synergy play, not cost savings.",
+      "headline": "REVENUE SYNERGY",
+      "ground": "violet",
+      "subjects": [
+        "two paper documents",
+        "a torn-paper arrow"
+      ],
+      "action": "Two halftone documents slide together from opposite edges; an arrow drops between them and holds.",
+      "handoff": "the joined documents",
+      "source": [
+        0
+      ]
+    },
+    {
+      "line": "The one point five billion dollar deal adds AI-driven customer data to Diginex's sustainability and compliance platform.",
+      "headline": "$1.5B",
+      "ground": "violet",
+      "subjects": [
+        "the joined documents",
+        "a paper screen"
+      ],
+      "action": "The joined documents fold upward into a paper screen that lights and settles centre frame.",
+      "handoff": "the screen",
+      "source": [
+        1
+      ]
+    },
+    {
+      "line": "That turns a point solution into an integrated end-to-end platform.",
+      "headline": "END-TO-END",
+      "ground": "violet",
+      "subjects": [
+        "the screen",
+        "paper tiles"
+      ],
+      "action": "The screen widens as paper tiles snap along its edge, forming one continuous band.",
+      "handoff": "the platform band",
+      "source": [
+        1
+      ]
+    },
+    {
+      "line": "The move is about expanding addressable market and cross-sell opportunity.",
+      "headline": "CROSS-SELL",
+      "ground": "cyan",
+      "subjects": [
+        "the platform band",
+        "a paper map"
+      ],
+      "action": "The band unrolls into a paper map that spreads flat across the frame.",
+      "handoff": "the map",
+      "source": [
+        3
+      ]
+    },
+    {
+      "line": "Enterprise customers can be served across two workflows: sustainability and compliance, and customer intelligence.",
+      "headline": "TWO WORKFLOWS",
+      "ground": "cyan",
+      "subjects": [
+        "the map",
+        "two paper folders"
+      ],
+      "action": "The map creases down the middle and lifts into two paper folders standing side by side.",
+      "handoff": "the two folders",
+      "source": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "line": "Firms buying ESG compliance can now buy customer data from the same vendor, increasing wallet share.",
+      "headline": "WALLET SHARE",
+      "ground": "cyan",
+      "subjects": [
+        "the two folders",
+        "paper coins"
+      ],
+      "action": "The folders tip together and paper coins pour from one into the other, stacking up.",
+      "handoff": "the coin stack",
+      "source": [
+        7,
+        8
+      ]
+    },
+    {
+      "line": "The risk is integration complexity — four distinct acquisitions absorbed across multiple geographies.",
+      "headline": "4 ACQUISITIONS",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "four paper buildings"
+      ],
+      "action": "The coin stack scatters and four paper buildings land apart, each on its own patch.",
+      "handoff": "the four buildings",
+      "source": [
+        10,
+        11
+      ]
+    },
+    {
+      "line": "General and administrative costs rose three point four million to eight point one million in the first half.",
+      "headline": "$8.1M G&A",
+      "ground": "magenta",
+      "subjects": [
+        "the four buildings",
+        "a rising paper bar"
+      ],
+      "action": "The buildings compress into one rising paper bar that climbs and locks in place.",
+      "handoff": "the rising bar",
+      "source": [
+        12
+      ]
+    },
+    {
+      "line": "Two point two million of that came from merger and acquisition legal work — integration is resource-intensive.",
+      "headline": "$2.2M LEGAL",
+      "ground": "magenta",
+      "subjects": [
+        "the rising bar",
+        "stacked paper documents"
+      ],
+      "action": "The bar peels into stacked legal documents that pile heavily and tilt.",
+      "handoff": "the document pile",
+      "source": [
+        12
+      ]
+    },
+    {
+      "line": "What matters next is cross-sell traction, and growth outpacing the cost of integration.",
+      "headline": "CROSS-SELL TRACTION",
+      "ground": "lime",
+      "subjects": [
+        "the document pile",
+        "a paper hand",
+        "a calendar page"
+      ],
+      "action": "The pile flattens into a calendar page; a paper hand enters and points at it.",
+      "handoff": "the pointing hand",
+      "source": [
+        13,
+        14
+      ]
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "headline number \"4\" not found in cited sentences [10,11]"
+    ],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 13509
+}

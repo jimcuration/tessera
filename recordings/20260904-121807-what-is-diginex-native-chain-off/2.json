@@ -1,0 +1,42 @@
+{
+  "session": "20260904-121807-what-is-diginex-native-chain-off",
+  "n": 2,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Its software helps organisations collect, manage and report ESG, climate and supply-chain data.",
+    "headline": "ESG DATA",
+    "ground": "violet",
+    "subjects": [
+      "the stacked tile",
+      "a paper screen",
+      "paper arrows"
+    ],
+    "action": "The stacked tile tilts up into a paper screen; small arrows feed data strips into its edge.",
+    "handoff": "the paper screen",
+    "source": [
+      2
+    ]
+  },
+  "sources": [
+    "The company provides software and advisory solutions helping organisations collect, manage and report ESG, climate and supply-chain data."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the stacked tile; a paper screen; paper arrows.\nOpens on the stacked tile, carried over from the previous shot, which transforms as the action begins.\nAction: The stacked tile tilts up into a paper screen; small arrows feed data strips into its edge.\nEnds holding on the paper screen.\nHeadline printed on a paper chip: \"ESG DATA\".\n\nCOPY LIST: \"ESG DATA\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Its software helps organisations collect, manage and report ESG, climate and supply-chain data.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with refined 2D motion design. The scene is set against a single, flat, dominant block-colour background of soft violet. The lighting is consistent from the upper-left, casting small, subtle paper-layer shadows beneath all elements. The composition opens with a black-and-white halftone photographic cutout of a stacked tile, featuring rough white torn-paper edges. On the first frame, the stacked tile quickly tilts upward with a slight overshoot before landing stably, transforming into a flat paper screen cutout, also with rough white torn-paper edges and halftone textures. Simultaneously, small flat matte paper arrows in cream and pale yellow slide in fast from the sides, feeding thin matte paper data strips into the edge of the screen. A large, extra-bold sans-serif headline \"ESG DATA\" is printed in black on a rectangular cream paper chip, positioned with safe margins. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk speaking rate, speaks directly to the viewer: <d>[English] Its software helps organisations collect, manage and report ESG, climate and supply-chain data.</d> The elements hold a clear reading window for the remainder of the shot, with a very subtle, rhythmic pulsing loop of the data strips continuing until the end. Everything is rendered as flat matte printed paper with visible print dots and small tape pieces; there are no glows, gradients, or 3D effects.\n\noverall_soundscape: The audio features a series of crisp, tactile paper-slap sounds and the subtle, sticky rip of adhesive tape coinciding with the movement of the paper elements. These foley effects are layered beneath the clear, centered voice of the narrator.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f93/0FCu8ZaoCXxWVpFDk5ZBF_minimax-h3.mp4",
+  "requestId": "01a06bec-fcd2-7532-85df-ed0005296866",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 775204,
+  "resolution": "480P",
+  "renderMs": 2419,
+  "timings": {
+    "inference": 0.44633816099667456
+  },
+  "renderedAt": "2026-09-04T10:18:09.659Z",
+  "savedAt": "2026-09-04T10:18:09.686Z"
+}

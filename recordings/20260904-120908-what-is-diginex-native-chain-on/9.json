@@ -1,0 +1,46 @@
+{
+  "session": "20260904-120908-what-is-diginex-native-chain-on",
+  "n": 9,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Winning new logos, proving Resulticks synergies and slowing cost growth would change the story.",
+    "headline": "WHAT CHANGES IT",
+    "ground": "lime",
+    "subjects": [
+      "the receipt pile",
+      "three paper cards",
+      "tape pieces"
+    ],
+    "action": "The receipt pile is taped down and three fresh paper cards fan out above it in a row.",
+    "handoff": "the three cards",
+    "source": [
+      32,
+      33,
+      34
+    ]
+  },
+  "sources": [
+    "Platform adoption acceleration — Evidence that the unified platform is winning net-new logos and expanding within existing customers, particularly in banking and asset management where ESG and climate risk reporting is now mandated.",
+    "Resulticks integration success — Demonstrable revenue synergies and cross-sell traction showing that AI-driven customer data capabilities are driving incremental value for sustainability workflows.",
+    "Path to profitability — Clear evidence of operating leverage as the platform scales, with G&A growing slower than revenue."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: lime green. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: the receipt pile; three paper cards; tape pieces.\nOpens on the receipt pile, carried over from the previous shot, which transforms as the action begins.\nAction: The receipt pile is taped down and three fresh paper cards fan out above it in a row.\nEnds holding on the three cards.\nHeadline printed on a paper chip: \"WHAT CHANGES IT\".\n\nCOPY LIST: \"WHAT CHANGES IT\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Winning new logos, proving Resulticks synergies and slowing cost growth would change the story.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Modern editorial 2D paper collage style, Static Shot opening on <Picture 1>. The background swiftly shifts into solid, flat matte lime green as the initial text chip slides away. Small translucent paper tape strips slap down over the black-and-white halftone receipt pile, pinning it to the base. A cream paper chip cleanly printed with bold black sans-serif text \"WHAT CHANGES IT\" drops into the top section. Three matte paper cards briskly fan out in a row above the receipts with a subtle overshoot and lock into place, casting subtle paper shadows from an upper-left light source. The layout holds clean and steady. Starting on the first frame, a male narrator (S1, adult, warm, crisp, natural tone) says in an off-screen voiceover: <d>[English] Winning new logos, proving Resulticks synergies and slowing cost growth would change the story.</d>\n\noverall_soundscape: Crisp paper rustles, swift card snaps, and the sharp stick of adhesive tape landing cleanly on flat paper surfaces.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f4d/NpMjKZuRs-bTRN0VTuFy8_minimax-h3.mp4",
+  "requestId": "01a06be5-b03f-72b2-8390-e65bfa7ef5c2",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 453105,
+  "resolution": "480P",
+  "renderMs": 9264,
+  "timings": {
+    "inference": 0.45415771499392577
+  },
+  "renderedAt": "2026-09-04T10:10:18.429Z",
+  "savedAt": "2026-09-04T10:10:18.444Z"
+}

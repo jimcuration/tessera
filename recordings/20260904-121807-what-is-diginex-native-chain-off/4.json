@@ -1,0 +1,43 @@
+{
+  "session": "20260904-121807-what-is-diginex-native-chain-off",
+  "n": 4,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "That turns point solutions into an end-to-end platform, from carbon accounting to human rights due diligence.",
+    "headline": "END-TO-END",
+    "ground": "cyan",
+    "subjects": [
+      "the four-block bloc",
+      "a paper ribbon"
+    ],
+    "action": "A paper ribbon threads through the four blocks and pulls them into a single continuous band.",
+    "handoff": "the ribbon band",
+    "source": [
+      3,
+      18
+    ]
+  },
+  "sources": [
+    "Following acquisitions of Plan A, Matter, The Remedy Project, and the transformative addition of Resulticks, Diginex is evolving from point solutions into a fully integrated end-to-end platform spanning carbon accounting, ESG reporting, supply chain transparency, human rights due diligence, and now AI-driven customer data capabilities — designed to serve banks, asset managers and enterprises.",
+    "By unifying carbon accounting, ESG reporting, supply chain transparency and human rights due diligence into one platform, combined with Resulticks' AI-driven customer data capabilities, the company is positioning itself as a one-stop shop for sustainability and compliance workflows."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "off",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: the four-block bloc; a paper ribbon.\nOpens on the four-block bloc, carried over from the previous shot, which transforms as the action begins.\nAction: A paper ribbon threads through the four blocks and pulls them into a single continuous band.\nEnds holding on the ribbon band.\nHeadline printed on a paper chip: \"END-TO-END\".\n\nCOPY LIST: \"END-TO-END\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"That turns point solutions into an end-to-end platform, from carbon accounting to human rights due diligence.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] 2D-animated, modern editorial paper collage style. The entire scene is set against a flat, matte, pale cyan block-color background with no gradients. The composition begins with four distinct, square blocks of black-and-white halftone photographic cutouts, each featuring rough white torn-paper edges and a subtle drop shadow cast from a consistent light source in the upper-left. These blocks are arranged in a grid. Simultaneously, a narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, begins to speak: <d>[English] That turns point solutions into an end-to-end platform, from carbon accounting to human rights due diligence.</d> A flat matte paper ribbon in a contrasting cream color enters the frame quickly with a slight overshoot, threading itself through the center of the four blocks. As the ribbon pulls, the four blocks slide together with snappy 2D motion, merging into a single, continuous horizontal band of halftone imagery. A large paper chip in cream, featuring the headline \"END-TO-END\" in an extra-bold, black sans-serif typeface with clean and legible letterforms, snaps into the upper-right margin. The elements hold in a stable reading window for the final second, with a very subtle, slow-pulsing loop of the ribbon's position. Every element maintains a flat matte printed paper texture with visible print dots and small pieces of transparent tape securing the edges.\n\noverall_soundscape: The audio is dominated by the crisp, tactile sounds of a paper collage. Distinct paper-slap sounds occur as the blocks merge, accompanied by the short, sticky peel and press of adhesive tape.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f7d/9Fx50CxlEwBS2CJb1yS91_minimax-h3.mp4",
+  "requestId": "01a06bed-0643-7ad0-ab06-7e21731bb0b3",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "seed": 775206,
+  "resolution": "480P",
+  "renderMs": 2345,
+  "timings": {
+    "inference": 0.4409324320004089
+  },
+  "renderedAt": "2026-09-04T10:18:12.281Z",
+  "savedAt": "2026-09-04T10:18:12.294Z"
+}

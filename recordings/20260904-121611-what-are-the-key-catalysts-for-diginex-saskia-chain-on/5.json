@@ -1,0 +1,41 @@
+{
+  "session": "20260904-121611-what-are-the-key-catalysts-for-diginex-saskia-chain-on",
+  "n": 5,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "The one point five billion dollar Resulticks acquisition is the transformative bet.",
+    "headline": "$1.5B BET",
+    "ground": "cyan",
+    "subjects": [
+      "a large paper block",
+      "the rising arrow"
+    ],
+    "action": "The rising arrow folds down into one oversized paper block that lands heavily at centre.",
+    "handoff": "the heavy block",
+    "source": [
+      18
+    ]
+  },
+  "sources": [
+    "The $1.5B Resulticks acquisition is the transformative bet."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: pale cyan. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: a large paper block; the rising arrow.\nOpens on the rising arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The rising arrow folds down into one oversized paper block that lands heavily at centre.\nEnds holding on the heavy block.\nHeadline printed on a paper chip: \"$1.5B BET\".\n\nCOPY LIST: \"$1.5B BET\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, featuring a dominant flat block-color background of pale cyan. The composition consists of black-and-white halftone photographic cutouts with rough white torn-paper edges, including a stack of coins and a large black rising arrow, all casting small, consistent shadows from an upper-left light source. The materials are all flat matte printed paper with visible print dots and small pieces of cream-colored tape. Immediately upon the first frame, the rising arrow and the coin stack collapse and fold downward with fast motion and a slight overshoot. They transform and merge into one oversized, rectangular paper block that lands heavily and flatly at the center of the frame. Simultaneously, a new paper chip enters the frame quickly, landing with a stable snap near the block. Printed on this chip in an extra-bold black sans-serif typeface is the text \"$1.5B BET\", which is clean, legible, and stable. The camera remains in a Static Shot throughout the 5 seconds. The video ends with the heavy block and the \"$1.5B BET\" headline holding a clear reading window, with a very subtle, slow looping float of the paper elements to maintain dynamism.\n\noverall_soundscape: A sharp, tactile paper-slap sound occurs as the block lands heavily in the center. This is accompanied by a crisp, short sound of adhesive tape being pressed down as the headline chip snaps into place.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f74/2Y6ek6CYEvnj19NZo3w33_minimax-h3.mp4",
+  "requestId": "01a06beb-c28c-7fa2-9dfe-9d04db036d00",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 71246,
+  "resolution": "480P",
+  "renderMs": 3974,
+  "timings": {
+    "inference": 0.45372250800573966
+  },
+  "renderedAt": "2026-09-04T10:16:49.843Z",
+  "savedAt": "2026-09-04T10:16:49.861Z"
+}

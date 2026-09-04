@@ -6,3 +6,7 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
+
+# Every clip, prompt and expanded_prompt is saved here (CLAUDE.md rule 7).
+# The clips stay out of git; the JSON, prompts and reports go in.
+recordings/**/*.mp4

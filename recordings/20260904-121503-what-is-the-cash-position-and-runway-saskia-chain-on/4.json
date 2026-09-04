@@ -1,0 +1,41 @@
+{
+  "session": "20260904-121503-what-is-the-cash-position-and-runway-saskia-chain-on",
+  "n": 4,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "At that rate, the cash on hand covered roughly one point four months.",
+    "headline": "1.4 MONTHS",
+    "ground": "magenta",
+    "subjects": [
+      "a paper runway",
+      "a cutout aircraft"
+    ],
+    "action": "The strip becomes a runway that is torn short; a cutout aircraft rolls toward the torn end and stops.",
+    "handoff": "the runway",
+    "source": [
+      23
+    ]
+  },
+  "sources": [
+    "At that rate, the $1.85M cash on hand provides 1.4 months of runway — dangerously thin."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper runway; a cutout aircraft.\nOpens on the strip, carried over from the previous shot, which transforms as the action begins.\nAction: The strip becomes a runway that is torn short; a cutout aircraft rolls toward the torn end and stops.\nEnds holding on the runway.\nHeadline printed on a paper chip: \"1.4 MONTHS\".\n\nCOPY LIST: \"1.4 MONTHS\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated, modern editorial paper collage. The scene opens on <Picture 1>, which serves as the visual anchor: a deep magenta flat block-color background with a cream-colored paper strip featuring black-and-white halftone photographic cutouts of coins and a paper chip with the text \"$1.3M MONTH\". Immediately upon the start of the video, the cream paper strip rapidly transforms and shifts its layout. The strip extends and narrows into a long, flat matte paper runway that is abruptly torn short at the right edge, leaving a rough white torn-paper border. Simultaneously, a black-and-white halftone photographic cutout of a commercial aircraft, also featuring rough white torn-paper edges, enters from the left. The aircraft rolls forward quickly along the runway with a slight overshoot before coming to a stable, sudden stop just before the torn end of the strip. A new paper chip, cream-colored with a rough white torn edge, slides into the upper portion of the frame with a fast motion and a slight bounce, displaying the headline \"1.4 MONTHS\" in an extra-bold black sans-serif typeface. The text is clean, legible, and stable. The lighting is consistent from the upper-left, casting small, subtle paper-layer shadows beneath the aircraft and the paper chips to create a sense of physical layering. Everything is rendered as flat matte printed paper with visible print dots and paper texture; there are no glows, gradients, or 3D effects. The camera remains in a Static Shot throughout the 5 seconds. The final second holds on the composition of the aircraft stopped on the torn runway and the \"1.4 MONTHS\" headline.\n\noverall_soundscape: A sequence of sharp, tactile paper-slap sounds occurs as the runway transforms and the aircraft lands. A crisp, sticky sound of adhesive tape being pressed down accompanies the appearance of the headline paper chip.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f6c/W4B1gczkU9o5K35VApYqq_minimax-h3.mp4",
+  "requestId": "01a06bea-7161-78a1-bbb8-71fde28dbc41",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 422317,
+  "resolution": "480P",
+  "renderMs": 2399,
+  "timings": {
+    "inference": 0.45654581900453195
+  },
+  "renderedAt": "2026-09-04T10:15:23.143Z",
+  "savedAt": "2026-09-04T10:15:23.160Z"
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { fal } from "@fal-ai/client";
+import { onClip } from "./recorder";
 
 // FAL_KEY never reaches the browser: all traffic rides the server proxy.
 fal.config({ proxyUrl: "/api/fal/proxy" });
@@ -10,9 +11,6 @@ export { fal };
 /** MiniMax H3 Max Turbo: faster than realtime, which is the whole trick. */
 export const TURBO_T2V = "minimax/h3-max-turbo/text-to-video";
 export const TURBO_I2V = "minimax/h3-max-turbo/image-to-video";
-/** Text LLM router used by the showrunner. */
-export const LLM_ENDPOINT = "openrouter/router";
-export const LLM_MODEL = "google/gemini-2.5-flash";
 
 export type Resolution = "480P" | "768P";
 
@@ -21,13 +19,47 @@ export interface GeneratedClip {
   videoUrl: string;
   /** Raw fal CDN URL. */
   rawUrl: string;
-  /** Wall-clock generation time, for the on-screen render badge. */
+  /** Wall-clock generation time, ms. */
   ms: number;
+  /** The prompt after fal's rewriter, as sent to the model. */
+  expandedPrompt: string | null;
+  requestId: string | null;
+}
+
+interface InFlight {
+  endpoint: string;
+  controller: AbortController;
+}
+
+/** Requests submitted and not yet finished, so an interrupt can cancel them. */
+const inFlight = new Map<string, InFlight>();
+
+/**
+ * Cancel every render in flight. Called when the viewer interrupts: the
+ * stream that owned them is already stopped, so their results would be
+ * discarded anyway; cancelling stops paying for them. Returns how many.
+ */
+export function cancelInFlight(): number {
+  let count = 0;
+  for (const [requestId, { endpoint, controller }] of inFlight) {
+    count += 1;
+    controller.abort();
+    void fal.queue.cancel(endpoint, { requestId }).catch(() => {
+      /* already running or finished: nothing to cancel */
+    });
+  }
+  inFlight.clear();
+  return count;
 }
 
 /**
  * Generate one shot. With `fromFrame` the shot chains from that image
  * (continuity); without it, it is a text-to-video hard cut.
+ *
+ * Uses the queue API rather than fal.subscribe so the request id is known
+ * and the render can be cancelled. Prompt expansion is always "balanced":
+ * the style sheet is written for the rewriter, and the report reads which
+ * lines survive in `expanded_prompt`.
  */
 export async function generateClip(args: {
   prompt: string;
@@ -35,15 +67,14 @@ export async function generateClip(args: {
   resolution?: Resolution;
   seed?: number;
   fromFrame?: string;
-  /** Prompt enrichment: chained shots keep our grammar verbatim. */
-  expand?: boolean;
 }): Promise<GeneratedClip> {
   const started = performance.now();
+  const resolution = args.resolution ?? "480P";
   const input: Record<string, unknown> = {
     prompt: args.prompt,
     duration: args.duration,
-    resolution: args.resolution ?? "768P",
-    prompt_expansion_mode: args.expand === false ? "disabled" : "balanced",
+    resolution,
+    prompt_expansion_mode: "balanced",
   };
   if (args.seed !== undefined) input.seed = args.seed;
   let endpoint = TURBO_T2V;
@@ -53,42 +84,55 @@ export async function generateClip(args: {
   } else {
     input.aspect_ratio = "16:9";
   }
-  // Tight polling: every 250ms of lag is 250ms the buffer does not grow.
-  const result = await fal.subscribe(endpoint, { input, pollInterval: 250 });
-  const data = result.data as { video?: { url?: string } };
-  const rawUrl = data?.video?.url;
-  if (!rawUrl) throw new Error("no video in response");
-  return {
-    videoUrl: `/api/media?url=${encodeURIComponent(rawUrl)}`,
-    rawUrl,
-    ms: Math.round(performance.now() - started),
-  };
-}
 
-/** One text-LLM turn; returns the raw output string. */
-export async function llm(args: {
-  systemPrompt: string;
-  prompt: string;
-  maxTokens: number;
-  temperature?: number;
-}): Promise<string> {
-  const result = await fal.subscribe(LLM_ENDPOINT, {
-    input: {
-      model: LLM_MODEL,
-      system_prompt: args.systemPrompt,
+  const controller = new AbortController();
+  const { request_id: requestId } = await fal.queue.submit(endpoint, { input });
+  inFlight.set(requestId, { endpoint, controller });
+  try {
+    const aborted = new Promise<never>((_, reject) => {
+      controller.signal.addEventListener("abort", () => reject(new Error("render cancelled")), { once: true });
+    });
+    // Tight polling: every 250ms of lag is 250ms the buffer does not grow.
+    await Promise.race([
+      fal.queue.subscribeToStatus(endpoint, {
+        requestId,
+        mode: "polling",
+        pollInterval: 250,
+        abortSignal: controller.signal,
+      }),
+      aborted,
+    ]);
+    if (controller.signal.aborted) throw new Error("render cancelled");
+    const result = await fal.queue.result(endpoint, { requestId, abortSignal: controller.signal });
+    const data = result.data as {
+      video?: { url?: string };
+      expanded_prompt?: string | null;
+      timings?: unknown;
+    };
+    const rawUrl = data?.video?.url;
+    if (!rawUrl) throw new Error("no video in response");
+    const ms = Math.round(performance.now() - started);
+    const clip: GeneratedClip = {
+      videoUrl: `/api/media?url=${encodeURIComponent(rawUrl)}`,
+      rawUrl,
+      ms,
+      expandedPrompt: typeof data.expanded_prompt === "string" ? data.expanded_prompt : null,
+      requestId,
+    };
+    onClip({
       prompt: args.prompt,
-      temperature: args.temperature ?? 0.8,
-      max_tokens: args.maxTokens,
-    },
-    pollInterval: 250,
-  });
-  return (result.data as { output?: string }).output ?? "";
-}
-
-/** Extract the first {...} JSON object from an LLM reply. */
-export function extractJson(text: string): string {
-  const start = text.indexOf("{");
-  const end = text.lastIndexOf("}");
-  if (start === -1 || end <= start) throw new Error("no JSON in reply");
-  return text.slice(start, end + 1);
+      expandedPrompt: clip.expandedPrompt,
+      rawUrl,
+      requestId,
+      endpoint,
+      chained: Boolean(args.fromFrame),
+      seed: args.seed,
+      resolution,
+      renderMs: ms,
+      timings: data.timings ?? null,
+    });
+    return clip;
+  } finally {
+    inFlight.delete(requestId);
+  }
 }

@@ -1,0 +1,169 @@
+{
+  "translator": "translator-v0.1",
+  "question": "What are the key risks for Diginex?",
+  "beats": [
+    {
+      "line": "Diginex faces a first risk in the data itself.",
+      "headline": "DATA RELIABILITY",
+      "ground": "violet",
+      "subjects": [
+        "a paper document",
+        "a halftone screen"
+      ],
+      "action": "A paper document slides onto a halftone screen and locks into place.",
+      "handoff": "the document on screen",
+      "source": [
+        8
+      ]
+    },
+    {
+      "line": "ESG reporting stays fragmented, with standards varying across jurisdictions and industries.",
+      "headline": "FRAGMENTED STANDARDS",
+      "ground": "violet",
+      "subjects": [
+        "the paper document",
+        "torn map pieces"
+      ],
+      "action": "The document tears into torn map pieces that scatter and hold apart across the frame.",
+      "handoff": "the scattered pieces",
+      "source": [
+        9
+      ]
+    },
+    {
+      "line": "So quality, reliability and comparability of data are significant challenges.",
+      "headline": "QUALITY & COMPARABILITY",
+      "ground": "violet",
+      "subjects": [
+        "the scattered pieces",
+        "a paper ribbon"
+      ],
+      "action": "A paper ribbon threads through the scattered pieces and tries to bind them into one strip.",
+      "handoff": "the ribbon strip",
+      "source": [
+        10
+      ]
+    },
+    {
+      "line": "If platforms miss regulatory-grade data, credibility with institutional clients or regulators could suffer.",
+      "headline": "CREDIBILITY AT RISK",
+      "ground": "magenta",
+      "subjects": [
+        "the ribbon strip",
+        "a cutout building"
+      ],
+      "action": "The ribbon strip frays and slips off a cutout building, leaving it bare.",
+      "handoff": "the bare building",
+      "source": [
+        11
+      ]
+    },
+    {
+      "line": "Second, the share price decline suggests investor expectations have not been met.",
+      "headline": "SHARE PRICE DECLINE",
+      "ground": "magenta",
+      "subjects": [
+        "the bare building",
+        "a torn-paper arrow"
+      ],
+      "action": "A torn-paper arrow drops down the face of the building and stops low.",
+      "handoff": "the down arrow",
+      "source": [
+        15
+      ]
+    },
+    {
+      "line": "Revenue grew two hundred and ninety-three percent to two million dollars, but repeatability is questioned.",
+      "headline": "+293% TO $2.0M",
+      "ground": "lime",
+      "subjects": [
+        "the down arrow",
+        "paper coins",
+        "a question-shaped tag"
+      ],
+      "action": "The arrow flips upward and lifts paper coins; a paper tag lands on the top coin and hangs there.",
+      "handoff": "the hanging tag",
+      "source": [
+        16
+      ]
+    },
+    {
+      "line": "With growth reliant on acquisitions, execution after the Resulticks deal is the key risk.",
+      "headline": "EXECUTION RISK",
+      "ground": "lime",
+      "subjects": [
+        "the hanging tag",
+        "two paper blocks",
+        "tape pieces"
+      ],
+      "action": "The tag swings between two paper blocks; tape pieces press them together but the seam stays visible.",
+      "handoff": "the taped seam",
+      "source": [
+        17,
+        18
+      ]
+    },
+    {
+      "line": "Third, adoption stays uneven, and smaller firms may delay on cost or complexity.",
+      "headline": "UNEVEN ADOPTION",
+      "ground": "cyan",
+      "subjects": [
+        "the taped seam",
+        "a paper map",
+        "small cutout buildings"
+      ],
+      "action": "The seam unfolds into a paper map; small cutout buildings land unevenly across it, some tipping back.",
+      "handoff": "the uneven map",
+      "source": [
+        20,
+        21
+      ]
+    },
+    {
+      "line": "Many corporates still treat compliance as box-ticking, so sales cycles may lengthen.",
+      "headline": "LONGER SALES CYCLES",
+      "ground": "cyan",
+      "subjects": [
+        "the uneven map",
+        "a paper calendar strip",
+        "a checkbox cutout"
+      ],
+      "action": "A checkbox cutout stamps the map, then the map stretches into a long calendar strip.",
+      "handoff": "the calendar strip",
+      "source": [
+        22,
+        23
+      ]
+    },
+    {
+      "line": "Diginex must educate the market, streamline onboarding and show return on investment.",
+      "headline": "PROVE THE ROI",
+      "ground": "cyan",
+      "subjects": [
+        "the calendar strip",
+        "a paper hand",
+        "a document"
+      ],
+      "action": "A paper hand enters, rolls the calendar strip shorter and sets a document down on it.",
+      "handoff": "the settled document",
+      "source": [
+        24
+      ]
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 15477
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-121611-what-are-the-key-catalysts-for-diginex-saskia-chain-on",
+  "n": 6,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "Without cross-sell evidence, that acquisition becomes a financial burden rather than a strategic unlock.",
+    "headline": "BURDEN OR UNLOCK",
+    "ground": "magenta",
+    "subjects": [
+      "the heavy block",
+      "a paper scale"
+    ],
+    "action": "The heavy block drops onto one pan of a paper scale, which tips and stays tipped.",
+    "handoff": "the tipped scale",
+    "source": [
+      20
+    ]
+  },
+  "sources": [
+    "Without cross-sell evidence, the acquisition becomes a financial burden rather than a strategic unlock."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the heavy block; a paper scale.\nOpens on the heavy block, carried over from the previous shot, which transforms as the action begins.\nAction: The heavy block drops onto one pan of a paper scale, which tips and stays tipped.\nEnds holding on the tipped scale.\nHeadline printed on a paper chip: \"BURDEN OR UNLOCK\".\n\nCOPY LIST: \"BURDEN OR UNLOCK\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage with a refined 2D motion design style. The scene opens on <Picture 1>, but the background immediately shifts to a single, dominant flat block of deep magenta paper with a matte texture. The composition features black-and-white halftone photographic cutouts characterized by rough, white torn-paper edges and subtle drop shadows cast from a consistent upper-left light source. The initial subject is a heavy, black-and-white halftone photographic block of a dense object, appearing as a paper cutout. Simultaneously, a flat matte paper scale, constructed from cream and black paper shapes, slides into the frame from the right with a fast motion and a slight overshoot before landing stably. The heavy block then drops vertically with a quick, snappy motion onto the left pan of the paper scale. Upon impact, the scale tips sharply to the left and remains in this tipped position. A rectangular paper chip in cream color enters the frame, carrying the headline \"BURDEN OR UNLOCK\" in an extra-bold, black sans-serif typeface; the text is clean, legible, and stable. Throughout the shot, the camera remains in a Static Shot. All elements are flat matte printed paper with visible print dots and small pieces of beige adhesive tape securing some edges; there are no glows, neons, or 3D effects. The video ends by holding this tipped composition, with a very subtle, slow-pulsing loop of the paper layers shifting slightly.\n\noverall_soundscape: A sharp, tactile paper-slap sound occurs the moment the block hits the scale, followed by a soft, dry crinkle of paper as the scale tips. Small, sticky sounds of adhesive tape being pressed or shifted are audible in the background.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f75/a4ZgyiZKS_kh23a3yTkoK_minimax-h3.mp4",
+  "requestId": "01a06beb-d9dc-7f52-960b-6ead4f49e667",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 71247,
+  "resolution": "480P",
+  "renderMs": 2525,
+  "timings": {
+    "inference": 0.48373554507270455
+  },
+  "renderedAt": "2026-09-04T10:16:55.403Z",
+  "savedAt": "2026-09-04T10:16:55.421Z"
+}

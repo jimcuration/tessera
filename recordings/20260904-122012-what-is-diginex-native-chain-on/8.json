@@ -1,0 +1,46 @@
+{
+  "session": "20260904-122012-what-is-diginex-native-chain-on",
+  "n": 8,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Integration is the main risk; general and administrative costs rose three point four million to eight point one million.",
+    "headline": "G&A $8.1M",
+    "ground": "magenta",
+    "subjects": [
+      "the small square",
+      "stacked paper receipts",
+      "a paper calendar strip"
+    ],
+    "action": "The small square unfolds into stacked receipts that pile upward across a calendar strip.",
+    "handoff": "the receipt pile",
+    "source": [
+      24,
+      26
+    ]
+  },
+  "sources": [
+    "Integration execution is the primary risk.",
+    "General and administrative expenses rose $3.4M to $8.1M in the six months to September 2025, with $2.2M of that driven by M&A due diligence and legal work."
+  ],
+  "warnings": [
+    "line is 19 words (limit 18)"
+  ],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: deep magenta. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: the small square; stacked paper receipts; a paper calendar strip.\nOpens on the small square, carried over from the previous shot, which transforms as the action begins.\nAction: The small square unfolds into stacked receipts that pile upward across a calendar strip.\nEnds holding on the receipt pile.\nHeadline printed on a paper chip: \"G&A $8.1M\".\n\nCOPY LIST: \"G&A $8.1M\". Exact strings; nothing else appears in frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Integration is the main risk; general and administrative costs rose three point four million to eight point one million.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated, modern editorial paper collage style. The scene opens on <Picture 1>, featuring a flat, deep magenta background with a matte paper texture. In the center, a small cream-colored square paper element is present. From the first frame, the square rapidly unfolds and transforms through a refined motion design, becoming a stack of black-and-white halftone photographic cutouts of paper receipts. These receipts pile upward with a fast entry and slight overshoot, landing stably atop a long, horizontal halftone paper calendar strip that slides into the frame from the right. Every cutout, including the receipts and the calendar, features rough, white torn-paper edges and casts a subtle, small paper-layer shadow falling toward the bottom right, indicating a consistent light source from the upper-left. Simultaneously, a cream-colored paper chip slides in from the top, featuring the headline \"G&A $8.1M\" printed in a large, extra-bold black sans-serif typeface. The text is clean, legible, and stable with no misspellings. A narrator (S1), a man with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says <d>[English] Integration is the main risk; general and administrative costs rose three point four million to eight point one million.</d> The animation holds on the final composition of the receipt pile and the headline for the remaining duration, with the receipts exhibiting a tiny, subtle looping jitter to maintain a sense of physical presence.\n\noverall_soundscape: The audio is dominated by the narrator's voice, accompanied by synchronized diegetic sound effects of crisp paper slaps and the sticky, short sound of adhesive tape being pressed down as the elements snap into place.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f8d/wFoRfT5dHiFn27fZWXOLz_minimax-h3.mp4",
+  "requestId": "01a06bef-7b62-7af3-973a-b956551433d0",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 445294,
+  "resolution": "480P",
+  "renderMs": 2429,
+  "timings": {
+    "inference": 0.4571801510028308
+  },
+  "renderedAt": "2026-09-04T10:20:53.389Z",
+  "savedAt": "2026-09-04T10:20:53.406Z"
+}

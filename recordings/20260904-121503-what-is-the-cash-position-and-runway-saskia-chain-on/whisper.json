@@ -1,0 +1,54 @@
+{
+  "model": "medium",
+  "clips": [
+    {
+      "n": 1,
+      "line": "At the end of September, Diginex held one point eight five million dollars in cash.",
+      "heard": "",
+      "wordRecall": 0.0,
+      "matched": 0,
+      "words": 15
+    },
+    {
+      "n": 2,
+      "line": "Six months earlier it was three point one one million \u2014 the burn shows a company mid-transition.",
+      "heard": "",
+      "wordRecall": 0.0,
+      "matched": 0,
+      "words": 17
+    },
+    {
+      "n": 3,
+      "line": "Operating burn ran about one point three million a month.",
+      "heard": "Thanks for watching!",
+      "wordRecall": 0.0,
+      "matched": 0,
+      "words": 10
+    },
+    {
+      "n": 4,
+      "line": "At that rate, the cash on hand covered roughly one point four months.",
+      "heard": "",
+      "wordRecall": 0.0,
+      "matched": 0,
+      "words": 13
+    },
+    {
+      "n": 5,
+      "line": "An eleven point four million warrant exercise kept the company afloat \u2014 and October added thirteen point eight million more.",
+      "heard": "Thanks for watching!",
+      "wordRecall": 0.0,
+      "matched": 0,
+      "words": 19
+    },
+    {
+      "n": 6,
+      "line": "Survival depends on capital markets; the next two quarters show whether revenue can narrow the gap.",
+      "heard": "",
+      "wordRecall": 0.0,
+      "matched": 0,
+      "words": 16
+    }
+  ],
+  "meanWordRecall": 0.0
+}

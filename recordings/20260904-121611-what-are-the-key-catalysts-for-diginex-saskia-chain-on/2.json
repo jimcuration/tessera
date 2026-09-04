@@ -1,0 +1,45 @@
+{
+  "session": "20260904-121611-what-are-the-key-catalysts-for-diginex-saskia-chain-on",
+  "n": 2,
+  "question": "What are the key catalysts for Diginex?",
+  "beat": {
+    "line": "The critical near-term catalyst is a unified business strategy update in the second quarter of twenty twenty-six.",
+    "headline": "Q2 2026",
+    "ground": "violet",
+    "subjects": [
+      "the document stack",
+      "a paper calendar page"
+    ],
+    "action": "The document stack fans open and a single paper calendar page slides to the front and holds.",
+    "handoff": "the calendar page",
+    "source": [
+      10,
+      11,
+      12
+    ]
+  },
+  "sources": [
+    "Q2 2026 unified business strategy update",
+    "The company explicitly committed to providing 'further updates on the execution of its unified business strategy over the course of Q2 2026'.",
+    "This is the critical near-term catalyst."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.1",
+  "styleSheetVersion": "style-sheet-v0.1",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage. Bold magazine composition, refined 2D motion design.\n2. One dominant flat block-colour background for the whole shot: soft violet. Never a rainbow, never a gradient.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Never a recognisable person's face.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the background's contrasting colour. Real paper texture, print dots, small tape pieces.\n5. Consistent upper-left light. Small paper-layer shadows only.\n6. Everything is flat matte printed paper. No glow, no neon, no bloom, no halos, no luminous edges. Nothing emits light. Not glossy 3D. Not live action.\n7. Headline typography: one extra-bold sans-serif, black or cream, printed on paper chips, large, safe margins. English spelling and letterforms accurate and stable. Only the headline text in the copy list, nothing else.\n8. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window. One strongest visual focus at a time. No camera shake. Movement starts on the first frame; a small loop continues at the end. No empty frames.\n9. Numbers, when specified, are printed complete from their first visible frame. Never counting up, never morphing, never redrawn.\n10. No brands, logos, watermarks, or text beyond the copy list.\n11. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n12. Identity anchor: rough white torn-paper edges on every cutout; small paper shadow from upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the document stack; a paper calendar page.\nOpens on the document stack, carried over from the previous shot, which transforms as the action begins.\nAction: The document stack fans open and a single paper calendar page slides to the front and holds.\nEnds holding on the calendar page.\nHeadline printed on a paper chip: \"Q2 2026\".\n\nCOPY LIST: \"Q2 2026\". Exact strings; nothing else appears in frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage. The scene opens on <Picture 1>, featuring a cluster of black-and-white halftone photographic cutouts and paper fragments with rough white torn-paper edges, layered over a flat, matte, soft violet background. The composition includes a central paper chip with the text \"MAKE OR BREAK\" in a bold black sans-serif font. Every element is flat matte printed paper with a subtle texture and print dots, casting a small, consistent shadow toward the bottom-right from a light source in the upper-left. Immediately upon the first frame, the document stack begins to fan open with a fast, snappy motion, the individual paper layers sliding outward in a rhythmic sequence. As the stack fans, a single, clean paper calendar page—a black-and-white halftone cutout with rough white torn edges—slides quickly to the front with a slight overshoot before landing and holding stable in the center of the frame. Simultaneously, the \"MAKE OR BREAK\" chip is replaced by a new black paper chip featuring the headline \"Q2 2026\" printed in a large, extra-bold, cream-colored sans-serif font; the text is clean, legible, and stable. The camera remains in a Static Shot throughout the 5 seconds, focusing on the tactile quality of the paper layers. The video ends with a subtle, looping micro-oscillation of the top calendar page to maintain visual energy.\n\noverall_soundscape: A sequence of crisp, tactile paper sound effects, including a rhythmic, light paper-slap as the documents fan open and a short, sticky tape-peeling sound as the calendar page slides to the front.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa90f72/cTmc2is9yb4Rnn3DWo2Ax_minimax-h3.mp4",
+  "requestId": "01a06beb-5e48-7041-bc3e-d89f83edb7d8",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 71243,
+  "resolution": "480P",
+  "renderMs": 2822,
+  "timings": {
+    "inference": 0.5030785680282861
+  },
+  "renderedAt": "2026-09-04T10:16:23.822Z",
+  "savedAt": "2026-09-04T10:16:23.839Z"
+}
