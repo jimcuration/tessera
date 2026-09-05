@@ -1,0 +1,41 @@
+{
+  "session": "20260904-170244-what-is-diginex-native-chain-on",
+  "n": 7,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Administrative costs rose three point four million, to eight point one.",
+    "headline": "$8.1M G&A",
+    "ground": "magenta",
+    "subjects": [
+      "a rising paper column",
+      "the paper coins"
+    ],
+    "action": "The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.",
+    "handoff": "the tall column",
+    "source": [
+      26
+    ]
+  },
+  "sources": [
+    "General and administrative expenses rose $3.4M to $8.1M in the six months to September 2025, with $2.2M of that driven by M&A due diligence and legal work."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a rising paper column; the paper coins.\nOpens on the down arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.\nEnds holding on the tall column.\nHeadline printed on a paper chip: \"$8.1M G&A\".\n\nON-SCREEN TEXT: \"$8.1M G&A\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Administrative costs rose three point four million, to eight point one.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage shot, photographed flat under soft, natural room light from the upper left. <Picture 1> serves as the first frame, featuring a deep magenta flat block-color paper ground. The composition includes a cream-colored paper chip with rough torn white edges in the upper third, a black-and-white halftone photographic cutout of a downward-pointing arrow with torn white edges, and several blank, unprinted halftone photographic coin cutouts scattered on the magenta ground. All elements cast small, soft shadows to the bottom right. Immediately upon the first frame, the camera remains a Static Shot. The existing cream chip and the downward arrow begin to slide rapidly off the top of the frame with a slight overshoot. Simultaneously, a new cream paper chip slides in from the left to the upper center, featuring the bold black sans-serif text \"$8.1M G&A\" printed cleanly and legibly; this text remains stable and unchanged. In the lower two-thirds of the frame, a new black-and-white halftone photographic cutout of a vertical paper column emerges, rising upward from the bottom. As the column ascends, the blank halftone coin cutouts rapidly slide in and stack themselves neatly up the side of the column, one by one, with a fast motion and slight overshoot upon landing. The column reaches its full height and the coins finish stacking, holding a clear, still reading window for the remainder of the video. Every element—the magenta ground, the cream chip, and the halftone cutouts—maintains a consistent matte printed paper texture with no glow or neon effects. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says <d>[English] Administrative costs rose three point four million, to eight point one.</d>\n\noverall_soundscape: The audio is dominated by the narrator's voice, layered with tactile, diegetic sound effects. These include crisp, short paper-slap sounds as the chips and column land, and the subtle, sticky sound of adhesive tape being pressed down as the coins stack against the column.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91643/q6zEhFnSJo1zWbR2U6Pkp_minimax-h3.mp4",
+  "requestId": "01a06cf2-2586-7243-92a1-04940c7c25af",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 430091,
+  "resolution": "480P",
+  "renderMs": 3872,
+  "timings": {
+    "inference": 0.4865782330016373
+  },
+  "renderedAt": "2026-09-04T15:03:25.454Z",
+  "savedAt": "2026-09-04T15:03:25.472Z"
+}

@@ -1,0 +1,47 @@
+{
+  "session": "20260904-153317-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 4,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Now two workflows: sustainability compliance, and customer intelligence.",
+    "headline": "2 WORKFLOWS",
+    "ground": "cyan",
+    "subjects": [
+      "a paper ledger",
+      "a cutout screen"
+    ],
+    "action": "The previous chip flips away as the bound panel opens into a paper ledger on the left and a screen on the right, both holding.",
+    "handoff": "the open pair",
+    "source": [
+      4,
+      5,
+      6
+    ]
+  },
+  "sources": [
+    "By layering Resulticks' customer data and AI capabilities onto the core ESG/compliance infrastructure, Diginex can now serve enterprise customers across two distinct workflows:",
+    "Sustainability & compliance (carbon accounting, ESG reporting, supply chain transparency)",
+    "Customer intelligence & marketing (Resulticks' core strength — AI-driven customer data platforms)"
+  ],
+  "warnings": [
+    "headline number \"2\" not found as a figure in cited sentences [4,5,6] (fine if it is a count of items those sentences enumerate; flagged either way)"
+  ],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: pale cyan. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: pale cyan.\nSubjects: a paper ledger; a cutout screen.\nOpens on the bound panel, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the bound panel opens into a paper ledger on the left and a screen on the right, both holding.\nEnds holding on the open pair.\nHeadline printed on a paper chip: \"2 WORKFLOWS\".\n\nON-SCREEN TEXT: \"2 WORKFLOWS\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Now two workflows: sustainability compliance, and customer intelligence.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a 2D motion design style, photographed flat under soft room light. <Picture 1> serves as the first frame, showing a purple paper ground with a cream paper chip at the top reading \"END-TO-END\" in bold black sans-serif, and a white folded paper panel below held by a piece of matte beige tape. At 00:00.000, the camera is a Static Shot. The purple ground instantly slides away to be replaced by a single, unbroken flat block-color paper ground of pale cyan. Simultaneously, the \"END-TO-END\" chip flips upward and away with a fast motion and slight overshoot, disappearing from the frame. A new cream-colored paper chip lands firmly in the upper third of the frame, featuring the text \"2 WORKFLOWS\" printed in a clean, extra-bold black sans-serif typeface; the text is accurate, stable, and legible. In the lower two-thirds of the frame, the white bound panel rapidly unfolds and transforms. It opens up into two distinct black-and-white halftone photographic cutouts: a paper ledger on the left and a computer screen on the right. Both subjects feature rough, white torn-paper edges and are entirely blank, with no lettering, symbols, or marks on their surfaces. Each paper element—the ground, the headline chip, the ledger, and the screen—casts a small, soft shadow toward the bottom right, consistent with a single light source from the upper left. All surfaces are matte printed paper with visible paper texture and print dots. The elements land with a crisp snap and hold their position for the remainder of the video, with a very subtle, slow looping shift in the shadows to maintain a sense of life.\n\noverall_soundscape: The audio is dominated by the tactile sounds of a paper collage: a sharp, rhythmic paper-slap as the headline chip lands, the crisp rustle of a page unfolding, and the sticky, short sound of tape being manipulated. These foley effects are layered beneath the voiceover.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91411/-xO-yr-s_TKV3eSpr70PI_minimax-h3.mp4",
+  "requestId": "01a06c9f-f4bf-72b3-a937-a6bca373bfb3",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 143207,
+  "resolution": "480P",
+  "renderMs": 3714,
+  "timings": {
+    "inference": 0.45803766199969687
+  },
+  "renderedAt": "2026-09-04T13:33:38.908Z",
+  "savedAt": "2026-09-04T13:33:38.922Z"
+}

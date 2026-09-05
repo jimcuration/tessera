@@ -1,0 +1,41 @@
+{
+  "session": "20260904-153317-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 8,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Two point two million of that came from deal legal work.",
+    "headline": "$2.2M LEGAL",
+    "ground": "magenta",
+    "subjects": [
+      "a paper document",
+      "the column"
+    ],
+    "action": "The previous chip is covered as a slice of the column peels away into a single stamped paper document that settles forward.",
+    "handoff": "the peeled document",
+    "source": [
+      12
+    ]
+  },
+  "sources": [
+    "The company's G&A costs rose $3.4M to $8.1M in H1 FY25, with $2.2M driven by M&A legal work — a signal that integration is resource-intensive and ongoing."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper document; the column.\nOpens on the column, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as a slice of the column peels away into a single stamped paper document that settles forward.\nEnds holding on the peeled document.\nHeadline printed on a paper chip: \"$2.2M LEGAL\".\n\nON-SCREEN TEXT: \"$2.2M LEGAL\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Two point two million of that came from deal legal work.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, live-action, modern editorial paper collage shot. The scene opens on <Picture 1>, featuring a deep magenta flat block-color paper ground. In the upper third, a cream-colored paper chip with a rough white torn edge displays the black, extra-bold sans-serif text \"G&A $8.1M\". In the lower two-thirds, several black-and-white halftone photographic cutouts of coins are arranged, with a central vertical stack of coins forming a column. Every cutout has rough white torn-paper edges and casts a small, soft shadow from a consistent light source in the upper left. The camera is a Static Shot. Immediately on the first frame, the cream paper chip in the upper third is swiftly covered by a new, overlapping cream paper chip. This new chip features the black, extra-bold sans-serif text \"$2.2M LEGAL\", which is clean, legible, and stable. Simultaneously, the central column of halftone coins begins to transform; a vertical slice of the column peels away from the stack, morphing into a single, rectangular, blank black-and-white halftone paper document cutout. This document settles forward with a fast motion and a slight overshoot, landing flat on the magenta ground. A narrator (S1), a male with a warm, clear, natural, and brisk tone, says: <d>[English] Two point two million of that came from deal legal work.</d> The final two seconds hold on this composition, with the \"$2.2M LEGAL\" headline and the peeled document clearly visible. All surfaces maintain a matte printed paper texture with print dots, reflecting only the soft room light with no glow or bloom.\n\noverall_soundscape: The soundscape consists of the crisp, tactile sounds of paper manipulation. A distinct, quick paper-slap occurs as the headline chip covers the previous one, followed by a subtle, textured tearing and sliding sound as the document peels from the column, and a soft, muffled thud as the paper document lands on the ground. A faint sound of adhesive tape being pressed is audible during the transitions.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91415/c92tGDokwdHVqtmXZXtfN_minimax-h3.mp4",
+  "requestId": "01a06ca0-9281-7e10-bf1a-2a2f240593c4",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 143211,
+  "resolution": "480P",
+  "renderMs": 3956,
+  "timings": {
+    "inference": 0.47568622790277004
+  },
+  "renderedAt": "2026-09-04T13:34:18.881Z",
+  "savedAt": "2026-09-04T13:34:18.896Z"
+}

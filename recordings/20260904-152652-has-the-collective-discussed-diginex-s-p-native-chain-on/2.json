@@ -1,0 +1,41 @@
+{
+  "session": "20260904-152652-has-the-collective-discussed-diginex-s-p-native-chain-on",
+  "n": 2,
+  "question": "Has the collective discussed Diginex's path to profitability given the M&A spend?",
+  "beat": {
+    "line": "Diginex's profitability rests on a classic mergers and acquisitions maths problem.",
+    "headline": "INTEGRATION TAX",
+    "ground": "violet",
+    "subjects": [
+      "two paper ledger sheets",
+      "a torn-paper arrow"
+    ],
+    "action": "The folded document unfolds into two paper ledger sheets; a torn-paper arrow slides between them and holds.",
+    "handoff": "the arrow",
+    "source": [
+      2
+    ]
+  },
+  "sources": [
+    "Diginex's profitability trajectory hinges on a classic M&A math problem: near-term margin compression from integration costs, offset by longer-term operating leverage as the unified platform scales."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: two paper ledger sheets; a torn-paper arrow.\nOpens on the folded document, carried over from the previous shot, which transforms as the action begins.\nAction: The folded document unfolds into two paper ledger sheets; a torn-paper arrow slides between them and holds.\nEnds holding on the arrow.\nHeadline printed on a paper chip: \"INTEGRATION TAX\".\n\nON-SCREEN TEXT: \"INTEGRATION TAX\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Diginex's profitability rests on a classic mergers and acquisitions maths problem.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, styled as a photographed flat-lay under soft room light. <Picture 1> establishes the opening composition: a single, folded black-and-white halftone photographic cutout with rough white torn-paper edges, resting on a flat, unbroken soft violet paper ground. The lighting is consistent from the upper left, casting a small, soft shadow beneath the paper. A narrator (S1), a middle-aged male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, speaks from the first frame: <d>[English] Diginex's profitability rests on a classic mergers and acquisitions maths problem.</d> Simultaneously, the folded document quickly unfolds with a slight overshoot into two separate, flat paper ledger sheets, both featuring the same black-and-white halftone texture and rough white torn edges. The ledger sheets are entirely blank, with no lettering, numerals, or symbols. As the sheets settle, a cream-colored paper chip slides rapidly into the upper third of the frame from the top edge, landing stably. Printed on this chip in a large, extra-bold black sans-serif typeface is the clean and legible text \"INTEGRATION TAX\". Finally, a small, torn-paper arrow in a contrasting pale yellow slides in quickly from the left, positioning itself precisely between the two ledger sheets and holding steady. The camera remains in a Static Shot throughout the 5 seconds. Every element, including the chip and arrow, maintains a matte printed paper texture with visible print dots and small pieces of adhesive tape at the corners, reflecting only the ambient room light without any glow or bloom. The video ends on a hold of this final composition.\n\noverall_soundscape: The audio is dominated by the narrator's voice, layered with crisp, tactile diegetic sounds. These include the rhythmic, dry slap of paper unfolding and the short, sticky sound of adhesive tape being pressed onto a surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa913ec/LdwvnsAHYSmdZFdBfYc4p_minimax-h3.mp4",
+  "requestId": "01a06c9a-3026-7842-b19a-0a17d9c7429c",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 230858,
+  "resolution": "480P",
+  "renderMs": 2871,
+  "timings": {
+    "inference": 0.46800831300060963
+  },
+  "renderedAt": "2026-09-04T13:27:20.206Z",
+  "savedAt": "2026-09-04T13:27:20.220Z"
+}

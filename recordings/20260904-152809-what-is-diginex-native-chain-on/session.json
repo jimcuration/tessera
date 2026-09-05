@@ -1,0 +1,228 @@
+{
+  "session": "20260904-152809-what-is-diginex-native-chain-on",
+  "question": "What is Diginex",
+  "matchedQuestion": "What is Diginex",
+  "answerKind": "answer",
+  "link": null,
+  "followups": [
+    "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+    "How is Diginex positioned against larger ESG software competitors like Workiva or Enablon?",
+    "What are the near-term catalysts for this stock?"
+  ],
+  "fromSpine": false,
+  "sentences": [
+    "Diginex — Platform Consolidation in RegTech & Sustainability",
+    "Diginex (DGNX) is repositioning itself as a unified sustainability, data and compliance platform.",
+    "The company provides software and advisory solutions helping organisations collect, manage and report ESG, climate and supply-chain data.",
+    "Following acquisitions of Plan A, Matter, The Remedy Project, and the transformative addition of Resulticks, Diginex is evolving from point solutions into a fully integrated end-to-end platform spanning carbon accounting, ESG reporting, supply chain transparency, human rights due diligence, and now AI-driven customer data capabilities — designed to serve banks, asset managers and enterprises.",
+    "Diginex · Executive Summary",
+    "DiginexPartner",
+    "Technology",
+    "Sector",
+    "$1.38 USD",
+    "+1.47% today",
+    "$37.83 m USD",
+    "Market Cap",
+    "Where we stand",
+    "The stock has faced significant headwinds.",
+    "As of early September 2026, Diginex trades at $1.16 per share with a market cap of approximately $34M — a sharp decline from earlier valuations.",
+    "The company is in active integration mode following the $1.5B Resulticks acquisition, which represents a significant bet on AI-powered customer data capabilities layered onto its sustainability platform 2 sources.",
+    "The investment thesis",
+    "Diginex's platform consolidation addresses a real market need: enterprises face fragmented, manual processes for ESG and supply-chain compliance.",
+    "By unifying carbon accounting, ESG reporting, supply chain transparency and human rights due diligence into one platform, combined with Resulticks' AI-driven customer data capabilities, the company is positioning itself as a one-stop shop for sustainability and compliance workflows.",
+    "This is particularly relevant for regulated entities (banks, asset managers) facing mounting ESG disclosure requirements and climate risk scrutiny.",
+    "The Resulticks acquisition is the pivotal move — adding proprietary AI-driven customer data capabilities to a compliance/ESG core transforms the product from a reporting tool into a strategic business intelligence platform.",
+    "Doctolib's selection of Plan A (now part of Diginex) to turn carbon management into strategic business value signals traction in converting ESG from compliance checkbox to operational value driver.",
+    "Diginex · Doctolib selects Diginex Limited's Plan A to turn their carbon management into strategic business value Thu, 03 19 2026 08 00",
+    "The question mark",
+    "Integration execution is the primary risk.",
+    "Diginex has now absorbed four distinct businesses (Plan A, Matter, The Remedy Project, Resulticks) across multiple jurisdictions — a complex undertaking.",
+    "General and administrative expenses rose $3.4M to $8.1M in the six months to September 2025, with $2.2M of that driven by M&A due diligence and legal work.",
+    "The company is investing in sales and business development talent, which is necessary but dilutes near-term profitability Diginex · Diginex HY25 results.",
+    "The stock price collapse — from earlier highs to $1.16 — suggests market scepticism about the platform's ability to achieve scale, pricing power, or profitability.",
+    "RegTech is crowded, and ESG software adoption faces cyclical headwinds as regulatory momentum shifts.",
+    "The company's negative P/E ratio and micro-cap status leave little room for execution missteps.",
+    "What changes the narrative",
+    "Platform adoption acceleration — Evidence that the unified platform is winning net-new logos and expanding within existing customers, particularly in banking and asset management where ESG and climate risk reporting is now mandated.",
+    "Resulticks integration success — Demonstrable revenue synergies and cross-sell traction showing that AI-driven customer data capabilities are driving incremental value for sustainability workflows.",
+    "Path to profitability — Clear evidence of operating leverage as the platform scales, with G&A growing slower than revenue.",
+    "Brazil expansion — The company has signalled a focus on Brazil's $77B sustainability market, a geographic diversification and growth vector. benzinga.com",
+    "Community signal",
+    "In the last 180 days through 3rd September 2026, Diginex appeared in the collective's \"Curation Connect Spotlight\" as of 9th May 2026, flagged by the collective as a stock of emerging interest — though no detailed investment thesis or conviction-level debate has surfaced in the community discussions available.",
+    "The stock remains on the radar rather than a high-conviction name.",
+    "The micro-cap valuation and integration complexity mean this is a higher-risk, speculative position suited only to investors with conviction on platform consolidation in RegTech and patience for multi-year integration execution."
+  ],
+  "switches": {
+    "voice": "native",
+    "chain": "on",
+    "render": "queue"
+  },
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "translateSource": "cache",
+  "translateMs": 1,
+  "firstBeatMs": 35,
+  "beats": [
+    {
+      "line": "Diginex is repositioning as one sustainability, data and compliance platform.",
+      "headline": "ONE PLATFORM",
+      "ground": "violet",
+      "subjects": [
+        "a paper screen",
+        "a cream paper chip"
+      ],
+      "action": "A halftone paper screen lowers onto a cream chip and holds centre frame.",
+      "handoff": "the paper screen",
+      "source": [
+        1
+      ]
+    },
+    {
+      "line": "Its software helps organisations collect, manage and report climate data.",
+      "headline": "ESG DATA",
+      "ground": "violet",
+      "subjects": [
+        "the paper screen",
+        "stacked documents"
+      ],
+      "action": "The previous chip slides off the left edge as the screen tilts back and stacked documents feed into it, settling in a neat pile.",
+      "handoff": "the document pile",
+      "source": [
+        2
+      ]
+    },
+    {
+      "line": "Four separate businesses have now been absorbed into it.",
+      "headline": "4 BUSINESSES",
+      "ground": "cyan",
+      "subjects": [
+        "four paper folders",
+        "tape pieces"
+      ],
+      "action": "The previous chip flips away as the document pile splits into four paper folders; tape pieces bind them into one block.",
+      "handoff": "the taped block",
+      "source": [
+        3,
+        25
+      ]
+    },
+    {
+      "line": "Carbon accounting, supply chains, human rights, now AI customer data.",
+      "headline": "END-TO-END",
+      "ground": "cyan",
+      "subjects": [
+        "the taped block",
+        "a paper conveyor"
+      ],
+      "action": "The previous chip is covered as the taped block unfolds into a paper conveyor that runs from one edge to the other and stops.",
+      "handoff": "the conveyor",
+      "source": [
+        3
+      ]
+    },
+    {
+      "line": "It is built to serve banks, asset managers and enterprises.",
+      "headline": "BANKS & FUNDS",
+      "ground": "cyan",
+      "subjects": [
+        "cutout buildings",
+        "the conveyor"
+      ],
+      "action": "The previous chip slides down as the conveyor's far end folds up into cutout buildings that line up and hold.",
+      "handoff": "the row of buildings",
+      "source": [
+        3,
+        19
+      ]
+    },
+    {
+      "line": "The stock trades at one dollar sixteen, capitalised near thirty-four million.",
+      "headline": "$1.16",
+      "ground": "magenta",
+      "subjects": [
+        "a torn-paper arrow",
+        "paper coins"
+      ],
+      "action": "The previous chip flips off as the buildings collapse into paper coins; a torn-paper arrow enters and points down at them.",
+      "handoff": "the down arrow",
+      "source": [
+        14
+      ]
+    },
+    {
+      "line": "Administrative costs rose three point four million, to eight point one.",
+      "headline": "$8.1M G&A",
+      "ground": "magenta",
+      "subjects": [
+        "a rising paper column",
+        "the paper coins"
+      ],
+      "action": "The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.",
+      "handoff": "the tall column",
+      "source": [
+        26
+      ]
+    },
+    {
+      "line": "Integration execution across those four businesses is the primary risk.",
+      "headline": "EXECUTION RISK",
+      "ground": "magenta",
+      "subjects": [
+        "four leaning folders",
+        "a paper hand"
+      ],
+      "action": "The previous chip is covered as the column topples into four leaning folders; a paper hand enters and steadies them.",
+      "handoff": "the steadying hand",
+      "source": [
+        24,
+        25
+      ]
+    },
+    {
+      "line": "Winning banks and proving Resulticks synergies would change the story.",
+      "headline": "WHAT CHANGES IT",
+      "ground": "lime",
+      "subjects": [
+        "a paper ribbon",
+        "cutout buildings"
+      ],
+      "action": "The previous chip flips away as the steadying hand unrolls a paper ribbon that loops around cutout buildings and ties.",
+      "handoff": "the tied ribbon",
+      "source": [
+        32,
+        33
+      ]
+    },
+    {
+      "line": "It is targeting Brazil's seventy-seven billion dollar sustainability market.",
+      "headline": "$77B MARKET",
+      "ground": "lime",
+      "subjects": [
+        "a paper map",
+        "a cutout arrow"
+      ],
+      "action": "The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.",
+      "handoff": "the arrow on the map",
+      "source": [
+        35
+      ]
+    }
+  ],
+  "warnings": [
+    [],
+    [],
+    [
+      "headline number \"4\" not found as a figure in cited sentences [3,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "dropped": [],
+  "askedAt": "2026-09-04T13:28:09.218Z",
+  "savedAt": "2026-09-04T13:28:09.271Z"
+}

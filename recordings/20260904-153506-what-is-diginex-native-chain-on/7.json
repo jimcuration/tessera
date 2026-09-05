@@ -1,0 +1,41 @@
+{
+  "session": "20260904-153506-what-is-diginex-native-chain-on",
+  "n": 7,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Administrative costs rose three point four million, to eight point one.",
+    "headline": "$8.1M G&A",
+    "ground": "magenta",
+    "subjects": [
+      "a rising paper column",
+      "the paper coins"
+    ],
+    "action": "The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.",
+    "handoff": "the tall column",
+    "source": [
+      26
+    ]
+  },
+  "sources": [
+    "General and administrative expenses rose $3.4M to $8.1M in the six months to September 2025, with $2.2M of that driven by M&A due diligence and legal work."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a rising paper column; the paper coins.\nOpens on the down arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.\nEnds holding on the tall column.\nHeadline printed on a paper chip: \"$8.1M G&A\".\n\nON-SCREEN TEXT: \"$8.1M G&A\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Administrative costs rose three point four million, to eight point one.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, photographed flat under soft room light with a consistent light source from the upper left. The scene opens on <Picture 1>, which features a deep magenta block-color paper ground. In the upper third, a cream paper chip with a rough torn white edge displays the text \"$1.16\" in a bold black sans-serif font. Below it, a pile of black-and-white halftone photographic cutouts of blank coins with rough white torn edges rests on the magenta ground, while a halftone black paper arrow points downward to the right. On the first frame, a warm, clear, and natural male narrator (S1) begins speaking: <d>[English] Administrative costs rose three point four million, to eight point one.</d> Simultaneously, the \"$1.16\" chip and the pile of coins slide rapidly off the frame to the left with a slight overshoot. The downward arrow quickly transforms, straightening and extending vertically to become a tall, rising paper column made of a cream-colored paper ribbon. As the column grows upward, individual black-and-white halftone paper coins, each with rough white torn edges and no markings, fly in from the sides and stack themselves neatly against the side of the column. As the action stabilizes, a new cream paper chip with rough white torn edges lands firmly in the upper third of the frame; it features the text \"$8.1M G&A\" printed in an extra-bold black sans-serif font. Every paper element, including the column, the coins, and the headline chip, casts a small, soft shadow toward the bottom right. The camera remains in a Static Shot throughout the 5-second duration, holding the final composition of the tall column and the \"$8.1M G&A\" headline.\n\noverall_soundscape: The audio is dominated by the narrator's voice, layered with tactile, diegetic sound effects. Crisp, rhythmic paper-slap sounds occur as the elements slide and the coins stack, accompanied by the short, sticky sound of adhesive tape being pressed down.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91420/6czQXgLGn7zc5iVHKrkQH_minimax-h3.mp4",
+  "requestId": "01a06ca2-2a45-7ef2-8892-16e9dc3f210b",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 403159,
+  "resolution": "480P",
+  "renderMs": 3388,
+  "timings": {
+    "inference": 0.46720076305791736
+  },
+  "renderedAt": "2026-09-04T13:36:03.343Z",
+  "savedAt": "2026-09-04T13:36:03.359Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-153152-what-is-diginex-native-chain-on",
+  "n": 10,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "It is targeting Brazil's seventy-seven billion dollar sustainability market.",
+    "headline": "$77B MARKET",
+    "ground": "lime",
+    "subjects": [
+      "a paper map",
+      "a cutout arrow"
+    ],
+    "action": "The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.",
+    "handoff": "the arrow on the map",
+    "source": [
+      35
+    ]
+  },
+  "sources": [
+    "Brazil expansion — The company has signalled a focus on Brazil's $77B sustainability market, a geographic diversification and growth vector. benzinga.com"
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a paper map; a cutout arrow.\nOpens on the tied ribbon, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.\nEnds holding on the arrow on the map.\nHeadline printed on a paper chip: \"$77B MARKET\".\n\nON-SCREEN TEXT: \"$77B MARKET\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"It is targeting Brazil's seventy-seven billion dollar sustainability market.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage animation, photographed as a flat lay under soft, diffused room light coming from the upper left. <Picture 1> serves as the opening frame, featuring a lime green paper ground. In the upper third, a cream-colored paper chip with a rough torn bottom edge displays the black, extra-bold sans-serif text \"WHAT CHANGES IT\". In the lower two-thirds, a black-and-white halftone photographic cutout of a classical building with rough white torn edges is wrapped in a tied cream-colored paper ribbon. A narrator (S1), a male with a warm, clear, and natural mid-range timbre and a brisk but unhurried speaking rate, speaks immediately: <d>[English] It is targeting Brazil's seventy-seven billion dollar sustainability market.</d> Simultaneously, the \"WHAT CHANGES IT\" chip slides quickly off-frame to the left with a slight overshoot. The tied ribbon on the building cutout rapidly unfolds and flattens, transforming into a black-and-white halftone paper map with rough white torn edges and no printed text or symbols. At the same moment, a new cream-colored paper chip slides in from the right to the upper third of the frame, landing with a slight bounce; it features the black, extra-bold sans-serif text \"$77B MARKET\" in a clean, legible, and stable print. Finally, a small, black-and-white halftone cutout of a directional arrow with rough white torn edges drops quickly from the top of the frame, landing precisely on the paper map. The camera remains a Static Shot throughout. Every element—the lime green ground, the map, the arrow, and the headline chip—is made of matte printed paper, casting a small, soft shadow to the bottom right. The video ends holding on this final composition.\n\noverall_soundscape: The audio is dominated by the narrator's voice. Beneath the speech, there are synchronized foley sounds of physical paper: a crisp, quick sliding sound as the first chip exits, a soft rustling and flattening sound as the ribbon becomes a map, and a distinct, light \"slap\" sound when the arrow lands on the paper surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9140d/XzMIm7jBdQiOIICdueKJk_minimax-h3.mp4",
+  "requestId": "01a06c9f-58b2-76c0-b805-e645faae7816",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 954811,
+  "resolution": "480P",
+  "renderMs": 3338,
+  "timings": {
+    "inference": 0.4733083308674395
+  },
+  "renderedAt": "2026-09-04T13:32:58.995Z",
+  "savedAt": "2026-09-04T13:32:59.009Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-154234-what-is-diginex-native-chain-on",
+  "n": 6,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "The stock trades at one dollar sixteen, capitalised near thirty-four million.",
+    "headline": "$1.16",
+    "ground": "magenta",
+    "subjects": [
+      "a torn-paper arrow",
+      "paper coins"
+    ],
+    "action": "The previous chip flips off as the buildings collapse into paper coins; a torn-paper arrow enters and points down at them.",
+    "handoff": "the down arrow",
+    "source": [
+      14
+    ]
+  },
+  "sources": [
+    "As of early September 2026, Diginex trades at $1.16 per share with a market cap of approximately $34M — a sharp decline from earlier valuations."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a torn-paper arrow; paper coins.\nOpens on the row of buildings, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips off as the buildings collapse into paper coins; a torn-paper arrow enters and points down at them.\nEnds holding on the down arrow.\nHeadline printed on a paper chip: \"$1.16\".\n\nON-SCREEN TEXT: \"$1.16\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The stock trades at one dollar sixteen, capitalised near thirty-four million.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, a 2D motion design shot photographed flat under soft room light. The scene opens on <Picture 1>, featuring a light blue paper ground with a cream paper chip at the top displaying the text \"BANKS & FUNDS\" in bold black sans-serif, and black-and-white halftone photographic cutouts of urban buildings with rough white torn-paper edges occupying the lower two-thirds. Immediately upon the first frame, the camera remains in a Static Shot as the composition transforms. The light blue ground is swiftly covered by a single, unbroken block of deep magenta paper. Simultaneously, the \"BANKS & FUNDS\" chip flips upward and off-screen, replaced by a new cream paper chip landing in the upper third of the frame; it features the text \"$1.16\" printed in a large, extra-bold black sans-serif, clean and legible with no misspellings. In the lower two-thirds, the halftone buildings collapse and flatten, morphing into a scattered pile of black-and-white halftone paper coins, all featuring rough white torn edges and no markings or symbols on their surfaces. A black-and-white halftone cutout of a torn-paper arrow enters the frame rapidly from the top, overshooting slightly before landing and pointing directly downward at the pile of coins. Every element—the magenta ground, the cream chip, the coins, and the arrow—is made of matte printed paper with a visible tactile texture and print dots. A consistent light source from the upper left casts a small, soft shadow beneath each paper layer, creating a subtle sense of depth. The video ends holding on this final composition of the \"$1.16\" headline and the downward arrow. An English narrator (S1), with a warm, clear, natural, and brisk tone, says in an off-screen voiceover: <d>[English] The stock trades at one dollar sixteen, capitalised near thirty-four million.</d> Throughout the narration, the narrator's lips are not visible.\n\noverall_soundscape: The audio is dominated by the clean, dry voice of the narrator. Beneath the speech, tactile foley sounds are present, including the crisp slap of heavy paper hitting a surface and the sticky, short rip of adhesive tape being applied.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9144c/LfHWEciFXMyR3HQFTFGUc_minimax-h3.mp4",
+  "requestId": "01a06ca8-d7ab-7f81-bb34-46eb82027df5",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 629997,
+  "resolution": "480P",
+  "renderMs": 3425,
+  "timings": {
+    "inference": 0.4739338750950992
+  },
+  "renderedAt": "2026-09-04T13:43:20.804Z",
+  "savedAt": "2026-09-04T13:43:20.818Z"
+}

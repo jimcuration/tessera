@@ -30,6 +30,7 @@ This repo is a fork of `blendi-remade/unreel` (MIT). Its runtime — shot queue,
 5. **No client branding.** Tessera is always Curation style. No client logos, colours or bespoke looks.
 6. **No recognisable people** in generated imagery. Objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands.
 7. **Save everything.** Every clip, prompt and `expanded_prompt` goes to `recordings/` with the beat that produced it.
+8. **One session per checkout.** Parallel work packages use separate git worktrees on their own branches; never run `npm run build` in a checkout where a dev server is running.
 
 ## The beat
 
@@ -94,3 +95,7 @@ Programme you can interrupt, not a chatbot. Suggestions under the screen with 10
 ## Dates
 
 fal promo pricing on H3 Max Turbo ends 7 Sept 2026. All WP0 renders happen before then.
+
+## Notes
+
+`filter: blur()` and `mix-blend-mode: screen` on the same element render nothing in Chromium; use layered box-shadow for soft glows.

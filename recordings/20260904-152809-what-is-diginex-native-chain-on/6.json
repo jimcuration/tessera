@@ -1,0 +1,41 @@
+{
+  "session": "20260904-152809-what-is-diginex-native-chain-on",
+  "n": 6,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "The stock trades at one dollar sixteen, capitalised near thirty-four million.",
+    "headline": "$1.16",
+    "ground": "magenta",
+    "subjects": [
+      "a torn-paper arrow",
+      "paper coins"
+    ],
+    "action": "The previous chip flips off as the buildings collapse into paper coins; a torn-paper arrow enters and points down at them.",
+    "handoff": "the down arrow",
+    "source": [
+      14
+    ]
+  },
+  "sources": [
+    "As of early September 2026, Diginex trades at $1.16 per share with a market cap of approximately $34M — a sharp decline from earlier valuations."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a torn-paper arrow; paper coins.\nOpens on the row of buildings, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips off as the buildings collapse into paper coins; a torn-paper arrow enters and points down at them.\nEnds holding on the down arrow.\nHeadline printed on a paper chip: \"$1.16\".\n\nON-SCREEN TEXT: \"$1.16\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The stock trades at one dollar sixteen, capitalised near thirty-four million.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 2D editorial paper collage animation, Static Shot, opening precisely on <Picture 1>. A narrator (S1, adult male, warm, clear, mid-pitch, brisk rate) says in an off-screen voiceover: <d>[English] The stock trades at one dollar sixteen, capitalised near thirty-four million.</d> Immediately, a sheet of matte deep magenta paper rapidly covers the background ground. The top \"BANKS & FUNDS\" paper chip flips off-screen, replaced by a fresh cream torn-paper chip snapping into the upper third displaying clean, bold black text reading \"$1.16\". Simultaneously, the lower halftone building cutouts collapse downward, scattering into flat, unmarked black-and-white paper coins. A large cream torn-paper arrow enters swiftly from above with slight overshoot, pointing down at the coins under consistent top-left lighting, holding steady through the end.\n\noverall_soundscape: Crisp paper rustling and sliding effects as the backdrop changes, followed by light paper-slap impacts as the new chip and downward arrow snap into place over subtle ambient room tone.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa913f5/GiWz5nwZ0aJzZ0vC96CKt_minimax-h3.mp4",
+  "requestId": "01a06c9b-96b4-7030-8071-089dfa5f1457",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 342174,
+  "resolution": "480P",
+  "renderMs": 8043,
+  "timings": {
+    "inference": 0.4701727570500225
+  },
+  "renderedAt": "2026-09-04T13:28:57.419Z",
+  "savedAt": "2026-09-04T13:28:57.434Z"
+}

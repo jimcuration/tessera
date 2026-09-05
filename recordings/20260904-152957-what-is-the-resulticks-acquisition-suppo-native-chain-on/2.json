@@ -1,0 +1,41 @@
+{
+  "session": "20260904-152957-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 2,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "The one point five billion dollar deal adds AI customer data.",
+    "headline": "$1.5B",
+    "ground": "violet",
+    "subjects": [
+      "a stack of paper coins",
+      "a cutout screen"
+    ],
+    "action": "The document folds into a stack of paper coins; a cutout screen rises behind it and holds.",
+    "handoff": "the screen",
+    "source": [
+      1
+    ]
+  },
+  "sources": [
+    "The $1.5B acquisition adds AI-driven customer data capabilities to Diginex's sustainability and compliance platform — transforming it from a point solution into an integrated end-to-end platform."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: a stack of paper coins; a cutout screen.\nOpens on the document, carried over from the previous shot, which transforms as the action begins.\nAction: The document folds into a stack of paper coins; a cutout screen rises behind it and holds.\nEnds holding on the screen.\nHeadline printed on a paper chip: \"$1.5B\".\n\nON-SCREEN TEXT: \"$1.5B\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"The one point five billion dollar deal adds AI customer data.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a cinematic style, photographed as a flat lay under soft, consistent room light coming from the upper left. The scene opens on <Picture 1>, which features a soft violet block-color paper ground. In the upper third of the frame, a cream-colored paper chip with rough white torn edges displays the bold, black, sans-serif text \"REVENUE SYNERGY\". In the lower two-thirds, a black-and-white halftone photographic cutout of a document with rough white torn edges is centered. The camera is a Static Shot. Immediately upon the first frame, the \"REVENUE SYNERGY\" chip slides quickly upward and out of frame, replaced by a new cream paper chip that lands with a slight overshoot, displaying the clean, stable, extra-bold black text \"$1.5B\". Simultaneously, the halftone document cutout in the center rapidly folds and compresses itself into a neat stack of black-and-white halftone paper coins. As the coins settle, a second halftone cutout of a blank, unprinted computer screen with rough white torn edges rises from behind the coin stack, sliding upward to a stop. Every paper element, including the coins and the screen, casts a small, soft shadow onto the violet ground. All surfaces have a matte printed paper texture with visible print dots and no digital glow or bloom. The final two seconds hold on this composition: the \"$1.5B\" headline at the top, the stack of coins in the foreground, and the blank screen standing behind them. (S1), a narrator with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says in an off-screen voiceover: <d>[English] The one point five billion dollar deal adds AI customer data.</d> The narrator's voice begins exactly at the start of the video.\n\noverall_soundscape: The soundscape consists of tactile, physical paper noises. A crisp, quick paper-slap sound occurs as the headline chip lands and the document folds, followed by a subtle, sticky sound of tape being pressed down as the screen cutout rises and locks into place.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91413/D8bGRSs1dsxIaDSoRR7IW_minimax-h3.mp4",
+  "requestId": "01a06c9c-bc68-79c0-80b9-d8b33c1d6223",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 912179,
+  "resolution": "480P",
+  "renderMs": 2742,
+  "timings": {
+    "inference": 0.48542494700086536
+  },
+  "renderedAt": "2026-09-04T13:30:07.149Z",
+  "savedAt": "2026-09-04T13:30:07.163Z"
+}

@@ -1,0 +1,41 @@
+{
+  "session": "20260904-153317-what-is-the-resulticks-acquisition-suppo-native-chain-on",
+  "n": 10,
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beat": {
+    "line": "Without it, this becomes financial engineering, not a strategic unlock.",
+    "headline": "OR VALUE-DESTRUCTIVE",
+    "ground": "lime",
+    "subjects": [
+      "a torn paper ribbon",
+      "a cream paper chip"
+    ],
+    "action": "The previous chip flips away as the pointing hand unrolls into a paper ribbon that tears at its centre and hangs still.",
+    "handoff": "the torn ribbon",
+    "source": [
+      14
+    ]
+  },
+  "sources": [
+    "Without that, the acquisition becomes a value-destructive financial engineering move rather than a strategic unlock."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.2",
+  "styleSheetVersion": "style-sheet-v0.2",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.\n4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.\n7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: a torn paper ribbon; a cream paper chip.\nOpens on the pointing hand, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the pointing hand unrolls into a paper ribbon that tears at its centre and hangs still.\nEnds holding on the torn ribbon.\nHeadline printed on a paper chip: \"OR VALUE-DESTRUCTIVE\".\n\nON-SCREEN TEXT: \"OR VALUE-DESTRUCTIVE\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Without it, this becomes financial engineering, not a strategic unlock.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a 2D-animated modern editorial paper collage style video, photographed flat under soft room light. The scene opens on <Picture 1>, which features a solid lime green paper ground. In the upper third, a cream paper chip with rough torn edges displays the black sans-serif text \"CROSS-SELL\". In the lower two-thirds, a black-and-white halftone photographic cutout of a pointing hand (S1), with rough white torn edges, points toward a blank cream paper chip. A consistent light source from the upper left casts small, soft shadows beneath every paper layer. At 00:00.000, the action begins immediately: the cream chip containing \"CROSS-SELL\" flips upward and away with fast motion and a slight overshoot, clearing the upper third of the frame. Simultaneously, the halftone pointing hand (S1) unrolls and transforms fluidly into a long, flat matte paper ribbon of the same halftone texture. As the ribbon extends, it abruptly tears at its center, with the two pieces hanging still. A new cream paper chip descends rapidly into the upper third, landing with a slight bounce to reveal the extra-bold black sans-serif text \"OR VALUE-DESTRUCTIVE\" in clean, legible, and stable lettering. A narrator (S2), a man with a warm, clear, natural, and brisk timbre, speaks while the action unfolds: <d>[English] Without it, this becomes financial engineering, not a strategic unlock.</d> The camera remains in a Static Shot throughout the 5-second duration. By the final second, the composition holds steady on the torn halftone ribbon and the headline \"OR VALUE-DESTRUCTIVE\", with a subtle, minute looping movement of the paper edges to maintain a sense of life.\n\noverall_soundscape: The audio features the tactile, physical sounds of a paper collage being assembled. This includes a crisp paper-slap as the headline chip lands and the subtle, sticky sound of tape being pressed down, coinciding with the movements of the paper elements.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91417/8fc-MtRZ3Vd-Rc2UEyCOl_minimax-h3.mp4",
+  "requestId": "01a06ca0-d904-78c2-8468-a6b09e0a40b8",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 143213,
+  "resolution": "480P",
+  "renderMs": 3648,
+  "timings": {
+    "inference": 0.5270303138531744
+  },
+  "renderedAt": "2026-09-04T13:34:37.418Z",
+  "savedAt": "2026-09-04T13:34:37.433Z"
+}

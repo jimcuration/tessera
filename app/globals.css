@@ -56,12 +56,16 @@ video {
   width: 70%;
   max-width: 1400px;
   margin: 6vh auto 0;
+  /* public/console-cutout.png is 5504x3072; the image is absolutely
+     positioned (below) so nothing else sets this box's height */
+  aspect-ratio: 5504 / 3072;
 }
 
 .console-image {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   user-select: none;
   pointer-events: none;
 }
@@ -72,25 +76,82 @@ video {
   background: #000;
 }
 
+/* the square key: light on the metal, not a flat colour block. A solid
+   fill softened by a small box-shadow blur (reads as a soft edge without
+   the hard cutoff a plain rect would have) plus a second, wider and
+   blurrier shadow as the halo extending beyond the key, both screen-blended
+   so they lighten the render rather than sitting on top of it like a
+   sticker.
+   NB box-shadow, not `filter: blur()` — Chromium does not composite
+   `mix-blend-mode` against the backdrop for an element that also has
+   `filter` applied to it (verified live: identical rule with `filter:
+   blur()` painted nothing). box-shadow blurs without `filter`, so it
+   composites correctly. */
 .console-key {
   position: absolute;
-  background: transparent;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: var(--glow, transparent);
+  opacity: 0;
+  /* soft edge, then the halo extending ~40% of the key's own size beyond it */
+  box-shadow:
+    0 0 3px 1px var(--glow, transparent),
+    0 0 10px 8px var(--glow, transparent);
 }
 
 .console-key.listening {
-  background: var(--text);
+  --glow: var(--text);
+  opacity: 1;
   animation: blink 1s steps(1, end) infinite;
 }
 
 .console-key.rendering {
-  background: var(--ground, var(--text));
+  --glow: var(--ground, var(--text));
+  opacity: 1;
 }
 
+/* the key's reflection in the floor: same light, fainter and softer,
+   flush against the measured base line (components/console.tsx) rather
+   than a true mirror distance — see BASE_LINE there for why */
+.console-key-reflection {
+  position: absolute;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: var(--glow, transparent);
+  opacity: 0;
+  transform: scaleY(-1);
+  box-shadow:
+    0 0 5px 1px var(--glow, transparent),
+    0 0 14px 10px var(--glow, transparent);
+}
+
+.console-key-reflection.listening {
+  --glow: var(--text);
+  opacity: 0.35;
+  animation: blink 1s steps(1, end) infinite;
+}
+
+.console-key-reflection.rendering {
+  --glow: var(--ground, var(--text));
+  opacity: 0.35;
+}
+
+/* the seam: same screen-blended glow treatment as the key, fixed #ffee8c
+   (CLAUDE.md style sheet's audio/copy-list yellow), no hard edge. Steady
+   once the runway is full, a slow fade while it's filling. */
 .console-seam {
   position: absolute;
+  pointer-events: none;
+  mix-blend-mode: screen;
   background: #ffee8c;
   opacity: 0;
-  pointer-events: none;
+  box-shadow:
+    0 0 3px 1px #ffee8c,
+    0 0 10px 8px #ffee8c;
+}
+
+.console-seam.steady {
+  opacity: 0.45;
 }
 
 .console-seam.filling {
@@ -104,6 +165,37 @@ video {
   }
   50% {
     opacity: 0.45;
+  }
+}
+
+/* the seam's reflection: same idea as the key's */
+.console-seam-reflection {
+  position: absolute;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: #ffee8c;
+  opacity: 0;
+  transform: scaleY(-1);
+  box-shadow:
+    0 0 5px 1px #ffee8c,
+    0 0 14px 10px #ffee8c;
+}
+
+.console-seam-reflection.steady {
+  opacity: 0.35;
+}
+
+.console-seam-reflection.filling {
+  animation: seamPulseReflection 2s ease-in-out infinite;
+}
+
+@keyframes seamPulseReflection {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.35;
   }
 }
 
