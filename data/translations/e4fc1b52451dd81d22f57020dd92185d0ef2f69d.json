@@ -1,6 +1,7 @@
 {
-  "translator": "translator-v0.3.1",
+  "translator": "translator-v0.3.2",
   "pinned": true,
+  "note": "WP8's 10s spine, promoted from a live translation to pinned (briefs/WP8-report.md addendum). WP8.1 (D33) added `connector` (identical per scene) and `tag` (one, on scene 2) to every beat, re-pinning it under translator-v0.3.2. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
   "question": "What is the cash position and runway?",
   "beats": [
     {
@@ -18,9 +19,9 @@
       "hero": false,
       "scale": "oversized",
       "delivery": "[presenting to camera] At the end of September, Diginex held one point eight five million dollars in cash.",
-      "source": [
-        9
-      ]
+      "source": [9],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a torn-paper arrow", "colour": "black" },
+      "tag": null
     },
     {
       "scene": 1,
@@ -37,9 +38,9 @@
       "hero": false,
       "scale": "small",
       "delivery": "Six months earlier it was three point one one million.",
-      "source": [
-        9
-      ]
+      "source": [9],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a torn-paper arrow", "colour": "black" },
+      "tag": null
     },
     {
       "scene": 2,
@@ -56,10 +57,9 @@
       "hero": false,
       "scale": "diagram",
       "delivery": "[fast-paced] Operating cash burn ran three point nine million over those six months.",
-      "source": [
-        17,
-        22
-      ]
+      "source": [17, 22],
+      "connector": { "kind": "paper string", "from": "the calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": null
     },
     {
       "scene": 2,
@@ -76,9 +76,9 @@
       "hero": false,
       "scale": "small",
       "delivery": "That works out at about one point three million dollars a month.",
-      "source": [
-        22
-      ]
+      "source": [22],
+      "connector": { "kind": "paper string", "from": "the calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": { "text": "$1.3M", "source": [22] }
     },
     {
       "scene": 2,
@@ -95,9 +95,9 @@
       "hero": true,
       "scale": "oversized",
       "delivery": "[excited] At that rate, the cash on hand covers one point four months of runway.",
-      "source": [
-        23
-      ]
+      "source": [23],
+      "connector": { "kind": "paper string", "from": "the calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": null
     },
     {
       "scene": 3,
@@ -114,9 +114,9 @@
       "hero": false,
       "scale": "diagram",
       "delivery": "Warrant exercises raised eleven point four million, which kept the company afloat.",
-      "source": [
-        20
-      ]
+      "source": [20],
+      "connector": { "kind": "paper ribbon", "from": "the paper document", "to": "fresh paper coins", "colour": "cream" },
+      "tag": null
     },
     {
       "scene": 3,
@@ -134,9 +134,9 @@
       "hero": false,
       "scale": "small",
       "delivery": "Then October's warrant exercise generated another thirteen point eight million dollars.",
-      "source": [
-        27
-      ]
+      "source": [27],
+      "connector": { "kind": "paper ribbon", "from": "the paper document", "to": "fresh paper coins", "colour": "cream" },
+      "tag": null
     },
     {
       "scene": 4,
@@ -153,10 +153,9 @@
       "hero": false,
       "scale": "diagram",
       "delivery": "Survival hinges on continued access to capital markets. The company is not yet self-sustaining.",
-      "source": [
-        25,
-        29
-      ]
+      "source": [25, 29],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a paper building", "colour": "black" },
+      "tag": null
     },
     {
       "scene": 4,
@@ -174,9 +173,9 @@
       "hero": false,
       "scale": "oversized",
       "delivery": "The next six to nine months are critical for Diginex.",
-      "source": [
-        42
-      ]
+      "source": [42],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a paper building", "colour": "black" },
+      "tag": null
     }
   ],
   "dropped": [],

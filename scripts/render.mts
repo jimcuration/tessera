@@ -12,22 +12,27 @@
 // read from .env.local and used directly (server-side; never logged).
 //
 //   npx tsx scripts/render.mts --question "..." --voice native|saskia \
-//     --chain on|off [--clip-seconds 5|10] [--base http://localhost:3100] [--suffix name]
+//     --chain on|off [--clip-seconds 5|10|15] [--base http://localhost:3100] [--suffix name]
 //
 // --clip-seconds controls this script's own fal request duration and the
 // compiled prompt's stated duration; it does NOT change what the translator
 // writes — that is the dev server's own CLIP_SECONDS env (lib/config.ts),
-// read server-side by /api/translate. To render a 10s programme, start the
-// dev server with CLIP_SECONDS=10 first and pass --clip-seconds 10 here so
-// the two agree (mismatch is a builder error the record.switches makes
-// visible, not something this script can detect on its own).
+// read server-side by /api/translate. To render a 10s (or 15s) programme,
+// start the dev server with a matching CLIP_SECONDS first and pass the same
+// value here so the two agree (mismatch is a builder error the record's
+// switches makes visible, not something this script can detect on its own).
+//
+// WP8.1 §1: at --clip-seconds 15, one shot is a whole SCENE (2-3 beats),
+// one fal request (compileScenePrompt), one record written with `beats`
+// (plural) carrying every beat's own offsetSeconds — mirrors
+// lib/programme.ts's Session#flushVideoScene for the live app.
 //
 // Prints the session id on success.
 
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fal } from "@fal-ai/client";
-import { compilePrompt, STYLE_SHEET_VERSION, type Voice } from "../lib/prompt.ts";
+import { compilePrompt, compileScenePrompt, STYLE_SHEET_VERSION, type Voice } from "../lib/prompt.ts";
 import { TRANSLATOR_VERSION, type Beat } from "../lib/translator.ts";
 import { ffmpeg } from "./ffmpeg.mjs";
 import { writeFileSync, mkdirSync } from "node:fs";
@@ -75,16 +80,16 @@ const suffix = arg("suffix");
 // the session so two sessions rendered from identical clips are told apart.
 const music = (arg("music", "off") as "on" | "off" | null) ?? "off";
 const clipSecondsRaw = arg("clip-seconds", "5");
-const clipSeconds = clipSecondsRaw === "10" ? 10 : 5;
+const clipSeconds = clipSecondsRaw === "15" ? 15 : clipSecondsRaw === "10" ? 10 : 5;
 if (
   !question ||
   (voice !== "native" && voice !== "saskia") ||
   (chain !== "on" && chain !== "off") ||
   (music !== "on" && music !== "off") ||
-  (clipSecondsRaw !== "5" && clipSecondsRaw !== "10")
+  (clipSecondsRaw !== "5" && clipSecondsRaw !== "10" && clipSecondsRaw !== "15")
 ) {
   console.error(
-    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--clip-seconds 5|10] [--music on|off] [--base url] [--suffix name]'
+    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--clip-seconds 5|10|15] [--music on|off] [--base url] [--suffix name]'
   );
   process.exit(1);
 }
@@ -123,11 +128,11 @@ interface GeneratedClip {
 /** fal occasionally returns a transient "downstream_service_error" 500 from the underlying model; one retry clears most of these (seen in WP3 measurement). */
 const GENERATE_RETRIES = 2;
 
-async function generateClip(args: { prompt: string; fromFrame?: string }): Promise<GeneratedClip> {
+async function generateClip(args: { prompt: string; fromFrame?: string; duration?: number }): Promise<GeneratedClip> {
   const started = performance.now();
   const input: Record<string, unknown> = {
     prompt: args.prompt,
-    duration: SHOT_SECONDS,
+    duration: args.duration ?? SHOT_SECONDS,
     resolution: "480P",
     prompt_expansion_mode: "balanced",
   };
@@ -249,16 +254,14 @@ async function main() {
   let lastFrame: string | undefined;
 
   async function renderOne({ n, beat, warnings }: { n: number; beat: Beat; warnings: string[] }, fromFrame: string | undefined) {
-    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null, clipSeconds });
+    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null, clipSeconds: clipSeconds === 15 ? 5 : clipSeconds });
     const clip = await generateClip({ prompt, fromFrame });
     await post("/api/record", {
       kind: "clip",
       session: sessionId,
       n,
       question,
-      beat,
-      sources: beat.source.map((i) => sentences[i] ?? ""),
-      warnings,
+      beats: [{ n, beat, offsetSeconds: 0, sources: beat.source.map((i) => sentences[i] ?? ""), warnings }],
       voice,
       chain,
       translatorVersion: TRANSLATOR_VERSION,
@@ -275,6 +278,46 @@ async function main() {
       timings: clip.timings,
     });
     console.log(`[render] beat ${n} done in ${clip.ms}ms${fromFrame ? " (i2v)" : " (t2v)"}`);
+    return clip;
+  }
+
+  // WP8.1 §1: at 15s, one shot is a whole scene (compileScenePrompt), one
+  // fal request of `items.length * 5` seconds, recorded as one `beats`
+  // array with each entry's own offsetSeconds — mirrors
+  // lib/programme.ts's Session#flushVideoScene for the live app.
+  async function renderScene(items: { n: number; beat: Beat; warnings: string[] }[], fromFrame: string | undefined) {
+    const sceneBeats = items.map((it) => it.beat);
+    const { prompt } = compileScenePrompt({ beats: sceneBeats, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null });
+    const duration = sceneBeats.length * 5;
+    const clip = await generateClip({ prompt, fromFrame, duration });
+    await post("/api/record", {
+      kind: "clip",
+      session: sessionId,
+      n: items[0].n,
+      question,
+      beats: items.map((it, i) => ({
+        n: it.n,
+        beat: it.beat,
+        offsetSeconds: i * 5,
+        sources: it.beat.source.map((idx) => sentences[idx] ?? ""),
+        warnings: it.warnings,
+      })),
+      voice,
+      chain,
+      translatorVersion: TRANSLATOR_VERSION,
+      styleSheetVersion: STYLE_SHEET_VERSION,
+      prompt,
+      expandedPrompt: clip.expandedPrompt,
+      rawUrl: clip.rawUrl,
+      requestId: clip.requestId,
+      endpoint: fromFrame ? TURBO_I2V : TURBO_T2V,
+      chained: Boolean(fromFrame),
+      seed: undefined,
+      resolution: "480P",
+      renderMs: clip.ms,
+      timings: clip.timings,
+    });
+    console.log(`[render] scene ${items[0].beat.scene} (beats ${items.map((it) => it.n).join(",")}) done in ${clip.ms}ms${fromFrame ? " (i2v)" : " (t2v)"}, ${duration}s`);
     return clip;
   }
 
@@ -298,7 +341,30 @@ async function main() {
     }
   }
 
-  if (chain === "on") {
+  if (clipSeconds === 15) {
+    // Group into scenes, in beat order (a scene is always a run of
+    // consecutive beats — lib/translator.ts#validateProgramme).
+    const scenes: { n: number; beat: Beat; warnings: string[] }[][] = [];
+    for (const item of beats) {
+      const last = scenes[scenes.length - 1];
+      if (last && last[0].beat.scene === item.beat.scene) last.push(item);
+      else scenes.push([item]);
+    }
+    if (chain === "on") {
+      for (const items of scenes) {
+        const clip = await renderScene(items, lastFrame);
+        previousHandoff = items[items.length - 1].beat.handoff;
+        lastFrame = await lastFrameOf(clip.rawUrl);
+      }
+    } else {
+      let i = 0;
+      while (i < scenes.length) {
+        const batch = scenes.slice(i, i + UNCHAINED_PARALLEL);
+        await Promise.all(batch.map((items) => renderScene(items, undefined)));
+        i += UNCHAINED_PARALLEL;
+      }
+    }
+  } else if (chain === "on") {
     for (const item of beats) {
       const clip = await renderOne(item, lastFrame);
       previousHandoff = item.beat.handoff;

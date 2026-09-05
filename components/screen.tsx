@@ -28,20 +28,29 @@ export interface ScreenProps {
   onEnded: () => void;
   /** The browser refused unmuted autoplay; playback fell back to muted. */
   onNeedsTap: () => void;
-  /** A clip has just started playing on screen. */
+  /** A clip has just started playing on screen (its first beat — `clip.shot.beats[0]`). */
   onStarted: (clip: ReadyClip) => void;
+  /**
+   * WP8.1 §1: a later beat within the on-screen clip has reached its own
+   * timecode (CLIP_SECONDS=15 scene generation — `clip.shot.beats[1]`,
+   * `[2]`, ...). Never fires for a clip with only one beat. `beatIndex` is
+   * always ≥ 1; index 0 is `onStarted`.
+   */
+  onBeatBoundary?: (clip: ReadyClip, beatIndex: number) => void;
 }
 
 interface Slot {
   clip: ReadyClip | null;
 }
 
-export function Screen({ picture, next, className, muted, volume, onEnded, onNeedsTap, onStarted }: ScreenProps) {
+export function Screen({ picture, next, className, muted, volume, onEnded, onNeedsTap, onStarted, onBeatBoundary }: ScreenProps) {
   const refs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
   const [slots, setSlots] = useState<[Slot, Slot]>([{ clip: null }, { clip: null }]);
   const [front, setFront] = useState<0 | 1>(0);
   /** The clip we are waiting to bring to the front once its slot has data. */
   const pending = useRef<ReadyClip | null>(null);
+  /** WP8.1 §1: highest beat index within the on-screen clip already fired (onStarted covers 0). Reset every time a new clip takes the front slot. */
+  const firedBeatIndex = useRef(0);
 
   const back = front === 0 ? 1 : 0;
 
@@ -54,6 +63,7 @@ export function Screen({ picture, next, className, muted, volume, onEnded, onNee
       video.muted = muted;
       video.volume = volume;
       video.currentTime = 0;
+      firedBeatIndex.current = 0;
       const attempt = video.play();
       if (attempt) {
         attempt.catch(() => {
@@ -68,6 +78,25 @@ export function Screen({ picture, next, className, muted, volume, onEnded, onNee
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [muted, volume, onNeedsTap, onStarted]
   );
+
+  // WP8.1 §1: a scene-generation clip (CLIP_SECONDS=15) carries 2-3 beats
+  // in one video; step through their offsets as playback crosses each one,
+  // firing onBeatBoundary once per beat (index 0 is onStarted, above). A
+  // 5s/10s clip has exactly one beat and never fires this.
+  const onTimeUpdate = (index: 0 | 1) => {
+    if (index !== front || !onBeatBoundary) return;
+    const clip = slots[index].clip;
+    const video = refs[index].current;
+    if (!clip || !video || clip.shot.beats.length <= 1) return;
+    const beats = clip.shot.beats;
+    while (firedBeatIndex.current + 1 < beats.length && video.currentTime >= beats[firedBeatIndex.current + 1].offsetSeconds) {
+      firedBeatIndex.current += 1;
+      console.debug(
+        `[screen] beat boundary: beat ${beats[firedBeatIndex.current].n} at ${video.currentTime.toFixed(2)}s (offset ${beats[firedBeatIndex.current].offsetSeconds}s)`
+      );
+      onBeatBoundary(clip, firedBeatIndex.current);
+    }
+  };
 
   // Bring `picture` to the front. If the back slot already holds it (it was
   // preloaded as `next`) swap at once; otherwise load it into the back slot
@@ -145,6 +174,7 @@ export function Screen({ picture, next, className, muted, volume, onEnded, onNee
           muted={i === front ? muted : true}
           playsInline
           onLoadedData={() => onLoadedData(i)}
+          onTimeUpdate={() => onTimeUpdate(i)}
           onEnded={() => {
             if (i === front) onEnded();
           }}

@@ -64,13 +64,21 @@ const TRANSLATIONS = path.join(ROOT, "data", "translations");
  * bump doesn't turn every past recording permanently red; rule 7 keeps
  * them on disk as a historical record regardless.
  */
-const CURRENT_TRANSLATOR_VERSION = "translator-v0.3.1";
+const CURRENT_TRANSLATOR_VERSION = "translator-v0.3.2";
 
 const MAX_HEADLINE_WORDS = 4;
+/** Mirrors MAX_TAG_WORDS in lib/translator.ts (WP8.1 §3). */
+const MAX_TAG_WORDS = 2;
 
-/** Mirrors maxLineWords in lib/translator.ts (WP8: the line budget scales with CLIP_SECONDS). */
+/** Mirrors maxLineWords in lib/translator.ts (WP8/WP8.1: the line budget scales with CLIP_SECONDS). */
 function maxLineWords(clipSeconds) {
-  return clipSeconds === 10 ? 22 : 12;
+  return clipSeconds === 5 ? 12 : 22;
+}
+
+/** Mirrors appearsVerbatim in lib/translator.ts. */
+function appearsVerbatim(needle, haystack) {
+  const norm = (s) => String(s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+  return norm(haystack).includes(norm(needle));
 }
 
 /** Mirrors PEOPLE_LEXICON in lib/translator.ts. */
@@ -146,6 +154,40 @@ function checkBeat(beat, sentences, clipSeconds) {
   if (tags.length > 1) hard.push(`delivery carries ${tags.length} tags (limit 1)`);
   if (stripDelivery(delivery) !== line) hard.push(`delivery, stripped of tags, does not match line`);
 
+  // WP8.1 §2/§3: mirrors the connector/tag structural checks in validateBeat.
+  // Cross-beat checks (from/to in the scene's subjects, one beat per scene
+  // agreeing, at most one tag per scene) are in checkProgramme below.
+  const connector = beat?.connector;
+  if (!connector || typeof connector !== "object") {
+    hard.push("no connector");
+  } else {
+    const kind = typeof connector.kind === "string" ? connector.kind.trim() : "";
+    const from = typeof connector.from === "string" ? connector.from.trim() : "";
+    const to = typeof connector.to === "string" ? connector.to.trim() : "";
+    const colour = typeof connector.colour === "string" ? connector.colour.trim() : "";
+    if (!kind || !from || !to || !colour) hard.push("connector missing kind/from/to/colour");
+    else if (from.toLowerCase() === to.toLowerCase()) hard.push("connector's from and to are the same element");
+  }
+  if (beat?.tag !== null && beat?.tag !== undefined) {
+    if (typeof beat.tag !== "object") {
+      hard.push("tag is not an object or null");
+    } else {
+      const tagText = typeof beat.tag.text === "string" ? beat.tag.text.trim() : "";
+      if (!tagText) hard.push("tag has no text");
+      else if (words(tagText) > MAX_TAG_WORDS) hard.push(`tag text "${tagText}" is ${words(tagText)} words (limit ${MAX_TAG_WORDS})`);
+      const tagSourceRaw = Array.isArray(beat.tag.source) ? beat.tag.source : [];
+      const tagSource = tagSourceRaw.filter((i) => Number.isInteger(i) && i >= 0 && (sentences === null || i < sentences.length));
+      if (tagSource.length === 0) {
+        hard.push("tag has no valid source");
+      } else if (sentences && tagText) {
+        const citedForTag = tagSource.map((i) => sentences[i]).join(" ");
+        if (!appearsVerbatim(tagText, citedForTag)) {
+          hard.push(`tag text "${tagText}" not found verbatim in its cited sentence(s) ${JSON.stringify(tagSource)}`);
+        }
+      }
+    }
+  }
+
   return { hard, soft };
 }
 
@@ -175,6 +217,24 @@ function checkProgramme(label, beats) {
     if (a?.scale && a.scale === b?.scale && b.scale === c?.scale) {
       progFailures.push(`scale "${a.scale}" repeats for beats ${i + 1}-${i + 3}`);
     }
+  }
+  // WP8.1 §2/§3: scene-level, unconditional (even a one-beat deflection is
+  // its own one-beat "scene"). Mirrors validateProgramme in lib/translator.ts.
+  for (const run of sceneRuns(beats)) {
+    const first = run[0];
+    if (first?.connector) {
+      const disagrees = run.some((b) => {
+        const c = b?.connector;
+        return !c || c.kind !== first.connector.kind || c.from !== first.connector.from || c.to !== first.connector.to || c.colour !== first.connector.colour;
+      });
+      if (disagrees) progFailures.push(`scene ${first?.scene}'s beats disagree on connector`);
+      const sceneSubjects = new Set(run.flatMap((b) => (Array.isArray(b?.subjects) ? b.subjects : [])));
+      if (!sceneSubjects.has(first.connector.from) || !sceneSubjects.has(first.connector.to)) {
+        progFailures.push(`scene ${first?.scene}'s connector ("${first.connector.from}" -> "${first.connector.to}") is not among the scene's subjects`);
+      }
+    }
+    const tagCount = run.filter((b) => b?.tag !== null && b?.tag !== undefined).length;
+    if (tagCount > 1) progFailures.push(`scene ${first?.scene} has ${tagCount} tags (limit 1)`);
   }
   if (beats.length > 1) {
     for (const run of sceneRuns(beats)) {
@@ -232,8 +292,14 @@ function checkSession(dir) {
   for (const file of files) {
     const rec = readJson(path.join(dir, file));
     if (!rec) continue;
-    report(`${path.relative(ROOT, dir)}/${file}`, rec.beat, sentences, clipSeconds);
-    beats.push(rec.beat);
+    // WP8.1: a shot's record carries `beats` (plural — one entry at 5s/10s,
+    // 2-3 at CLIP_SECONDS=15's one-scene-per-shot); a pre-WP8.1 recording
+    // still has the old singular `beat`.
+    const shotBeats = Array.isArray(rec.beats) ? rec.beats.map((b) => b.beat) : rec.beat ? [rec.beat] : [];
+    shotBeats.forEach((beat, i) => {
+      report(`${path.relative(ROOT, dir)}/${file}${shotBeats.length > 1 ? `#${i + 1}` : ""}`, beat, sentences, clipSeconds);
+      beats.push(beat);
+    });
   }
   checkProgramme(path.relative(ROOT, dir), beats);
   if (manifest && Array.isArray(manifest.dropped) && manifest.dropped.length) {

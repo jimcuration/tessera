@@ -1,7 +1,7 @@
 {
-  "translator": "translator-v0.3.1",
+  "translator": "translator-v0.3.2",
   "pinned": true,
-  "note": "The six-beat exemplar from lib/translator.ts (EXEMPLAR_NDJSON), hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. v0.2 (WP2): every line rewritten to the 12-word budget. v0.3 (WP3): added hero (beat 4), scale, and delivery (three expression tags total). v0.3.1 (WP5, merged to main): regrouped into three two-beat scenes ({1,2} violet, {3,4} magenta, {5,6} violet); beats 5-6 moved from lime to violet so the programme bookends (beat 6 returns to scene 1's ground, primary subject and handoff, with the October warrant's fresh coins and the pointing hand as the one thing added and changed); `hand` true only on beat 6, the one beat whose action names a paper hand explicitly. WP5 also built `events` (replacing `action`) and `labels` alongside a v0.4 style sheet (see briefs/WP5-report.md) — those were not carried into this merge; `action` and the v0.3 style sheet are unchanged from WP3. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
+  "note": "The six-beat exemplar from lib/translator.ts (EXEMPLAR_NDJSON), hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. v0.2 (WP2): every line rewritten to the 12-word budget. v0.3 (WP3): added hero (beat 4), scale, and delivery (three expression tags total). v0.3.1 (WP5, merged to main): regrouped into three two-beat scenes ({1,2} violet, {3,4} magenta, {5,6} violet); beats 5-6 moved from lime to violet so the programme bookends (beat 6 returns to scene 1's ground, primary subject and handoff, with the October warrant's fresh coins and the pointing hand as the one thing added and changed); `hand` true only on beat 6, the one beat whose action names a paper hand explicitly. WP5 also built `events` (replacing `action`) and `labels` alongside a v0.4 style sheet (see briefs/WP5-report.md) — those were not carried into this merge; `action` and the v0.3 style sheet are unchanged from WP3. v0.3.2 (WP8.1, D33): every beat now carries the scene's `connector` (identical within a scene); scene 2 carries the exemplar's one `tag` ($1.3M, verbatim from sentence 22), scenes 1 and 3 have none. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
   "question": "What is the cash position and runway?",
   "beats": [
     {
@@ -16,7 +16,9 @@
       "hero": false,
       "scale": "oversized",
       "delivery": "[presenting to camera] By September's end, Diginex held one point eight five million in cash.",
-      "source": [9]
+      "source": [9],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a torn-paper arrow", "colour": "black" },
+      "tag": null
     },
     {
       "scene": 1,
@@ -30,7 +32,9 @@
       "hero": false,
       "scale": "small",
       "delivery": "[fast-paced] Six months earlier it was three point one one million.",
-      "source": [9, 10]
+      "source": [9, 10],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a torn-paper arrow", "colour": "black" },
+      "tag": null
     },
     {
       "scene": 2,
@@ -44,7 +48,9 @@
       "hero": false,
       "scale": "diagram",
       "delivery": "Operating burn ran about one point three million a month.",
-      "source": [22]
+      "source": [22],
+      "connector": { "kind": "paper string", "from": "a paper calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": { "text": "$1.3M", "source": [22] }
     },
     {
       "scene": 2,
@@ -58,7 +64,9 @@
       "hero": true,
       "scale": "oversized",
       "delivery": "[excited] At that rate, the cash on hand covered one point four months.",
-      "source": [23]
+      "source": [23],
+      "connector": { "kind": "paper string", "from": "a paper calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": null
     },
     {
       "scene": 3,
@@ -72,7 +80,9 @@
       "hero": false,
       "scale": "small",
       "delivery": "October's warrant exercise added thirteen point eight million in cash.",
-      "source": [27]
+      "source": [27],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "two paper calendar pages", "colour": "cream" },
+      "tag": null
     },
     {
       "scene": 3,
@@ -86,7 +96,9 @@
       "hero": false,
       "scale": "diagram",
       "delivery": "Survival depends on capital markets and the next two quarters.",
-      "source": [25, 43]
+      "source": [25, 43],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "two paper calendar pages", "colour": "cream" },
+      "tag": null
     }
   ]
 }

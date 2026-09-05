@@ -1,0 +1,310 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "What are the key catalysts for Diginex?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "Diginex faces execution milestones that decide whether the platform consolidation thesis gains traction or stalls.",
+      "headline": "MILESTONES",
+      "ground": "violet",
+      "subjects": [
+        "a row of paper milestone cards"
+      ],
+      "action": "A row of halftone paper milestone cards drops in one by one and locks into a straight line.",
+      "hand": false,
+      "handoff": "the milestone row",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[presenting to camera] Diginex faces execution milestones that decide whether the platform consolidation thesis gains traction or stalls.",
+      "source": [
+        8
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a row of paper milestone cards",
+        "to": "a paper calendar page",
+        "colour": "violet"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "The company committed to further updates on its unified business strategy over the course of the second quarter of twenty twenty-six.",
+      "headline": "Q2 2026",
+      "ground": "violet",
+      "subjects": [
+        "a row of paper milestone cards",
+        "a paper calendar page"
+      ],
+      "action": "The previous chip slides off the left edge as the milestone row folds forward into a single paper calendar page; a violet ribbon runs from the row to the page, and a coin-sized cream tag reading 'Q2 2026' sits beside the ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the calendar page",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "The company committed to further updates on its unified business strategy over the course of the second quarter of twenty twenty-six.",
+      "source": [
+        11,
+        12
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a row of paper milestone cards",
+        "to": "a paper calendar page",
+        "colour": "violet"
+      },
+      "tag": {
+        "text": "Q2 2026",
+        "source": [
+          11
+        ]
+      }
+    },
+    {
+      "scene": 1,
+      "line": "Investors want cross-sell traction and a path to the two hundred and eighty million dollar group revenue target by twenty twenty-seven.",
+      "headline": "$280M BY 2027",
+      "ground": "violet",
+      "subjects": [
+        "a paper calendar page",
+        "a paper bar chart",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the calendar page tears into a rising paper bar chart; a paper hand taps the tallest bar, and the violet ribbon stays in place across the frame.",
+      "hand": true,
+      "handoff": "the bar chart",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Investors want cross-sell traction and a path to the two hundred and eighty million dollar group revenue target by twenty twenty-seven.",
+      "source": [
+        15,
+        16
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a row of paper milestone cards",
+        "to": "a paper calendar page",
+        "colour": "violet"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Watch whether the four acquired businesses run as one platform rather than separate silos.",
+      "headline": "4 BUSINESSES",
+      "ground": "cyan",
+      "subjects": [
+        "four paper tiles",
+        "the paper platform slab"
+      ],
+      "action": "The previous chip is covered as the bar chart flattens into four paper tiles that slide together onto the paper platform slab.",
+      "hand": false,
+      "handoff": "the platform slab",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Watch whether the four acquired businesses run as one platform rather than separate silos.",
+      "source": [
+        14
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "four paper tiles",
+        "to": "the paper platform slab",
+        "colour": "cyan"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "The one point five billion dollar Resulticks deal is the transformative bet. Cross-sell evidence decides it.",
+      "headline": "$1.5B BET",
+      "ground": "cyan",
+      "subjects": [
+        "the paper platform slab",
+        "four paper tiles"
+      ],
+      "action": "The previous chip slides off the top as the platform slab thickens under one enlarged tile; the cyan arrow already runs from the tiles to the slab, and a coin-sized cream tag reading '$1.5B' sits beside it, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the platform slab",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[fast-paced] The one point five billion dollar Resulticks deal is the transformative bet. Cross-sell evidence decides it.",
+      "source": [
+        18,
+        19
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "four paper tiles",
+        "to": "the paper platform slab",
+        "colour": "cyan"
+      },
+      "tag": {
+        "text": "$1.5B",
+        "source": [
+          18
+        ]
+      }
+    },
+    {
+      "scene": 2,
+      "line": "Brazil's seventy-seven billion dollar sustainability market offers a new revenue stream beyond core markets.",
+      "headline": "$77B MARKET",
+      "ground": "cyan",
+      "subjects": [
+        "the paper platform slab",
+        "a cut paper map"
+      ],
+      "action": "The previous chip flips down as one edge of the platform slab unfolds into a cut paper map that settles beside it; the cyan arrow holds.",
+      "hand": false,
+      "handoff": "the paper map",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Brazil's seventy-seven billion dollar sustainability market offers a new revenue stream beyond core markets.",
+      "source": [
+        22,
+        23
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "four paper tiles",
+        "to": "the paper platform slab",
+        "colour": "cyan"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Revenue grew two hundred and ninety-three percent year on year to two million dollars, driven mainly by subscription.",
+      "headline": "293% YOY",
+      "ground": "lime",
+      "subjects": [
+        "a paper bar chart",
+        "a stack of paper coins"
+      ],
+      "action": "The previous chip slides off as the paper map creases upward into a paper bar chart; a lime ribbon runs from the chart to a stack of paper coins, and a coin-sized cream tag reading '293%' sits beside the ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the bar chart",
+      "hero": true,
+      "scale": "diagram",
+      "delivery": "[excited] Revenue grew two hundred and ninety-three percent year on year to two million dollars, driven mainly by subscription.",
+      "source": [
+        31
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a paper bar chart",
+        "to": "a stack of paper coins",
+        "colour": "lime"
+      },
+      "tag": {
+        "text": "293%",
+        "source": [
+          31
+        ]
+      }
+    },
+    {
+      "scene": 3,
+      "line": "October's warrant exercise generated thirteen point eight million in cash, removing near-term funding pressure.",
+      "headline": "$13.8M CASH",
+      "ground": "lime",
+      "subjects": [
+        "a paper bar chart",
+        "a stack of paper coins"
+      ],
+      "action": "The previous chip is covered as the bar chart's tallest column tips over into a stack of paper coins that grows and settles; the lime ribbon stays in place.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "October's warrant exercise generated thirteen point eight million in cash, removing near-term funding pressure.",
+      "source": [
+        34,
+        35
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a paper bar chart",
+        "to": "a stack of paper coins",
+        "colour": "lime"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "At a thirty-four million dollar market cap, Diginex is priced for significant scepticism.",
+      "headline": "$34M CAP",
+      "ground": "violet",
+      "subjects": [
+        "a small paper market-cap block",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the coin stack compresses into one small paper market-cap block; a paper hand presses down on it and holds.",
+      "hand": true,
+      "handoff": "the market-cap block",
+      "hero": false,
+      "scale": "small",
+      "delivery": "At a thirty-four million dollar market cap, Diginex is priced for significant scepticism.",
+      "source": [
+        38
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "a small paper market-cap block",
+        "to": "a row of paper milestone cards",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "The next six to nine months are make-or-break for the investment thesis.",
+      "headline": "6–9 MONTHS",
+      "ground": "violet",
+      "subjects": [
+        "a row of paper milestone cards",
+        "a small paper market-cap block",
+        "a torn paper strip"
+      ],
+      "action": "The previous chip slides off the left edge as the market-cap block unfolds back into the row of paper milestone cards, now with a torn paper strip laid across the last card; a black string runs from the block to the row, and a coin-sized cream tag reading '6–9 months' sits beside it, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the milestone row",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "The next six to nine months are make-or-break for the investment thesis.",
+      "source": [
+        41
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "a small paper market-cap block",
+        "to": "a row of paper milestone cards",
+        "colour": "black"
+      },
+      "tag": {
+        "text": "6–9 months",
+        "source": [
+          41
+        ]
+      }
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [
+      "headline number \"4\" not found as a figure in cited sentences [14] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 56365,
+  "clipSeconds": 15
+}

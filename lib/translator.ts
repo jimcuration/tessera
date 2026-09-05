@@ -27,9 +27,26 @@
  * briefs/WP5-report.md and briefs/WP5-handoff.md for what WP5 actually
  * built and measured, and CLAUDE.md's history note for why the merge
  * landed narrower than that.
+ *
+ * v0.3.2 (WP8.1, D33): every scene now names one `connector` (a paper
+ * ribbon/arrow/string physically running from one named subject to
+ * another, persisting for the scene) and may carry at most one small
+ * round `tag` (a coin-sized paper tag, ≤2 words or one figure, verbatim
+ * from a cited sentence). Both apply at every clip length, not just the
+ * new CLIP_SECONDS=15 scene-generation mode (lib/prompt.ts,
+ * lib/stream.ts) that motivated them. Because `connector` is a new
+ * required field, this is a version bump: a cached/pinned translation
+ * recorded under v0.3.1 has no `connector` and reads as stale, exactly
+ * like every earlier translator-version bump (regenerated live, not
+ * hard-failed — see app/api/translate/route.ts and scripts/check.mjs).
+ * Named v0.3.2, not v0.4: an earlier, never-merged WP5 schema already
+ * used the literal string "translator-v0.4" for a different, incompatible
+ * shape (`events`/`labels`), and some of its cached translations are still
+ * present in data/translations/ — reusing "v0.4" here would make this
+ * code treat those as current and validate them against these new rules.
  */
 
-export const TRANSLATOR_VERSION = "translator-v0.3.1";
+export const TRANSLATOR_VERSION = "translator-v0.3.2";
 
 export type Ground = "lime" | "cyan" | "violet" | "magenta";
 export const GROUNDS: Ground[] = ["lime", "cyan", "violet", "magenta"];
@@ -42,6 +59,31 @@ export const SCALES: Scale[] = ["oversized", "small", "diagram"];
  * whole `[bracketed]` tag, at most one per line. Mirrored in scripts/check.mjs.
  */
 export const DELIVERY_TAGS = ["presenting to camera", "excited", "fast-paced"];
+
+/**
+ * WP8.1 §2: the one paper prop (ribbon, arrow, string) that runs from one
+ * named element to another within a scene, in one direction, and persists
+ * once introduced. `from`/`to` must each name a subject appearing
+ * somewhere among the scene's beats (validateProgramme). Every beat in a
+ * scene carries the same connector (like `ground`).
+ */
+export interface Connector {
+  kind: string;
+  from: string;
+  to: string;
+  colour: string;
+}
+
+/**
+ * WP8.1 §3: at most one per scene — a small round paper tag, coin-sized,
+ * printed with one figure or ≤2 words taken verbatim from a cited
+ * sentence, pointing at the connector.
+ */
+export interface Tag {
+  text: string;
+  /** Sentence index(es) `text` must appear in, verbatim (case-insensitive). */
+  source: number[];
+}
 
 export interface Beat {
   /** 1-based; beats sharing a scene share `ground` and a persistent primary subject. Groups of 2-3. */
@@ -67,6 +109,10 @@ export interface Beat {
   delivery: string;
   /** Indexes into the answer's sentences. Never empty: no source, no render. */
   source: number[];
+  /** WP8.1: the scene's one connector prop. Identical on every beat of the scene. */
+  connector: Connector;
+  /** WP8.1: at most one non-null per scene. */
+  tag: Tag | null;
 }
 
 /** Every `[bracketed]` tag in a delivery line. */
@@ -90,16 +136,21 @@ export interface BeatCheck {
 
 const MAX_HEADLINE_WORDS = 4;
 const MAX_SUBJECTS = 3;
+/** WP8.1 §3: a tag's text is one figure or at most this many words. */
+const MAX_TAG_WORDS = 2;
 
 /**
- * WP8: the spoken-line word budget scales with clip length so a beat still
- * reads as one unhurried sentence at its clip's pace — 12 words at 5s (the
- * limit WP0 measured a native narrator rushing past), 22 at 10s (roughly
- * double, for one sentence or two short ones, not a list; brief §1).
+ * WP8/WP8.1: the spoken-line word budget scales with clip length so a beat
+ * still reads as one unhurried sentence at its clip's pace — 12 words at
+ * 5s (the limit WP0 measured a native narrator rushing past), 22 at 10s
+ * and 15s (roughly double, for one sentence or two short ones, not a
+ * list; WP8 brief §1). At 15s a beat is still a 5s section within a
+ * larger scene generation (WP8.1 §1), not a longer clip in its own right,
+ * but the brief keeps the word budget the same as 10s regardless.
  * Mirrored in scripts/check.mjs.
  */
-export function maxLineWords(clipSeconds: 5 | 10): number {
-  return clipSeconds === 10 ? 22 : 12;
+export function maxLineWords(clipSeconds: 5 | 10 | 15): number {
+  return clipSeconds === 5 ? 12 : 22;
 }
 
 /**
@@ -188,7 +239,13 @@ function numbersIn(text: string): string[] {
  * sentence enumerates rather than states as a figure); they never silently
  * rewrite the text.
  */
-export function validateBeat(raw: unknown, sentences: string[], clipSeconds: 5 | 10 = 5): BeatCheck {
+/** Case-insensitive, whitespace-collapsed substring check ("verbatim" per WP8.1 §3). */
+function appearsVerbatim(needle: string, haystack: string): boolean {
+  const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
+  return norm(haystack).includes(norm(needle));
+}
+
+export function validateBeat(raw: unknown, sentences: string[], clipSeconds: 5 | 10 | 15 = 5): BeatCheck {
   const warnings: string[] = [];
   if (!raw || typeof raw !== "object") {
     return { ok: false, beat: null, dropped: "not an object", warnings };
@@ -287,9 +344,66 @@ export function validateBeat(raw: unknown, sentences: string[], clipSeconds: 5 |
     return { ok: false, beat: null, dropped: `delivery, stripped of tags, does not match line`, warnings };
   }
 
+  // WP8.1 §2: every beat carries the scene's one connector — structural
+  // validity only here (well-formed, from !== to); whether from/to are
+  // actually among the scene's subjects, and whether every beat in the
+  // scene agrees, needs the whole scene and is checked in validateProgramme.
+  const connectorRaw = b.connector;
+  if (!connectorRaw || typeof connectorRaw !== "object") {
+    return { ok: false, beat: null, dropped: "no connector", warnings };
+  }
+  const c = connectorRaw as Record<string, unknown>;
+  const connectorKind = typeof c.kind === "string" ? c.kind.trim() : "";
+  const connectorFrom = typeof c.from === "string" ? c.from.trim() : "";
+  const connectorTo = typeof c.to === "string" ? c.to.trim() : "";
+  const connectorColour = typeof c.colour === "string" ? c.colour.trim() : "";
+  if (!connectorKind || !connectorFrom || !connectorTo || !connectorColour) {
+    return { ok: false, beat: null, dropped: "connector missing kind/from/to/colour", warnings };
+  }
+  if (connectorFrom.toLowerCase() === connectorTo.toLowerCase()) {
+    return { ok: false, beat: null, dropped: "connector's from and to are the same element", warnings };
+  }
+  const connector: Connector = { kind: connectorKind, from: connectorFrom, to: connectorTo, colour: connectorColour };
+
+  // WP8.1 §3: at most one per scene (checked in validateProgramme); here,
+  // structural validity and the verbatim-in-cited-sentence check.
+  let sceneTag: Tag | null = null;
+  if (b.tag !== null && b.tag !== undefined) {
+    if (typeof b.tag !== "object") {
+      return { ok: false, beat: null, dropped: "tag is not an object or null", warnings };
+    }
+    const t = b.tag as Record<string, unknown>;
+    const tagText = typeof t.text === "string" ? t.text.trim() : "";
+    if (!tagText) return { ok: false, beat: null, dropped: "tag has no text", warnings };
+    if (wordCount(tagText) > MAX_TAG_WORDS) {
+      return { ok: false, beat: null, dropped: `tag text "${tagText}" is ${wordCount(tagText)} words (limit ${MAX_TAG_WORDS})`, warnings };
+    }
+    const tagSourceRaw = Array.isArray(t.source) ? t.source : [];
+    const tagSource = Array.from(
+      new Set(
+        tagSourceRaw
+          .map((s) => (typeof s === "number" ? s : Number.parseInt(String(s), 10)))
+          .filter((s) => Number.isInteger(s) && s >= 0 && s < sentences.length)
+      )
+    ).sort((x, y) => x - y);
+    if (tagSource.length === 0) {
+      return { ok: false, beat: null, dropped: "tag has no valid source", warnings };
+    }
+    const citedForTag = tagSource.map((i) => sentences[i]).join(" ");
+    if (!appearsVerbatim(tagText, citedForTag)) {
+      return {
+        ok: false,
+        beat: null,
+        dropped: `tag text "${tagText}" not found verbatim in its cited sentence(s) ${JSON.stringify(tagSource)}`,
+        warnings,
+      };
+    }
+    sceneTag = { text: tagText, source: tagSource };
+  }
+
   return {
     ok: true,
-    beat: { scene, line, headline, ground, subjects, action, hand, handoff, hero, scale, delivery, source },
+    beat: { scene, line, headline, ground, subjects, action, hand, handoff, hero, scale, delivery, source, connector, tag: sceneTag },
     dropped: null,
     warnings,
   };
@@ -330,6 +444,29 @@ export function validateProgramme(beats: Beat[]): string[] {
       failures.push(`scale "${a.scale}" repeats for beats ${i + 1}-${i + 3}`);
     }
   }
+  // WP8.1 §2/§3: connector/tag are scene-level even though every beat
+  // carries its own copy — checked here, per scene, unconditionally
+  // (unlike the scene-run/bookend checks below, this applies even to a
+  // one-beat deflection: it still has one "scene" of one beat).
+  for (const run of sceneRuns(beats)) {
+    const first = run[0];
+    const disagrees = run.some(
+      (b) =>
+        b.connector.kind !== first.connector.kind ||
+        b.connector.from !== first.connector.from ||
+        b.connector.to !== first.connector.to ||
+        b.connector.colour !== first.connector.colour
+    );
+    if (disagrees) failures.push(`scene ${first.scene}'s beats disagree on connector`);
+    const sceneSubjects = new Set(run.flatMap((b) => b.subjects));
+    if (!sceneSubjects.has(first.connector.from) || !sceneSubjects.has(first.connector.to)) {
+      failures.push(
+        `scene ${first.scene}'s connector ("${first.connector.from}" → "${first.connector.to}") is not among the scene's subjects`
+      );
+    }
+    const tagCount = run.filter((b) => b.tag !== null).length;
+    if (tagCount > 1) failures.push(`scene ${first.scene} has ${tagCount} tags (limit 1)`);
+  }
   // Scene grouping and the bookend only apply to a real, multi-beat
   // programme: a one-beat deflection (lib/translator.ts#deflectionBeat) is
   // never a scene of 2-3 or its own bookend, by construction, not by fault.
@@ -358,7 +495,7 @@ export function numberSentences(sentences: string[]): string {
  * as a single beat with the link as the headline. Built in code: no model
  * call, no invention. Source is the sentence that carries the link.
  */
-export function deflectionBeat(sentences: string[], link: string, clipSeconds: 5 | 10 = 5): Beat {
+export function deflectionBeat(sentences: string[], link: string, clipSeconds: 5 | 10 | 15 = 5): Beat {
   const linkIndex = Math.max(
     0,
     sentences.findIndex((s) => s.includes(link))
@@ -387,6 +524,12 @@ export function deflectionBeat(sentences: string[], link: string, clipSeconds: 5
     scale: "small",
     delivery: line,
     source: [linkIndex],
+    // WP8.1: a plausible connector between this beat's own two subjects,
+    // since `connector` is required on every Beat regardless of programme
+    // length; this one-beat "scene" is exempt from every other scene rule
+    // (validateProgramme) but not from having a well-formed connector.
+    connector: { kind: "string", from: "a paper screen", to: "a paper hand", colour: "black" },
+    tag: null,
   };
 }
 
@@ -406,14 +549,18 @@ export function deflectionBeat(sentences: string[], link: string, clipSeconds: 5
  * programme bookends: beat 6 returns to scene 1's ground, its primary
  * subject (the coin stack), and its exact handoff. `hand` is true only on
  * beat 6, the one beat whose action names a paper hand explicitly.
+ *
+ * v0.3.2 (WP8.1): every beat now carries the connector, identical within its
+ * scene, and `tag` is used on one beat of scene 2 and left null elsewhere,
+ * showing both the required and the optional case.
  */
 export const EXEMPLAR_NDJSON = [
-  `{"scene":1,"line":"By September's end, Diginex held one point eight five million in cash.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","hand":false,"handoff":"the coin stack","hero":false,"scale":"oversized","delivery":"[presenting to camera] By September's end, Diginex held one point eight five million in cash.","source":[9]}`,
-  `{"scene":1,"line":"Six months earlier it was three point one one million.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","hand":false,"handoff":"the arrow","hero":false,"scale":"small","delivery":"[fast-paced] Six months earlier it was three point one one million.","source":[9,10]}`,
-  `{"scene":2,"line":"Operating burn ran about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","hand":false,"handoff":"the strip","hero":false,"scale":"diagram","delivery":"Operating burn ran about one point three million a month.","source":[22]}`,
-  `{"scene":2,"line":"At that rate, the cash on hand covered one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","hand":false,"handoff":"the runway","hero":true,"scale":"oversized","delivery":"[excited] At that rate, the cash on hand covered one point four months.","source":[23]}`,
-  `{"scene":3,"line":"October's warrant exercise added thirteen point eight million in cash.","headline":"+$13.8M","ground":"violet","subjects":["the coin stack","fresh paper coins","tape pieces"],"action":"The previous chip slides off as the ground returns to violet and the coin stack reappears; fresh paper coins are taped onto it one after another.","hand":false,"handoff":"the coin stack","hero":false,"scale":"small","delivery":"October's warrant exercise added thirteen point eight million in cash.","source":[27]}`,
-  `{"scene":3,"line":"Survival depends on capital markets and the next two quarters.","headline":"NEXT 2 QUARTERS","ground":"violet","subjects":["the coin stack","two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages land beside the coin stack; a paper hand enters and points at the second.","hand":true,"handoff":"the coin stack","hero":false,"scale":"diagram","delivery":"Survival depends on capital markets and the next two quarters.","source":[25,43]}`,
+  `{"scene":1,"line":"By September's end, Diginex held one point eight five million in cash.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","hand":false,"handoff":"the coin stack","hero":false,"scale":"oversized","delivery":"[presenting to camera] By September's end, Diginex held one point eight five million in cash.","source":[9],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null}`,
+  `{"scene":1,"line":"Six months earlier it was three point one one million.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","hand":false,"handoff":"the arrow","hero":false,"scale":"small","delivery":"[fast-paced] Six months earlier it was three point one one million.","source":[9,10],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null}`,
+  `{"scene":2,"line":"Operating burn ran about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","hand":false,"handoff":"the strip","hero":false,"scale":"diagram","delivery":"Operating burn ran about one point three million a month.","source":[22],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":{"text":"$1.3M","source":[22]}}`,
+  `{"scene":2,"line":"At that rate, the cash on hand covered one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","hand":false,"handoff":"the runway","hero":true,"scale":"oversized","delivery":"[excited] At that rate, the cash on hand covered one point four months.","source":[23],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":null}`,
+  `{"scene":3,"line":"October's warrant exercise added thirteen point eight million in cash.","headline":"+$13.8M","ground":"violet","subjects":["the coin stack","fresh paper coins","tape pieces"],"action":"The previous chip slides off as the ground returns to violet and the coin stack reappears; fresh paper coins are taped onto it one after another.","hand":false,"handoff":"the coin stack","hero":false,"scale":"small","delivery":"October's warrant exercise added thirteen point eight million in cash.","source":[27],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null}`,
+  `{"scene":3,"line":"Survival depends on capital markets and the next two quarters.","headline":"NEXT 2 QUARTERS","ground":"violet","subjects":["the coin stack","two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages land beside the coin stack; a paper hand enters and points at the second.","hand":true,"handoff":"the coin stack","hero":false,"scale":"diagram","delivery":"Survival depends on capital markets and the next two quarters.","source":[25,43],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null}`,
 ].join("\n");
 
 /**
@@ -424,23 +571,32 @@ export const EXEMPLAR_NDJSON = [
  * WP8: parameterised by clip length. At 10s the line budget widens to
  * `maxLineWords(10)` (22) and rule 9 gains an instruction to write a beat's
  * action as two timecoded halves around one internal shape-match cut at
- * ~5s (brief §1) — the word budget and this internal-cut instruction are
- * the only translator content changes WP8 makes; everything else (scene
- * grouping, bookend, style sheet) is unchanged and out of this brief's
- * scope.
+ * ~5s (brief §1) — a single beat rendered as one longer clip. WP8.1's 15s
+ * mode is different: one beat is still a 5s section, but 2-3 of them
+ * render together as one scene generation (lib/prompt.ts#compileScenePrompt,
+ * lib/stream.ts), so at 15s rule 9 reverts to the plain single-movement
+ * form (like 5s) — there is no internal cut for the translator to write,
+ * because the prompt compiler already places each beat in its own
+ * timecoded section. The word budget stays at the 10s widening (brief
+ * WP8.1 §1: "stays 22 per beat"). Rules 16 (connector) and 17 (tag) are
+ * WP8.1 additions and apply at every clip length.
  */
-export function translatorSystem(clipSeconds: 5 | 10 = 5): string {
+export function translatorSystem(clipSeconds: 5 | 10 | 15 = 5): string {
   const words = maxLineWords(clipSeconds);
   const lineRule =
-    clipSeconds === 10
-      ? `5. line. One or two short spoken sentences, ${words} words or fewer together — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Never a list of clauses: at most two sentences, each a complete thought. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`
-      : `5. line. One spoken sentence, ${words} words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`;
+    clipSeconds === 5
+      ? `5. line. One spoken sentence, ${words} words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`
+      : `5. line. One or two short spoken sentences, ${words} words or fewer together — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Never a list of clauses: at most two sentences, each a complete thought. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`;
   const actionRule =
     clipSeconds === 10
       ? `9. action. This shot is ${clipSeconds}s long and may carry one internal shape-match cut at the midpoint: write "action" as two timecoded halves, "[0-5s] ... [5-10s] ...". The first half is one clear cause-and-effect movement with a start and a landing, exactly as in a 5s beat (including, on a beat after the first, how the previous beat's headline chip leaves and the previous handoff shape transforms into this beat's opening subjects). The second half either continues that same movement to a further landing (no internal cut; still write both timecoded halves) or cuts once, mid-shot, to a second composition that develops the same subject further. Either way the shot ends holding on one named "handoff" shape. The whole programme cuts on matching handoff shapes between shots, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`
       : `9. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat states, in this order: (a) how the previous beat's headline chip leaves — it slides off, flips away, or is covered, so the new headline lands on clear ground — then (b) how the previous handoff shape itself transforms into this beat's subjects. The whole programme cuts on matching handoff shapes, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`;
+  const sceneGenerationNote =
+    clipSeconds === 15
+      ? ` This programme renders one scene per generation: its 2-3 beats become one clip, each beat its own 5s section in order, so a beat's action, headline and handoff must read correctly as one section of a continuous composition, not a standalone clip.`
+      : "";
 
-  return `You are the Tessera translator. Tessera is CurationAI's video surface: it renders one CurationAI answer as a short programme of ${clipSeconds}-second paper-collage clips with a presenter voice. You turn the answer into that programme's beats.
+  return `You are the Tessera translator. Tessera is CurationAI's video surface: it renders one CurationAI answer as a short programme of ${clipSeconds}-second paper-collage clips with a presenter voice. You turn the answer into that programme's beats.${sceneGenerationNote}
 
 Tessera is a bridge, not a brain. You stage what CurationAI said. You never add a fact.
 
@@ -448,7 +604,7 @@ INPUT: one question and its answer, split into numbered sentences [0], [1], ...
 OUTPUT: beats, one JSON object per line (NDJSON). No array brackets, no code fences, no commentary, nothing before the first beat or after the last.
 
 Beat shape, exactly these keys:
-{"scene": int, "line": string, "headline": string|null, "ground": "lime"|"cyan"|"violet"|"magenta", "subjects": [string, ...], "action": string, "hand": boolean, "handoff": string, "hero": boolean, "scale": "oversized"|"small"|"diagram", "delivery": string, "source": [int, ...]}
+{"scene": int, "line": string, "headline": string|null, "ground": "lime"|"cyan"|"violet"|"magenta", "subjects": [string, ...], "action": string, "hand": boolean, "handoff": string, "hero": boolean, "scale": "oversized"|"small"|"diagram", "delivery": string, "source": [int, ...], "connector": {"kind": string, "from": string, "to": string, "colour": string}, "tag": {"text": string, "source": [int, ...]}|null}
 
 RULES
 1. Translator rule. You may compress, reorder and select. You may not add a fact, number, date, comparison, cause, or characterisation that is not in the numbered sentences. If the sentences do not say it, the beat does not say it. No "roughly", "sharply", "strong" unless the sentence uses that word or an equivalent.
@@ -466,6 +622,8 @@ ${actionRule}
 13. hero. true on at most one beat in the whole programme: the one whose line carries the answer's single central figure, if one exists. false on every other beat, including when no beat clearly qualifies.
 14. scale. One of oversized (one subject fills the frame), small (a single subject alone on open ground), diagram (several elements arranged together). Vary it beat to beat; never hold the same value for three beats running.
 15. delivery. The line field, optionally with one expression tag in square brackets inserted before or within it, from this whitelist only: [presenting to camera], [excited], [fast-paced]. At most one tag per beat. Most beats carry none — about three tags across a six-to-ten-beat programme is right: [presenting to camera] on the opener, one [excited] or [fast-paced] on the hero beat or a turn in the story, none on the close. A flat line is better than an over-acted one. Removing the tags from delivery must leave exactly the line field, character for character.
+16. connector. Every scene names exactly one connector: a physical paper ribbon, arrow or string running from one named subject to another named subject already in that scene, in one direction, described physically ("an orange paper ribbon runs from the coin stack on the left to the calendar strip on the right"). It appears in one beat of the scene and persists (stays visible, described as already in place) for the rest of the scene. Every beat in the scene repeats the identical "connector" object: {"kind": a short physical noun phrase ("paper ribbon", "arrow", "string"), "from": a subject name from this scene, "to": a different subject name from this scene, "colour": a colour word}. "from" and "to" must each be a string that also appears in some beat's "subjects" in this scene.
+17. tag. A scene may carry at most one small round paper tag, the size of a coin, printed with one figure or two words or fewer, taken verbatim (character for character, from a cited sentence), pointing at the connector with a short black line. Described physically in the beat's action where it appears ("a coin-sized cream tag reading '$1.3M' sits beside the ribbon, a short black line pointing at it"), never called a "label" or "chip" (those words are reserved for the headline chip). Field "tag": {"text": string, "source": [int, ...]} on the one beat where it appears, or null. Every other beat in the scene that does not show the tag still has the field, set to null — never more than one non-null "tag" per scene. The tag's text must be a substring of the sentence(s) its "source" cites, or the beat is discarded.
 
 EXAMPLE (from a different answer, a 5s-clip programme; match its shape and tone, do not copy its facts):
 ${EXEMPLAR_NDJSON}`;

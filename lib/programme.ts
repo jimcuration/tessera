@@ -12,7 +12,7 @@
  */
 
 import { cancelInFlight } from "./fal";
-import { compilePrompt, STYLE_SHEET_VERSION } from "./prompt";
+import { compilePrompt, compileScenePrompt, STYLE_SHEET_VERSION } from "./prompt";
 import { registerShot, recordSession } from "./recorder";
 import { createRenderer } from "./render";
 import type { Stream, Shot } from "./stream";
@@ -83,6 +83,10 @@ export class Session {
   private droppedRaw: unknown[] = [];
   /** WP8: Saskia is generated per scene, not per line (brief §2) — beats of the scene in progress, held until the next beat's scene number changes or the translation ends. */
   private sceneBuffer: { scene: number; beats: { n: number; text: string }[] } | null = null;
+  /** WP8.1 §1: at CLIP_SECONDS=15, one shot is a whole scene — beats of the scene in progress, held the same way as sceneBuffer above but carrying full Beat objects for compileScenePrompt. Unused at 5s/10s. */
+  private videoSceneBuffer: { scene: number; items: { n: number; beat: Beat; warnings: string[] }[] } | null = null;
+  private previousHandoff: string | null = null;
+  private streamStarted = false;
 
   stream: Stream | null = null;
   narrator: Narrator | null = null;
@@ -150,6 +154,49 @@ export class Session {
     }
   }
 
+  /**
+   * WP8.1 §1: compile the buffered scene's 2-3 beats into one shot (one
+   * fal request, one clip) and hand it to the stream. Only used at
+   * CLIP_SECONDS=15 — at 5s/10s each beat is dispatched immediately
+   * instead (see the "beat" case in run()).
+   */
+  private flushVideoScene(voice: SessionSwitches["voice"], chain: SessionSwitches["chain"]) {
+    const buffered = this.videoSceneBuffer;
+    this.videoSceneBuffer = null;
+    if (!buffered || buffered.items.length === 0) return;
+    const beats = buffered.items.map((it) => it.beat);
+    const { prompt } = compileScenePrompt({ beats, voice, previousHandoff: this.previousHandoff });
+    this.previousHandoff = beats[beats.length - 1].handoff;
+    const shot: Shot = {
+      n: buffered.items[0].n,
+      beats: buffered.items.map((it, i) => ({ n: it.n, beat: it.beat, offsetSeconds: i * 5 })),
+      prompt,
+      duration: beats.length * 5,
+      chain: chain === "on",
+    };
+    registerShot(prompt, {
+      session: this.id,
+      n: shot.n,
+      question: this.state.answer?.question ?? this.state.question,
+      beats: buffered.items.map((it, i) => ({
+        n: it.n,
+        beat: it.beat,
+        offsetSeconds: i * 5,
+        sources: it.beat.source.map((idx) => this.state.answer?.sentences[idx] ?? ""),
+        warnings: it.warnings,
+      })),
+      voice,
+      chain,
+      translatorVersion: TRANSLATOR_VERSION,
+      styleSheetVersion: STYLE_SHEET_VERSION,
+    });
+    this.stream?.addShots([shot]);
+    if (!this.streamStarted) {
+      this.streamStarted = true;
+      this.stream?.start();
+    }
+  }
+
   private async run() {
     const signal = this.controller.signal;
 
@@ -209,10 +256,8 @@ export class Session {
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
     let buffer = "";
-    let previousHandoff: string | null = null;
     let translateMs: number | null = null;
     let translateSource: string | null = null;
-    let started = false;
 
     const handle = (msg: Record<string, unknown>) => {
       switch (msg.type) {
@@ -235,27 +280,52 @@ export class Session {
           const warnings = Array.isArray(msg.warnings) ? (msg.warnings as string[]) : [];
           if (this.firstBeatMs === null) this.firstBeatMs = Math.round(performance.now() - this.askedAt);
           this.warnings.push(warnings);
-          const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff, clipSeconds: switches.clipSeconds });
-          previousHandoff = beat.handoff;
-          const shot: Shot = {
-            n,
-            beat,
-            prompt,
-            duration: switches.clipSeconds,
-            chain: switches.chain === "on",
-          };
-          registerShot(prompt, {
-            session: this.id,
-            n,
-            question: this.state.answer?.question ?? this.state.question,
-            beat,
-            sources: beat.source.map((i) => this.state.answer?.sentences[i] ?? ""),
-            warnings,
-            voice: switches.voice,
-            chain: switches.chain,
-            translatorVersion: TRANSLATOR_VERSION,
-            styleSheetVersion: STYLE_SHEET_VERSION,
-          });
+
+          if (switches.clipSeconds === 15) {
+            // WP8.1 §1: one shot = one whole scene. Buffer this beat;
+            // dispatch the scene as one fal request the moment the next
+            // beat starts a new scene (or at "done" for the last scene) —
+            // mirrors the Saskia scene buffer below.
+            if (this.videoSceneBuffer && this.videoSceneBuffer.scene !== beat.scene) {
+              this.flushVideoScene(switches.voice, switches.chain);
+            }
+            if (!this.videoSceneBuffer) this.videoSceneBuffer = { scene: beat.scene, items: [] };
+            this.videoSceneBuffer.items.push({ n, beat, warnings });
+          } else {
+            const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff: this.previousHandoff, clipSeconds: switches.clipSeconds });
+            this.previousHandoff = beat.handoff;
+            const shot: Shot = {
+              n,
+              beats: [{ n, beat, offsetSeconds: 0 }],
+              prompt,
+              duration: switches.clipSeconds,
+              chain: switches.chain === "on",
+            };
+            registerShot(prompt, {
+              session: this.id,
+              n,
+              question: this.state.answer?.question ?? this.state.question,
+              beats: [
+                {
+                  n,
+                  beat,
+                  offsetSeconds: 0,
+                  sources: beat.source.map((i) => this.state.answer?.sentences[i] ?? ""),
+                  warnings,
+                },
+              ],
+              voice: switches.voice,
+              chain: switches.chain,
+              translatorVersion: TRANSLATOR_VERSION,
+              styleSheetVersion: STYLE_SHEET_VERSION,
+            });
+            this.stream?.addShots([shot]);
+            if (!this.streamStarted) {
+              this.streamStarted = true;
+              this.stream?.start();
+            }
+          }
+
           // WP8: Saskia's narration is generated per scene, not per line
           // (brief §2): buffer this beat and flush the scene the moment the
           // next beat starts a new one (or at "done" for the last scene).
@@ -265,11 +335,6 @@ export class Session {
             this.sceneBuffer.beats.push({ n, text: beat.delivery });
           }
           this.set({ status: "staging", beats: [...this.state.beats, beat] });
-          stream.addShots([shot]);
-          if (!started) {
-            started = true;
-            stream.start();
-          }
           break;
         }
         case "dropped": {
@@ -312,6 +377,7 @@ export class Session {
     }
     if (!this.alive) return;
     if (this.state.status === "error") return;
+    if (switches.clipSeconds === 15) this.flushVideoScene(switches.voice, switches.chain);
     this.flushScene();
 
     stream.finish();

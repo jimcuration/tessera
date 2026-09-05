@@ -18,15 +18,27 @@ import path from "node:path";
  *                          under Saskia's narration in the player, ducked
  *                          well under the voice; off is silent — the clip's
  *                          own audio block stays wordless either way.
- *   CLIP_SECONDS=5|10      WP8: the length of every shot in a programme,
- *                          passed straight to the fal request's `duration`.
- *                          Default 5 (CLAUDE.md hard rule 4's baseline).
- *                          10 widens the translator's line budget to 22
- *                          words (lib/translator.ts#maxLineWords) and tells
- *                          it a beat may carry one internal shape-match cut
- *                          at ~5s; the player's render buffer is expressed
- *                          in seconds of playback, not clip count, so it
- *                          does not need to change with this switch.
+ *   CLIP_SECONDS=5|10|15   WP8/WP8.1: the length of every shot in a
+ *                          programme. Default 5 (CLAUDE.md hard rule 4's
+ *                          baseline). 10 and 15 widen the translator's line
+ *                          budget to 22 words (lib/translator.ts#maxLineWords).
+ *                          At 5/10, one shot = one beat, its own fal
+ *                          request, told it may carry one internal
+ *                          shape-match cut at ~5s. At 15 (WP8.1), one shot
+ *                          = one whole SCENE (2-3 beats): a single fal
+ *                          request of 10s (2-beat scene) or 15s (3-beat
+ *                          scene), the compiled prompt writing each beat as
+ *                          its own timecoded section ([0-5s], [5-10s],
+ *                          [10-15s]); the player treats the beats inside
+ *                          that one clip as timestamps, not clip swaps. The
+ *                          render buffer is expressed in seconds of
+ *                          playback, not clip count, so none of this needs
+ *                          a buffer-size change.
+ *   MUSIC_BED=bed|bed-v2   WP8.1: which generated bed /api/music serves
+ *                          (<RECORDINGS_DIR>/music/<value>.mp3). Default
+ *                          "bed" (WP5's original) until Robin has heard v2
+ *                          (scripts/music-bed-v2.mts); "bed.mp3" itself is
+ *                          never overwritten by v2 generation.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
@@ -36,7 +48,8 @@ export type ChainSwitch = "on" | "off";
 export type RenderSwitch = "queue" | "director";
 export type TheatreSwitch = "on" | "off";
 export type MusicSwitch = "on" | "off";
-export type ClipSeconds = 5 | 10;
+export type ClipSeconds = 5 | 10 | 15;
+export type MusicBedSwitch = "bed" | "bed-v2";
 
 export interface Switches {
   voice: VoiceSwitch;
@@ -45,6 +58,7 @@ export interface Switches {
   theatre: TheatreSwitch;
   music: MusicSwitch;
   clipSeconds: ClipSeconds;
+  musicBed: MusicBedSwitch;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -52,6 +66,11 @@ export interface Switches {
 function pick<T extends string>(raw: string | undefined, allowed: T[], fallback: T): T {
   const value = (raw ?? "").trim().toLowerCase();
   return (allowed as string[]).includes(value) ? (value as T) : fallback;
+}
+
+function pickClipSeconds(raw: string | undefined): ClipSeconds {
+  const value = pick(raw, ["5", "10", "15"], "5");
+  return value === "15" ? 15 : value === "10" ? 10 : 5;
 }
 
 export function readSwitches(): Switches {
@@ -63,7 +82,8 @@ export function readSwitches(): Switches {
     render: pick<RenderSwitch>(process.env.RENDER, ["queue", "director"], "queue"),
     theatre: pick<TheatreSwitch>(process.env.THEATRE, ["on", "off"], "on"),
     music: pick<MusicSwitch>(process.env.MUSIC, ["on", "off"], "on"),
-    clipSeconds: pick(process.env.CLIP_SECONDS, ["5", "10"], "5") === "10" ? 10 : 5,
+    clipSeconds: pickClipSeconds(process.env.CLIP_SECONDS),
+    musicBed: pick<MusicBedSwitch>(process.env.MUSIC_BED, ["bed", "bed-v2"], "bed"),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }

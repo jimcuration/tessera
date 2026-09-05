@@ -206,9 +206,21 @@ export function Player() {
     endedRef.current = false;
     const live = sessionRef.current;
     const shown = pictureRef.current;
-    // Saskia: the narration for this beat starts with its clip.
+    // Saskia: the narration for this clip's first beat starts with the clip.
     if (live && shown && shown.sessionId === live.id && shown.clip.videoUrl === clip.videoUrl) {
-      live.narrator?.play(clip.shot.n);
+      live.narrator?.play(clip.shot.beats[0].n);
+    }
+  }, []);
+
+  // WP8.1 §1: a scene-generation clip (CLIP_SECONDS=15) carries later
+  // beats' own timecodes; Saskia's narration for each one starts exactly
+  // when Screen reports its offset has been reached, same principle as
+  // onStarted above for beat 0.
+  const onBeatBoundary = useCallback((clip: ReadyClip, beatIndex: number) => {
+    const live = sessionRef.current;
+    const shown = pictureRef.current;
+    if (live && shown && shown.sessionId === live.id && shown.clip.videoUrl === clip.videoUrl) {
+      live.narrator?.play(clip.shot.beats[beatIndex].n);
     }
   }, []);
 
@@ -269,7 +281,7 @@ export function Player() {
 
   // A question is pending from Enter until its first clip is on screen.
   const renderingShot = streamState?.rendering ? stream?.renderingShot() ?? null : null;
-  const groundColor = renderingShot ? GROUND_HEX[renderingShot.beat.ground] : LISTENING_CURSOR;
+  const groundColor = renderingShot ? GROUND_HEX[renderingShot.beats[0].beat.ground] : LISTENING_CURSOR;
   const pending = session !== null && !picture && !idle;
   const listening = inputFocused || pending;
 
@@ -322,6 +334,7 @@ export function Player() {
       onEnded={onEnded}
       onNeedsTap={onNeedsTap}
       onStarted={onStarted}
+      onBeatBoundary={onBeatBoundary}
     />
   );
 

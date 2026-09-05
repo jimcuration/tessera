@@ -1,9 +1,34 @@
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { type NextRequest } from "next/server";
 import { recordingsDir } from "@/lib/config";
 import { durationOf, ffmpeg, silenceGapMidpoints } from "../../../scripts/ffmpeg.mjs";
+
+/**
+ * WP8.1 §5: a pronunciation respelling applied only to the text actually
+ * sent to ElevenLabs — never to the beat's recorded `delivery`/`line`, the
+ * copy list, or any check (translator.ts's validateBeat, scripts/check.mjs).
+ * data/pronunciations.json: {"word": "phonetic respelling"}.
+ */
+function loadPronunciations(): Record<string, string> {
+  const file = path.join(process.cwd(), "data", "pronunciations.json");
+  if (!existsSync(file)) return {};
+  try {
+    const parsed = JSON.parse(readFileSync(file, "utf8"));
+    return parsed && typeof parsed === "object" ? (parsed as Record<string, string>) : {};
+  } catch {
+    return {};
+  }
+}
+
+function applyPronunciations(text: string, map: Record<string, string>): string {
+  let out = text;
+  for (const [word, respelling] of Object.entries(map)) {
+    out = out.replace(new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "gi"), respelling);
+  }
+  return out;
+}
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -133,6 +158,13 @@ export async function POST(req: NextRequest) {
   if (beats.length === 0) return Response.json({ error: "no beats" }, { status: 400 });
   beats.sort((a, b) => a.n - b.n);
 
+  // WP8.1 §5: what is actually spoken (and aligned) differs from the
+  // recorded `beats[].text` only by pronunciation respellings — the
+  // alignment-offset math below must use the SAME text that was sent, so
+  // it operates on `ttsBeats`, not `beats`.
+  const pronunciations = loadPronunciations();
+  const ttsBeats: InBeat[] = beats.map((b) => ({ n: b.n, text: applyPronunciations(b.text, pronunciations) }));
+  const sceneTextForTTS = ttsBeats.map((b) => b.text).join(SEPARATOR);
   const sceneText = beats.map((b) => b.text).join(SEPARATOR);
   // Account default: the WP2 settings pass showed three tuned profiles were
   // audibly indistinguishable (WP2 report §4), so this sends no override —
@@ -149,7 +181,7 @@ export async function POST(req: NextRequest) {
     {
       method: "POST",
       headers: { "xi-api-key": key, "content-type": "application/json", accept: "application/json" },
-      body: JSON.stringify({ text: sceneText, model_id: MODEL_ID }),
+      body: JSON.stringify({ text: sceneTextForTTS, model_id: MODEL_ID }),
       signal: req.signal,
       cache: "no-store",
     }
@@ -171,7 +203,7 @@ export async function POST(req: NextRequest) {
     const plain = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}?output_format=mp3_44100_128`, {
       method: "POST",
       headers: { "xi-api-key": key, "content-type": "application/json", accept: "audio/mpeg" },
-      body: JSON.stringify({ text: sceneText, model_id: MODEL_ID }),
+      body: JSON.stringify({ text: sceneTextForTTS, model_id: MODEL_ID }),
       signal: req.signal,
       cache: "no-store",
     });
@@ -195,7 +227,7 @@ export async function POST(req: NextRequest) {
     if (beats.length === 1) {
       cutTimes = [];
     } else if (splitMethod === "timestamps" && alignment) {
-      const fromAlignment = cutsFromAlignment(alignment, beats);
+      const fromAlignment = cutsFromAlignment(alignment, ttsBeats);
       if (fromAlignment) {
         cutTimes = fromAlignment;
       } else {
@@ -204,7 +236,7 @@ export async function POST(req: NextRequest) {
       }
     }
     if (splitMethod === "silence-gap" && beats.length > 1) {
-      cutTimes = cutsFromSilence(sceneMp3, beats, totalDuration);
+      cutTimes = cutsFromSilence(sceneMp3, ttsBeats, totalDuration);
     }
 
     let start = 0;
@@ -240,6 +272,10 @@ export async function POST(req: NextRequest) {
               scene,
               beats: beats.map((b) => ({ n: b.n, text: b.text })),
               sceneText,
+              // WP8.1 §5: what ElevenLabs actually received, if a
+              // pronunciation respelling changed it; identical to the
+              // fields above when no word in this scene has a mapping.
+              sceneTextForTTS: sceneTextForTTS === sceneText ? undefined : sceneTextForTTS,
               durationSeconds: totalDuration,
               splitMethod,
               splitNote: alignmentNote,

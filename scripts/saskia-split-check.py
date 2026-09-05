@@ -17,6 +17,14 @@ using the same word-recall machinery as scripts/whisper-match.py:
 Writes recordings/<session>/saskia-split-check.json (read by
 scripts/report.mjs) and prints a table. Requires openai-whisper; uses the
 ffmpeg binary from ffmpeg-static, nothing needed on PATH.
+
+WP8.1 §5: also counts "Diginex" transcription consistency across every
+beat whose line names the company — pass = the letters "diginex" appear as
+a contiguous run in what Whisper heard (spaces removed, case-insensitive),
+fail = Whisper heard something else entirely (e.g. "Digin X", missing the
+"e"). Independent of app/api/voice's pronunciation-map substitution: that
+only changes what is actually spoken/sent to ElevenLabs, never the
+recorded `line`/`delivery` text this script reads.
 """
 
 import difflib
@@ -83,6 +91,14 @@ def word_recall(expected, heard):
     return matched / len(a), matched, len(a)
 
 
+def diginex_consistency(own_line: str, heard: str):
+    """None if `own_line` doesn't name Diginex; else True/False for whether Whisper heard it cleanly."""
+    if "diginex" not in own_line.lower():
+        return None
+    squashed = re.sub(r"[^a-z]", "", heard.lower())
+    return "diginex" in squashed
+
+
 def bleed_run(neighbour_only_words, heard_words, min_run=2):
     """True if a run of `min_run`+ consecutive neighbour-only words appears in heard, in order."""
     if len(neighbour_only_words) < min_run:
@@ -115,22 +131,39 @@ def main():
         print("no split narration (n.mp3) in", session)
         sys.exit(1)
 
+    # WP8.1: a shot's record is keyed by its FIRST beat's n but may cover
+    # 2-3 beats (`beats`, plural, one per CLIP_SECONDS=15 scene) that each
+    # still get their own split <n>.mp3 — so beat n's own text has to come
+    # from whichever shot's record actually lists it, not from `<n>.json`
+    # (which may not exist for beat n if it wasn't the shot's first beat).
     beats = {}
-    for mp3 in mp3s:
-        n = int(mp3.stem)
-        meta_file = session_dir / f"{n}.json"
-        line = ""
-        if meta_file.exists():
-            rec = json.loads(meta_file.read_text(encoding="utf8"))
-            line = rec.get("beat", {}).get("delivery") or rec.get("beat", {}).get("line", "")
-        beats[n] = line
-    order = sorted(beats)
+    for json_file in sorted(session_dir.glob("*.json")):
+        if not re.fullmatch(r"\d+\.json", json_file.name):
+            continue
+        try:
+            rec = json.loads(json_file.read_text(encoding="utf8"))
+        except json.JSONDecodeError:
+            continue
+        shot_beats = rec.get("beats")
+        if isinstance(shot_beats, list) and shot_beats:
+            for sb in shot_beats:
+                n = sb.get("n")
+                b = sb.get("beat") or {}
+                if isinstance(n, int):
+                    beats[n] = b.get("delivery") or b.get("line", "")
+        else:
+            b = rec.get("beat")
+            if isinstance(b, dict):
+                beats[int(json_file.stem)] = b.get("delivery") or b.get("line", "")
+    order = sorted(n for n in beats if (session_dir / f"{n}.mp3").exists())
 
     print(f"loading whisper {model_name}…", flush=True)
     model = whisper.load_model(model_name)
 
     results = []
     bleeds = 0
+    diginex_matched = 0
+    diginex_total = 0
     for idx, n in enumerate(order):
         mp3 = session_dir / f"{n}.mp3"
         own_line = beats[n]
@@ -152,6 +185,12 @@ def main():
         if neighbours_hit:
             bleeds += 1
 
+        diginex_ok = diginex_consistency(own_line, heard)
+        if diginex_ok is not None:
+            diginex_total += 1
+            if diginex_ok:
+                diginex_matched += 1
+
         results.append(
             {
                 "n": n,
@@ -161,10 +200,12 @@ def main():
                 "matched": matched,
                 "words": total,
                 "bleedFromBeats": neighbours_hit,
+                "diginexConsistent": diginex_ok,
             }
         )
         flag = f"  BLEED from {neighbours_hit}" if neighbours_hit else ""
-        print(f"{n:>2}  own {recall*100:5.1f}%  {matched}/{total}{flag}  heard: {heard}", flush=True)
+        dflag = "" if diginex_ok is None else "  DIGINEX-OK" if diginex_ok else "  DIGINEX-MISS"
+        print(f"{n:>2}  own {recall*100:5.1f}%  {matched}/{total}{flag}{dflag}  heard: {heard}", flush=True)
 
     summary = {
         "model": model_name,
@@ -172,8 +213,11 @@ def main():
         "meanOwnRecall": round(sum(r["ownRecall"] for r in results) / len(results), 3),
         "bleeds": bleeds,
     }
+    if diginex_total:
+        summary["diginexConsistency"] = {"matched": diginex_matched, "total": diginex_total}
     (session_dir / "saskia-split-check.json").write_text(json.dumps(summary, indent=2), encoding="utf8")
-    print(f"\nmean own-line recall {summary['meanOwnRecall']*100:.1f}%, {bleeds} beat(s) with a neighbour's words -> {session_dir / 'saskia-split-check.json'}")
+    tail = f", Diginex {diginex_matched}/{diginex_total}" if diginex_total else ""
+    print(f"\nmean own-line recall {summary['meanOwnRecall']*100:.1f}%, {bleeds} beat(s) with a neighbour's words{tail} -> {session_dir / 'saskia-split-check.json'}")
 
 
 if __name__ == "__main__":

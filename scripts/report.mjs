@@ -69,6 +69,19 @@ function words(text) {
   return String(text ?? "").trim().split(/\s+/).filter(Boolean).length;
 }
 
+/** WP8.1: a shot's `beats` (plural, one entry at 5s/10s, 2-3 at CLIP_SECONDS=15) with a fallback for a pre-WP8.1 recording's singular `beat`. */
+function shotBeats(clip) {
+  if (Array.isArray(clip.beats)) return clip.beats;
+  if (clip.beat) return [{ n: clip.n, beat: clip.beat, offsetSeconds: 0 }];
+  return [];
+}
+
+/** WP8.1: a shot's actual clip length — session `clipSeconds` at 5s/10s (uniform), or 5s per beat in the shot at 15s (a 2-beat scene is 10s, a 3-beat scene 15s). */
+function shotDuration(clip, sessionClipSeconds) {
+  if (sessionClipSeconds !== 15) return sessionClipSeconds;
+  return shotBeats(clip).length * 5;
+}
+
 const sessions = process.argv.slice(2).filter((a) => existsSync(a));
 if (sessions.length === 0) {
   console.error("usage: node scripts/report.mjs recordings/<session> [...]");
@@ -88,14 +101,22 @@ for (const dir of sessions) {
     .map((f) => readJson(path.join(dir, f)))
     .filter(Boolean)
     .sort((a, b) => a.n - b.n);
+  // WP8.1: every beat across every shot, flattened, each tagged with its
+  // parent shot (for renderMs/chained/expandedPrompt, which are per-shot)
+  // and its own offsetSeconds (0 unless this is a >1-beat scene shot).
+  const allBeats = clips.flatMap((c) => shotBeats(c).map((sb) => ({ ...sb, shot: c })));
+
+  const durations = clips.map((c) => shotDuration(c, clipSeconds));
   const renders = clips.map((c) => c.renderMs).filter((v) => typeof v === "number");
-  const ratios = renders.map((ms) => ms / (clipSeconds * 1000));
+  const ratios = clips
+    .map((c, i) => (typeof c.renderMs === "number" ? c.renderMs / (durations[i] * 1000) : null))
+    .filter((v) => v !== null);
   const p50 = percentile(renders, 0.5);
   const max = renders.length ? Math.max(...renders) : null;
   const p50Ratio = percentile(ratios, 0.5);
   const maxRatio = ratios.length ? Math.max(...ratios) : null;
   const heard = new Map((whisper?.clips ?? []).map((c) => [c.n, c]));
-  const wordsPerLine = clips.map((c) => words(c.beat?.line)).filter((n) => n > 0);
+  const wordsPerLine = allBeats.map((b) => words(b.beat?.line)).filter((n) => n > 0);
   const meanWords = wordsPerLine.length ? wordsPerLine.reduce((a, b) => a + b, 0) / wordsPerLine.length : null;
   // Approximate: recorded fields, not a browser-measured paint time (WP0's
   // own time-to-first-frame numbers were measured by hand in the browser).
@@ -103,14 +124,28 @@ for (const dir of sessions) {
     typeof manifest.firstBeatMs === "number" && typeof clips[0]?.renderMs === "number"
       ? manifest.firstBeatMs + clips[0].renderMs
       : null;
-  // Nominal: external cuts (clip boundaries) plus one internal cut per clip
-  // when the beat's action was told it may carry one (clipSeconds 10).
-  // Whether that internal cut actually reads as a cut in the footage is a
-  // visual call — left to Robin's subjective notes, not asserted here.
+  // Nominal: external cuts (shot/clip boundaries) plus one internal cut per
+  // 10s single-beat shot (clipSeconds 10) or per beat-section within a 15s
+  // scene shot (clipSeconds 15, one nominal internal cut per section
+  // boundary — beats.length - 1 per shot). Whether these actually read as
+  // cuts in the footage is a visual call — left to Robin's subjective
+  // notes, not asserted here.
+  const totalBeatCount = allBeats.length;
   const externalCuts = Math.max(0, clips.length - 1);
-  const internalCuts = clipSeconds === 10 ? clips.length : 0;
-  const programmeMinutes = (clips.length * clipSeconds) / 60;
+  const internalCuts =
+    clipSeconds === 10
+      ? clips.length
+      : clipSeconds === 15
+        ? clips.reduce((sum, c) => sum + Math.max(0, shotBeats(c).length - 1), 0)
+        : 0;
+  const programmeSeconds = durations.reduce((a, b) => a + b, 0);
+  const programmeMinutes = programmeSeconds / 60;
   const seamsPerMinute = programmeMinutes > 0 ? (externalCuts + internalCuts) / programmeMinutes : null;
+  // WP8.1: scenes and their connector/tag — structural validity (from/to in
+  // the scene's subjects, ≤1 tag per scene) is `npm run check`'s job; this
+  // is just a presence count for a quick read here.
+  const sceneNumbers = new Set(allBeats.map((b) => b.beat?.scene).filter((s) => s !== undefined));
+  const taggedScenes = new Set(allBeats.filter((b) => b.beat?.tag).map((b) => b.beat.scene));
 
   if (!byClipLength.has(clipSeconds)) byClipLength.set(clipSeconds, { p50s: [], maxes: [], ratios: [] });
   const agg = byClipLength.get(clipSeconds);
@@ -121,17 +156,23 @@ for (const dir of sessions) {
   console.log(`\n## ${path.basename(dir)}\n`);
   console.log(`- question: ${manifest.matchedQuestion ?? manifest.question ?? "?"}`);
   console.log(`- switches: VOICE=${manifest.switches?.voice ?? "?"} CHAIN=${manifest.switches?.chain ?? "?"} RENDER=${manifest.switches?.render ?? "?"} CLIP_SECONDS=${clipSeconds}`);
-  console.log(`- translation: ${manifest.translateSource ?? "?"}${manifest.translateMs ? ` in ${manifest.translateMs} ms` : ""}, first beat at ${manifest.firstBeatMs ?? "?"} ms, ${clips.length} clip(s) rendered, ${(manifest.dropped ?? []).length} dropped`);
+  console.log(
+    `- translation: ${manifest.translateSource ?? "?"}${manifest.translateMs ? ` in ${manifest.translateMs} ms` : ""}, first beat at ${manifest.firstBeatMs ?? "?"} ms, ${clips.length} shot(s) / ${totalBeatCount} beat(s) rendered (${programmeSeconds.toFixed(0)}s), ${(manifest.dropped ?? []).length} dropped`
+  );
   console.log(`- render time: p50 ${p50 ?? "?"} ms, max ${max ?? "?"} ms (n=${renders.length}); render/playback ratio: p50 ${p50Ratio !== null ? p50Ratio.toFixed(2) : "?"}, max ${maxRatio !== null ? maxRatio.toFixed(2) : "?"}`);
   console.log(`- time to first frame (approx, firstBeatMs + first clip's renderMs): ${timeToFirstFrame ?? "?"} ms`);
-  console.log(`- words per line: mean ${meanWords !== null ? meanWords.toFixed(1) : "?"} (n=${wordsPerLine.length}, limit ${clipSeconds === 10 ? 22 : 12})`);
+  console.log(`- words per line: mean ${meanWords !== null ? meanWords.toFixed(1) : "?"} (n=${wordsPerLine.length}, limit ${clipSeconds === 5 ? 12 : 22})`);
   console.log(`- seam count per minute (nominal: ${externalCuts} external + ${internalCuts} internal over ${programmeMinutes.toFixed(2)} min): ${seamsPerMinute !== null ? seamsPerMinute.toFixed(1) : "?"}`);
-  console.log(`- cost per clip at post-promo $${USD_PER_SECOND}/s × ${clipSeconds}s = $${(USD_PER_SECOND * clipSeconds).toFixed(3)}; per 60 s of programme = $${(USD_PER_SECOND * 60).toFixed(2)}`);
+  console.log(`- cost at post-promo $${USD_PER_SECOND}/s × ${programmeSeconds.toFixed(0)}s programme = $${(USD_PER_SECOND * programmeSeconds).toFixed(3)}; per 60 s = $${(USD_PER_SECOND * 60).toFixed(2)}`);
   if (whisper) console.log(`- whisper (${whisper.model}) mean word recall: ${(whisper.meanWordRecall * 100).toFixed(1)}%`);
   if (splitCheck) {
     console.log(
       `- Saskia split-check (Whisper on each beat's split narration): mean own-line recall ${(splitCheck.meanOwnRecall * 100).toFixed(1)}%, ${splitCheck.bleeds} beat(s) with a neighbour's words detected`
     );
+  }
+  if (splitCheck?.diginexConsistency) {
+    const { matched, total } = splitCheck.diginexConsistency;
+    console.log(`- "Diginex" transcription consistency: ${matched}/${total}`);
   }
   const scenesLogged = readdirSync(dir).filter((f) => /^voice-scene-.+\.json$/.test(f));
   if (scenesLogged.length) {
@@ -139,14 +180,18 @@ for (const dir of sessions) {
     const counts = methods.reduce((m, v) => m.set(v, (m.get(v) ?? 0) + 1), new Map());
     console.log(`- Saskia scenes: ${scenesLogged.length} request(s); split method ${[...counts].map(([k, v]) => `${k}=${v}`).join(", ")}`);
   }
+  if (sceneNumbers.size) {
+    console.log(`- connector/tag (structural validity is \`npm run check\`'s job): ${sceneNumbers.size} scene(s), ${taggedScenes.size} carrying a tag`);
+  }
 
-  console.log(`\n| # | chained | render ms | ratio | headline | hero | scale | tags | whisper recall | heard |\n|---|---|---|---|---|---|---|---|---|---|`);
-  for (const c of clips) {
-    const w = heard.get(c.n);
-    const tags = [...String(c.beat?.delivery ?? "").matchAll(/\[([^\]]*)\]/g)].map((m) => m[1]);
-    const ratio = typeof c.renderMs === "number" ? (c.renderMs / (clipSeconds * 1000)).toFixed(2) : "—";
+  console.log(`\n| # | offset | chained | render ms | ratio | headline | hero | scale | tags | whisper recall | heard |\n|---|---|---|---|---|---|---|---|---|---|---|`);
+  for (const { n, beat, offsetSeconds, shot } of allBeats) {
+    const w = heard.get(n);
+    const tags = [...String(beat?.delivery ?? "").matchAll(/\[([^\]]*)\]/g)].map((m) => m[1]);
+    const duration = shotDuration(shot, clipSeconds);
+    const ratio = typeof shot.renderMs === "number" ? (shot.renderMs / (duration * 1000)).toFixed(2) : "—";
     console.log(
-      `| ${c.n} | ${c.chained ? "i2v" : "t2v"} | ${c.renderMs} | ${ratio} | ${c.beat?.headline ?? "—"} | ${c.beat?.hero ? "hero" : "·"} | ${c.beat?.scale ?? "—"} | ${tags.length ? tags.join(", ") : "—"} | ${w ? `${(w.wordRecall * 100).toFixed(0)}% (${w.matched}/${w.words})` : "—"} | ${w ? (w.heard || "(silent)").replace(/\|/g, "/") : "—"} |`
+      `| ${n} | +${offsetSeconds}s | ${shot.chained ? "i2v" : "t2v"} | ${shot.renderMs} | ${ratio} | ${beat?.headline ?? "—"} | ${beat?.hero ? "hero" : "·"} | ${beat?.scale ?? "—"} | ${tags.length ? tags.join(", ") : "—"} | ${w ? `${(w.wordRecall * 100).toFixed(0)}% (${w.matched}/${w.words})` : "—"} | ${w ? (w.heard || "(silent)").replace(/\|/g, "/") : "—"} |`
     );
   }
 
@@ -176,10 +221,12 @@ if (byClipLength.size > 1) {
       `| ${clipSeconds}s | ${agg.p50s.length} | ${p50 ?? "?"} | ${max ?? "?"} | ${ratioP50 !== null ? ratioP50.toFixed(2) : "?"} | ${ratioMax !== null ? ratioMax.toFixed(2) : "?"} |`
     );
   }
-  console.log(`\nAcceptance criterion 2 (10s p50 render/playback ratio ≤ 0.6): ${(() => {
-    const agg10 = byClipLength.get(10);
-    if (!agg10 || agg10.ratios.length === 0) return "no 10s data";
-    const r = percentile(agg10.ratios, 0.5);
+  const ratioReadout = (seconds) => {
+    const agg = byClipLength.get(seconds);
+    if (!agg || agg.ratios.length === 0) return `no ${seconds}s data`;
+    const r = percentile(agg.ratios, 0.5);
     return `p50 ratio ${r.toFixed(2)} — ${r <= 0.6 ? "met" : "not met"} (measured, not asserted as passed — brief: do not mark criteria as passed)`;
-  })()}`);
+  };
+  console.log(`\nWP8 acceptance criterion 2 (10s p50 render/playback ratio ≤ 0.6): ${ratioReadout(10)}`);
+  console.log(`WP8.1 acceptance criterion 4 (15s p50 render/playback ratio ≤ 0.6): ${ratioReadout(15)}`);
 }
