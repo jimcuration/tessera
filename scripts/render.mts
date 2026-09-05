@@ -19,6 +19,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fal } from "@fal-ai/client";
+import { checkRemoteClipForFaces } from "../lib/faceGate.ts";
 import { compilePrompt, STYLE_SHEET_VERSION, type Voice } from "../lib/prompt.ts";
 import { TRANSLATOR_VERSION, type Beat } from "../lib/translator.ts";
 import { ffmpeg } from "./ffmpeg.mjs";
@@ -66,14 +67,17 @@ const suffix = arg("suffix");
 // at playback time, so this flag doesn't branch renderOne — it just tags
 // the session so two sessions rendered from identical clips are told apart.
 const music = (arg("music", "off") as "on" | "off" | null) ?? "off";
+// WP5.1, off by default: see lib/config.ts's FACE_GATE header comment.
+const faceGate = (arg("face-gate", "off") as "on" | "off" | null) ?? "off";
 if (
   !question ||
   (voice !== "native" && voice !== "saskia") ||
   (chain !== "on" && chain !== "off") ||
-  (music !== "on" && music !== "off")
+  (music !== "on" && music !== "off") ||
+  (faceGate !== "on" && faceGate !== "off")
 ) {
   console.error(
-    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--music on|off] [--base url] [--suffix name]'
+    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--music on|off] [--face-gate on|off] [--base url] [--suffix name]'
   );
   process.exit(1);
 }
@@ -237,9 +241,58 @@ async function main() {
   let previousHandoff: string | null = null;
   let lastFrame: string | undefined;
 
-  async function renderOne({ n, beat, warnings }: { n: number; beat: Beat; warnings: string[] }, fromFrame: string | undefined) {
+  /**
+   * WP5.1: gate-check one rendered clip and log the check. Returns the
+   * outcome so the caller can decide whether to re-render or drop — mirrors
+   * lib/stream.ts's runFaceGate/logGate, since this script is a separate
+   * render path (see this file's header) that bypasses lib/stream.ts
+   * entirely and so needs its own copy of the same enforcement.
+   */
+  async function gateCheck(
+    n: number,
+    beat: Beat,
+    clip: GeneratedClip,
+    attempt: number
+  ): Promise<{ detected: boolean; ok: boolean }> {
+    let gate: { ok: boolean; detected: boolean; attempts: unknown[]; latencyMs: number };
+    try {
+      gate = { ok: true, ...(await checkRemoteClipForFaces(clip.rawUrl)) };
+    } catch (cause) {
+      console.warn(`[render] beat ${n}: face gate failed, passing through unchecked:`, cause instanceof Error ? cause.message : cause);
+      gate = { ok: false, detected: false, attempts: [], latencyMs: 0 };
+    }
+    const outcome = gate.detected ? (attempt === 1 ? "rerender" : "dropped") : gate.ok ? "clean" : "gate-error";
+    await post("/api/record", {
+      kind: "faceGate",
+      session: sessionId,
+      n,
+      beat,
+      attempt,
+      outcome,
+      detected: gate.detected,
+      attempts: gate.attempts,
+      latencyMs: gate.latencyMs,
+      clip: { expandedPrompt: clip.expandedPrompt, rawUrl: clip.rawUrl, requestId: clip.requestId, renderMs: clip.ms },
+    });
+    return { detected: gate.detected, ok: gate.ok };
+  }
+
+  async function renderOne({ n, beat, warnings }: { n: number; beat: Beat; warnings: string[] }, fromFrame: string | undefined): Promise<GeneratedClip | null> {
     const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null });
-    const clip = await generateClip({ prompt, fromFrame });
+    let clip = await generateClip({ prompt, fromFrame });
+    if (faceGate === "on") {
+      let gate = await gateCheck(n, beat, clip, 1);
+      if (gate.detected) {
+        console.warn(`[render] beat ${n}: face detected, re-rendering`);
+        clip = await generateClip({ prompt, fromFrame });
+        gate = await gateCheck(n, beat, clip, 2);
+        if (gate.detected) {
+          console.warn(`[render] beat ${n}: face detected on re-render too, dropping beat`);
+          return null;
+        }
+      }
+    }
+
     await post("/api/record", {
       kind: "clip",
       session: sessionId,
@@ -273,8 +326,12 @@ async function main() {
   if (chain === "on") {
     for (const item of beats) {
       const clip = await renderOne(item, lastFrame);
-      previousHandoff = item.beat.handoff;
-      lastFrame = await lastFrameOf(clip.rawUrl);
+      if (clip) {
+        previousHandoff = item.beat.handoff;
+        lastFrame = await lastFrameOf(clip.rawUrl);
+      } else {
+        console.warn(`[render] beat ${item.n} dropped (face gate); continuing from previous frame`);
+      }
     }
   } else {
     let i = 0;
@@ -295,7 +352,7 @@ async function main() {
     followups: answer.followups,
     fromSpine: answer.fromSpine,
     sentences,
-    switches: { voice, chain, music, render: "queue" },
+    switches: { voice, chain, music, faceGate, render: "queue" },
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
     translateSource,

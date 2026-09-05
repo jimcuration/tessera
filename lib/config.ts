@@ -18,6 +18,16 @@ import path from "node:path";
  *                          under Saskia's narration in the player, ducked
  *                          well under the voice; off is silent — the clip's
  *                          own audio block stays wordless either way.
+ *   FACE_GATE=on|off       WP5.1: on samples every rendered clip and runs a
+ *                          local face detector before it reaches the queue
+ *                          (CLAUDE.md rule 6). Default OFF: calibrated
+ *                          against the known WP5 face-producing clips, it
+ *                          measured a high false-positive rate on live
+ *                          re-renders of ordinary approved subjects —
+ *                          coin stacks and paper maps, both named in the
+ *                          style sheet itself — dropping or needlessly
+ *                          re-rendering clean beats. See
+ *                          briefs/WP5.1-handoff.md before turning this on.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
@@ -27,6 +37,7 @@ export type ChainSwitch = "on" | "off";
 export type RenderSwitch = "queue" | "director";
 export type TheatreSwitch = "on" | "off";
 export type MusicSwitch = "on" | "off";
+export type FaceGateSwitch = "on" | "off";
 
 export interface Switches {
   voice: VoiceSwitch;
@@ -34,6 +45,7 @@ export interface Switches {
   render: RenderSwitch;
   theatre: TheatreSwitch;
   music: MusicSwitch;
+  faceGate: FaceGateSwitch;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -52,6 +64,8 @@ export function readSwitches(): Switches {
     render: pick<RenderSwitch>(process.env.RENDER, ["queue", "director"], "queue"),
     theatre: pick<TheatreSwitch>(process.env.THEATRE, ["on", "off"], "on"),
     music: pick<MusicSwitch>(process.env.MUSIC, ["on", "off"], "on"),
+    // Default off: see this file's header comment (WP5.1 false-positive finding).
+    faceGate: pick<FaceGateSwitch>(process.env.FACE_GATE, ["on", "off"], "off"),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }

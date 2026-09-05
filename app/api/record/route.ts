@@ -17,6 +17,7 @@ export const runtime = "nodejs";
  *
  *   POST {kind:"clip", session, n, rawUrl, ...meta}   writes n.json and n.mp4
  *   POST {kind:"session", session, ...manifest}       writes session.json
+ *   POST {kind:"faceGate", session, n, attempt, ...}  writes n-facegate-<attempt>.json (WP5.1)
  */
 
 const SAFE_SESSION = /^[A-Za-z0-9._-]{1,120}$/;
@@ -71,6 +72,17 @@ export async function POST(req: NextRequest) {
       }
     }
     return Response.json({ ok: true, mp4: saved, file: path.join(path.relative(process.cwd(), recordingsDir()), session, `${n}.json`) });
+  }
+
+  if (body.kind === "faceGate") {
+    const n = typeof body.n === "number" && Number.isInteger(body.n) && body.n > 0 ? body.n : null;
+    if (n === null) return Response.json({ error: "bad n" }, { status: 400 });
+    const attempt = typeof body.attempt === "number" && Number.isInteger(body.attempt) && body.attempt > 0 ? body.attempt : 1;
+    const { kind: _kind, ...meta } = body;
+    void _kind;
+    const file = `${n}-facegate-${attempt}.json`;
+    writeFileSync(path.join(dir, file), JSON.stringify({ ...meta, savedAt: new Date().toISOString() }, null, 2));
+    return Response.json({ ok: true, file: path.join(path.relative(process.cwd(), recordingsDir()), session, file) });
   }
 
   return Response.json({ error: "unknown kind" }, { status: 400 });

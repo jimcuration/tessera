@@ -1,133 +1,62 @@
 {
-  "translator": "translator-v0.4",
+  "translator": "translator-v0.3.1",
   "question": "How is Diginex positioned against larger ESG software competitors like Workiva or Enablon?",
   "beats": [
     {
       "scene": 1,
-      "line": "Diginex sits in a different market position from Workiva.",
-      "headline": "DIFFERENT POSITION",
+      "line": "Workiva is a seven billion dollar public company.",
+      "headline": "$7B+ CAP",
       "ground": "violet",
       "subjects": [
-        "a tall paper building",
-        "a small cream paper chip"
+        "the small paper building",
+        "a paper bar chart"
       ],
-      "events": [
-        "A tall paper building drops onto the ground and settles, opening cold.",
-        "A small cream paper chip slides in and stops at its base.",
-        "A paper hand taps the chip flat beside the building."
-      ],
-      "hand": true,
-      "labels": [
-        "market position"
-      ],
-      "handoff": "the tall paper building",
+      "action": "The previous chip slides off the top edge as the small paper building shrinks and a tall paper bar chart rises behind it.",
+      "hand": false,
+      "handoff": "the paper bar chart",
       "hero": false,
       "scale": "oversized",
-      "delivery": "[presenting to camera] Diginex sits in a different market position from Workiva.",
+      "delivery": "Workiva is a seven billion dollar public company.",
       "source": [
-        9
+        12,
+        13
       ]
     },
     {
       "scene": 1,
-      "line": "Workiva is a seven billion dollar market cap public company.",
-      "headline": "$7B+",
-      "ground": "violet",
-      "subjects": [
-        "the tall paper building",
-        "a stack of paper documents"
-      ],
-      "events": [
-        "The tall paper building holds its place as a stack of paper documents enters from the edge.",
-        "The documents pile higher against the building's side.",
-        "A black chip slaps in beside the pile and holds."
-      ],
-      "hand": false,
-      "labels": [
-        "financial reporting"
-      ],
-      "handoff": "the document stack",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "Workiva is a seven billion dollar market cap public company.",
-      "source": [
-        12
-      ]
-    },
-    {
-      "scene": 1,
-      "line": "Diginex, at thirty-four million market cap, is a micro-cap challenger.",
+      "line": "Diginex, at thirty-four million, is a micro-cap challenger.",
       "headline": "$34M",
       "ground": "violet",
       "subjects": [
-        "the tall paper building",
-        "a small paper chip"
+        "the small paper building",
+        "a hole-punched tag"
       ],
-      "events": [
-        "The building and document stack stay put as a tiny paper chip enters low on the ground.",
-        "The chip creeps toward the building's base and stops, dwarfed.",
-        "A large black chip slaps in over the tiny one, printing the figure."
-      ],
-      "hand": true,
-      "labels": [
-        "micro-cap challenger"
-      ],
-      "handoff": "the tiny chip",
+      "action": "The previous chip flips away as the bar chart folds back into the small paper building; a hole-punched tag settles against it.",
+      "hand": false,
+      "handoff": "the small paper building",
       "hero": true,
       "scale": "small",
-      "delivery": "[excited] Diginex, at thirty-four million market cap, is a micro-cap challenger.",
+      "delivery": "Diginex, at thirty-four million, is a micro-cap challenger.",
       "source": [
-        14
+        14,
+        15
       ]
     },
     {
       "scene": 2,
-      "line": "Diginex plays horizontal platform consolidation, not vertical depth.",
-      "headline": "HORIZONTAL PLATFORM",
-      "ground": "cyan",
-      "subjects": [
-        "a wide paper sheet",
-        "a stencilled arrow"
-      ],
-      "events": [
-        "The violet chips flip away as the ground turns cyan and a wide paper sheet unrolls flat.",
-        "A stencilled arrow sweeps sideways across the sheet.",
-        "A black chip lands at the arrow's end."
-      ],
-      "hand": false,
-      "labels": [
-        "vertical depth"
-      ],
-      "handoff": "the wide paper sheet",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "Diginex plays horizontal platform consolidation, not vertical depth.",
-      "source": [
-        18
-      ]
-    },
-    {
-      "scene": 2,
-      "line": "One platform spans carbon, supply chain, and customer data.",
+      "line": "Carbon, supply chain, and customer data in one place.",
       "headline": "3 MODULES",
       "ground": "cyan",
       "subjects": [
-        "the wide paper sheet",
-        "three hole-punched tags"
+        "the stacked paper sheets",
+        "three paper clips"
       ],
-      "events": [
-        "The wide paper sheet stays flat as three hole-punched tags drop in along it.",
-        "A paper hand slides each tag into its slot on the sheet.",
-        "The last tag clicks into place and a chip lands beside it."
-      ],
-      "hand": true,
-      "labels": [
-        "Carbon accounting"
-      ],
-      "handoff": "the three tags",
+      "action": "The previous chip slides aside as the stacked paper sheets fan into three labelled cards held by paper clips.",
+      "hand": false,
+      "handoff": "the stacked paper sheets",
       "hero": false,
       "scale": "diagram",
-      "delivery": "[fast-paced] One platform spans carbon, supply chain, and customer data.",
+      "delivery": "Carbon, supply chain, and customer data in one place.",
       "source": [
         20,
         21,
@@ -136,142 +65,159 @@
     },
     {
       "scene": 2,
-      "line": "The bet is enterprises prefer one vendor to point solutions.",
-      "headline": "SINGLE VENDOR",
+      "line": "Rivals stay compliance-first, strong on reporting and audit trails.",
+      "headline": "COMPLIANCE-FIRST",
       "ground": "cyan",
       "subjects": [
-        "the wide paper sheet",
+        "the stacked paper sheets",
         "a rubber stamp"
       ],
-      "events": [
-        "The sheet and tags hold as a rubber stamp swings in from above.",
-        "A paper hand presses the stamp down across all three tags at once.",
-        "The stamp lifts, leaving one mark, and a chip slaps in."
-      ],
-      "hand": true,
-      "labels": [
-        "point solutions"
-      ],
-      "handoff": "the stamp mark",
+      "action": "The previous chip flips down as the stacked paper sheets square up and a rubber stamp presses onto the top sheet.",
+      "hand": false,
+      "handoff": "the rubber stamp",
       "hero": false,
       "scale": "small",
-      "delivery": "The bet is enterprises prefer one vendor to point solutions.",
+      "delivery": "Rivals stay compliance-first, strong on reporting and audit trails.",
       "source": [
-        23
+        25,
+        26,
+        27
       ]
     },
     {
       "scene": 3,
-      "line": "This only works if cross-sell actually happens across modules.",
-      "headline": "IF CROSS-SELL",
+      "line": "The thesis fails if customers never buy multiple modules.",
+      "headline": "CROSS-SELL RISK",
       "ground": "magenta",
       "subjects": [
-        "a grid of paper squares",
-        "string and pins"
+        "torn paper strips",
+        "stencilled arrows"
       ],
-      "events": [
-        "The cyan chips slide off the top edge as a grid of paper squares lands on magenta ground.",
-        "String and pins stretch between squares, then one line goes slack.",
-        "A black chip drops onto the empty square."
-      ],
+      "action": "The previous chip slides off as the rubber stamp splits into torn paper strips; stencilled arrows between them break apart.",
       "hand": false,
-      "labels": [
-        "multiple modules"
-      ],
-      "handoff": "the paper grid",
+      "handoff": "the torn paper strips",
       "hero": false,
       "scale": "diagram",
-      "delivery": "This only works if cross-sell actually happens across modules.",
+      "delivery": "The thesis fails if customers never buy multiple modules.",
       "source": [
-        29,
         30,
-        31
+        31,
+        32
       ]
     },
     {
       "scene": 3,
-      "line": "Four acquisitions across multiple geographies is complex.",
-      "headline": "4 ACQUISITIONS",
+      "line": "Four acquisitions across many geographies make integration complex.",
+      "headline": "4 DEALS",
       "ground": "magenta",
       "subjects": [
-        "the paper grid",
-        "four torn paper strips"
+        "the torn paper strips",
+        "a paper map",
+        "string and pins"
       ],
-      "events": [
-        "The paper grid holds as four torn strips fall in from the edge.",
-        "A paper hand tries to tape the strips together across the grid.",
-        "One strip curls loose as a black chip lands over it."
-      ],
-      "hand": true,
-      "labels": [
-        "customer churn"
-      ],
-      "handoff": "the loose strip",
+      "action": "The previous chip is covered as the torn paper strips land on a paper map; string and pins tie four points together.",
+      "hand": false,
+      "handoff": "the paper map",
       "hero": false,
       "scale": "oversized",
-      "delivery": "Four acquisitions across multiple geographies is complex.",
+      "delivery": "Four acquisitions across many geographies make integration complex.",
       "source": [
         34,
         35
       ]
     },
     {
-      "scene": 4,
-      "line": "Diginex has an eighteen to twenty-four month window to prove traction.",
-      "headline": "18–24 MONTHS",
-      "ground": "violet",
+      "scene": 3,
+      "line": "Larger rivals can bundle modules and undercut on price.",
+      "headline": "PRICING PRESSURE",
+      "ground": "magenta",
       "subjects": [
-        "the tall paper building",
-        "a paper calendar strip"
+        "the torn paper strips",
+        "a paper hand"
       ],
-      "events": [
-        "The magenta strips are covered as the ground returns to violet and the tall paper building reappears.",
-        "A paper calendar strip unrolls past the building and stops.",
-        "A paper hand pins the strip's far end and a chip lands."
-      ],
+      "action": "The previous chip flips away as the paper map folds back into the torn paper strips; a paper hand presses them flat.",
       "hand": true,
-      "labels": [
-        "18–24 month"
-      ],
-      "handoff": "the calendar strip",
+      "handoff": "the torn paper strips",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "Diginex has an eighteen to twenty-four month window to prove traction.",
+      "scale": "small",
+      "delivery": "Larger rivals can bundle modules and undercut on price.",
       "source": [
-        40
+        36,
+        37,
+        38
       ]
     },
     {
       "scene": 4,
-      "line": "Micro-cap valuation prices in execution uncertainty, and upside is asymmetric.",
-      "headline": "ASYMMETRIC UPSIDE",
+      "line": "Diginex has an eighteen to twenty-four month window to prove traction.",
+      "headline": "18-24 MONTHS",
       "ground": "violet",
       "subjects": [
-        "the tall paper building",
-        "a torn-paper arrow"
+        "the small paper building",
+        "a paper calendar strip"
       ],
-      "events": [
-        "The tall paper building stands where it was, joined by a torn-paper arrow entering low.",
-        "The arrow lifts, splitting into two paths beside the building.",
-        "A paper hand presses a black chip over the split, closing where we began."
-      ],
-      "hand": true,
-      "labels": [
-        "execution uncertainty"
-      ],
-      "handoff": "the tall paper building",
+      "action": "The previous chip slides off as the torn paper strips reassemble into the small paper building; a paper calendar strip unrolls beside it and stops.",
+      "hand": false,
+      "handoff": "the small paper building",
       "hero": false,
-      "scale": "small",
-      "delivery": "Micro-cap valuation prices in execution uncertainty, and upside is asymmetric.",
+      "scale": "diagram",
+      "delivery": "Diginex has an eighteen to twenty-four month window to prove traction.",
       "source": [
+        40,
         43
       ]
     }
   ],
-  "dropped": [],
+  "dropped": [
+    {
+      "raw": {
+        "scene": 1,
+        "line": "[presenting to camera] Diginex sits in a different market position entirely.",
+        "headline": "DAVID VS GOLIATH",
+        "ground": "violet",
+        "subjects": [
+          "a small paper building",
+          "a towering paper building"
+        ],
+        "action": "A small paper building drops onto open ground beside a towering cutout building and holds.",
+        "hand": false,
+        "handoff": "the small paper building",
+        "hero": false,
+        "scale": "diagram",
+        "delivery": "[presenting to camera] Diginex sits in a different market position entirely.",
+        "source": [
+          9,
+          10
+        ]
+      },
+      "reason": "delivery, stripped of tags, does not match line"
+    },
+    {
+      "raw": {
+        "scene": 2,
+        "line": "[excited] Its bet is one unified platform, not vertical depth.",
+        "headline": "ONE PLATFORM",
+        "ground": "cyan",
+        "subjects": [
+          "stacked paper sheets",
+          "stencilled arrows"
+        ],
+        "action": "The previous chip is covered as the small paper building unfolds into stacked paper sheets; stencilled arrows draw them into one pile.",
+        "hand": false,
+        "handoff": "the stacked paper sheets",
+        "hero": false,
+        "scale": "oversized",
+        "delivery": "[excited] Its bet is one unified platform, not vertical depth.",
+        "source": [
+          18,
+          19,
+          23
+        ]
+      },
+      "reason": "delivery, stripped of tags, does not match line"
+    }
+  ],
   "warnings": [
-    [],
-    [],
     [],
     [],
     [
@@ -286,5 +232,5 @@
     []
   ],
   "model": "claude-opus-5",
-  "ms": 48456
+  "ms": 19766
 }

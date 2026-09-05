@@ -24,8 +24,9 @@
  *     its ground colour.
  */
 
-import { generateClip, type Resolution } from "./fal";
+import { generateClip, type GeneratedClip, type Resolution } from "./fal";
 import { lastFrameOf } from "./frames";
+import { logFaceGate } from "./recorder";
 import type { Beat } from "./translator";
 
 export interface Shot {
@@ -108,7 +109,7 @@ export class Stream {
   private renderTimes: number[] = [];
   private seed = Math.floor(Math.random() * 1_000_000);
 
-  constructor(private readonly chain: boolean) {
+  constructor(private readonly chain: boolean, private readonly faceGate: boolean = false) {
     this.state = {
       phase: "starting",
       current: null,
@@ -207,7 +208,7 @@ export class Stream {
     if (shot.chain) this.lastFrame = null;
     const resolution = this.pickResolution();
     try {
-      const clip = await generateClip({
+      let clip = await generateClip({
         prompt: shot.prompt,
         duration: shot.duration,
         resolution,
@@ -215,6 +216,41 @@ export class Stream {
         fromFrame,
       });
       if (!this.alive) return;
+
+      // WP5.1 face gate (FACE_GATE=on, default off — see lib/config.ts):
+      // sample the clip before it can reach the queue. A detection
+      // re-renders the same shot once; a second detection drops the beat
+      // rather than showing it (CLAUDE.md rule 6). Off by default: measured
+      // false positives on ordinary approved subjects (coins, paper maps)
+      // outweighed real catches in live testing — see WP5.1-handoff.md.
+      if (this.faceGate) {
+        let gate = await this.runFaceGate(clip);
+        if (gate.detected) {
+          this.logGate(shot, clip, 1, gate, "rerender");
+          clip = await generateClip({
+            prompt: shot.prompt,
+            duration: shot.duration,
+            resolution,
+            seed: this.seed + this.shotCounter++,
+            fromFrame,
+          });
+          if (!this.alive) return;
+          gate = await this.runFaceGate(clip);
+          if (gate.detected) {
+            this.logGate(shot, clip, 2, gate, "dropped");
+            console.warn(`[stream] beat ${shot.n} dropped: face detected on re-render too`);
+            this.failedShots.add(shot);
+            this.set({ failed: this.state.failed + 1 });
+            this.inFlight -= 1;
+            this.pump();
+            return;
+          }
+          this.logGate(shot, clip, 2, gate, gate.ok ? "clean" : "gate-error");
+        } else {
+          this.logGate(shot, clip, 1, gate, gate.ok ? "clean" : "gate-error");
+        }
+      }
+
       const ready: ReadyClip = {
         index: this.clipCounter++,
         shot,
@@ -261,6 +297,54 @@ export class Stream {
       }
       this.pump();
     }
+  }
+
+  /**
+   * WP5.1: ask /api/face-gate whether this clip shows a recognisable face.
+   * Fails open (treated as clean, logged as "gate-error") on any network or
+   * server error — a gate outage should not stall the programme, but this
+   * is a real gap against CLAUDE.md rule 6 worth Robin/PM's attention;
+   * see briefs/WP5.1-handoff.md.
+   */
+  private async runFaceGate(clip: GeneratedClip): Promise<{ ok: boolean; detected: boolean; attempts: unknown[]; latencyMs: number }> {
+    try {
+      const res = await fetch("/api/face-gate", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ rawUrl: clip.rawUrl }),
+      });
+      if (!res.ok) {
+        console.warn(`[stream] face gate request failed (${res.status}); passing clip through unchecked`);
+        return { ok: false, detected: false, attempts: [], latencyMs: 0 };
+      }
+      const result = (await res.json()) as { detected: boolean; attempts: unknown[]; latencyMs: number };
+      return { ok: true, ...result };
+    } catch (cause) {
+      console.warn("[stream] face gate check failed; passing clip through unchecked:", cause instanceof Error ? cause.message : cause);
+      return { ok: false, detected: false, attempts: [], latencyMs: 0 };
+    }
+  }
+
+  private logGate(
+    shot: Shot,
+    clip: GeneratedClip,
+    attempt: number,
+    gate: { detected: boolean; attempts: unknown[]; latencyMs: number },
+    outcome: "clean" | "rerender" | "dropped" | "gate-error"
+  ) {
+    logFaceGate(shot.prompt, {
+      attempt,
+      outcome,
+      detected: gate.detected,
+      attempts: gate.attempts,
+      latencyMs: gate.latencyMs,
+      clip: {
+        expandedPrompt: clip.expandedPrompt,
+        rawUrl: clip.rawUrl,
+        requestId: clip.requestId,
+        renderMs: clip.ms,
+      },
+    });
   }
 
   private noteRender(ms: number) {

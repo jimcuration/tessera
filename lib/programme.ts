@@ -18,7 +18,7 @@ import { createRenderer } from "./render";
 import type { Stream, Shot } from "./stream";
 import { TRANSLATOR_VERSION, type Beat } from "./translator";
 import { Narrator } from "./voice";
-import type { ChainSwitch, RenderSwitch, VoiceSwitch } from "./config";
+import type { ChainSwitch, FaceGateSwitch, RenderSwitch, VoiceSwitch } from "./config";
 
 export interface AnswerHeader {
   question: string;
@@ -34,6 +34,7 @@ export interface SessionSwitches {
   voice: VoiceSwitch;
   chain: ChainSwitch;
   render: RenderSwitch;
+  faceGate: FaceGateSwitch;
 }
 
 export type SessionStatus =
@@ -154,7 +155,7 @@ export class Session {
       this.fail("ELEVENLABS_API_KEY is missing from .env.local");
       return;
     }
-    const switches: SessionSwitches = { voice: config.voice, chain: config.chain, render: config.render };
+    const switches: SessionSwitches = { voice: config.voice, chain: config.chain, render: config.render, faceGate: config.faceGate };
     // Session ids carry the switches so recordings compare cleanly.
     this.state = {
       ...this.state,
@@ -164,7 +165,7 @@ export class Session {
 
     let stream: Stream;
     try {
-      stream = createRenderer(switches.render, { chain: switches.chain === "on" });
+      stream = createRenderer(switches.render, { chain: switches.chain === "on", faceGate: switches.faceGate === "on" });
     } catch (cause) {
       this.fail(cause instanceof Error ? cause.message : "renderer unavailable");
       return;

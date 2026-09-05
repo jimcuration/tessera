@@ -67,3 +67,31 @@ export function onClip(info: ClipInfo) {
 export function recordSession(session: string, manifest: Record<string, unknown>) {
   void post({ kind: "session", session, ...manifest });
 }
+
+/** WP5.1: one entry per face-gate check against a beat's rendered clip. */
+export interface FaceGateLogEvent {
+  /** 1 = first render checked, 2 = the one re-render. */
+  attempt: number;
+  outcome: "clean" | "rerender" | "dropped" | "gate-error";
+  detected: boolean;
+  attempts: unknown;
+  latencyMs: number;
+  /**
+   * The checked clip's own metadata, carried here (not just in <n>.json)
+   * because a rejected clip's <n>.json gets overwritten by the re-render
+   * that follows it — CLAUDE.md rule 7 still wants it saved somewhere.
+   */
+  clip: {
+    expandedPrompt: string | null;
+    rawUrl: string;
+    requestId: string | null;
+    renderMs: number;
+  };
+}
+
+/** Called by lib/stream.ts after each face-gate check. */
+export function logFaceGate(prompt: string, event: FaceGateLogEvent) {
+  const meta = byPrompt.get(prompt);
+  if (!meta) return;
+  void post({ kind: "faceGate", ...meta, ...event, loggedAt: new Date().toISOString() });
+}

@@ -8,9 +8,9 @@
 import type { RenderSwitch } from "./config";
 import { Stream } from "./stream";
 
-export function createRenderer(mode: RenderSwitch, args: { chain: boolean }): Stream {
+export function createRenderer(mode: RenderSwitch, args: { chain: boolean; faceGate: boolean }): Stream {
   if (mode === "director") {
     throw new Error("not implemented in WP0");
   }
-  return new Stream(args.chain);
+  return new Stream(args.chain, args.faceGate);
 }

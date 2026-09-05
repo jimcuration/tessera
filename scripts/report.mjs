@@ -19,10 +19,10 @@ const SIGNALS = [
   ["paper collage", "collage", "magazine"],
   ["block-colour", "block color", "block-color", "flat ground", "solid ground", "flat background", "solid background", "lime green", "pale cyan", "soft violet", "deep magenta"],
   ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "flat matte", "never a person's face", "never a face", "blank paper texture"],
-  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip"],
+  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "paper clip"],
   ["upper-left", "upper left", "paper-layer shadow", "paper shadow", "layer shadow"],
   ["headline chip", "upper third", "lower two-thirds", "clear ground"],
-  ["extra-bold", "sans-serif", "paper chip", "headline", "third of the frame", "hero"],
+  ["extra-bold", "sans-serif", "paper chip", "headline", "third of the frame", "hero", "lettering only", "only lettering"],
   ["oversized", "small-scale", "open ground", "diagram", "vary in scale"],
   ["overshoot", "stable landing", "reading window", "no camera shake", "camera is locked", "first frame", "static shot"],
   ["16:9", "5 seconds", "five seconds", "one composition", "crisp cut", "single continuous"],
@@ -72,6 +72,19 @@ for (const dir of sessions) {
   const max = renders.length ? Math.max(...renders) : null;
   const heard = new Map((whisper?.clips ?? []).map((c) => [c.n, c]));
 
+  // WP5.1: one <n>-facegate-<attempt>.json per gate check (lib/faceGate.ts via app/api/face-gate).
+  const faceGateChecks = readdirSync(dir)
+    .filter((f) => /^\d+-facegate-\d+\.json$/.test(f))
+    .map((f) => readJson(path.join(dir, f)))
+    .filter(Boolean);
+  const faceGateHits = faceGateChecks.filter((g) => g.detected).length;
+  const faceGateRerenders = faceGateChecks.filter((g) => g.outcome === "rerender").length;
+  const faceGateDrops = faceGateChecks.filter((g) => g.outcome === "dropped").length;
+  const faceGateErrors = faceGateChecks.filter((g) => g.outcome === "gate-error").length;
+  const gateLatencies = faceGateChecks.map((g) => g.latencyMs).filter((v) => typeof v === "number");
+  const gateP50 = percentile(gateLatencies, 0.5);
+  const gateMax = gateLatencies.length ? Math.max(...gateLatencies) : null;
+
   console.log(`\n## ${path.basename(dir)}\n`);
   console.log(`- question: ${manifest.matchedQuestion ?? manifest.question ?? "?"}`);
   console.log(`- switches: VOICE=${manifest.switches?.voice ?? "?"} CHAIN=${manifest.switches?.chain ?? "?"} RENDER=${manifest.switches?.render ?? "?"}`);
@@ -79,6 +92,11 @@ for (const dir of sessions) {
   console.log(`- render time: p50 ${p50 ?? "?"} ms, max ${max ?? "?"} ms (n=${renders.length})`);
   console.log(`- cost per clip at post-promo $${USD_PER_SECOND}/s × ${CLIP_SECONDS}s = $${(USD_PER_SECOND * CLIP_SECONDS).toFixed(3)}; per 60 s of programme = $${(USD_PER_SECOND * 60).toFixed(2)}`);
   if (whisper) console.log(`- whisper (${whisper.model}) mean word recall: ${(whisper.meanWordRecall * 100).toFixed(1)}%`);
+  if (faceGateChecks.length) {
+    console.log(
+      `- face gate (WP5.1): ${faceGateChecks.length} check(s), ${faceGateHits} hit(s), ${faceGateRerenders} re-render(s), ${faceGateDrops} drop(s)${faceGateErrors ? `, ${faceGateErrors} gate-error(s) (passed through unchecked)` : ""}, latency p50 ${gateP50 ?? "?"} ms / max ${gateMax ?? "?"} ms`
+    );
+  }
 
   console.log(`\n| # | chained | render ms | headline | hero | scale | tags | whisper recall | heard |\n|---|---|---|---|---|---|---|---|---|`);
   for (const c of clips) {

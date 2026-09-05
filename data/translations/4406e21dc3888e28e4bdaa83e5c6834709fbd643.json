@@ -1,107 +1,79 @@
 {
-  "translator": "translator-v0.4",
+  "translator": "translator-v0.3.1",
   "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
   "beats": [
     {
       "scene": 1,
-      "line": "Diginex's Resulticks deal is a revenue synergy play, not cost savings.",
+      "line": "Resulticks is a revenue synergy play, not cost savings.",
       "headline": "REVENUE SYNERGY",
       "ground": "violet",
       "subjects": [
-        "a paper document",
-        "a rubber stamp"
+        "a paper platform slab",
+        "a cream paper chip"
       ],
-      "events": [
-        "A single paper document drops onto empty violet ground, opening cold.",
-        "A rubber stamp swings down and marks the document's face.",
-        "A black paper chip slaps in beside it as the document settles."
-      ],
-      "hand": true,
-      "labels": [
-        "not cost savings"
-      ],
-      "handoff": "the document",
+      "action": "A halftone paper platform slab lowers onto a cream chip and settles flat.",
+      "hand": false,
+      "handoff": "the platform slab",
       "hero": false,
-      "scale": "small",
-      "delivery": "[presenting to camera] Diginex's Resulticks deal is a revenue synergy play, not cost savings.",
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Resulticks is a revenue synergy play, not cost savings.",
       "source": [
         0
       ]
     },
     {
       "scene": 1,
-      "line": "The one point five billion dollar deal adds AI customer data capabilities.",
+      "line": "The one point five billion deal adds AI customer data capabilities.",
       "headline": "$1.5B",
       "ground": "violet",
       "subjects": [
-        "the document",
-        "stacked paper sheets"
+        "the platform slab",
+        "a stacked sheet of data cards"
       ],
-      "events": [
-        "The document, already in place, is joined by stacked paper sheets sliding in from the edge.",
-        "The sheets layer onto the document one by one, thickening it.",
-        "A large black chip slaps in, the figure printing big."
-      ],
+      "action": "The previous chip slides off the left edge as the platform slab widens; a stacked sheet of data cards drops on top and locks in.",
       "hand": false,
-      "labels": [
-        "$1.5B"
-      ],
-      "handoff": "the document",
+      "handoff": "the platform slab",
       "hero": true,
-      "scale": "oversized",
-      "delivery": "[excited] The one point five billion dollar deal adds AI customer data capabilities.",
+      "scale": "diagram",
+      "delivery": "[excited] The one point five billion deal adds AI customer data capabilities.",
       "source": [
         1
       ]
     },
     {
-      "scene": 2,
-      "line": "It turns a point solution into an integrated end-to-end platform.",
+      "scene": 1,
+      "line": "That turns a point solution into an integrated end-to-end platform.",
       "headline": "END-TO-END",
-      "ground": "cyan",
+      "ground": "violet",
       "subjects": [
-        "a paper platform slab",
-        "torn strips"
+        "the platform slab",
+        "tape pieces"
       ],
-      "events": [
-        "The violet chips slide off the top edge as the ground turns cyan and a paper platform slab enters.",
-        "Torn strips tape themselves across the slab, joining its edges into one piece.",
-        "A black chip slaps in at the slab's corner."
-      ],
-      "hand": true,
-      "labels": [
-        "point solution"
-      ],
+      "action": "The previous chip flips away as the platform slab's loose panels are taped edge to edge into one continuous sheet.",
+      "hand": false,
       "handoff": "the platform slab",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "It turns a point solution into an integrated end-to-end platform.",
+      "scale": "oversized",
+      "delivery": "That turns a point solution into an integrated end-to-end platform.",
       "source": [
         1
       ]
     },
     {
       "scene": 2,
-      "line": "Now two workflows: sustainability compliance, and customer intelligence and marketing.",
+      "line": "Diginex can now serve two distinct enterprise workflows.",
       "headline": "2 WORKFLOWS",
       "ground": "cyan",
       "subjects": [
-        "the platform slab",
-        "two stencilled arrows"
+        "two paper workflow cards",
+        "a stencilled arrow"
       ],
-      "events": [
-        "The platform slab holds position as two stencilled arrows enter from opposite edges.",
-        "The arrows split outward across the slab, tracing two separate paths.",
-        "A black chip slaps down between them, the first chip staying put."
-      ],
+      "action": "The previous chip is covered as the platform slab splits into two paper workflow cards; a stencilled arrow enters and runs between them.",
       "hand": false,
-      "labels": [
-        "two distinct workflows"
-      ],
-      "handoff": "the two arrows",
+      "handoff": "the two workflow cards",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Now two workflows: sustainability compliance, and customer intelligence and marketing.",
+      "delivery": "[fast-paced] Diginex can now serve two distinct enterprise workflows.",
       "source": [
         4,
         5,
@@ -110,53 +82,39 @@
     },
     {
       "scene": 2,
-      "line": "Enterprises buy both from one vendor, increasing wallet share.",
-      "headline": "WALLET SHARE",
+      "line": "Same customer base, broader product suite, higher wallet share.",
+      "headline": "CROSS-SELL",
       "ground": "cyan",
       "subjects": [
-        "the platform slab",
-        "a paper hand",
-        "paper coins"
+        "the two workflow cards",
+        "a paper hand"
       ],
-      "events": [
-        "The slab and its arrows stay exactly where they are as paper coins enter from below.",
-        "A paper hand slides the coins along both arrows into the slab.",
-        "A black chip slaps in over the coin pile."
-      ],
+      "action": "The previous chip slides off the top as a paper hand enters and pushes the two workflow cards together until they overlap and hold.",
       "hand": true,
-      "labels": [
-        "same vendor"
-      ],
-      "handoff": "the coin pile",
+      "handoff": "the overlapped cards",
       "hero": false,
       "scale": "small",
-      "delivery": "Enterprises buy both from one vendor, increasing wallet share.",
+      "delivery": "Same customer base, broader product suite, higher wallet share.",
       "source": [
-        7
+        7,
+        8
       ]
     },
     {
       "scene": 3,
-      "line": "The risk is integration complexity across four distinct acquisitions.",
+      "line": "The risk is integration complexity across four absorbed acquisitions.",
       "headline": "4 ACQUISITIONS",
       "ground": "magenta",
       "subjects": [
-        "four hole-punched tags",
+        "four paper folders",
         "string and pins"
       ],
-      "events": [
-        "The cyan chips flip away as the ground turns magenta and four hole-punched tags drop in.",
-        "String and pins thread between the tags, tangling as they connect.",
-        "A black chip slaps in beneath the tangle."
-      ],
+      "action": "The previous chip flips down as the overlapped cards fan out into four paper folders; string and pins stretch between them and pull tight.",
       "hand": false,
-      "labels": [
-        "integration complexity"
-      ],
-      "handoff": "the tangled tags",
+      "handoff": "the four folders",
       "hero": false,
       "scale": "diagram",
-      "delivery": "[fast-paced] The risk is integration complexity across four distinct acquisitions.",
+      "delivery": "The risk is integration complexity across four absorbed acquisitions.",
       "source": [
         10,
         11
@@ -164,26 +122,19 @@
     },
     {
       "scene": 3,
-      "line": "Costs rose three point four million, to eight point one million.",
+      "line": "G and A costs rose to eight point one million.",
       "headline": "$8.1M G&A",
       "ground": "magenta",
       "subjects": [
-        "the tangled tags",
-        "a paper bar chart"
+        "a paper bar chart",
+        "the four folders"
       ],
-      "events": [
-        "The tagged tangle stays in place as a paper bar chart rises beside it.",
-        "The bar climbs upward in torn increments until it towers.",
-        "A black chip slaps in at the bar's top edge."
-      ],
-      "hand": true,
-      "labels": [
-        "H1 FY25"
-      ],
+      "action": "The previous chip slides off the right edge as the four folders stack and rise into a single paper bar that climbs and stops.",
+      "hand": false,
       "handoff": "the paper bar",
       "hero": false,
       "scale": "oversized",
-      "delivery": "Costs rose three point four million, to eight point one million.",
+      "delivery": "G and A costs rose to eight point one million.",
       "source": [
         12
       ]
@@ -195,18 +146,12 @@
       "ground": "magenta",
       "subjects": [
         "the paper bar",
-        "a stack of legal documents"
+        "a rubber stamp",
+        "a torn strip"
       ],
-      "events": [
-        "The paper bar holds as a stack of legal documents slides in at its base.",
-        "A paper hand taps the stack, and a slice of the bar shades to match.",
-        "A black chip slaps in over the shaded slice."
-      ],
-      "hand": true,
-      "labels": [
-        "$2.2M"
-      ],
-      "handoff": "the document stack",
+      "action": "The previous chip is covered as a torn strip peels off the paper bar; a rubber stamp presses down on the strip and lifts away.",
+      "hand": false,
+      "handoff": "the stamped strip",
       "hero": false,
       "scale": "small",
       "delivery": "Two point two million came from merger and acquisition legal work.",
@@ -216,52 +161,38 @@
     },
     {
       "scene": 4,
-      "line": "Watch for cross-sell traction from Resulticks' customer base.",
-      "headline": "CROSS-SELL TRACTION",
+      "line": "Watch for cross-sell traction and accelerating combined revenue growth.",
+      "headline": "WHAT MATTERS NEXT",
       "ground": "violet",
       "subjects": [
-        "the document",
-        "a stencilled arrow"
+        "a paper calendar page",
+        "a torn-paper arrow"
       ],
-      "events": [
-        "The magenta chips are covered as the ground returns to violet and the document reappears.",
-        "A stencilled arrow enters and sweeps across the document, accelerating.",
-        "A paper hand presses the arrow flat as a black chip lands."
-      ],
-      "hand": true,
-      "labels": [
-        "cross-sell traction"
-      ],
-      "handoff": "the document",
+      "action": "The previous chip flips away as the stamped strip flattens into a paper calendar page; a torn-paper arrow rises across it and holds.",
+      "hand": false,
+      "handoff": "the arrow",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Watch for cross-sell traction from Resulticks' customer base.",
+      "delivery": "Watch for cross-sell traction and accelerating combined revenue growth.",
       "source": [
         13
       ]
     },
     {
       "scene": 4,
-      "line": "Without that, it's financial engineering rather than a strategic unlock.",
-      "headline": "STRATEGIC UNLOCK",
+      "line": "Without that, it's financial engineering, not a strategic unlock.",
+      "headline": null,
       "ground": "violet",
       "subjects": [
-        "the document",
-        "a paper key"
+        "the platform slab",
+        "a paper hand"
       ],
-      "events": [
-        "The document, already in place, is joined by a paper key — the one new element in this closing shot.",
-        "The key turns slowly against the document's edge and stops halfway.",
-        "A black chip slaps in over the document, closing where we began."
-      ],
+      "action": "The previous chip slides off the bottom as the arrow folds back into the platform slab; a paper hand rests one corner down and holds it steady.",
       "hand": true,
-      "labels": [
-        "financial engineering"
-      ],
-      "handoff": "the document",
+      "handoff": "the platform slab",
       "hero": false,
-      "scale": "small",
-      "delivery": "Without that, it's financial engineering rather than a strategic unlock.",
+      "scale": "oversized",
+      "delivery": "Without that, it's financial engineering, not a strategic unlock.",
       "source": [
         14
       ]
@@ -285,5 +216,5 @@
     []
   ],
   "model": "claude-opus-5",
-  "ms": 35992
+  "ms": 36525
 }
