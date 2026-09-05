@@ -10,15 +10,25 @@
 
 import type { Beat } from "./translator";
 
-export interface ShotMeta {
-  session: string;
-  /** 1-based beat number within the session. */
+/** One beat within a recorded shot, self-contained. */
+export interface ShotMetaBeat {
+  /** 1-based beat number within the session — how reel.mjs/whisper find this beat's own split narration (<n>.mp3), regardless of its position in the shot. */
   n: number;
-  question: string;
   beat: Beat;
-  /** The sentences the beat's `source` indexes, for a self-contained record. */
+  /** Seconds into the shot's clip this beat's own section starts (0 at 5s/10s; 0/5/10 for a WP8.1 15s scene shot). */
+  offsetSeconds: number;
+  /** The sentences this beat's `source` indexes, for a self-contained record. */
   sources: string[];
   warnings: string[];
+}
+
+export interface ShotMeta {
+  session: string;
+  /** 1-based number of the shot's first beat within the session. */
+  n: number;
+  question: string;
+  /** One entry at 5s/10s; 2-3 (one scene) at CLIP_SECONDS=15 (WP8.1 §1). */
+  beats: ShotMetaBeat[];
   voice: "native" | "saskia";
   chain: "on" | "off";
   translatorVersion: string;

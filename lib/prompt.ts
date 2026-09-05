@@ -86,14 +86,32 @@ export function audioBlockA(line: string): string {
 export const AUDIO_BLOCK_B =
   "AUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.";
 
-export function copyList(headline: string | null): string {
-  if (!headline) {
+export function copyList(headline: string | null, tagText?: string | null): string {
+  const parts: string[] = [];
+  if (headline) {
+    parts.push(`"${headline}"`);
+  }
+  if (tagText) {
+    parts.push(`"${tagText}"`);
+  }
+  if (parts.length === 0) {
     return "ON-SCREEN TEXT: none. No text appears in frame.";
   }
-  return `ON-SCREEN TEXT: "${headline}". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.`;
+  return `ON-SCREEN TEXT: ${parts.join(", ")}. Each string is printed complete and correct from its first visible frame and never changes. These are the only lettering in the frame.`;
 }
 
-export function beatBlock(beat: Beat, previousHandoff: string | null): string {
+/** WP8.1 §2: the connector line, identical wherever the scene's beats describe it. */
+export function connectorLine(beat: Beat): string {
+  return `Connector: a ${beat.connector.colour} ${beat.connector.kind} runs from ${beat.connector.from} to ${beat.connector.to}, in one direction, physically resting on the paper ground between them.`;
+}
+
+/** WP8.1 §3: only present on the one beat (if any) whose `tag` is non-null. */
+export function tagLine(beat: Beat): string | null {
+  if (!beat.tag) return null;
+  return `Tag: one small round cream paper tag, the size of a coin, reads "${beat.tag.text}"; a short black line points from it at the connector.`;
+}
+
+export function beatBlock(beat: Beat, previousHandoff: string | null, clipSeconds: 5 | 10 | 15 = 5): string {
   const lines = [
     `BEAT`,
     `Ground: ${GROUND_NAMES[beat.ground]}.`,
@@ -109,7 +127,17 @@ export function beatBlock(beat: Beat, previousHandoff: string | null): string {
         ? `Headline printed on a paper chip: "${beat.headline}". This is the hero beat: the number may print larger, up to half the frame width.`
         : `Headline printed on a paper chip: "${beat.headline}".`
       : `No headline.`,
+    connectorLine(beat),
   ];
+  const tagText = tagLine(beat);
+  if (tagText) lines.push(tagText);
+  // WP8: this shot's actual duration, from lib/config.ts's CLIP_SECONDS.
+  // Stated here in the beat block, not in the numbered style sheet above
+  // (that file's content is out of WP8's scope, owned by WP7) — this line
+  // overrides the style sheet's stated "5 seconds" when it differs.
+  if (clipSeconds !== 5) {
+    lines.push(`Duration: this shot is exactly ${clipSeconds} seconds, not 5 (overrides the style sheet's stated length above).`);
+  }
   return lines.join("\n");
 }
 
@@ -129,8 +157,10 @@ export function compilePrompt(args: {
   beat: Beat;
   voice: Voice;
   previousHandoff: string | null;
+  /** WP8/WP8.1: CLIP_SECONDS (lib/config.ts). Defaults to 5, the CLAUDE.md baseline. 15 uses compileScenePrompt instead, not this function. */
+  clipSeconds?: 5 | 10;
 }): CompiledPrompt {
-  const { beat, voice, previousHandoff } = args;
+  const { beat, voice, previousHandoff, clipSeconds = 5 } = args;
   const sheet = styleSheet(beat.ground)
     .map((line, i) => `${i + 1}. ${line}`)
     .join("\n");
@@ -139,9 +169,94 @@ export function compilePrompt(args: {
     `TESSERA STYLE SHEET`,
     sheet,
     ``,
-    beatBlock(beat, previousHandoff),
+    beatBlock(beat, previousHandoff, clipSeconds),
     ``,
-    copyList(beat.headline),
+    copyList(beat.headline, beat.tag?.text ?? null),
+    ``,
+    audio,
+  ].join("\n");
+  return { prompt, styleSheetVersion: STYLE_SHEET_VERSION, voice };
+}
+
+/** Seconds a section for beat index `i` (0-based) within a scene starts at. */
+export function sceneOffsetSeconds(i: number): number {
+  return i * 5;
+}
+
+/**
+ * WP8.1 §1: compile a whole SCENE (2-3 beats) into one fal request, in the
+ * reference prompt's own shape (briefs/reference/reference-prompt.md) —
+ * one SCENE AND STORY overview, then one named, timecoded section per
+ * beat, then one combined copy list covering every beat's headline (and
+ * tag, if any) in order, then the audio block. Style sheet is the same
+ * numbered list as the single-beat path (beat 1's ground: a scene holds
+ * one ground throughout, so any beat's would do); its duration line always
+ * needs the override since a scene is never 5s.
+ */
+export function compileScenePrompt(args: {
+  beats: Beat[];
+  voice: Voice;
+  previousHandoff: string | null;
+}): CompiledPrompt {
+  const { beats, voice, previousHandoff } = args;
+  const clipSeconds = beats.length * 5;
+  const sheet = styleSheet(beats[0].ground)
+    .map((line, i) => `${i + 1}. ${line}`)
+    .join("\n");
+
+  const sections = beats.map((beat, i) => {
+    const start = sceneOffsetSeconds(i);
+    const end = start + 5;
+    const opens =
+      i === 0
+        ? previousHandoff
+          ? `Opens on ${previousHandoff}, carried over from the previous scene, which transforms as the action begins.`
+          : `Opens cold on the ground colour; the first subject enters on the first frame.`
+        : `Opens on ${beats[i - 1].handoff}, carried over from the previous section, which transforms as this section's action begins.`;
+    const lines = [
+      `[${start}-${end}s] SECTION ${i + 1}`,
+      `Subjects: ${beat.subjects.join("; ")}.`,
+      opens,
+      `Action: ${beat.action}`,
+      `Ends holding on ${beat.handoff}.`,
+      SCALE_TEXT[beat.scale],
+      beat.headline
+        ? beat.hero
+          ? `Headline printed on a paper chip: "${beat.headline}". This is the hero beat: the number may print larger, up to half the frame width.`
+          : `Headline printed on a paper chip: "${beat.headline}".`
+        : `No headline this section.`,
+      connectorLine(beat),
+    ];
+    const tagText = tagLine(beat);
+    if (tagText) lines.push(tagText);
+    return lines.join("\n");
+  });
+
+  // TEXT CONTROL, reference-prompt style: every headline and the tag (if
+  // any), listed once, in the order they appear, with the exclusivity rule
+  // spelled out so only the current section's own text is on screen.
+  const headlineOrder = beats.map((b) => b.headline).filter((h): h is string => Boolean(h));
+  const tagOrder = beats.map((b) => b.tag?.text).filter((t): t is string => Boolean(t));
+  const textOrder = [...headlineOrder, ...tagOrder];
+  const copy =
+    textOrder.length === 0
+      ? "ON-SCREEN TEXT: none. No text appears in any section."
+      : `ON-SCREEN TEXT, strictly in this order: ${textOrder.map((t) => `"${t}"`).join(", then ")}. Only the current section's own text is visible at any time; each string is printed complete and correct from its first visible frame and never changes; these are the only lettering in the frame.`;
+
+  const audio = voice === "native" ? audioBlockA(beats.map((b) => b.line).join(" ")) : AUDIO_BLOCK_B;
+
+  const prompt = [
+    `TESSERA STYLE SHEET`,
+    sheet,
+    ``,
+    `Duration: this is one continuous ${clipSeconds}-second generation covering ${beats.length} sections back to back (overrides the style sheet's stated length above), not ${beats.length} separate clips.`,
+    ``,
+    `SCENE`,
+    `One scene, ${beats.length} sections, cutting or continuing at each section boundary as each section's own action describes. One held ground colour throughout: ${GROUND_NAMES[beats[0].ground]}.`,
+    ``,
+    sections.join("\n\n"),
+    ``,
+    copy,
     ``,
     audio,
   ].join("\n");

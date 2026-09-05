@@ -29,13 +29,22 @@ import { lastFrameOf } from "./frames";
 import { logFaceGate } from "./recorder";
 import type { Beat } from "./translator";
 
-export interface Shot {
-  /** 1-based beat number within the session. */
+/** One beat within a shot, and where its section starts inside the shot's clip. 0 for every 5s/10s shot (one beat each); 0/5/10 for a WP8.1 CLIP_SECONDS=15 scene shot. */
+export interface ShotBeat {
+  /** 1-based beat number within the session (Saskia's split narration is keyed by this, not by position within the shot). */
   n: number;
   beat: Beat;
-  /** Full compiled clip prompt (style sheet + beat + copy list + audio). */
+  offsetSeconds: number;
+}
+
+export interface Shot {
+  /** 1-based number of the shot's first beat within the session. */
+  n: number;
+  /** One beat at 5s/10s; 2-3 beats (one scene) at 15s (WP8.1 §1) — the player treats beats after the first as timestamps within this one clip, not clip swaps. */
+  beats: ShotBeat[];
+  /** Full compiled clip prompt (style sheet + beat(s) + copy list + audio). */
   prompt: string;
-  /** Seconds. */
+  /** Seconds — the whole shot's clip length (5/10s for one beat, 10/15s for a scene). */
   duration: number;
   /** Chain from the previous shot's last frame (false = hard cut). */
   chain: boolean;
@@ -72,8 +81,16 @@ export interface StreamState {
   error: string | null;
 }
 
-/** Keep at most this many rendered clips waiting. */
-const MAX_BUFFER = 3;
+/**
+ * WP8: the render buffer target is expressed in seconds of playback held in
+ * reserve, not a clip count, so it means the same thing at any CLIP_SECONDS
+ * (brief §1) — keep rendering ahead while less than this many seconds of
+ * ready-or-rendering clips are on hand. WP8.1: shots can have different
+ * durations within one programme (a 2-beat scene is 10s, a 3-beat scene is
+ * 15s), so this is tracked as a running total of actual shot durations
+ * (`bufferedSeconds`), not `queue.length * a constant`.
+ */
+const MIN_BUFFER_SECONDS = 10;
 /** Unchained programmes render this many hard cuts at once. */
 const UNCHAINED_PARALLEL = 2;
 /**
@@ -108,8 +125,16 @@ export class Stream {
   private finished = false;
   private renderTimes: number[] = [];
   private seed = Math.floor(Math.random() * 1_000_000);
+  /** WP8.1: seconds of playback either queued (ready) or in flight (rendering); replaces a clip-count buffer since shot duration can vary. */
+  private bufferedSeconds = 0;
 
-  constructor(private readonly chain: boolean, private readonly faceGate: boolean = false) {
+  constructor(
+    private readonly chain: boolean,
+    /** WP8: CLIP_SECONDS (lib/config.ts). Informational only — buffering uses each shot's own `duration` (WP8.1: shots can vary in length). */
+    private readonly clipSeconds: number = 5,
+    /** WP5.1: FACE_GATE=on (lib/config.ts). Default off — see this class's `render()` for why. */
+    private readonly faceGate: boolean = false
+  ) {
     this.state = {
       phase: "starting",
       current: null,
@@ -186,7 +211,7 @@ export class Stream {
     const parallel = this.isStory ? 1 : UNCHAINED_PARALLEL;
     while (
       this.inFlight < parallel &&
-      this.queue.length + this.inFlight < MAX_BUFFER &&
+      this.bufferedSeconds < MIN_BUFFER_SECONDS &&
       this.nextShotIndex < this.shots.length
     ) {
       // A chained shot is rendering: its last frame is what the next shot
@@ -194,6 +219,7 @@ export class Stream {
       // frame (a grab failed), fall back to a hard cut rather than stall.
       if (this.isStory && !this.lastFrame && this.inFlight > 0) break;
       const shot = this.shots[this.nextShotIndex++];
+      this.bufferedSeconds += shot.duration;
       void this.render(shot);
     }
     this.set({});
@@ -280,6 +306,7 @@ export class Stream {
       this.pump();
     } catch (cause) {
       this.inFlight -= 1;
+      this.bufferedSeconds = Math.max(0, this.bufferedSeconds - shot.duration);
       if (!this.alive) return;
       console.warn(`[stream] beat ${shot.n} failed to render:`, cause instanceof Error ? cause.message : cause);
       this.failedShots.add(shot);
@@ -392,6 +419,7 @@ export class Stream {
     if (next) {
       this.queue.splice(this.queue.indexOf(next), 1);
       this.playIndex += 1;
+      this.bufferedSeconds = Math.max(0, this.bufferedSeconds - next.duration);
       this.set({ phase: "playing", current: next });
       this.pump();
       return true;

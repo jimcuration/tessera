@@ -1,0 +1,263 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "What are the key risks for Diginex?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "The ESG reporting landscape stays highly fragmented, with standards varying across jurisdictions and industries.",
+      "headline": "FRAGMENTED STANDARDS",
+      "ground": "violet",
+      "subjects": [
+        "a paper document stack",
+        "a paper map grid"
+      ],
+      "action": "A halftone paper document stack drops onto a paper map grid and settles, its sheets fanning apart into uneven tiers.",
+      "hand": false,
+      "handoff": "the document stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] The ESG reporting landscape stays highly fragmented, with standards varying across jurisdictions and industries.",
+      "source": [
+        9
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the document stack",
+        "to": "a paper map grid",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "So data quality, reliability and comparability pose significant challenges.",
+      "headline": "DATA RELIABILITY",
+      "ground": "violet",
+      "subjects": [
+        "the document stack",
+        "a paper map grid"
+      ],
+      "action": "The previous chip slides off the left edge as the document stack tilts; a cream paper ribbon already runs from it to the paper map grid, and mismatched sheets slip loose.",
+      "hand": false,
+      "handoff": "the loose sheets",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "So data quality, reliability and comparability pose significant challenges.",
+      "source": [
+        10
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the document stack",
+        "to": "a paper map grid",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "If Diginex fails to deliver auditable, regulatory-grade data, credibility with institutional clients could suffer.",
+      "headline": "CREDIBILITY AT RISK",
+      "ground": "violet",
+      "subjects": [
+        "the document stack",
+        "a rubber stamp",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the loose sheets gather back into the document stack; a paper hand presses a rubber stamp down and lifts it, leaving the mark torn, the cream ribbon still in place.",
+      "hand": true,
+      "handoff": "the torn stamp mark",
+      "hero": false,
+      "scale": "small",
+      "delivery": "If Diginex fails to deliver auditable, regulatory-grade data, credibility with institutional clients could suffer.",
+      "source": [
+        11
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the document stack",
+        "to": "a paper map grid",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "The sharp decline in the share price suggests investor expectations have not been met.",
+      "headline": "SHARE PRICE FALL",
+      "ground": "magenta",
+      "subjects": [
+        "the paper price chart",
+        "a torn strip"
+      ],
+      "action": "The previous chip is covered as the torn stamp mark unfolds into the paper price chart; its line tears downward and holds at the low corner.",
+      "hand": false,
+      "handoff": "the paper price chart",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "The sharp decline in the share price suggests investor expectations have not been met.",
+      "source": [
+        15
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the paper price chart",
+        "to": "a paper acquisition folder",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Revenue growth has been strong, up two hundred and ninety-three percent to two million dollars.",
+      "headline": "+293% TO $2.0M",
+      "ground": "magenta",
+      "subjects": [
+        "the paper price chart",
+        "a paper bar chart"
+      ],
+      "action": "The previous chip slides off as the paper price chart's torn line rebuilds into a rising paper bar chart; an orange paper arrow unrolls from it toward a paper acquisition folder, and a coin-sized cream tag reading '+293%' sits beside the arrow with a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the orange arrow",
+      "hero": true,
+      "scale": "diagram",
+      "delivery": "[excited] Revenue growth has been strong, up two hundred and ninety-three percent to two million dollars.",
+      "source": [
+        16
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the paper price chart",
+        "to": "a paper acquisition folder",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "+293%",
+        "source": [
+          16
+        ]
+      }
+    },
+    {
+      "scene": 2,
+      "line": "The strategy leans on acquisitions and partnerships, so execution is the key risk after Resulticks.",
+      "headline": "EXECUTION RISK",
+      "ground": "magenta",
+      "subjects": [
+        "a paper acquisition folder",
+        "the paper price chart",
+        "paper clips"
+      ],
+      "action": "The previous chip flips down as the orange arrow lands in a paper acquisition folder; paper clips press onto its edge one by one and the folder strains open, the arrow still running back to the paper price chart.",
+      "hand": false,
+      "handoff": "the acquisition folder",
+      "hero": false,
+      "scale": "small",
+      "delivery": "[fast-paced] The strategy leans on acquisitions and partnerships, so execution is the key risk after Resulticks.",
+      "source": [
+        17
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the paper price chart",
+        "to": "a paper acquisition folder",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Adoption stays uneven across sectors and geographies. Smaller firms may delay on cost or complexity.",
+      "headline": "UNEVEN ADOPTION",
+      "ground": "violet",
+      "subjects": [
+        "a paper map grid",
+        "small paper buildings"
+      ],
+      "action": "The previous chip slides off the top edge as the acquisition folder flattens into a paper map grid; small paper buildings rise across it, some standing and some staying folded flat.",
+      "hand": false,
+      "handoff": "the paper map grid",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Adoption stays uneven across sectors and geographies. Smaller firms may delay on cost or complexity.",
+      "source": [
+        20,
+        21
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the paper calendar strip",
+        "to": "the document stack",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "If ESG stays underprioritised, sales cycles may lengthen, slowing recurring revenue growth.",
+      "headline": "LONGER SALES CYCLES",
+      "ground": "violet",
+      "subjects": [
+        "the paper calendar strip",
+        "small paper buildings"
+      ],
+      "action": "The previous chip is covered as the paper map grid rolls into the paper calendar strip; the strip stretches out month by month and stops, a cream string trailing from its far end.",
+      "hand": false,
+      "handoff": "the paper calendar strip",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "If ESG stays underprioritised, sales cycles may lengthen, slowing recurring revenue growth.",
+      "source": [
+        23
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the paper calendar strip",
+        "to": "the document stack",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Diginex must educate the market, streamline onboarding and demonstrate return on investment.",
+      "headline": "PROVE ROI",
+      "ground": "violet",
+      "subjects": [
+        "the document stack",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the cream string pulls the paper calendar strip back into the document stack; a paper hand squares the sheets and lays a clean stamped ribbon across the top.",
+      "hand": true,
+      "handoff": "the document stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Diginex must educate the market, streamline onboarding and demonstrate return on investment.",
+      "source": [
+        24
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the paper calendar strip",
+        "to": "the document stack",
+        "colour": "cream"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 38558,
+  "clipSeconds": 15
+}

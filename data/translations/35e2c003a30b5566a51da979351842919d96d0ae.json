@@ -1,0 +1,222 @@
+{
+  "translator": "translator-v0.3.1",
+  "question": "What are the key catalysts for Diginex?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "Diginex faces a run of execution milestones. They decide whether the platform consolidation thesis gains traction or stalls.",
+      "headline": "EXECUTION MILESTONES",
+      "ground": "violet",
+      "subjects": [
+        "a paper calendar page",
+        "stacked sheets"
+      ],
+      "action": "[0-5s] A large halftone calendar page lands on open ground and stacked sheets slide in beneath it. [5-10s] The sheets fan out into a row of milestone markers, then settle as the calendar page holds centre.",
+      "hand": false,
+      "handoff": "the calendar page",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Diginex faces a run of execution milestones. They decide whether the platform consolidation thesis gains traction or stalls.",
+      "source": [
+        8
+      ]
+    },
+    {
+      "scene": 1,
+      "line": "Updates on the unified strategy come in the second quarter of twenty twenty-six. That's the critical near-term catalyst.",
+      "headline": "Q2 2026",
+      "ground": "violet",
+      "subjects": [
+        "the calendar page",
+        "a rubber stamp",
+        "a paper hand"
+      ],
+      "action": "[0-5s] The previous headline chip slides off the top edge as the calendar page turns to a fresh sheet and a paper hand brings a rubber stamp down onto it. [5-10s] Cut to the stamped mark close in, ink spreading, the calendar page framed behind it.",
+      "hand": true,
+      "handoff": "the stamped page",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Updates on the unified strategy come in the second quarter of twenty twenty-six. That's the critical near-term catalyst.",
+      "source": [
+        11,
+        12
+      ]
+    },
+    {
+      "scene": 2,
+      "line": "Investors want evidence the four acquired businesses are operationally unified, not run as silos.",
+      "headline": "4 BUSINESSES",
+      "ground": "cyan",
+      "subjects": [
+        "four paper blocks",
+        "string and pins"
+      ],
+      "action": "[0-5s] The previous chip flips away as the stamped page tears into four separate paper blocks standing apart on cyan ground. [5-10s] String and pins run between the four blocks, pulling them into one tied cluster.",
+      "hand": false,
+      "handoff": "the tied cluster",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Investors want evidence the four acquired businesses are operationally unified, not run as silos.",
+      "source": [
+        14
+      ]
+    },
+    {
+      "scene": 3,
+      "line": "The one point five billion dollar Resulticks deal is the transformative bet. Cross-sell is the test.",
+      "headline": "$1.5B",
+      "ground": "cyan",
+      "subjects": [
+        "the tied cluster",
+        "a large paper block",
+        "stencilled arrows"
+      ],
+      "action": "[0-5s] The previous chip drops out as the tied cluster contracts and one large paper block rises above the others. [5-10s] Stencilled arrows cross back and forth between the large block and the cluster, then hold.",
+      "hand": false,
+      "handoff": "the large paper block",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "The one point five billion dollar Resulticks deal is the transformative bet. Cross-sell is the test.",
+      "source": [
+        18,
+        19
+      ]
+    },
+    {
+      "scene": 3,
+      "line": "Without cross-sell evidence, the acquisition becomes a financial burden rather than a strategic unlock.",
+      "headline": "BURDEN OR UNLOCK",
+      "ground": "cyan",
+      "subjects": [
+        "the large paper block",
+        "a paper hand",
+        "torn strips"
+      ],
+      "action": "[0-5s] The previous chip slides right as a paper hand presses down on the large paper block and torn strips buckle beneath it. [5-10s] The hand lifts, the strips spring back, and the large paper block settles level again.",
+      "hand": true,
+      "handoff": "the large paper block",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Without cross-sell evidence, the acquisition becomes a financial burden rather than a strategic unlock.",
+      "source": [
+        20
+      ]
+    },
+    {
+      "scene": 4,
+      "line": "Revenue grew two hundred and ninety-three percent year on year, to two million dollars, driven mainly by subscription.",
+      "headline": "+293% YOY",
+      "ground": "lime",
+      "subjects": [
+        "a paper bar chart",
+        "a torn-paper arrow"
+      ],
+      "action": "[0-5s] The previous chip flips down as the large paper block splits into a paper bar chart climbing left to right on lime ground. [5-10s] A torn-paper arrow rises along the bars and stops at the tallest one.",
+      "hand": false,
+      "handoff": "the torn-paper arrow",
+      "hero": true,
+      "scale": "diagram",
+      "delivery": "[excited] Revenue grew two hundred and ninety-three percent year on year, to two million dollars, driven mainly by subscription.",
+      "source": [
+        31
+      ]
+    },
+    {
+      "scene": 4,
+      "line": "October's warrant exercise generated thirteen point eight million dollars, strengthening net assets above ten point nine million.",
+      "headline": "+$13.8M",
+      "ground": "lime",
+      "subjects": [
+        "a stack of paper coins",
+        "the torn-paper arrow"
+      ],
+      "action": "[0-5s] The previous chip slides off as the torn-paper arrow folds down into a stack of paper coins that grows coin by coin. [5-10s] Cut in close on the coin stack as two final coins settle on top.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "October's warrant exercise generated thirteen point eight million dollars, strengthening net assets above ten point nine million.",
+      "source": [
+        34
+      ]
+    },
+    {
+      "scene": 5,
+      "line": "If the second quarter update shows integration delays or weaker cross-sell, downside risk remains material.",
+      "headline": "DOWNSIDE RISK",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "a torn-paper arrow",
+        "grid paper"
+      ],
+      "action": "[0-5s] The previous chip is covered as the ground turns magenta and the coin stack sits on grid paper. [5-10s] A torn-paper arrow enters above the coin stack and swings down to point below the grid line.",
+      "hand": false,
+      "handoff": "the downward arrow",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "If the second quarter update shows integration delays or weaker cross-sell, downside risk remains material.",
+      "source": [
+        40
+      ]
+    },
+    {
+      "scene": 5,
+      "line": "At a thirty-four million dollar market cap, Diginex is priced for significant scepticism.",
+      "headline": "$34M MKT CAP",
+      "ground": "magenta",
+      "subjects": [
+        "a small paper block",
+        "open grid paper"
+      ],
+      "action": "[0-5s] The previous chip flips away as the downward arrow shrinks into one small paper block alone on open grid paper. [5-10s] The grid paper widens around the small paper block, leaving it isolated at centre.",
+      "hand": false,
+      "handoff": "the small paper block",
+      "hero": false,
+      "scale": "small",
+      "delivery": "At a thirty-four million dollar market cap, Diginex is priced for significant scepticism.",
+      "source": [
+        38
+      ]
+    },
+    {
+      "scene": 6,
+      "line": "Credible traction could re-rate the stock sharply. The next six to nine months are make-or-break.",
+      "headline": "6-9 MONTHS",
+      "ground": "violet",
+      "subjects": [
+        "the calendar page",
+        "a paper hand",
+        "a torn-paper arrow"
+      ],
+      "action": "[0-5s] The previous chip drops as the small paper block unfolds back into the calendar page on violet ground. [5-10s] A paper hand slides a torn-paper arrow across the calendar page and pins it there, the page holding centre.",
+      "hand": true,
+      "handoff": "the calendar page",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Credible traction could re-rate the stock sharply. The next six to nine months are make-or-break.",
+      "source": [
+        39,
+        41
+      ]
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [
+      "headline number \"4\" not found as a figure in cited sentences [14] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 44469,
+  "clipSeconds": 10
+}

@@ -1,0 +1,221 @@
+{
+  "translator": "translator-v0.3.1",
+  "question": "What are the key risks for Diginex?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "Diginex faces a data reliability risk. The ESG reporting landscape remains highly fragmented.",
+      "headline": "DATA RELIABILITY",
+      "ground": "violet",
+      "subjects": [
+        "a stack of paper documents",
+        "a torn grid-paper map"
+      ],
+      "action": "[0-5s] A stack of halftone paper documents lands on a torn grid-paper map and splits into uneven piles. [5-10s] The piles drift apart across the map, leaving gaps, and settle holding on the document stack.",
+      "hand": false,
+      "handoff": "the document stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Diginex faces a data reliability risk. The ESG reporting landscape remains highly fragmented.",
+      "source": [
+        8,
+        9
+      ]
+    },
+    {
+      "scene": 1,
+      "line": "Standards vary across jurisdictions and industries, so data quality and comparability pose significant challenges.",
+      "headline": "VARYING STANDARDS",
+      "ground": "violet",
+      "subjects": [
+        "the document stack",
+        "paper rubber stamps"
+      ],
+      "action": "[0-5s] The previous headline chip slides off the top edge as the document stack fans out and mismatched paper rubber stamps press onto each sheet. [5-10s] The stamped sheets are gathered back into the document stack, edges refusing to align, holding on the stack.",
+      "hand": false,
+      "handoff": "the document stack",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Standards vary across jurisdictions and industries, so data quality and comparability pose significant challenges.",
+      "source": [
+        9,
+        10
+      ]
+    },
+    {
+      "scene": 1,
+      "line": "If its platforms miss regulatory-grade data, credibility with institutional clients or regulators could suffer.",
+      "headline": "CREDIBILITY",
+      "ground": "violet",
+      "subjects": [
+        "the document stack",
+        "a paper screen",
+        "a torn strip"
+      ],
+      "action": "[0-5s] The previous chip flips away as the document stack feeds into a paper screen that flickers and drops a torn strip. [5-10s] The torn strip curls down past the screen and rests against the document stack, holding on the stack.",
+      "hand": false,
+      "handoff": "the document stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "If its platforms miss regulatory-grade data, credibility with institutional clients or regulators could suffer.",
+      "source": [
+        11
+      ]
+    },
+    {
+      "scene": 2,
+      "line": "Revenue growth has been strong, up two hundred and ninety-three percent to two million dollars.",
+      "headline": "+293% TO $2.0M",
+      "ground": "lime",
+      "subjects": [
+        "a paper bar chart",
+        "a stencilled arrow"
+      ],
+      "action": "[0-5s] The previous chip slides off as the document stack folds into a paper bar chart and a stencilled arrow climbs steeply across it. [5-10s] The arrow reaches the tallest bar and holds there, the chart settling under it, holding on the bar chart.",
+      "hand": false,
+      "handoff": "the bar chart",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] Revenue growth has been strong, up two hundred and ninety-three percent to two million dollars.",
+      "source": [
+        16
+      ]
+    },
+    {
+      "scene": 2,
+      "line": "But the market questions how repeatable that growth is, given the mix of one-off and recurring revenue.",
+      "headline": "REPEATABLE?",
+      "ground": "lime",
+      "subjects": [
+        "the bar chart",
+        "two paper coin piles"
+      ],
+      "action": "[0-5s] The previous chip lifts away as the bar chart tips and spills into two separate paper coin piles. [5-10s] One pile is swept off frame while the other stays, then the bars rebuild shorter, holding on the bar chart.",
+      "hand": false,
+      "handoff": "the bar chart",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "But the market questions how repeatable that growth is, given the mix of one-off and recurring revenue.",
+      "source": [
+        16
+      ]
+    },
+    {
+      "scene": 3,
+      "line": "The strategy leans on acquisitions and partnerships, so execution is the key risk.",
+      "headline": "EXECUTION RISK",
+      "ground": "magenta",
+      "subjects": [
+        "paper building blocks",
+        "string and pins"
+      ],
+      "action": "[0-5s] The previous chip flips down as the bar chart's bars separate into paper building blocks joined by string and pins. [5-10s] The strings pull the blocks toward one another and stop short of touching, holding on the block cluster.",
+      "hand": false,
+      "handoff": "the block cluster",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] The strategy leans on acquisitions and partnerships, so execution is the key risk.",
+      "source": [
+        17
+      ]
+    },
+    {
+      "scene": 3,
+      "line": "If integrating the large Resulticks acquisition drags, investor confidence could remain weak.",
+      "headline": "INTEGRATION",
+      "ground": "magenta",
+      "subjects": [
+        "the block cluster",
+        "a paper calendar strip",
+        "a paper hand"
+      ],
+      "action": "[0-5s] The previous chip slides off as a paper calendar strip unrolls beneath the block cluster and a paper hand pushes one oversized block along it. [5-10s] The hand keeps pushing page after page and the block stalls mid-strip, holding on the block cluster.",
+      "hand": true,
+      "handoff": "the block cluster",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "If integrating the large Resulticks acquisition drags, investor confidence could remain weak.",
+      "source": [
+        17,
+        18
+      ]
+    },
+    {
+      "scene": 4,
+      "line": "There's also client adoption risk. ESG adoption remains uneven across sectors and geographies.",
+      "headline": "UNEVEN ADOPTION",
+      "ground": "cyan",
+      "subjects": [
+        "a torn grid-paper map",
+        "paper hole-punched tags"
+      ],
+      "action": "[0-5s] The previous chip lifts as the block cluster flattens into a torn grid-paper map and hole-punched tags drop onto some regions only. [5-10s] The bare regions of the map tilt into view, tagless, holding on the torn map.",
+      "hand": false,
+      "handoff": "the torn map",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "There's also client adoption risk. ESG adoption remains uneven across sectors and geographies.",
+      "source": [
+        19,
+        20
+      ]
+    },
+    {
+      "scene": 4,
+      "line": "Smaller enterprises may delay on cost or complexity, and many still treat compliance as box-ticking.",
+      "headline": "BOX-TICKING",
+      "ground": "cyan",
+      "subjects": [
+        "the torn map",
+        "a paper checklist",
+        "a paper hand"
+      ],
+      "action": "[0-5s] The previous chip flips away as the torn map folds into a paper checklist and a paper hand ticks each box fast without reading. [5-10s] The hand withdraws and the checklist curls at one corner, holding on the paper checklist.",
+      "hand": true,
+      "handoff": "the paper checklist",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Smaller enterprises may delay on cost or complexity, and many still treat compliance as box-ticking.",
+      "source": [
+        21,
+        22
+      ]
+    },
+    {
+      "scene": 4,
+      "line": "If ESG stays underprioritised, sales cycles may lengthen and slow annual recurring revenue growth.",
+      "headline": "LONGER CYCLES",
+      "ground": "violet",
+      "subjects": [
+        "the document stack",
+        "a paper calendar strip",
+        "a stencilled arrow"
+      ],
+      "action": "[0-5s] The previous chip slides off as the checklist gathers back into the document stack and a paper calendar strip stretches out beside it. [5-10s] A stencilled arrow crawls slowly along the lengthened strip and stops, the strip now taped to the document stack, holding on the stack.",
+      "hand": false,
+      "handoff": "the document stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "If ESG stays underprioritised, sales cycles may lengthen and slow annual recurring revenue growth.",
+      "source": [
+        23
+      ]
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 27029,
+  "clipSeconds": 10
+}

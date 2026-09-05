@@ -9,10 +9,18 @@
 // --music (requires --narration) loops the given track under the mix at
 // the same low level components/player.tsx uses for MUSIC=on (WP5 §3).
 
-import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { durationOf, ffmpeg, hasAudio } from "./ffmpeg.mjs";
+
+function readJson(file) {
+  try {
+    return JSON.parse(readFileSync(file, "utf8"));
+  } catch {
+    return null;
+  }
+}
 
 const args = process.argv.slice(2);
 const dir = args.find((a) => !a.startsWith("--"));
@@ -67,15 +75,22 @@ if (!narration) {
 }
 
 // 2. Lay the narration over it. Compute each line's start the way the
-//    player does: clip start, or the previous line's end if later.
+//    player does: clip start (+ the beat's own offset within the clip, for
+//    a WP8.1 CLIP_SECONDS=15 scene shot carrying 2-3 beats in one video),
+//    or the previous line's end if later.
 let clipStart = 0;
 let narrationEnd = 0;
 const tracks = [];
 for (const clip of clips) {
-  const mp3 = path.join(dir, `${clip.n}.mp3`);
   const clipLength = durationOf(clip.file) ?? 5;
-  if (existsSync(mp3)) {
-    const start = Math.max(clipStart, narrationEnd);
+  const rec = readJson(path.join(dir, `${clip.n}.json`));
+  const shotBeats = Array.isArray(rec?.beats)
+    ? rec.beats.map((b) => ({ n: b.n ?? clip.n, offsetSeconds: b.offsetSeconds ?? 0 }))
+    : [{ n: clip.n, offsetSeconds: 0 }]; // legacy single-`beat` record, or no record found
+  for (const { n, offsetSeconds } of shotBeats) {
+    const mp3 = path.join(dir, `${n}.mp3`);
+    if (!existsSync(mp3)) continue;
+    const start = Math.max(clipStart + offsetSeconds, narrationEnd);
     const length = durationOf(mp3) ?? 0;
     tracks.push({ file: mp3, startMs: Math.round(start * 1000) });
     narrationEnd = start + length;

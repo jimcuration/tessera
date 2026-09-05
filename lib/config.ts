@@ -28,6 +28,30 @@ import path from "node:path";
  *                          style sheet itself — dropping or needlessly
  *                          re-rendering clean beats. See
  *                          briefs/WP5.1-handoff.md before turning this on.
+ *   CLIP_SECONDS=5|10|15   WP8/WP8.1: the length of every shot in a
+ *                          programme. Default 15, set by Robin after
+ *                          WP8.1's measurement campaign (CLAUDE.md hard
+ *                          rule 4's original 5s baseline stays available
+ *                          via the switch, not as the default). 10 and 15
+ *                          widen the translator's line budget to 22 words
+ *                          (lib/translator.ts#maxLineWords). At 5/10, one
+ *                          shot = one beat, its own fal request, told it
+ *                          may carry one internal shape-match cut at ~5s.
+ *                          At 15, one shot = one whole SCENE (2-3 beats):
+ *                          a single fal request of 10s (2-beat scene) or
+ *                          15s (3-beat scene), the compiled prompt writing
+ *                          each beat as its own timecoded section ([0-5s],
+ *                          [5-10s], [10-15s]); the player treats the beats
+ *                          inside that one clip as timestamps, not clip
+ *                          swaps. The render buffer is expressed in
+ *                          seconds of playback, not clip count, so none of
+ *                          this needs a buffer-size change.
+ *   MUSIC_BED=bed|bed-v2   WP8.1: which generated bed /api/music serves
+ *                          (<RECORDINGS_DIR>/music/<value>.mp3). Default
+ *                          bed-v2 (2-3 min, crossfaded loop point), set by
+ *                          Robin; "bed.mp3" (WP5's original, 30s) stays
+ *                          available via the switch and is never
+ *                          overwritten by v2 generation.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
@@ -38,6 +62,8 @@ export type RenderSwitch = "queue" | "director";
 export type TheatreSwitch = "on" | "off";
 export type MusicSwitch = "on" | "off";
 export type FaceGateSwitch = "on" | "off";
+export type ClipSeconds = 5 | 10 | 15;
+export type MusicBedSwitch = "bed" | "bed-v2";
 
 export interface Switches {
   voice: VoiceSwitch;
@@ -46,6 +72,8 @@ export interface Switches {
   theatre: TheatreSwitch;
   music: MusicSwitch;
   faceGate: FaceGateSwitch;
+  clipSeconds: ClipSeconds;
+  musicBed: MusicBedSwitch;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -53,6 +81,11 @@ export interface Switches {
 function pick<T extends string>(raw: string | undefined, allowed: T[], fallback: T): T {
   const value = (raw ?? "").trim().toLowerCase();
   return (allowed as string[]).includes(value) ? (value as T) : fallback;
+}
+
+function pickClipSeconds(raw: string | undefined): ClipSeconds {
+  const value = pick(raw, ["5", "10", "15"], "15");
+  return value === "5" ? 5 : value === "10" ? 10 : 15;
 }
 
 export function readSwitches(): Switches {
@@ -66,6 +99,8 @@ export function readSwitches(): Switches {
     music: pick<MusicSwitch>(process.env.MUSIC, ["on", "off"], "on"),
     // Default off: see this file's header comment (WP5.1 false-positive finding).
     faceGate: pick<FaceGateSwitch>(process.env.FACE_GATE, ["on", "off"], "off"),
+    clipSeconds: pickClipSeconds(process.env.CLIP_SECONDS),
+    musicBed: pick<MusicBedSwitch>(process.env.MUSIC_BED, ["bed", "bed-v2"], "bed-v2"),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }

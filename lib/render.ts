@@ -5,12 +5,12 @@
  * built in WP0. Director is reserved for a later work package.
  */
 
-import type { RenderSwitch } from "./config";
+import type { ClipSeconds, RenderSwitch } from "./config";
 import { Stream } from "./stream";
 
-export function createRenderer(mode: RenderSwitch, args: { chain: boolean; faceGate: boolean }): Stream {
+export function createRenderer(mode: RenderSwitch, args: { chain: boolean; clipSeconds: ClipSeconds; faceGate: boolean }): Stream {
   if (mode === "director") {
     throw new Error("not implemented in WP0");
   }
-  return new Stream(args.chain, args.faceGate);
+  return new Stream(args.chain, args.clipSeconds, args.faceGate);
 }

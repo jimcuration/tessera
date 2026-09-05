@@ -1,0 +1,196 @@
+{
+  "translator": "translator-v0.3.2",
+  "pinned": true,
+  "note": "WP8's 10s spine, promoted from a live translation to pinned (briefs/WP8-report.md addendum). WP8.1 (D33) added `connector` (identical per scene) and `tag` (one, on scene 2) to every beat, re-pinning it under translator-v0.3.2. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
+  "question": "What is the cash position and runway?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "At the end of September, Diginex held one point eight five million dollars in cash.",
+      "headline": "$1.85M",
+      "ground": "violet",
+      "subjects": [
+        "a stack of paper coins",
+        "a cream paper chip"
+      ],
+      "action": "[0-5s] A halftone stack of paper coins drops onto a cream chip and settles. [5-10s] The camera holds as the stack tilts slightly and steadies.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] At the end of September, Diginex held one point eight five million dollars in cash.",
+      "source": [9],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a torn-paper arrow", "colour": "black" },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "Six months earlier it was three point one one million.",
+      "headline": "$3.11M → $1.85M",
+      "ground": "violet",
+      "subjects": [
+        "the coin stack",
+        "a torn-paper arrow"
+      ],
+      "action": "[0-5s] The previous chip slides off the top edge as the coin stack loses coin after coin. [5-10s] Cut to a torn-paper arrow entering low and pointing down beside the shrunken stack.",
+      "hand": false,
+      "handoff": "the torn-paper arrow",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Six months earlier it was three point one one million.",
+      "source": [9],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a torn-paper arrow", "colour": "black" },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Operating cash burn ran three point nine million over those six months.",
+      "headline": "$3.9M BURN",
+      "ground": "magenta",
+      "subjects": [
+        "a paper calendar strip",
+        "paper coins"
+      ],
+      "action": "[0-5s] The previous chip flips away as the torn-paper arrow unrolls into a paper calendar strip. [5-10s] Coins slide off the strip one by one and drop out of frame.",
+      "hand": false,
+      "handoff": "the calendar strip",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] Operating cash burn ran three point nine million over those six months.",
+      "source": [17, 22],
+      "connector": { "kind": "paper string", "from": "the calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "That works out at about one point three million dollars a month.",
+      "headline": "$1.3M / MONTH",
+      "ground": "magenta",
+      "subjects": [
+        "the calendar strip",
+        "a paper hand"
+      ],
+      "action": "[0-5s] The old chip is covered as a paper hand enters and taps the calendar strip month by month. [5-10s] The hand drags the strip sideways until only a short torn piece remains.",
+      "hand": true,
+      "handoff": "the torn strip",
+      "hero": false,
+      "scale": "small",
+      "delivery": "That works out at about one point three million dollars a month.",
+      "source": [22],
+      "connector": { "kind": "paper string", "from": "the calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": { "text": "$1.3M", "source": [22] }
+    },
+    {
+      "scene": 2,
+      "line": "At that rate, the cash on hand covers one point four months of runway.",
+      "headline": "1.4 MONTHS",
+      "ground": "magenta",
+      "subjects": [
+        "a paper runway",
+        "a cutout aircraft"
+      ],
+      "action": "[0-5s] The previous chip drops away as the torn strip widens into a paper runway cut short. [5-10s] A cutout aircraft rolls forward and stops hard at the torn end.",
+      "hand": false,
+      "handoff": "the torn runway",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] At that rate, the cash on hand covers one point four months of runway.",
+      "source": [23],
+      "connector": { "kind": "paper string", "from": "the calendar strip", "to": "a paper runway", "colour": "orange" },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Warrant exercises raised eleven point four million, which kept the company afloat.",
+      "headline": "+$11.4M",
+      "ground": "cyan",
+      "subjects": [
+        "a paper document",
+        "fresh paper coins"
+      ],
+      "action": "[0-5s] The previous chip slides off as the torn runway folds up into a paper document. [5-10s] Cut in close as fresh paper coins are laid across the document in a row.",
+      "hand": false,
+      "handoff": "the paper document",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Warrant exercises raised eleven point four million, which kept the company afloat.",
+      "source": [20],
+      "connector": { "kind": "paper ribbon", "from": "the paper document", "to": "fresh paper coins", "colour": "cream" },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Then October's warrant exercise generated another thirteen point eight million dollars.",
+      "headline": "+$13.8M",
+      "ground": "cyan",
+      "subjects": [
+        "the paper document",
+        "paper coins",
+        "tape pieces"
+      ],
+      "action": "[0-5s] The previous chip flips down as the paper document unfolds wider and more coins land on it. [5-10s] Tape pieces press across the coins, fixing them in place.",
+      "hand": false,
+      "handoff": "the paper document",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Then October's warrant exercise generated another thirteen point eight million dollars.",
+      "source": [27],
+      "connector": { "kind": "paper ribbon", "from": "the paper document", "to": "fresh paper coins", "colour": "cream" },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "Survival hinges on continued access to capital markets. The company is not yet self-sustaining.",
+      "headline": "NOT SELF-SUSTAINING",
+      "ground": "violet",
+      "subjects": [
+        "the coin stack",
+        "a paper building"
+      ],
+      "action": "[0-5s] The previous chip slides away as the paper document folds into a paper building and the coin stack returns beside it. [5-10s] Cut wider; the building leans on the stack and holds.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Survival hinges on continued access to capital markets. The company is not yet self-sustaining.",
+      "source": [25, 29],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a paper building", "colour": "black" },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "The next six to nine months are critical for Diginex.",
+      "headline": "6–9 MONTHS",
+      "ground": "violet",
+      "subjects": [
+        "the coin stack",
+        "a cream paper chip",
+        "a paper hand"
+      ],
+      "action": "[0-5s] The previous chip flips off as the coin stack settles back onto a cream chip. [5-10s] A paper hand enters and rests one final coin on top of the stack.",
+      "hand": true,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "The next six to nine months are critical for Diginex.",
+      "source": [42],
+      "connector": { "kind": "paper ribbon", "from": "the coin stack", "to": "a paper building", "colour": "black" },
+      "tag": null
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 22173,
+  "clipSeconds": 10
+}
