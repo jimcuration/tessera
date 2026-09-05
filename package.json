@@ -12,6 +12,7 @@
     "reel": "node scripts/reel.mjs",
     "contact": "node scripts/contact-sheet.mjs",
     "whisper": "python scripts/whisper-match.py",
+    "split-check": "python scripts/saskia-split-check.py",
     "report": "node scripts/report.mjs"
   },
   "dependencies": {

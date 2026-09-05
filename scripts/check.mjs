@@ -66,8 +66,12 @@ const TRANSLATIONS = path.join(ROOT, "data", "translations");
  */
 const CURRENT_TRANSLATOR_VERSION = "translator-v0.3.1";
 
-const MAX_LINE_WORDS = 12;
 const MAX_HEADLINE_WORDS = 4;
+
+/** Mirrors maxLineWords in lib/translator.ts (WP8: the line budget scales with CLIP_SECONDS). */
+function maxLineWords(clipSeconds) {
+  return clipSeconds === 10 ? 22 : 12;
+}
 
 /** Mirrors PEOPLE_LEXICON in lib/translator.ts. */
 const PEOPLE_LEXICON = [
@@ -108,15 +112,16 @@ function subjectNamesPerson(subject) {
 }
 
 /** Mirrors validateBeat in lib/translator.ts: hard = source/length/people, soft = the rest. */
-function checkBeat(beat, sentences) {
+function checkBeat(beat, sentences, clipSeconds) {
   const hard = [];
   const soft = [];
+  const maxWords = maxLineWords(clipSeconds);
   const source = Array.isArray(beat?.source) ? beat.source : [];
   const valid = source.filter((i) => Number.isInteger(i) && i >= 0 && (sentences === null || i < sentences.length));
   if (valid.length === 0) hard.push("no source");
   if (!(Number.isInteger(beat?.scene) && beat.scene > 0)) hard.push("no scene (positive integer)");
   if (!beat?.line) hard.push("no line");
-  if (words(beat?.line) > MAX_LINE_WORDS) hard.push(`line is ${words(beat.line)} words (limit ${MAX_LINE_WORDS})`);
+  if (words(beat?.line) > maxWords) hard.push(`line is ${words(beat.line)} words (limit ${maxWords})`);
   for (const subject of Array.isArray(beat?.subjects) ? beat.subjects : []) {
     const person = subjectNamesPerson(String(subject));
     if (person) hard.push(`subject "${subject}" names a person (${person})`);
@@ -201,9 +206,9 @@ let beats = 0;
 let failures = 0;
 let warnings = 0;
 
-function report(label, beat, sentences) {
+function report(label, beat, sentences, clipSeconds = 5) {
   beats += 1;
-  const { hard, soft } = checkBeat(beat, sentences);
+  const { hard, soft } = checkBeat(beat, sentences, clipSeconds);
   if (hard.length) {
     failures += 1;
     console.log(`FAIL  ${label}: ${hard.join(", ")}`);
@@ -221,12 +226,13 @@ function checkSession(dir) {
     return;
   }
   const sentences = manifest && Array.isArray(manifest.sentences) ? manifest.sentences : null;
+  const clipSeconds = manifest?.switches?.clipSeconds ?? 5;
   const files = readdirSync(dir).filter((f) => /^\d+\.json$/.test(f)).sort((a, b) => parseInt(a) - parseInt(b));
   const beats = [];
   for (const file of files) {
     const rec = readJson(path.join(dir, file));
     if (!rec) continue;
-    report(`${path.relative(ROOT, dir)}/${file}`, rec.beat, sentences);
+    report(`${path.relative(ROOT, dir)}/${file}`, rec.beat, sentences, clipSeconds);
     beats.push(rec.beat);
   }
   checkProgramme(path.relative(ROOT, dir), beats);
@@ -243,7 +249,8 @@ function checkTranslation(file) {
     return;
   }
   // Translations do not carry the sentences; index bounds are checked at run time.
-  t.beats.forEach((beat, i) => report(`${path.relative(ROOT, file)}#${i + 1}`, beat, null));
+  const clipSeconds = t.clipSeconds ?? 5;
+  t.beats.forEach((beat, i) => report(`${path.relative(ROOT, file)}#${i + 1}`, beat, null, clipSeconds));
   checkProgramme(path.relative(ROOT, file), t.beats);
 }
 

@@ -18,6 +18,15 @@ import path from "node:path";
  *                          under Saskia's narration in the player, ducked
  *                          well under the voice; off is silent — the clip's
  *                          own audio block stays wordless either way.
+ *   CLIP_SECONDS=5|10      WP8: the length of every shot in a programme,
+ *                          passed straight to the fal request's `duration`.
+ *                          Default 5 (CLAUDE.md hard rule 4's baseline).
+ *                          10 widens the translator's line budget to 22
+ *                          words (lib/translator.ts#maxLineWords) and tells
+ *                          it a beat may carry one internal shape-match cut
+ *                          at ~5s; the player's render buffer is expressed
+ *                          in seconds of playback, not clip count, so it
+ *                          does not need to change with this switch.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
@@ -27,6 +36,7 @@ export type ChainSwitch = "on" | "off";
 export type RenderSwitch = "queue" | "director";
 export type TheatreSwitch = "on" | "off";
 export type MusicSwitch = "on" | "off";
+export type ClipSeconds = 5 | 10;
 
 export interface Switches {
   voice: VoiceSwitch;
@@ -34,6 +44,7 @@ export interface Switches {
   render: RenderSwitch;
   theatre: TheatreSwitch;
   music: MusicSwitch;
+  clipSeconds: ClipSeconds;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -52,6 +63,7 @@ export function readSwitches(): Switches {
     render: pick<RenderSwitch>(process.env.RENDER, ["queue", "director"], "queue"),
     theatre: pick<TheatreSwitch>(process.env.THEATRE, ["on", "off"], "on"),
     music: pick<MusicSwitch>(process.env.MUSIC, ["on", "off"], "on"),
+    clipSeconds: pick(process.env.CLIP_SECONDS, ["5", "10"], "5") === "10" ? 10 : 5,
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }

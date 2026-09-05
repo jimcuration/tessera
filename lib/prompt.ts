@@ -93,7 +93,7 @@ export function copyList(headline: string | null): string {
   return `ON-SCREEN TEXT: "${headline}". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.`;
 }
 
-export function beatBlock(beat: Beat, previousHandoff: string | null): string {
+export function beatBlock(beat: Beat, previousHandoff: string | null, clipSeconds: 5 | 10 = 5): string {
   const lines = [
     `BEAT`,
     `Ground: ${GROUND_NAMES[beat.ground]}.`,
@@ -110,6 +110,13 @@ export function beatBlock(beat: Beat, previousHandoff: string | null): string {
         : `Headline printed on a paper chip: "${beat.headline}".`
       : `No headline.`,
   ];
+  // WP8: this shot's actual duration, from lib/config.ts's CLIP_SECONDS.
+  // Stated here in the beat block, not in the numbered style sheet above
+  // (that file's content is out of WP8's scope, owned by WP7) — this line
+  // overrides the style sheet's stated "5 seconds" when it differs.
+  if (clipSeconds !== 5) {
+    lines.push(`Duration: this shot is exactly ${clipSeconds} seconds, not 5 (overrides the style sheet's stated length above).`);
+  }
   return lines.join("\n");
 }
 
@@ -129,8 +136,10 @@ export function compilePrompt(args: {
   beat: Beat;
   voice: Voice;
   previousHandoff: string | null;
+  /** WP8: CLIP_SECONDS (lib/config.ts). Defaults to 5, the CLAUDE.md baseline. */
+  clipSeconds?: 5 | 10;
 }): CompiledPrompt {
-  const { beat, voice, previousHandoff } = args;
+  const { beat, voice, previousHandoff, clipSeconds = 5 } = args;
   const sheet = styleSheet(beat.ground)
     .map((line, i) => `${i + 1}. ${line}`)
     .join("\n");
@@ -139,7 +148,7 @@ export function compilePrompt(args: {
     `TESSERA STYLE SHEET`,
     sheet,
     ``,
-    beatBlock(beat, previousHandoff),
+    beatBlock(beat, previousHandoff, clipSeconds),
     ``,
     copyList(beat.headline),
     ``,

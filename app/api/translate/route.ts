@@ -8,12 +8,13 @@ import { getAnswer } from "@/lib/curation";
 import {
   deflectionBeat,
   drainNdjson,
-  TRANSLATOR_SYSTEM,
+  translatorSystem,
   TRANSLATOR_VERSION,
   translatorUserPrompt,
   validateBeat,
   type Beat,
 } from "@/lib/translator";
+import type { ClipSeconds } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -44,10 +45,21 @@ interface CachedTranslation {
   warnings?: string[][];
   model?: string;
   ms?: number;
+  /** WP8: the clip length this translation's beats were written for (word budget, internal-cut instruction). */
+  clipSeconds?: ClipSeconds;
 }
 
-function cacheKey(answer: string): string {
-  return createHash("sha1").update(answer).digest("hex");
+/**
+ * WP8: a 5s and a 10s translation of the same answer follow different rules
+ * (word budget, internal-cut instruction) and must not collide in the
+ * cache. 5s keeps the original sha1(answer) key so every pinned exemplar in
+ * data/translations/ (written before this switch existed) still resolves;
+ * 10s gets its own namespace instead of reusing that key under a different
+ * meaning.
+ */
+function cacheKey(answer: string, clipSeconds: ClipSeconds): string {
+  const input = clipSeconds === 5 ? answer : `${clipSeconds}s\n${answer}`;
+  return createHash("sha1").update(input).digest("hex");
 }
 
 function readCache(key: string): CachedTranslation | null {
@@ -96,7 +108,7 @@ export async function POST(req: NextRequest) {
         followups: answer.followups,
         fromSpine: answer.fromSpine,
         sentences: answer.sentences,
-        switches: { voice: switches.voice, chain: switches.chain, render: switches.render },
+        switches: { voice: switches.voice, chain: switches.chain, render: switches.render, clipSeconds: switches.clipSeconds },
       });
 
       const kept: Beat[] = [];
@@ -104,7 +116,7 @@ export async function POST(req: NextRequest) {
       const dropped: unknown[] = [];
       let n = 0;
       const emit = (raw: unknown) => {
-        const check = validateBeat(raw, answer.sentences);
+        const check = validateBeat(raw, answer.sentences, switches.clipSeconds);
         if (check.ok && check.beat) {
           n += 1;
           kept.push(check.beat);
@@ -120,22 +132,28 @@ export async function POST(req: NextRequest) {
       try {
         if (answer.kind === "deflection" && answer.link) {
           // Built in code: one beat, the link as the headline.
-          emit(deflectionBeat(answer.sentences, answer.link));
+          emit(deflectionBeat(answer.sentences, answer.link, switches.clipSeconds));
           send({ type: "done", source: "deflection", beats: n, dropped: dropped.length, ms: Date.now() - started });
           controller.close();
           return;
         }
 
-        const key = cacheKey(answer.answer);
+        const key = cacheKey(answer.answer, switches.clipSeconds);
         const cachedRaw = switches.translateCache ? readCache(key) : null;
         // A cache entry written by an earlier translator version is a stale
         // hit, not a match: its beats were validated against that version's
         // rules (e.g. v0.1's 18-word line budget), so it is regenerated live
         // rather than served as if it were v0.2. Pinned exemplars are kept
         // current by hand (data/translations/<hash>.json) for exactly this
-        // reason.
+        // reason. A cache entry recorded under a different clipSeconds is
+        // the same kind of staleness (WP8): a 5s file has no `clipSeconds`
+        // field at all, so its absence reads as 5.
         const cached =
-          cachedRaw && cachedRaw.translator === TRANSLATOR_VERSION ? cachedRaw : null;
+          cachedRaw &&
+          cachedRaw.translator === TRANSLATOR_VERSION &&
+          (cachedRaw.clipSeconds ?? 5) === switches.clipSeconds
+            ? cachedRaw
+            : null;
         if (cached && Array.isArray(cached.beats) && cached.beats.length > 0) {
           for (const beat of cached.beats) emit(beat);
           send({
@@ -164,7 +182,7 @@ export async function POST(req: NextRequest) {
           system: [
             {
               type: "text",
-              text: TRANSLATOR_SYSTEM,
+              text: translatorSystem(switches.clipSeconds),
               cache_control: { type: "ephemeral" },
             },
           ],
@@ -204,6 +222,7 @@ export async function POST(req: NextRequest) {
             warnings,
             model: MODEL,
             ms,
+            clipSeconds: switches.clipSeconds,
           });
         }
         send({

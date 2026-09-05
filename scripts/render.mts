@@ -12,7 +12,15 @@
 // read from .env.local and used directly (server-side; never logged).
 //
 //   npx tsx scripts/render.mts --question "..." --voice native|saskia \
-//     --chain on|off [--base http://localhost:3100] [--suffix name]
+//     --chain on|off [--clip-seconds 5|10] [--base http://localhost:3100] [--suffix name]
+//
+// --clip-seconds controls this script's own fal request duration and the
+// compiled prompt's stated duration; it does NOT change what the translator
+// writes — that is the dev server's own CLIP_SECONDS env (lib/config.ts),
+// read server-side by /api/translate. To render a 10s programme, start the
+// dev server with CLIP_SECONDS=10 first and pass --clip-seconds 10 here so
+// the two agree (mismatch is a builder error the record.switches makes
+// visible, not something this script can detect on its own).
 //
 // Prints the session id on success.
 
@@ -66,14 +74,17 @@ const suffix = arg("suffix");
 // at playback time, so this flag doesn't branch renderOne — it just tags
 // the session so two sessions rendered from identical clips are told apart.
 const music = (arg("music", "off") as "on" | "off" | null) ?? "off";
+const clipSecondsRaw = arg("clip-seconds", "5");
+const clipSeconds = clipSecondsRaw === "10" ? 10 : 5;
 if (
   !question ||
   (voice !== "native" && voice !== "saskia") ||
   (chain !== "on" && chain !== "off") ||
-  (music !== "on" && music !== "off")
+  (music !== "on" && music !== "off") ||
+  (clipSecondsRaw !== "5" && clipSecondsRaw !== "10")
 ) {
   console.error(
-    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--music on|off] [--base url] [--suffix name]'
+    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--clip-seconds 5|10] [--music on|off] [--base url] [--suffix name]'
   );
   process.exit(1);
 }
@@ -87,7 +98,7 @@ fal.config({ credentials: FAL_KEY });
 
 const TURBO_T2V = "minimax/h3-max-turbo/text-to-video";
 const TURBO_I2V = "minimax/h3-max-turbo/image-to-video";
-const SHOT_SECONDS = 5;
+const SHOT_SECONDS = clipSeconds;
 const UNCHAINED_PARALLEL = 2;
 
 function stamp(): string {
@@ -99,7 +110,7 @@ function slug(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
 }
 
-const sessionId = `${stamp()}-${slug(suffix ?? question)}-${voice}-chain-${chain}`;
+const sessionId = `${stamp()}-${slug(suffix ?? question)}-${voice}-chain-${chain}-${clipSeconds}s`;
 
 interface GeneratedClip {
   rawUrl: string;
@@ -238,7 +249,7 @@ async function main() {
   let lastFrame: string | undefined;
 
   async function renderOne({ n, beat, warnings }: { n: number; beat: Beat; warnings: string[] }, fromFrame: string | undefined) {
-    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null });
+    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null, clipSeconds });
     const clip = await generateClip({ prompt, fromFrame });
     await post("/api/record", {
       kind: "clip",
@@ -263,11 +274,28 @@ async function main() {
       renderMs: clip.ms,
       timings: clip.timings,
     });
-    if (voice === "saskia") {
-      await post("/api/voice", { text: beat.delivery, session: sessionId, n });
-    }
     console.log(`[render] beat ${n} done in ${clip.ms}ms${fromFrame ? " (i2v)" : " (t2v)"}`);
     return clip;
+  }
+
+  // WP8 §2: Saskia is generated per scene (2-3 beats in one ElevenLabs
+  // request, split server-side), not per line. All beats are already known
+  // at this point (the translation above ran to completion), so this runs
+  // once, ahead of the video renders below, one scene at a time.
+  if (voice === "saskia") {
+    const scenes = new Map<number, { n: number; text: string }[]>();
+    for (const { n, beat } of beats) {
+      const list = scenes.get(beat.scene) ?? [];
+      list.push({ n, text: beat.delivery });
+      scenes.set(beat.scene, list);
+    }
+    for (const [scene, sceneBeats] of scenes) {
+      const res = await post("/api/voice", { session: sessionId, scene, beats: sceneBeats });
+      if (res.ok) {
+        const data = (await res.json()) as { splitMethod: string };
+        console.log(`[render] scene ${scene}: ${sceneBeats.length} beat(s) narrated (${data.splitMethod} split)`);
+      }
+    }
   }
 
   if (chain === "on") {
@@ -295,7 +323,7 @@ async function main() {
     followups: answer.followups,
     fromSpine: answer.fromSpine,
     sentences,
-    switches: { voice, chain, music, render: "queue" },
+    switches: { voice, chain, music, render: "queue", clipSeconds },
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
     translateSource,

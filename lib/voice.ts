@@ -1,17 +1,31 @@
 "use client";
 
 /**
- * Saskia: the player narrates each beat's `delivery` text (its line, with
- * at most one expression tag for the expressive model, WP3 §3/§4) with an
- * ElevenLabs track while the clips run wordless. Alignment is
- * sentence-to-clip: the narration for beat N starts when clip N starts, or
- * when beat N-1's narration finishes if that runs late, so the narration
- * stays continuous. No attempt at tight sync (brief: WP0 §4).
+ * Saskia: the player narrates each scene's beats (their `delivery` text —
+ * the line, with at most one expression tag for the expressive model, WP3
+ * §3/§4) with one ElevenLabs request per scene (WP8 §2: a scene, not a
+ * line, so Saskia doesn't start every sentence cold), split server-side
+ * (app/api/voice) into one track per beat. Alignment is sentence-to-clip:
+ * the narration for beat N starts when clip N starts, or when beat N-1's
+ * narration finishes if that runs late, so the narration stays continuous.
+ * No attempt at tight sync (brief: WP0 §4).
  */
 
-/** ElevenLabs limits concurrent requests per key; beats arrive faster than that. */
+export interface SceneBeat {
+  n: number;
+  text: string;
+}
+
+/** ElevenLabs limits concurrent requests per key; scenes arrive faster than that. */
 const MAX_CONCURRENT = 2;
 const RETRIES = 2;
+
+function base64ToUrl(base64: string): string {
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+  return URL.createObjectURL(new Blob([bytes], { type: "audio/mpeg" }));
+}
 
 export class Narrator {
   private tracks = new Map<number, Promise<string | null>>();
@@ -38,34 +52,46 @@ export class Narrator {
     this.waiting.shift()?.();
   }
 
-  private async fetchTrack(n: number, text: string): Promise<string | null> {
+  private async fetchScene(scene: number, beats: SceneBeat[]): Promise<Map<number, string | null>> {
     for (let attempt = 0; attempt <= RETRIES; attempt += 1) {
-      if (!this.alive) return null;
+      if (!this.alive) return new Map();
       await this.slot();
       try {
         const res = await fetch("/api/voice", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ text, session: this.session, n }),
+          body: JSON.stringify({ session: this.session, scene, beats }),
           signal: this.controller.signal,
         });
-        if (res.ok) return URL.createObjectURL(await res.blob());
-        console.warn(`[voice] beat ${n}: voice ${res.status}${attempt < RETRIES ? ", retrying" : ""}`);
+        if (res.ok) {
+          const data = (await res.json()) as { beats: { n: number; audioBase64: string }[] };
+          const urls = new Map<number, string | null>();
+          for (const b of data.beats) urls.set(b.n, base64ToUrl(b.audioBase64));
+          return urls;
+        }
+        console.warn(`[voice] scene ${scene}: voice ${res.status}${attempt < RETRIES ? ", retrying" : ""}`);
       } catch (cause) {
-        if (this.controller.signal.aborted) return null;
-        console.warn(`[voice] beat ${n}:`, cause instanceof Error ? cause.message : cause);
+        if (this.controller.signal.aborted) return new Map();
+        console.warn(`[voice] scene ${scene}:`, cause instanceof Error ? cause.message : cause);
       } finally {
         this.release();
       }
       await new Promise((resolve) => setTimeout(resolve, 800 * (attempt + 1)));
     }
-    return null;
+    return new Map();
   }
 
-  /** Fetch the narration for beat n as soon as the beat is known. */
-  prefetch(n: number, text: string) {
-    if (this.tracks.has(n)) return;
-    this.tracks.set(n, this.fetchTrack(n, text));
+  /** Fetch one scene's narration (2-3 beats) in a single request, split per beat by the server. */
+  prefetchScene(scene: number, beats: SceneBeat[]) {
+    const missing = beats.filter((b) => !this.tracks.has(b.n));
+    if (missing.length === 0) return;
+    const promise = this.fetchScene(scene, missing);
+    for (const b of missing) {
+      this.tracks.set(
+        b.n,
+        promise.then((urls) => urls.get(b.n) ?? null)
+      );
+    }
   }
 
   /** Play beat n's line, after the previous line if it is still running. */

@@ -36,3 +36,26 @@ export function hasAudio(file) {
   const result = spawnSync(FFMPEG, ["-hide_banner", "-i", file], { encoding: "utf8" });
   return /Stream #\d+:\d+.*Audio/.test(result.stderr || "");
 }
+
+/**
+ * Midpoints (seconds) of silent gaps in an audio file, via ffmpeg's
+ * silencedetect filter (WP8: the fallback beat-split when ElevenLabs
+ * timestamps are unavailable). Must not go through the `ffmpeg()` wrapper
+ * above: silencedetect logs at "info" verbosity and that wrapper sets
+ * `-loglevel error`, which would swallow the very lines this reads.
+ */
+export function silenceGapMidpoints(file, { noiseDb = -30, minSeconds = 0.15 } = {}) {
+  const result = spawnSync(
+    FFMPEG,
+    ["-hide_banner", "-i", file, "-af", `silencedetect=noise=${noiseDb}dB:d=${minSeconds}`, "-f", "null", "-"],
+    { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 }
+  );
+  const text = result.stderr || "";
+  const starts = [...text.matchAll(/silence_start:\s*([\d.]+)/g)].map((m) => Number(m[1]));
+  const ends = [...text.matchAll(/silence_end:\s*([\d.]+)/g)].map((m) => Number(m[1]));
+  const mids = [];
+  for (let i = 0; i < Math.min(starts.length, ends.length); i += 1) {
+    mids.push((starts[i] + ends[i]) / 2);
+  }
+  return mids;
+}

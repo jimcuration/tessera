@@ -18,7 +18,7 @@ import { createRenderer } from "./render";
 import type { Stream, Shot } from "./stream";
 import { TRANSLATOR_VERSION, type Beat } from "./translator";
 import { Narrator } from "./voice";
-import type { ChainSwitch, RenderSwitch, VoiceSwitch } from "./config";
+import type { ChainSwitch, ClipSeconds, RenderSwitch, VoiceSwitch } from "./config";
 
 export interface AnswerHeader {
   question: string;
@@ -34,6 +34,7 @@ export interface SessionSwitches {
   voice: VoiceSwitch;
   chain: ChainSwitch;
   render: RenderSwitch;
+  clipSeconds: ClipSeconds;
 }
 
 export type SessionStatus =
@@ -54,8 +55,6 @@ export interface SessionState {
   dropped: number;
   error: string | null;
 }
-
-const SHOT_SECONDS = 5;
 
 type Listener = () => void;
 
@@ -82,6 +81,8 @@ export class Session {
   private firstBeatMs: number | null = null;
   private warnings: string[][] = [];
   private droppedRaw: unknown[] = [];
+  /** WP8: Saskia is generated per scene, not per line (brief §2) — beats of the scene in progress, held until the next beat's scene number changes or the translation ends. */
+  private sceneBuffer: { scene: number; beats: { n: number; text: string }[] } | null = null;
 
   stream: Stream | null = null;
   narrator: Narrator | null = null;
@@ -140,6 +141,15 @@ export class Session {
     this.set({ status: "error", error });
   }
 
+  /** Hand the buffered scene's beats to the narrator as one request. */
+  private flushScene() {
+    const buffered = this.sceneBuffer;
+    this.sceneBuffer = null;
+    if (buffered && buffered.beats.length > 0) {
+      this.narrator?.prefetchScene(buffered.scene, buffered.beats);
+    }
+  }
+
   private async run() {
     const signal = this.controller.signal;
 
@@ -154,7 +164,12 @@ export class Session {
       this.fail("ELEVENLABS_API_KEY is missing from .env.local");
       return;
     }
-    const switches: SessionSwitches = { voice: config.voice, chain: config.chain, render: config.render };
+    const switches: SessionSwitches = {
+      voice: config.voice,
+      chain: config.chain,
+      render: config.render,
+      clipSeconds: config.clipSeconds,
+    };
     // Session ids carry the switches so recordings compare cleanly.
     this.state = {
       ...this.state,
@@ -164,7 +179,7 @@ export class Session {
 
     let stream: Stream;
     try {
-      stream = createRenderer(switches.render, { chain: switches.chain === "on" });
+      stream = createRenderer(switches.render, { chain: switches.chain === "on", clipSeconds: switches.clipSeconds });
     } catch (cause) {
       this.fail(cause instanceof Error ? cause.message : "renderer unavailable");
       return;
@@ -220,13 +235,13 @@ export class Session {
           const warnings = Array.isArray(msg.warnings) ? (msg.warnings as string[]) : [];
           if (this.firstBeatMs === null) this.firstBeatMs = Math.round(performance.now() - this.askedAt);
           this.warnings.push(warnings);
-          const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff });
+          const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff, clipSeconds: switches.clipSeconds });
           previousHandoff = beat.handoff;
           const shot: Shot = {
             n,
             beat,
             prompt,
-            duration: SHOT_SECONDS,
+            duration: switches.clipSeconds,
             chain: switches.chain === "on",
           };
           registerShot(prompt, {
@@ -241,7 +256,14 @@ export class Session {
             translatorVersion: TRANSLATOR_VERSION,
             styleSheetVersion: STYLE_SHEET_VERSION,
           });
-          this.narrator?.prefetch(n, beat.delivery);
+          // WP8: Saskia's narration is generated per scene, not per line
+          // (brief §2): buffer this beat and flush the scene the moment the
+          // next beat starts a new one (or at "done" for the last scene).
+          if (this.narrator) {
+            if (this.sceneBuffer && this.sceneBuffer.scene !== beat.scene) this.flushScene();
+            if (!this.sceneBuffer) this.sceneBuffer = { scene: beat.scene, beats: [] };
+            this.sceneBuffer.beats.push({ n, text: beat.delivery });
+          }
           this.set({ status: "staging", beats: [...this.state.beats, beat] });
           stream.addShots([shot]);
           if (!started) {
@@ -290,6 +312,7 @@ export class Session {
     }
     if (!this.alive) return;
     if (this.state.status === "error") return;
+    this.flushScene();
 
     stream.finish();
     this.set({ status: "done" });

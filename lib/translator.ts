@@ -88,9 +88,19 @@ export interface BeatCheck {
   warnings: string[];
 }
 
-const MAX_LINE_WORDS = 12;
 const MAX_HEADLINE_WORDS = 4;
 const MAX_SUBJECTS = 3;
+
+/**
+ * WP8: the spoken-line word budget scales with clip length so a beat still
+ * reads as one unhurried sentence at its clip's pace — 12 words at 5s (the
+ * limit WP0 measured a native narrator rushing past), 22 at 10s (roughly
+ * double, for one sentence or two short ones, not a list; brief §1).
+ * Mirrored in scripts/check.mjs.
+ */
+export function maxLineWords(clipSeconds: 5 | 10): number {
+  return clipSeconds === 10 ? 22 : 12;
+}
 
 /**
  * Terms that mean a beat's subjects depict a person rather than an object.
@@ -178,7 +188,7 @@ function numbersIn(text: string): string[] {
  * sentence enumerates rather than states as a figure); they never silently
  * rewrite the text.
  */
-export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
+export function validateBeat(raw: unknown, sentences: string[], clipSeconds: 5 | 10 = 5): BeatCheck {
   const warnings: string[] = [];
   if (!raw || typeof raw !== "object") {
     return { ok: false, beat: null, dropped: "not an object", warnings };
@@ -191,8 +201,9 @@ export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
   const line = typeof b.line === "string" ? b.line.trim() : "";
   if (!line) return { ok: false, beat: null, dropped: "no line", warnings };
   const lineWords = wordCount(line);
-  if (lineWords > MAX_LINE_WORDS) {
-    return { ok: false, beat: null, dropped: `line is ${lineWords} words (limit ${MAX_LINE_WORDS})`, warnings };
+  const maxWords = maxLineWords(clipSeconds);
+  if (lineWords > maxWords) {
+    return { ok: false, beat: null, dropped: `line is ${lineWords} words (limit ${maxWords})`, warnings };
   }
 
   const sourceRaw = Array.isArray(b.source) ? b.source : [];
@@ -347,7 +358,7 @@ export function numberSentences(sentences: string[]): string {
  * as a single beat with the link as the headline. Built in code: no model
  * call, no invention. Source is the sentence that carries the link.
  */
-export function deflectionBeat(sentences: string[], link: string): Beat {
+export function deflectionBeat(sentences: string[], link: string, clipSeconds: 5 | 10 = 5): Beat {
   const linkIndex = Math.max(
     0,
     sentences.findIndex((s) => s.includes(link))
@@ -359,7 +370,8 @@ export function deflectionBeat(sentences: string[], link: string): Beat {
     .replace(/[:\s—-]+$/, "")
     .trim();
   const words = spoken.split(/\s+/).filter(Boolean);
-  const line = (words.length > MAX_LINE_WORDS ? words.slice(0, MAX_LINE_WORDS).join(" ") : spoken) ||
+  const maxWords = maxLineWords(clipSeconds);
+  const line = (words.length > maxWords ? words.slice(0, maxWords).join(" ") : spoken) ||
     "This is covered in the Curation showcase.";
   return {
     scene: 1,
@@ -408,8 +420,27 @@ export const EXEMPLAR_NDJSON = [
  * The translator prompt. Numbered rules, because the model follows numbered
  * lists more faithfully than prose. Output is NDJSON so the client can start
  * rendering beat 1 while beats 2..N are still being written.
+ *
+ * WP8: parameterised by clip length. At 10s the line budget widens to
+ * `maxLineWords(10)` (22) and rule 9 gains an instruction to write a beat's
+ * action as two timecoded halves around one internal shape-match cut at
+ * ~5s (brief §1) — the word budget and this internal-cut instruction are
+ * the only translator content changes WP8 makes; everything else (scene
+ * grouping, bookend, style sheet) is unchanged and out of this brief's
+ * scope.
  */
-export const TRANSLATOR_SYSTEM = `You are the Tessera translator. Tessera is CurationAI's video surface: it renders one CurationAI answer as a short programme of five-second paper-collage clips with a presenter voice. You turn the answer into that programme's beats.
+export function translatorSystem(clipSeconds: 5 | 10 = 5): string {
+  const words = maxLineWords(clipSeconds);
+  const lineRule =
+    clipSeconds === 10
+      ? `5. line. One or two short spoken sentences, ${words} words or fewer together — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Never a list of clauses: at most two sentences, each a complete thought. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`
+      : `5. line. One spoken sentence, ${words} words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`;
+  const actionRule =
+    clipSeconds === 10
+      ? `9. action. This shot is ${clipSeconds}s long and may carry one internal shape-match cut at the midpoint: write "action" as two timecoded halves, "[0-5s] ... [5-10s] ...". The first half is one clear cause-and-effect movement with a start and a landing, exactly as in a 5s beat (including, on a beat after the first, how the previous beat's headline chip leaves and the previous handoff shape transforms into this beat's opening subjects). The second half either continues that same movement to a further landing (no internal cut; still write both timecoded halves) or cuts once, mid-shot, to a second composition that develops the same subject further. Either way the shot ends holding on one named "handoff" shape. The whole programme cuts on matching handoff shapes between shots, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`
+      : `9. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat states, in this order: (a) how the previous beat's headline chip leaves — it slides off, flips away, or is covered, so the new headline lands on clear ground — then (b) how the previous handoff shape itself transforms into this beat's subjects. The whole programme cuts on matching handoff shapes, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`;
+
+  return `You are the Tessera translator. Tessera is CurationAI's video surface: it renders one CurationAI answer as a short programme of ${clipSeconds}-second paper-collage clips with a presenter voice. You turn the answer into that programme's beats.
 
 Tessera is a bridge, not a brain. You stage what CurationAI said. You never add a fact.
 
@@ -424,11 +455,11 @@ RULES
 2. source. Every beat lists the index(es) of the sentence(s) it draws on, at least one. Every number and every claim in the line and headline must appear in a cited sentence. A beat without a source is discarded by the player, so never omit it. A headline figure that is a count of items a cited sentence enumerates (e.g. four named acquisitions → "4") is allowed but is flagged for review, so prefer a figure the sentence states outright when one exists.
 3. Skip boilerplate. Headings, the ticker card (company name, "Technology", "Sector", price, "% today", market cap), citation fragments ("Diginex HY25 results", "2 sources", "benzinga.com"), and sign-offs are not content. Do not cite them.
 4. Count and scenes. Write 6 to 10 beats. Group them into scenes of 2 or 3 consecutive beats: a scene shares one "ground" and one persistent primary subject, and changes on a topic turn — where we stand, the mechanism, the dependency or risk, what changes it are natural scene breaks. Number "scene" 1, 2, 3, ... in order; every beat in a scene carries that scene's number. If the answer is a short refusal or a redirect, write 2 to 4 beats that say exactly what it says, still grouped into scenes of 2-3 (never a lone beat unless the whole programme is one beat).
-5. line. One spoken sentence, 12 words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.
+${lineRule}
 6. headline. The words printed on screen: 4 words or fewer, uppercase, digits and symbols allowed ("$1.85M", "1.4 MONTHS", "+293% YOY", "Q2 2026"). One figure or a two-to-four word label, never a sentence. Use null when nothing is worth printing. Every headline figure must appear in a cited sentence (rule 2 covers the one allowed exception).
 7. ground. One of lime, cyan, violet, magenta, held for the whole scene (its two or three beats), then changed at the next scene; never alternated within a scene. Tone: violet sets the scene, magenta is pressure or risk, lime is relief or growth, cyan is structure or explanation. The final beat's ground must equal scene 1's ground: the programme bookends (rule 9).
 8. subjects. One to three halftone paper cutout objects: coins, calendars, documents, screens, machines, buildings, maps, vehicles, arrows, ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, anonymous paper hands. Never a person, a face, a body, a name, a logo, a brand, a flag — a person in the answer (an executive, a founder, a customer) is represented by an object standing for them (a nameplate, a chair, a signature, a desk), never by a figure. A beat whose subjects name a person is discarded, so do not write one. Within a scene, name the primary subject the same way beat to beat so it reads as the one persistent thing (e.g. always "the coin stack", not "the coins" then "the pile").
-9. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat states, in this order: (a) how the previous beat's headline chip leaves — it slides off, flips away, or is covered, so the new headline lands on clear ground — then (b) how the previous handoff shape itself transforms into this beat's subjects. The whole programme cuts on matching handoff shapes, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.
+${actionRule}
 10. handoff. The named shape the beat ends on ("the coin stack", "the torn runway", "the pointing hand"). The next beat's action begins from it. Name it identically every time the same shape recurs (rule 9's bookend depends on this).
 11. hand. true when a paper hand is among this beat's subjects and acts in the action (presses, points, taps, pulls, slides). false otherwise. Never a face or a body, only the hand.
 12. No people, no faces, no logos, no client colours, no text other than the headline.
@@ -436,8 +467,12 @@ RULES
 14. scale. One of oversized (one subject fills the frame), small (a single subject alone on open ground), diagram (several elements arranged together). Vary it beat to beat; never hold the same value for three beats running.
 15. delivery. The line field, optionally with one expression tag in square brackets inserted before or within it, from this whitelist only: [presenting to camera], [excited], [fast-paced]. At most one tag per beat. Most beats carry none — about three tags across a six-to-ten-beat programme is right: [presenting to camera] on the opener, one [excited] or [fast-paced] on the hero beat or a turn in the story, none on the close. A flat line is better than an over-acted one. Removing the tags from delivery must leave exactly the line field, character for character.
 
-EXAMPLE (from a different answer; match its shape and tone, do not copy its facts):
+EXAMPLE (from a different answer, a 5s-clip programme; match its shape and tone, do not copy its facts):
 ${EXEMPLAR_NDJSON}`;
+}
+
+/** The default (5s) translator system prompt, kept for anything not clip-length-aware. */
+export const TRANSLATOR_SYSTEM = translatorSystem(5);
 
 export function translatorUserPrompt(question: string, sentences: string[]): string {
   return `QUESTION: ${question}\n\nSENTENCES:\n${numberSentences(sentences)}\n\nWrite the beats now. One JSON object per line.`;

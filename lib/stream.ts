@@ -71,8 +71,13 @@ export interface StreamState {
   error: string | null;
 }
 
-/** Keep at most this many rendered clips waiting. */
-const MAX_BUFFER = 3;
+/**
+ * WP8: the render buffer target is expressed in seconds of playback held in
+ * reserve, not a clip count, so it means the same thing at any CLIP_SECONDS
+ * (brief §1) — keep rendering ahead while less than this many seconds of
+ * ready-or-rendering clips are on hand.
+ */
+const MIN_BUFFER_SECONDS = 10;
 /** Unchained programmes render this many hard cuts at once. */
 const UNCHAINED_PARALLEL = 2;
 /**
@@ -108,7 +113,11 @@ export class Stream {
   private renderTimes: number[] = [];
   private seed = Math.floor(Math.random() * 1_000_000);
 
-  constructor(private readonly chain: boolean) {
+  constructor(
+    private readonly chain: boolean,
+    /** WP8: CLIP_SECONDS (lib/config.ts) — every shot in a programme is this long. */
+    private readonly clipSeconds: number = 5
+  ) {
     this.state = {
       phase: "starting",
       current: null,
@@ -185,7 +194,7 @@ export class Stream {
     const parallel = this.isStory ? 1 : UNCHAINED_PARALLEL;
     while (
       this.inFlight < parallel &&
-      this.queue.length + this.inFlight < MAX_BUFFER &&
+      (this.queue.length + this.inFlight) * this.clipSeconds < MIN_BUFFER_SECONDS &&
       this.nextShotIndex < this.shots.length
     ) {
       // A chained shot is rendering: its last frame is what the next shot
