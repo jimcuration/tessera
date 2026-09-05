@@ -1,179 +1,266 @@
 {
-  "translator": "translator-v0.3",
+  "translator": "translator-v0.4",
   "question": "What is Diginex",
   "beats": [
     {
-      "line": "Diginex is building one platform for sustainability, data and compliance.",
+      "scene": 1,
+      "line": "Diginex is repositioning as a unified sustainability, data and compliance platform.",
       "headline": "ONE PLATFORM",
       "ground": "violet",
       "subjects": [
-        "stacked paper sheets",
+        "a paper platform slab",
         "a cream paper chip"
       ],
-      "action": "Loose halftone sheets drift in and press together into one stack on a cream chip.",
-      "handoff": "the stacked sheets",
+      "events": [
+        "A flat paper platform slab drops onto empty violet ground, opening cold.",
+        "The slab settles as a cream chip slides in beside it.",
+        "A paper hand presses the chip flat against the slab's edge."
+      ],
+      "hand": true,
+      "labels": [
+        "DGNX"
+      ],
+      "handoff": "the platform slab",
       "hero": false,
       "scale": "oversized",
-      "delivery": "[presenting to camera] Diginex is building one platform for sustainability, data and compliance.",
+      "delivery": "[presenting to camera] Diginex is repositioning as a unified sustainability, data and compliance platform.",
       "source": [
-        1,
-        2
+        1
       ]
     },
     {
-      "line": "Its software helps organisations report climate and supply-chain data.",
+      "scene": 1,
+      "line": "Its software helps organisations collect, manage and report ESG data.",
       "headline": "ESG REPORTING",
       "ground": "violet",
       "subjects": [
-        "a paper document",
-        "grid paper"
+        "the platform slab",
+        "stacked paper sheets"
       ],
-      "action": "The previous chip slides off the top edge as the stacked sheets unfold into a document laid over grid paper.",
-      "handoff": "the document",
+      "events": [
+        "The platform slab, already in place, is joined by stacked paper sheets entering from the edge.",
+        "The sheets fan out across the slab and square themselves into a neat pile.",
+        "A black chip slaps in beneath the pile, which stays where it landed."
+      ],
+      "hand": false,
+      "labels": [
+        "supply-chain data"
+      ],
+      "handoff": "the stacked sheets",
       "hero": false,
-      "scale": "small",
-      "delivery": "Its software helps organisations report climate and supply-chain data.",
+      "scale": "diagram",
+      "delivery": "Its software helps organisations collect, manage and report ESG data.",
       "source": [
         2
       ]
     },
     {
-      "line": "Four businesses have been absorbed, including the pivotal Resulticks deal.",
+      "scene": 2,
+      "line": "Four businesses absorbed: Plan A, Matter, The Remedy Project, Resulticks.",
       "headline": "4 ACQUISITIONS",
       "ground": "cyan",
       "subjects": [
-        "four paper building shapes",
+        "four hole-punched tags",
         "string and pins"
       ],
-      "action": "The previous chip flips away as the document folds into four small paper buildings; string and pins link them together.",
-      "handoff": "the linked buildings",
+      "events": [
+        "The violet chips slide off the bottom edge as the stacked sheets flip away onto fresh cyan ground.",
+        "Four hole-punched tags drop in and are threaded onto a single string.",
+        "A paper hand pulls the string taut and the tags line up."
+      ],
+      "hand": true,
+      "labels": [
+        "Plan A"
+      ],
+      "handoff": "the threaded tags",
       "hero": false,
       "scale": "diagram",
-      "delivery": "[fast-paced] Four businesses have been absorbed, including the pivotal Resulticks deal.",
+      "delivery": "Four businesses absorbed: Plan A, Matter, The Remedy Project, Resulticks.",
       "source": [
-        3,
-        20,
         25
       ]
     },
     {
-      "line": "That Resulticks acquisition was valued at one point five billion dollars.",
-      "headline": "$1.5B",
+      "scene": 2,
+      "line": "The one point five billion dollar Resulticks deal is the pivotal move.",
+      "headline": "$1.5B RESULTICKS",
       "ground": "cyan",
       "subjects": [
-        "a stack of paper coins",
-        "a rubber stamp"
+        "the threaded tags",
+        "an oversized rubber stamp"
       ],
-      "action": "The previous chip is covered as the linked buildings collapse into a tall coin stack; a rubber stamp presses down on it.",
-      "handoff": "the coin stack",
+      "events": [
+        "The threaded tags stay strung as an oversized rubber stamp swings in from above.",
+        "The stamp presses down hard over the last tag on the string.",
+        "A large black chip slaps in and the hero figure prints big."
+      ],
+      "hand": true,
+      "labels": [
+        "pivotal move"
+      ],
+      "handoff": "the rubber stamp",
       "hero": true,
       "scale": "oversized",
-      "delivery": "[excited] That Resulticks acquisition was valued at one point five billion dollars.",
+      "delivery": "[excited] The one point five billion dollar Resulticks deal is the pivotal move.",
       "source": [
-        15
+        15,
+        20
       ]
     },
     {
-      "line": "Integration across many jurisdictions is the primary risk here.",
+      "scene": 2,
+      "line": "The platform spans carbon accounting, supply chain transparency and human rights.",
+      "headline": "END-TO-END",
+      "ground": "cyan",
+      "subjects": [
+        "the threaded tags",
+        "a folded paper map"
+      ],
+      "events": [
+        "The threaded tags and stamp hold position as a folded paper map opens beneath them.",
+        "The map unfolds into four labelled panels under the string of tags.",
+        "A black chip slaps onto the map's corner and holds."
+      ],
+      "hand": false,
+      "labels": [
+        "end-to-end platform"
+      ],
+      "handoff": "the paper map",
+      "hero": false,
+      "scale": "small",
+      "delivery": "The platform spans carbon accounting, supply chain transparency and human rights.",
+      "source": [
+        3
+      ]
+    },
+    {
+      "scene": 3,
+      "line": "As of early September twenty twenty-six, shares trade at one dollar sixteen.",
+      "headline": "$1.16",
+      "ground": "magenta",
+      "subjects": [
+        "a paper bar chart",
+        "a torn strip"
+      ],
+      "events": [
+        "The cyan chips slide off as the paper map is covered over on magenta ground.",
+        "A paper bar chart rises, then its bars tear down to a short strip.",
+        "A black chip slaps in beside the torn strip and stays."
+      ],
+      "hand": false,
+      "labels": [
+        "$34M"
+      ],
+      "handoff": "the paper bar chart",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[fast-paced] As of early September twenty twenty-six, shares trade at one dollar sixteen.",
+      "source": [
+        14
+      ]
+    },
+    {
+      "scene": 3,
+      "line": "Integration execution across multiple jurisdictions is the primary risk.",
       "headline": "INTEGRATION RISK",
       "ground": "magenta",
       "subjects": [
-        "a torn paper map",
+        "the paper bar chart",
         "paper clips"
       ],
-      "action": "The previous chip slides off as the coin stack flattens into a torn paper map; clips pin its separated pieces.",
-      "handoff": "the torn map",
+      "events": [
+        "The bar chart holds its place as loose paper clips scatter in from the edge.",
+        "A paper hand tries to clip four separate sheets into one bundle.",
+        "The bundle bulges and a black chip slaps in over it."
+      ],
+      "hand": true,
+      "labels": [
+        "multiple jurisdictions"
+      ],
+      "handoff": "the clipped bundle",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Integration across many jurisdictions is the primary risk here.",
+      "delivery": "Integration execution across multiple jurisdictions is the primary risk.",
       "source": [
         24,
         25
       ]
     },
     {
-      "line": "Admin costs rose three point four million, to eight point one million.",
+      "scene": 3,
+      "line": "Admin expenses rose three point four million to eight point one million.",
       "headline": "G&A $8.1M",
       "ground": "magenta",
       "subjects": [
-        "a paper bar chart",
-        "a torn strip"
+        "the paper bar chart",
+        "paper coins"
       ],
-      "action": "The previous chip flips down as the torn map folds upward into a rising paper bar chart; a torn strip marks the top bar.",
-      "handoff": "the bar chart",
+      "events": [
+        "The clipped bundle and its chip stay put as paper coins pour in from above.",
+        "The coins pile against the bar chart until one bar grows taller.",
+        "A black chip slaps in over the tall bar and locks."
+      ],
+      "hand": false,
+      "labels": [
+        "$2.2M"
+      ],
+      "handoff": "the tall bar",
       "hero": false,
       "scale": "small",
-      "delivery": "Admin costs rose three point four million, to eight point one million.",
+      "delivery": "Admin expenses rose three point four million to eight point one million.",
       "source": [
         26
       ]
     },
     {
-      "line": "By early September, shares traded at one dollar sixteen.",
-      "headline": "$1.16",
-      "ground": "magenta",
+      "scene": 4,
+      "line": "Brazil's seventy-seven billion dollar sustainability market is a signalled growth vector.",
+      "headline": "$77B BRAZIL",
+      "ground": "violet",
       "subjects": [
-        "a paper price tag",
-        "a torn-paper arrow"
-      ],
-      "action": "The previous chip is covered as the bar chart shears into a torn-paper arrow pointing down to a hanging price tag.",
-      "handoff": "the price tag",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "By early September, shares traded at one dollar sixteen.",
-      "source": [
-        14
-      ]
-    },
-    {
-      "line": "Market capitalisation sits around thirty-four million dollars.",
-      "headline": "~$34M CAP",
-      "ground": "lime",
-      "subjects": [
-        "a small paper coin",
-        "open grid paper"
-      ],
-      "action": "The previous chip slides off as the price tag shrinks into a single small coin alone on open grid paper.",
-      "handoff": "the single coin",
-      "hero": false,
-      "scale": "small",
-      "delivery": "Market capitalisation sits around thirty-four million dollars.",
-      "source": [
-        14
-      ]
-    },
-    {
-      "line": "Diginex has signalled focus on Brazil's seventy-seven billion dollar market.",
-      "headline": "BRAZIL $77B",
-      "ground": "lime",
-      "subjects": [
-        "a paper map",
+        "the platform slab",
         "a stencilled arrow"
       ],
-      "action": "The previous chip flips away as the single coin widens into a paper map; a stencilled arrow lands across it.",
+      "events": [
+        "The magenta chips slide off the top edge as the platform slab returns on violet ground.",
+        "A stencilled arrow enters and sweeps outward from the slab.",
+        "A black chip slaps in at the arrow's tip and holds."
+      ],
+      "hand": false,
+      "labels": [
+        "geographic diversification"
+      ],
       "handoff": "the stencilled arrow",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Diginex has signalled focus on Brazil's seventy-seven billion dollar market.",
+      "delivery": "Brazil's seventy-seven billion dollar sustainability market is a signalled growth vector.",
       "source": [
         35
       ]
     },
     {
-      "line": "For now, it's a speculative name needing patience and conviction.",
+      "scene": 4,
+      "line": "A speculative micro-cap, suited to investors with patience for integration.",
       "headline": "SPECULATIVE",
-      "ground": "lime",
+      "ground": "violet",
       "subjects": [
-        "a hole-punched tag",
-        "a paper hand"
+        "the platform slab",
+        "a hole-punched tag"
       ],
-      "action": "The previous chip is covered as the stencilled arrow rolls into a hole-punched tag; a paper hand enters and holds it still.",
-      "handoff": "the held tag",
+      "events": [
+        "The stencilled arrow rolls away, leaving the platform slab exactly where it sat.",
+        "A single hole-punched tag ties onto the slab, the one new element.",
+        "A paper hand presses the tag flat and a black chip lands."
+      ],
+      "hand": true,
+      "labels": [
+        "higher-risk, speculative"
+      ],
+      "handoff": "the platform slab",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "For now, it's a speculative name needing patience and conviction.",
+      "scale": "small",
+      "delivery": "A speculative micro-cap, suited to investors with patience for integration.",
       "source": [
-        38,
         39
       ]
     }
@@ -183,7 +270,7 @@
     [],
     [],
     [
-      "headline number \"4\" not found as a figure in cited sentences [3,20,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
+      "headline number \"4\" not found as a figure in cited sentences [25] (fine if it is a count of items those sentences enumerate; flagged either way)"
     ],
     [],
     [],
@@ -194,5 +281,5 @@
     []
   ],
   "model": "claude-opus-5",
-  "ms": 17666
+  "ms": 47510
 }

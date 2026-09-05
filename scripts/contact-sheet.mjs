@@ -1,8 +1,11 @@
 // Contact sheet of one frame per clip in a recorded session.
 //
-//   node scripts/contact-sheet.mjs recordings/<session> [--at first|mid|last] [--out file.jpg] [--cols 3]
+//   node scripts/contact-sheet.mjs recordings/<session> [--at first|mid|last|<seconds>] [--out file.jpg] [--cols 3]
 //
 // Default: first frames, written to recordings/<session>/contact-<at>.jpg.
+// --at also takes a plain number of seconds (e.g. --at 1, --at 3, --at 5),
+// clamped to the clip's own duration — used for WP5's per-beat event-count
+// sheets at the 1s/3s/5s windows.
 
 import { existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -38,7 +41,14 @@ for (const clip of clips) {
   const file = path.join(dir, clip);
   const n = parseInt(clip);
   const duration = durationOf(file) ?? 5;
-  const seek = at === "first" ? 0 : at === "last" ? Math.max(0, duration - 0.1) : duration / 2;
+  const atSeconds = Number(at);
+  const seek = !Number.isNaN(atSeconds)
+    ? Math.min(Math.max(0, atSeconds), Math.max(0, duration - 0.1))
+    : at === "first"
+      ? 0
+      : at === "last"
+        ? Math.max(0, duration - 0.1)
+        : duration / 2;
   const frame = path.join(work, `${String(n).padStart(2, "0")}.png`);
   // Label each tile with its beat number so the sheet reads left to right.
   ffmpeg([

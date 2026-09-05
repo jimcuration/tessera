@@ -61,9 +61,19 @@ const voice = arg("voice") as Voice | null;
 const chain = arg("chain") as "on" | "off" | null;
 const base = arg("base", "http://localhost:3100");
 const suffix = arg("suffix");
-if (!question || (voice !== "native" && voice !== "saskia") || (chain !== "on" && chain !== "off")) {
+// Record-keeping only (WP5 §3): MUSIC doesn't change the clip prompt or the
+// fal call, only whether the player layers a music bed under the narration
+// at playback time, so this flag doesn't branch renderOne — it just tags
+// the session so two sessions rendered from identical clips are told apart.
+const music = (arg("music", "off") as "on" | "off" | null) ?? "off";
+if (
+  !question ||
+  (voice !== "native" && voice !== "saskia") ||
+  (chain !== "on" && chain !== "off") ||
+  (music !== "on" && music !== "off")
+) {
   console.error(
-    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--base url] [--suffix name]'
+    'usage: npx tsx scripts/render.mts --question "..." --voice native|saskia --chain on|off [--music on|off] [--base url] [--suffix name]'
   );
   process.exit(1);
 }
@@ -225,10 +235,16 @@ async function main() {
 
   const sentences = (answer.sentences as string[]) ?? [];
   let previousHandoff: string | null = null;
+  let previousScene: number | null = null;
   let lastFrame: string | undefined;
 
   async function renderOne({ n, beat, warnings }: { n: number; beat: Beat; warnings: string[] }, fromFrame: string | undefined) {
-    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null });
+    const { prompt } = compilePrompt({
+      beat,
+      voice: voice as Voice,
+      previousHandoff: fromFrame ? previousHandoff : null,
+      previousScene: fromFrame ? previousScene : null,
+    });
     const clip = await generateClip({ prompt, fromFrame });
     await post("/api/record", {
       kind: "clip",
@@ -264,6 +280,7 @@ async function main() {
     for (const item of beats) {
       const clip = await renderOne(item, lastFrame);
       previousHandoff = item.beat.handoff;
+      previousScene = item.beat.scene;
       lastFrame = await lastFrameOf(clip.rawUrl);
     }
   } else {
@@ -285,7 +302,7 @@ async function main() {
     followups: answer.followups,
     fromSpine: answer.fromSpine,
     sentences,
-    switches: { voice, chain, render: "queue" },
+    switches: { voice, chain, music, render: "queue" },
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
     translateSource,

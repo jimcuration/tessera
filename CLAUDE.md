@@ -29,8 +29,8 @@ This repo is a fork of `blendi-remade/unreel` (MIT). Its runtime — shot queue,
 4. **Model.** `minimax/h3-max-turbo/text-to-video` and `minimax/h3-max-turbo/image-to-video`, 480p, 16:9, 5-second clips.
 5. **No client branding.** Tessera is always Curation style. No client logos, colours or bespoke looks.
 6. **No recognisable people** in generated imagery. Objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands.
-7. **Save everything.** Every clip, prompt and `expanded_prompt` goes to `recordings/` with the beat that produced it.
-8. **One session per checkout.** Parallel work packages use separate git worktrees on their own branches; never run `npm run build` in a checkout where a dev server is running.
+7. **Save everything.** Every clip, prompt and `expanded_prompt` goes to `RECORDINGS_DIR` with the beat that produced it.
+8. **One session per checkout.** Parallel work packages use separate git worktrees on their own branches; never run `npm run build` in a checkout where a dev server is running. `RECORDINGS_DIR` (`lib/config.ts`, default `../tessera-recordings`) is one folder shared by the main checkout and every worktree, so parallel work packages' recordings land in one place instead of scattering across disconnected `recordings/` folders. Set it in each checkout's own `.env.local` only if you deliberately want that checkout's recordings kept apart.
 
 ## The beat
 
@@ -38,11 +38,14 @@ The translator turns one CurationAI answer into a sequence of beats. One beat = 
 
 ```json
 {
+  "scene": "1-based; beats sharing a scene share ground and a persistent primary subject, in runs of 2-3",
   "line": "spoken sentence, 12 words or fewer",
   "headline": "on-screen words, 4 or fewer, or null",
-  "ground": "lime | cyan | violet | magenta",
+  "ground": "lime | cyan | violet | magenta, held for the whole scene",
   "subjects": ["halftone cutout objects, 1–3"],
-  "action": "one clear cause-and-effect movement",
+  "events": ["[0-1.5s] enter", "[1.5-3.5s] act", "[3.5-5s] react or label lands"],
+  "hand": "true when the recurring paper hand acts this beat; true in at least half the programme",
+  "labels": ["up to two short data chips, ≤3 words or one figure, verbatim from the cited sentence"],
   "handoff": "the named shape this beat ends on, which the next beat transforms",
   "hero": "true on at most one beat per programme: the one carrying the answer's central figure",
   "scale": "oversized | small | diagram — varies beat to beat, never three-in-a-row the same",
@@ -51,25 +54,28 @@ The translator turns one CurationAI answer into a sequence of beats. One beat = 
 }
 ```
 
-`source` indexes sentences in the CurationAI answer. The translator prompt lives in `lib/translator.ts` and is versioned alongside the style sheet.
+`source` indexes sentences in the CurationAI answer. The final beat is the bookend: its `ground` matches scene 1's, and its `handoff` is the exact string scene 1's first beat used. The translator prompt lives in `lib/translator.ts` and is versioned alongside the style sheet.
 
-## Tessera Style Sheet v0.3
+## Tessera Style Sheet v0.4
 
-Every clip prompt = STYLE SHEET + BEAT + COPY LIST + AUDIO BLOCK. The style sheet is a numbered list because fal's prompt rewriter copies numbered lists and paraphrases prose. Keep it numbered. WP0 found fal's rewriter drops any line phrased as a prohibition (0/18 survival on "no brands" and "numbers never count up") while descriptive lines survive; v0.2 states everything as a description of the world, with a prohibition appended only where a description alone would not do. v0.2's line 6 ("no glow, neon, bloom") kept a literal prohibition tail and survived *worse* than v0.1 (7/18 vs 11/18, WP2 report §6); v0.3 deletes it as a standalone line and folds its content into line 3. Line 4's vocabulary is widened and line 7 (headline typography) now caps width at a third of the frame unless the beat is marked `hero`; a new line 8 varies composition scale beat to beat — both answer Robin's WP3 note ("refine with more elements and more variety... the text is too big and feels clumsy").
+Every clip prompt = STYLE SHEET + BEAT + COPY LIST + AUDIO BLOCK. The style sheet is a numbered list because fal's prompt rewriter copies numbered lists and paraphrases prose. Keep it numbered. WP0 found fal's rewriter drops any line phrased as a prohibition (0/18 survival on "no brands" and "numbers never count up") while descriptive lines survive; v0.2 states everything as a description of the world, with a prohibition appended only where a description alone would not do. v0.2's line 6 ("no glow, neon, bloom") kept a literal prohibition tail and survived *worse* than v0.1 (7/18 vs 11/18, WP2 report §6); v0.3 deleted it as a standalone line, folded its content into line 3, capped headline width at a third of the frame unless the beat is marked `hero` (line 7), and added scale variety (line 8). v0.4 (WP5, watching `briefs/reference/halftone-science-short.mp4`) makes a multi-beat programme read as one piece: line 2's grounds are now deep and saturated, held for a whole scene rather than one beat; line 7 moves headline and label type to cream-or-pale-yellow on black chips only; three lines are new — accumulation (12), the recurring paper hand (13), and one hot ribbon colour per programme (14). Headline width itself stays a WP3.1 question, untouched here.
 
 1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.
-2. One flat block-colour paper ground fills the frame: lime green, pale cyan, soft violet or deep magenta, as the beat specifies. The ground is a single unbroken colour.
-3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.
-4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.
+2. One deep, saturated block-colour paper ground fills the frame: saturated lime, deep cyan, rich violet or deep magenta, as the beat specifies. The ground holds its colour for the whole scene. The ground is a single unbroken colour.
+3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks. This rule extends to every tag, card, document and photograph in the frame: each shows a blank or abstract paper surface, texture, or halftone pattern only, the way a coin or a screen does — never a person's face, portrait or headshot, printed or photographic, however small or partial.
+4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots. A tag or card standing for a company, deal or acquisition is a blank rectangle of textured paper, the same as a coin or a screen — not a photograph or portrait.
 5. One consistent light from the upper left; each paper layer casts a small soft shadow.
-6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.
-7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.
+6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous scene's composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.
+7. Headline and label typography: extra-bold sans-serif in cream or pale-yellow, printed on black paper chips. The headline chip is one line, no wider than a third of the frame width, with safe margins, sitting clear of the subjects; label chips are small, two words or a figure. Letterforms are accurate, complete and stable from the frame they appear in; each chip is printed once, slaps into place as a piece of paper, and then holds without redrawing. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.
 8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.
 9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.
 10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.
 11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.
+12. Within a scene the composition accumulates: elements already in place stay exactly where they are while new elements arrive; the frame is fuller at the end of the beat than at the start.
+13. An anonymous paper hand, black-and-white halftone with a torn white edge, is the recurring actor: it presses, points, pulls ribbons and slides chips into place, entering from the frame edge.
+14. Ribbons and diagram elements use one hot contrasting paper colour per programme (a saturated orange or red-orange), plus cream and black.
 
-Copy list block (this block survived every render; the number rule and the text rule now live here): "On-screen text: [exact strings]. These strings are printed complete and correct from their first visible frame and never change. They are the only lettering in the frame."
+Copy list block (this block survived every render; the number rule and the text rule now live here): "On-screen text: [headline], [label 1], [label 2]. These strings are printed complete and correct from their first visible frame and never change. They are the only lettering in the frame."
 
 Audio block (default, wordless): "No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music."
 

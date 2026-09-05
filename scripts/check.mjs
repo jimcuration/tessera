@@ -1,17 +1,24 @@
 // npm run check — the translator rule, enforced after the fact.
 //
-// Scans every recorded beat (recordings/<session>/<n>.json) and every
-// translation (data/translations/*.json) and fails any beat with no
+// Scans every recorded beat (<RECORDINGS_DIR>/<session>/<n>.json — see
+// lib/config.ts#recordingsDir, default ../tessera-recordings, shared by
+// every checkout and worktree) and every translation
+// (data/translations/*.json) and fails any beat with no
 // source, a source index outside its answer's sentences, a line over 12
-// words, a subject that names a person, or a `delivery` whose stripped
-// text differs from `line` or that uses a tag outside the whitelist
-// (translator v0.3; mirrors validateBeat in lib/translator.ts). Also fails
-// a programme (one session or one cached translation) with more than one
-// `hero` beat, or the same `scale` held for three beats running (mirrors
-// validateProgramme). Exits non-zero if any is found. Soft warnings
-// (headline length, a headline number not stated as a figure in the cited
-// sentences — fine if it's a count of items those sentences enumerate) are
-// listed but do not fail the check.
+// words, a subject that names a person, a `delivery` whose stripped text
+// differs from `line` or that uses a tag outside the whitelist, an
+// `events` array without exactly three entries, or (when the beat's cited
+// sentences are known — session recordings only, not cached translations)
+// a `labels` entry not found verbatim in them (translator v0.4; mirrors
+// validateBeat in lib/translator.ts). Also fails a programme (one session
+// or one cached translation) with more than one `hero` beat, the same
+// `scale` held for three beats running, a `scene` that is not a run of 2-3
+// consecutive beats, or (multi-beat programmes only) a final beat whose
+// `ground` does not match scene 1's (mirrors validateProgramme). Exits
+// non-zero if any is found. Soft warnings (headline length, a headline
+// number not stated as a figure in the cited sentences — fine if it's a
+// count of items those sentences enumerate) are listed but do not fail the
+// check.
 //
 //   node scripts/check.mjs                 everything
 //   node scripts/check.mjs recordings/<session>
@@ -22,11 +29,49 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const RECORDINGS = path.join(ROOT, "recordings");
+
+/** Mirrors loadEnvLocal in scripts/render.mts: only sets what isn't already set. */
+function loadEnvLocal() {
+  let text;
+  try {
+    text = readFileSync(path.join(ROOT, ".env.local"), "utf8");
+  } catch {
+    return;
+  }
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const eq = line.indexOf("=");
+    if (eq === -1) continue;
+    const key = line.slice(0, eq).trim();
+    let value = line.slice(eq + 1).trim();
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    if (!(key in process.env)) process.env[key] = value;
+  }
+}
+loadEnvLocal();
+
+/** Mirrors recordingsDir in lib/config.ts: shared across checkouts and worktrees by default. */
+const RECORDINGS = path.resolve(ROOT, (process.env.RECORDINGS_DIR ?? "").trim() || "../tessera-recordings");
 const TRANSLATIONS = path.join(ROOT, "data", "translations");
+
+/**
+ * Mirrors TRANSLATOR_VERSION in lib/translator.ts. A session or a cached
+ * translation recorded under an earlier translator version predates this
+ * version's rules by construction (e.g. every pre-v0.4 beat has no `scene`
+ * or `events`, because those fields didn't exist yet) — exactly the same
+ * staleness app/api/translate/route.ts already checks before ever serving
+ * a cached translation. Checking it here too means a translator version
+ * bump doesn't turn every past recording permanently red; rule 7 keeps
+ * them on disk as a historical record regardless.
+ */
+const CURRENT_TRANSLATOR_VERSION = "translator-v0.4";
 
 const MAX_LINE_WORDS = 12;
 const MAX_HEADLINE_WORDS = 4;
+const MAX_LABEL_WORDS = 3;
 
 /** Mirrors PEOPLE_LEXICON in lib/translator.ts. */
 const PEOPLE_LEXICON = [
@@ -39,6 +84,22 @@ const PEOPLE_LEXICON = [
 
 const words = (t) => String(t ?? "").trim().split(/\s+/).filter(Boolean).length;
 const numbersIn = (t) => (String(t ?? "").match(/\d[\d,]*(?:\.\d+)?/g) ?? []).map((n) => n.replace(/,/g, ""));
+
+/** Mirrors normaliseForMatch in lib/translator.ts. */
+function normaliseForMatch(text) {
+  return String(text ?? "").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
+}
+
+/** Mirrors labelFoundInSentences in lib/translator.ts. */
+function labelFoundInSentences(label, cited) {
+  const nums = numbersIn(label);
+  if (nums.length > 0) {
+    const citedNums = numbersIn(cited);
+    return nums.every((n) => citedNums.includes(n));
+  }
+  const needle = normaliseForMatch(label);
+  return needle !== "" && normaliseForMatch(cited).includes(needle);
+}
 
 /** Mirrors DELIVERY_TAGS in lib/translator.ts. */
 const DELIVERY_TAGS = ["presenting to camera", "excited", "fast-paced"];
@@ -66,24 +127,36 @@ function subjectNamesPerson(subject) {
   return null;
 }
 
-/** Mirrors validateBeat in lib/translator.ts: hard = source/length/people, soft = the rest. */
+/** Mirrors validateBeat in lib/translator.ts: hard = source/length/people/events/labels, soft = the rest. */
 function checkBeat(beat, sentences) {
   const hard = [];
   const soft = [];
   const source = Array.isArray(beat?.source) ? beat.source : [];
   const valid = source.filter((i) => Number.isInteger(i) && i >= 0 && (sentences === null || i < sentences.length));
   if (valid.length === 0) hard.push("no source");
+  if (!(Number.isInteger(beat?.scene) && beat.scene > 0)) hard.push("no scene (positive integer)");
   if (!beat?.line) hard.push("no line");
   if (words(beat?.line) > MAX_LINE_WORDS) hard.push(`line is ${words(beat.line)} words (limit ${MAX_LINE_WORDS})`);
   for (const subject of Array.isArray(beat?.subjects) ? beat.subjects : []) {
     const person = subjectNamesPerson(String(subject));
     if (person) hard.push(`subject "${subject}" names a person (${person})`);
   }
+  const events = Array.isArray(beat?.events) ? beat.events.filter((e) => typeof e === "string" && e.trim()) : [];
+  if (events.length !== 3) hard.push(`expected exactly 3 timed events, got ${events.length}`);
   if (beat?.headline && words(beat.headline) > MAX_HEADLINE_WORDS) soft.push(`headline is ${words(beat.headline)} words`);
-  if (beat?.headline && sentences && valid.length) {
-    const cited = valid.map((i) => sentences[i]).join(" ").replace(/,/g, "");
+  const cited = sentences && valid.length ? valid.map((i) => sentences[i]).join(" ").replace(/,/g, "") : null;
+  if (beat?.headline && cited !== null) {
     for (const n of numbersIn(beat.headline)) {
       if (!cited.includes(n)) soft.push(`headline number "${n}" not stated as a figure in cited sentences (ok if a derived count)`);
+    }
+  }
+  const labels = Array.isArray(beat?.labels) ? beat.labels.filter((l) => typeof l === "string" && l.trim()) : [];
+  for (const label of labels) {
+    if (words(label) > MAX_LABEL_WORDS && numbersIn(label).length === 0) {
+      soft.push(`label "${label}" is ${words(label)} words (limit ${MAX_LABEL_WORDS} unless it is a figure)`);
+    }
+    if (cited !== null && !labelFoundInSentences(label, cited)) {
+      hard.push(`label "${label}" not found verbatim in cited sentences`);
     }
   }
 
@@ -101,7 +174,23 @@ function checkBeat(beat, sentences) {
   return { hard, soft };
 }
 
-/** Mirrors validateProgramme in lib/translator.ts: at most one hero, no 3-in-a-row scale. */
+/** Runs of consecutive beats sharing a `scene` number. Mirrors sceneRuns in lib/translator.ts. */
+function sceneRuns(beats) {
+  const runs = [];
+  for (const beat of beats) {
+    const last = runs[runs.length - 1];
+    if (last && last[0]?.scene === beat?.scene) last.push(beat);
+    else runs.push([beat]);
+  }
+  return runs;
+}
+
+/**
+ * Mirrors validateProgramme in lib/translator.ts: at most one hero, no
+ * 3-in-a-row scale, every scene a run of 2-3 beats, and (multi-beat
+ * programmes only — a one-beat deflection is exempt by construction) the
+ * final beat's ground bookending scene 1's.
+ */
 function checkProgramme(label, beats) {
   const progFailures = [];
   const heroes = beats.filter((b) => b?.hero === true).length;
@@ -110,6 +199,18 @@ function checkProgramme(label, beats) {
     const [a, b, c] = [beats[i], beats[i + 1], beats[i + 2]];
     if (a?.scale && a.scale === b?.scale && b.scale === c?.scale) {
       progFailures.push(`scale "${a.scale}" repeats for beats ${i + 1}-${i + 3}`);
+    }
+  }
+  if (beats.length > 1) {
+    for (const run of sceneRuns(beats)) {
+      if (run.length < 2 || run.length > 3) {
+        progFailures.push(`scene ${run[0]?.scene} has ${run.length} beat(s) (expected 2-3)`);
+      }
+    }
+    if (beats[0]?.ground !== beats[beats.length - 1]?.ground) {
+      progFailures.push(
+        `final beat's ground "${beats[beats.length - 1]?.ground}" does not bookend scene 1's ground "${beats[0]?.ground}"`
+      );
     }
   }
   for (const f of progFailures) {
@@ -145,6 +246,10 @@ function report(label, beat, sentences) {
 
 function checkSession(dir) {
   const manifest = readJson(path.join(dir, "session.json"));
+  if (manifest?.translatorVersion && manifest.translatorVersion !== CURRENT_TRANSLATOR_VERSION) {
+    console.log(`info  ${path.relative(ROOT, dir)}: recorded under ${manifest.translatorVersion}, not ${CURRENT_TRANSLATOR_VERSION}; skipped`);
+    return;
+  }
   const sentences = manifest && Array.isArray(manifest.sentences) ? manifest.sentences : null;
   const files = readdirSync(dir).filter((f) => /^\d+\.json$/.test(f)).sort((a, b) => parseInt(a) - parseInt(b));
   const beats = [];
@@ -163,6 +268,10 @@ function checkSession(dir) {
 function checkTranslation(file) {
   const t = readJson(file);
   if (!t || !Array.isArray(t.beats)) return;
+  if (t.translator && t.translator !== CURRENT_TRANSLATOR_VERSION) {
+    console.log(`info  ${path.relative(ROOT, file)}: cached under ${t.translator}, not ${CURRENT_TRANSLATOR_VERSION}; skipped (served live, not from cache)`);
+    return;
+  }
   // Translations do not carry the sentences; index bounds are checked at run time.
   t.beats.forEach((beat, i) => report(`${path.relative(ROOT, file)}#${i + 1}`, beat, null));
   checkProgramme(path.relative(ROOT, file), t.beats);

@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { type NextRequest } from "next/server";
+import { recordingsDir } from "@/lib/config";
 import { durationOf } from "../../../scripts/ffmpeg.mjs";
 
 export const dynamic = "force-dynamic";
@@ -11,11 +12,13 @@ export const runtime = "nodejs";
  * line, with at most one expression tag from lib/translator.ts's
  * DELIVERY_TAGS whitelist). The key never leaves the server. POST
  * {text, session?, n?} → audio/mpeg. When session and n are given the
- * track is saved to recordings/<session>/<n>.mp3, and every request is
- * also logged to recordings/<session>/voice-<n>.json beside it (CLAUDE.md
- * rule 7, "save everything" — the WP2 settings pass broke this for the
- * settings-comparison reels; this route itself always logged the mp3, but
- * never the request that produced it).
+ * track is saved to <RECORDINGS_DIR>/<session>/<n>.mp3, and every request
+ * is also logged to <RECORDINGS_DIR>/<session>/voice-<n>.json beside it
+ * (CLAUDE.md rule 7, "save everything" — the WP2 settings pass broke this
+ * for the settings-comparison reels; this route itself always logged the
+ * mp3, but never the request that produced it). RECORDINGS_DIR
+ * (lib/config.ts) defaults to a folder shared by every checkout and
+ * worktree (CLAUDE.md rule 8).
  */
 
 /** The Curation presenter voice (brief: WP0 §4). */
@@ -69,7 +72,7 @@ export async function POST(req: NextRequest) {
 
   if (session && n !== null) {
     try {
-      const dir = path.join(process.cwd(), "recordings", session);
+      const dir = path.join(recordingsDir(), session);
       mkdirSync(dir, { recursive: true });
       const mp3Path = path.join(dir, `${n}.mp3`);
       writeFileSync(mp3Path, bytes);

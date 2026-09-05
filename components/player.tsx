@@ -56,6 +56,30 @@ function useStreamState(stream: Stream | null): StreamState | null {
   );
 }
 
+/**
+ * The WP5 music bed: how far under Saskia's voice it sits. Saskia's own
+ * volume is 0.5 (below); roughly -12dB under that is ~0.5 * 0.25.
+ */
+const MUSIC_VOLUME = 0.13;
+
+/** MUSIC=on|off from the server (lib/config.ts; default off). */
+function useMusicOn(): boolean {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/config", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((config: { music?: string }) => {
+        if (alive) setOn(config.music === "on");
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return on;
+}
+
 /** THEATRE=on|off from the server, and the live viewport width. */
 function useTheatre(): boolean {
   const [envOn, setEnvOn] = useState(true);
@@ -109,6 +133,8 @@ function formatCard(card: Record<string, unknown> | null): string | null {
 
 export function Player() {
   const theatre = useTheatre();
+  const musicOn = useMusicOn();
+  const musicRef = useRef<HTMLAudioElement>(null);
 
   const [session, setSession] = useState<Session | null>(null);
   const sessionState = useSessionState(session);
@@ -260,6 +286,23 @@ export function Player() {
   const next = phase === "playing" || phase === "buffering" ? stream?.peekNext() ?? null : null;
   const voice = sessionState?.switches?.voice ?? "native";
 
+  // WP5: a low, looping music bed under Saskia only (never native, whose
+  // clip audio already carries the voice) — playing exactly while a
+  // programme is on screen and sound is not muted. Never touches
+  // lib/stream.ts's buffer or clip audio; this is a second, independent
+  // <audio> element.
+  const musicPlaying = musicOn && voice === "saskia" && !muted && (phase === "playing" || phase === "buffering");
+  useEffect(() => {
+    const el = musicRef.current;
+    if (!el) return;
+    el.volume = MUSIC_VOLUME;
+    if (musicPlaying) {
+      if (el.paused) el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [musicPlaying]);
+
   const statusLine = (() => {
     if (!sessionState) return null;
     if (sessionState.status === "none") return "no captured answer for that yet";
@@ -284,6 +327,7 @@ export function Player() {
 
   return (
     <main className={`tessera${theatre ? " theatre" : " plain"}`}>
+      {musicOn && <audio ref={musicRef} src="/api/music" loop preload="auto" hidden />}
       {theatre ? (
         <Console keyState={keyState} groundColor={groundColor} seamState={seamState}>
           {screen}
