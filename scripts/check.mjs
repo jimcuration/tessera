@@ -5,20 +5,17 @@
 // every checkout and worktree) and every translation
 // (data/translations/*.json) and fails any beat with no
 // source, a source index outside its answer's sentences, a line over 12
-// words, a subject that names a person, a `delivery` whose stripped text
-// differs from `line` or that uses a tag outside the whitelist, an
-// `events` array without exactly three entries, or (when the beat's cited
-// sentences are known — session recordings only, not cached translations)
-// a `labels` entry not found verbatim in them (translator v0.4; mirrors
-// validateBeat in lib/translator.ts). Also fails a programme (one session
-// or one cached translation) with more than one `hero` beat, the same
-// `scale` held for three beats running, a `scene` that is not a run of 2-3
-// consecutive beats, or (multi-beat programmes only) a final beat whose
-// `ground` does not match scene 1's (mirrors validateProgramme). Exits
-// non-zero if any is found. Soft warnings (headline length, a headline
-// number not stated as a figure in the cited sentences — fine if it's a
-// count of items those sentences enumerate) are listed but do not fail the
-// check.
+// words, a subject that names a person, or a `delivery` whose stripped
+// text differs from `line` or that uses a tag outside the whitelist
+// (translator v0.3.1; mirrors validateBeat in lib/translator.ts). Also
+// fails a programme (one session or one cached translation) with more
+// than one `hero` beat, the same `scale` held for three beats running, a
+// `scene` that is not a run of 2-3 consecutive beats, or (multi-beat
+// programmes only) a final beat whose `ground` does not match scene 1's
+// (mirrors validateProgramme). Exits non-zero if any is found. Soft
+// warnings (headline length, a headline number not stated as a figure in
+// the cited sentences — fine if it's a count of items those sentences
+// enumerate) are listed but do not fail the check.
 //
 //   node scripts/check.mjs                 everything
 //   node scripts/check.mjs recordings/<session>
@@ -60,18 +57,17 @@ const TRANSLATIONS = path.join(ROOT, "data", "translations");
 /**
  * Mirrors TRANSLATOR_VERSION in lib/translator.ts. A session or a cached
  * translation recorded under an earlier translator version predates this
- * version's rules by construction (e.g. every pre-v0.4 beat has no `scene`
- * or `events`, because those fields didn't exist yet) — exactly the same
+ * version's rules by construction (e.g. every pre-v0.3.1 beat has no
+ * `scene`, because the field didn't exist yet) — exactly the same
  * staleness app/api/translate/route.ts already checks before ever serving
  * a cached translation. Checking it here too means a translator version
  * bump doesn't turn every past recording permanently red; rule 7 keeps
  * them on disk as a historical record regardless.
  */
-const CURRENT_TRANSLATOR_VERSION = "translator-v0.4";
+const CURRENT_TRANSLATOR_VERSION = "translator-v0.3.1";
 
 const MAX_LINE_WORDS = 12;
 const MAX_HEADLINE_WORDS = 4;
-const MAX_LABEL_WORDS = 3;
 
 /** Mirrors PEOPLE_LEXICON in lib/translator.ts. */
 const PEOPLE_LEXICON = [
@@ -84,22 +80,6 @@ const PEOPLE_LEXICON = [
 
 const words = (t) => String(t ?? "").trim().split(/\s+/).filter(Boolean).length;
 const numbersIn = (t) => (String(t ?? "").match(/\d[\d,]*(?:\.\d+)?/g) ?? []).map((n) => n.replace(/,/g, ""));
-
-/** Mirrors normaliseForMatch in lib/translator.ts. */
-function normaliseForMatch(text) {
-  return String(text ?? "").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
-}
-
-/** Mirrors labelFoundInSentences in lib/translator.ts. */
-function labelFoundInSentences(label, cited) {
-  const nums = numbersIn(label);
-  if (nums.length > 0) {
-    const citedNums = numbersIn(cited);
-    return nums.every((n) => citedNums.includes(n));
-  }
-  const needle = normaliseForMatch(label);
-  return needle !== "" && normaliseForMatch(cited).includes(needle);
-}
 
 /** Mirrors DELIVERY_TAGS in lib/translator.ts. */
 const DELIVERY_TAGS = ["presenting to camera", "excited", "fast-paced"];
@@ -127,7 +107,7 @@ function subjectNamesPerson(subject) {
   return null;
 }
 
-/** Mirrors validateBeat in lib/translator.ts: hard = source/length/people/events/labels, soft = the rest. */
+/** Mirrors validateBeat in lib/translator.ts: hard = source/length/people, soft = the rest. */
 function checkBeat(beat, sentences) {
   const hard = [];
   const soft = [];
@@ -141,22 +121,12 @@ function checkBeat(beat, sentences) {
     const person = subjectNamesPerson(String(subject));
     if (person) hard.push(`subject "${subject}" names a person (${person})`);
   }
-  const events = Array.isArray(beat?.events) ? beat.events.filter((e) => typeof e === "string" && e.trim()) : [];
-  if (events.length !== 3) hard.push(`expected exactly 3 timed events, got ${events.length}`);
+  if (!beat?.action) hard.push("no action");
   if (beat?.headline && words(beat.headline) > MAX_HEADLINE_WORDS) soft.push(`headline is ${words(beat.headline)} words`);
-  const cited = sentences && valid.length ? valid.map((i) => sentences[i]).join(" ").replace(/,/g, "") : null;
-  if (beat?.headline && cited !== null) {
+  if (beat?.headline && sentences && valid.length) {
+    const cited = valid.map((i) => sentences[i]).join(" ").replace(/,/g, "");
     for (const n of numbersIn(beat.headline)) {
       if (!cited.includes(n)) soft.push(`headline number "${n}" not stated as a figure in cited sentences (ok if a derived count)`);
-    }
-  }
-  const labels = Array.isArray(beat?.labels) ? beat.labels.filter((l) => typeof l === "string" && l.trim()) : [];
-  for (const label of labels) {
-    if (words(label) > MAX_LABEL_WORDS && numbersIn(label).length === 0) {
-      soft.push(`label "${label}" is ${words(label)} words (limit ${MAX_LABEL_WORDS} unless it is a figure)`);
-    }
-    if (cited !== null && !labelFoundInSentences(label, cited)) {
-      hard.push(`label "${label}" not found verbatim in cited sentences`);
     }
   }
 

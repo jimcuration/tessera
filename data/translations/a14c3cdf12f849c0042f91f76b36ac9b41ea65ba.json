@@ -1,7 +1,7 @@
 {
-  "translator": "translator-v0.4",
+  "translator": "translator-v0.3.1",
   "pinned": true,
-  "note": "The six-beat exemplar from lib/translator.ts (EXEMPLAR_NDJSON), hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. v0.2 (WP2): every line rewritten to the 12-word budget. v0.3 (WP3): added hero (beat 4), scale, and delivery (three expression tags total). v0.4 (WP5): regrouped into three two-beat scenes ({1,2} violet, {3,4} magenta, {5,6} violet); beats 5-6 moved from lime to violet so the programme bookends (beat 6 returns to scene 1's ground, primary subject and handoff, with the October warrant's fresh coins and the pointing hand as the one thing added and changed); `action` replaced by three timed `events` per beat; `hand` true on beats 1, 4, 5, 6; every `labels` entry is an exact substring of its beat's cited sentence(s). Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
+  "note": "The six-beat exemplar from lib/translator.ts (EXEMPLAR_NDJSON), hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. v0.2 (WP2): every line rewritten to the 12-word budget. v0.3 (WP3): added hero (beat 4), scale, and delivery (three expression tags total). v0.3.1 (WP5, merged to main): regrouped into three two-beat scenes ({1,2} violet, {3,4} magenta, {5,6} violet); beats 5-6 moved from lime to violet so the programme bookends (beat 6 returns to scene 1's ground, primary subject and handoff, with the October warrant's fresh coins and the pointing hand as the one thing added and changed); `hand` true only on beat 6, the one beat whose action names a paper hand explicitly. WP5 also built `events` (replacing `action`) and `labels` alongside a v0.4 style sheet (see briefs/WP5-report.md) — those were not carried into this merge; `action` and the v0.3 style sheet are unchanged from WP3. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
   "question": "What is the cash position and runway?",
   "beats": [
     {
@@ -10,13 +10,8 @@
       "headline": "$1.85M",
       "ground": "violet",
       "subjects": ["a stack of paper coins", "a cream paper chip"],
-      "events": [
-        "A stack of paper coins drops onto the ground and settles, opening cold.",
-        "A black paper chip slaps into place beside the stack.",
-        "A paper hand presses the top coin flat as the chip holds."
-      ],
-      "hand": true,
-      "labels": ["six months earlier"],
+      "action": "A single halftone stack of paper coins drops onto a cream chip and settles.",
+      "hand": false,
       "handoff": "the coin stack",
       "hero": false,
       "scale": "oversized",
@@ -29,13 +24,8 @@
       "headline": "$3.11M → $1.85M",
       "ground": "violet",
       "subjects": ["the coin stack", "a torn-paper arrow"],
-      "events": [
-        "The coin stack, already in place, is joined by a torn-paper arrow entering from the edge.",
-        "The arrow points down as the stack visibly shrinks coin by coin.",
-        "A second black chip slaps in beside the first, which stays exactly where it landed."
-      ],
+      "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.",
       "hand": false,
-      "labels": ["$3.11M"],
       "handoff": "the arrow",
       "hero": false,
       "scale": "small",
@@ -48,13 +38,8 @@
       "headline": "$1.3M / MONTH",
       "ground": "magenta",
       "subjects": ["a paper calendar strip", "paper coins"],
-      "events": [
-        "Both violet-scene chips slide off the top edge as the arrow unrolls into a paper calendar strip on fresh magenta ground.",
-        "Paper coins slide off the strip, one month at a time.",
-        "A black chip slaps in, reading the monthly burn."
-      ],
+      "action": "The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.",
       "hand": false,
-      "labels": ["$3.9M per half-year"],
       "handoff": "the strip",
       "hero": false,
       "scale": "diagram",
@@ -66,14 +51,9 @@
       "line": "At that rate, the cash on hand covered one point four months.",
       "headline": "1.4 MONTHS",
       "ground": "magenta",
-      "subjects": ["the strip", "a cutout aircraft", "a paper hand"],
-      "events": [
-        "The strip, already in place, becomes a runway torn short as a cutout aircraft enters from the edge.",
-        "The aircraft rolls to the torn end and stops, the strip's chip staying exactly where it landed.",
-        "A paper hand enters and taps the aircraft as a larger black chip slaps in, the hero number printing large."
-      ],
-      "hand": true,
-      "labels": ["dangerously thin"],
+      "subjects": ["a paper runway", "a cutout aircraft"],
+      "action": "The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.",
+      "hand": false,
       "handoff": "the runway",
       "hero": true,
       "scale": "oversized",
@@ -86,13 +66,8 @@
       "headline": "+$13.8M",
       "ground": "violet",
       "subjects": ["the coin stack", "fresh paper coins", "tape pieces"],
-      "events": [
-        "The magenta-scene runway chip and aircraft are covered as the ground returns to violet and the original coin stack reappears.",
-        "Fresh paper coins are taped onto the stack, one after another.",
-        "A black chip slaps in, and the hand presses the last coin flat."
-      ],
-      "hand": true,
-      "labels": ["$13.8M"],
+      "action": "The previous chip slides off as the ground returns to violet and the coin stack reappears; fresh paper coins are taped onto it one after another.",
+      "hand": false,
       "handoff": "the coin stack",
       "hero": false,
       "scale": "small",
@@ -105,13 +80,8 @@
       "headline": "NEXT 2 QUARTERS",
       "ground": "violet",
       "subjects": ["the coin stack", "two paper calendar pages", "a paper hand"],
-      "events": [
-        "The coin stack, already in place, is joined by two calendar pages entering from the edge — the one new element in this closing shot.",
-        "A paper hand enters and points at the second page.",
-        "A black chip slaps in over the stack, closing the programme back where it began."
-      ],
+      "action": "The previous chip flips down as two paper calendar pages land beside the coin stack; a paper hand enters and points at the second.",
       "hand": true,
-      "labels": ["capital markets"],
       "handoff": "the coin stack",
       "hero": false,
       "scale": "diagram",

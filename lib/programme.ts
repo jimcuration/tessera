@@ -195,7 +195,6 @@ export class Session {
     const decoder = new TextDecoder();
     let buffer = "";
     let previousHandoff: string | null = null;
-    let previousScene: number | null = null;
     let translateMs: number | null = null;
     let translateSource: string | null = null;
     let started = false;
@@ -221,9 +220,8 @@ export class Session {
           const warnings = Array.isArray(msg.warnings) ? (msg.warnings as string[]) : [];
           if (this.firstBeatMs === null) this.firstBeatMs = Math.round(performance.now() - this.askedAt);
           this.warnings.push(warnings);
-          const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff, previousScene });
+          const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff });
           previousHandoff = beat.handoff;
-          previousScene = beat.scene;
           const shot: Shot = {
             n,
             beat,

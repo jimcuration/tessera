@@ -235,16 +235,10 @@ async function main() {
 
   const sentences = (answer.sentences as string[]) ?? [];
   let previousHandoff: string | null = null;
-  let previousScene: number | null = null;
   let lastFrame: string | undefined;
 
   async function renderOne({ n, beat, warnings }: { n: number; beat: Beat; warnings: string[] }, fromFrame: string | undefined) {
-    const { prompt } = compilePrompt({
-      beat,
-      voice: voice as Voice,
-      previousHandoff: fromFrame ? previousHandoff : null,
-      previousScene: fromFrame ? previousScene : null,
-    });
+    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null });
     const clip = await generateClip({ prompt, fromFrame });
     await post("/api/record", {
       kind: "clip",
@@ -280,7 +274,6 @@ async function main() {
     for (const item of beats) {
       const clip = await renderOne(item, lastFrame);
       previousHandoff = item.beat.handoff;
-      previousScene = item.beat.scene;
       lastFrame = await lastFrameOf(clip.rawUrl);
     }
   } else {
