@@ -1,5 +1,6 @@
 {
   "translator": "translator-v0.3.1",
+  "pinned": true,
   "question": "What is the cash position and runway?",
   "beats": [
     {

@@ -124,3 +124,32 @@ Per the brief ("Do not mark criteria as passed"), here is what was measured agai
 4. Every voice request recorded with timestamps: confirmed — `voice-scene-*.json` for every scene in every session carries `model`, `voiceId`, `settings`, full `sceneText`, per-beat `beats`, `splitMethod`, `cutTimes`, and the raw ElevenLabs `alignment` when the timestamps path was used (it was, every time, in this campaign).
 5. Reels and report exist (§6 above); the 10s spine played through **in the app** (Browser tool, not the headless script) with 9/9 beats swapping at `readyState` 3 or 4 and zero blank-frame or stall warnings in the console log, ending cleanly in the "ended" phase with the auto-continue countdown showing.
 6. No people in any clip: not independently re-verified by frame inspection for this report (no face gate is merged — WP5.1 is a separate worktree); the translator's people-lexicon/proper-name check (`validateBeat`) did not drop any beat in any of the four live translations, and none of the `subjects` fields inspected in this report named a person.
+
+## Addendum — 10s exemplar pinned, pronunciation finding
+
+Follow-up requested after the report above: pin the 10s spine exemplar (22-word lines), re-render it, and check for a pronunciation issue on the opening line.
+
+**Pinning.** The live 10s translation from `20260905-151245-spine-saskia-chain-on-10s` (`data/translations/e4fc1b52451dd81d22f57020dd92185d0ef2f69d.json`) was already a clean, well-formed candidate — 9 beats, all ≤22 words, scenes of 2/3/2/2, bookended on violet/the coin stack, the `[0-5s]/[5-10s]` internal-cut format followed in every beat, 0 `npm run check` failures, 98.0% mean own-line Whisper recall with 0 cross-beat bleed on the earlier pass. Rather than author a second exemplar from scratch (extra Claude spend to reproduce work already validated), that file was marked `"pinned": true` — the same mechanism the 5s exemplar (`a14c3cdf...json`) already uses — and re-rendered:
+
+```
+20260905-154446-spine-pinned-saskia-chain-on-10s
+```
+
+`[render] 9 beat(s), 0 dropped, source=pinned` — confirmed the pin took. `npm run check`: 0 failures. `npm run split-check`: mean own-line recall 96.2%, 0/9 beats with a neighbour's words. Render times 3.0–4.4s per clip (ratio 0.31–0.44), no queue outliers this run. Reel: `recordings/reels/spine-10s-pinned.mp4` (91.3s). This session, not the earlier live one, is now the one to treat as the 10s spine going forward.
+
+**The opening-line pronunciation check.** I don't have a way to listen to audio directly, so I could not confirm "accent drift" as such — nothing in the split-check transcripts reads as a different accent, and I'm not asserting that finding into this report as observed fact. What I *did* find, by comparing Whisper's transcription of every occurrence of "Diginex" across all six sessions (44 beats total, same ElevenLabs voice ID throughout, `eleven_v3`, no override — narration is never cached, so each render is a fresh TTS generation of the same text):
+
+| session | beat | delivery text | Whisper heard |
+|---|---|---|---|
+| spine (5s) | 1 | "...Diginex held..." | "...**Diginex** held..." |
+| spine (10s), live | 1 | "...Diginex held..." | "...**Diginex** held..." |
+| spine (10s), live | 9 | "...critical for Diginex." | "...critical for **Digin X**." |
+| live-catalysts | 1 | "Diginex faces a run..." | "**Digin X** faces a run..." |
+| live-catalysts | 9 | "...Diginex is priced..." | "...**DigiNex** is priced..." |
+| live-risks | 1 | "Diginex faces a data..." | "**Digin X** faces a data..." |
+| in-app spine (10s) | 1 | "...Diginex held..." | "...**Digenx** held..." |
+| in-app spine (10s) | 9 | "...critical for Diginex." | "...critical for **DigiNex**." |
+| **spine (10s), pinned** | **1** | "...Diginex held..." | "...**Dijon X** held..." |
+| spine (10s), pinned | 9 | "...critical for Diginex." | "...critical for **Digin X**." |
+
+Only 2 of 10 occurrences transcribed as "Diginex" cleanly; the rest split across four different mis-hearings ("Digin X", "DigiNex", "Digenx", "Dijon X"), and it happens on both beat 1 (the `[presenting to camera]` opener) and beat 9 (the close) — not one specific line. This is consistent with an invented brand name having no canonical pronunciation anchor for the TTS model, so `eleven_v3` says it slightly differently generation to generation even on the same voice ID and text — which Whisper then hears differently. **I cannot tell from this whether the narration itself drifts or Whisper's transcription is just unstable on an out-of-vocabulary name**; distinguishing those needs an actual listen, which I can't do. Worth Robin's ear on `spine-10s-pinned.mp4` beat 1 and beat 9 specifically, and if it is the TTS: a phonetic respelling in the text sent to ElevenLabs (e.g. a `pronunciation_dictionary` locator or spelling "Diginex" phonetically) would be the fix, not a WP8-scope change.
