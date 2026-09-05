@@ -1,7 +1,9 @@
 // npm run check — the translator rule, enforced after the fact.
 //
-// Scans every recorded beat (recordings/<session>/<n>.json) and every
-// translation (data/translations/*.json) and fails any beat with no
+// Scans every recorded beat (<RECORDINGS_DIR>/<session>/<n>.json — see
+// lib/config.ts#recordingsDir, default ../tessera-recordings, shared by
+// every checkout and worktree) and every translation
+// (data/translations/*.json) and fails any beat with no
 // source, a source index outside its answer's sentences, a line over 12
 // words, a subject that names a person, or a `delivery` whose stripped
 // text differs from `line` or that uses a tag outside the whitelist
@@ -22,7 +24,32 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const RECORDINGS = path.join(ROOT, "recordings");
+
+/** Mirrors loadEnvLocal in scripts/render.mts: only sets what isn't already set. */
+function loadEnvLocal() {
+  let text;
+  try {
+    text = readFileSync(path.join(ROOT, ".env.local"), "utf8");
+  } catch {
+    return;
+  }
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const eq = line.indexOf("=");
+    if (eq === -1) continue;
+    const key = line.slice(0, eq).trim();
+    let value = line.slice(eq + 1).trim();
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    if (!(key in process.env)) process.env[key] = value;
+  }
+}
+loadEnvLocal();
+
+/** Mirrors recordingsDir in lib/config.ts: shared across checkouts and worktrees by default. */
+const RECORDINGS = path.resolve(ROOT, (process.env.RECORDINGS_DIR ?? "").trim() || "../tessera-recordings");
 const TRANSLATIONS = path.join(ROOT, "data", "translations");
 
 const MAX_LINE_WORDS = 12;

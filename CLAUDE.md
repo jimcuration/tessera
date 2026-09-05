@@ -29,8 +29,8 @@ This repo is a fork of `blendi-remade/unreel` (MIT). Its runtime — shot queue,
 4. **Model.** `minimax/h3-max-turbo/text-to-video` and `minimax/h3-max-turbo/image-to-video`, 480p, 16:9, 5-second clips.
 5. **No client branding.** Tessera is always Curation style. No client logos, colours or bespoke looks.
 6. **No recognisable people** in generated imagery. Objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands.
-7. **Save everything.** Every clip, prompt and `expanded_prompt` goes to `recordings/` with the beat that produced it.
-8. **One session per checkout.** Parallel work packages use separate git worktrees on their own branches; never run `npm run build` in a checkout where a dev server is running.
+7. **Save everything.** Every clip, prompt and `expanded_prompt` goes to `RECORDINGS_DIR` with the beat that produced it.
+8. **One session per checkout.** Parallel work packages use separate git worktrees on their own branches; never run `npm run build` in a checkout where a dev server is running. `RECORDINGS_DIR` (`lib/config.ts`, default `../tessera-recordings`) is one folder shared by the main checkout and every worktree, so parallel work packages' recordings land in one place instead of scattering across disconnected `recordings/` folders. Set it in each checkout's own `.env.local` only if you deliberately want that checkout's recordings kept apart.
 
 ## The beat
 

@@ -24,7 +24,7 @@ a question
   up until the new answer's first clip is painted
 ```
 
-Every clip, its beat, its prompt and fal's `expanded_prompt` are saved to `recordings/<session>/<n>.{mp4,json}`.
+Every clip, its beat, its prompt and fal's `expanded_prompt` are saved to `<RECORDINGS_DIR>/<session>/<n>.{mp4,json}` — `RECORDINGS_DIR` (`lib/config.ts`) defaults to `../tessera-recordings`, shared by every checkout and worktree (CLAUDE.md rule 8).
 
 ## Quick start
 

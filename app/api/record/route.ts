@@ -1,15 +1,19 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { type NextRequest } from "next/server";
+import { recordingsDir } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 /**
  * Save everything (CLAUDE.md hard rule 7). Every clip, its beat, its prompt
- * and fal's expanded_prompt go to recordings/<session>/<n>.{mp4,json}; the
- * session's manifest (question, sentences, beats kept and dropped, switches,
- * timings) goes to recordings/<session>/session.json.
+ * and fal's expanded_prompt go to <RECORDINGS_DIR>/<session>/<n>.{mp4,json};
+ * the session's manifest (question, sentences, beats kept and dropped,
+ * switches, timings) goes to <RECORDINGS_DIR>/<session>/session.json.
+ * RECORDINGS_DIR (lib/config.ts) defaults to a folder shared by every
+ * checkout and worktree (CLAUDE.md rule 8), not this checkout's own
+ * recordings/.
  *
  *   POST {kind:"clip", session, n, rawUrl, ...meta}   writes n.json and n.mp4
  *   POST {kind:"session", session, ...manifest}       writes session.json
@@ -35,14 +39,14 @@ export async function POST(req: NextRequest) {
   }
   const session = typeof body.session === "string" && SAFE_SESSION.test(body.session) ? body.session : null;
   if (!session) return Response.json({ error: "bad session" }, { status: 400 });
-  const dir = path.join(process.cwd(), "recordings", session);
+  const dir = path.join(recordingsDir(), session);
   mkdirSync(dir, { recursive: true });
 
   if (body.kind === "session") {
     const { kind: _kind, ...manifest } = body;
     void _kind;
     writeFileSync(path.join(dir, "session.json"), JSON.stringify({ ...manifest, savedAt: new Date().toISOString() }, null, 2));
-    return Response.json({ ok: true, file: `recordings/${session}/session.json` });
+    return Response.json({ ok: true, file: path.join(path.relative(process.cwd(), recordingsDir()), session, "session.json") });
   }
 
   if (body.kind === "clip") {
@@ -66,7 +70,7 @@ export async function POST(req: NextRequest) {
         console.warn(`[record] clip ${n}:`, cause instanceof Error ? cause.message : cause);
       }
     }
-    return Response.json({ ok: true, mp4: saved, file: `recordings/${session}/${n}.json` });
+    return Response.json({ ok: true, mp4: saved, file: path.join(path.relative(process.cwd(), recordingsDir()), session, `${n}.json`) });
   }
 
   return Response.json({ error: "unknown kind" }, { status: 400 });
