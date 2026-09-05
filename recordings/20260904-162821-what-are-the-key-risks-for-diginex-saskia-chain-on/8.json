@@ -1,0 +1,44 @@
+{
+  "session": "20260904-162821-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 8,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Adoption stays uneven, and smaller firms may delay on cost.",
+    "headline": "UNEVEN ADOPTION",
+    "ground": "magenta",
+    "subjects": [
+      "a paper calendar strip",
+      "paper coins"
+    ],
+    "action": "The previous chip flips down as the taped join unrolls into a calendar strip; coins slide back off its later months and stop.",
+    "handoff": "the calendar strip",
+    "hero": false,
+    "scale": "oversized",
+    "delivery": "Adoption stays uneven, and smaller firms may delay on cost.",
+    "source": [
+      20,
+      21
+    ]
+  },
+  "sources": [
+    "Although regulatory pressure is mounting, ESG adoption remains uneven across sectors and geographies.",
+    "Smaller enterprises may delay adoption due to cost, complexity, or lack of immediate incentives."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper calendar strip; paper coins.\nOpens on the taped join, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips down as the taped join unrolls into a calendar strip; coins slide back off its later months and stop.\nEnds holding on the calendar strip.\nThis composition is oversized: one subject fills most of the frame.\nHeadline printed on a paper chip: \"UNEVEN ADOPTION\".\n\nON-SCREEN TEXT: \"UNEVEN ADOPTION\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage style, photographed as a flat lay under soft room light from the upper left. The scene opens on <Picture 1>, featuring a deep magenta block-color paper ground. In the upper third, a cream-colored paper chip carries the black extra-bold sans-serif text \"EXECUTION RISK\". Below it, two black-and-white halftone photographic cutouts of buildings with rough white torn-paper edges are joined by two strips of translucent matte tape. The camera is a Static Shot. Immediately, the cream chip with \"EXECUTION RISK\" flips downward and disappears from the frame. Simultaneously, the translucent tape strips unroll and expand rapidly with a slight overshoot, transforming into a long, vertical black-and-white halftone paper calendar strip that fills most of the lower two-thirds of the frame. The calendar strip is blank, with no printed numbers or lettering. As the strip settles, several black-and-white halftone paper coin cutouts, also featuring rough white torn edges and blank faces, slide backward across the surface of the calendar months and come to a sudden, stable stop. At 00:02.000, a new cream-colored paper chip lands crisply in the upper third of the frame, bearing the black extra-bold sans-serif text \"UNEVEN ADOPTION\". The text is clean, legible, and stable. The final three seconds hold on this oversized composition, with each paper element casting a small, soft shadow toward the bottom right. The video ends with a subtle, minimal loop of the paper elements shifting slightly.\n\noverall_soundscape: The soundscape consists of tactile, physical paper noises. There are crisp, rhythmic paper-slap sounds as the chip flips and the new headline lands, accompanied by the sticky, stretching sound of adhesive tape unrolling and the light, sliding friction of paper coins moving across a matte surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91562/TM3v514eaUY8PIUay6AUb_minimax-h3.mp4",
+  "requestId": "01a06cd3-618c-7fa0-bdc8-7624127b9c93",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3212,
+  "timings": {
+    "inference": 0.4647921790019609
+  },
+  "savedAt": "2026-09-04T14:29:48.323Z"
+}

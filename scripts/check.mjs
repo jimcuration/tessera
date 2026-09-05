@@ -3,11 +3,15 @@
 // Scans every recorded beat (recordings/<session>/<n>.json) and every
 // translation (data/translations/*.json) and fails any beat with no
 // source, a source index outside its answer's sentences, a line over 12
-// words, or a subject that names a person (translator v0.2; mirrors
-// validateBeat in lib/translator.ts). Exits non-zero if any is found. Soft
-// warnings (headline length, a headline number not stated as a figure in
-// the cited sentences — fine if it's a count of items those sentences
-// enumerate) are listed but do not fail the check.
+// words, a subject that names a person, or a `delivery` whose stripped
+// text differs from `line` or that uses a tag outside the whitelist
+// (translator v0.3; mirrors validateBeat in lib/translator.ts). Also fails
+// a programme (one session or one cached translation) with more than one
+// `hero` beat, or the same `scale` held for three beats running (mirrors
+// validateProgramme). Exits non-zero if any is found. Soft warnings
+// (headline length, a headline number not stated as a figure in the cited
+// sentences — fine if it's a count of items those sentences enumerate) are
+// listed but do not fail the check.
 //
 //   node scripts/check.mjs                 everything
 //   node scripts/check.mjs recordings/<session>
@@ -35,6 +39,19 @@ const PEOPLE_LEXICON = [
 
 const words = (t) => String(t ?? "").trim().split(/\s+/).filter(Boolean).length;
 const numbersIn = (t) => (String(t ?? "").match(/\d[\d,]*(?:\.\d+)?/g) ?? []).map((n) => n.replace(/,/g, ""));
+
+/** Mirrors DELIVERY_TAGS in lib/translator.ts. */
+const DELIVERY_TAGS = ["presenting to camera", "excited", "fast-paced"];
+
+/** Mirrors deliveryTags in lib/translator.ts. */
+function deliveryTags(delivery) {
+  return [...String(delivery ?? "").matchAll(/\[([^\]]*)\]/g)].map((m) => m[1]);
+}
+
+/** Mirrors stripDelivery in lib/translator.ts. */
+function stripDelivery(delivery) {
+  return String(delivery ?? "").replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim();
+}
 
 /** Mirrors subjectNamesPerson in lib/translator.ts. */
 function subjectNamesPerson(subject) {
@@ -69,7 +86,36 @@ function checkBeat(beat, sentences) {
       if (!cited.includes(n)) soft.push(`headline number "${n}" not stated as a figure in cited sentences (ok if a derived count)`);
     }
   }
+
+  // delivery: missing falls back to line (nothing to check); present, it
+  // may carry at most one whitelisted tag and must strip back to line exactly.
+  const line = String(beat?.line ?? "").trim();
+  const delivery = typeof beat?.delivery === "string" && beat.delivery.trim() ? beat.delivery : line;
+  const tags = deliveryTags(delivery);
+  for (const tag of tags) {
+    if (!DELIVERY_TAGS.includes(tag)) hard.push(`delivery tag "[${tag}]" not in the whitelist`);
+  }
+  if (tags.length > 1) hard.push(`delivery carries ${tags.length} tags (limit 1)`);
+  if (stripDelivery(delivery) !== line) hard.push(`delivery, stripped of tags, does not match line`);
+
   return { hard, soft };
+}
+
+/** Mirrors validateProgramme in lib/translator.ts: at most one hero, no 3-in-a-row scale. */
+function checkProgramme(label, beats) {
+  const progFailures = [];
+  const heroes = beats.filter((b) => b?.hero === true).length;
+  if (heroes > 1) progFailures.push(`${heroes} hero beats (limit 1)`);
+  for (let i = 0; i + 2 < beats.length; i += 1) {
+    const [a, b, c] = [beats[i], beats[i + 1], beats[i + 2]];
+    if (a?.scale && a.scale === b?.scale && b.scale === c?.scale) {
+      progFailures.push(`scale "${a.scale}" repeats for beats ${i + 1}-${i + 3}`);
+    }
+  }
+  for (const f of progFailures) {
+    failures += 1;
+    console.log(`FAIL  ${label}: ${f}`);
+  }
 }
 
 function readJson(file) {
@@ -101,11 +147,14 @@ function checkSession(dir) {
   const manifest = readJson(path.join(dir, "session.json"));
   const sentences = manifest && Array.isArray(manifest.sentences) ? manifest.sentences : null;
   const files = readdirSync(dir).filter((f) => /^\d+\.json$/.test(f)).sort((a, b) => parseInt(a) - parseInt(b));
+  const beats = [];
   for (const file of files) {
     const rec = readJson(path.join(dir, file));
     if (!rec) continue;
     report(`${path.relative(ROOT, dir)}/${file}`, rec.beat, sentences);
+    beats.push(rec.beat);
   }
+  checkProgramme(path.relative(ROOT, dir), beats);
   if (manifest && Array.isArray(manifest.dropped) && manifest.dropped.length) {
     console.log(`info  ${path.relative(ROOT, dir)}: ${manifest.dropped.length} beat(s) dropped by the translator rule at run time`);
   }
@@ -116,6 +165,7 @@ function checkTranslation(file) {
   if (!t || !Array.isArray(t.beats)) return;
   // Translations do not carry the sentences; index bounds are checked at run time.
   t.beats.forEach((beat, i) => report(`${path.relative(ROOT, file)}#${i + 1}`, beat, null));
+  checkProgramme(path.relative(ROOT, file), t.beats);
 }
 
 const targets = process.argv.slice(2);

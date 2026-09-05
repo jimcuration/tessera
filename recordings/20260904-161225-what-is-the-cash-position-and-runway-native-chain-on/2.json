@@ -1,0 +1,44 @@
+{
+  "session": "20260904-161225-what-is-the-cash-position-and-runway-native-chain-on",
+  "n": 2,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Six months earlier it was three point one one million.",
+    "headline": "$3.11M → $1.85M",
+    "ground": "violet",
+    "subjects": [
+      "the coin stack",
+      "a torn-paper arrow"
+    ],
+    "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.",
+    "handoff": "the arrow",
+    "hero": false,
+    "scale": "small",
+    "delivery": "[fast-paced] Six months earlier it was three point one one million.",
+    "source": [
+      9,
+      10
+    ]
+  },
+  "sources": [
+    "As of 30th September 2025, Diginex held $1.85M in cash and cash equivalents — a significant decline from $3.11M six months earlier.",
+    "The burn reflects the company's transition phase: heavy integration spending on the Resulticks acquisition and operational losses as the platform consolidates."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: the coin stack; a torn-paper arrow.\nOpens on the coin stack, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.\nEnds holding on the arrow.\nThis composition is small-scale: a single subject sits alone on open ground.\nHeadline printed on a paper chip: \"$3.11M → $1.85M\".\n\nON-SCREEN TEXT: \"$3.11M → $1.85M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Six months earlier it was three point one one million.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a refined 2D motion design style, photographed flat under soft room light with a consistent light source from the upper left. <Picture 1> establishes the initial composition: a soft violet block-color paper ground filling the frame. In the upper third, a cream-colored paper chip with rough torn edges displays the headline \"$3.11M → $1.85M\" in an extra-bold black sans-serif typeface; the text is clean, legible, and stable. Below the headline, a stack of coins appears as a black-and-white halftone photographic cutout with rough white torn-paper edges, casting a small soft shadow to the bottom right. The coins are plain and unmarked, with no lettering or symbols on their faces. As the video begins, the camera remains in a Static Shot. Simultaneously, the initial headline chip slides rapidly off the top edge of the frame. The coin stack begins to shrink coin by coin, with individual halftone slices disappearing quickly to simulate the stack decreasing in height. A torn-paper arrow, rendered as a flat matte cream shape with a black halftone tip, enters the frame from the right with a fast motion and a slight overshoot, landing stably as it points downward toward the shrinking coins. By the end of the 5-second duration, the composition holds on the reduced coin stack and the downward-pointing arrow against the open violet ground, with the new headline chip \"$3.11M → $1.85M\" sitting clearly in the upper third. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says <d>[English] Six months earlier it was three point one one million.</d> while the action unfolds.\n\noverall_soundscape: The audio consists of tactile, rhythmic foley sounds, including crisp paper-slaps and the sticky, sharp sound of adhesive tape being pressed down, synchronized with the movement of the paper elements.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa914fe/Ph8bW5hNxJVe8Y6DEOa8c_minimax-h3.mp4",
+  "requestId": "01a06cc4-1b66-7471-8c1e-9f788eb92580",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 3987,
+  "timings": {
+    "inference": 0.4632637870090548
+  },
+  "savedAt": "2026-09-04T14:13:08.613Z"
+}

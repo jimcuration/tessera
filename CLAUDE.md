@@ -38,30 +38,33 @@ The translator turns one CurationAI answer into a sequence of beats. One beat = 
 
 ```json
 {
-  "line": "spoken sentence, 18 words or fewer",
+  "line": "spoken sentence, 12 words or fewer",
   "headline": "on-screen words, 4 or fewer, or null",
   "ground": "lime | cyan | violet | magenta",
   "subjects": ["halftone cutout objects, 1–3"],
   "action": "one clear cause-and-effect movement",
   "handoff": "the named shape this beat ends on, which the next beat transforms",
+  "hero": "true on at most one beat per programme: the one carrying the answer's central figure",
+  "scale": "oversized | small | diagram — varies beat to beat, never three-in-a-row the same",
+  "delivery": "line, with at most one ElevenLabs expression tag in square brackets, for Saskia",
   "source": [0, 1]
 }
 ```
 
 `source` indexes sentences in the CurationAI answer. The translator prompt lives in `lib/translator.ts` and is versioned alongside the style sheet.
 
-## Tessera Style Sheet v0.2
+## Tessera Style Sheet v0.3
 
-Every clip prompt = STYLE SHEET + BEAT + COPY LIST + AUDIO BLOCK. The style sheet is a numbered list because fal's prompt rewriter copies numbered lists and paraphrases prose. Keep it numbered. WP0 found fal's rewriter drops any line phrased as a prohibition (0/18 survival on "no brands" and "numbers never count up") while descriptive lines survive; v0.2 states everything as a description of the world, with a prohibition appended only where a description alone would not do.
+Every clip prompt = STYLE SHEET + BEAT + COPY LIST + AUDIO BLOCK. The style sheet is a numbered list because fal's prompt rewriter copies numbered lists and paraphrases prose. Keep it numbered. WP0 found fal's rewriter drops any line phrased as a prohibition (0/18 survival on "no brands" and "numbers never count up") while descriptive lines survive; v0.2 states everything as a description of the world, with a prohibition appended only where a description alone would not do. v0.2's line 6 ("no glow, neon, bloom") kept a literal prohibition tail and survived *worse* than v0.1 (7/18 vs 11/18, WP2 report §6); v0.3 deletes it as a standalone line and folds its content into line 3. Line 4's vocabulary is widened and line 7 (headline typography) now caps width at a third of the frame unless the beat is marked `hero`; a new line 8 varies composition scale beat to beat — both answer Robin's WP3 note ("refine with more elements and more variety... the text is too big and feels clumsy").
 
 1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.
 2. One flat block-colour paper ground fills the frame: lime green, pale cyan, soft violet or deep magenta, as the beat specifies. The ground is a single unbroken colour.
-3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.
-4. Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.
+3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.
+4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.
 5. One consistent light from the upper left; each paper layer casts a small soft shadow.
-6. Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.
-7. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.
-8. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.
+6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.
+7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.
+8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.
 9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.
 10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.
 11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.

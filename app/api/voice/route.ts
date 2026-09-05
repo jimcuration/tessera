@@ -1,19 +1,27 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { type NextRequest } from "next/server";
+import { durationOf } from "../../../scripts/ffmpeg.mjs";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 /**
- * Saskia: one ElevenLabs narration per beat line. The key never leaves the
- * server. POST {text, session?, n?} → audio/mpeg. When session and n are
- * given the track is also saved to recordings/<session>/<n>.mp3.
+ * Saskia: one ElevenLabs narration per beat's `delivery` text (the beat's
+ * line, with at most one expression tag from lib/translator.ts's
+ * DELIVERY_TAGS whitelist). The key never leaves the server. POST
+ * {text, session?, n?} → audio/mpeg. When session and n are given the
+ * track is saved to recordings/<session>/<n>.mp3, and every request is
+ * also logged to recordings/<session>/voice-<n>.json beside it (CLAUDE.md
+ * rule 7, "save everything" — the WP2 settings pass broke this for the
+ * settings-comparison reels; this route itself always logged the mp3, but
+ * never the request that produced it).
  */
 
 /** The Curation presenter voice (brief: WP0 §4). */
 const VOICE_ID = "QMSGabqYzk8YAneQYYvR";
-const MODEL_ID = "eleven_multilingual_v2";
+/** eleven_v3: the current expressive model, the one that honours square-bracket audio tags (WP3 §4). */
+const MODEL_ID = "eleven_v3";
 const SAFE_SESSION = /^[A-Za-z0-9._-]{1,120}$/;
 
 export async function POST(req: NextRequest) {
@@ -33,6 +41,11 @@ export async function POST(req: NextRequest) {
   }
   if (!text) return Response.json({ error: "no text" }, { status: 400 });
 
+  // Account default: the WP2 settings pass showed three tuned profiles were
+  // audibly indistinguishable (WP2 report §4), so this sends no override —
+  // the same profile ("a") that pass tested, not an untested hand-picked one.
+  const requested = { model: MODEL_ID, voiceId: VOICE_ID, settings: "account default (no override)", text };
+
   const upstream = await fetch(
     `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}?output_format=mp3_44100_128`,
     {
@@ -42,11 +55,7 @@ export async function POST(req: NextRequest) {
         "content-type": "application/json",
         accept: "audio/mpeg",
       },
-      body: JSON.stringify({
-        text,
-        model_id: MODEL_ID,
-        voice_settings: { stability: 0.5, similarity_boost: 0.8, style: 0.0, use_speaker_boost: true },
-      }),
+      body: JSON.stringify({ text, model_id: MODEL_ID }),
       signal: req.signal,
       cache: "no-store",
     }
@@ -62,7 +71,18 @@ export async function POST(req: NextRequest) {
     try {
       const dir = path.join(process.cwd(), "recordings", session);
       mkdirSync(dir, { recursive: true });
-      writeFileSync(path.join(dir, `${n}.mp3`), bytes);
+      const mp3Path = path.join(dir, `${n}.mp3`);
+      writeFileSync(mp3Path, bytes);
+      let duration: number | null = null;
+      try {
+        duration = durationOf(mp3Path);
+      } catch (cause) {
+        console.warn("[voice] could not measure duration:", cause instanceof Error ? cause.message : cause);
+      }
+      writeFileSync(
+        path.join(dir, `voice-${n}.json`),
+        JSON.stringify({ ...requested, durationSeconds: duration, requestedAt: new Date().toISOString() }, null, 2)
+      );
     } catch (cause) {
       console.warn("[voice] could not save narration:", cause instanceof Error ? cause.message : cause);
     }

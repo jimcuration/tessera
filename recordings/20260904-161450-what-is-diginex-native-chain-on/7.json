@@ -1,0 +1,44 @@
+{
+  "session": "20260904-161450-what-is-diginex-native-chain-on",
+  "n": 7,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "By early September, shares traded at one dollar sixteen.",
+    "headline": "$1.16",
+    "ground": "magenta",
+    "subjects": [
+      "a paper price tag",
+      "a torn-paper arrow"
+    ],
+    "action": "The previous chip is covered as the bar chart shears into a torn-paper arrow pointing down to a hanging price tag.",
+    "handoff": "the price tag",
+    "hero": false,
+    "scale": "oversized",
+    "delivery": "By early September, shares traded at one dollar sixteen.",
+    "source": [
+      14
+    ]
+  },
+  "sources": [
+    "As of early September 2026, Diginex trades at $1.16 per share with a market cap of approximately $34M — a sharp decline from earlier valuations."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper price tag; a torn-paper arrow.\nOpens on the bar chart, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip is covered as the bar chart shears into a torn-paper arrow pointing down to a hanging price tag.\nEnds holding on the price tag.\nThis composition is oversized: one subject fills most of the frame.\nHeadline printed on a paper chip: \"$1.16\".\n\nON-SCREEN TEXT: \"$1.16\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"By early September, shares traded at one dollar sixteen.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, 2D-animated modern editorial paper collage shot, photographed flat under soft room light. The scene opens on <Picture 1>, featuring a deep magenta block-color paper ground. In the upper third, a cream paper chip with black extra-bold sans-serif text \"G&A $8.1M\" is visible. Below it, a bar chart composed of black-and-white halftone photographic cutouts with rough white torn-paper edges rises across the frame. A single light source from the upper left casts small, soft shadows beneath every paper layer. Immediately upon the first frame, the action begins: a new cream paper chip carrying the black extra-bold sans-serif text \"$1.16\" slides in rapidly from the top, completely covering the previous \"G&A $8.1M\" chip with a slight overshoot before landing stably. Simultaneously, the existing bar chart shears and transforms through a fast motion design transition, morphing into a large, black-and-white halftone torn-paper arrow that points sharply downward. The arrow directs the eye toward a large, oversized paper price tag cutout that enters the frame, filling most of the lower two-thirds. The price tag is a plain, unmarked matte paper cutout with rough white torn edges and no lettering or symbols on its face. The camera remains a Static Shot throughout. By the end of the 5-second duration, the composition holds steady on the downward arrow and the oversized price tag against the deep magenta background, with the text \"$1.16\" remaining clean, legible, and stable on its chip. A narrator (S1), a male with a warm, clear, natural, and brisk timbre, speaks while his lips are not visible: <d>[English] By early September, shares traded at one dollar sixteen.</d>\n\noverall_soundscape: The audio is dominated by the clear, natural voice of the narrator. Accompanying the visual transitions are tactile, diegetic sound effects: a crisp, rhythmic paper-slap as the headline chip lands and the subtle, sticky sound of adhesive tape being pressed down during the element transformations.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91515/QsQZm10xGq32YYlzGQPFh_minimax-h3.mp4",
+  "requestId": "01a06cc7-85aa-73a1-ba92-d3faa4604314",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 243090,
+  "resolution": "480P",
+  "renderMs": 4936,
+  "timings": {
+    "inference": 0.46476888601318933
+  },
+  "renderedAt": "2026-09-04T14:16:53.371Z",
+  "savedAt": "2026-09-04T14:16:53.387Z"
+}

@@ -1,149 +1,180 @@
 {
-  "translator": "translator-v0.2",
+  "translator": "translator-v0.3",
   "question": "What is Diginex",
   "beats": [
     {
-      "line": "Diginex is repositioning as one sustainability, data and compliance platform.",
+      "line": "Diginex is building one platform for sustainability, data and compliance.",
       "headline": "ONE PLATFORM",
       "ground": "violet",
       "subjects": [
-        "a paper screen",
+        "stacked paper sheets",
         "a cream paper chip"
       ],
-      "action": "A halftone paper screen lowers onto a cream chip and holds centre frame.",
-      "handoff": "the paper screen",
+      "action": "Loose halftone sheets drift in and press together into one stack on a cream chip.",
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Diginex is building one platform for sustainability, data and compliance.",
       "source": [
-        1
+        1,
+        2
       ]
     },
     {
-      "line": "Its software helps organisations collect, manage and report climate data.",
-      "headline": "ESG DATA",
+      "line": "Its software helps organisations report climate and supply-chain data.",
+      "headline": "ESG REPORTING",
       "ground": "violet",
       "subjects": [
-        "the paper screen",
-        "stacked documents"
+        "a paper document",
+        "grid paper"
       ],
-      "action": "The previous chip slides off the left edge as the screen tilts back and stacked documents feed into it, settling in a neat pile.",
-      "handoff": "the document pile",
+      "action": "The previous chip slides off the top edge as the stacked sheets unfold into a document laid over grid paper.",
+      "handoff": "the document",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Its software helps organisations report climate and supply-chain data.",
       "source": [
         2
       ]
     },
     {
-      "line": "Four separate businesses have now been absorbed into it.",
-      "headline": "4 BUSINESSES",
+      "line": "Four businesses have been absorbed, including the pivotal Resulticks deal.",
+      "headline": "4 ACQUISITIONS",
       "ground": "cyan",
       "subjects": [
-        "four paper folders",
-        "tape pieces"
+        "four paper building shapes",
+        "string and pins"
       ],
-      "action": "The previous chip flips away as the document pile splits into four paper folders; tape pieces bind them into one block.",
-      "handoff": "the taped block",
+      "action": "The previous chip flips away as the document folds into four small paper buildings; string and pins link them together.",
+      "handoff": "the linked buildings",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] Four businesses have been absorbed, including the pivotal Resulticks deal.",
       "source": [
         3,
+        20,
         25
       ]
     },
     {
-      "line": "Carbon accounting, supply chains, human rights, now AI customer data.",
-      "headline": "END-TO-END",
+      "line": "That Resulticks acquisition was valued at one point five billion dollars.",
+      "headline": "$1.5B",
       "ground": "cyan",
       "subjects": [
-        "the taped block",
-        "a paper conveyor"
+        "a stack of paper coins",
+        "a rubber stamp"
       ],
-      "action": "The previous chip is covered as the taped block unfolds into a paper conveyor that runs from one edge to the other and stops.",
-      "handoff": "the conveyor",
+      "action": "The previous chip is covered as the linked buildings collapse into a tall coin stack; a rubber stamp presses down on it.",
+      "handoff": "the coin stack",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] That Resulticks acquisition was valued at one point five billion dollars.",
       "source": [
-        3
+        15
       ]
     },
     {
-      "line": "It is built to serve banks, asset managers and enterprises.",
-      "headline": "BANKS & FUNDS",
-      "ground": "cyan",
-      "subjects": [
-        "cutout buildings",
-        "the conveyor"
-      ],
-      "action": "The previous chip slides down as the conveyor's far end folds up into cutout buildings that line up and hold.",
-      "handoff": "the row of buildings",
-      "source": [
-        3,
-        19
-      ]
-    },
-    {
-      "line": "The stock trades at one dollar sixteen, capitalised near thirty-four million.",
-      "headline": "$1.16",
+      "line": "Integration across many jurisdictions is the primary risk here.",
+      "headline": "INTEGRATION RISK",
       "ground": "magenta",
       "subjects": [
-        "a torn-paper arrow",
-        "paper coins"
+        "a torn paper map",
+        "paper clips"
       ],
-      "action": "The previous chip flips off as the buildings collapse into paper coins; a torn-paper arrow enters and points down at them.",
-      "handoff": "the down arrow",
-      "source": [
-        14
-      ]
-    },
-    {
-      "line": "Administrative costs rose three point four million, to eight point one.",
-      "headline": "$8.1M G&A",
-      "ground": "magenta",
-      "subjects": [
-        "a rising paper column",
-        "the paper coins"
-      ],
-      "action": "The previous chip slides off the top as the down arrow straightens into a rising paper column; coins stack up its side and stop.",
-      "handoff": "the tall column",
-      "source": [
-        26
-      ]
-    },
-    {
-      "line": "Integration execution across those four businesses is the primary risk.",
-      "headline": "EXECUTION RISK",
-      "ground": "magenta",
-      "subjects": [
-        "four leaning folders",
-        "a paper hand"
-      ],
-      "action": "The previous chip is covered as the column topples into four leaning folders; a paper hand enters and steadies them.",
-      "handoff": "the steadying hand",
+      "action": "The previous chip slides off as the coin stack flattens into a torn paper map; clips pin its separated pieces.",
+      "handoff": "the torn map",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Integration across many jurisdictions is the primary risk here.",
       "source": [
         24,
         25
       ]
     },
     {
-      "line": "Winning banks and proving Resulticks synergies would change the story.",
-      "headline": "WHAT CHANGES IT",
-      "ground": "lime",
+      "line": "Admin costs rose three point four million, to eight point one million.",
+      "headline": "G&A $8.1M",
+      "ground": "magenta",
       "subjects": [
-        "a paper ribbon",
-        "cutout buildings"
+        "a paper bar chart",
+        "a torn strip"
       ],
-      "action": "The previous chip flips away as the steadying hand unrolls a paper ribbon that loops around cutout buildings and ties.",
-      "handoff": "the tied ribbon",
+      "action": "The previous chip flips down as the torn map folds upward into a rising paper bar chart; a torn strip marks the top bar.",
+      "handoff": "the bar chart",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Admin costs rose three point four million, to eight point one million.",
       "source": [
-        32,
-        33
+        26
       ]
     },
     {
-      "line": "It is targeting Brazil's seventy-seven billion dollar sustainability market.",
-      "headline": "$77B MARKET",
+      "line": "By early September, shares traded at one dollar sixteen.",
+      "headline": "$1.16",
+      "ground": "magenta",
+      "subjects": [
+        "a paper price tag",
+        "a torn-paper arrow"
+      ],
+      "action": "The previous chip is covered as the bar chart shears into a torn-paper arrow pointing down to a hanging price tag.",
+      "handoff": "the price tag",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "By early September, shares traded at one dollar sixteen.",
+      "source": [
+        14
+      ]
+    },
+    {
+      "line": "Market capitalisation sits around thirty-four million dollars.",
+      "headline": "~$34M CAP",
+      "ground": "lime",
+      "subjects": [
+        "a small paper coin",
+        "open grid paper"
+      ],
+      "action": "The previous chip slides off as the price tag shrinks into a single small coin alone on open grid paper.",
+      "handoff": "the single coin",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Market capitalisation sits around thirty-four million dollars.",
+      "source": [
+        14
+      ]
+    },
+    {
+      "line": "Diginex has signalled focus on Brazil's seventy-seven billion dollar market.",
+      "headline": "BRAZIL $77B",
       "ground": "lime",
       "subjects": [
         "a paper map",
-        "a cutout arrow"
+        "a stencilled arrow"
       ],
-      "action": "The previous chip slides off as the tied ribbon flattens into a paper map; a cutout arrow lands on it and holds.",
-      "handoff": "the arrow on the map",
+      "action": "The previous chip flips away as the single coin widens into a paper map; a stencilled arrow lands across it.",
+      "handoff": "the stencilled arrow",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Diginex has signalled focus on Brazil's seventy-seven billion dollar market.",
       "source": [
         35
+      ]
+    },
+    {
+      "line": "For now, it's a speculative name needing patience and conviction.",
+      "headline": "SPECULATIVE",
+      "ground": "lime",
+      "subjects": [
+        "a hole-punched tag",
+        "a paper hand"
+      ],
+      "action": "The previous chip is covered as the stencilled arrow rolls into a hole-punched tag; a paper hand enters and holds it still.",
+      "handoff": "the held tag",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "For now, it's a speculative name needing patience and conviction.",
+      "source": [
+        38,
+        39
       ]
     }
   ],
@@ -152,7 +183,7 @@
     [],
     [],
     [
-      "headline number \"4\" not found as a figure in cited sentences [3,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
+      "headline number \"4\" not found as a figure in cited sentences [3,20,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
     ],
     [],
     [],
@@ -163,5 +194,5 @@
     []
   ],
   "model": "claude-opus-5",
-  "ms": 24396
+  "ms": 17666
 }

@@ -1,7 +1,7 @@
 {
-  "translator": "translator-v0.2",
+  "translator": "translator-v0.3",
   "pinned": true,
-  "note": "The six-beat exemplar from lib/translator.ts (EXEMPLAR_NDJSON), hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. v0.2 (WP2): every line rewritten to the 12-word budget (v0.1's beat 5 ran 19-20 words); beat 5 is cut, not split, so the spine stays six beats; every action now names how the previous beat's headline chip leaves before the new headline lands. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
+  "note": "The six-beat exemplar from lib/translator.ts (EXEMPLAR_NDJSON), hand-mapped to the sentence indexes of the captured answer to 'What is the cash position and runway?'. Pinned so the spine renders the same beats across native/saskia and chained/unchained runs. v0.2 (WP2): every line rewritten to the 12-word budget (v0.1's beat 5 ran 19-20 words); beat 5 is cut, not split, so the spine stays six beats; every action now names how the previous beat's headline chip leaves before the new headline lands. v0.3 (WP3): added hero (beat 4, the runway figure the question asks for), scale (oversized/small/diagram, never three-in-a-row), and delivery (three expression tags total: the opener, one turn, and the hero beat; none on the close). Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
   "question": "What is the cash position and runway?",
   "beats": [
     {
@@ -11,6 +11,9 @@
       "subjects": ["a stack of paper coins", "a cream paper chip"],
       "action": "A single halftone stack of paper coins drops onto a cream chip and settles.",
       "handoff": "the coin stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] By September's end, Diginex held one point eight five million in cash.",
       "source": [9]
     },
     {
@@ -20,6 +23,9 @@
       "subjects": ["the coin stack", "a torn-paper arrow"],
       "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.",
       "handoff": "the arrow",
+      "hero": false,
+      "scale": "small",
+      "delivery": "[fast-paced] Six months earlier it was three point one one million.",
       "source": [9, 10]
     },
     {
@@ -29,6 +35,9 @@
       "subjects": ["a paper calendar strip", "paper coins"],
       "action": "The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.",
       "handoff": "the strip",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Operating burn ran about one point three million a month.",
       "source": [22]
     },
     {
@@ -38,6 +47,9 @@
       "subjects": ["a paper runway", "a cutout aircraft"],
       "action": "The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.",
       "handoff": "the runway",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] At that rate, the cash on hand covered one point four months.",
       "source": [23]
     },
     {
@@ -47,6 +59,9 @@
       "subjects": ["fresh paper coins", "the runway", "tape pieces"],
       "action": "The previous chip slides off as fresh paper coins are taped onto the runway one after another, extending it across the frame.",
       "handoff": "the extended runway",
+      "hero": false,
+      "scale": "small",
+      "delivery": "October's warrant exercise added thirteen point eight million in cash.",
       "source": [27]
     },
     {
@@ -56,6 +71,9 @@
       "subjects": ["two paper calendar pages", "a paper hand"],
       "action": "The previous chip flips down as two paper calendar pages land on the runway; a paper hand enters and points at the second.",
       "handoff": "the pointing hand",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Survival depends on capital markets and the next two quarters.",
       "source": [25, 43]
     }
   ]

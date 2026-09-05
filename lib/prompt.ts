@@ -1,23 +1,29 @@
 /**
  * The prompt compiler: STYLE SHEET + BEAT + COPY LIST + AUDIO BLOCK.
  *
- * Tessera Style Sheet v0.2 is a numbered list on purpose: fal's prompt
+ * Tessera Style Sheet v0.3 is a numbered list on purpose: fal's prompt
  * rewriter copies numbered lists and paraphrases prose. Keep it numbered.
  * v0.1 measured that fal's rewriter drops any line phrased as a
  * prohibition (0/18 survival on "no brands" and "numbers never count up",
  * WP0 report §6) while descriptive lines survive at 16-18/18; v0.2 states
  * everything as a description of the world a prohibition would otherwise
  * name, and appends a short prohibition only where description alone
- * would not do. Line 7 is new: a layout law so a chained beat's inherited
- * composition clears before the new headline lands (WP0 found chaining
- * occluded 2 of 6 headlines). The four grounds are named, never hex:
- * palette values are approximate until Jim confirms, and the video model
- * reads names well.
+ * would not do. v0.2's line 6 ("no glow, neon, bloom") kept a literal
+ * prohibition tail and survived *worse* than v0.1 (7/18 vs 11/18, WP2
+ * report §6); v0.3 deletes it as a standalone line and folds its content
+ * into line 3's description of every cutout as matte paper reflecting only
+ * the room light. Line 4's vocabulary is widened (WP3, Robin: "refine with
+ * more elements and more variety"). Line 7 (headline typography) now caps
+ * width at a third of the frame unless the beat is marked `hero`, and a new
+ * line 8 varies composition scale beat to beat — both answer Robin's "the
+ * text is too big and feels clumsy." The four grounds are named, never
+ * hex: palette values are approximate until Jim confirms, and the video
+ * model reads names well.
  */
 
-import type { Beat, Ground } from "./translator";
+import type { Beat, Ground, Scale } from "./translator";
 
-export const STYLE_SHEET_VERSION = "style-sheet-v0.2";
+export const STYLE_SHEET_VERSION = "style-sheet-v0.3";
 
 export type Voice = "native" | "saskia";
 
@@ -44,17 +50,23 @@ export function styleSheet(ground: Ground): string[] {
   return [
     "Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.",
     `One flat block-colour paper ground fills the frame: ${GROUND_NAMES[ground]}. The ground is a single unbroken colour.`,
-    "Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them.",
-    "Diagram elements are flat matte paper shapes and ribbons in cream, black, pale yellow, or the ground's contrasting colour, with real paper texture, print dots and small pieces of tape.",
+    "Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.",
+    "Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.",
     "One consistent light from the upper left; each paper layer casts a small soft shadow.",
-    "Every surface is matte printed paper reflecting only the room light: cutouts, chips, ribbons and ground all read as photographed paper, with the same flat finish edge to edge. No glow, neon, bloom or halo anywhere.",
     "Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.",
-    "Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip, large, with safe margins. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw.",
+    "Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.",
+    "Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.",
     "Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.",
     "16:9, exactly 5 seconds, one composition, at most one crisp cut.",
     "Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.",
   ];
 }
+
+const SCALE_TEXT: Record<Scale, string> = {
+  oversized: "This composition is oversized: one subject fills most of the frame.",
+  small: "This composition is small-scale: a single subject sits alone on open ground.",
+  diagram: "This composition is a diagram: several elements are arranged together.",
+};
 
 export function audioBlockA(line: string): string {
   const spoken = line.replace(/"/g, "'");
@@ -82,7 +94,12 @@ export function beatBlock(beat: Beat, previousHandoff: string | null): string {
       : `Opens cold on the ground colour; the first subject enters on the first frame.`,
     `Action: ${beat.action}`,
     `Ends holding on ${beat.handoff}.`,
-    beat.headline ? `Headline printed on a paper chip: "${beat.headline}".` : `No headline.`,
+    SCALE_TEXT[beat.scale],
+    beat.headline
+      ? beat.hero
+        ? `Headline printed on a paper chip: "${beat.headline}". This is the hero beat: the number may print larger, up to half the frame width.`
+        : `Headline printed on a paper chip: "${beat.headline}".`
+      : `No headline.`,
   ];
   return lines.join("\n");
 }
@@ -130,12 +147,12 @@ export function compilePrompt(args: {
 export const STYLE_SHEET_SIGNALS: string[][] = [
   ["paper collage", "collage", "magazine"],
   ["block-colour", "block color", "flat ground", "solid ground", "lime green", "pale cyan", "soft violet", "deep magenta"],
-  ["halftone", "torn-paper", "torn paper", "cutout"],
-  ["paper shapes", "ribbons", "tape", "print dots", "paper texture"],
+  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo"],
+  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip"],
   ["upper-left light", "upper left", "paper-layer shadow", "paper shadow"],
-  ["flat matte", "no glow", "no neon", "nothing emits light", "not glossy", "no halo"],
   ["headline chip", "upper third", "lower two-thirds", "clear ground"],
-  ["extra-bold", "sans-serif", "paper chip", "headline"],
+  ["extra-bold", "sans-serif", "paper chip", "headline", "third of the frame", "hero"],
+  ["oversized", "small-scale", "open ground", "diagram", "vary in scale"],
   ["overshoot", "stable landing", "reading window", "camera is locked", "first frame"],
   ["16:9", "5 seconds", "one composition", "crisp cut"],
   ["torn-paper edges", "torn edges", "identity anchor", "upper-left"],

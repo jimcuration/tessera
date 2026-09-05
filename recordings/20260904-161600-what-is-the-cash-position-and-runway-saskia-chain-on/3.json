@@ -1,0 +1,42 @@
+{
+  "session": "20260904-161600-what-is-the-cash-position-and-runway-saskia-chain-on",
+  "n": 3,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Operating burn ran about one point three million a month.",
+    "headline": "$1.3M / MONTH",
+    "ground": "magenta",
+    "subjects": [
+      "a paper calendar strip",
+      "paper coins"
+    ],
+    "action": "The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.",
+    "handoff": "the strip",
+    "hero": false,
+    "scale": "diagram",
+    "delivery": "Operating burn ran about one point three million a month.",
+    "source": [
+      22
+    ]
+  },
+  "sources": [
+    "The burn rate is roughly $3.9M per half-year in operating losses, or approximately $1.3M per month."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper calendar strip; paper coins.\nOpens on the arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.\nEnds holding on the strip.\nThis composition is a diagram: several elements are arranged together.\nHeadline printed on a paper chip: \"$1.3M / MONTH\".\n\nON-SCREEN TEXT: \"$1.3M / MONTH\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage, presented as a 2D motion design photographed flat under soft room light. The scene opens with <Picture 1>, featuring a deep magenta block-color paper ground that fills the frame. In the center, a black-and-white halftone photographic cutout of a downward-pointing arrow with rough white torn-paper edges is positioned above a cream-colored paper rectangle and halftone cutouts of blank coins. A consistent light source from the upper left casts small, soft shadows beneath every paper layer. Immediately, a cream-colored paper chip containing the headline \"$1.3M / MONTH\" in an extra-bold black sans-serif typeface slides into the upper third of the frame from the left with a fast motion and a slight overshoot, landing stably. Simultaneously, the black arrow transforms by unrolling vertically downward into a long, narrow paper calendar strip. This strip is a black-and-white halftone cutout with rough white torn edges; the face of the calendar is completely blank and unprinted, with no numbers or text. As the strip unrolls, several blank, unmarked halftone paper coins slide off the strip one by one, moving downward and settling on the magenta ground. The camera remains in a Static Shot throughout the 5-second duration. The composition ends as a diagram, holding a clear view of the blank calendar strip, the scattered blank coins, and the stable headline chip.\n\noverall_soundscape: A series of crisp, tactile paper sound effects. This includes a quick, sharp paper slap as the headline chip lands, a rhythmic, textured rustling and unfolding sound as the arrow transforms into a strip, and several light, metallic-sounding paper taps as the coins slide off and hit the surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91517/YWIA2GgO0ygVCCSyghBkG_minimax-h3.mp4",
+  "requestId": "01a06cc7-c059-72f0-a04c-4a4bbeb32b4f",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 6783,
+  "timings": {
+    "inference": 0.4572251900099218
+  },
+  "savedAt": "2026-09-04T14:17:09.728Z"
+}

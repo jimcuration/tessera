@@ -1,0 +1,44 @@
+{
+  "session": "20260904-162228-what-is-diginex-native-chain-on",
+  "n": 6,
+  "question": "What is Diginex",
+  "beat": {
+    "line": "Admin costs rose three point four million, to eight point one million.",
+    "headline": "G&A $8.1M",
+    "ground": "magenta",
+    "subjects": [
+      "a paper bar chart",
+      "a torn strip"
+    ],
+    "action": "The previous chip flips down as the torn map folds upward into a rising paper bar chart; a torn strip marks the top bar.",
+    "handoff": "the bar chart",
+    "hero": false,
+    "scale": "small",
+    "delivery": "Admin costs rose three point four million, to eight point one million.",
+    "source": [
+      26
+    ]
+  },
+  "sources": [
+    "General and administrative expenses rose $3.4M to $8.1M in the six months to September 2025, with $2.2M of that driven by M&A due diligence and legal work."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "on",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: a paper bar chart; a torn strip.\nOpens on the torn map, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip flips down as the torn map folds upward into a rising paper bar chart; a torn strip marks the top bar.\nEnds holding on the bar chart.\nThis composition is small-scale: a single subject sits alone on open ground.\nHeadline printed on a paper chip: \"G&A $8.1M\".\n\nON-SCREEN TEXT: \"G&A $8.1M\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Admin costs rose three point four million, to eight point one million.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a modern editorial paper collage in a 2D motion design style, photographed flat under soft room light from the upper left, creating small, consistent soft shadows beneath every layer. The scene opens with <Picture 1> as the anchor, featuring a deep magenta, single-block-color paper ground. In the upper third of the frame, a cream-colored paper chip serves as a headline; a black, extra-bold sans-serif font clearly and stably prints the text \"G&A $8.1M\". This chip remains uncovered throughout the shot. In the lower two-thirds of the frame, a black-and-white halftone photographic cutout of a torn map, characterized by rough white torn-paper edges, is initially visible. Immediately upon the first frame, the map begins to fold upward and transform into a small-scale paper bar chart. The bar chart consists of flat matte paper shapes in cream and black with visible print dots and paper texture. As the chart rises, a torn strip of cream paper slides in quickly with a slight overshoot to mark the top of the highest bar. The camera remains in a Static Shot, locked throughout the duration. The movements are fast and precise, landing in a stable composition where the small bar chart sits alone on the vast magenta ground. The elements hold their position for the remainder of the video, with a subtle, almost imperceptible looping vibration to maintain a sense of life. A narrator (S1), a male with a warm, clear, and natural timbre and a brisk but unhurried speaking rate, says: <d>[English] Admin costs rose three point four million, to eight point one million.</d>\n\noverall_soundscape: The audio is dominated by the narrator's voice, layered with rhythmic, tactile foley sounds. Distinct, crisp paper-slaps and the sticky, sharp sound of adhesive tape being applied synchronize with the folding map and the landing of the bar chart and torn strip.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91545/kE0MKk1HPTq-RaiMmh1jx_minimax-h3.mp4",
+  "requestId": "01a06cce-d33e-7411-9424-5d49f5d10fb8",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "seed": 340789,
+  "resolution": "480P",
+  "renderMs": 5924,
+  "timings": {
+    "inference": 0.45923139300430194
+  },
+  "renderedAt": "2026-09-04T14:24:53.073Z",
+  "savedAt": "2026-09-04T14:24:53.089Z"
+}

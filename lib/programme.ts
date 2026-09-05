@@ -241,7 +241,7 @@ export class Session {
             translatorVersion: TRANSLATOR_VERSION,
             styleSheetVersion: STYLE_SHEET_VERSION,
           });
-          this.narrator?.prefetch(n, beat.line);
+          this.narrator?.prefetch(n, beat.delivery);
           this.set({ status: "staging", beats: [...this.state.beats, beat] });
           stream.addShots([shot]);
           if (!started) {

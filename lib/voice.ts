@@ -1,11 +1,12 @@
 "use client";
 
 /**
- * Saskia: the player narrates the beats' lines with an ElevenLabs track
- * while the clips run wordless. Alignment is sentence-to-clip: the line
- * for beat N starts when clip N starts, or when the line for beat N-1
- * finishes if that runs late, so the narration stays continuous. No
- * attempt at tight sync (brief: WP0 §4).
+ * Saskia: the player narrates each beat's `delivery` text (its line, with
+ * at most one expression tag for the expressive model, WP3 §3/§4) with an
+ * ElevenLabs track while the clips run wordless. Alignment is
+ * sentence-to-clip: the narration for beat N starts when clip N starts, or
+ * when beat N-1's narration finishes if that runs late, so the narration
+ * stays continuous. No attempt at tight sync (brief: WP0 §4).
  */
 
 /** ElevenLabs limits concurrent requests per key; beats arrive faster than that. */
