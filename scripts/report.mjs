@@ -14,23 +14,23 @@ import path from "node:path";
 const USD_PER_SECOND = 0.025;
 const CLIP_SECONDS = 5;
 
-/** Mirrors STYLE_SHEET_SIGNALS in lib/prompt.ts (style sheet v0.2, 11 lines). */
+/** Mirrors STYLE_SHEET_SIGNALS in lib/prompt.ts (style sheet v0.3, 11 lines). v0.2's line 6 (flat matte / no glow) is folded into line 3; a new line 8 (scale) replaces its slot. */
 const SIGNALS = [
   ["paper collage", "collage", "magazine"],
   ["block-colour", "block color", "block-color", "flat ground", "solid ground", "flat background", "solid background", "lime green", "pale cyan", "soft violet", "deep magenta"],
-  ["halftone", "torn-paper", "torn paper", "cutout"],
-  ["paper shapes", "ribbons", "tape", "print dots", "paper texture"],
+  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "flat matte"],
+  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip"],
   ["upper-left", "upper left", "paper-layer shadow", "paper shadow", "layer shadow"],
-  ["flat matte", "no glow", "no neon", "nothing emits light", "not glossy", "no halo", "no luminous", "non-luminous"],
   ["headline chip", "upper third", "lower two-thirds", "clear ground"],
-  ["extra-bold", "sans-serif", "paper chip", "headline"],
+  ["extra-bold", "sans-serif", "paper chip", "headline", "third of the frame", "hero"],
+  ["oversized", "small-scale", "open ground", "diagram", "vary in scale"],
   ["overshoot", "stable landing", "reading window", "no camera shake", "camera is locked", "first frame", "static shot"],
   ["16:9", "5 seconds", "five seconds", "one composition", "crisp cut", "single continuous"],
   ["torn-paper edges", "torn paper edges", "torn edges", "identity anchor", "rough white"],
 ];
 const LINE_NAMES = [
-  "1 collage", "2 ground", "3 halftone cutouts", "4 paper diagram", "5 upper-left light", "6 flat matte / no glow",
-  "7 layout law", "8 headline type", "9 motion", "10 16:9, 5s, one comp", "11 identity anchor",
+  "1 collage", "2 ground", "3 halftone/unmarked/matte", "4 paper diagram", "5 upper-left light",
+  "6 layout law", "7 headline type", "8 scale variety", "9 motion", "10 16:9, 5s, one comp", "11 identity anchor",
 ];
 
 function readJson(file) {
@@ -80,10 +80,13 @@ for (const dir of sessions) {
   console.log(`- cost per clip at post-promo $${USD_PER_SECOND}/s × ${CLIP_SECONDS}s = $${(USD_PER_SECOND * CLIP_SECONDS).toFixed(3)}; per 60 s of programme = $${(USD_PER_SECOND * 60).toFixed(2)}`);
   if (whisper) console.log(`- whisper (${whisper.model}) mean word recall: ${(whisper.meanWordRecall * 100).toFixed(1)}%`);
 
-  console.log(`\n| # | chained | render ms | headline | whisper recall | heard |\n|---|---|---|---|---|---|`);
+  console.log(`\n| # | chained | render ms | headline | hero | scale | tags | whisper recall | heard |\n|---|---|---|---|---|---|---|---|---|`);
   for (const c of clips) {
     const w = heard.get(c.n);
-    console.log(`| ${c.n} | ${c.chained ? "i2v" : "t2v"} | ${c.renderMs} | ${c.beat?.headline ?? "—"} | ${w ? `${(w.wordRecall * 100).toFixed(0)}% (${w.matched}/${w.words})` : "—"} | ${w ? (w.heard || "(silent)").replace(/\|/g, "/") : "—"} |`);
+    const tags = [...String(c.beat?.delivery ?? "").matchAll(/\[([^\]]*)\]/g)].map((m) => m[1]);
+    console.log(
+      `| ${c.n} | ${c.chained ? "i2v" : "t2v"} | ${c.renderMs} | ${c.beat?.headline ?? "—"} | ${c.beat?.hero ? "hero" : "·"} | ${c.beat?.scale ?? "—"} | ${tags.length ? tags.join(", ") : "—"} | ${w ? `${(w.wordRecall * 100).toFixed(0)}% (${w.matched}/${w.words})` : "—"} | ${w ? (w.heard || "(silent)").replace(/\|/g, "/") : "—"} |`
+    );
   }
 
   console.log(`\nStyle-sheet lines surviving in expanded_prompt (✓ = a phrase from the line, or its paraphrase, is present):\n`);

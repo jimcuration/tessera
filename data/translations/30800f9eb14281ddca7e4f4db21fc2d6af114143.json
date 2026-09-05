@@ -1,170 +1,188 @@
 {
-  "translator": "translator-v0.2",
+  "translator": "translator-v0.3",
   "question": "What are the key risks for Diginex?",
   "beats": [
     {
-      "line": "Diginex faces a fragmented reporting landscape across jurisdictions and industries.",
-      "headline": "FRAGMENTED RULES",
+      "line": "Diginex faces a highly fragmented ESG reporting landscape.",
+      "headline": "FRAGMENTED LANDSCAPE",
       "ground": "violet",
       "subjects": [
-        "torn paper documents",
+        "torn paper strips",
         "a paper map"
       ],
-      "action": "Torn paper documents scatter across a paper map and settle unevenly.",
-      "handoff": "the scattered documents",
+      "action": "A paper map lands flat and tears into mismatched strips that drift apart and hold.",
+      "handoff": "the torn strips",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Diginex faces a highly fragmented ESG reporting landscape.",
       "source": [
         9
       ]
     },
     {
-      "line": "Data quality, reliability and comparability pose significant challenges.",
-      "headline": "DATA RELIABILITY",
+      "line": "Standards vary by jurisdiction and industry, straining data quality.",
+      "headline": "DATA QUALITY",
       "ground": "violet",
       "subjects": [
-        "the scattered documents",
-        "a paper magnifying lens"
+        "stacked sheets",
+        "grid paper"
       ],
-      "action": "The opening chip slides off the top edge as the scattered documents stack into one sheet; a paper magnifying lens lowers over it and holds.",
-      "handoff": "the lens",
+      "action": "The previous chip slides off the top edge as the torn strips gather into stacked sheets over grid paper.",
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Standards vary by jurisdiction and industry, straining data quality.",
       "source": [
+        9,
         10
       ]
     },
     {
-      "line": "Fail on auditable data, and credibility with clients could suffer.",
-      "headline": "CREDIBILITY AT RISK",
+      "line": "Fail on auditable data, and credibility with clients suffers.",
+      "headline": "CREDIBILITY",
       "ground": "magenta",
       "subjects": [
-        "a paper stamp",
-        "a cracked document"
+        "a rubber stamp",
+        "a document"
       ],
-      "action": "The previous chip flips away as the lens folds into a paper stamp; it presses a document and the sheet cracks down the middle.",
-      "handoff": "the cracked document",
+      "action": "The previous chip flips away as the stacked sheets compress into one document; a rubber stamp presses down and lifts, leaving a blank mark.",
+      "handoff": "the stamp",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Fail on auditable data, and credibility with clients suffers.",
       "source": [
         11
       ]
     },
     {
-      "line": "Definitions and frameworks keep shifting as regulation evolves.",
-      "headline": "SHIFTING FRAMEWORKS",
-      "ground": "magenta",
+      "line": "Interoperability and data traceability will be critical to keep trust.",
+      "headline": "TRACEABILITY",
+      "ground": "cyan",
       "subjects": [
-        "sliding paper panels",
-        "a ribbon"
+        "string and pins",
+        "grid paper"
       ],
-      "action": "The previous chip is covered as the cracked document splits into sliding paper panels; a ribbon threads between them and pulls them out of line.",
-      "handoff": "the sliding panels",
+      "action": "The previous chip slides off as the panels flatten into grid paper; pins drop in and string threads between them, pulling taut.",
+      "handoff": "the threaded string",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Interoperability and data traceability will be critical to keep trust.",
       "source": [
-        12,
         13
       ]
     },
     {
-      "line": "The share price has fallen sharply, shifting focus to delivery.",
-      "headline": "SHARE PRICE FALL",
-      "ground": "magenta",
-      "subjects": [
-        "a torn-paper arrow",
-        "a paper chart"
-      ],
-      "action": "The previous chip slides off as the sliding panels close into a paper chart; a torn-paper arrow cuts down across it and stops low.",
-      "handoff": "the down arrow",
-      "source": [
-        15
-      ]
-    },
-    {
-      "line": "Revenue grew two hundred and ninety-three percent, to two million dollars.",
+      "line": "Revenue grew two hundred and ninety-three percent to two million dollars.",
       "headline": "+293% TO $2.0M",
-      "ground": "lime",
+      "ground": "cyan",
       "subjects": [
-        "a rising paper bar",
-        "paper coins"
+        "a paper bar chart",
+        "a torn-paper arrow"
       ],
-      "action": "The previous chip flips away as the down arrow inverts into a rising paper bar; paper coins stack along its top edge and hold.",
-      "handoff": "the rising bar",
+      "action": "The previous chip flips away as the string snaps upright into a paper bar chart; a torn arrow climbs it and holds at the top.",
+      "handoff": "the arrow",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] Revenue grew two hundred and ninety-three percent to two million dollars.",
       "source": [
         16
       ]
     },
     {
       "line": "But the market questions how repeatable that growth really is.",
-      "headline": "ONE-OFF VS SAAS",
-      "ground": "lime",
+      "headline": "REPEATABLE?",
+      "ground": "magenta",
       "subjects": [
-        "two paper columns",
-        "a paper hand"
+        "two stacked sheets",
+        "a paper clip"
       ],
-      "action": "The previous chip slides off as the rising bar splits into two paper columns; a paper hand enters and tilts one column back and forth.",
-      "handoff": "the two columns",
+      "action": "The previous chip slides off as the arrow folds into two sheets, one-off and recurring, held apart by a paper clip.",
+      "handoff": "the clipped sheets",
+      "hero": false,
+      "scale": "small",
+      "delivery": "But the market questions how repeatable that growth really is.",
       "source": [
         16
       ]
     },
     {
-      "line": "Strategy leans on acquisitions, so execution is the key risk.",
+      "line": "Strategy leans on acquisitions, so integration is the key risk.",
       "headline": "EXECUTION RISK",
-      "ground": "cyan",
+      "ground": "magenta",
       "subjects": [
-        "interlocking paper blocks",
+        "two paper buildings",
         "tape pieces"
       ],
-      "action": "The previous chip is covered as the two columns fold into interlocking paper blocks; tape pieces press across the seam and hold it shut.",
-      "handoff": "the taped seam",
+      "action": "The previous chip is covered as the clipped sheets rise into two paper buildings; tape strips stretch between them and hold unevenly.",
+      "handoff": "the taped join",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Strategy leans on acquisitions, so integration is the key risk.",
       "source": [
-        17
-      ]
-    },
-    {
-      "line": "Slow integration of Resulticks could keep investor confidence weak.",
-      "headline": "SLOW INTEGRATION",
-      "ground": "cyan",
-      "subjects": [
-        "a paper calendar strip",
-        "a peeling tape edge"
-      ],
-      "action": "The previous chip flips down as the taped seam unrolls into a calendar strip; one tape edge peels back and curls away.",
-      "handoff": "the peeling strip",
-      "source": [
+        17,
         18
       ]
     },
     {
-      "line": "Adoption stays uneven, so sales cycles may lengthen, slowing growth.",
-      "headline": "LONGER SALES CYCLES",
+      "line": "Adoption stays uneven, and smaller firms may delay on cost.",
+      "headline": "UNEVEN ADOPTION",
       "ground": "magenta",
       "subjects": [
-        "a stretching paper track",
-        "a cutout vehicle"
+        "a paper calendar strip",
+        "paper coins"
       ],
-      "action": "The previous chip slides off as the peeling strip stretches into a long paper track; a cutout vehicle crawls partway along it and halts.",
-      "handoff": "the stretched track",
+      "action": "The previous chip flips down as the taped join unrolls into a calendar strip; coins slide back off its later months and stop.",
+      "handoff": "the calendar strip",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Adoption stays uneven, and smaller firms may delay on cost.",
       "source": [
         20,
-        21,
-        23
+        21
       ]
     },
     {
-      "line": "Diginex must educate the market and demonstrate return on investment.",
-      "headline": "PROVE ROI",
+      "line": "So Diginex must streamline onboarding and demonstrate clear return on investment.",
+      "headline": "SHOW ROI",
       "ground": "lime",
       "subjects": [
-        "a paper ledger",
-        "a paper hand"
+        "a paper hand",
+        "a document"
       ],
-      "action": "The previous chip flips away as the stretched track folds into a paper ledger; a paper hand enters and taps its final line.",
-      "handoff": "the tapping hand",
+      "action": "The previous chip slides off as the calendar strip folds into a single document; a paper hand enters and rests on it.",
+      "handoff": "the resting hand",
+      "hero": false,
+      "scale": "small",
+      "delivery": "So Diginex must streamline onboarding and demonstrate clear return on investment.",
       "source": [
-        22,
+        23,
         24
       ]
     }
   ],
-  "dropped": [],
+  "dropped": [
+    {
+      "raw": {
+        "line": "ESG regulation keeps evolving; definitions and frameworks continue to shift.",
+        "headline": "SHIFTING RULES",
+        "ground": "magenta",
+        "subjects": [
+          "sliding paper panels",
+          "a paper clip"
+        ],
+        "action": "The previous chip is covered as the stamp unfolds into sliding paper panels that slip past each other and settle misaligned.",
+        "handoff": "the sliding panels",
+        "hero": false,
+        "scale": "diagram",
+        "delivery": "Regulation keeps evolving; definitions and frameworks continue to shift.",
+        "source": [
+          12
+        ]
+      },
+      "reason": "delivery, stripped of tags, does not match line"
+    }
+  ],
   "warnings": [
-    [],
-    [],
     [],
     [],
     [],
@@ -176,5 +194,5 @@
     []
   ],
   "model": "claude-opus-5",
-  "ms": 17015
+  "ms": 26033
 }

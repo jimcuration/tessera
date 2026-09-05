@@ -1,0 +1,44 @@
+{
+  "session": "20260904-161759-what-is-the-cash-position-and-runway-native-chain-off",
+  "n": 6,
+  "question": "What is the cash position and runway?",
+  "beat": {
+    "line": "Survival depends on capital markets and the next two quarters.",
+    "headline": "NEXT 2 QUARTERS",
+    "ground": "lime",
+    "subjects": [
+      "two paper calendar pages",
+      "a paper hand"
+    ],
+    "action": "The previous chip flips down as two paper calendar pages land on the runway; a paper hand enters and points at the second.",
+    "handoff": "the pointing hand",
+    "hero": false,
+    "scale": "diagram",
+    "delivery": "Survival depends on capital markets and the next two quarters.",
+    "source": [
+      25,
+      43
+    ]
+  },
+  "sources": [
+    "Diginex's survival hinges on continued access to capital markets.",
+    "Evidence of revenue acceleration and narrowing operating losses in Q3 and Q4 2026 results will determine whether Diginex can extend runway organically or faces dilutive capital raises."
+  ],
+  "warnings": [],
+  "voice": "native",
+  "chain": "off",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: lime green. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: lime green.\nSubjects: two paper calendar pages; a paper hand.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: The previous chip flips down as two paper calendar pages land on the runway; a paper hand enters and points at the second.\nEnds holding on the pointing hand.\nThis composition is a diagram: several elements are arranged together.\nHeadline printed on a paper chip: \"NEXT 2 QUARTERS\".\n\nON-SCREEN TEXT: \"NEXT 2 QUARTERS\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: One English narrator, warm, clear, natural, brisk but unhurried, never an advertising shout. Speak the following line exactly once, word for word, beginning on the first frame: \"Survival depends on capital markets and the next two quarters.\". No other dialogue. Light paper-slap and tape sound effects beneath the voice; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, modern editorial paper collage style, Static Shot. The scene opens on a flat, unbroken lime green paper background, photographed from a top-down perspective under soft room light coming from the upper left. On the first frame, a cream-colored paper chip containing the headline \"NEXT 2 QUARTERS\" in an extra-bold black sans-serif typeface flips down rapidly from the top edge, landing stably in the upper third of the frame. Simultaneously, two black-and-white halftone photographic cutouts of calendar pages, featuring rough white torn-paper edges and completely blank, unprinted faces, slide into the lower two-thirds of the frame with a fast motion and a slight overshoot before snapping into a stable position. Each element casts a small, soft shadow to the lower right. At 00:02.000, a black-and-white halftone cutout of an anonymous paper hand with rough white torn edges enters the frame from the right, moving swiftly to point its index finger directly at the second calendar page. The narrator, a warm and clear-toned male (S1), speaks with a brisk but natural delivery: <d>[English] Survival depends on capital markets and the next two quarters.</d> The composition holds steady for the remaining duration, maintaining the clean, legible \"NEXT 2 QUARTERS\" text and the tactile paper textures.\n\noverall_soundscape: The audio is dominated by the crisp, tactile sounds of a paper-collage assembly. A sharp, percussive paper-slap occurs as the headline chip flips down, followed by two distinct, rhythmic thuds as the calendar pages land. A subtle, sticky sound of adhesive tape accompanies the arrival of the paper hand.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa9152e/fxobjDFFngHiXUw5e5B7K_minimax-h3.mp4",
+  "requestId": "01a06ccb-6f8b-7a11-89ae-4bb731f64a79",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "resolution": "480P",
+  "renderMs": 78421,
+  "timings": {
+    "inference": 0.4508911229931982
+  },
+  "savedAt": "2026-09-04T14:21:07.754Z"
+}

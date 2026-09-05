@@ -1,0 +1,42 @@
+{
+  "session": "20260904-162821-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 1,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "Diginex faces a highly fragmented ESG reporting landscape.",
+    "headline": "FRAGMENTED LANDSCAPE",
+    "ground": "violet",
+    "subjects": [
+      "torn paper strips",
+      "a paper map"
+    ],
+    "action": "A paper map lands flat and tears into mismatched strips that drift apart and hold.",
+    "handoff": "the torn strips",
+    "hero": false,
+    "scale": "oversized",
+    "delivery": "[presenting to camera] Diginex faces a highly fragmented ESG reporting landscape.",
+    "source": [
+      9
+    ]
+  },
+  "sources": [
+    "The ESG reporting landscape remains highly fragmented, with varying standards across jurisdictions and industries."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: soft violet. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: soft violet.\nSubjects: torn paper strips; a paper map.\nOpens cold on the ground colour; the first subject enters on the first frame.\nAction: A paper map lands flat and tears into mismatched strips that drift apart and hold.\nEnds holding on the torn strips.\nThis composition is oversized: one subject fills most of the frame.\nHeadline printed on a paper chip: \"FRAGMENTED LANDSCAPE\".\n\nON-SCREEN TEXT: \"FRAGMENTED LANDSCAPE\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "integrated_multimodal_description: [Shot 1] Cinematic, 2D-animated modern editorial paper collage, Static Shot. The frame is filled with a flat, unbroken ground of soft violet matte paper, photographed under soft room light coming from the upper left. At 00:00.000, a cream-colored paper chip lands abruptly in the upper third of the frame with a slight overshoot; printed on it in a bold, black, extra-bold sans-serif typeface is the text \"FRAGMENTED LANDSCAPE\". The text is clean, legible, and remains stable throughout the video. Simultaneously, a large, black-and-white halftone photographic cutout of a map—featuring rough white torn-paper edges and no text, numerals, or symbols on its surface—slides rapidly into the lower two-thirds of the frame, filling most of the space. The map is a matte paper material that casts a small, soft shadow onto the violet ground. Immediately upon landing, the map physically tears into several mismatched strips of varying sizes. These strips drift apart with fast, refined motion, sliding across the violet surface before coming to a sudden, stable stop. The final composition holds on these drifting, torn fragments and the headline chip, with a very subtle, slow-looping drift of the paper strips occurring in the final second to maintain dynamic energy.\n\noverall_soundscape: A sharp, tactile paper-slap sound occurs as the headline chip and map land. This is followed by a crisp, textured sound of heavy paper tearing, and a few short, sticky tape-like peels as the fragments slide and settle on the matte surface.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91574/CwCTE3GZ_OvOSTvnQgRky_minimax-h3.mp4",
+  "requestId": "01a06cd2-7ef2-7f41-a316-53e591585854",
+  "endpoint": "minimax/h3-max-turbo/text-to-video",
+  "chained": false,
+  "resolution": "480P",
+  "renderMs": 2383,
+  "timings": {
+    "inference": 0.45111185900168493
+  },
+  "savedAt": "2026-09-04T14:28:49.888Z"
+}

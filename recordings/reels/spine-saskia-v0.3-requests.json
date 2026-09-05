@@ -1,0 +1,122 @@
+[
+  {
+    "variant": "plain",
+    "n": 1,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "By September's end, Diginex held one point eight five million in cash.",
+    "durationSeconds": 4.28,
+    "requestedAt": "2026-09-04T14:35:55.095Z"
+  },
+  {
+    "variant": "plain",
+    "n": 2,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "Six months earlier it was three point one one million.",
+    "durationSeconds": 2.93,
+    "requestedAt": "2026-09-04T14:35:56.602Z"
+  },
+  {
+    "variant": "plain",
+    "n": 3,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "Operating burn ran about one point three million a month.",
+    "durationSeconds": 3,
+    "requestedAt": "2026-09-04T14:35:58.004Z"
+  },
+  {
+    "variant": "plain",
+    "n": 4,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "At that rate, the cash on hand covered one point four months.",
+    "durationSeconds": 3.79,
+    "requestedAt": "2026-09-04T14:35:59.679Z"
+  },
+  {
+    "variant": "plain",
+    "n": 5,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "October's warrant exercise added thirteen point eight million in cash.",
+    "durationSeconds": 4.68,
+    "requestedAt": "2026-09-04T14:36:01.423Z"
+  },
+  {
+    "variant": "plain",
+    "n": 6,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "Survival depends on capital markets and the next two quarters.",
+    "durationSeconds": 3.71,
+    "requestedAt": "2026-09-04T14:36:03.335Z"
+  },
+  {
+    "variant": "tagged",
+    "n": 1,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "[presenting to camera] By September's end, Diginex held one point eight five million in cash.",
+    "durationSeconds": 4.99,
+    "requestedAt": "2026-09-04T14:36:07.677Z"
+  },
+  {
+    "variant": "tagged",
+    "n": 2,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "[fast-paced] Six months earlier it was three point one one million.",
+    "durationSeconds": 3,
+    "requestedAt": "2026-09-04T14:36:09.251Z"
+  },
+  {
+    "variant": "tagged",
+    "n": 3,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "Operating burn ran about one point three million a month.",
+    "durationSeconds": 3.24,
+    "requestedAt": "2026-09-04T14:36:11.062Z"
+  },
+  {
+    "variant": "tagged",
+    "n": 4,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "[excited] At that rate, the cash on hand covered one point four months.",
+    "durationSeconds": 3.47,
+    "requestedAt": "2026-09-04T14:36:12.854Z"
+  },
+  {
+    "variant": "tagged",
+    "n": 5,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "October's warrant exercise added thirteen point eight million in cash.",
+    "durationSeconds": 4.75,
+    "requestedAt": "2026-09-04T14:36:14.953Z"
+  },
+  {
+    "variant": "tagged",
+    "n": 6,
+    "model": "eleven_v3",
+    "voiceId": "QMSGabqYzk8YAneQYYvR",
+    "settings": "account default (no override)",
+    "text": "Survival depends on capital markets and the next two quarters.",
+    "durationSeconds": 3.63,
+    "requestedAt": "2026-09-04T14:36:16.648Z"
+  }
+]

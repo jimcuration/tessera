@@ -131,6 +131,29 @@ export function splitSentences(answer: string): string[] {
   return out;
 }
 
+/**
+ * The captured answer text carries the platform's own ticker card as
+ * boilerplate ("$1.38 USD", "+1.47% today", "$37.83 m USD", "Market Cap")
+ * ahead of the actual content; the translator is told to skip it (rule 3)
+ * but nothing ever extracted it into `record.card`, so it was captured as
+ * null and the strip never showed it (WP3 §1). Parsed here, once, rather
+ * than dropping it: same boilerplate shape the translator already skips,
+ * keyed off the fixture's own ticker so this has no dependency on wording
+ * that would change per company.
+ */
+const CARD_RE = /\$([0-9.]+)\s*USD\s*\n\s*\n\s*([+-][0-9.]+)%\s*today\s*\n\s*\n\s*\$([0-9.]+)\s*m\s*USD\s*\n\s*\nMarket Cap/;
+
+export function extractCard(answer: string): Record<string, unknown> | null {
+  const m = CARD_RE.exec(answer);
+  if (!m) return null;
+  return {
+    ticker: TICKER,
+    price: Number(m[1]),
+    changePercent: Number(m[2]),
+    marketCap: Number(m[3]),
+  };
+}
+
 function toAnswer(record: CurationRecord): Answer {
   const platformFollowups = Array.isArray(record.followups)
     ? record.followups.filter((f) => typeof f === "string" && f.trim())
@@ -142,7 +165,7 @@ function toAnswer(record: CurationRecord): Answer {
     answer: record.answer,
     kind: record.kind === "deflection" ? "deflection" : "answer",
     link: record.link ?? null,
-    card: record.card ?? null,
+    card: record.card ?? extractCard(record.answer),
     followups: fromSpine
       ? SPINE_QUESTIONS.filter((q) => normalise(q) !== normalise(record.question))
       : platformFollowups,

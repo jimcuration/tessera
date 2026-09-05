@@ -6,19 +6,35 @@
  * calls Claude (app/api/translate), the client that stages the beats, and
  * the checker (scripts/check.mjs mirrors `validateBeat`).
  *
- * Version: translator v0.2, paired with Tessera Style Sheet v0.2
+ * Version: translator v0.3, paired with Tessera Style Sheet v0.3
  * (lib/prompt.ts). WP0 found: a native narrator rushed an exemplar line at
  * 19-20 words, so the line budget is now 12 words, hard; two clips showed a
  * face despite "never a recognisable face", so a beat whose `subjects`
  * names a person, a body part that reads as a person, or a proper name is
  * now dropped in code, not just discouraged in the prompt (CLAUDE.md rule
- * 6, decision D23).
+ * 6, decision D23). v0.3 adds three fields the WP3 brief asked for: `hero`
+ * marks the one beat, if any, that carries the answer's central figure (so
+ * the sheet's headline-typography line can let that number print larger);
+ * `scale` varies each beat's composition between one oversized subject, a
+ * small subject alone, and a multi-element diagram (Robin: "refine with
+ * more elements and more variety"); `delivery` is `line` with ElevenLabs
+ * expression tags in square brackets for Saskia's expressive voice model —
+ * `npm run check` and the Whisper scorer never read it, only `line`.
  */
 
-export const TRANSLATOR_VERSION = "translator-v0.2";
+export const TRANSLATOR_VERSION = "translator-v0.3";
 
 export type Ground = "lime" | "cyan" | "violet" | "magenta";
 export const GROUNDS: Ground[] = ["lime", "cyan", "violet", "magenta"];
+
+export type Scale = "oversized" | "small" | "diagram";
+export const SCALES: Scale[] = ["oversized", "small", "diagram"];
+
+/**
+ * The only expression tags a `delivery` line may carry (WP3 §3): each is a
+ * whole `[bracketed]` tag, at most one per line. Mirrored in scripts/check.mjs.
+ */
+export const DELIVERY_TAGS = ["presenting to camera", "excited", "fast-paced"];
 
 export interface Beat {
   /** Spoken sentence, 12 words or fewer. */
@@ -32,8 +48,24 @@ export interface Beat {
   action: string;
   /** The named shape this beat ends on, which the next beat transforms. */
   handoff: string;
+  /** Whether this beat's line carries the answer's central figure. At most one per programme. */
+  hero: boolean;
+  /** How this beat's composition is scaled. Varies beat to beat; never three-in-a-row the same. */
+  scale: Scale;
+  /** `line` with at most one DELIVERY_TAGS tag in square brackets, for Saskia. Stripped of tags, equals `line` exactly. */
+  delivery: string;
   /** Indexes into the answer's sentences. Never empty: no source, no render. */
   source: number[];
+}
+
+/** Every `[bracketed]` tag in a delivery line. */
+export function deliveryTags(delivery: string): string[] {
+  return [...delivery.matchAll(/\[([^\]]*)\]/g)].map((m) => m[1]);
+}
+
+/** `delivery` with every `[bracketed]` tag removed and whitespace collapsed, for comparison against `line`. */
+export function stripDelivery(delivery: string): string {
+  return delivery.replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim();
 }
 
 export interface BeatCheck {
@@ -205,12 +237,54 @@ export function validateBeat(raw: unknown, sentences: string[]): BeatCheck {
     }
   }
 
+  const hero = b.hero === true;
+
+  let scale: Scale = "small";
+  if (typeof b.scale === "string" && (SCALES as string[]).includes(b.scale)) {
+    scale = b.scale as Scale;
+  } else {
+    warnings.push(`scale "${String(b.scale)}" not one of ${SCALES.join("/")}; using small`);
+  }
+
+  const delivery = typeof b.delivery === "string" && b.delivery.trim() ? b.delivery.trim() : line;
+  const tags = deliveryTags(delivery);
+  for (const tag of tags) {
+    if (!DELIVERY_TAGS.includes(tag)) {
+      return { ok: false, beat: null, dropped: `delivery tag "[${tag}]" not in the whitelist`, warnings };
+    }
+  }
+  if (tags.length > 1) {
+    return { ok: false, beat: null, dropped: `delivery carries ${tags.length} tags (limit 1)`, warnings };
+  }
+  if (stripDelivery(delivery) !== line) {
+    return { ok: false, beat: null, dropped: `delivery, stripped of tags, does not match line`, warnings };
+  }
+
   return {
     ok: true,
-    beat: { line, headline, ground, subjects, action, handoff, source },
+    beat: { line, headline, ground, subjects, action, handoff, hero, scale, delivery, source },
     dropped: null,
     warnings,
   };
+}
+
+/**
+ * Programme-level checks `validateBeat` cannot make on one beat alone:
+ * at most one `hero` beat, and no `scale` value held for three beats
+ * running (WP3 §3). Returns hard failure reasons; mirrored in
+ * scripts/check.mjs for `npm run check`.
+ */
+export function validateProgramme(beats: Beat[]): string[] {
+  const failures: string[] = [];
+  const heroes = beats.filter((b) => b.hero).length;
+  if (heroes > 1) failures.push(`${heroes} hero beats (limit 1)`);
+  for (let i = 0; i + 2 < beats.length; i += 1) {
+    const [a, b, c] = [beats[i], beats[i + 1], beats[i + 2]];
+    if (a.scale === b.scale && b.scale === c.scale) {
+      failures.push(`scale "${a.scale}" repeats for beats ${i + 1}-${i + 3}`);
+    }
+  }
+  return failures;
 }
 
 /** Render the sentences the way the prompt and the recorder show them. */
@@ -235,15 +309,19 @@ export function deflectionBeat(sentences: string[], link: string): Beat {
     .replace(/[:\s—-]+$/, "")
     .trim();
   const words = spoken.split(/\s+/).filter(Boolean);
-  const line = words.length > MAX_LINE_WORDS ? words.slice(0, MAX_LINE_WORDS).join(" ") : spoken;
+  const line = (words.length > MAX_LINE_WORDS ? words.slice(0, MAX_LINE_WORDS).join(" ") : spoken) ||
+    "This is covered in the Curation showcase.";
   return {
-    line: line || "This is covered in the Curation showcase.",
+    line,
     headline: link.replace(/^https?:\/\//, ""),
     ground: "cyan",
     subjects: ["a paper screen", "a paper hand"],
     action:
       "A cream paper screen slides in and lands centre; a paper hand enters from the right and taps the screen, which holds the printed link.",
     handoff: "the paper screen",
+    hero: false,
+    scale: "small",
+    delivery: line,
     source: [linkIndex],
   };
 }
@@ -256,15 +334,19 @@ export function deflectionBeat(sentences: string[], link: string): Beat {
  * narrator rush it); beat 5 is cut rather than split, so the spine stays
  * six beats (18 clips across the three spine sessions, matching WP0's
  * denominators). Every action now names what leaves from the previous
- * beat's headline chip and how, per rule 9.
+ * beat's headline chip and how, per rule 9. v0.3: beat 4 (the runway
+ * figure the question actually asks for) is `hero`; `scale` runs
+ * oversized/small/diagram/oversized/small/diagram, never three-in-a-row;
+ * `delivery` carries three tags total — the opener, one turn, and the
+ * hero beat — and none on the close, per rule 14.
  */
 export const EXEMPLAR_NDJSON = [
-  `{"line":"By September's end, Diginex held one point eight five million in cash.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","handoff":"the coin stack","source":[9]}`,
-  `{"line":"Six months earlier it was three point one one million.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","handoff":"the arrow","source":[9,10]}`,
-  `{"line":"Operating burn ran about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","handoff":"the strip","source":[22]}`,
-  `{"line":"At that rate, the cash on hand covered one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","handoff":"the runway","source":[23]}`,
-  `{"line":"October's warrant exercise added thirteen point eight million in cash.","headline":"+$13.8M","ground":"lime","subjects":["fresh paper coins","the runway","tape pieces"],"action":"The previous chip slides off as fresh paper coins are taped onto the runway one after another, extending it across the frame.","handoff":"the extended runway","source":[27]}`,
-  `{"line":"Survival depends on capital markets and the next two quarters.","headline":"NEXT 2 QUARTERS","ground":"lime","subjects":["two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages land on the runway; a paper hand enters and points at the second.","handoff":"the pointing hand","source":[25,43]}`,
+  `{"line":"By September's end, Diginex held one point eight five million in cash.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","handoff":"the coin stack","hero":false,"scale":"oversized","delivery":"[presenting to camera] By September's end, Diginex held one point eight five million in cash.","source":[9]}`,
+  `{"line":"Six months earlier it was three point one one million.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","handoff":"the arrow","hero":false,"scale":"small","delivery":"[fast-paced] Six months earlier it was three point one one million.","source":[9,10]}`,
+  `{"line":"Operating burn ran about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","handoff":"the strip","hero":false,"scale":"diagram","delivery":"Operating burn ran about one point three million a month.","source":[22]}`,
+  `{"line":"At that rate, the cash on hand covered one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","handoff":"the runway","hero":true,"scale":"oversized","delivery":"[excited] At that rate, the cash on hand covered one point four months.","source":[23]}`,
+  `{"line":"October's warrant exercise added thirteen point eight million in cash.","headline":"+$13.8M","ground":"lime","subjects":["fresh paper coins","the runway","tape pieces"],"action":"The previous chip slides off as fresh paper coins are taped onto the runway one after another, extending it across the frame.","handoff":"the extended runway","hero":false,"scale":"small","delivery":"October's warrant exercise added thirteen point eight million in cash.","source":[27]}`,
+  `{"line":"Survival depends on capital markets and the next two quarters.","headline":"NEXT 2 QUARTERS","ground":"lime","subjects":["two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages land on the runway; a paper hand enters and points at the second.","handoff":"the pointing hand","hero":false,"scale":"diagram","delivery":"Survival depends on capital markets and the next two quarters.","source":[25,43]}`,
 ].join("\n");
 
 /**
@@ -280,7 +362,7 @@ INPUT: one question and its answer, split into numbered sentences [0], [1], ...
 OUTPUT: beats, one JSON object per line (NDJSON). No array brackets, no code fences, no commentary, nothing before the first beat or after the last.
 
 Beat shape, exactly these keys:
-{"line": string, "headline": string|null, "ground": "lime"|"cyan"|"violet"|"magenta", "subjects": [string, ...], "action": string, "handoff": string, "source": [int, ...]}
+{"line": string, "headline": string|null, "ground": "lime"|"cyan"|"violet"|"magenta", "subjects": [string, ...], "action": string, "handoff": string, "hero": boolean, "scale": "oversized"|"small"|"diagram", "delivery": string, "source": [int, ...]}
 
 RULES
 1. Translator rule. You may compress, reorder and select. You may not add a fact, number, date, comparison, cause, or characterisation that is not in the numbered sentences. If the sentences do not say it, the beat does not say it. No "roughly", "sharply", "strong" unless the sentence uses that word or an equivalent.
@@ -290,10 +372,13 @@ RULES
 5. line. One spoken sentence, 12 words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.
 6. headline. The words printed on screen: 4 words or fewer, uppercase, digits and symbols allowed ("$1.85M", "1.4 MONTHS", "+293% YOY", "Q2 2026"). One figure or a two-to-four word label, never a sentence. Use null when nothing is worth printing. Every headline figure must appear in a cited sentence (rule 2 covers the one allowed exception).
 7. ground. One of lime, cyan, violet, magenta. Hold a ground for two or three consecutive beats, then change; never alternate every beat. Tone: violet sets the scene, magenta is pressure or risk, lime is relief or growth, cyan is structure or explanation.
-8. subjects. One to three halftone paper cutout objects: coins, calendars, documents, screens, machines, buildings, maps, vehicles, arrows, ribbons, tape, anonymous paper hands. Never a person, a face, a body, a name, a logo, a brand, a flag — a person in the answer (an executive, a founder, a customer) is represented by an object standing for them (a nameplate, a chair, a signature, a desk), never by a figure. A beat whose subjects name a person is discarded, so do not write one.
+8. subjects. One to three halftone paper cutout objects: coins, calendars, documents, screens, machines, buildings, maps, vehicles, arrows, ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, anonymous paper hands. Never a person, a face, a body, a name, a logo, a brand, a flag — a person in the answer (an executive, a founder, a customer) is represented by an object standing for them (a nameplate, a chair, a signature, a desk), never by a figure. A beat whose subjects name a person is discarded, so do not write one.
 9. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat states, in this order: (a) how the previous beat's headline chip leaves — it slides off, flips away, or is covered, so the new headline lands on clear ground — then (b) how the previous handoff shape itself transforms into this beat's subjects. The whole programme cuts on matching handoff shapes, with a clean headline change each time.
 10. handoff. The named shape the beat ends on ("the coin stack", "the torn runway", "the pointing hand"). The next beat's action begins from it.
 11. No people, no faces, no logos, no client colours, no text other than the headline.
+12. hero. true on at most one beat in the whole programme: the one whose line carries the answer's single central figure, if one exists. false on every other beat, including when no beat clearly qualifies.
+13. scale. One of oversized (one subject fills the frame), small (a single subject alone on open ground), diagram (several elements arranged together). Vary it beat to beat; never hold the same value for three beats running.
+14. delivery. The line field, optionally with one expression tag in square brackets inserted before or within it, from this whitelist only: [presenting to camera], [excited], [fast-paced]. At most one tag per beat. Most beats carry none — about three tags across a six-to-ten-beat programme is right: [presenting to camera] on the opener, one [excited] or [fast-paced] on the hero beat or a turn in the story, none on the close. A flat line is better than an over-acted one. Removing the tags from delivery must leave exactly the line field, character for character.
 
 EXAMPLE (from a different answer; match its shape and tone, do not copy its facts):
 ${EXEMPLAR_NDJSON}`;

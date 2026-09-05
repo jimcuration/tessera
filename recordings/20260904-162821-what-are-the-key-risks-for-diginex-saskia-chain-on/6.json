@@ -1,0 +1,42 @@
+{
+  "session": "20260904-162821-what-are-the-key-risks-for-diginex-saskia-chain-on",
+  "n": 6,
+  "question": "What are the key risks for Diginex?",
+  "beat": {
+    "line": "But the market questions how repeatable that growth really is.",
+    "headline": "REPEATABLE?",
+    "ground": "magenta",
+    "subjects": [
+      "two stacked sheets",
+      "a paper clip"
+    ],
+    "action": "The previous chip slides off as the arrow folds into two sheets, one-off and recurring, held apart by a paper clip.",
+    "handoff": "the clipped sheets",
+    "hero": false,
+    "scale": "small",
+    "delivery": "But the market questions how repeatable that growth really is.",
+    "source": [
+      16
+    ]
+  },
+  "sources": [
+    "While revenue growth has been strong (+293% to $2.0m), the market is questioning how repeatable that growth is, especially the mix between one-off revenues and recurring SaaS income."
+  ],
+  "warnings": [],
+  "voice": "saskia",
+  "chain": "on",
+  "translatorVersion": "translator-v0.3",
+  "styleSheetVersion": "style-sheet-v0.3",
+  "prompt": "TESSERA STYLE SHEET\n1. Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.\n2. One flat block-colour paper ground fills the frame: deep magenta. The ground is a single unbroken colour.\n3. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.\n4. Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.\n5. One consistent light from the upper left; each paper layer casts a small soft shadow.\n6. Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.\n7. Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.\n8. Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.\n9. Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.\n10. 16:9, exactly 5 seconds, one composition, at most one crisp cut.\n11. Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.\n\nBEAT\nGround: deep magenta.\nSubjects: two stacked sheets; a paper clip.\nOpens on the arrow, carried over from the previous shot, which transforms as the action begins.\nAction: The previous chip slides off as the arrow folds into two sheets, one-off and recurring, held apart by a paper clip.\nEnds holding on the clipped sheets.\nThis composition is small-scale: a single subject sits alone on open ground.\nHeadline printed on a paper chip: \"REPEATABLE?\".\n\nON-SCREEN TEXT: \"REPEATABLE?\". This string is printed complete and correct from its first visible frame and never changes. It is the only lettering in the frame.\n\nAUDIO: No voice, no speech, no dialogue, no lyrics. Light paper-slap and tape sound effects only; no music.",
+  "expandedPrompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] This is a cinematic, modern editorial paper collage in a 2D motion design style, photographed as a flat lay under soft room light with a consistent light source from the upper left. The scene opens on <Picture 1>, featuring a light blue ground with a cream paper chip and a black halftone arrow. Immediately, the camera remains in a Static Shot as the previous elements—the blue background, the \"+293% TO $2.0M\" chip, and the upward-curving arrow—rapidly slide off-frame to the left. Simultaneously, the background snaps to a single, unbroken block of deep magenta paper. From the right, a new cream paper chip slides in and lands with a slight overshoot in the upper third of the frame, featuring the clean, stable, extra-bold sans-serif black text \"REPEATABLE?\". In the lower two-thirds of the frame, the remaining black halftone arrow rapidly folds and transforms into two stacked, blank sheets of white matte paper. These sheets are held together by a small, silver metallic paper clip that snaps into place. Every cutout, including the sheets, features rough white torn-paper edges and casts a small, soft shadow onto the magenta ground. The composition is small-scale, with the clipped sheets sitting alone in the center of the open magenta ground. The elements hold their position for a clear reading window, with a very subtle, rhythmic pulsing loop of the paper sheets' position continuing until the end of the video.\n\noverall_soundscape: A series of crisp, tactile foley sounds: a quick, sliding paper friction sound as the first scene exits, followed by a sharp, singular paper-slap as the headline chip lands. A rhythmic, mechanical clicking sound accompanies the folding of the arrow, concluding with a distinct, metallic \"snap\" as the paper clip secures the sheets.\n\nnon_diegetic_music: N/A",
+  "rawUrl": "https://v3b.fal.media/files/b/0aa91561/t3bNXcBmeYbWGE8cjek_I_minimax-h3.mp4",
+  "requestId": "01a06cd3-1c8e-7790-9a6a-0430c821d398",
+  "endpoint": "minimax/h3-max-turbo/image-to-video",
+  "chained": true,
+  "resolution": "480P",
+  "renderMs": 2986,
+  "timings": {
+    "inference": 0.5079540018923581
+  },
+  "savedAt": "2026-09-04T14:29:30.588Z"
+}

@@ -99,6 +99,9 @@ interface GeneratedClip {
   timings: unknown;
 }
 
+/** fal occasionally returns a transient "downstream_service_error" 500 from the underlying model; one retry clears most of these (seen in WP3 measurement). */
+const GENERATE_RETRIES = 2;
+
 async function generateClip(args: { prompt: string; fromFrame?: string }): Promise<GeneratedClip> {
   const started = performance.now();
   const input: Record<string, unknown> = {
@@ -114,17 +117,28 @@ async function generateClip(args: { prompt: string; fromFrame?: string }): Promi
   } else {
     input.aspect_ratio = "16:9";
   }
-  const { request_id: requestId } = await fal.queue.submit(endpoint, { input });
-  await fal.queue.subscribeToStatus(endpoint, { requestId, mode: "polling", pollInterval: 250 });
-  const result = await fal.queue.result(endpoint, { requestId });
-  const data = result.data as { video?: { url?: string }; expanded_prompt?: string | null; timings?: unknown };
+  let requestId: string | undefined;
+  let result: Awaited<ReturnType<typeof fal.queue.result>> | undefined;
+  for (let attempt = 0; attempt <= GENERATE_RETRIES; attempt += 1) {
+    try {
+      ({ request_id: requestId } = await fal.queue.submit(endpoint, { input }));
+      await fal.queue.subscribeToStatus(endpoint, { requestId, mode: "polling", pollInterval: 250 });
+      result = await fal.queue.result(endpoint, { requestId });
+      break;
+    } catch (cause) {
+      if (attempt === GENERATE_RETRIES) throw cause;
+      console.warn(`[render] fal error, retrying (${attempt + 1}/${GENERATE_RETRIES}):`, cause instanceof Error ? cause.message : cause);
+      await new Promise((resolve) => setTimeout(resolve, 2000 * (attempt + 1)));
+    }
+  }
+  const data = result!.data as { video?: { url?: string }; expanded_prompt?: string | null; timings?: unknown };
   const rawUrl = data?.video?.url;
   if (!rawUrl) throw new Error("no video in fal response");
   return {
     rawUrl,
     ms: Math.round(performance.now() - started),
     expandedPrompt: typeof data.expanded_prompt === "string" ? data.expanded_prompt : null,
-    requestId,
+    requestId: requestId ?? null,
     timings: data.timings ?? null,
   };
 }
@@ -240,7 +254,7 @@ async function main() {
       timings: clip.timings,
     });
     if (voice === "saskia") {
-      await post("/api/voice", { text: beat.line, session: sessionId, n });
+      await post("/api/voice", { text: beat.delivery, session: sessionId, n });
     }
     console.log(`[render] beat ${n} done in ${clip.ms}ms${fromFrame ? " (i2v)" : " (t2v)"}`);
     return clip;
