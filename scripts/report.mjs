@@ -14,23 +14,27 @@ import path from "node:path";
 const USD_PER_SECOND = 0.025;
 const CLIP_SECONDS = 5;
 
-/** Mirrors STYLE_SHEET_SIGNALS in lib/prompt.ts (style sheet v0.3, 11 lines). v0.2's line 6 (flat matte / no glow) is folded into line 3; a new line 8 (scale) replaces its slot. */
+/** Mirrors STYLE_SHEET_SIGNALS in lib/prompt.ts (style sheet v0.4, 14 lines). Lines 12-14 are new in v0.4. */
 const SIGNALS = [
   ["paper collage", "collage", "magazine"],
-  ["block-colour", "block color", "block-color", "flat ground", "solid ground", "flat background", "solid background", "lime green", "pale cyan", "soft violet", "deep magenta"],
-  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "flat matte"],
-  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip"],
+  ["block-colour", "block color", "block-color", "flat ground", "solid ground", "flat background", "solid background", "saturated lime", "deep cyan", "rich violet", "deep magenta", "saturated", "deep, saturated"],
+  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "flat matte", "never a person's face", "never a face", "blank paper texture"],
+  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip", "blank rectangle"],
   ["upper-left", "upper left", "paper-layer shadow", "paper shadow", "layer shadow"],
   ["headline chip", "upper third", "lower two-thirds", "clear ground"],
-  ["extra-bold", "sans-serif", "paper chip", "headline", "third of the frame", "hero"],
+  ["extra-bold", "sans-serif", "black paper chip", "cream", "pale-yellow", "pale yellow", "headline", "third of the frame", "hero", "label"],
   ["oversized", "small-scale", "open ground", "diagram", "vary in scale"],
   ["overshoot", "stable landing", "reading window", "no camera shake", "camera is locked", "first frame", "static shot"],
   ["16:9", "5 seconds", "five seconds", "one composition", "crisp cut", "single continuous"],
   ["torn-paper edges", "torn paper edges", "torn edges", "identity anchor", "rough white"],
+  ["accumulate", "accumulates", "already in place", "stay exactly where they are", "fuller"],
+  ["paper hand", "recurring actor", "presses", "points", "pulls ribbons", "slides chips", "torn white edge"],
+  ["hot contrasting", "orange", "red-orange", "one hot", "ribbons and diagram elements"],
 ];
 const LINE_NAMES = [
   "1 collage", "2 ground", "3 halftone/unmarked/matte", "4 paper diagram", "5 upper-left light",
   "6 layout law", "7 headline type", "8 scale variety", "9 motion", "10 16:9, 5s, one comp", "11 identity anchor",
+  "12 accumulation", "13 paper hand", "14 hot ribbon",
 ];
 
 function readJson(file) {

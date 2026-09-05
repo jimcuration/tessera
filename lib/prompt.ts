@@ -24,6 +24,15 @@
  * colour per programme. Headline width itself stays a WP3.1 question,
  * untouched here. The four grounds are named, never hex: palette values
  * are approximate until Jim confirms, and the video model reads names well.
+ *
+ * Also v0.4: a live-translated beat whose (perfectly compliant) `subjects`
+ * were "four hole-punched tags" rendered as four ID-card-style photographs,
+ * three of them showing a recognisable human face — CLAUDE.md rule 6, not
+ * caught by validateBeat because the beat's *text* never named a person.
+ * Lines 3 and 4 now say explicitly that a tag, card, document or
+ * photograph is blank paper texture only, never a face — a same-day
+ * mitigation, unverified by a second render; flagged, not resolved, in
+ * briefs/WP5-report.md.
  */
 
 import type { Beat, Ground, Scale } from "./translator";
@@ -59,8 +68,8 @@ export function styleSheet(ground: Ground): string[] {
   return [
     "Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.",
     `One deep, saturated block-colour paper ground fills the frame: ${GROUND_NAMES[ground]}, as the beat specifies. The ground holds its colour for the whole scene. The ground is a single unbroken colour.`,
-    "Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks.",
-    "Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.",
+    "Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks. This rule extends to every tag, card, document and photograph in the frame: each shows a blank or abstract paper surface, texture, or halftone pattern only, the way a coin or a screen does — never a person's face, portrait or headshot, printed or photographic, however small or partial.",
+    "Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots. A tag or card standing for a company, deal or acquisition is a blank rectangle of textured paper, the same as a coin or a screen — not a photograph or portrait.",
     "One consistent light from the upper left; each paper layer casts a small soft shadow.",
     "Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous scene's composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.",
     "Headline and label typography: extra-bold sans-serif in cream or pale-yellow, printed on black paper chips. The headline chip is one line, no wider than a third of the frame width, with safe margins, sitting clear of the subjects; label chips are small, two words or a figure. Letterforms are accurate, complete and stable from the frame they appear in; each chip is printed once, slaps into place as a piece of paper, and then holds without redrawing. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.",
@@ -181,8 +190,8 @@ export function compilePrompt(args: {
 export const STYLE_SHEET_SIGNALS: string[][] = [
   ["paper collage", "collage", "magazine"],
   ["block-colour", "block color", "flat ground", "solid ground", "saturated lime", "deep cyan", "rich violet", "deep magenta", "saturated", "deep, saturated"],
-  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo"],
-  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip"],
+  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "never a person's face", "never a face", "blank paper texture"],
+  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip", "blank rectangle"],
   ["upper-left light", "upper left", "paper-layer shadow", "paper shadow"],
   ["headline chip", "upper third", "lower two-thirds", "clear ground"],
   ["extra-bold", "sans-serif", "black paper chip", "cream", "pale-yellow", "pale yellow", "headline", "third of the frame", "hero", "label"],

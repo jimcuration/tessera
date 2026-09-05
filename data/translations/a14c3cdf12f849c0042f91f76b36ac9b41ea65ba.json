@@ -66,11 +66,11 @@
       "line": "At that rate, the cash on hand covered one point four months.",
       "headline": "1.4 MONTHS",
       "ground": "magenta",
-      "subjects": ["the strip", "a cutout aircraft"],
+      "subjects": ["the strip", "a cutout aircraft", "a paper hand"],
       "events": [
         "The strip, already in place, becomes a runway torn short as a cutout aircraft enters from the edge.",
         "The aircraft rolls to the torn end and stops, the strip's chip staying exactly where it landed.",
-        "A larger black chip slaps in, the hero number printing large."
+        "A paper hand enters and taps the aircraft as a larger black chip slaps in, the hero number printing large."
       ],
       "hand": true,
       "labels": ["dangerously thin"],
