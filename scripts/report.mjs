@@ -18,7 +18,7 @@ const CLIP_SECONDS = 5;
 const SIGNALS = [
   ["paper collage", "collage", "magazine"],
   ["block-colour", "block color", "block-color", "flat ground", "solid ground", "flat background", "solid background", "lime green", "pale cyan", "soft violet", "deep magenta"],
-  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "flat matte"],
+  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "flat matte", "never a person's face", "never a face", "blank paper texture"],
   ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip"],
   ["upper-left", "upper left", "paper-layer shadow", "paper shadow", "layer shadow"],
   ["headline chip", "upper third", "lower two-thirds", "clear ground"],

@@ -62,9 +62,9 @@ function useStreamState(stream: Stream | null): StreamState | null {
  */
 const MUSIC_VOLUME = 0.13;
 
-/** MUSIC=on|off from the server (lib/config.ts; default off). */
+/** MUSIC=on|off from the server (lib/config.ts; default on). */
 function useMusicOn(): boolean {
-  const [on, setOn] = useState(false);
+  const [on, setOn] = useState(true);
   useEffect(() => {
     let alive = true;
     fetch("/api/config", { cache: "no-store" })

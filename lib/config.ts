@@ -14,10 +14,10 @@ import path from "node:path";
  *   THEATRE=on|off         on: the player renders inside the console frame
  *                          (WP4); off: plain full-width 16:9 player. Always
  *                          off below 900px viewport width regardless.
- *   MUSIC=on|off           WP5: on layers a low, looping music bed under
- *                          Saskia's narration in the player, ducked well
- *                          under the voice; off (default) is silent — the
- *                          clip's own audio block stays wordless either way.
+ *   MUSIC=on|off           WP5: on (default) layers a low, looping music bed
+ *                          under Saskia's narration in the player, ducked
+ *                          well under the voice; off is silent — the clip's
+ *                          own audio block stays wordless either way.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
@@ -51,7 +51,7 @@ export function readSwitches(): Switches {
     chain: pick<ChainSwitch>(process.env.CHAIN, ["on", "off"], "on"),
     render: pick<RenderSwitch>(process.env.RENDER, ["queue", "director"], "queue"),
     theatre: pick<TheatreSwitch>(process.env.THEATRE, ["on", "off"], "on"),
-    music: pick<MusicSwitch>(process.env.MUSIC, ["on", "off"], "off"),
+    music: pick<MusicSwitch>(process.env.MUSIC, ["on", "off"], "on"),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }
