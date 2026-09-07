@@ -24,6 +24,14 @@ const SCREEN_BOUNDS: Bounds = { left: 0.1317, right: 0.6294, top: 0.2155, bottom
 const KEY_BOUNDS: Bounds = { left: 0.643, right: 0.673, top: 0.679, bottom: 0.732 };
 /** The lit seam between the screen module and the knob module. */
 const SEAM_BOUNDS: Bounds = { left: 0.688, right: 0.708, top: 0.14, bottom: 0.81 };
+/**
+ * WP4.2: the flat aluminium band between the screen's bottom edge (0.7415,
+ * matches SCREEN_BOUNDS.bottom) and the console's lower chamfer — measured
+ * off the render (public/console-cutout.png): the metal reads flat from
+ * 0.7415 to ~0.81, then falls into the dark bevel shadow. Right edge stops
+ * short of the square key (KEY_BOUNDS.left = 0.643).
+ */
+const READOUT_BOUNDS: Bounds = { left: 0.1317, right: 0.62, top: 0.748, bottom: 0.807 };
 
 /**
  * Where the feet meet their reflection in the floor: the darkest row of the
@@ -69,9 +77,13 @@ export interface ConsoleProps {
    * The seam stays as the buffer indicator either way.
    */
   keyGlow: boolean;
+  /** WP4.2 §2: the ticker readout printed on the bezel below the screen. Renders nothing (not even the band) until a card has been seen this session. */
+  readout?: ReactNode;
+  /** WP4.2 §3: dims the seam light to 50% while the programme is paused. */
+  paused: boolean;
 }
 
-export function Console({ children, keyState, groundColor, seamState, keyGlow }: ConsoleProps) {
+export function Console({ children, keyState, groundColor, seamState, keyGlow, readout, paused }: ConsoleProps) {
   return (
     <div className="console">
       {/* the video sits beneath the console image; the image's screen
@@ -79,9 +91,17 @@ export function Console({ children, keyState, groundColor, seamState, keyGlow }:
           reads as recessed behind the bezel rather than pasted over it */}
       <div className="console-screen" style={boundsStyle(SCREEN_BOUNDS)}>
         {children}
+        {/* WP4.2 §1: recessed-behind-the-gasket optics, over the video, clipped to the screen bounds by the parent's overflow:hidden */}
+        <div className="console-screen-shadow" aria-hidden="true" />
+        <div className="console-screen-glass" aria-hidden="true" />
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="console-image" src="/console-cutout.png" alt="" draggable={false} />
+      {readout && (
+        <div className="console-readout" style={boundsStyle(READOUT_BOUNDS)}>
+          {readout}
+        </div>
+      )}
       {keyGlow && (
         <>
           <div
@@ -96,9 +116,13 @@ export function Console({ children, keyState, groundColor, seamState, keyGlow }:
           />
         </>
       )}
-      <div className={`console-seam ${seamState}`} style={boundsStyle(SEAM_BOUNDS)} aria-hidden="true" />
       <div
-        className={`console-seam-reflection ${seamState}`}
+        className={`console-seam ${seamState}${paused ? " paused" : ""}`}
+        style={boundsStyle(SEAM_BOUNDS)}
+        aria-hidden="true"
+      />
+      <div
+        className={`console-seam-reflection ${seamState}${paused ? " paused" : ""}`}
         style={boundsStyle(reflectionBounds(SEAM_BOUNDS))}
         aria-hidden="true"
       />
