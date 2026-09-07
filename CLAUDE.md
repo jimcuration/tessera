@@ -18,7 +18,7 @@ This repo is a fork of `blendi-remade/unreel` (MIT). Its runtime — shot queue,
 
 - **Robin** — product owner. Makes product, style and functionality calls. Holds all keys.
 - **PM** — a Claude project in claude.ai. Writes briefs and acceptance criteria, reviews handoffs, keeps the Notion Decisions Log. If a brief conflicts with this file, stop and flag it in your handoff.
-- **Builder** — you, if your brief is in `briefs/WPn.md`. Build exactly that scope. Write `briefs/WPn-handoff.md` when done: what you built, how to run it, what is untested.
+- **Builder** — you, if your brief is in `briefs/WPn.md`. Build exactly that scope. Commit all your work on your branch before writing the handoff — a handoff describing uncommitted work is incomplete. Write `briefs/WPn-handoff.md` when done: what you built, how to run it, what is untested.
 - **Reviewer** — you, if you were told to review. Read only the acceptance criteria. Test each. Write `briefs/WPn-review.md` with pass/fail per criterion. Do not read the handoff first.
 
 ## Hard rules
