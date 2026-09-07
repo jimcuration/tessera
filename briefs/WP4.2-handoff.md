@@ -2,6 +2,8 @@
 
 Built against `briefs/WP4.2.md` on branch `wp4.2`, own worktree (`../tessera-wp4.2`), dev server on port 3420 (added as `tessera-wp4.2` in `.claude/launch.json`). `RECORDINGS_DIR` untouched, so recordings still land in the shared `../tessera-recordings`.
 
+**Post-build revision**: Robin found the readout hard to read against the brushed metal. `.readout` (`app/globals.css`) now sets `color: rgba(255, 238, 140, 0.8)` (the console's own `#FFEE8C` yellow, used elsewhere for the seam) instead of the interface white, plus `text-shadow: 0 1px 0 rgba(0,0,0,0.55), 0 0 2px rgba(255,238,140,0.4), 0 0 3px rgba(255,238,140,0.25)` — a 1px darker offset (no blur) under the characters for the emboss, and two small-blur yellow layers for a faint glow. Before/after screenshots shown in the build session, both theatre (900px) and plain (700px) — the LED look is much more legible in both. Positioning, persistence and everything else in §2 below is unchanged.
+
 ## What changed
 
 ### 1. Optics — the video sits in the screen (`components/console.tsx`, `app/globals.css`)
