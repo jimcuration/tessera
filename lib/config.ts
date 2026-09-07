@@ -18,9 +18,15 @@ import path from "node:path";
  *                          under Saskia's narration in the player, ducked
  *                          well under the voice; off is silent — the clip's
  *                          own audio block stays wordless either way.
+ *   PALETTE=a|b|c           WP7: which colour palette (lib/palette.ts)
+ *                          substitutes for the sheet's ground/chip/ribbon
+ *                          colour names in the compiled prompt. a (default)
+ *                          is Electric Curation.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
+
+import type { PaletteId } from "./palette";
 
 export type VoiceSwitch = "native" | "saskia";
 export type ChainSwitch = "on" | "off";
@@ -34,6 +40,7 @@ export interface Switches {
   render: RenderSwitch;
   theatre: TheatreSwitch;
   music: MusicSwitch;
+  palette: PaletteId;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -52,6 +59,7 @@ export function readSwitches(): Switches {
     render: pick<RenderSwitch>(process.env.RENDER, ["queue", "director"], "queue"),
     theatre: pick<TheatreSwitch>(process.env.THEATRE, ["on", "off"], "on"),
     music: pick<MusicSwitch>(process.env.MUSIC, ["on", "off"], "on"),
+    palette: pick<PaletteId>(process.env.PALETTE, ["a", "b", "c"], "a"),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }

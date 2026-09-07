@@ -19,6 +19,7 @@ import type { Stream, Shot } from "./stream";
 import { TRANSLATOR_VERSION, type Beat } from "./translator";
 import { Narrator } from "./voice";
 import type { ChainSwitch, RenderSwitch, VoiceSwitch } from "./config";
+import type { PaletteId } from "./palette";
 
 export interface AnswerHeader {
   question: string;
@@ -34,6 +35,7 @@ export interface SessionSwitches {
   voice: VoiceSwitch;
   chain: ChainSwitch;
   render: RenderSwitch;
+  palette: PaletteId;
 }
 
 export type SessionStatus =
@@ -154,7 +156,7 @@ export class Session {
       this.fail("ELEVENLABS_API_KEY is missing from .env.local");
       return;
     }
-    const switches: SessionSwitches = { voice: config.voice, chain: config.chain, render: config.render };
+    const switches: SessionSwitches = { voice: config.voice, chain: config.chain, render: config.render, palette: config.palette };
     // Session ids carry the switches so recordings compare cleanly.
     this.state = {
       ...this.state,
@@ -220,7 +222,7 @@ export class Session {
           const warnings = Array.isArray(msg.warnings) ? (msg.warnings as string[]) : [];
           if (this.firstBeatMs === null) this.firstBeatMs = Math.round(performance.now() - this.askedAt);
           this.warnings.push(warnings);
-          const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff });
+          const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff, palette: switches.palette });
           previousHandoff = beat.handoff;
           const shot: Shot = {
             n,
