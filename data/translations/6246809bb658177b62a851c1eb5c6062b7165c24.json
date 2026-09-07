@@ -1,0 +1,306 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "Should I buy Diginex shares?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "I can't tell you whether to buy Diginex shares. That decision is yours alone.",
+      "headline": null,
+      "ground": "violet",
+      "subjects": [
+        "a stack of paper sheets"
+      ],
+      "action": "A single halftone stack of paper sheets drops onto open violet ground and settles square.",
+      "hand": false,
+      "handoff": "the sheet stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] I can't tell you whether to buy Diginex shares. That decision is yours alone.",
+      "source": [
+        0,
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the sheet stack",
+        "to": "a paper hand",
+        "colour": "violet"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "My job is to surface the evidence: the bull case, the bear case, risks and catalysts.",
+      "headline": "BULL AND BEAR",
+      "ground": "violet",
+      "subjects": [
+        "the sheet stack",
+        "a paper hand"
+      ],
+      "action": "The clear ground takes a new headline chip as the sheet stack fans into four sheets; a paper hand enters and taps each in turn, a violet ribbon running from the stack to the hand.",
+      "hand": true,
+      "handoff": "the pointing hand",
+      "hero": false,
+      "scale": "small",
+      "delivery": "My job is to surface the evidence: the bull case, the bear case, risks and catalysts.",
+      "source": [
+        2
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the sheet stack",
+        "to": "a paper hand",
+        "colour": "violet"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "The bull case starts with regulation. Climate and sustainability rules are creating structural demand for this software.",
+      "headline": "REGULATORY DEMAND",
+      "ground": "lime",
+      "subjects": [
+        "the paper bar chart",
+        "stacked grid-paper sheets"
+      ],
+      "action": "The previous chip slides off the left edge as the pointing hand folds down into a paper bar chart; stacked grid-paper sheets pile up behind it, an orange ribbon running from the bar chart to a paper coin stack.",
+      "hand": false,
+      "handoff": "the paper bar chart",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "The bull case starts with regulation. Climate and sustainability rules are creating structural demand for this software.",
+      "source": [
+        4,
+        5
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper bar chart",
+        "to": "a paper coin stack",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Revenue grew two hundred and ninety-three percent year on year, to two million dollars in the first half.",
+      "headline": "+293% YOY",
+      "ground": "lime",
+      "subjects": [
+        "the paper bar chart"
+      ],
+      "action": "The previous chip flips away as the paper bar chart's bars grow tall and hold; a coin-sized cream tag reading '293%' sits beside the orange ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper bar chart",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] Revenue grew two hundred and ninety-three percent year on year, to two million dollars in the first half.",
+      "source": [
+        6
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper bar chart",
+        "to": "a paper coin stack",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "293%",
+        "source": [
+          6
+        ]
+      }
+    },
+    {
+      "scene": 2,
+      "line": "An October warrant exercise raised thirteen point eight million, extending runway. Market cap sits at thirty-four million.",
+      "headline": "+$13.8M",
+      "ground": "lime",
+      "subjects": [
+        "the paper bar chart",
+        "a paper coin stack"
+      ],
+      "action": "The previous chip is covered as the bar chart's tallest bar topples into a paper coin stack at the far end of the orange ribbon, and the stack settles.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "An October warrant exercise raised thirteen point eight million, extending runway. Market cap sits at thirty-four million.",
+      "source": [
+        9,
+        10
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper bar chart",
+        "to": "a paper coin stack",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Cash was one point eight five million at the end of September, against burn near one point three million monthly.",
+      "headline": "1.4 MONTHS",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "a paper calendar strip"
+      ],
+      "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin on magenta ground; a black string runs from the coin stack to a paper calendar strip, and a coin-sized cream tag reading '1.4 months' sits beside it with a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Cash was one point eight five million at the end of September, against burn near one point three million monthly.",
+      "source": [
+        19
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "black"
+      },
+      "tag": {
+        "text": "1.4 months",
+        "source": [
+          19
+        ]
+      }
+    },
+    {
+      "scene": 3,
+      "line": "Execution risk is severe. Four acquisitions absorbed, and general costs rose to eight point one million.",
+      "headline": "G&A $8.1M",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "torn paper strips"
+      ],
+      "action": "The previous chip flips away as the coin stack splits into four leaning piles; torn paper strips slide in above them and stack, the black string still in place to the calendar strip.",
+      "hand": false,
+      "handoff": "the torn strip",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] Execution risk is severe. Four acquisitions absorbed, and general costs rose to eight point one million.",
+      "source": [
+        12,
+        13,
+        14
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Resulticks remains in limbo, conditional on debt financing. Two other deals have stalled.",
+      "headline": "DEALS STALLED",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "torn paper strips"
+      ],
+      "action": "The previous chip is covered as the torn strip tears twice more and the pieces drift apart, none reaching the coin stack, the black string sagging between them.",
+      "hand": false,
+      "handoff": "the torn strip",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Resulticks remains in limbo, conditional on debt financing. Two other deals have stalled.",
+      "source": [
+        15,
+        16
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "Before committing capital, demand cross-sell traction, a Resulticks closure, and operating leverage as losses narrow.",
+      "headline": "WHAT TO SEE",
+      "ground": "violet",
+      "subjects": [
+        "the sheet stack",
+        "a paper calendar page"
+      ],
+      "action": "The previous chip slides off the right edge as the torn strips gather and press back into the sheet stack on violet ground; a paper calendar page lands beside it, a cream ribbon running from the stack to the page.",
+      "hand": false,
+      "handoff": "the sheet stack",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Before committing capital, demand cross-sell traction, a Resulticks closure, and operating leverage as losses narrow.",
+      "source": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the sheet stack",
+        "to": "a paper calendar page",
+        "colour": "cream"
+      },
+      "tag": {
+        "text": "Q3 2026",
+        "source": [
+          32
+        ]
+      }
+    },
+    {
+      "scene": 4,
+      "line": "The next earnings report is critical. This is a high-conviction, high-risk bet on execution, not a defensive holding.",
+      "headline": "HIGH-RISK BET",
+      "ground": "violet",
+      "subjects": [
+        "the sheet stack",
+        "a paper calendar page"
+      ],
+      "action": "The previous chip flips down as the calendar page is pinned onto the sheet stack, which fills the frame and holds, the cream ribbon still in place.",
+      "hand": false,
+      "handoff": "the sheet stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "The next earnings report is critical. This is a high-conviction, high-risk bet on execution, not a defensive holding.",
+      "source": [
+        32,
+        35,
+        36
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the sheet stack",
+        "to": "a paper calendar page",
+        "colour": "cream"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 52567,
+  "clipSeconds": 15
+}

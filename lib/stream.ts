@@ -197,6 +197,23 @@ export class Stream {
     this.set({});
   }
 
+  /**
+   * WP9: seed the stream directly from a cache hit, bypassing render()/pump()
+   * entirely — every shot is already a playable clip, so there is nothing to
+   * render and nothing to buffer. Reuses peekNext()/advance()/skipFailed()
+   * unchanged: the player's existing effect that calls advance() once
+   * buffered > 0 picks this up exactly like the live path. Purely additive;
+   * does not touch render()/pump()/advance() (CLAUDE.md rule 3).
+   */
+  hydrateFromCache(shots: Shot[], readyClips: ReadyClip[]) {
+    if (!this.alive) return;
+    this.shots = shots;
+    this.nextShotIndex = shots.length;
+    this.queue.push(...readyClips);
+    this.finished = true;
+    this.set({});
+  }
+
   private get isStory() {
     return this.chain;
   }

@@ -1,0 +1,291 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "What is Diginex",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "Diginex is repositioning itself as one unified sustainability, data and compliance platform.",
+      "headline": "ONE PLATFORM",
+      "ground": "violet",
+      "subjects": [
+        "a paper platform slab",
+        "a cream paper chip"
+      ],
+      "action": "A halftone paper platform slab lowers onto a cream chip and settles flat, filling the frame.",
+      "hand": false,
+      "handoff": "the platform slab",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Diginex is repositioning itself as one unified sustainability, data and compliance platform.",
+      "source": [
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the platform slab",
+        "to": "stacked paper documents",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "Its software and advisory work helps organisations collect, manage and report ESG, climate and supply-chain data.",
+      "headline": "ESG DATA",
+      "ground": "violet",
+      "subjects": [
+        "the platform slab",
+        "stacked paper documents"
+      ],
+      "action": "The previous chip slides off the top edge, then the platform slab tilts and stacked paper documents slide onto it; a cream paper ribbon runs from the platform slab to the stacked paper documents and stays.",
+      "hand": false,
+      "handoff": "the stacked documents",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Its software and advisory work helps organisations collect, manage and report ESG, climate and supply-chain data.",
+      "source": [
+        2
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the platform slab",
+        "to": "stacked paper documents",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "It is designed to serve banks, asset managers and enterprises.",
+      "headline": "BANKS, ASSET MANAGERS",
+      "ground": "violet",
+      "subjects": [
+        "the platform slab",
+        "paper buildings"
+      ],
+      "action": "The previous chip is covered as the stacked documents fold upward into three small paper buildings that stand beside the platform slab, the cream ribbon already in place between slab and documents.",
+      "hand": false,
+      "handoff": "the paper buildings",
+      "hero": false,
+      "scale": "small",
+      "delivery": "It is designed to serve banks, asset managers and enterprises.",
+      "source": [
+        3
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the platform slab",
+        "to": "stacked paper documents",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Four distinct businesses have been absorbed: Plan A, Matter, The Remedy Project and Resulticks.",
+      "headline": "4 BUSINESSES",
+      "ground": "cyan",
+      "subjects": [
+        "the stack of four folders",
+        "a paper platform grid"
+      ],
+      "action": "The previous chip flips away as the paper buildings flatten and slide together into the stack of four folders, which lands beside a paper platform grid; an orange paper ribbon runs from the stack of four folders to the paper platform grid.",
+      "hand": false,
+      "handoff": "the stack of four folders",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Four distinct businesses have been absorbed: Plan A, Matter, The Remedy Project and Resulticks.",
+      "source": [
+        25
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the stack of four folders",
+        "to": "a paper platform grid",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "The one point five billion dollar Resulticks deal is the pivotal move, adding AI driven customer data.",
+      "headline": "$1.5B",
+      "ground": "cyan",
+      "subjects": [
+        "a paper platform grid",
+        "the stack of four folders"
+      ],
+      "action": "The previous chip slides off as the stack of four folders opens and its sheets lock into the paper platform grid, which swells to fill the frame; a coin-sized cream tag reading '$1.5B' sits beside the orange ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the platform grid",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] The one point five billion dollar Resulticks deal is the pivotal move, adding AI driven customer data.",
+      "source": [
+        15,
+        20
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the stack of four folders",
+        "to": "a paper platform grid",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "$1.5B",
+        "source": [
+          15
+        ]
+      }
+    },
+    {
+      "scene": 3,
+      "line": "By early September, the stock trades at one dollar sixteen, with a market cap near thirty-four million.",
+      "headline": "$1.16 / $34M",
+      "ground": "magenta",
+      "subjects": [
+        "the paper bar chart",
+        "a torn paper strip"
+      ],
+      "action": "The previous chip flips down as the platform grid folds into the paper bar chart, whose bars drop low on open ground; a black paper string runs from the paper bar chart to a torn paper strip.",
+      "hand": false,
+      "handoff": "the paper bar chart",
+      "hero": false,
+      "scale": "small",
+      "delivery": "By early September, the stock trades at one dollar sixteen, with a market cap near thirty-four million.",
+      "source": [
+        14
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the paper bar chart",
+        "to": "a torn paper strip",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Administrative expenses rose three point four million dollars, reaching eight point one million.",
+      "headline": "G&A $8.1M",
+      "ground": "magenta",
+      "subjects": [
+        "the paper bar chart",
+        "a torn paper strip"
+      ],
+      "action": "The previous chip slides off as the paper bar chart's tallest bar stretches upward and the torn paper strip unrolls beneath it; a coin-sized cream tag reading '$8.1M' sits beside the black string, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the torn paper strip",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Administrative expenses rose three point four million dollars, reaching eight point one million.",
+      "source": [
+        26
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the paper bar chart",
+        "to": "a torn paper strip",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Integration execution is the primary risk, across four businesses and multiple jurisdictions.",
+      "headline": "INTEGRATION RISK",
+      "ground": "magenta",
+      "subjects": [
+        "the paper bar chart",
+        "a paper hand"
+      ],
+      "action": "The previous chip is covered as the torn paper strip curls up into a paper hand that presses down on the paper bar chart and holds it, the black string still in place.",
+      "hand": true,
+      "handoff": "the pointing hand",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Integration execution is the primary risk, across four businesses and multiple jurisdictions.",
+      "source": [
+        24,
+        25
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the paper bar chart",
+        "to": "a torn paper strip",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "The company has signalled a focus on Brazil's seventy-seven billion dollar sustainability market.",
+      "headline": "$77B BRAZIL",
+      "ground": "violet",
+      "subjects": [
+        "a paper map",
+        "the platform slab"
+      ],
+      "action": "The previous chip flips away as the pointing hand flattens into a paper map that unfolds beside the returning platform slab; a lime paper arrow runs from the paper map to the platform slab.",
+      "hand": false,
+      "handoff": "the paper map",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] The company has signalled a focus on Brazil's seventy-seven billion dollar sustainability market.",
+      "source": [
+        35
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "a paper map",
+        "to": "the platform slab",
+        "colour": "lime"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "For now this is a higher-risk, speculative position, suited to investors with patience.",
+      "headline": "SPECULATIVE",
+      "ground": "violet",
+      "subjects": [
+        "the platform slab",
+        "a paper map"
+      ],
+      "action": "The previous chip slides off as the paper map folds down onto the platform slab, which settles alone on open ground with the lime arrow now pinned across it.",
+      "hand": false,
+      "handoff": "the platform slab",
+      "hero": false,
+      "scale": "small",
+      "delivery": "For now this is a higher-risk, speculative position, suited to investors with patience.",
+      "source": [
+        39
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "a paper map",
+        "to": "the platform slab",
+        "colour": "lime"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [
+      "headline number \"4\" not found as a figure in cited sentences [25] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 48195,
+  "clipSeconds": 15
+}

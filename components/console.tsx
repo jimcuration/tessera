@@ -62,9 +62,16 @@ export interface ConsoleProps {
   /** Ground colour for the key's "rendering" fill. */
   groundColor: string;
   seamState: SeamState;
+  /**
+   * WP9: KEY_GLOW=on|off (lib/config.ts, default off). Off — the default —
+   * renders the key exactly as it is in public/console-cutout.png: the glow
+   * overlay divs below are not rendered at all, not just made transparent.
+   * The seam stays as the buffer indicator either way.
+   */
+  keyGlow: boolean;
 }
 
-export function Console({ children, keyState, groundColor, seamState }: ConsoleProps) {
+export function Console({ children, keyState, groundColor, seamState, keyGlow }: ConsoleProps) {
   return (
     <div className="console">
       {/* the video sits beneath the console image; the image's screen
@@ -75,16 +82,20 @@ export function Console({ children, keyState, groundColor, seamState }: ConsoleP
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="console-image" src="/console-cutout.png" alt="" draggable={false} />
-      <div
-        className={`console-key ${keyState}`}
-        style={{ ...boundsStyle(KEY_BOUNDS), ["--ground" as string]: groundColor }}
-        aria-hidden="true"
-      />
-      <div
-        className={`console-key-reflection ${keyState}`}
-        style={{ ...boundsStyle(reflectionBounds(KEY_BOUNDS)), ["--ground" as string]: groundColor }}
-        aria-hidden="true"
-      />
+      {keyGlow && (
+        <>
+          <div
+            className={`console-key ${keyState}`}
+            style={{ ...boundsStyle(KEY_BOUNDS), ["--ground" as string]: groundColor }}
+            aria-hidden="true"
+          />
+          <div
+            className={`console-key-reflection ${keyState}`}
+            style={{ ...boundsStyle(reflectionBounds(KEY_BOUNDS)), ["--ground" as string]: groundColor }}
+            aria-hidden="true"
+          />
+        </>
+      )}
       <div className={`console-seam ${seamState}`} style={boundsStyle(SEAM_BOUNDS)} aria-hidden="true" />
       <div
         className={`console-seam-reflection ${seamState}`}

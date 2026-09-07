@@ -1,0 +1,301 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "Should I buy Diginex shares?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "I can't tell you whether to buy Diginex shares.",
+      "headline": "NOT ADVICE",
+      "ground": "violet",
+      "subjects": [
+        "the cream evidence folder",
+        "a paper hand"
+      ],
+      "action": "A cream evidence folder drops onto open violet ground and a paper hand slides it forward, then withdraws.",
+      "hand": true,
+      "handoff": "the evidence folder",
+      "hero": false,
+      "scale": "small",
+      "delivery": "[presenting to camera] I can't tell you whether to buy Diginex shares.",
+      "source": [
+        0
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the cream evidence folder",
+        "to": "a paper hand",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "My role is surfacing the evidence, so you decide.",
+      "headline": "YOU DECIDE",
+      "ground": "violet",
+      "subjects": [
+        "the cream evidence folder",
+        "torn paper strips"
+      ],
+      "action": "The previous chip slides off the left edge as the evidence folder opens and fans torn paper strips across the ground, where they settle in a row; the black ribbon to the paper hand stays in place.",
+      "hand": false,
+      "handoff": "the torn strips",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "My role is surfacing the evidence, so you decide.",
+      "source": [
+        1,
+        2
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the cream evidence folder",
+        "to": "a paper hand",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Revenue grew two hundred and ninety-three percent, to two million dollars.",
+      "headline": "+293% YOY",
+      "ground": "lime",
+      "subjects": [
+        "the paper bar chart",
+        "stacked paper rulebooks"
+      ],
+      "action": "The previous chip flips away as the torn strips stack upward into the paper bar chart, its tallest bar locking at the top; a green ribbon runs from the bar chart to stacked paper rulebooks, and a coin-sized cream tag reading '$2.0M' sits beside the ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper bar chart",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[fast-paced] Revenue grew two hundred and ninety-three percent, to two million dollars.",
+      "source": [
+        6
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper bar chart",
+        "to": "stacked paper rulebooks",
+        "colour": "green"
+      },
+      "tag": {
+        "text": "$2.0M",
+        "source": [
+          6
+        ]
+      }
+    },
+    {
+      "scene": 2,
+      "line": "New disclosure rules are creating structural demand globally.",
+      "headline": "REGULATORY TAILWIND",
+      "ground": "lime",
+      "subjects": [
+        "the paper bar chart",
+        "stacked paper rulebooks",
+        "a paper map"
+      ],
+      "action": "The previous chip is covered as the paper bar chart holds and the stacked paper rulebooks at the ribbon's far end pile higher over a flat paper map; the green ribbon stays in place.",
+      "hand": false,
+      "handoff": "the stacked rulebooks",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "New disclosure rules are creating structural demand globally.",
+      "source": [
+        4,
+        5
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper bar chart",
+        "to": "stacked paper rulebooks",
+        "colour": "green"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "October's warrant exercise added thirteen point eight million in cash.",
+      "headline": "+$13.8M",
+      "ground": "lime",
+      "subjects": [
+        "the paper bar chart",
+        "taped paper coins"
+      ],
+      "action": "The previous chip slides off the top edge as the stacked rulebooks flatten into taped paper coins that pile beside the paper bar chart and hold; the green ribbon remains strung between them.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "October's warrant exercise added thirteen point eight million in cash.",
+      "source": [
+        9
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper bar chart",
+        "to": "stacked paper rulebooks",
+        "colour": "green"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "At that burn, cash covered roughly one point four months.",
+      "headline": "1.4 MONTHS",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "a paper calendar strip"
+      ],
+      "action": "The previous chip flips down as the coin stack shrinks coin by coin onto a short paper calendar strip that tears off after its second page; an orange string runs from the coin stack to the calendar strip, and a coin-sized cream tag reading '$1.85M' sits beside it, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper calendar strip",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] At that burn, cash covered roughly one point four months.",
+      "source": [
+        19
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "$1.85M",
+        "source": [
+          19
+        ]
+      }
+    },
+    {
+      "scene": 3,
+      "line": "Four acquisitions pushed general costs to eight point one million.",
+      "headline": "G&A $8.1M",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "stacked paper folders",
+        "a paper calendar strip"
+      ],
+      "action": "The previous chip slides off the right edge as the paper calendar strip folds into stacked paper folders that pile four high beside the coin stack and press it down; the orange string stays in place.",
+      "hand": false,
+      "handoff": "the stacked paper folders",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Four acquisitions pushed general costs to eight point one million.",
+      "source": [
+        13,
+        14
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Resulticks is unclosed; Findings and Kindred have stalled.",
+      "headline": "DEALS STALLED",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "string and pins"
+      ],
+      "action": "The previous chip is covered as the stacked paper folders unfold into string and pins, three pins driven in and the string pulled taut then left slack beside the coin stack; the orange string to the calendar strip stays in place.",
+      "hand": false,
+      "handoff": "the pinned string",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Resulticks is unclosed; Findings and Kindred have stalled.",
+      "source": [
+        15,
+        16
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "Demand cross-sell traction and a closed Resulticks deal.",
+      "headline": "EVIDENCE NEEDED",
+      "ground": "violet",
+      "subjects": [
+        "a paper checklist",
+        "hole-punched tags",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the pinned string reels in and straightens into a paper checklist; a paper hand taps two hole-punched tags onto its lines, and a cream ribbon runs from the paper checklist toward the frame's edge.",
+      "hand": true,
+      "handoff": "the paper checklist",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Demand cross-sell traction and a closed Resulticks deal.",
+      "source": [
+        28,
+        29
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a paper checklist",
+        "to": "the cream evidence folder",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "This is a high-risk bet on execution, not defensive.",
+      "headline": "HIGH-RISK BET",
+      "ground": "violet",
+      "subjects": [
+        "the cream evidence folder",
+        "a rubber stamp"
+      ],
+      "action": "The previous chip slides off the left edge as the paper checklist folds back into the cream evidence folder at the cream ribbon's end; a rubber stamp presses down once and lifts, leaving the folder closed and holding.",
+      "hand": false,
+      "handoff": "the evidence folder",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "This is a high-risk bet on execution, not defensive.",
+      "source": [
+        35,
+        36
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a paper checklist",
+        "to": "the cream evidence folder",
+        "colour": "cream"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 55444,
+  "clipSeconds": 5
+}

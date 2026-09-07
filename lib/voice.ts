@@ -35,6 +35,15 @@ export class Narrator {
   private alive = true;
   private inFlight = 0;
   private waiting: Array<() => void> = [];
+  /**
+   * WP9: beat numbers whose track promise has settled (fetched, cached, or
+   * failed) — used by the "assembling" screen state to know when scene 1's
+   * narration has arrived, since a beat's own track promise has no
+   * synchronous "is it ready yet" the player can poll. Populated in
+   * prefetchScene's `.then` regardless of success, so a failed fetch still
+   * lets the assembling stage move on rather than get stuck.
+   */
+  private resolvedTracks = new Set<number>();
 
   constructor(private readonly session: string) {}
 
@@ -89,9 +98,24 @@ export class Narrator {
     for (const b of missing) {
       this.tracks.set(
         b.n,
-        promise.then((urls) => urls.get(b.n) ?? null)
+        promise.then((urls) => {
+          const url = urls.get(b.n) ?? null;
+          this.resolvedTracks.add(b.n);
+          return url;
+        })
       );
     }
+  }
+
+  /** WP9: has beat n's track settled (arrived or failed)? Best-effort signal for the "assembling" screen state, not a guarantee of successful playback. */
+  isReady(n: number): boolean {
+    return this.resolvedTracks.has(n);
+  }
+
+  /** WP9: seed beat n's track from a cached recording's mp3, bypassing /api/voice entirely — makes play(n) work unchanged for cache-hit playback. */
+  useCachedTrack(n: number, url: string) {
+    this.tracks.set(n, Promise.resolve(url));
+    this.resolvedTracks.add(n);
   }
 
   /** Play beat n's line, after the previous line if it is still running. */

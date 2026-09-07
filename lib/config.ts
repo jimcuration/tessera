@@ -52,6 +52,23 @@ import path from "node:path";
  *                          Robin; "bed.mp3" (WP5's original, 30s) stays
  *                          available via the switch and is never
  *                          overwritten by v2 generation.
+ *   KEY_GLOW=on|off        WP9: on renders the console's square-key glow
+ *                          overlay (components/console.tsx); off (default)
+ *                          leaves the key exactly as rendered in
+ *                          public/console-cutout.png, per Robin's WP9 note
+ *                          that the glow doesn't need to be there. The seam
+ *                          light (buffer indicator) is unaffected either
+ *                          way; with the key no longer carrying
+ *                          listening/rendering state, the ask-line cursor
+ *                          carries it in both theatre and plain mode
+ *                          instead (components/player.tsx).
+ *   CACHE=on|off           WP9: on (default) plays a matching, complete
+ *                          recording from RECORDINGS_DIR instead of
+ *                          rendering live, when one exists for the current
+ *                          question, voice, chain, clipSeconds,
+ *                          translatorVersion and styleSheetVersion
+ *                          (lib/cache.ts). off always renders live. See
+ *                          briefs/WP9-handoff.md for the exact match rule.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
@@ -64,6 +81,8 @@ export type MusicSwitch = "on" | "off";
 export type FaceGateSwitch = "on" | "off";
 export type ClipSeconds = 5 | 10 | 15;
 export type MusicBedSwitch = "bed" | "bed-v2";
+export type KeyGlowSwitch = "on" | "off";
+export type CacheSwitch = "on" | "off";
 
 export interface Switches {
   voice: VoiceSwitch;
@@ -74,6 +93,8 @@ export interface Switches {
   faceGate: FaceGateSwitch;
   clipSeconds: ClipSeconds;
   musicBed: MusicBedSwitch;
+  keyGlow: KeyGlowSwitch;
+  cache: CacheSwitch;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -101,6 +122,9 @@ export function readSwitches(): Switches {
     faceGate: pick<FaceGateSwitch>(process.env.FACE_GATE, ["on", "off"], "off"),
     clipSeconds: pickClipSeconds(process.env.CLIP_SECONDS),
     musicBed: pick<MusicBedSwitch>(process.env.MUSIC_BED, ["bed", "bed-v2"], "bed-v2"),
+    // Default off: see this file's header comment (WP9, Robin's note).
+    keyGlow: pick<KeyGlowSwitch>(process.env.KEY_GLOW, ["on", "off"], "off"),
+    cache: pick<CacheSwitch>(process.env.CACHE, ["on", "off"], "on"),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }

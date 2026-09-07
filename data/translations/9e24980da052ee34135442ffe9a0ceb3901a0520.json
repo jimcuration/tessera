@@ -1,0 +1,302 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "Resulticks is positioned as a revenue synergy play, not a cost savings play.",
+      "headline": "REVENUE SYNERGY",
+      "ground": "violet",
+      "subjects": [
+        "the paper stack",
+        "a cream paper chip"
+      ],
+      "action": "A stack of halftone paper sheets drops onto a cream chip on open ground and settles square.",
+      "hand": false,
+      "handoff": "the paper stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Resulticks is positioned as a revenue synergy play, not a cost savings play.",
+      "source": [
+        0
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper stack",
+        "to": "a paper screen",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "The one point five billion dollar deal adds AI-driven customer data to Diginex's sustainability and compliance platform.",
+      "headline": "$1.5B",
+      "ground": "violet",
+      "subjects": [
+        "the paper stack",
+        "a paper screen"
+      ],
+      "action": "The previous chip slides off the top edge as the paper stack splits and a paper screen rises from it; a cream ribbon runs from the stack to the screen, and a coin-sized cream tag reading '$1.5B' sits beside the ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper screen",
+      "hero": true,
+      "scale": "diagram",
+      "delivery": "[excited] The one point five billion dollar deal adds AI-driven customer data to Diginex's sustainability and compliance platform.",
+      "source": [
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper stack",
+        "to": "a paper screen",
+        "colour": "cream"
+      },
+      "tag": {
+        "text": "$1.5B",
+        "source": [
+          1
+        ]
+      }
+    },
+    {
+      "scene": 1,
+      "line": "That turns a point solution into an integrated, end-to-end platform.",
+      "headline": "END-TO-END",
+      "ground": "violet",
+      "subjects": [
+        "the paper stack",
+        "a paper screen"
+      ],
+      "action": "The previous chip flips away as the paper screen folds back down into the paper stack, now one flush slab; the cream ribbon stays in place across it.",
+      "hand": false,
+      "handoff": "the paper stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "That turns a point solution into an integrated, end-to-end platform.",
+      "source": [
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper stack",
+        "to": "a paper screen",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "The move is about expanding addressable market and cross-sell opportunity.",
+      "headline": "CROSS-SELL",
+      "ground": "cyan",
+      "subjects": [
+        "the two paper folders"
+      ],
+      "action": "The previous chip is covered as the paper stack peels apart into the two paper folders, which open side by side on cyan ground.",
+      "hand": false,
+      "handoff": "the two paper folders",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "The move is about expanding addressable market and cross-sell opportunity.",
+      "source": [
+        3
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the two paper folders",
+        "to": "a paper till drawer",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Diginex can now serve enterprises across two workflows: sustainability and compliance, and customer intelligence and marketing.",
+      "headline": "2 WORKFLOWS",
+      "ground": "cyan",
+      "subjects": [
+        "the two paper folders",
+        "a paper hand"
+      ],
+      "action": "The previous chip slides off as a paper hand enters and taps each of the two paper folders in turn; an orange paper arrow unrolls from the folders toward the right edge and holds.",
+      "hand": true,
+      "handoff": "the two paper folders",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] Diginex can now serve enterprises across two workflows: sustainability and compliance, and customer intelligence and marketing.",
+      "source": [
+        4,
+        5,
+        6
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the two paper folders",
+        "to": "a paper till drawer",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Same customer base, broader suite, higher average contract value from one vendor.",
+      "headline": "HIGHER ACV",
+      "ground": "cyan",
+      "subjects": [
+        "the two paper folders",
+        "a paper till drawer"
+      ],
+      "action": "The previous chip flips down as the orange arrow, already in place, lands on a paper till drawer that slides open beside the two paper folders and stops.",
+      "hand": false,
+      "handoff": "the paper till drawer",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Same customer base, broader suite, higher average contract value from one vendor.",
+      "source": [
+        7,
+        8
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the two paper folders",
+        "to": "a paper till drawer",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "The risk is integration complexity. Diginex has now absorbed four distinct acquisitions across multiple geographies.",
+      "headline": "4 ACQUISITIONS",
+      "ground": "magenta",
+      "subjects": [
+        "the paper folder row"
+      ],
+      "action": "The previous chip slides off as the paper till drawer collapses flat and its face divides into the paper folder row, four tabs standing up in a line on magenta.",
+      "hand": false,
+      "handoff": "the paper folder row",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "The risk is integration complexity. Diginex has now absorbed four distinct acquisitions across multiple geographies.",
+      "source": [
+        10,
+        11
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the paper folder row",
+        "to": "a paper bar chart",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "What matters next is cross-sell traction, and revenue growing faster than the cost of integration.",
+      "headline": "CROSS-SELL TRACTION",
+      "ground": "violet",
+      "subjects": [
+        "the paper stack",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the paper bar chart lies down and restacks into the paper stack on violet; a paper hand presses it flat and a cream ribbon runs from the stack to the hand.",
+      "hand": true,
+      "handoff": "the paper stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "What matters next is cross-sell traction, and revenue growing faster than the cost of integration.",
+      "source": [
+        13
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper stack",
+        "to": "a paper hand",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "Without that, the deal is financial engineering rather than a strategic unlock.",
+      "headline": "FINANCIAL ENGINEERING",
+      "ground": "violet",
+      "subjects": [
+        "the paper stack",
+        "a cream paper chip",
+        "a paper hand"
+      ],
+      "action": "The previous chip slides off as the paper hand, already tied by the cream ribbon, slips a cream paper chip under the paper stack and lifts away, leaving the stack resting on it.",
+      "hand": true,
+      "handoff": "the paper stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Without that, the deal is financial engineering rather than a strategic unlock.",
+      "source": [
+        14
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper stack",
+        "to": "a paper hand",
+        "colour": "cream"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [
+    {
+      "raw": {
+        "scene": 3,
+        "line": "General and administrative costs rose three point four million to eight point one million, with two point two million from deal legal work.",
+        "headline": "$8.1M G&A",
+        "ground": "magenta",
+        "subjects": [
+          "the paper folder row",
+          "a paper bar chart"
+        ],
+        "action": "The previous chip is covered as a black string is pinned from the paper folder row to a paper bar chart whose column climbs and holds; a coin-sized cream tag reading '$2.2M' sits beside the string, a short black line pointing at it.",
+        "hand": false,
+        "handoff": "the paper bar chart",
+        "hero": false,
+        "scale": "oversized",
+        "delivery": "General and administrative costs rose three point four million to eight point one million, with two point two million from deal legal work.",
+        "source": [
+          12
+        ],
+        "connector": {
+          "kind": "paper string",
+          "from": "the paper folder row",
+          "to": "a paper bar chart",
+          "colour": "black"
+        },
+        "tag": {
+          "text": "$2.2M",
+          "source": [
+            12
+          ]
+        }
+      },
+      "reason": "line is 23 words (limit 22)"
+    }
+  ],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "headline number \"2\" not found as a figure in cited sentences [4,5,6] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [
+      "headline number \"4\" not found as a figure in cited sentences [10,11] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 41329,
+  "clipSeconds": 15
+}

@@ -1,0 +1,292 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "What is the regulatory driver behind demand for Diginex's products?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "The rules on ESG reporting have shifted in the past eighteen to twenty-four months.",
+      "headline": "18–24 MONTHS",
+      "ground": "violet",
+      "subjects": [
+        "the rulebook stack",
+        "a cream paper chip"
+      ],
+      "action": "A halftone stack of paper rulebooks drops onto a cream chip and settles square to the frame.",
+      "hand": false,
+      "handoff": "the rulebook stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] The rules on ESG reporting have shifted in the past eighteen to twenty-four months.",
+      "source": [
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the rulebook stack",
+        "to": "a grid of paper company cards",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "Europe's reporting directive asks around fifty thousand large companies for detailed ESG metrics from twenty twenty-five.",
+      "headline": "~50,000 COMPANIES",
+      "ground": "violet",
+      "subjects": [
+        "the rulebook stack",
+        "a grid of paper company cards"
+      ],
+      "action": "The previous chip slides off the top edge as the rulebook stack fans open into a grid of paper company cards; an orange paper ribbon runs from the rulebook stack to the grid, and a coin-sized cream tag reading '~50,000' sits beside the ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the card grid",
+      "hero": true,
+      "scale": "diagram",
+      "delivery": "[excited] Europe's reporting directive asks around fifty thousand large companies for detailed ESG metrics from twenty twenty-five.",
+      "source": [
+        3
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the rulebook stack",
+        "to": "a grid of paper company cards",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "~50,000",
+        "source": [
+          3
+        ]
+      }
+    },
+    {
+      "scene": 1,
+      "line": "That directive is the single largest driver of demand for ESG software globally.",
+      "headline": "LARGEST DRIVER",
+      "ground": "violet",
+      "subjects": [
+        "a grid of paper company cards",
+        "the rulebook stack"
+      ],
+      "action": "The previous chip flips away as the card grid tilts and stacks into one tall column beside the rulebook stack, the orange ribbon still in place between them.",
+      "hand": false,
+      "handoff": "the card column",
+      "hero": false,
+      "scale": "small",
+      "delivery": "That directive is the single largest driver of demand for ESG software globally.",
+      "source": [
+        4
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the rulebook stack",
+        "to": "a grid of paper company cards",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "America's climate rule is delayed and contested. Still, climate data must become auditable and consistent.",
+      "headline": "SEC CLIMATE RULE",
+      "ground": "cyan",
+      "subjects": [
+        "the folded paper map",
+        "a paper filing document"
+      ],
+      "action": "The previous chip is covered as the card column unfolds flat into the folded paper map; a paper filing document lands on it and holds.",
+      "hand": false,
+      "handoff": "the folded paper map",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "America's climate rule is delayed and contested. Still, climate data must become auditable and consistent.",
+      "source": [
+        6,
+        7
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the folded paper map",
+        "to": "the paper platform slab",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Companies working across jurisdictions face fragmented requirements. Global standards work aims to standardise them.",
+      "headline": "FRAGMENTED RULES",
+      "ground": "cyan",
+      "subjects": [
+        "the folded paper map",
+        "the paper platform slab"
+      ],
+      "action": "The previous chip slides left as the folded paper map tears into scattered panels, then a paper platform slab slides under them; an orange paper string runs from the map to the slab.",
+      "hand": false,
+      "handoff": "the paper platform slab",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] Companies working across jurisdictions face fragmented requirements. Global standards work aims to standardise them.",
+      "source": [
+        8,
+        9
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the folded paper map",
+        "to": "the paper platform slab",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Diginex's supply chain module addresses Europe's disclosure rules and the UK Modern Slavery Act.",
+      "headline": "SUPPLY CHAIN",
+      "ground": "cyan",
+      "subjects": [
+        "the paper platform slab",
+        "a chain of paper supply cards",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips down as the paper platform slab sprouts a chain of paper supply cards; a paper hand enters and presses the chain flat, the orange string still running to the slab.",
+      "hand": true,
+      "handoff": "the paper chain",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Diginex's supply chain module addresses Europe's disclosure rules and the UK Modern Slavery Act.",
+      "source": [
+        11,
+        12
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the folded paper map",
+        "to": "the paper platform slab",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Larger competitors ride the same regulatory wave, and they have deeper resources.",
+      "headline": "DEEPER RESOURCES",
+      "ground": "magenta",
+      "subjects": [
+        "a paper bar chart",
+        "a paper window frame"
+      ],
+      "action": "The previous chip slides off as the paper chain folds up into a paper bar chart with two tall bars; a paper window frame drops in beside it and a black arrow runs from the chart to the frame.",
+      "hand": false,
+      "handoff": "the paper window frame",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Larger competitors ride the same regulatory wave, and they have deeper resources.",
+      "source": [
+        31
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "a paper bar chart",
+        "to": "a paper window frame",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Diginex must prove platform traction and cross-sell before that regulatory window closes.",
+      "headline": "WINDOW CLOSES",
+      "ground": "magenta",
+      "subjects": [
+        "a paper window frame",
+        "a paper bar chart"
+      ],
+      "action": "The previous chip is covered as the paper window frame slides shut over the bar chart and stops half open, the black arrow still pointing at it.",
+      "hand": false,
+      "handoff": "the paper window frame",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Diginex must prove platform traction and cross-sell before that regulatory window closes.",
+      "source": [
+        32
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "a paper bar chart",
+        "to": "a paper window frame",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "The regulatory tailwind is real and durable. These mandates are not going away.",
+      "headline": "DURABLE TAILWIND",
+      "ground": "violet",
+      "subjects": [
+        "a paper wave",
+        "the rulebook stack"
+      ],
+      "action": "The previous chip flips away as the paper window frame curls over into a paper wave; the rulebook stack rises behind it and a cream ribbon runs from the stack to the wave.",
+      "hand": false,
+      "handoff": "the paper wave",
+      "hero": false,
+      "scale": "small",
+      "delivery": "The regulatory tailwind is real and durable. These mandates are not going away.",
+      "source": [
+        29
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the rulebook stack",
+        "to": "a paper wave",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "Diginex isn't betting on voluntary adoption. It is riding a regulatory wave.",
+      "headline": "RIDING THE WAVE",
+      "ground": "violet",
+      "subjects": [
+        "the rulebook stack",
+        "a paper wave",
+        "a cream paper chip"
+      ],
+      "action": "The previous chip slides off the top edge as the paper wave flattens back under the rulebook stack, which settles onto a cream chip with the cream ribbon now taped across it.",
+      "hand": false,
+      "handoff": "the rulebook stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Diginex isn't betting on voluntary adoption. It is riding a regulatory wave.",
+      "source": [
+        25
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the rulebook stack",
+        "to": "a paper wave",
+        "colour": "cream"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 51606,
+  "clipSeconds": 15
+}

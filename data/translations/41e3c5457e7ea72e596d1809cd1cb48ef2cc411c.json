@@ -1,0 +1,300 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "Has the collective discussed Diginex's path to profitability given the M&A spend?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "The collective hasn't discussed this much lately, so this view draws on outside sources.",
+      "headline": "OUTSIDE SOURCES",
+      "ground": "violet",
+      "subjects": [
+        "a pinned paper noticeboard",
+        "a cream paper chip"
+      ],
+      "action": "A halftone paper noticeboard drops onto open ground, mostly bare, and a cream chip settles at its corner.",
+      "hand": false,
+      "handoff": "the noticeboard",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] The collective hasn't discussed this much lately, so this view draws on outside sources.",
+      "source": [
+        0
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a pinned paper noticeboard",
+        "to": "a paper balance scale",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "Diginex faces a classic deal problem. Near-term margin compression, then operating leverage as the platform scales.",
+      "headline": "M&A MATH",
+      "ground": "violet",
+      "subjects": [
+        "a pinned paper noticeboard",
+        "a paper balance scale"
+      ],
+      "action": "The previous chip slides off the top edge as a pinned paper noticeboard sprouts a paper balance scale; a cream ribbon already runs between them as one pan dips.",
+      "hand": false,
+      "handoff": "the balance scale",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Diginex faces a classic deal problem. Near-term margin compression, then operating leverage as the platform scales.",
+      "source": [
+        2
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a pinned paper noticeboard",
+        "to": "a paper balance scale",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "The company is in active integration mode across four acquisitions.",
+      "headline": "4 ACQUISITIONS",
+      "ground": "magenta",
+      "subjects": [
+        "a paper ledger sheet",
+        "four torn paper squares"
+      ],
+      "action": "The previous chip flips away as the balance scale flattens into a paper ledger sheet; four torn paper squares slide onto it and lock in a row.",
+      "hand": false,
+      "handoff": "the paper ledger sheet",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "The company is in active integration mode across four acquisitions.",
+      "source": [
+        11
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "a paper ledger sheet",
+        "to": "a paper calendar page",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Admin costs climbed three point four million to eight point one million, with two point two million from deal work.",
+      "headline": "$8.1M G&A",
+      "ground": "magenta",
+      "subjects": [
+        "a paper ledger sheet",
+        "a paper bar rising"
+      ],
+      "action": "The previous chip is covered as a paper bar grows upward from the ledger sheet; a coin-sized cream tag reading '$2.2M' sits beside the orange string, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper ledger sheet",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] Admin costs climbed three point four million to eight point one million, with two point two million from deal work.",
+      "source": [
+        12
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "a paper ledger sheet",
+        "to": "a paper calendar page",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "$2.2M",
+        "source": [
+          12
+        ]
+      }
+    },
+    {
+      "scene": 3,
+      "line": "Profitability needs revenue growing thirty to fifty percent while admin costs stay flat.",
+      "headline": "+30-50% YOY",
+      "ground": "cyan",
+      "subjects": [
+        "a paper bar chart",
+        "a flat paper strip"
+      ],
+      "action": "The previous chip flips down as the calendar page folds into a paper bar chart; bars step upward while a flat paper strip lies unmoving beneath them.",
+      "hand": false,
+      "handoff": "the paper bar chart",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] Profitability needs revenue growing thirty to fifty percent while admin costs stay flat.",
+      "source": [
+        19
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "a paper bar chart",
+        "to": "a paper map",
+        "colour": "green"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Cross-sell has to work. Without it, you get two siloed businesses with duplicate overhead.",
+      "headline": "VALUE TRAP",
+      "ground": "cyan",
+      "subjects": [
+        "a paper bar chart",
+        "two separated paper boxes",
+        "a paper hand"
+      ],
+      "action": "The previous chip slides off as two paper boxes split apart beside the bar chart; a paper hand pushes at the gap and they refuse to meet.",
+      "hand": true,
+      "handoff": "the two separated paper boxes",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Cross-sell has to work. Without it, you get two siloed businesses with duplicate overhead.",
+      "source": [
+        22,
+        23
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "a paper bar chart",
+        "to": "a paper map",
+        "colour": "green"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "Diginex has signalled focus on Brazil's seventy-seven billion dollar sustainability market.",
+      "headline": "$77B MARKET",
+      "ground": "cyan",
+      "subjects": [
+        "a paper map",
+        "a paper bar chart"
+      ],
+      "action": "The previous chip is covered as the two boxes unfold into a paper map; the green arrow already runs from the bar chart and lands on it. A coin-sized cream tag reading '$77B' sits beside the arrow, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper map",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Diginex has signalled focus on Brazil's seventy-seven billion dollar sustainability market.",
+      "source": [
+        25
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "a paper bar chart",
+        "to": "a paper map",
+        "colour": "green"
+      },
+      "tag": {
+        "text": "$77B",
+        "source": [
+          25
+        ]
+      }
+    },
+    {
+      "scene": 4,
+      "line": "The next two to three earnings reports must show revenue accelerating and admin costs decelerating.",
+      "headline": "NEXT 2-3 REPORTS",
+      "ground": "violet",
+      "subjects": [
+        "three paper earnings sheets",
+        "a pinned paper noticeboard"
+      ],
+      "action": "The previous chip flips away as the paper map tears into three paper earnings sheets, which pin themselves onto a returning noticeboard.",
+      "hand": false,
+      "handoff": "the three paper earnings sheets",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "The next two to three earnings reports must show revenue accelerating and admin costs decelerating.",
+      "source": [
+        31
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a pinned paper noticeboard",
+        "to": "three paper earnings sheets",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "Until then, profitability remains a narrative, not a fact.",
+      "headline": "NOT YET A FACT",
+      "ground": "violet",
+      "subjects": [
+        "a pinned paper noticeboard",
+        "a rubber stamp"
+      ],
+      "action": "The previous chip slides off as the earnings sheets settle back into the noticeboard; a rubber stamp presses one blank sheet and lifts, leaving it unmarked.",
+      "hand": false,
+      "handoff": "the noticeboard",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Until then, profitability remains a narrative, not a fact.",
+      "source": [
+        32
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "a pinned paper noticeboard",
+        "to": "three paper earnings sheets",
+        "colour": "cream"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [
+    {
+      "raw": {
+        "scene": 2,
+        "line": "Resulticks, at one point five billion, is the largest. That integration tax likely runs into twenty twenty-seven.",
+        "headline": "INTO 2027",
+        "ground": "magenta",
+        "subjects": [
+          "a paper ledger sheet",
+          "a paper calendar page"
+        ],
+        "action": "The previous chip slides off as the orange string pulls a paper calendar page across to the ledger sheet, and the page holds there.",
+        "hand": false,
+        "handoff": "the paper calendar page",
+        "hero": false,
+        "scale": "small",
+        "delivery": "Resulticks, at one point five billion, is the largest, and that integration tax likely runs into twenty twenty-seven.",
+        "source": [
+          14,
+          15
+        ],
+        "connector": {
+          "kind": "paper string",
+          "from": "a paper ledger sheet",
+          "to": "a paper calendar page",
+          "colour": "orange"
+        },
+        "tag": null
+      },
+      "reason": "delivery, stripped of tags, does not match line"
+    }
+  ],
+  "warnings": [
+    [],
+    [],
+    [
+      "headline number \"4\" not found as a figure in cited sentences [11] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 38758,
+  "clipSeconds": 15
+}
