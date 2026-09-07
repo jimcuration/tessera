@@ -13,6 +13,7 @@
 
 import { cancelInFlight } from "./fal";
 import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, TIMING_VERSION, type SceneSection } from "./prompt";
+import type { PaletteId } from "./palette";
 import { registerShot, recordSession } from "./recorder";
 import { createRenderer } from "./render";
 import type { ReadyClip, Stream, Shot } from "./stream";
@@ -36,6 +37,8 @@ export interface SessionSwitches {
   render: RenderSwitch;
   faceGate: FaceGateSwitch;
   clipSeconds: ClipSeconds;
+  /** WP7: null is the unset default (v0.3's four named grounds). */
+  palette: PaletteId | null;
 }
 
 /** WP9: the shape POST /api/cache/lookup returns on a hit. */
@@ -200,11 +203,11 @@ export class Session {
    * at 5s/10s each beat is dispatched immediately instead (see the "beat"
    * case in run()).
    */
-  private queueFlushVideoScene(voice: SessionSwitches["voice"], chain: SessionSwitches["chain"]) {
+  private queueFlushVideoScene(voice: SessionSwitches["voice"], chain: SessionSwitches["chain"], palette: SessionSwitches["palette"]) {
     const buffered = this.videoSceneBuffer;
     this.videoSceneBuffer = null;
     if (!buffered || buffered.items.length === 0) return;
-    this.flushChain = this.flushChain.then(() => this.flushVideoScene(buffered, voice, chain)).catch((cause) => {
+    this.flushChain = this.flushChain.then(() => this.flushVideoScene(buffered, voice, chain, palette)).catch((cause) => {
       console.error(`[session] scene ${buffered.scene} failed to stage:`, cause instanceof Error ? cause.message : cause);
     });
   }
@@ -212,7 +215,8 @@ export class Session {
   private async flushVideoScene(
     buffered: { scene: number; items: { n: number; beat: Beat; warnings: string[] }[] },
     voice: SessionSwitches["voice"],
-    chain: SessionSwitches["chain"]
+    chain: SessionSwitches["chain"],
+    palette: SessionSwitches["palette"]
   ) {
     // WP8.2 items 1-3: for Saskia, generate this scene's narration first —
     // and wait for it — so the video prompt's section timecodes and the
@@ -272,7 +276,7 @@ export class Session {
         durationClamped = timing.clamped;
       }
 
-      const { prompt } = compileScenePrompt({ beats: groupBeats, voice, previousHandoff: this.previousHandoff, sections, clipSeconds: requestedDuration });
+      const { prompt } = compileScenePrompt({ beats: groupBeats, voice, previousHandoff: this.previousHandoff, sections, clipSeconds: requestedDuration, palette });
       this.previousHandoff = groupBeats[groupBeats.length - 1].handoff;
       const offsets = sections ? sections.map((s) => s.start) : groupBeats.map((_, i) => sceneOffsetSeconds(i));
       const ends = sections ? sections.map((s) => s.end) : groupBeats.map((_, i) => sceneOffsetSeconds(i) + 5);
@@ -301,6 +305,7 @@ export class Session {
         translatorVersion: TRANSLATOR_VERSION,
         styleSheetVersion: STYLE_SHEET_VERSION,
         timingVersion: TIMING_VERSION,
+        palette,
         requestedDuration,
         timingMethod,
         splitMethod,
@@ -422,6 +427,7 @@ export class Session {
       render: config.render,
       faceGate: config.faceGate,
       clipSeconds: config.clipSeconds,
+      palette: config.palette,
     };
     // Session ids carry the switches so recordings compare cleanly.
     this.state = {
@@ -525,12 +531,12 @@ export class Session {
             // the prompt, so there's no separate sceneBuffer/flushScene
             // step for this path any more (see the else branch below).
             if (this.videoSceneBuffer && this.videoSceneBuffer.scene !== beat.scene) {
-              this.queueFlushVideoScene(switches.voice, switches.chain);
+              this.queueFlushVideoScene(switches.voice, switches.chain, switches.palette);
             }
             if (!this.videoSceneBuffer) this.videoSceneBuffer = { scene: beat.scene, items: [] };
             this.videoSceneBuffer.items.push({ n, beat, warnings });
           } else {
-            const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff: this.previousHandoff, clipSeconds: switches.clipSeconds });
+            const { prompt } = compilePrompt({ beat, voice: switches.voice, previousHandoff: this.previousHandoff, clipSeconds: switches.clipSeconds, palette: switches.palette });
             this.previousHandoff = beat.handoff;
             const shot: Shot = {
               n,
@@ -559,6 +565,7 @@ export class Session {
               translatorVersion: TRANSLATOR_VERSION,
               styleSheetVersion: STYLE_SHEET_VERSION,
               timingVersion: TIMING_VERSION,
+              palette: switches.palette,
               requestedDuration: switches.clipSeconds,
               timingMethod: "fixed",
               splitMethod: null,
@@ -628,7 +635,7 @@ export class Session {
     if (!this.alive) return;
     if (this.state.status === "error") return;
     if (switches.clipSeconds === 15) {
-      this.queueFlushVideoScene(switches.voice, switches.chain);
+      this.queueFlushVideoScene(switches.voice, switches.chain, switches.palette);
       // WP8.2: the last scene's flush is now async (it awaits Saskia's
       // audio before dispatching) — wait for the whole chain to drain
       // before telling `stream` no more shots are coming, or `finish()`
@@ -654,6 +661,11 @@ export class Session {
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
       timingVersion: TIMING_VERSION,
+      // Top-level, not just nested in `switches`: lib/cache.ts matches
+      // palette the same way it matches translatorVersion/styleSheetVersion/
+      // timingVersion above, since a palette change recolours the rendered
+      // video without bumping styleSheetVersion.
+      palette: switches.palette,
       translateSource,
       translateMs,
       firstBeatMs: this.firstBeatMs,

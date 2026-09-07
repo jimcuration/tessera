@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { normalise } from "./curation";
 import type { ChainSwitch, ClipSeconds, VoiceSwitch } from "./config";
+import type { PaletteId } from "./palette";
 import type { Beat } from "./translator";
 import type { Resolution } from "./fal";
 
@@ -15,11 +16,13 @@ import type { Resolution } from "./fal";
  * exact same completeness check this module uses for playback so "what's
  * cached" and "what actually plays from cache" never disagree.
  *
- * "Palette" isn't a separate switch anywhere in this codebase — the style
- * sheet's ground palette is versioned by STYLE_SHEET_VERSION (lib/prompt.ts)
- * itself, so a palette change already invalidates the cache by invalidating
- * that version. See briefs/WP9-handoff.md for this interpretation, flagged
- * there for Robin/PM to confirm against the WP9 brief's literal wording.
+ * Merging WP7: this file's own header used to argue palette needed no
+ * separate cache-key field because a palette change would always bump
+ * STYLE_SHEET_VERSION too — wrong once WP7 actually shipped `PALETTE`
+ * (lib/palette.ts) as its own env switch that recolours the sheet without
+ * touching STYLE_SHEET_VERSION at all. A recording made under one palette
+ * has that palette's colours baked into the rendered video, so `palette`
+ * is matched explicitly below, the same way timingVersion is.
  */
 
 const SAFE_ID = /^[A-Za-z0-9._-]{1,120}$/;
@@ -31,6 +34,7 @@ interface SessionJson {
   translatorVersion?: string;
   styleSheetVersion?: string;
   timingVersion?: string;
+  palette?: PaletteId | null;
   beats?: Beat[];
   savedAt?: string;
 }
@@ -74,6 +78,8 @@ export interface FindCacheInput {
   translatorVersion: string;
   styleSheetVersion: string;
   timingVersion: string;
+  /** WP7: null is the unset default (v0.3's four named grounds). */
+  palette: PaletteId | null;
 }
 
 function readJson<T>(file: string): T | null {
@@ -167,6 +173,7 @@ export function listMatchingSessions(input: FindCacheInput): MatchedSession[] {
     if (session.translatorVersion !== input.translatorVersion) continue;
     if (session.styleSheetVersion !== input.styleSheetVersion) continue;
     if (session.timingVersion !== input.timingVersion) continue;
+    if ((session.palette ?? null) !== input.palette) continue;
     matches.push({ dir, sessionId: name, session });
   }
   matches.sort((a, b) => {

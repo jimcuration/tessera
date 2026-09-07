@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
     timingVersion: TIMING_VERSION,
+    palette: switches.palette,
   });
   if (!cached) return Response.json({ hit: false }, { status: 404 });
 

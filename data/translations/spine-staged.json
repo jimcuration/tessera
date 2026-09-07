@@ -1,0 +1,91 @@
+{
+  "translator": "translator-v0.3.1",
+  "question": "What is the cash position and runway?",
+  "note": "WP6.1: not a translator output. Six beats hand-written by the PM at reference stage-direction length (~150 words of `action`, vs. the pinned exemplar's ~30) to test whether the model delivers the reference's compositional density when given reference-grade direction. `line`/`delivery`/`hero`/`scale` are carried over unchanged from the pinned exemplar (data/translations/a14c3cdf12f849c0042f91f76b36ac9b41ea65ba.json) since these beats stage the identical facts; `headline`, `ground`, `action`, `handoff` and `scene` grouping are exactly as specified in briefs/WP6.1.md (ground for scene 3 is lime here, not the exemplar's bookending violet — this test does not bookend); `source` is copied from the pinned exemplar beat by beat, verified against data/diginex.json's 'What is the cash position and runway?' answer (sentences [9],[9,10],[22],[23],[27],[25,43]). `hand` is set from whether the stage direction itself names a paper hand acting. Not run through validateBeat/the translator prompt; not wired into app/api/translate's cache lookup (this filename is not the sha1 of any captured answer) — rendered directly by scripts/render-staged.mts.",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "By September's end, Diginex held one point eight five million in cash.",
+      "headline": "$1.85M",
+      "ground": "violet",
+      "subjects": ["a stack of paper coins", "an anonymous paper hand", "a cream paper chip"],
+      "action": "Soft violet ground. Centre frame, a black-and-white halftone paper stack of coins, torn white edge, about a third of the frame tall, casting a small paper shadow to the lower right. From the left, an anonymous paper hand enters holding one more coin between finger and thumb, sets it on top of the stack, and withdraws. As the coin lands, a small cream paper chip printed \"$1.85M\" slaps down in the upper third, right of centre, clear of the stack, and holds. The stack stays exactly where it is. Nothing else in frame.",
+      "hand": true,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] By September's end, Diginex held one point eight five million in cash.",
+      "source": [9]
+    },
+    {
+      "scene": 1,
+      "line": "Six months earlier it was three point one one million.",
+      "headline": "$3.11M",
+      "ground": "violet",
+      "subjects": ["the coin stack", "an anonymous paper hand", "a thin black paper arrow"],
+      "action": "Same violet ground, same coin stack centre frame. A cream paper strip printed nothing lies behind it like a shelf. The paper hand enters from the right, pinches the top third of the stack, and lifts it clean away out of the top of the frame, leaving a shorter stack. Where the removed coins were, a thin black paper arrow drops in from above and points down at the shorter stack. The chip \"$3.11M\" replaces the previous chip in the same upper-third position with a quick paper flip. Hold on the shorter stack and the arrow.",
+      "hand": true,
+      "handoff": "the shorter stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "[fast-paced] Six months earlier it was three point one one million.",
+      "source": [9, 10]
+    },
+    {
+      "scene": 2,
+      "line": "Operating burn ran about one point three million a month.",
+      "headline": "$1.3M / MONTH",
+      "ground": "magenta",
+      "subjects": ["the coin stack", "a cream paper calendar strip", "paper coins"],
+      "action": "Deep magenta ground. The frame opens on the shorter coin stack, now small at the left edge. A cream paper calendar strip — a row of six plain blank squares, no numerals — unrolls from the stack toward the right across the middle of the frame. As each square passes, a single halftone coin slides off the stack and drops off the bottom of the frame, one per square, so the stack shrinks as the strip lengthens. The chip \"$1.3M / MONTH\" sits in the upper third, centred. Hold with the strip fully out and the stack down to a few coins.",
+      "hand": false,
+      "handoff": "the calendar strip",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Operating burn ran about one point three million a month.",
+      "source": [22]
+    },
+    {
+      "scene": 2,
+      "line": "At that rate, the cash on hand covered one point four months.",
+      "headline": "1.4 MONTHS",
+      "ground": "magenta",
+      "subjects": ["a cutout paper airliner", "a long cream paper runway strip", "an anonymous paper hand"],
+      "action": "Deep magenta ground. A black-and-white halftone paper airliner, torn white edge, sits centre-left with its nose pointing right, resting on a long cream paper strip that runs off the right edge of the frame — the runway. An anonymous paper hand enters from the right, grips the far end of the strip and pulls; the strip tears away in one motion, leaving the aircraft's nose hanging over open magenta with only a short stub of runway beneath it. A small cream chip printed \"1.4 MONTHS\" lands in the upper third, left of centre, well clear of the aircraft. The frame holds on the aircraft at the edge of the stub.",
+      "hand": true,
+      "handoff": "the torn stub end",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] At that rate, the cash on hand covered one point four months.",
+      "source": [23]
+    },
+    {
+      "scene": 3,
+      "line": "October's warrant exercise added thirteen point eight million in cash.",
+      "headline": "+$13.8M",
+      "ground": "lime",
+      "subjects": ["the cutout airliner", "the torn runway stub", "an anonymous paper hand"],
+      "action": "Lime green ground. The aircraft and the torn runway stub, centre-left, as before. From the right, the paper hand slides in a fresh length of cream strip and presses it against the torn end; two small pieces of paper tape snap down across the join. The runway now runs off the right edge again. As the tape lands, a black paper chip printed \"+$13.8M\" in cream slaps into the upper third, right of centre. The aircraft rolls a few centimetres forward along the repaired strip and holds.",
+      "hand": true,
+      "handoff": "the taped runway",
+      "hero": false,
+      "scale": "small",
+      "delivery": "October's warrant exercise added thirteen point eight million in cash.",
+      "source": [27]
+    },
+    {
+      "scene": 3,
+      "line": "Survival depends on capital markets and the next two quarters.",
+      "headline": "NEXT 2 QUARTERS",
+      "ground": "lime",
+      "subjects": ["the cutout airliner", "two blank paper calendar pages", "an anonymous paper hand"],
+      "action": "Lime green ground. The repaired runway runs across the middle; the aircraft has rolled to the right third of the frame. Two blank cream paper calendar pages, no numerals, flip in from the top and land side by side above the runway, left of centre. The paper hand enters from below and points at the second page, finger resting on it. The chip \"NEXT 2 QUARTERS\" sits in the upper third, above the pages, small. Hold on the hand pointing.",
+      "hand": true,
+      "handoff": "the pointing hand",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Survival depends on capital markets and the next two quarters.",
+      "source": [25, 43]
+    }
+  ]
+}

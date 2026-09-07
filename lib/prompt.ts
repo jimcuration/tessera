@@ -1,38 +1,80 @@
 /**
  * The prompt compiler: STYLE SHEET + BEAT + COPY LIST + AUDIO BLOCK.
  *
- * Tessera Style Sheet v0.3 is a numbered list on purpose: fal's prompt
- * rewriter copies numbered lists and paraphrases prose. Keep it numbered.
- * v0.1 measured that fal's rewriter drops any line phrased as a
- * prohibition (0/18 survival on "no brands" and "numbers never count up",
- * WP0 report §6) while descriptive lines survive at 16-18/18; v0.2 states
- * everything as a description of the world, with a prohibition appended
- * only where a description alone would not do. v0.2's line 6 ("no glow,
- * neon, bloom") kept a literal prohibition tail and survived *worse* than
- * v0.1 (7/18 vs 11/18, WP2 report §6); v0.3 deletes it as a standalone
- * line and folds its content into line 3's description of every cutout as
- * matte paper reflecting only the room light. Line 4's vocabulary is
- * widened (WP3, Robin: "refine with more elements and more variety").
- * Line 7 (headline typography) now caps width at a third of the frame
- * unless the beat is marked `hero`, and a new line 8 varies composition
- * scale beat to beat — both answer Robin's "the text is too big and feels
- * clumsy." The four grounds are named, never hex: palette values are
- * approximate until Jim confirms, and the video model reads names well.
+ * Tessera Style Sheet v0.6 (WP7). Robin: "completely replicate that
+ * reference style, retain the transitions, pull the colours into a more
+ * modern palette" (briefs/WP7.md), reading from
+ * briefs/reference/reference-prompt.md — the actual prompt behind
+ * `halftone-science-short.mp4`. Two things changed from v0.3:
+ *
+ * 1. Transitions restored to WP0 behaviour. v0.3's line 6 (headline chip
+ *    owns the upper third and stays uncovered; previous elements slide off
+ *    or are covered in the first second) is deleted outright, sheet and
+ *    translator (lib/translator.ts) both — that line was WP3/WP5's fix for
+ *    headline occlusion, but it fights the image-to-video chain: WP0 found
+ *    chaining inherits the previous composition, which is what makes the
+ *    cut seamless and is also what covered beat 1's headline in that report
+ *    (WP0-report.md §7). WP7 accepts the occlusion rather than instruct
+ *    against it (the brief: "do not add rules to prevent it") and instead
+ *    states the transition as a positive practice, verbatim from the
+ *    brief: a new line for shape-match cuts.
+ * 2. The surface and motion lines are replaced with the reference prompt's
+ *    own VISUAL SYSTEM and MOTION PRINCIPLES paragraphs (kept as one
+ *    numbered line each — fal's rewriter copies numbered lists, WP0
+ *    report §6, so the list stays numbered even though each item is now a
+ *    full paragraph, same as v0.3's lines 3/4/6/7/9 already were).
+ *    Adapted, exactly as the brief specifies: the reference's one named
+ *    character is removed (subjects are objects, machines, buildings,
+ *    maps, coins, screens, vehicles that carry no livery — folding in
+ *    WP6.1's finding that the video model invents an airline livery on an
+ *    unbranded aircraft cutout unless told it carries none, WP6.1-report.md
+ *    §3 — and the anonymous paper hand as the recurring actor); the
+ *    reference's fixed colour names are replaced by whichever palette is
+ *    selected (lib/palette.ts, `PALETTE=a|b|c`, unset by default — see
+ *    below); the reference has no single face sentence to swap, so its
+ *    character-description sentences are replaced outright by CLAUDE.md
+ *    rule 6's wording, carried over unchanged from v0.3's line 3 ("never a
+ *    person's face, portrait or headshot..."). Everything else the brief
+ *    marks explicitly out of scope (materials — halftone, torn edges —
+ *    stay; headline width cap and the hero exception stay; 12-word lines,
+ *    `scene`, `hand`, `delivery`, source pointers all stay, lib/translator.ts
+ *    unchanged beyond the transition-rule edit above).
+ *
+ * PALETTE default (merged to main): Robin asked that leaving `PALETTE`
+ * unset keep the original v0.3 four named grounds (lime green, pale cyan,
+ * soft violet, deep magenta — no hex) rather than defaulting into palette
+ * A's "Electric Curation" branding. `lib/palette.ts#DEFAULT_PALETTE` is
+ * that state; `PALETTE=a|b|c` remains available as an explicit opt-in to
+ * test one of WP7's three named palettes.
+ *
+ * v0.3 background, still true of the parts of the sheet that are unchanged:
+ * WP0 found fal's rewriter drops any line phrased as a pure prohibition
+ * (0/18 survival on "no brands" and "numbers never count up", WP0 report
+ * §6) while descriptive lines survive; v0.2 stated everything as a
+ * description of the world, with a prohibition appended only where a
+ * description alone would not do; v0.2's line 6 ("no glow, neon, bloom")
+ * kept a literal prohibition tail and survived *worse* than v0.1 (7/18 vs
+ * 11/18, WP2 report §6), so v0.3 folded it into a description instead. The
+ * reference prompt's own VISUAL SYSTEM paragraph ends on a similar
+ * prohibition clause ("no glow, no neon, no bloom..."), but folded inside
+ * a long descriptive paragraph rather than standing as its own numbered
+ * line — the same shape as the v0.2-to-v0.3 fix, not a regression of it —
+ * so v0.6 keeps it exactly where the reference puts it.
  *
  * WP5 built a v0.4 of this file (deep/saturated grounds held per scene,
  * cream-or-pale-yellow-on-black headline+label type, and three new lines
  * for accumulation, the recurring hand, and a hot ribbon colour) and
  * measured it in briefs/WP5-report.md. Merging WP5 to main, Robin asked
  * to keep the translator's `scene`/`hand`/bookend additions but restore
- * this file to v0.3 exactly and drop the `labels` field they came with —
- * so `Beat` still carries `scene` and `hand` (lib/translator.ts), but
- * neither one is surfaced into the compiled prompt below; this file is
- * v0.3, unchanged in substance from the WP3 version.
+ * this file to v0.3 and drop the `labels` field they came with — so
+ * `Beat` still carries `scene` and `hand` (lib/translator.ts), and v0.6
+ * above builds on that restored v0.3, not on WP5's v0.4.
  */
 
 import type { Beat, Ground, Scale } from "./translator";
+import { paletteDef, resolveGround, type PaletteId, type Swatch } from "./palette";
 
-export const STYLE_SHEET_VERSION = "style-sheet-v0.3";
+export const STYLE_SHEET_VERSION = "style-sheet-v0.6";
 
 /**
  * WP8.2 changed how a scene's on-screen timing is computed
@@ -48,16 +90,11 @@ export const TIMING_VERSION = "timing-v1-voice-led";
 
 export type Voice = "native" | "saskia";
 
-const GROUND_NAMES: Record<Ground, string> = {
-  lime: "lime green",
-  cyan: "pale cyan",
-  violet: "soft violet",
-  magenta: "deep magenta",
-};
-
 /**
  * Approximate hex for the interface only (the cursor blinks in the next
- * beat's ground colour). Not used in prompts. Approximate until Jim confirms.
+ * beat's ground colour, components/player.tsx) — the player is out of
+ * scope for WP7, so these stay the v0.3 values regardless of `PALETTE`.
+ * Not used in prompts. Approximate until Jim confirms.
  */
 export const GROUND_HEX: Record<Ground, string> = {
   lime: "#C6F04C",
@@ -66,20 +103,24 @@ export const GROUND_HEX: Record<Ground, string> = {
   magenta: "#C2177A",
 };
 
-/** The eleven lines, verbatim from CLAUDE.md, with line 2 filled by the beat. */
-export function styleSheet(ground: Ground): string[] {
+/**
+ * The seven lines of Tessera Style Sheet v0.6, palette- and ground-resolved.
+ * `palette` is null for the unset default (the original v0.3 four named
+ * grounds, no hex) or one of WP7's explicit A/B/C palettes
+ * (lib/palette.ts).
+ */
+export function styleSheet(ground: Ground, palette: PaletteId | null): string[] {
+  const def = paletteDef(palette);
+  const current: Swatch = resolveGround(ground, palette);
+  const groundLabel = current.hex ? `${current.name} ${current.hex}` : current.name;
   return [
-    "Modern editorial paper collage: bold magazine composition, refined 2D motion design, photographed flat under soft room light.",
-    `One flat block-colour paper ground fills the frame: ${GROUND_NAMES[ground]}. The ground is a single unbroken colour.`,
-    "Subjects are black-and-white halftone photographic cutouts with rough white torn-paper edges: objects, machines, buildings, maps, coins, screens, vehicles, anonymous paper hands. Every cutout is a plain, unmarked object: calendar pages, documents, coins, screens and vehicles are blank and unprinted, with no lettering, numerals, symbols, liveries or marks on them. Every cutout is matte paper reflecting only the room light, with a plain blank face: coin rims, document faces, screens and vehicle sides carry no lettering, numerals or marks. This rule extends to every tag, card, document and photograph in the frame: each shows a blank or abstract paper surface, texture, or halftone pattern only, the way a coin or a screen does — never a person's face, portrait or headshot, printed or photographic, however small or partial.",
-    "Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, paper clips, in cream, black, pale yellow or the ground's contrasting colour, with real paper texture and print dots.",
-    "One consistent light from the upper left; each paper layer casts a small soft shadow.",
-    "Layout: the headline chip owns the upper third of the frame and stays uncovered; subjects and diagrams occupy the lower two-thirds. When the frame opens on a previous composition, its elements slide off or are covered in the first second and the new headline lands on clear ground.",
-    "Headline typography: one extra-bold sans-serif in black or cream, printed on a cream or black paper chip: one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. Chips carry lettering only — never an image, photograph, portrait or face. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.",
-    "Compositions vary in scale from beat to beat: some show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram.",
-    "Motion: elements enter fast with slight overshoot and a stable landing, then hold a clear reading window; one strongest focus at a time; the camera is locked; movement starts on the first frame and a small loop continues at the end; no empty frames.",
-    "16:9, exactly 5 seconds, one composition, at most one crisp cut.",
-    "Identity anchor: rough white torn edges on every cutout; small paper shadow from the upper-left light.",
+    `${def.mainColorsPhrase} are the main colours, with pure black and ${def.lightChipName} for typography and printed photographs; each composition holds one strong dominant background colour rather than an all-over rainbow. Subjects are black-and-white halftone photographic cutouts with rough white torn-paper borders and consistent appearance from shot to shot: objects, machines, buildings, maps, coins, screens and vehicles that carry no lettering, numerals, symbols or liveries, and the same anonymous paper hand recurring as the one actor throughout. Every cutout shows a plain, unmarked surface — never a person's face, portrait or headshot, printed or photographic, however small or partial, on any tag, card, document or photograph in the frame. Bold magazine collage and refined 2D motion design: real paper texture, print dots, a little tape and small paper-layer shadows from consistent upper-left light. Every surface is flat matte printed paper: no glow, no neon, no bloom, no light halos, no luminous or backlit edges, nothing emits light anywhere in the frame. Not glossy plastic 3D animation or a live-action presenter.`,
+    `One flat block-colour paper ground fills the frame: ${groundLabel}. The ground is a single unbroken colour.`,
+    `Diagram elements are flat matte paper shapes and ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, ${def.ribbonText(current)}, with real paper texture and print dots.`,
+    `Cuts are shape-match cuts: the closing shape of one composition becomes the opening shape of the next.`,
+    `Headline typography: one extra-bold sans-serif ${def.chipText(current)}, one line, no wider than a third of the frame width, with safe margins, the chip sitting clear of the subjects. Letterforms are accurate, complete and stable from the frame they appear in; the chip is printed once and does not redraw. Chips carry lettering only — never an image, photograph, portrait or face. When the beat marks a hero number, that number alone may be printed larger, up to half the frame width.`,
+    `High energy comes from major changes of scale, shape-matching and typographic composition, not incessant camera shake: some compositions show one oversized subject filling the frame, some a small subject alone on open ground, some several elements arranged as a diagram. Each beat forms its composition rapidly, then preserves a short clear reading window. Objects enter with fast deceleration, a slight overshoot and a stable landing; headlines retain clear letterforms after landing. Cause and effect happen sequentially, with one strongest visual focus at a time; the camera is locked. Movement starts on the first frame, and a small loop continues at the end. No empty waiting frames.`,
+    `16:9, exactly 5 seconds, one composition, at most one crisp cut.`,
   ];
 }
 
@@ -123,10 +164,12 @@ export function tagLine(beat: Beat): string | null {
   return `Tag: one small round cream paper tag, the size of a coin, reads "${beat.tag.text}"; a short black line points from it at the connector.`;
 }
 
-export function beatBlock(beat: Beat, previousHandoff: string | null, clipSeconds: 5 | 10 | 15 = 5): string {
+export function beatBlock(beat: Beat, previousHandoff: string | null, palette: PaletteId | null, clipSeconds: 5 | 10 | 15 = 5): string {
+  const ground = resolveGround(beat.ground, palette);
+  const groundLabel = ground.hex ? `${ground.name} ${ground.hex}` : ground.name;
   const lines = [
     `BEAT`,
-    `Ground: ${GROUND_NAMES[beat.ground]}.`,
+    `Ground: ${groundLabel}.`,
     `Subjects: ${beat.subjects.join("; ")}.`,
     previousHandoff
       ? `Opens on ${previousHandoff}, carried over from the previous shot, which transforms as the action begins.`
@@ -157,6 +200,7 @@ export interface CompiledPrompt {
   prompt: string;
   styleSheetVersion: string;
   voice: Voice;
+  palette: PaletteId | null;
 }
 
 /**
@@ -171,9 +215,11 @@ export function compilePrompt(args: {
   previousHandoff: string | null;
   /** WP8/WP8.1: CLIP_SECONDS (lib/config.ts). Defaults to 5, the CLAUDE.md baseline. 15 uses compileScenePrompt instead, not this function. */
   clipSeconds?: 5 | 10;
+  /** WP7: PALETTE (lib/config.ts). Defaults to null — the unset default (v0.3's four named grounds). */
+  palette?: PaletteId | null;
 }): CompiledPrompt {
-  const { beat, voice, previousHandoff, clipSeconds = 5 } = args;
-  const sheet = styleSheet(beat.ground)
+  const { beat, voice, previousHandoff, clipSeconds = 5, palette = null } = args;
+  const sheet = styleSheet(beat.ground, palette)
     .map((line, i) => `${i + 1}. ${line}`)
     .join("\n");
   const audio = voice === "native" ? audioBlockA(beat.line) : AUDIO_BLOCK_B;
@@ -181,13 +227,13 @@ export function compilePrompt(args: {
     `TESSERA STYLE SHEET`,
     sheet,
     ``,
-    beatBlock(beat, previousHandoff, clipSeconds),
+    beatBlock(beat, previousHandoff, palette, clipSeconds),
     ``,
     copyList(beat.headline, beat.tag?.text ?? null),
     ``,
     audio,
   ].join("\n");
-  return { prompt, styleSheetVersion: STYLE_SHEET_VERSION, voice };
+  return { prompt, styleSheetVersion: STYLE_SHEET_VERSION, voice, palette };
 }
 
 /** Seconds a section for beat index `i` (0-based) within a scene starts at. WP8.1's fixed-5s-per-beat timing; used as the fallback when voice-led timing (WP8.2) is unavailable. */
@@ -343,13 +389,17 @@ export function compileScenePrompt(args: {
   previousHandoff: string | null;
   sections?: SceneSection[];
   clipSeconds?: number;
+  /** WP7: PALETTE (lib/config.ts). Defaults to null — the unset default (v0.3's four named grounds). */
+  palette?: PaletteId | null;
 }): CompiledPrompt {
-  const { beats, voice, previousHandoff } = args;
+  const { beats, voice, previousHandoff, palette = null } = args;
   const sections_ = args.sections ?? beats.map((_, i) => ({ start: sceneOffsetSeconds(i), end: sceneOffsetSeconds(i) + 5 }));
   const clipSeconds = args.clipSeconds ?? beats.length * 5;
-  const sheet = styleSheet(beats[0].ground)
+  const sheet = styleSheet(beats[0].ground, palette)
     .map((line, i) => `${i + 1}. ${line}`)
     .join("\n");
+  const sceneGround = resolveGround(beats[0].ground, palette);
+  const sceneGroundLabel = sceneGround.hex ? `${sceneGround.name} ${sceneGround.hex}` : sceneGround.name;
 
   const sections = beats.map((beat, i) => {
     const { start, end } = sections_[i];
@@ -398,7 +448,7 @@ export function compileScenePrompt(args: {
     `Duration: this is one continuous ${clipSeconds}-second generation covering ${beats.length} sections back to back (overrides the style sheet's stated length above), not ${beats.length} separate clips.`,
     ``,
     `SCENE`,
-    `One scene, ${beats.length} sections, cutting or continuing at each section boundary as each section's own action describes. One held ground colour throughout: ${GROUND_NAMES[beats[0].ground]}.`,
+    `One scene, ${beats.length} sections, cutting or continuing at each section boundary as each section's own action describes. One held ground colour throughout: ${sceneGroundLabel}.`,
     ``,
     sections.join("\n\n"),
     ``,
@@ -406,24 +456,22 @@ export function compileScenePrompt(args: {
     ``,
     audio,
   ].join("\n");
-  return { prompt, styleSheetVersion: STYLE_SHEET_VERSION, voice };
+  return { prompt, styleSheetVersion: STYLE_SHEET_VERSION, voice, palette };
 }
 
 /**
  * Key phrases per style-sheet line, for the report's "which lines survived
- * in expanded_prompt" check. A line survives when any of its phrases (or a
- * close paraphrase) appears in the rewritten prompt.
+ * in expanded_prompt" check (v0.6, 7 lines; mirrored by hand in
+ * scripts/report.mjs, same as v0.3's 11-line list was). A line survives
+ * when any of its phrases (or a close paraphrase) appears in the rewritten
+ * prompt.
  */
 export const STYLE_SHEET_SIGNALS: string[][] = [
-  ["paper collage", "collage", "magazine"],
-  ["block-colour", "block color", "flat ground", "solid ground", "lime green", "pale cyan", "soft violet", "deep magenta"],
-  ["halftone", "torn-paper", "torn paper", "cutout", "blank face", "unmarked", "reflecting only the room light", "no glow", "no neon", "no halo", "never a person's face", "never a face", "blank paper texture"],
-  ["paper shapes", "ribbons", "tape", "print dots", "paper texture", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "paper clip"],
-  ["upper-left light", "upper left", "paper-layer shadow", "paper shadow"],
-  ["headline chip", "upper third", "lower two-thirds", "clear ground"],
+  ["halftone", "torn-paper", "torn paper", "cutout", "unmarked", "no glow", "no neon", "no halo", "never a person's face", "never a face", "collage", "magazine", "paper-layer shadow", "upper-left"],
+  ["block-colour", "block color", "flat ground", "solid ground", "single-color", "single colour", "single-colour", "single unbroken", "unbroken block", "block of", "paper ground", "paper background", "ground colour", "ground color"],
+  ["paper shapes", "ribbons", "tape", "print dots", "rubber stamp", "stencilled arrow", "bar chart", "stacked sheets", "grid paper", "torn strip", "hole-punched", "paper clip"],
+  ["shape-match", "closing shape", "opening shape", "match cut"],
   ["extra-bold", "sans-serif", "paper chip", "headline", "third of the frame", "hero", "lettering only", "only lettering"],
-  ["oversized", "small-scale", "open ground", "diagram", "vary in scale"],
-  ["overshoot", "stable landing", "reading window", "camera is locked", "first frame"],
+  ["overshoot", "stable landing", "reading window", "camera is locked", "first frame", "major changes of scale", "static shot"],
   ["16:9", "5 seconds", "one composition", "crisp cut"],
-  ["torn-paper edges", "torn edges", "identity anchor", "upper-left"],
 ];

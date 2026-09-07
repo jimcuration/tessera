@@ -1,6 +1,6 @@
 // WP9: lists what's cached, and pre-renders whatever isn't, for every
 // record in data/diginex.json under the CURRENT effective switches
-// (VOICE/CHAIN/CLIP_SECONDS, same defaults lib/config.ts#readSwitches
+// (VOICE/CHAIN/CLIP_SECONDS/PALETTE, same defaults lib/config.ts#readSwitches
 // uses) and the current TRANSLATOR_VERSION/STYLE_SHEET_VERSION.
 //
 // This is an ORCHESTRATOR, not a fal-calling script: it uses lib/cache.ts's
@@ -11,18 +11,22 @@
 //
 //   npm run cache
 //   npx tsx scripts/cache.mts [--base http://localhost:3909] \
-//     [--voice native|saskia] [--chain on|off] [--clip-seconds 5|10|15]
+//     [--voice native|saskia] [--chain on|off] [--clip-seconds 5|10|15] \
+//     [--palette a|b|c]
 //
-// Switches default to .env.local's own VOICE/CHAIN/CLIP_SECONDS unless
-// overridden on the command line. Start a dev server first (npm run dev,
-// or this worktree's own .claude/launch.json "tessera-wp9" entry on 3909)
-// — this script fails fast with a clear message if --base isn't reachable.
+// Switches default to .env.local's own VOICE/CHAIN/CLIP_SECONDS/PALETTE
+// unless overridden on the command line; --palette omitted (and no PALETTE
+// in .env.local) means the unset default (lib/palette.ts), not "a". Start a
+// dev server first (npm run dev, or this worktree's own
+// .claude/launch.json "tessera-wp9" entry on 3909) — this script fails
+// fast with a clear message if --base isn't reachable.
 
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { findCachedProgramme, type FindCacheInput } from "../lib/cache.ts";
+import type { PaletteId } from "../lib/palette.ts";
 import { STYLE_SHEET_VERSION, TIMING_VERSION } from "../lib/prompt.ts";
 import { TRANSLATOR_VERSION } from "../lib/translator.ts";
 
@@ -64,6 +68,8 @@ const chainRaw = arg("chain", process.env.CHAIN ?? "on");
 const chain = chainRaw === "off" ? "off" : "on";
 const clipSecondsRaw = arg("clip-seconds", process.env.CLIP_SECONDS ?? "15");
 const clipSeconds = clipSecondsRaw === "5" ? 5 : clipSecondsRaw === "10" ? 10 : 15;
+const paletteRaw = (arg("palette", process.env.PALETTE ?? "") ?? "").trim().toLowerCase();
+const palette: PaletteId | null = paletteRaw === "a" || paletteRaw === "b" || paletteRaw === "c" ? paletteRaw : null;
 
 const recordingsDirPath = path.resolve(
   process.cwd(),
@@ -111,13 +117,14 @@ function lookup(question: string): ReturnType<typeof findCachedProgramme> {
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
     timingVersion: TIMING_VERSION,
+    palette,
   };
   return findCachedProgramme(input);
 }
 
 async function main() {
   console.log(
-    `[cache] voice=${voice} chain=${chain} clip-seconds=${clipSeconds} translator=${TRANSLATOR_VERSION} style-sheet=${STYLE_SHEET_VERSION} timing=${TIMING_VERSION}`
+    `[cache] voice=${voice} chain=${chain} clip-seconds=${clipSeconds} palette=${palette ?? "(unset)"} translator=${TRANSLATOR_VERSION} style-sheet=${STYLE_SHEET_VERSION} timing=${TIMING_VERSION}`
   );
   console.log(`[cache] recordings dir: ${recordingsDirPath}`);
 
@@ -183,6 +190,7 @@ async function main() {
           chain,
           "--clip-seconds",
           String(clipSeconds),
+          ...(palette ? ["--palette", palette] : []),
           "--base",
           base,
           "--suffix",

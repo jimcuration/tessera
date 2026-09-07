@@ -12,7 +12,8 @@
 // read from .env.local and used directly (server-side; never logged).
 //
 //   npx tsx scripts/render.mts --question "..." --voice native|saskia \
-//     --chain on|off [--clip-seconds 5|10|15] [--base http://localhost:3100] [--suffix name]
+//     --chain on|off [--clip-seconds 5|10|15] [--palette a|b|c] \
+//     [--base http://localhost:3100] [--suffix name]
 //
 // --clip-seconds controls this script's own fal request duration and the
 // compiled prompt's stated duration; it does NOT change what the translator
@@ -21,6 +22,10 @@
 // start the dev server with a matching CLIP_SECONDS first and pass the same
 // value here so the two agree (mismatch is a builder error the record's
 // switches makes visible, not something this script can detect on its own).
+//
+// WP7: --palette (lib/palette.ts) controls the sheet's colour resolution
+// the same way it does live; omitted, it is the unset default (v0.3's four
+// named grounds), not "a".
 //
 // WP8.1 §1: at --clip-seconds 15, one shot is a whole SCENE (2-3 beats),
 // one fal request (compileScenePrompt), one record written with `beats`
@@ -33,6 +38,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fal } from "@fal-ai/client";
 import { checkRemoteClipForFaces } from "../lib/faceGate.ts";
+import type { PaletteId } from "../lib/palette.ts";
 import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, TIMING_VERSION, type SceneSection, type Voice } from "../lib/prompt.ts";
 import { TRANSLATOR_VERSION, type Beat } from "../lib/translator.ts";
 import { ffmpeg } from "./ffmpeg.mjs";
@@ -95,6 +101,9 @@ const music = (arg("music", "off") as "on" | "off" | null) ?? "off";
 const faceGate = (arg("face-gate", "off") as "on" | "off" | null) ?? "off";
 const clipSecondsRaw = arg("clip-seconds", "5");
 const clipSeconds = clipSecondsRaw === "15" ? 15 : clipSecondsRaw === "10" ? 10 : 5;
+// WP7: --palette omitted means the unset default (lib/palette.ts), not "a".
+const paletteRaw = (arg("palette", "") ?? "").trim().toLowerCase();
+const palette: PaletteId | null = paletteRaw === "a" || paletteRaw === "b" || paletteRaw === "c" ? paletteRaw : null;
 if (
   !question ||
   (voice !== "native" && voice !== "saskia") ||
@@ -305,7 +314,7 @@ async function main() {
   }
 
   async function renderOne({ n, beat, warnings }: { n: number; beat: Beat; warnings: string[] }, fromFrame: string | undefined): Promise<GeneratedClip | null> {
-    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null, clipSeconds: clipSeconds === 15 ? 5 : clipSeconds });
+    const { prompt } = compilePrompt({ beat, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null, clipSeconds: clipSeconds === 15 ? 5 : clipSeconds, palette });
     let clip = await generateClip({ prompt, fromFrame });
     if (faceGate === "on") {
       let gate = await gateCheck(n, beat, clip, 1);
@@ -342,6 +351,7 @@ async function main() {
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
       timingVersion: TIMING_VERSION,
+      palette,
       requestedDuration: clipSeconds,
       timingMethod: "fixed",
       splitMethod: null,
@@ -408,6 +418,7 @@ async function main() {
       previousHandoff: fromFrame ? previousHandoff : null,
       sections,
       clipSeconds: requestedDuration,
+      palette,
     });
     const offsets = sections ? sections.map((s) => s.start) : sceneBeats.map((_, i) => sceneOffsetSeconds(i));
     const ends = sections ? sections.map((s) => s.end) : sceneBeats.map((_, i) => sceneOffsetSeconds(i) + 5);
@@ -450,6 +461,7 @@ async function main() {
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
       timingVersion: TIMING_VERSION,
+      palette,
       requestedDuration,
       timingMethod,
       splitMethod,
@@ -581,10 +593,11 @@ async function main() {
     followups: answer.followups,
     fromSpine: answer.fromSpine,
     sentences,
-    switches: { voice, chain, music, faceGate, render: "queue", clipSeconds },
+    switches: { voice, chain, music, faceGate, render: "queue", clipSeconds, palette },
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
     timingVersion: TIMING_VERSION,
+    palette,
     translateSource,
     translateMs,
     firstBeatMs,

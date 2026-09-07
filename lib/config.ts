@@ -80,9 +80,18 @@ import path from "node:path";
  *                          CLAUDE.md asks builders to test with AUDIO=off
  *                          so multiple worktrees' dev servers running at
  *                          once don't all fight over the same speakers.
+ *   PALETTE=a|b|c          WP7: which colour palette (lib/palette.ts)
+ *                          substitutes for the sheet's ground/chip/ribbon
+ *                          colour names in the compiled prompt. Unset (or
+ *                          any other value) is the default: the original
+ *                          v0.3 four named grounds, no hex — Robin, merging
+ *                          WP7: leave it unbranded unless a palette is
+ *                          asked for explicitly.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
+
+import type { PaletteId } from "./palette";
 
 export type VoiceSwitch = "native" | "saskia";
 export type ChainSwitch = "on" | "off";
@@ -108,6 +117,8 @@ export interface Switches {
   keyGlow: KeyGlowSwitch;
   cache: CacheSwitch;
   audio: AudioSwitch;
+  /** WP7: null is the unset default (v0.3's four named grounds, no hex). */
+  palette: PaletteId | null;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -120,6 +131,12 @@ function pick<T extends string>(raw: string | undefined, allowed: T[], fallback:
 function pickClipSeconds(raw: string | undefined): ClipSeconds {
   const value = pick(raw, ["5", "10", "15"], "15");
   return value === "5" ? 5 : value === "10" ? 10 : 15;
+}
+
+/** Unlike `pick`, an unrecognised or absent PALETTE has no named fallback — it means "unset" (null), not "a". */
+function pickPalette(raw: string | undefined): PaletteId | null {
+  const value = (raw ?? "").trim().toLowerCase();
+  return value === "a" || value === "b" || value === "c" ? value : null;
 }
 
 export function readSwitches(): Switches {
@@ -139,6 +156,7 @@ export function readSwitches(): Switches {
     keyGlow: pick<KeyGlowSwitch>(process.env.KEY_GLOW, ["on", "off"], "off"),
     cache: pick<CacheSwitch>(process.env.CACHE, ["on", "off"], "on"),
     audio: pick<AudioSwitch>(process.env.AUDIO, ["on", "off"], "on"),
+    palette: pickPalette(process.env.PALETTE),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }
