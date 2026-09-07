@@ -69,6 +69,17 @@ import path from "node:path";
  *                          translatorVersion and styleSheetVersion
  *                          (lib/cache.ts). off always renders live. See
  *                          briefs/WP9-handoff.md for the exact match rule.
+ *   AUDIO=on|off           WP9: on (default) plays narration (native voice's
+ *                          embedded speech, and Saskia's separate track) and
+ *                          the music bed as normal; off mutes both in the
+ *                          player (components/player.tsx, lib/voice.ts's
+ *                          Narrator) without changing anything about the
+ *                          render/record pipeline — every clip and
+ *                          narration track is still generated and saved
+ *                          exactly as with AUDIO=on (CLAUDE.md rule 7).
+ *                          CLAUDE.md asks builders to test with AUDIO=off
+ *                          so multiple worktrees' dev servers running at
+ *                          once don't all fight over the same speakers.
  *
  * Server-only. The client fetches the resolved values from /api/config.
  */
@@ -83,6 +94,7 @@ export type ClipSeconds = 5 | 10 | 15;
 export type MusicBedSwitch = "bed" | "bed-v2";
 export type KeyGlowSwitch = "on" | "off";
 export type CacheSwitch = "on" | "off";
+export type AudioSwitch = "on" | "off";
 
 export interface Switches {
   voice: VoiceSwitch;
@@ -95,6 +107,7 @@ export interface Switches {
   musicBed: MusicBedSwitch;
   keyGlow: KeyGlowSwitch;
   cache: CacheSwitch;
+  audio: AudioSwitch;
   /** Whether translations are served from data/translations when present. */
   translateCache: boolean;
 }
@@ -125,6 +138,7 @@ export function readSwitches(): Switches {
     // Default off: see this file's header comment (WP9, Robin's note).
     keyGlow: pick<KeyGlowSwitch>(process.env.KEY_GLOW, ["on", "off"], "off"),
     cache: pick<CacheSwitch>(process.env.CACHE, ["on", "off"], "on"),
+    audio: pick<AudioSwitch>(process.env.AUDIO, ["on", "off"], "on"),
     translateCache: pick(process.env.TRANSLATE_CACHE, ["on", "off"], "on") === "on",
   };
 }

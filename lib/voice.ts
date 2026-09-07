@@ -44,6 +44,8 @@ export class Narrator {
    * lets the assembling stage move on rather than get stuck.
    */
   private resolvedTracks = new Set<number>();
+  /** WP9: AUDIO=off (lib/config.ts, default on) — mutes narration playback in the player without skipping the fetch, so every track is still generated and saved (CLAUDE.md rule 7) exactly as with AUDIO=on. Set once, right after construction, by lib/programme.ts. */
+  muted = false;
 
   constructor(private readonly session: string) {}
 
@@ -127,6 +129,7 @@ export class Narrator {
       const url = await track;
       if (!url || !this.alive) return;
       const audio = new Audio(url);
+      audio.muted = this.muted;
       this.audio = audio;
       await new Promise<void>((resolve) => {
         audio.addEventListener("ended", () => resolve(), { once: true });

@@ -83,6 +83,28 @@ function useMusicOn(): boolean {
   return on;
 }
 
+/**
+ * AUDIO=on|off from the server (lib/config.ts; default on — WP9). off mutes
+ * narration and the music bed in the player; nothing about rendering or
+ * saving a clip's own audio changes (CLAUDE.md rule 7).
+ */
+function useAudioOn(): boolean {
+  const [on, setOn] = useState(true);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/config", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((config: { audio?: string }) => {
+        if (alive) setOn(config.audio !== "off");
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return on;
+}
+
 /** KEY_GLOW=on|off from the server (lib/config.ts; default off — WP9). */
 function useKeyGlow(): boolean {
   const [on, setOn] = useState(false);
@@ -186,6 +208,7 @@ export function Player() {
   const theatre = useTheatre();
   const keyGlow = useKeyGlow();
   const musicOn = useMusicOn();
+  const audioOn = useAudioOn();
   const musicRef = useRef<HTMLAudioElement>(null);
 
   const [session, setSession] = useState<Session | null>(null);
@@ -433,7 +456,7 @@ export function Player() {
   // programme is on screen and sound is not muted. Never touches
   // lib/stream.ts's buffer or clip audio; this is a second, independent
   // <audio> element.
-  const musicPlaying = musicOn && voice === "saskia" && !muted && (phase === "playing" || phase === "buffering");
+  const musicPlaying = musicOn && audioOn && voice === "saskia" && !muted && (phase === "playing" || phase === "buffering");
   useEffect(() => {
     const el = musicRef.current;
     if (!el) return;
@@ -488,7 +511,11 @@ export function Player() {
         picture={picture?.clip ?? null}
         next={next}
         className={`${theatre ? "screen--theatre" : ""}${screenState === "end" ? " screen--dim" : ""}`.trim() || undefined}
-        muted={muted}
+        // WP9: AUDIO=off mutes native voice's embedded speech (and any SFX)
+        // the same way the viewer's own mute button does, without touching
+        // `muted` state itself — the tap-for-sound flow stays about the
+        // viewer's own choice, not this builder-testing switch.
+        muted={muted || !audioOn}
         volume={voice === "saskia" ? 0.5 : 1}
         onEnded={onEnded}
         onNeedsTap={onNeedsTap}

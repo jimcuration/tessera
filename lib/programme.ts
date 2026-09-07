@@ -18,7 +18,7 @@ import { createRenderer } from "./render";
 import type { ReadyClip, Stream, Shot } from "./stream";
 import { TRANSLATOR_VERSION, type Beat } from "./translator";
 import { Narrator } from "./voice";
-import type { CacheSwitch, ChainSwitch, ClipSeconds, FaceGateSwitch, RenderSwitch, VoiceSwitch } from "./config";
+import type { AudioSwitch, CacheSwitch, ChainSwitch, ClipSeconds, FaceGateSwitch, RenderSwitch, VoiceSwitch } from "./config";
 
 export interface AnswerHeader {
   question: string;
@@ -231,7 +231,7 @@ export class Session {
    * a new recording, so this does not write a duplicate session under
    * RECORDINGS_DIR (see briefs/WP9-handoff.md).
    */
-  private async tryCache(switches: SessionSwitches, signal: AbortSignal): Promise<boolean> {
+  private async tryCache(switches: SessionSwitches, signal: AbortSignal, narratorMuted: boolean): Promise<boolean> {
     let data: CacheLookupResponse;
     try {
       const res = await fetch("/api/cache/lookup", {
@@ -266,7 +266,10 @@ export class Session {
       return true;
     }
     this.stream = stream;
-    if (switches.voice === "saskia") this.narrator = new Narrator(this.id);
+    if (switches.voice === "saskia") {
+      this.narrator = new Narrator(this.id);
+      this.narrator.muted = narratorMuted;
+    }
     this.set({});
 
     const shots: Shot[] = data.shots.map((s) => ({
@@ -307,7 +310,7 @@ export class Session {
     const signal = this.controller.signal;
 
     const configRes = await fetch("/api/config", { cache: "no-store", signal });
-    const config = (await configRes.json()) as SessionSwitches & { missing: string[]; cache: CacheSwitch };
+    const config = (await configRes.json()) as SessionSwitches & { missing: string[]; cache: CacheSwitch; audio: AudioSwitch };
     if (!this.alive) return;
     if (config.missing.includes("FAL_KEY")) {
       this.fail("FAL_KEY is missing from .env.local");
@@ -330,6 +333,10 @@ export class Session {
       id: `${this.state.id}-${switches.voice}-chain-${switches.chain}`,
     };
     this.set({ switches });
+    // WP9: AUDIO=off (default on) mutes narration playback only — read
+    // once here and applied to whichever Narrator gets constructed below
+    // (cache-hit or live path). Never affects rendering/recording.
+    const narratorMuted = config.audio === "off";
 
     // WP9: CACHE=on|off (default on) — a complete recording matching this
     // question, these switches and the current translator/style-sheet
@@ -339,7 +346,7 @@ export class Session {
     // secrets checks above still run first — see briefs/WP9-handoff.md for
     // why that ordering was kept.
     if (config.cache !== "off") {
-      const hit = await this.tryCache(switches, signal);
+      const hit = await this.tryCache(switches, signal, narratorMuted);
       if (!this.alive) return;
       if (hit) return;
     }
@@ -356,7 +363,10 @@ export class Session {
       return;
     }
     this.stream = stream;
-    if (switches.voice === "saskia") this.narrator = new Narrator(this.id);
+    if (switches.voice === "saskia") {
+      this.narrator = new Narrator(this.id);
+      this.narrator.muted = narratorMuted;
+    }
     // Listeners re-read `stream` on every notification: tell them it exists.
     this.set({});
 

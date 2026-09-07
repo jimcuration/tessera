@@ -110,3 +110,5 @@ fal promo pricing on H3 Max Turbo ends 7 Sept 2026. All WP0 renders happen befor
 ## Notes
 
 `filter: blur()` and `mix-blend-mode: screen` on the same element render nothing in Chromium; use layered box-shadow for soft glows.
+
+Builders test with `AUDIO=off` in `.env.local` (WP9, `lib/config.ts`; default on) — it mutes narration and the music bed in the player only, so several worktrees' dev servers running at once don't all fight over the same speakers. It never changes what gets rendered or saved: every clip and narration track is still generated and written to `RECORDINGS_DIR` exactly as with `AUDIO=on` (rule 7).
