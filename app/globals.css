@@ -460,22 +460,48 @@ video {
   opacity: 0.6;
 }
 
-/* WP4.2 §2, revised: the ticker readout as an LED readout on brushed
-   metal — the console's own yellow rather than the interface's white, an
-   inset line under the characters (a 1px darker offset, no blur — an
-   engraved edge, not a shadow) for the light emboss, and a very faint
-   glow to sell "lit" over "printed". Colour and alpha live in rgba() only
-   (not a separate `opacity`) so the glow reads at its own faintness
-   instead of being dimmed along with the text. */
-.readout {
+/* WP4.2 §2, revised again: the readout as its own slim inset window set
+   into the bezel — near-black, recessed, a hairline lighter top edge
+   catching the light (the window's own emboss; no per-character offset
+   needed now that the text sits on dark rather than on the metal
+   directly). Symbol and market cap read as plain LED white; price and
+   change take their colour from one sign so they never disagree. Glow is
+   per-colour and stays faint — a 2px-ish bloom, not a halo. Same window,
+   same classes, in the bezel (`.console-readout`) and under the video in
+   plain mode (`.readout-plain`) — only the wrapper around it differs. */
+.readout-window {
+  display: inline-flex;
+  align-items: baseline;
+  background: rgba(8, 8, 9, 0.85);
+  border-top: 1px solid rgba(255, 248, 231, 0.18);
+  padding: 2px 6px;
   font-size: 11px;
-  letter-spacing: 0.08em;
-  color: rgba(255, 238, 140, 0.8);
+  letter-spacing: 0.06em;
+  line-height: 1.3;
   white-space: nowrap;
+}
+
+.readout-sep {
+  color: rgba(255, 248, 231, 0.3);
+}
+
+.readout-neutral {
+  color: rgba(255, 248, 231, 0.85);
+  text-shadow: 0 0 2px rgba(255, 248, 231, 0.35);
+}
+
+.readout-up {
+  color: #3ddc84;
   text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.55),
-    0 0 2px rgba(255, 238, 140, 0.4),
-    0 0 3px rgba(255, 238, 140, 0.25);
+    0 0 2px rgba(61, 220, 132, 0.5),
+    0 0 3px rgba(61, 220, 132, 0.3);
+}
+
+.readout-down {
+  color: #ff4d4d;
+  text-shadow:
+    0 0 2px rgba(255, 77, 77, 0.5),
+    0 0 3px rgba(255, 77, 77, 0.3);
 }
 
 .console-readout {

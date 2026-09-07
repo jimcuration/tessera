@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
+  type ReactNode,
 } from "react";
 import { Console, type KeyState, type SeamState } from "@/components/console";
 import { Screen } from "@/components/screen";
@@ -159,19 +160,54 @@ interface Picture {
   sessionId: string;
 }
 
-/** `record.card` values, joined for the strip. Shape is not yet fixed by the platform (WP0: always null); read defensively. */
-function formatCard(card: Record<string, unknown> | null): string | null {
+interface CardParts {
+  symbol: string | null;
+  price: string | null;
+  change: string | null;
+  /** True when change is ≥ 0, or absent entirely (nothing to colour red). */
+  positive: boolean;
+  marketCap: string | null;
+}
+
+/** `record.card` values, split so the readout window can colour each part on its own. Shape is not yet fixed by the platform (WP0: always null); read defensively. */
+function formatCard(card: Record<string, unknown> | null): CardParts | null {
   if (!card) return null;
-  const parts: string[] = [];
-  const ticker = card.ticker ?? card.symbol;
-  if (typeof ticker === "string") parts.push(ticker.toLowerCase());
-  const price = card.price ?? card.last;
-  if (typeof price === "number") parts.push(`$${price.toFixed(2)}`);
-  const change = card.changePercent ?? card.change;
-  if (typeof change === "number") parts.push(`${change > 0 ? "+" : ""}${change.toFixed(2)}%`);
-  const mcap = card.marketCap ?? card.mcap;
-  if (typeof mcap === "number") parts.push(`$${mcap.toFixed(2)}m`);
-  return parts.length ? parts.join(" · ") : null;
+  const tickerRaw = card.ticker ?? card.symbol;
+  const symbol = typeof tickerRaw === "string" ? tickerRaw.toLowerCase() : null;
+  const priceRaw = card.price ?? card.last;
+  const price = typeof priceRaw === "number" ? `$${priceRaw.toFixed(2)}` : null;
+  const changeRaw = card.changePercent ?? card.change;
+  const change = typeof changeRaw === "number" ? `${changeRaw > 0 ? "+" : ""}${changeRaw.toFixed(2)}%` : null;
+  const positive = typeof changeRaw !== "number" || changeRaw >= 0;
+  const mcapRaw = card.marketCap ?? card.mcap;
+  const marketCap = typeof mcapRaw === "number" ? `$${mcapRaw.toFixed(2)}m` : null;
+  if (!symbol && !price && !change && !marketCap) return null;
+  return { symbol, price, change, positive, marketCap };
+}
+
+/**
+ * The ticker readout as an LED window: symbol and market cap in warm
+ * white, price and change in green/red together off one sign so they
+ * never disagree. Shared between the theatre bezel and plain mode (the
+ * caller wraps it differently; the window itself is identical).
+ */
+function renderReadout(card: CardParts): ReactNode {
+  const changeClass = card.positive ? "readout-up" : "readout-down";
+  const segments: { key: string; className: string; text: string }[] = [];
+  if (card.symbol) segments.push({ key: "symbol", className: "readout-neutral", text: card.symbol });
+  if (card.price) segments.push({ key: "price", className: changeClass, text: card.price });
+  if (card.change) segments.push({ key: "change", className: changeClass, text: card.change });
+  if (card.marketCap) segments.push({ key: "cap", className: "readout-neutral", text: card.marketCap });
+  const nodes: ReactNode[] = [];
+  segments.forEach((s, i) => {
+    if (i > 0) nodes.push(<span key={`${s.key}-sep`} className="readout-sep"> · </span>);
+    nodes.push(
+      <span key={s.key} className={s.className}>
+        {s.text}
+      </span>
+    );
+  });
+  return <span className="readout-window">{nodes}</span>;
 }
 
 /**
@@ -290,6 +326,13 @@ export function Player() {
     setPicture(next);
   }, [current, session]);
 
+  // A picture counts as stale once it isn't this session's own — nothing on
+  // screen yet, or still the previous session's held frame while this one
+  // assembles (an interrupt). Drives both the buffer-swap effect below and
+  // `pending` further down, so an interrupt gets the same "assembling" +
+  // dimmed-hold treatment as the very first ask.
+  const pictureStale = !picture || (session !== null && picture.sessionId !== session.id);
+
   // A clip that lands while we hold (nothing on screen, an older
   // programme's picture, or the last frame of the previous clip) cuts in at
   // once. Mid-clip we wait for the end so the cut stays clean.
@@ -298,9 +341,8 @@ export function Player() {
   useEffect(() => {
     if (!stream || !session || buffered === 0) return;
     if (phase !== "starting" && phase !== "buffering") return;
-    const stale = !picture || picture.sessionId !== session.id;
-    if (stale || endedRef.current) stream.advance();
-  }, [stream, session, buffered, phase, picture]);
+    if (pictureStale || endedRef.current) stream.advance();
+  }, [stream, session, buffered, phase, pictureStale]);
 
   const onStarted = useCallback((clip: ReadyClip) => {
     endedRef.current = false;
@@ -434,10 +476,12 @@ export function Player() {
     }
   };
 
-  // A question is pending from Enter until its first clip is on screen.
+  // A question is pending from Enter (or a suggestion, or Shift+Enter) until
+  // its first clip is on screen — including an interrupt, where `picture`
+  // is non-null but stale (the previous programme's held frame).
   const renderingShot = streamState?.rendering ? stream?.renderingShot() ?? null : null;
   const groundColor = renderingShot ? GROUND_HEX[renderingShot.beats[0].beat.ground] : LISTENING_CURSOR;
-  const pending = session !== null && !picture && !sessionIdle;
+  const pending = session !== null && !sessionIdle && pictureStale;
   const listening = inputFocused || pending;
 
   // WP9 §1: KEY_GLOW=off (default) — the square key no longer renders any
@@ -506,7 +550,7 @@ export function Player() {
   // WP4.2 §2: moved off the bottom strip (disclosure only now) onto the
   // bezel readout (theatre) / under-video readout (plain) — the persisted
   // last-known card, not the live answer's own (which can be null).
-  const readoutText = formatCard(cardByCompany[COMPANY] ?? null);
+  const readoutCard = formatCard(cardByCompany[COMPANY] ?? null);
 
   // WP9 §2: the screen states. idle = no programme yet; assembling = the
   // existing `pending` window; deflection = the typed question matched no
@@ -556,7 +600,12 @@ export function Player() {
       <Screen
         picture={picture?.clip ?? null}
         next={next}
-        className={`${theatre ? "screen--theatre" : ""}${screenState === "end" || screenState === "deflection" ? " screen--dim" : ""}`.trim() || undefined}
+        // WP4.2 follow-up: "assembling" now also covers an interrupt holding
+        // a stale frame (see `pictureStale` above) — dimming it here to 40%
+        // (screen--dim is brightness(0.4)) is a no-op when there's nothing
+        // on screen yet (the very-first-ask case), and dims the held last
+        // frame when there is.
+        className={`${theatre ? "screen--theatre" : ""}${screenState === "end" || screenState === "deflection" || screenState === "assembling" ? " screen--dim" : ""}`.trim() || undefined}
         // WP9: AUDIO=off mutes native voice's embedded speech (and any SFX)
         // the same way the viewer's own mute button does, without touching
         // `muted` state itself — the tap-for-sound flow stays about the
@@ -577,7 +626,7 @@ export function Player() {
     </div>
   );
 
-  const readout = readoutText ? <span className="readout">{readoutText}</span> : null;
+  const readout = readoutCard ? renderReadout(readoutCard) : null;
 
   return (
     <main className={`tessera${theatre ? " theatre" : " plain"}`}>
