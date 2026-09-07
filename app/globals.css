@@ -460,15 +460,22 @@ video {
   opacity: 0.6;
 }
 
-/* WP4.2 §2: the ticker readout — a digital readout printed on the metal
-   (theatre, on the bezel band under the screen) or plain type under the
-   video (plain mode). Same look either way. */
+/* WP4.2 §2, revised: the ticker readout as an LED readout on brushed
+   metal — the console's own yellow rather than the interface's white, an
+   inset line under the characters (a 1px darker offset, no blur — an
+   engraved edge, not a shadow) for the light emboss, and a very faint
+   glow to sell "lit" over "printed". Colour and alpha live in rgba() only
+   (not a separate `opacity`) so the glow reads at its own faintness
+   instead of being dimmed along with the text. */
 .readout {
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--text);
-  opacity: 0.7;
+  color: rgba(255, 238, 140, 0.8);
   white-space: nowrap;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.55),
+    0 0 2px rgba(255, 238, 140, 0.4),
+    0 0 3px rgba(255, 238, 140, 0.25);
 }
 
 .console-readout {
