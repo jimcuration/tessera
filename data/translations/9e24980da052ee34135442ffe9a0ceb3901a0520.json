@@ -1,0 +1,301 @@
+{
+  "translator": "translator-v0.3.2",
+  "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
+  "beats": [
+    {
+      "scene": 1,
+      "line": "The Resulticks acquisition is positioned as a revenue synergy play, not cost savings.",
+      "headline": "REVENUE SYNERGY",
+      "ground": "violet",
+      "subjects": [
+        "stacked paper sheets",
+        "a cream paper chip"
+      ],
+      "action": "Stacked paper sheets drop onto a cream chip and settle square in frame.",
+      "hand": false,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] The Resulticks acquisition is positioned as a revenue synergy play, not cost savings.",
+      "source": [
+        0
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the stacked sheets",
+        "to": "a paper coin stack",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 1,
+      "line": "The one point five billion dollar deal adds AI-driven customer data capabilities to the compliance platform.",
+      "headline": "$1.5B",
+      "ground": "violet",
+      "subjects": [
+        "the stacked sheets",
+        "a paper coin stack"
+      ],
+      "action": "The previous chip slides off the top edge as the top sheet peels away into a paper coin stack; an orange paper ribbon runs from the stacked sheets on the left to the coin stack on the right, and a coin-sized cream tag reading '$1.5B' sits beside the ribbon with a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": true,
+      "scale": "small",
+      "delivery": "[excited] The one point five billion dollar deal adds AI-driven customer data capabilities to the compliance platform.",
+      "source": [
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the stacked sheets",
+        "to": "a paper coin stack",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "$1.5B",
+        "source": [
+          1
+        ]
+      }
+    },
+    {
+      "scene": 1,
+      "line": "That turns a point solution into an integrated, end-to-end platform.",
+      "headline": "END-TO-END",
+      "ground": "violet",
+      "subjects": [
+        "the stacked sheets",
+        "the paper coin stack",
+        "a stencilled arrow"
+      ],
+      "action": "The previous chip flips away as the coin stack flattens back into the stacked sheets, which press together into one slab; the orange ribbon is already in place, and a stencilled arrow lands across the slab end to end.",
+      "hand": false,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "That turns a point solution into an integrated, end-to-end platform.",
+      "source": [
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the stacked sheets",
+        "to": "a paper coin stack",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Diginex can now serve enterprise customers across two distinct workflows.",
+      "headline": "2 WORKFLOWS",
+      "ground": "cyan",
+      "subjects": [
+        "the grid-paper board",
+        "two paper folders"
+      ],
+      "action": "The previous chip is covered as the stacked sheets unfold flat into a grid-paper board; two paper folders slide onto it and hold, an orange paper arrow running from the board to the folders.",
+      "hand": false,
+      "handoff": "the two paper folders",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Diginex can now serve enterprise customers across two distinct workflows.",
+      "source": [
+        4
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the grid-paper board",
+        "to": "two paper folders",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "One is sustainability and compliance. The other is customer intelligence and marketing.",
+      "headline": "ESG + MARKETING",
+      "ground": "cyan",
+      "subjects": [
+        "the grid-paper board",
+        "two paper folders"
+      ],
+      "action": "The previous chip slides off the left edge as the two paper folders open one after the other on the grid-paper board, the orange arrow already in place between them.",
+      "hand": false,
+      "handoff": "the two paper folders",
+      "hero": false,
+      "scale": "small",
+      "delivery": "One is sustainability and compliance. The other is customer intelligence and marketing.",
+      "source": [
+        5,
+        6
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the grid-paper board",
+        "to": "two paper folders",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 2,
+      "line": "Enterprises buying compliance can also buy marketing automation from the same vendor. That increases wallet share.",
+      "headline": "WALLET SHARE",
+      "ground": "cyan",
+      "subjects": [
+        "the grid-paper board",
+        "two paper folders",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the two paper folders slide together on the grid-paper board; a paper hand enters and presses them into one bundle, the orange arrow still running to them.",
+      "hand": true,
+      "handoff": "the grid-paper board",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Enterprises buying compliance can also buy marketing automation from the same vendor. That increases wallet share.",
+      "source": [
+        7
+      ],
+      "connector": {
+        "kind": "paper arrow",
+        "from": "the grid-paper board",
+        "to": "two paper folders",
+        "colour": "orange"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "The risk is integration complexity. Diginex has absorbed four distinct acquisitions across multiple geographies.",
+      "headline": "4 ACQUISITIONS",
+      "ground": "magenta",
+      "subjects": [
+        "the four stamped documents",
+        "a paper bar chart"
+      ],
+      "action": "The previous chip slides off the bottom edge as the grid-paper board tears into four stamped documents that stack unevenly and stop; a black paper string runs from them to a small paper bar chart.",
+      "hand": false,
+      "handoff": "the four stamped documents",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[fast-paced] The risk is integration complexity. Diginex has absorbed four distinct acquisitions across multiple geographies.",
+      "source": [
+        10,
+        11
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the four stamped documents",
+        "to": "a paper bar chart",
+        "colour": "black"
+      },
+      "tag": null
+    },
+    {
+      "scene": 3,
+      "line": "General and administrative costs rose three point four million dollars, to eight point one million.",
+      "headline": "$8.1M G&A",
+      "ground": "magenta",
+      "subjects": [
+        "the four stamped documents",
+        "a paper bar chart"
+      ],
+      "action": "The previous chip is covered as one stamped document rises into a taller bar on the paper bar chart; the black string is already in place, and a coin-sized cream tag reading '$2.2M' sits beside it with a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper bar chart",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "General and administrative costs rose three point four million dollars, to eight point one million.",
+      "source": [
+        12
+      ],
+      "connector": {
+        "kind": "paper string",
+        "from": "the four stamped documents",
+        "to": "a paper bar chart",
+        "colour": "black"
+      },
+      "tag": {
+        "text": "$2.2M",
+        "source": [
+          12
+        ]
+      }
+    },
+    {
+      "scene": 4,
+      "line": "What matters next is cross-sell traction, and revenue growth outpacing the cost of integration.",
+      "headline": "CROSS-SELL TRACTION",
+      "ground": "violet",
+      "subjects": [
+        "the stacked sheets",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips down as the paper bar chart collapses back into the stacked sheets on violet ground; a paper hand taps the top sheet, a cream ribbon running from the sheets to the hand.",
+      "hand": true,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "small",
+      "delivery": "What matters next is cross-sell traction, and revenue growth outpacing the cost of integration.",
+      "source": [
+        13
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the stacked sheets",
+        "to": "a paper hand",
+        "colour": "cream"
+      },
+      "tag": null
+    },
+    {
+      "scene": 4,
+      "line": "Without that, it becomes financial engineering rather than a strategic unlock.",
+      "headline": "STRATEGIC UNLOCK?",
+      "ground": "violet",
+      "subjects": [
+        "the stacked sheets",
+        "a paper hand",
+        "a torn strip"
+      ],
+      "action": "The previous chip slides off as the paper hand lifts away and a torn strip settles across the stacked sheets, the cream ribbon still in place; the slab holds with the strip laid over it.",
+      "hand": true,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "Without that, it becomes financial engineering rather than a strategic unlock.",
+      "source": [
+        14
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the stacked sheets",
+        "to": "a paper hand",
+        "colour": "cream"
+      },
+      "tag": null
+    }
+  ],
+  "dropped": [],
+  "warnings": [
+    [],
+    [],
+    [],
+    [
+      "headline number \"2\" not found as a figure in cited sentences [4] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [],
+    [
+      "headline number \"4\" not found as a figure in cited sentences [10,11] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
+    [],
+    [],
+    []
+  ],
+  "model": "claude-opus-5",
+  "ms": 47064,
+  "clipSeconds": 15
+}

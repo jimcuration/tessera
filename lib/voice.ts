@@ -16,6 +16,19 @@ export interface SceneBeat {
   text: string;
 }
 
+/** WP8.2: one beat's fetched narration, with the data needed for voice-led timing (offsetSeconds/duration), not just playback. */
+export interface SceneAudio {
+  n: number;
+  url: string | null;
+  /** Seconds, measured server-side from the actually-cut mp3 (app/api/voice/route.ts) — present for both the timestamps and silence-gap split paths. Null only if that measurement itself failed. */
+  durationSeconds: number | null;
+}
+
+export interface SceneAudioResult {
+  splitMethod: "timestamps" | "silence-gap" | null;
+  beats: Map<number, SceneAudio>;
+}
+
 /** ElevenLabs limits concurrent requests per key; scenes arrive faster than that. */
 const MAX_CONCURRENT = 2;
 const RETRIES = 2;
@@ -52,9 +65,9 @@ export class Narrator {
     this.waiting.shift()?.();
   }
 
-  private async fetchScene(scene: number, beats: SceneBeat[]): Promise<Map<number, string | null>> {
+  private async fetchScene(scene: number, beats: SceneBeat[]): Promise<SceneAudioResult> {
     for (let attempt = 0; attempt <= RETRIES; attempt += 1) {
-      if (!this.alive) return new Map();
+      if (!this.alive) return { splitMethod: null, beats: new Map() };
       await this.slot();
       try {
         const res = await fetch("/api/voice", {
@@ -64,34 +77,44 @@ export class Narrator {
           signal: this.controller.signal,
         });
         if (res.ok) {
-          const data = (await res.json()) as { beats: { n: number; audioBase64: string }[] };
-          const urls = new Map<number, string | null>();
-          for (const b of data.beats) urls.set(b.n, base64ToUrl(b.audioBase64));
-          return urls;
+          const data = (await res.json()) as {
+            splitMethod: "timestamps" | "silence-gap";
+            beats: { n: number; audioBase64: string; durationSeconds: number | null }[];
+          };
+          const out = new Map<number, SceneAudio>();
+          for (const b of data.beats) out.set(b.n, { n: b.n, url: base64ToUrl(b.audioBase64), durationSeconds: b.durationSeconds });
+          return { splitMethod: data.splitMethod ?? null, beats: out };
         }
         console.warn(`[voice] scene ${scene}: voice ${res.status}${attempt < RETRIES ? ", retrying" : ""}`);
       } catch (cause) {
-        if (this.controller.signal.aborted) return new Map();
+        if (this.controller.signal.aborted) return { splitMethod: null, beats: new Map() };
         console.warn(`[voice] scene ${scene}:`, cause instanceof Error ? cause.message : cause);
       } finally {
         this.release();
       }
       await new Promise((resolve) => setTimeout(resolve, 800 * (attempt + 1)));
     }
-    return new Map();
+    return { splitMethod: null, beats: new Map() };
   }
 
-  /** Fetch one scene's narration (2-3 beats) in a single request, split per beat by the server. */
-  prefetchScene(scene: number, beats: SceneBeat[]) {
+  /**
+   * Fetch one scene's narration (2-3 beats) in a single request, split per
+   * beat by the server. Returns the full result (including each beat's own
+   * `durationSeconds` and the split method) so a caller that needs to know
+   * timing before compiling a prompt (WP8.2: voice-led section boundaries)
+   * can await it; playback via `play()` below does not need to.
+   */
+  prefetchScene(scene: number, beats: SceneBeat[]): Promise<SceneAudioResult> {
     const missing = beats.filter((b) => !this.tracks.has(b.n));
-    if (missing.length === 0) return;
+    if (missing.length === 0) return Promise.resolve({ splitMethod: null, beats: new Map() });
     const promise = this.fetchScene(scene, missing);
     for (const b of missing) {
       this.tracks.set(
         b.n,
-        promise.then((urls) => urls.get(b.n) ?? null)
+        promise.then((result) => result.beats.get(b.n)?.url ?? null)
       );
     }
+    return promise;
   }
 
   /** Play beat n's line, after the previous line if it is still running. */

@@ -76,8 +76,18 @@ function shotBeats(clip) {
   return [];
 }
 
-/** WP8.1: a shot's actual clip length — session `clipSeconds` at 5s/10s (uniform), or 5s per beat in the shot at 15s (a 2-beat scene is 10s, a 3-beat scene 15s). */
+/**
+ * A shot's actual clip length. WP8.2 records the real requested duration on
+ * every clip (`requestedDuration`) since it can now vary beat-to-beat within
+ * one session (voice-led scene timing) — read that first. Recordings from
+ * before WP8.2 have no such field, so fall back to WP8.1's inference:
+ * session `clipSeconds` at 5s/10s (uniform), or 5s per beat in the shot at
+ * 15s (a 2-beat scene is 10s, a 3-beat scene 15s) — which is exactly right
+ * for a WP8.1 fixed-timing recording and can be wrong for nothing else,
+ * since no clip predating this field could have had voice-led timing.
+ */
 function shotDuration(clip, sessionClipSeconds) {
+  if (typeof clip.requestedDuration === "number") return clip.requestedDuration;
   if (sessionClipSeconds !== 15) return sessionClipSeconds;
   return shotBeats(clip).length * 5;
 }

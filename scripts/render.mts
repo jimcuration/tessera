@@ -33,7 +33,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fal } from "@fal-ai/client";
 import { checkRemoteClipForFaces } from "../lib/faceGate.ts";
-import { compilePrompt, compileScenePrompt, STYLE_SHEET_VERSION, type Voice } from "../lib/prompt.ts";
+import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, type SceneSection, type Voice } from "../lib/prompt.ts";
 import { TRANSLATOR_VERSION, type Beat } from "../lib/translator.ts";
 import { ffmpeg } from "./ffmpeg.mjs";
 import { writeFileSync, mkdirSync } from "node:fs";
@@ -315,11 +315,27 @@ async function main() {
       session: sessionId,
       n,
       question,
-      beats: [{ n, beat, offsetSeconds: 0, sources: beat.source.map((i) => sentences[i] ?? ""), warnings }],
+      beats: [
+        {
+          n,
+          beat,
+          offsetSeconds: 0,
+          sectionEndSeconds: clipSeconds,
+          audioDurationSeconds: null,
+          sources: beat.source.map((i) => sentences[i] ?? ""),
+          warnings,
+        },
+      ],
       voice,
       chain,
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
+      requestedDuration: clipSeconds,
+      timingMethod: "fixed",
+      splitMethod: null,
+      totalNarrationSeconds: null,
+      durationClamped: false,
+      sceneSplit: null,
       prompt,
       expandedPrompt: clip.expandedPrompt,
       rawUrl: clip.rawUrl,
@@ -330,19 +346,61 @@ async function main() {
       resolution: "480P",
       renderMs: clip.ms,
       timings: clip.timings,
+      requestedAspectRatio: "16:9",
+      aspectRatioParamSent: !fromFrame,
     });
     console.log(`[render] beat ${n} done in ${clip.ms}ms${fromFrame ? " (i2v)" : " (t2v)"}`);
     return clip;
   }
 
-  // WP8.1 §1: at 15s, one shot is a whole scene (compileScenePrompt), one
-  // fal request of `items.length * 5` seconds, recorded as one `beats`
-  // array with each entry's own offsetSeconds — mirrors
+  // WP8.2: per-beat narrated-audio duration and per-scene split method,
+  // populated by the Saskia loop below (which runs ahead of any video
+  // render), so renderScene can compute voice-led section timing instead
+  // of WP8.1's fixed 5s-per-beat guess.
+  const audioDurationByBeat = new Map<number, number | null>();
+  const splitMethodByScene = new Map<number, "timestamps" | "silence-gap">();
+
+  // WP8.1 §1 / WP8.2: at 15s, one shot is a whole scene (compileScenePrompt),
+  // one fal request whose duration and section timecodes come from the
+  // scene's own narrated-audio durations when available (voice-led,
+  // WP8.2), falling back to WP8.1's fixed `items.length * 5` seconds
+  // otherwise (native voice, or narration unavailable) — mirrors
   // lib/programme.ts's Session#flushVideoScene for the live app.
-  async function renderScene(items: { n: number; beat: Beat; warnings: string[] }[], fromFrame: string | undefined): Promise<GeneratedClip | null> {
+  async function renderScene(
+    items: { n: number; beat: Beat; warnings: string[] }[],
+    fromFrame: string | undefined,
+    splitInfo: { part: number; of: number } | null = null
+  ): Promise<GeneratedClip | null> {
     const sceneBeats = items.map((it) => it.beat);
-    const { prompt } = compileScenePrompt({ beats: sceneBeats, voice: voice as Voice, previousHandoff: fromFrame ? previousHandoff : null });
-    const duration = sceneBeats.length * 5;
+    const durations = items.map((it) => audioDurationByBeat.get(it.n) ?? null);
+    let sections: SceneSection[] | undefined;
+    let requestedDuration = sceneBeats.length * 5;
+    let timingMethod: "voice-led" | "fixed" = "fixed";
+    let splitMethod: "timestamps" | "silence-gap" | null = null;
+    let totalNarrationSeconds: number | null = null;
+    let durationClamped = false;
+    if (voice === "saskia" && durations.every((d): d is number => typeof d === "number" && d > 0)) {
+      const timing = computeVoiceLedTiming(durations);
+      sections = timing.sections;
+      requestedDuration = timing.requestedDuration;
+      totalNarrationSeconds = timing.totalNarrationSeconds;
+      durationClamped = timing.clamped;
+      timingMethod = "voice-led";
+      splitMethod = splitMethodByScene.get(items[0].beat.scene) ?? null;
+    } else if (voice === "saskia") {
+      console.warn(`[render] scene ${items[0].beat.scene}: Saskia audio durations unavailable, falling back to fixed 5s-per-beat timing`);
+    }
+    const { prompt } = compileScenePrompt({
+      beats: sceneBeats,
+      voice: voice as Voice,
+      previousHandoff: fromFrame ? previousHandoff : null,
+      sections,
+      clipSeconds: requestedDuration,
+    });
+    const offsets = sections ? sections.map((s) => s.start) : sceneBeats.map((_, i) => sceneOffsetSeconds(i));
+    const ends = sections ? sections.map((s) => s.end) : sceneBeats.map((_, i) => sceneOffsetSeconds(i) + 5);
+    const duration = requestedDuration;
+    const aspectRatioParamSent = !fromFrame;
     let clip = await generateClip({ prompt, fromFrame, duration });
     if (faceGate === "on") {
       // WP5.1's gate is per-beat (logs against one beat's own record); a
@@ -369,7 +427,9 @@ async function main() {
       beats: items.map((it, i) => ({
         n: it.n,
         beat: it.beat,
-        offsetSeconds: i * 5,
+        offsetSeconds: offsets[i],
+        sectionEndSeconds: ends[i],
+        audioDurationSeconds: durations[i],
         sources: it.beat.source.map((idx) => sentences[idx] ?? ""),
         warnings: it.warnings,
       })),
@@ -377,6 +437,12 @@ async function main() {
       chain,
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
+      requestedDuration,
+      timingMethod,
+      splitMethod,
+      totalNarrationSeconds,
+      durationClamped,
+      sceneSplit: splitInfo ? { scene: items[0].beat.scene, part: splitInfo.part, of: splitInfo.of } : null,
       prompt,
       expandedPrompt: clip.expandedPrompt,
       rawUrl: clip.rawUrl,
@@ -387,15 +453,22 @@ async function main() {
       resolution: "480P",
       renderMs: clip.ms,
       timings: clip.timings,
+      requestedAspectRatio: "16:9",
+      aspectRatioParamSent,
     });
-    console.log(`[render] scene ${items[0].beat.scene} (beats ${items.map((it) => it.n).join(",")}) done in ${clip.ms}ms${fromFrame ? " (i2v)" : " (t2v)"}, ${duration}s`);
+    console.log(
+      `[render] scene ${items[0].beat.scene}${splitInfo ? ` part ${splitInfo.part}/${splitInfo.of}` : ""} (beats ${items.map((it) => it.n).join(",")}) done in ${clip.ms}ms${fromFrame ? " (i2v)" : " (t2v)"}, ${duration}s (${timingMethod})`
+    );
     return clip;
   }
 
   // WP8 §2: Saskia is generated per scene (2-3 beats in one ElevenLabs
   // request, split server-side), not per line. All beats are already known
   // at this point (the translation above ran to completion), so this runs
-  // once, ahead of the video renders below, one scene at a time.
+  // once, ahead of the video renders below, one scene at a time. WP8.2:
+  // each beat's own durationSeconds (measured server-side from the
+  // actually-cut mp3, same for either split method) is kept in
+  // audioDurationByBeat so renderScene can compute voice-led timing.
   if (voice === "saskia") {
     const scenes = new Map<number, { n: number; text: string }[]>();
     for (const { n, beat } of beats) {
@@ -406,7 +479,12 @@ async function main() {
     for (const [scene, sceneBeats] of scenes) {
       const res = await post("/api/voice", { session: sessionId, scene, beats: sceneBeats });
       if (res.ok) {
-        const data = (await res.json()) as { splitMethod: string };
+        const data = (await res.json()) as {
+          splitMethod: "timestamps" | "silence-gap";
+          beats: { n: number; durationSeconds: number | null }[];
+        };
+        splitMethodByScene.set(scene, data.splitMethod);
+        for (const b of data.beats) audioDurationByBeat.set(b.n, b.durationSeconds);
         console.log(`[render] scene ${scene}: ${sceneBeats.length} beat(s) narrated (${data.splitMethod} split)`);
       }
     }
@@ -421,9 +499,31 @@ async function main() {
       if (last && last[0].beat.scene === item.beat.scene) last.push(item);
       else scenes.push([item]);
     }
+
+    // WP8.2 follow-up: split a scene into two (or more) chained render
+    // units when its own narration exceeds SCENE_AUDIO_BUDGET_SECONDS —
+    // the clamp cascade WP8.2's own report found. Flattened up front so
+    // both the chained (sequential) and unchained (batched) dispatch below
+    // treat a split scene's parts exactly like any other render unit.
+    const renderUnits: { items: { n: number; beat: Beat; warnings: string[] }[]; splitInfo: { part: number; of: number } | null }[] = [];
+    for (const items of scenes) {
+      const durations = items.map((it) => audioDurationByBeat.get(it.n) ?? null);
+      const groups =
+        voice === "saskia" && durations.every((d): d is number => typeof d === "number" && d > 0)
+          ? splitSceneByAudioBudget(items, durations)
+          : [items];
+      if (groups.length > 1) {
+        const total = (durations as number[]).reduce((s, d) => s + d, 0);
+        console.log(`[render] scene ${items[0].beat.scene}: narration ${total.toFixed(1)}s exceeds budget, split into ${groups.length} chained clips (${groups.map((g) => g.length).join("+")} beats)`);
+      }
+      for (let gi = 0; gi < groups.length; gi += 1) {
+        renderUnits.push({ items: groups[gi], splitInfo: groups.length > 1 ? { part: gi + 1, of: groups.length } : null });
+      }
+    }
+
     if (chain === "on") {
-      for (const items of scenes) {
-        const clip = await renderScene(items, lastFrame);
+      for (const { items, splitInfo } of renderUnits) {
+        const clip = await renderScene(items, lastFrame, splitInfo);
         if (clip) {
           previousHandoff = items[items.length - 1].beat.handoff;
           lastFrame = await lastFrameOf(clip.rawUrl);
@@ -433,9 +533,9 @@ async function main() {
       }
     } else {
       let i = 0;
-      while (i < scenes.length) {
-        const batch = scenes.slice(i, i + UNCHAINED_PARALLEL);
-        await Promise.all(batch.map((items) => renderScene(items, undefined)));
+      while (i < renderUnits.length) {
+        const batch = renderUnits.slice(i, i + UNCHAINED_PARALLEL);
+        await Promise.all(batch.map(({ items, splitInfo }) => renderScene(items, undefined, splitInfo)));
         i += UNCHAINED_PARALLEL;
       }
     }
