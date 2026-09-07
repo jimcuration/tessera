@@ -25,6 +25,8 @@ export interface ScreenProps {
   muted: boolean;
   /** Under a Saskia narration the clip's own audio sits lower. */
   volume: number;
+  /** WP4.2: pause the on-screen clip in place; resume from the same frame. */
+  paused: boolean;
   onEnded: () => void;
   /** The browser refused unmuted autoplay; playback fell back to muted. */
   onNeedsTap: () => void;
@@ -43,7 +45,7 @@ interface Slot {
   clip: ReadyClip | null;
 }
 
-export function Screen({ picture, next, className, muted, volume, onEnded, onNeedsTap, onStarted, onBeatBoundary }: ScreenProps) {
+export function Screen({ picture, next, className, muted, volume, paused, onEnded, onNeedsTap, onStarted, onBeatBoundary }: ScreenProps) {
   const refs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
   const [slots, setSlots] = useState<[Slot, Slot]>([{ clip: null }, { clip: null }]);
   const [front, setFront] = useState<0 | 1>(0);
@@ -161,6 +163,20 @@ export function Screen({ picture, next, className, muted, volume, onEnded, onNee
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [muted, volume, front]);
+
+  // WP4.2: pause holds the on-screen clip on its current frame; unpausing
+  // resumes from there. The back slot is only ever preloading (play() below
+  // is only called when a clip takes the front slot), so this never touches it.
+  useEffect(() => {
+    const video = refs[front].current;
+    if (!video || !slots[front].clip) return;
+    if (paused) {
+      video.pause();
+    } else if (video.paused) {
+      video.play().catch(() => {});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paused, front]);
 
   return (
     <div className={`screen${className ? ` ${className}` : ""}`}>

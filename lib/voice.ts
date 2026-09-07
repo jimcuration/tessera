@@ -163,6 +163,16 @@ export class Narrator {
     });
   }
 
+  /** WP4.2: pause the line currently sounding, if any. Fetches keep going. */
+  pause() {
+    this.audio?.pause();
+  }
+
+  /** WP4.2: resume the line paused above. */
+  resume() {
+    this.audio?.play().catch(() => {});
+  }
+
   /** Interrupt: stop the voice at once and fetch nothing more. */
   stop() {
     this.alive = false;

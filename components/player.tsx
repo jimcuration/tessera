@@ -10,7 +10,7 @@ import {
 import { Console, type KeyState, type SeamState } from "@/components/console";
 import { Screen } from "@/components/screen";
 import { ScreenStatus, type ScreenState } from "@/components/screen-status";
-import { normalise, SPINE_QUESTIONS } from "@/lib/curation";
+import { COMPANY, normalise, SPINE_QUESTIONS } from "@/lib/curation";
 import { Session, type SessionState } from "@/lib/programme";
 import { GROUND_HEX } from "@/lib/prompt";
 import type { ReadyClip, Stream, StreamState } from "@/lib/stream";
@@ -37,6 +37,8 @@ const THEATRE_MIN_WIDTH = 900;
 const IDLE_CURSOR = "#FFEE8C";
 /** The ask-line cursor (theatre) / cursor and key (plain, listening) while a question is pending. */
 const LISTENING_CURSOR = "#F7F7F7";
+/** WP4.2 §4: shown after the cursor until focus, or until something is typed. */
+const ASK_PLACEHOLDER = "ask about diginex";
 
 const noopSubscribe = () => () => {};
 const nullSnapshot = () => null;
@@ -220,6 +222,10 @@ export function Player() {
   const [needsTap, setNeedsTap] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [inputFocused, setInputFocused] = useState(false);
+  /** WP4.2 §3: video, Saskia, the music bed and the countdown all stop together. */
+  const [paused, setPaused] = useState(false);
+  /** WP4.2 §2: the last known ticker card per company, kept even once a later record has none. */
+  const [cardByCompany, setCardByCompany] = useState<Record<string, Record<string, unknown>>>({});
 
   const inputRef = useRef<HTMLInputElement>(null);
   /** The live session, outside React state so an ask never runs twice. */
@@ -227,6 +233,11 @@ export function Player() {
   const pictureRef = useRef<Picture | null>(null);
   /** Whether the clip on screen has played to its end (holding its last frame). */
   const endedRef = useRef(false);
+  /** Read inside the countdown's setInterval so toggling pause doesn't reset the effect (and the count). */
+  const pausedRef = useRef(false);
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   const focusInput = useCallback(() => inputRef.current?.focus(), []);
   useEffect(() => {
@@ -246,6 +257,8 @@ export function Player() {
       setSession(next);
       setTyped("");
       setCountdown(null);
+      // WP4.2 §3: interrupting while paused resumes into the new programme.
+      setPaused(false);
       focusInput();
     },
     [focusInput]
@@ -258,6 +271,15 @@ export function Player() {
     },
     []
   );
+
+  // WP4.2 §2: remember the last card seen for the company; a record with no
+  // card (record.card null and no boilerplate to extract it from,
+  // lib/curation.ts) leaves the previous one showing rather than blanking.
+  const answerCard = sessionState?.answer?.card ?? null;
+  useEffect(() => {
+    if (!answerCard) return;
+    setCardByCompany((prev) => ({ ...prev, [COMPANY]: answerCard }));
+  }, [answerCard]);
 
   // The stream's clip on screen becomes the picture.
   const current = streamState?.current ?? null;
@@ -384,6 +406,9 @@ export function Player() {
     }
     setCountdown(AUTO_CONTINUE_SECONDS);
     const timer = setInterval(() => {
+      // WP4.2 §3: frozen while paused, via a ref so pausing mid-count
+      // doesn't restart this effect (and the count).
+      if (pausedRef.current) return;
       setCountdown((value) => (value === null ? null : Math.max(0, value - 1)));
     }, 1000);
     return () => clearInterval(timer);
@@ -434,7 +459,7 @@ export function Player() {
   // programme is on screen and sound is not muted. Never touches
   // lib/stream.ts's buffer or clip audio; this is a second, independent
   // <audio> element.
-  const musicPlaying = musicOn && audioOn && voice === "saskia" && !muted && (phase === "playing" || phase === "buffering");
+  const musicPlaying = musicOn && audioOn && voice === "saskia" && !muted && !paused && (phase === "playing" || phase === "buffering");
   useEffect(() => {
     const el = musicRef.current;
     if (!el) return;
@@ -446,6 +471,30 @@ export function Player() {
     }
   }, [musicPlaying]);
 
+  // WP4.2 §3: Saskia pauses/resumes with everything else.
+  useEffect(() => {
+    const narrator = sessionRef.current?.narrator;
+    if (paused) narrator?.pause();
+    else narrator?.resume();
+  }, [paused]);
+
+  // WP4.2 §3: click anywhere on the screen (theatre) or the video (plain) to
+  // pause/resume; space does the same when the ask line isn't focused.
+  // No-op with nothing on screen yet — there's nothing to pause.
+  const togglePaused = useCallback(() => {
+    if (!session) return;
+    setPaused((p) => !p);
+  }, [session]);
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.code !== "Space" || inputFocused) return;
+      event.preventDefault();
+      togglePaused();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [inputFocused, togglePaused]);
+
   // "none" (below MATCH_THRESHOLD, lib/curation.ts) gets its own on-screen
   // deflection line (ScreenStatus, below) instead of this below-screen one.
   const statusLine = (() => {
@@ -454,7 +503,10 @@ export function Player() {
     return null;
   })();
 
-  const strip = formatCard(sessionState?.answer?.card ?? null);
+  // WP4.2 §2: moved off the bottom strip (disclosure only now) onto the
+  // bezel readout (theatre) / under-video readout (plain) — the persisted
+  // last-known card, not the live answer's own (which can be null).
+  const readoutText = formatCard(cardByCompany[COMPANY] ?? null);
 
   // WP9 §2: the screen states. idle = no programme yet; assembling = the
   // existing `pending` window; deflection = the typed question matched no
@@ -495,8 +547,12 @@ export function Player() {
   const stageText =
     screenState === "assembling" ? assemblingStage(sessionState, streamState, voice, narrator?.isReady(1) ?? false) : null;
 
+  // WP4.2 §3: click anywhere on the screen/video to pause or resume.
   const screen = (
-    <div className={`screen-frame${theatre ? " screen-frame--theatre" : ""}`}>
+    <div
+      className={`screen-frame${theatre ? " screen-frame--theatre" : ""}`}
+      onClick={togglePaused}
+    >
       <Screen
         picture={picture?.clip ?? null}
         next={next}
@@ -507,6 +563,7 @@ export function Player() {
         // viewer's own choice, not this builder-testing switch.
         muted={muted || !audioOn}
         volume={voice === "saskia" ? 0.5 : 1}
+        paused={paused}
         onEnded={onEnded}
         onNeedsTap={onNeedsTap}
         onStarted={onStarted}
@@ -520,15 +577,27 @@ export function Player() {
     </div>
   );
 
+  const readout = readoutText ? <span className="readout">{readoutText}</span> : null;
+
   return (
     <main className={`tessera${theatre ? " theatre" : " plain"}`}>
       {musicOn && <audio ref={musicRef} src="/api/music" loop preload="auto" hidden />}
       {theatre ? (
-        <Console keyState={keyState} groundColor={groundColor} seamState={seamState} keyGlow={keyGlow}>
+        <Console
+          keyState={keyState}
+          groundColor={groundColor}
+          seamState={seamState}
+          keyGlow={keyGlow}
+          readout={readout}
+          paused={paused}
+        >
           {screen}
         </Console>
       ) : (
-        <div className="screen-wrap">{screen}</div>
+        <>
+          <div className="screen-wrap">{screen}</div>
+          {readout && <div className="readout-plain">{readout}</div>}
+        </>
       )}
 
       <div className="stage">
@@ -536,11 +605,13 @@ export function Player() {
           <div className="ask" onClick={focusInput}>
             <span className="label">curation</span>
             <span
-              className={`cursor${cursorRendering ? "" : " blink"}`}
+              className={`cursor${cursorRendering ? "" : " blink"}${paused ? " paused" : ""}`}
               style={{ color: cursorColor }}
               aria-hidden="true"
             />
             <span className="typed">{typed}</span>
+            {/* WP4.2 §4: gone on focus, back when empty and unfocused */}
+            {!typed && !inputFocused && <span className="placeholder">{ASK_PLACEHOLDER}</span>}
             <input
               ref={inputRef}
               className="ghost"
@@ -582,10 +653,8 @@ export function Player() {
         </div>
       </div>
 
-      <div className="strip">
-        {strip && <span>{strip} · </span>}
-        information, not investment advice
-      </div>
+      {/* WP4.2 §2: the ticker card moved to the readout above; the disclosure stays here alone. */}
+      <div className="strip">information, not investment advice</div>
     </main>
   );
 }
