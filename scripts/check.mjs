@@ -4,18 +4,24 @@
 // lib/config.ts#recordingsDir, default ../tessera-recordings, shared by
 // every checkout and worktree) and every translation
 // (data/translations/*.json) and fails any beat with no
-// source, a source index outside its answer's sentences, a line over 12
-// words, a subject that names a person, or a `delivery` whose stripped
-// text differs from `line` or that uses a tag outside the whitelist
-// (translator v0.3.1; mirrors validateBeat in lib/translator.ts). Also
+// source, a source index outside its answer's sentences, a line over its
+// clip length's word budget, a subject that names a person, a `delivery`
+// whose stripped text differs from `line` or that uses a tag outside the
+// whitelist, no `narration`, a banned voice-brief phrase in `line`, or a
+// first-person opinion marker whose cited sentence doesn't hedge
+// (translator v0.4.0; mirrors validateBeat in lib/translator.ts). Also
 // fails a programme (one session or one cached translation) with more
 // than one `hero` beat, the same `scale` held for three beats running, a
-// `scene` that is not a run of 2-3 consecutive beats, or (multi-beat
+// `scene` that is not a run of 2-3 consecutive beats, a scene whose beats
+// disagree on `narration` or whose `narration` doesn't equal those beats'
+// `line`s concatenated, a scene `narration` over budget, or (multi-beat
 // programmes only) a final beat whose `ground` does not match scene 1's
 // (mirrors validateProgramme). Exits non-zero if any is found. Soft
 // warnings (headline length, a headline number not stated as a figure in
-// the cited sentences — fine if it's a count of items those sentences
-// enumerate) are listed but do not fail the check.
+// the cited sentences, a spelled-out narration figure not found among its
+// scene's cited sentences — WP10's heuristic proxy for "every sentence
+// maps to a cited sentence", approximate by design, see lib/translator.ts's
+// spelledNumbersIn doc comment) are listed but do not fail the check.
 //
 //   node scripts/check.mjs                 everything
 //   node scripts/check.mjs recordings/<session>
@@ -64,7 +70,7 @@ const TRANSLATIONS = path.join(ROOT, "data", "translations");
  * bump doesn't turn every past recording permanently red; rule 7 keeps
  * them on disk as a historical record regardless.
  */
-const CURRENT_TRANSLATOR_VERSION = "translator-v0.3.2";
+const CURRENT_TRANSLATOR_VERSION = "translator-v0.4.0";
 
 const MAX_HEADLINE_WORDS = 4;
 /** Mirrors MAX_TAG_WORDS in lib/translator.ts (WP8.1 §3). */
@@ -73,6 +79,83 @@ const MAX_TAG_WORDS = 2;
 /** Mirrors maxLineWords in lib/translator.ts (WP8/WP8.1: the line budget scales with CLIP_SECONDS). */
 function maxLineWords(clipSeconds) {
   return clipSeconds === 5 ? 12 : 22;
+}
+
+/** Mirrors maxSceneWords in lib/translator.ts (WP10 §1: a scene's narration is three beats' worth). */
+function maxSceneWords(clipSeconds) {
+  return maxLineWords(clipSeconds) * 3;
+}
+
+/** Mirrors BANNED_PHRASES in lib/translator.ts (WP10 §2/§5: the voice brief's own avoid-list). */
+const BANNED_PHRASES = [
+  "one might consider", "it is important to note", "in order to", "due to the fact that",
+  "leverage", "leveraging", "unlock", "unlocking", "landscape", "robust", "ecosystem", "journey",
+  "navigate", "navigating",
+];
+
+/** Mirrors OPINION_MARKERS in lib/translator.ts. */
+const OPINION_MARKERS = ["i think", "i'd", "i would", "honestly i", "i'm not sure", "maybe it's just me"];
+
+/** Mirrors HEDGE_LEXICON in lib/translator.ts. */
+const HEDGE_LEXICON = [
+  "may", "might", "could", "likely", "unlikely", "roughly", "approximately", "possibly", "perhaps",
+  "appears", "seems", "suggest", "suggests", "expect", "expects", "expected", "believe", "believes",
+  "uncertain", "risk", "risks", "plausible", "unclear", "assum", "if ",
+];
+
+const NUM_ONES = {
+  zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9,
+  ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16,
+  seventeen: 17, eighteen: 18, nineteen: 19,
+};
+const NUM_TENS = { twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90 };
+const NUM_MAGNITUDE = { thousand: 1000, million: 1000000, billion: 1000000000 };
+
+/** Mirrors spelledNumbersIn in lib/translator.ts (WP10 §5 heuristic — see that file's doc comment for its limits). */
+function spelledNumbersIn(text) {
+  const words = text.toLowerCase().replace(/[.,;:!?()"'‘’“”…]/g, " ").split(/[\s-]+/).filter(Boolean);
+  const out = [];
+  let i = 0;
+  while (i < words.length) {
+    if (!(words[i] in NUM_ONES) && !(words[i] in NUM_TENS)) { i += 1; continue; }
+    let value = 0, matchedAny = false, hadMagnitude = false, usedTens = false, usedOnes = false;
+    while (i < words.length) {
+      const w = words[i];
+      if (w === "and" && matchedAny) { i += 1; continue; }
+      // A year spoken in two chunks ("twenty twenty-six") is two tens/ones
+      // groups back to back, not one number to sum.
+      if (w in NUM_TENS && usedTens) break;
+      if (w in NUM_ONES && usedOnes && NUM_ONES[w] < 10) break;
+      if (w in NUM_ONES) { value += NUM_ONES[w]; matchedAny = true; usedOnes = true; i += 1; }
+      else if (w in NUM_TENS) { value += NUM_TENS[w]; matchedAny = true; usedTens = true; i += 1; }
+      else if (w === "hundred" && matchedAny) { value *= 100; hadMagnitude = true; usedOnes = false; usedTens = false; i += 1; }
+      else if (w in NUM_MAGNITUDE && matchedAny) { value *= NUM_MAGNITUDE[w]; hadMagnitude = true; i += 1; break; }
+      else break;
+    }
+    if (!matchedAny) { i += 1; continue; }
+    let decimalStr = "";
+    if (words[i] === "point") {
+      let j = i + 1;
+      const digits = [];
+      while (j < words.length && words[j] in NUM_ONES && NUM_ONES[words[j]] <= 9) { digits.push(String(NUM_ONES[words[j]])); j += 1; }
+      if (digits.length) { decimalStr = `.${digits.join("")}`; i = j; }
+    }
+    if (value >= 10 || decimalStr || hadMagnitude) out.push(`${value}${decimalStr}`);
+  }
+  return out;
+}
+
+/** Mirrors numbersClose in lib/translator.ts. */
+function numbersClose(a, b) {
+  const fa = Number.parseFloat(a), fb = Number.parseFloat(b);
+  if (!Number.isFinite(fa) || !Number.isFinite(fb)) return a === b;
+  if (fa === fb) return true;
+  return Math.abs(fa - fb) <= Math.max(0.01, Math.abs(fb) * 0.01);
+}
+
+/** Mirrors normaliseWs in lib/translator.ts. */
+function normaliseWs(text) {
+  return String(text ?? "").replace(/\s+/g, " ").trim();
 }
 
 /** Mirrors appearsVerbatim in lib/translator.ts. */
@@ -130,6 +213,26 @@ function checkBeat(beat, sentences, clipSeconds) {
   if (!(Number.isInteger(beat?.scene) && beat.scene > 0)) hard.push("no scene (positive integer)");
   if (!beat?.line) hard.push("no line");
   if (words(beat?.line) > maxWords) hard.push(`line is ${words(beat.line)} words (limit ${maxWords})`);
+
+  // WP10 §5: the voice brief's avoid-list fails the beat; a first-person
+  // opinion marker is fine only when the beat's own cited sentences hedge.
+  const lineLower = String(beat?.line ?? "").toLowerCase();
+  for (const phrase of BANNED_PHRASES) {
+    if (new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(lineLower)) {
+      hard.push(`line uses a banned phrase "${phrase}"`);
+    }
+  }
+  if (sentences) {
+    const citedForBeat = valid.map((i) => sentences[i] ?? "").join(" ").toLowerCase();
+    const hasHedge = HEDGE_LEXICON.some((h) => citedForBeat.includes(h));
+    const opinionHit = OPINION_MARKERS.find((m) => lineLower.includes(m));
+    if (opinionHit) {
+      if (!hasHedge) hard.push(`line uses a first-person opinion marker "${opinionHit}" but its cited sentence(s) do not hedge`);
+      else soft.push(`line uses a first-person opinion marker "${opinionHit}" (cited sentence hedges, so kept)`);
+    }
+  }
+  if (!beat?.narration || !String(beat.narration).trim()) hard.push("no narration");
+
   for (const subject of Array.isArray(beat?.subjects) ? beat.subjects : []) {
     const person = subjectNamesPerson(String(subject));
     if (person) hard.push(`subject "${subject}" names a person (${person})`);
@@ -204,12 +307,16 @@ function sceneRuns(beats) {
 
 /**
  * Mirrors validateProgramme in lib/translator.ts: at most one hero, no
- * 3-in-a-row scale, every scene a run of 2-3 beats, and (multi-beat
- * programmes only — a one-beat deflection is exempt by construction) the
- * final beat's ground bookending scene 1's.
+ * 3-in-a-row scale, every scene a run of 2-3 beats, (multi-beat programmes
+ * only — a one-beat deflection is exempt by construction) the final
+ * beat's ground bookending scene 1's, and (WP10) every scene's narration
+ * agreeing across its beats, equalling those beats' lines concatenated,
+ * and staying within maxSceneWords — plus a soft numeric-grounding
+ * warning when `sentences` is available.
  */
-function checkProgramme(label, beats) {
+function checkProgramme(label, beats, clipSeconds = 5, sentences = null) {
   const progFailures = [];
+  const progWarnings = [];
   const heroes = beats.filter((b) => b?.hero === true).length;
   if (heroes > 1) progFailures.push(`${heroes} hero beats (limit 1)`);
   for (let i = 0; i + 2 < beats.length; i += 1) {
@@ -218,8 +325,9 @@ function checkProgramme(label, beats) {
       progFailures.push(`scale "${a.scale}" repeats for beats ${i + 1}-${i + 3}`);
     }
   }
-  // WP8.1 §2/§3: scene-level, unconditional (even a one-beat deflection is
-  // its own one-beat "scene"). Mirrors validateProgramme in lib/translator.ts.
+  // WP8.1 §2/§3 and WP10 §1: scene-level, unconditional (even a one-beat
+  // deflection is its own one-beat "scene"). Mirrors validateProgramme.
+  const maxScene = maxSceneWords(clipSeconds);
   for (const run of sceneRuns(beats)) {
     const first = run[0];
     if (first?.connector) {
@@ -235,6 +343,30 @@ function checkProgramme(label, beats) {
     }
     const tagCount = run.filter((b) => b?.tag !== null && b?.tag !== undefined).length;
     if (tagCount > 1) progFailures.push(`scene ${first?.scene} has ${tagCount} tags (limit 1)`);
+
+    // WP10 §1/§5.
+    const firstNarration = String(first?.narration ?? "");
+    const disagreesNarration = run.some((b) => String(b?.narration ?? "") !== firstNarration);
+    if (disagreesNarration) progFailures.push(`scene ${first?.scene}'s beats disagree on narration`);
+    const narrationWords = words(firstNarration);
+    if (narrationWords > maxScene) progFailures.push(`scene ${first?.scene}'s narration is ${narrationWords} words (limit ${maxScene})`);
+    const joinedLines = run.map((b) => String(b?.line ?? "")).join(" ");
+    if (normaliseWs(joinedLines) !== normaliseWs(firstNarration)) {
+      progFailures.push(`scene ${first?.scene}'s narration does not equal its beats' lines concatenated`);
+    }
+    if (sentences) {
+      const citedIdx = Array.from(new Set(run.flatMap((b) => (Array.isArray(b?.source) ? b.source : [])))).sort((x, y) => x - y);
+      const citedText = citedIdx.map((i) => sentences[i] ?? "").join(" ");
+      const citedDigits = numbersIn(citedText);
+      for (const n of spelledNumbersIn(firstNarration)) {
+        if (!citedDigits.some((d) => numbersClose(d, n))) {
+          progWarnings.push(
+            `scene ${first?.scene}'s narration states "${n}" (spelled out) not found among its cited sentences' ` +
+              `own figures ${JSON.stringify(citedIdx)} (heuristic number check; may be a false positive for a paraphrase or a non-monetary count)`
+          );
+        }
+      }
+    }
   }
   if (beats.length > 1) {
     for (const run of sceneRuns(beats)) {
@@ -251,6 +383,10 @@ function checkProgramme(label, beats) {
   for (const f of progFailures) {
     failures += 1;
     console.log(`FAIL  ${label}: ${f}`);
+  }
+  for (const w of progWarnings) {
+    warnings += 1;
+    console.log(`warn  ${label}: ${w}`);
   }
 }
 
@@ -301,7 +437,7 @@ function checkSession(dir) {
       beats.push(beat);
     });
   }
-  checkProgramme(path.relative(ROOT, dir), beats);
+  checkProgramme(path.relative(ROOT, dir), beats, clipSeconds, sentences);
   if (manifest && Array.isArray(manifest.dropped) && manifest.dropped.length) {
     console.log(`info  ${path.relative(ROOT, dir)}: ${manifest.dropped.length} beat(s) dropped by the translator rule at run time`);
   }
@@ -317,7 +453,7 @@ function checkTranslation(file) {
   // Translations do not carry the sentences; index bounds are checked at run time.
   const clipSeconds = t.clipSeconds ?? 5;
   t.beats.forEach((beat, i) => report(`${path.relative(ROOT, file)}#${i + 1}`, beat, null, clipSeconds));
-  checkProgramme(path.relative(ROOT, file), t.beats);
+  checkProgramme(path.relative(ROOT, file), t.beats, clipSeconds, null);
 }
 
 const targets = process.argv.slice(2);

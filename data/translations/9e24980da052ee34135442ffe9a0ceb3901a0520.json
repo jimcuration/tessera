@@ -1,291 +1,302 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "What is the Resulticks acquisition supposed to unlock — revenue synergies or cost savings?",
   "beats": [
     {
       "scene": 1,
-      "line": "The Resulticks acquisition is positioned as a revenue synergy play, not cost savings.",
-      "headline": "REVENUE SYNERGY",
-      "ground": "violet",
-      "subjects": [
-        "stacked paper sheets",
-        "a cream paper chip"
-      ],
-      "action": "Stacked paper sheets drop onto a cream chip and settle square in frame.",
-      "hand": false,
-      "handoff": "the stacked sheets",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "[presenting to camera] The Resulticks acquisition is positioned as a revenue synergy play, not cost savings.",
-      "source": [
-        0
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "the stacked sheets",
-        "to": "a paper coin stack",
-        "colour": "orange"
-      },
-      "tag": null
-    },
-    {
-      "scene": 1,
-      "line": "The one point five billion dollar deal adds AI-driven customer data capabilities to the compliance platform.",
-      "headline": "$1.5B",
-      "ground": "violet",
-      "subjects": [
-        "the stacked sheets",
-        "a paper coin stack"
-      ],
-      "action": "The previous chip slides off the top edge as the top sheet peels away into a paper coin stack; an orange paper ribbon runs from the stacked sheets on the left to the coin stack on the right, and a coin-sized cream tag reading '$1.5B' sits beside the ribbon with a short black line pointing at it.",
-      "hand": false,
-      "handoff": "the coin stack",
-      "hero": true,
-      "scale": "small",
-      "delivery": "[excited] The one point five billion dollar deal adds AI-driven customer data capabilities to the compliance platform.",
-      "source": [
-        1
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "the stacked sheets",
-        "to": "a paper coin stack",
-        "colour": "orange"
-      },
-      "tag": {
-        "text": "$1.5B",
-        "source": [
-          1
-        ]
-      }
-    },
-    {
-      "scene": 1,
-      "line": "That turns a point solution into an integrated, end-to-end platform.",
+      "line": "It adds AI-driven customer data to Diginex's sustainability and compliance platform — turning a point solution into one end-to-end platform.",
       "headline": "END-TO-END",
       "ground": "violet",
       "subjects": [
-        "the stacked sheets",
-        "the paper coin stack",
-        "a stencilled arrow"
+        "the platform sheet",
+        "a small paper data card"
       ],
-      "action": "The previous chip flips away as the coin stack flattens back into the stacked sheets, which press together into one slab; the orange ribbon is already in place, and a stencilled arrow lands across the slab end to end.",
+      "action": "The previous chip slides off the left edge as a small paper data card glides onto the platform sheet and locks flush, the violet ribbon still in place across them.",
       "hand": false,
-      "handoff": "the stacked sheets",
+      "handoff": "the platform sheet",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "That turns a point solution into an integrated, end-to-end platform.",
+      "scale": "small",
+      "delivery": "It adds AI-driven customer data to Diginex's sustainability and compliance platform — turning a point solution into one end-to-end platform.",
       "source": [
         1
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the stacked sheets",
-        "to": "a paper coin stack",
-        "colour": "orange"
+        "from": "the platform sheet",
+        "to": "a paper price tag card",
+        "colour": "violet"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So, revenue. That's what this deal's for. Resulticks — one point five billion dollars — is a revenue synergy play, not cost savings. It adds AI-driven customer data to Diginex's sustainability and compliance platform — turning a point solution into one end-to-end platform."
     },
     {
       "scene": 2,
-      "line": "Diginex can now serve enterprise customers across two distinct workflows.",
-      "headline": "2 WORKFLOWS",
+      "line": "Here's the logic. Same customers, two jobs. Sustainability and compliance on one side, customer intelligence and marketing on the other.",
+      "headline": "TWO WORKFLOWS",
       "ground": "cyan",
       "subjects": [
-        "the grid-paper board",
-        "two paper folders"
+        "the platform sheet",
+        "two paper workflow panels"
       ],
-      "action": "The previous chip is covered as the stacked sheets unfold flat into a grid-paper board; two paper folders slide onto it and hold, an orange paper arrow running from the board to the folders.",
+      "action": "The previous chip flips away as the platform sheet splits open and two paper workflow panels swing out left and right; a cyan arrow runs from the sheet to the panels and stays.",
       "hand": false,
-      "handoff": "the two paper folders",
+      "handoff": "the two panels",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Diginex can now serve enterprise customers across two distinct workflows.",
+      "delivery": "Here's the logic. Same customers, two jobs. Sustainability and compliance on one side, customer intelligence and marketing on the other.",
       "source": [
-        4
-      ],
-      "connector": {
-        "kind": "paper arrow",
-        "from": "the grid-paper board",
-        "to": "two paper folders",
-        "colour": "orange"
-      },
-      "tag": null
-    },
-    {
-      "scene": 2,
-      "line": "One is sustainability and compliance. The other is customer intelligence and marketing.",
-      "headline": "ESG + MARKETING",
-      "ground": "cyan",
-      "subjects": [
-        "the grid-paper board",
-        "two paper folders"
-      ],
-      "action": "The previous chip slides off the left edge as the two paper folders open one after the other on the grid-paper board, the orange arrow already in place between them.",
-      "hand": false,
-      "handoff": "the two paper folders",
-      "hero": false,
-      "scale": "small",
-      "delivery": "One is sustainability and compliance. The other is customer intelligence and marketing.",
-      "source": [
+        4,
         5,
         6
       ],
       "connector": {
-        "kind": "paper arrow",
-        "from": "the grid-paper board",
-        "to": "two paper folders",
-        "colour": "orange"
+        "kind": "arrow",
+        "from": "the platform sheet",
+        "to": "two paper workflow panels",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Here's the logic. Same customers, two jobs. Sustainability and compliance on one side, customer intelligence and marketing on the other. So an enterprise already buying ESG reporting can now buy marketing automation from the same vendor. Broader product suite, higher wallet share."
     },
     {
       "scene": 2,
-      "line": "Enterprises buying compliance can also buy marketing automation from the same vendor. That increases wallet share.",
-      "headline": "WALLET SHARE",
+      "line": "So an enterprise already buying ESG reporting can now buy marketing automation from the same vendor.",
+      "headline": "CROSS-SELL",
       "ground": "cyan",
       "subjects": [
-        "the grid-paper board",
-        "two paper folders",
+        "two paper workflow panels",
         "a paper hand"
       ],
-      "action": "The previous chip flips away as the two paper folders slide together on the grid-paper board; a paper hand enters and presses them into one bundle, the orange arrow still running to them.",
+      "action": "The previous chip is covered as a paper hand enters, taps the left panel, then drags a torn strip across to the right panel where it sticks, the cyan arrow already in place beneath.",
       "hand": true,
-      "handoff": "the grid-paper board",
+      "handoff": "the torn strip",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "Enterprises buying compliance can also buy marketing automation from the same vendor. That increases wallet share.",
+      "scale": "small",
+      "delivery": "[excited] So an enterprise already buying ESG reporting can now buy marketing automation from the same vendor.",
       "source": [
         7
       ],
       "connector": {
-        "kind": "paper arrow",
-        "from": "the grid-paper board",
-        "to": "two paper folders",
-        "colour": "orange"
+        "kind": "arrow",
+        "from": "the platform sheet",
+        "to": "two paper workflow panels",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Here's the logic. Same customers, two jobs. Sustainability and compliance on one side, customer intelligence and marketing on the other. So an enterprise already buying ESG reporting can now buy marketing automation from the same vendor. Broader product suite, higher wallet share."
+    },
+    {
+      "scene": 2,
+      "line": "Broader product suite, higher wallet share.",
+      "headline": "WALLET SHARE",
+      "ground": "cyan",
+      "subjects": [
+        "two paper workflow panels",
+        "stacked paper sheets"
+      ],
+      "action": "The previous chip slides off the top edge as the torn strip folds into stacked paper sheets that pile higher between the two paper workflow panels, the cyan arrow holding across them.",
+      "hand": false,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Broader product suite, higher wallet share.",
+      "source": [
+        7,
+        8
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "the platform sheet",
+        "to": "two paper workflow panels",
+        "colour": "cyan"
+      },
+      "tag": null,
+      "narration": "Here's the logic. Same customers, two jobs. Sustainability and compliance on one side, customer intelligence and marketing on the other. So an enterprise already buying ESG reporting can now buy marketing automation from the same vendor. Broader product suite, higher wallet share."
     },
     {
       "scene": 3,
-      "line": "The risk is integration complexity. Diginex has absorbed four distinct acquisitions across multiple geographies.",
+      "line": "But integration is the risk. Diginex has now absorbed four separate acquisitions across multiple geographies.",
       "headline": "4 ACQUISITIONS",
       "ground": "magenta",
       "subjects": [
-        "the four stamped documents",
-        "a paper bar chart"
+        "four stacked paper folders",
+        "a paper map"
       ],
-      "action": "The previous chip slides off the bottom edge as the grid-paper board tears into four stamped documents that stack unevenly and stop; a black paper string runs from them to a small paper bar chart.",
+      "action": "The previous chip flips down as the stacked sheets fold into four stacked paper folders that drop one by one onto a paper map, each landing in a different place.",
       "hand": false,
-      "handoff": "the four stamped documents",
+      "handoff": "the folder stack",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "[fast-paced] The risk is integration complexity. Diginex has absorbed four distinct acquisitions across multiple geographies.",
+      "scale": "diagram",
+      "delivery": "But integration is the risk. Diginex has now absorbed four separate acquisitions across multiple geographies.",
       "source": [
         10,
         11
       ],
       "connector": {
-        "kind": "paper string",
-        "from": "the four stamped documents",
+        "kind": "string",
+        "from": "four stacked paper folders",
         "to": "a paper bar chart",
-        "colour": "black"
+        "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "But integration is the risk. Diginex has now absorbed four separate acquisitions across multiple geographies. And general and administrative costs rose three point four million dollars, to eight point one million, in the first half. Two point two million of that was M and A legal work."
     },
     {
       "scene": 3,
-      "line": "General and administrative costs rose three point four million dollars, to eight point one million.",
+      "line": "And general and administrative costs rose three point four million dollars, to eight point one million, in the first half.",
       "headline": "$8.1M G&A",
       "ground": "magenta",
       "subjects": [
-        "the four stamped documents",
+        "four stacked paper folders",
         "a paper bar chart"
       ],
-      "action": "The previous chip is covered as one stamped document rises into a taller bar on the paper bar chart; the black string is already in place, and a coin-sized cream tag reading '$2.2M' sits beside it with a short black line pointing at it.",
+      "action": "The previous chip slides off the right edge as the folder stack unfolds into a paper bar chart whose bar grows upward and holds; an orange string runs from the folders to the chart.",
       "hand": false,
-      "handoff": "the paper bar chart",
+      "handoff": "the bar chart",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "General and administrative costs rose three point four million dollars, to eight point one million.",
+      "scale": "oversized",
+      "delivery": "[fast-paced] And general and administrative costs rose three point four million dollars, to eight point one million, in the first half.",
       "source": [
         12
       ],
       "connector": {
-        "kind": "paper string",
-        "from": "the four stamped documents",
+        "kind": "string",
+        "from": "four stacked paper folders",
         "to": "a paper bar chart",
-        "colour": "black"
+        "colour": "orange"
+      },
+      "tag": null,
+      "narration": "But integration is the risk. Diginex has now absorbed four separate acquisitions across multiple geographies. And general and administrative costs rose three point four million dollars, to eight point one million, in the first half. Two point two million of that was M and A legal work."
+    },
+    {
+      "scene": 3,
+      "line": "Two point two million of that was M and A legal work.",
+      "headline": "$2.2M LEGAL",
+      "ground": "magenta",
+      "subjects": [
+        "a paper bar chart",
+        "a torn paper strip"
+      ],
+      "action": "The previous chip is covered as a torn paper strip peels off the bar chart and holds beside it; a coin-sized cream tag reading '$2.2M' sits by the orange string, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the torn strip",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Two point two million of that was M and A legal work.",
+      "source": [
+        12
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "four stacked paper folders",
+        "to": "a paper bar chart",
+        "colour": "orange"
       },
       "tag": {
         "text": "$2.2M",
         "source": [
           12
         ]
-      }
+      },
+      "narration": "But integration is the risk. Diginex has now absorbed four separate acquisitions across multiple geographies. And general and administrative costs rose three point four million dollars, to eight point one million, in the first half. Two point two million of that was M and A legal work."
     },
     {
       "scene": 4,
-      "line": "What matters next is cross-sell traction, and revenue growth outpacing the cost of integration.",
+      "line": "So watch for cross-sell traction — Resulticks' customers adopting the wider platform — and revenue growing faster than the cost of integration.",
       "headline": "CROSS-SELL TRACTION",
       "ground": "violet",
       "subjects": [
-        "the stacked sheets",
+        "the platform sheet",
         "a paper hand"
       ],
-      "action": "The previous chip flips down as the paper bar chart collapses back into the stacked sheets on violet ground; a paper hand taps the top sheet, a cream ribbon running from the sheets to the hand.",
+      "action": "The previous chip flips away as the torn strip smooths back into the platform sheet on violet ground; a paper hand enters and presses a cream ribbon down across it.",
       "hand": true,
-      "handoff": "the stacked sheets",
+      "handoff": "the platform sheet",
       "hero": false,
-      "scale": "small",
-      "delivery": "What matters next is cross-sell traction, and revenue growth outpacing the cost of integration.",
+      "scale": "oversized",
+      "delivery": "So watch for cross-sell traction — Resulticks' customers adopting the wider platform — and revenue growing faster than the cost of integration.",
       "source": [
         13
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the stacked sheets",
-        "to": "a paper hand",
+        "from": "a paper hand",
+        "to": "the platform sheet",
         "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So watch for cross-sell traction — Resulticks' customers adopting the wider platform — and revenue growing faster than the cost of integration. Without that, it's financial engineering, not strategy."
     },
     {
       "scene": 4,
-      "line": "Without that, it becomes financial engineering rather than a strategic unlock.",
-      "headline": "STRATEGIC UNLOCK?",
+      "line": "Without that, it's financial engineering, not strategy.",
+      "headline": null,
       "ground": "violet",
       "subjects": [
-        "the stacked sheets",
-        "a paper hand",
-        "a torn strip"
+        "the platform sheet",
+        "a paper price tag card",
+        "a rubber stamp"
       ],
-      "action": "The previous chip slides off as the paper hand lifts away and a torn strip settles across the stacked sheets, the cream ribbon still in place; the slab holds with the strip laid over it.",
-      "hand": true,
-      "handoff": "the stacked sheets",
+      "action": "The previous chip slides off the left edge as the paper price tag card returns to the platform sheet's corner and a rubber stamp presses once beside it, the cream ribbon already in place.",
+      "hand": false,
+      "handoff": "the platform sheet",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "Without that, it becomes financial engineering rather than a strategic unlock.",
+      "scale": "small",
+      "delivery": "Without that, it's financial engineering, not strategy.",
       "source": [
         14
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the stacked sheets",
-        "to": "a paper hand",
+        "from": "a paper hand",
+        "to": "the platform sheet",
         "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So watch for cross-sell traction — Resulticks' customers adopting the wider platform — and revenue growing faster than the cost of integration. Without that, it's financial engineering, not strategy."
     }
   ],
-  "dropped": [],
+  "dropped": [
+    {
+      "raw": {
+        "scene": 1,
+        "line": "So, revenue. That's what this deal's for. Resulticks — one point five billion dollars — is a revenue synergy play, not cost savings.",
+        "headline": "$1.5B",
+        "ground": "violet",
+        "subjects": [
+          "the platform sheet",
+          "a paper price tag card"
+        ],
+        "action": "A large halftone platform sheet drops onto open ground and settles; a paper price tag card slides in and rests on its corner, a coin-sized cream tag reading '$1.5B' beside the violet ribbon with a short black line pointing at it.",
+        "hand": false,
+        "handoff": "the platform sheet",
+        "hero": true,
+        "scale": "oversized",
+        "delivery": "[presenting to camera] So, revenue. That's what this deal's for. Resulticks — one point five billion dollars — is a revenue synergy play, not cost savings.",
+        "source": [
+          0,
+          1
+        ],
+        "connector": {
+          "kind": "paper ribbon",
+          "from": "the platform sheet",
+          "to": "a paper price tag card",
+          "colour": "violet"
+        },
+        "tag": {
+          "text": "$1.5B",
+          "source": [
+            1
+          ]
+        },
+        "narration": "So, revenue. That's what this deal's for. Resulticks — one point five billion dollars — is a revenue synergy play, not cost savings. It adds AI-driven customer data to Diginex's sustainability and compliance platform — turning a point solution into one end-to-end platform."
+      },
+      "reason": "line is 23 words (limit 22)"
+    }
+  ],
   "warnings": [
     [],
     [],
-    [],
-    [
-      "headline number \"2\" not found as a figure in cited sentences [4] (fine if it is a count of items those sentences enumerate; flagged either way)"
-    ],
     [],
     [],
     [
@@ -293,9 +304,10 @@
     ],
     [],
     [],
+    [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 47064,
+  "ms": 60825,
   "clipSeconds": 15
 }
