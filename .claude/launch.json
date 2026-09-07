@@ -12,6 +12,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["next", "dev", "-p", "3100"],
       "port": 3100
+    },
+    {
+      "name": "tessera-wp9",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev", "-p", "3909"],
+      "port": 3909
     }
   ]
 }

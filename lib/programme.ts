@@ -15,10 +15,10 @@ import { cancelInFlight } from "./fal";
 import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, type SceneSection } from "./prompt";
 import { registerShot, recordSession } from "./recorder";
 import { createRenderer } from "./render";
-import type { Stream, Shot } from "./stream";
+import type { ReadyClip, Stream, Shot } from "./stream";
 import { TRANSLATOR_VERSION, type Beat } from "./translator";
 import { Narrator } from "./voice";
-import type { ChainSwitch, ClipSeconds, FaceGateSwitch, RenderSwitch, VoiceSwitch } from "./config";
+import type { AudioSwitch, CacheSwitch, ChainSwitch, ClipSeconds, FaceGateSwitch, RenderSwitch, VoiceSwitch } from "./config";
 
 export interface AnswerHeader {
   question: string;
@@ -36,6 +36,28 @@ export interface SessionSwitches {
   render: RenderSwitch;
   faceGate: FaceGateSwitch;
   clipSeconds: ClipSeconds;
+}
+
+/** WP9: the shape POST /api/cache/lookup returns on a hit. */
+interface CacheLookupShotBeat {
+  n: number;
+  beat: Beat;
+  offsetSeconds: number;
+  audioUrl: string | null;
+}
+interface CacheLookupShot {
+  n: number;
+  duration: number;
+  resolution: "480P" | "768P";
+  videoUrl: string;
+  beats: CacheLookupShotBeat[];
+}
+interface CacheLookupResponse {
+  hit: boolean;
+  sessionId?: string;
+  answer?: AnswerHeader;
+  beats?: Beat[];
+  shots?: CacheLookupShot[];
 }
 
 export type SessionStatus =
@@ -290,11 +312,97 @@ export class Session {
     }
   }
 
+  /**
+   * WP9: ask /api/cache/lookup for a complete recording matching this
+   * question and these switches; if there's a hit, hydrate the stream (and
+   * narrator, under Saskia) straight from the recorded files and return
+   * true — the caller returns immediately without touching /api/translate
+   * or fal at all. Returns false to fall through to the live render path
+   * (no hit, or the lookup itself failed — a cache outage never blocks the
+   * programme). Does not call recordSession(): replaying a cache hit is not
+   * a new recording, so this does not write a duplicate session under
+   * RECORDINGS_DIR (see briefs/WP9-handoff.md).
+   */
+  private async tryCache(switches: SessionSwitches, signal: AbortSignal, narratorMuted: boolean): Promise<boolean> {
+    let data: CacheLookupResponse;
+    try {
+      const res = await fetch("/api/cache/lookup", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ question: this.state.question }),
+        signal,
+      });
+      if (!this.alive) return true;
+      if (!res.ok) return false;
+      data = (await res.json()) as CacheLookupResponse;
+    } catch (cause) {
+      if (this.controller.signal.aborted) return true;
+      console.warn("[session] cache lookup failed, rendering live:", cause instanceof Error ? cause.message : cause);
+      return false;
+    }
+    if (!data.hit || !data.sessionId || !data.answer || !data.beats || !data.shots || data.shots.length === 0) {
+      return false;
+    }
+
+    this.set({ answer: data.answer, beats: data.beats });
+
+    let stream: Stream;
+    try {
+      stream = createRenderer(switches.render, {
+        chain: switches.chain === "on",
+        faceGate: switches.faceGate === "on",
+        clipSeconds: switches.clipSeconds,
+      });
+    } catch (cause) {
+      this.fail(cause instanceof Error ? cause.message : "renderer unavailable");
+      return true;
+    }
+    this.stream = stream;
+    if (switches.voice === "saskia") {
+      this.narrator = new Narrator(this.id);
+      this.narrator.muted = narratorMuted;
+    }
+    this.set({});
+
+    const shots: Shot[] = data.shots.map((s) => ({
+      n: s.n,
+      beats: s.beats.map((b) => ({ n: b.n, beat: b.beat, offsetSeconds: b.offsetSeconds })),
+      // No prompt was re-fetched for a cache hit; hydrateFromCache never
+      // renders, so this is never read except in passing (debug logs).
+      prompt: "",
+      duration: s.duration,
+      chain: switches.chain === "on",
+    }));
+    const readyClips: ReadyClip[] = data.shots.map((s, i) => ({
+      index: i,
+      shot: shots[i],
+      videoUrl: s.videoUrl,
+      renderMs: 0,
+      duration: s.duration,
+      resolution: s.resolution,
+    }));
+
+    if (this.narrator) {
+      for (const s of data.shots) {
+        for (const b of s.beats) {
+          if (b.audioUrl) this.narrator.useCachedTrack(b.n, b.audioUrl);
+        }
+      }
+    }
+
+    stream.hydrateFromCache(shots, readyClips);
+    for (const clip of readyClips) {
+      console.info(`[session] beat ${clip.shot.n}: source: cache (${data.sessionId})`);
+    }
+    this.set({ status: "done" });
+    return true;
+  }
+
   private async run() {
     const signal = this.controller.signal;
 
     const configRes = await fetch("/api/config", { cache: "no-store", signal });
-    const config = (await configRes.json()) as SessionSwitches & { missing: string[] };
+    const config = (await configRes.json()) as SessionSwitches & { missing: string[]; cache: CacheSwitch; audio: AudioSwitch };
     if (!this.alive) return;
     if (config.missing.includes("FAL_KEY")) {
       this.fail("FAL_KEY is missing from .env.local");
@@ -317,6 +425,23 @@ export class Session {
       id: `${this.state.id}-${switches.voice}-chain-${switches.chain}`,
     };
     this.set({ switches });
+    // WP9: AUDIO=off (default on) mutes narration playback only — read
+    // once here and applied to whichever Narrator gets constructed below
+    // (cache-hit or live path). Never affects rendering/recording.
+    const narratorMuted = config.audio === "off";
+
+    // WP9: CACHE=on|off (default on) — a complete recording matching this
+    // question, these switches and the current translator/style-sheet
+    // versions plays back from RECORDINGS_DIR instead of rendering live.
+    // Placed here (rather than the very first thing in run(), which is
+    // where the WP9 brief puts it) so the FAL_KEY/ELEVENLABS_API_KEY
+    // secrets checks above still run first — see briefs/WP9-handoff.md for
+    // why that ordering was kept.
+    if (config.cache !== "off") {
+      const hit = await this.tryCache(switches, signal, narratorMuted);
+      if (!this.alive) return;
+      if (hit) return;
+    }
 
     let stream: Stream;
     try {
@@ -330,7 +455,10 @@ export class Session {
       return;
     }
     this.stream = stream;
-    if (switches.voice === "saskia") this.narrator = new Narrator(this.id);
+    if (switches.voice === "saskia") {
+      this.narrator = new Narrator(this.id);
+      this.narrator.muted = narratorMuted;
+    }
     // Listeners re-read `stream` on every notification: tell them it exists.
     this.set({});
 

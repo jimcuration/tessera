@@ -48,6 +48,17 @@ export class Narrator {
   private alive = true;
   private inFlight = 0;
   private waiting: Array<() => void> = [];
+  /**
+   * WP9: beat numbers whose track promise has settled (fetched, cached, or
+   * failed) — used by the "assembling" screen state to know when scene 1's
+   * narration has arrived, since a beat's own track promise has no
+   * synchronous "is it ready yet" the player can poll. Populated in
+   * prefetchScene's `.then` regardless of success, so a failed fetch still
+   * lets the assembling stage move on rather than get stuck.
+   */
+  private resolvedTracks = new Set<number>();
+  /** WP9: AUDIO=off (lib/config.ts, default on) — mutes narration playback in the player without skipping the fetch, so every track is still generated and saved (CLAUDE.md rule 7) exactly as with AUDIO=on. Set once, right after construction, by lib/programme.ts. */
+  muted = false;
 
   constructor(private readonly session: string) {}
 
@@ -111,10 +122,25 @@ export class Narrator {
     for (const b of missing) {
       this.tracks.set(
         b.n,
-        promise.then((result) => result.beats.get(b.n)?.url ?? null)
+        promise.then((result) => {
+          const url = result.beats.get(b.n)?.url ?? null;
+          this.resolvedTracks.add(b.n);
+          return url;
+        })
       );
     }
     return promise;
+  }
+
+  /** WP9: has beat n's track settled (arrived or failed)? Best-effort signal for the "assembling" screen state, not a guarantee of successful playback. */
+  isReady(n: number): boolean {
+    return this.resolvedTracks.has(n);
+  }
+
+  /** WP9: seed beat n's track from a cached recording's mp3, bypassing /api/voice entirely — makes play(n) work unchanged for cache-hit playback. */
+  useCachedTrack(n: number, url: string) {
+    this.tracks.set(n, Promise.resolve(url));
+    this.resolvedTracks.add(n);
   }
 
   /** Play beat n's line, after the previous line if it is still running. */
@@ -126,6 +152,7 @@ export class Narrator {
       const url = await track;
       if (!url || !this.alive) return;
       const audio = new Audio(url);
+      audio.muted = this.muted;
       this.audio = audio;
       await new Promise<void>((resolve) => {
         audio.addEventListener("ended", () => resolve(), { once: true });

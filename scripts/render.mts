@@ -70,7 +70,18 @@ function arg(name: string, fallback: string | null = null): string | null {
   return i !== -1 && process.argv[i + 1] ? process.argv[i + 1] : fallback;
 }
 
-const question = arg("question");
+// WP9: --question-file reads the question from a file instead of the raw
+// CLI argument. scripts/cache.mts (WP9's orchestrator) shells out to this
+// script and found that a question containing a shell metacharacter (a
+// live example: "...given the M&A spend?" — cmd.exe reads bare `&` as a
+// command separator) or a character npm's own arg parser rejects (an
+// em dash) silently mangles or aborts the whole call on Windows, however
+// carefully the argv array is built, because the failure happens inside
+// cmd.exe's/npm's own command-line parsing, not in this script. Passing
+// the question by file sidesteps shell quoting entirely. --question stays
+// exactly as it was for direct CLI use.
+const questionFile = arg("question-file");
+const question = questionFile ? readFileSync(questionFile, "utf8").trim() : arg("question");
 const voice = arg("voice") as Voice | null;
 const chain = arg("chain") as "on" | "off" | null;
 const base = arg("base", "http://localhost:3100");

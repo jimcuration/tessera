@@ -9,7 +9,8 @@ import {
 } from "react";
 import { Console, type KeyState, type SeamState } from "@/components/console";
 import { Screen } from "@/components/screen";
-import { SPINE_QUESTIONS } from "@/lib/curation";
+import { ScreenStatus, type ScreenState } from "@/components/screen-status";
+import { normalise, SPINE_QUESTIONS } from "@/lib/curation";
 import { Session, type SessionState } from "@/lib/programme";
 import { GROUND_HEX } from "@/lib/prompt";
 import type { ReadyClip, Stream, StreamState } from "@/lib/stream";
@@ -28,6 +29,8 @@ import { GROUNDS } from "@/lib/translator";
 
 /** Auto-continue into the top suggestion after this long idle. */
 const AUTO_CONTINUE_SECONDS = 10;
+/** WP9 §2 "playing": show the corner hold cursor once the last frame has held this long with nothing ready. */
+const HOLD_CURSOR_MS = 2000;
 /** How many suggestions sit under the screen. */
 const SUGGESTION_LINES = 3;
 /** Theatre mode never renders below this viewport width (CLAUDE.md → WP4). */
@@ -71,6 +74,46 @@ function useMusicOn(): boolean {
       .then((res) => res.json())
       .then((config: { music?: string }) => {
         if (alive) setOn(config.music === "on");
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return on;
+}
+
+/**
+ * AUDIO=on|off from the server (lib/config.ts; default on — WP9). off mutes
+ * narration and the music bed in the player; nothing about rendering or
+ * saving a clip's own audio changes (CLAUDE.md rule 7).
+ */
+function useAudioOn(): boolean {
+  const [on, setOn] = useState(true);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/config", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((config: { audio?: string }) => {
+        if (alive) setOn(config.audio !== "off");
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return on;
+}
+
+/** KEY_GLOW=on|off from the server (lib/config.ts; default off — WP9). */
+function useKeyGlow(): boolean {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/config", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((config: { keyGlow?: string }) => {
+        if (alive) setOn(config.keyGlow === "on");
       })
       .catch(() => {});
     return () => {
@@ -131,9 +174,41 @@ function formatCard(card: Record<string, unknown> | null): string | null {
   return parts.length ? parts.join(" · ") : null;
 }
 
+/**
+ * WP9 §2 "assembling" sub-stage: a best-effort mapping onto real pipeline
+ * signals already exposed by SessionState/StreamState/Narrator, not a
+ * hand-authored fake progress sequence (see briefs/WP9-handoff.md for the
+ * exact derivation and its caveats — "voicing scene 1"'s window can be very
+ * short or invisible in practice, since scene 1's video shot and its
+ * narration are dispatched at nearly the same moment in lib/programme.ts).
+ *
+ *   reading the answer     — the translator hasn't sent its "answer" message.
+ *   writing the programme  — the answer is known but nothing has started
+ *                             rendering yet (no shot dispatched to fal).
+ *   voicing scene 1        — Saskia only: rendering has started but track 1
+ *                             hasn't resolved yet.
+ *   rendering scene 1      — native voice once rendering starts, or Saskia
+ *                             once track 1 has resolved.
+ */
+function assemblingStage(
+  sessionState: SessionState | null,
+  streamState: StreamState | null,
+  voice: "native" | "saskia",
+  narratorReady1: boolean
+): string {
+  if (!sessionState?.answer) return "reading the answer";
+  const rendering = streamState?.rendering ?? false;
+  const rendered = streamState?.rendered ?? 0;
+  if (!rendering && rendered === 0) return "writing the programme";
+  if (voice === "saskia" && !narratorReady1) return "voicing scene 1";
+  return "rendering scene 1";
+}
+
 export function Player() {
   const theatre = useTheatre();
+  const keyGlow = useKeyGlow();
   const musicOn = useMusicOn();
+  const audioOn = useAudioOn();
   const musicRef = useRef<HTMLAudioElement>(null);
 
   const [session, setSession] = useState<Session | null>(null);
@@ -147,6 +222,8 @@ export function Player() {
   const [needsTap, setNeedsTap] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [inputFocused, setInputFocused] = useState(false);
+  /** WP9 §2 "playing": the clip on screen has held its last frame for more than HOLD_CURSOR_MS. */
+  const [holdCursor, setHoldCursor] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   /** The live session, outside React state so an ask never runs twice. */
@@ -154,6 +231,7 @@ export function Player() {
   const pictureRef = useRef<Picture | null>(null);
   /** Whether the clip on screen has played to its end (holding its last frame). */
   const endedRef = useRef(false);
+  const holdTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const focusInput = useCallback(() => inputRef.current?.focus(), []);
   useEffect(() => {
@@ -173,13 +251,24 @@ export function Player() {
       setSession(next);
       setTyped("");
       setCountdown(null);
+      if (holdTimerRef.current) {
+        clearTimeout(holdTimerRef.current);
+        holdTimerRef.current = null;
+      }
+      setHoldCursor(false);
       focusInput();
     },
     [focusInput]
   );
 
   // Leaving the page stops the programme.
-  useEffect(() => () => sessionRef.current?.cancel(), []);
+  useEffect(
+    () => () => {
+      sessionRef.current?.cancel();
+      if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
+    },
+    []
+  );
 
   // The stream's clip on screen becomes the picture.
   const current = streamState?.current ?? null;
@@ -204,6 +293,11 @@ export function Player() {
 
   const onStarted = useCallback((clip: ReadyClip) => {
     endedRef.current = false;
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+    setHoldCursor(false);
     const live = sessionRef.current;
     const shown = pictureRef.current;
     // Saskia: the narration for this clip's first beat starts with the clip.
@@ -229,6 +323,14 @@ export function Player() {
     // Hold the last frame if nothing is ready: the next shot chains from
     // this exact image, so the hold reads as a beat and the cut is seamless.
     sessionRef.current?.stream?.advance();
+    // WP9 §2 "playing": if the hold outlasts HOLD_CURSOR_MS, show the
+    // corner cursor until the next clip starts (onStarted above clears it).
+    if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
+    holdTimerRef.current = setTimeout(() => {
+      holdTimerRef.current = null;
+      console.info("[player] hold > 2s");
+      setHoldCursor(true);
+    }, HOLD_CURSOR_MS);
   }, []);
 
   const onNeedsTap = useCallback(() => {
@@ -248,14 +350,58 @@ export function Player() {
     : SPINE_QUESTIONS
   ).slice(0, SUGGESTION_LINES);
 
-  // Auto-continue: once the programme has ended (or could not start), count
-  // down from 10 and continue into the top suggestion. Typing pauses it.
+  // WP9 §4: every matched question actually played this session, normalised
+  // — a viewer's own click can replay anything (the displayed `suggestions`
+  // list above is never filtered); only the *auto-continue* target below is
+  // restricted to what hasn't played yet. Also records the as-asked text
+  // when a session resolves to "none"/"error" (no captured answer at all):
+  // without this, an auto-continue target that never matches a fixture
+  // record would never be marked played and the countdown would retry the
+  // exact same unanswerable question forever instead of moving on. Didn't
+  // manifest against the 12-record fixture (every suggestion/spine question
+  // in it resolves), but is a real gap against arbitrary future content —
+  // see briefs/WP9-handoff.md.
+  const [playedQuestions, setPlayedQuestions] = useState<string[]>([]);
+  const resolvedKey =
+    sessionState?.answer?.question ??
+    (sessionState?.status === "none" || sessionState?.status === "error" ? sessionState.question : null);
+  useEffect(() => {
+    if (!resolvedKey) return;
+    const norm = normalise(resolvedKey);
+    setPlayedQuestions((prev) => (prev.includes(norm) ? prev : [...prev, norm]));
+  }, [resolvedKey]);
+
+  // The first not-yet-played question: the shown suggestions first, then
+  // the spine (in its declared order) for anything the suggestions didn't
+  // cover. Null when everything in both lists has already played — WP9 §4's
+  // trigger for the **end** screen state, below.
+  let autoContinueTarget: string | null = null;
+  for (const q of suggestions) {
+    if (!playedQuestions.includes(normalise(q))) {
+      autoContinueTarget = q;
+      break;
+    }
+  }
+  if (!autoContinueTarget) {
+    for (const q of SPINE_QUESTIONS) {
+      if (!playedQuestions.includes(normalise(q))) {
+        autoContinueTarget = q;
+        break;
+      }
+    }
+  }
+
+  // Auto-continue: once the programme has ended (or could not start) and a
+  // target remains, count down from 10 and continue into it. Typing pauses
+  // it. No target at all is the **end** screen state (WP9 §2), not a
+  // stalled countdown.
   const status = sessionState?.status ?? null;
-  const idle =
+  const sessionIdle =
     session !== null &&
     (phase === "ended" || status === "none" || status === "error");
+  const isEndState = sessionIdle && !autoContinueTarget;
   useEffect(() => {
-    if (!idle || suggestions.length === 0) {
+    if (!sessionIdle || !autoContinueTarget) {
       setCountdown(null);
       return;
     }
@@ -264,11 +410,17 @@ export function Player() {
       setCountdown((value) => (value === null ? null : Math.max(0, value - 1)));
     }, 1000);
     return () => clearInterval(timer);
-  }, [idle, suggestions.length, session]);
+  }, [sessionIdle, autoContinueTarget, session]);
   useEffect(() => {
     if (countdown !== 0 || typed.trim()) return;
-    if (suggestions[0]) ask(suggestions[0]);
-  }, [countdown, typed, suggestions, ask]);
+    if (autoContinueTarget) ask(autoContinueTarget);
+  }, [countdown, typed, autoContinueTarget, ask]);
+
+  // WP9 §2 end state: the ask line is focused the moment there is nothing
+  // left to auto-continue into.
+  useEffect(() => {
+    if (isEndState) focusInput();
+  }, [isEndState, focusInput]);
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -282,15 +434,16 @@ export function Player() {
   // A question is pending from Enter until its first clip is on screen.
   const renderingShot = streamState?.rendering ? stream?.renderingShot() ?? null : null;
   const groundColor = renderingShot ? GROUND_HEX[renderingShot.beats[0].beat.ground] : LISTENING_CURSOR;
-  const pending = session !== null && !picture && !idle;
+  const pending = session !== null && !picture && !sessionIdle;
   const listening = inputFocused || pending;
 
-  // Theatre: the ask-line cursor only ever shows idle/pending — the square
-  // key on the console carries the rendering state. Plain: the cursor
-  // carries all three, per CLAUDE.md ("the square-key states move to the
-  // cursor" in plain mode, WP4 §Plain mode).
+  // WP9 §1: KEY_GLOW=off (default) — the square key no longer renders any
+  // glow at all (components/console.tsx), so it can't carry render state in
+  // either mode any more; the ask-line cursor carries it in both theatre
+  // and plain mode instead. KEY_GLOW=on keeps the previous split: theatre
+  // leaves it to the key, plain always showed it on the cursor already.
   const keyState: KeyState = renderingShot ? "rendering" : listening ? "listening" : "off";
-  const cursorRendering = !theatre && Boolean(renderingShot);
+  const cursorRendering = (!theatre || !keyGlow) && Boolean(renderingShot);
   const cursorColor = cursorRendering ? groundColor : listening ? LISTENING_CURSOR : IDLE_CURSOR;
 
   const seamState: SeamState = !stream ? "idle" : buffered >= 2 ? "steady" : "filling";
@@ -303,7 +456,7 @@ export function Player() {
   // programme is on screen and sound is not muted. Never touches
   // lib/stream.ts's buffer or clip audio; this is a second, independent
   // <audio> element.
-  const musicPlaying = musicOn && voice === "saskia" && !muted && (phase === "playing" || phase === "buffering");
+  const musicPlaying = musicOn && audioOn && voice === "saskia" && !muted && (phase === "playing" || phase === "buffering");
   useEffect(() => {
     const el = musicRef.current;
     if (!el) return;
@@ -324,25 +477,65 @@ export function Player() {
 
   const strip = formatCard(sessionState?.answer?.card ?? null);
 
+  // WP9 §2: the four screen states. idle = no programme yet; assembling =
+  // the existing `pending` window; end = sessionIdle with nothing left to
+  // auto-continue into (§4); playing otherwise (the corner hold cursor is a
+  // sub-state of playing, handled by holdCursor above).
+  const screenState: ScreenState =
+    session === null ? "idle" : pending ? "assembling" : isEndState ? "end" : "playing";
+
+  // Re-render while waiting on Saskia's first track so the "voicing scene
+  // 1" → "rendering scene 1" transition shows up: Narrator.isReady() is a
+  // plain function on a mutable object, not itself observable, so this
+  // polls at a short interval only while it's actually being watched.
+  const narrator = session?.narrator ?? null;
+  const [, forceVoicingTick] = useState(0);
+  useEffect(() => {
+    if (screenState !== "assembling" || voice !== "saskia" || !narrator) return;
+    if (narrator.isReady(1)) return;
+    const timer = setInterval(() => {
+      if (narrator.isReady(1)) {
+        clearInterval(timer);
+      }
+      forceVoicingTick((t) => t + 1);
+    }, 250);
+    return () => clearInterval(timer);
+  }, [screenState, voice, narrator]);
+
+  const stageText =
+    screenState === "assembling" ? assemblingStage(sessionState, streamState, voice, narrator?.isReady(1) ?? false) : null;
+
   const screen = (
-    <Screen
-      picture={picture?.clip ?? null}
-      next={next}
-      className={theatre ? "screen--theatre" : undefined}
-      muted={muted}
-      volume={voice === "saskia" ? 0.5 : 1}
-      onEnded={onEnded}
-      onNeedsTap={onNeedsTap}
-      onStarted={onStarted}
-      onBeatBoundary={onBeatBoundary}
-    />
+    <div className={`screen-frame${theatre ? " screen-frame--theatre" : ""}`}>
+      <Screen
+        picture={picture?.clip ?? null}
+        next={next}
+        className={`${theatre ? "screen--theatre" : ""}${screenState === "end" ? " screen--dim" : ""}`.trim() || undefined}
+        // WP9: AUDIO=off mutes native voice's embedded speech (and any SFX)
+        // the same way the viewer's own mute button does, without touching
+        // `muted` state itself — the tap-for-sound flow stays about the
+        // viewer's own choice, not this builder-testing switch.
+        muted={muted || !audioOn}
+        volume={voice === "saskia" ? 0.5 : 1}
+        onEnded={onEnded}
+        onNeedsTap={onNeedsTap}
+        onStarted={onStarted}
+        onBeatBoundary={onBeatBoundary}
+      />
+      <ScreenStatus
+        state={screenState}
+        stage={stageText}
+        showHoldCursor={holdCursor}
+        endLine="ask me anything about diginex"
+      />
+    </div>
   );
 
   return (
     <main className={`tessera${theatre ? " theatre" : " plain"}`}>
       {musicOn && <audio ref={musicRef} src="/api/music" loop preload="auto" hidden />}
       {theatre ? (
-        <Console keyState={keyState} groundColor={groundColor} seamState={seamState}>
+        <Console keyState={keyState} groundColor={groundColor} seamState={seamState} keyGlow={keyGlow}>
           {screen}
         </Console>
       ) : (
@@ -391,7 +584,7 @@ export function Player() {
                   aria-hidden="true"
                 />
                 <span className="q">{question}</span>
-                {i === 0 && countdown !== null && !typed.trim() && (
+                {question === autoContinueTarget && countdown !== null && !typed.trim() && (
                   <span className="upnext">· up next in {countdown}s</span>
                 )}
               </li>

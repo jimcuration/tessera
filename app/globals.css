@@ -235,6 +235,59 @@ video {
   pointer-events: none;
 }
 
+/* WP9: wraps <Screen> so components/screen-status.tsx can lay the four
+   screen states (idle/assembling/playing/end) over the same box without
+   touching screen.tsx itself. Sized exactly like .screen/.screen--theatre
+   (see there) so the overlay's own inset:0 lines up with the video. */
+.screen-frame {
+  position: relative;
+  width: 100%;
+}
+
+.screen-frame:not(.screen-frame--theatre) {
+  aspect-ratio: 16 / 9;
+}
+
+.screen-frame--theatre {
+  height: 100%;
+}
+
+/* end state: the last frame dimmed. Plain brightness(), no mix-blend-mode
+   element nearby (CLAUDE.md → Notes: filter + mix-blend-mode on the same
+   element don't composite in Chromium — this avoids the combination rather
+   than hitting it). */
+.screen.screen--dim {
+  filter: brightness(0.4);
+}
+
+.screen-status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 5%;
+  pointer-events: none;
+  font-size: 18px;
+}
+
+.screen-status-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+}
+
+.screen-status-substage {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.screen-status--end .screen-status-line {
+  font-size: 20px;
+}
+
 .tessera.plain .content {
   margin-top: 28px;
 }
