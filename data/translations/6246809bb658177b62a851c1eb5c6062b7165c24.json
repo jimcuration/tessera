@@ -1,107 +1,82 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "Should I buy Diginex shares?",
   "beats": [
     {
       "scene": 1,
-      "line": "I can't tell you whether to buy Diginex shares. That decision is yours alone.",
-      "headline": null,
+      "line": "I can't tell you whether to buy Diginex shares. That's a decision only you can make.",
+      "headline": "YOUR CALL",
       "ground": "violet",
       "subjects": [
-        "a stack of paper sheets"
+        "the stacked sheets"
       ],
-      "action": "A single halftone stack of paper sheets drops onto open violet ground and settles square.",
+      "action": "A neat pile of halftone paper sheets drops onto open ground and settles square.",
       "hand": false,
-      "handoff": "the sheet stack",
+      "handoff": "the stacked sheets",
       "hero": false,
       "scale": "oversized",
-      "delivery": "[presenting to camera] I can't tell you whether to buy Diginex shares. That decision is yours alone.",
+      "delivery": "[presenting to camera] I can't tell you whether to buy Diginex shares. That's a decision only you can make.",
       "source": [
         0,
         1
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the sheet stack",
+        "from": "the stacked sheets",
         "to": "a paper hand",
-        "colour": "violet"
+        "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "I can't tell you whether to buy Diginex shares. That's a decision only you can make. What I can do is lay out the evidence — the bull case, the bear case, the risks, the catalysts."
     },
     {
       "scene": 1,
-      "line": "My job is to surface the evidence: the bull case, the bear case, risks and catalysts.",
-      "headline": "BULL AND BEAR",
+      "line": "What I can do is lay out the evidence — the bull case, the bear case, the risks, the catalysts.",
+      "headline": "THE EVIDENCE",
       "ground": "violet",
       "subjects": [
-        "the sheet stack",
+        "the stacked sheets",
         "a paper hand"
       ],
-      "action": "The clear ground takes a new headline chip as the sheet stack fans into four sheets; a paper hand enters and taps each in turn, a violet ribbon running from the stack to the hand.",
+      "action": "A paper hand slides four sheets out of the stacked sheets and fans them flat, a cream ribbon trailing between hand and pile.",
       "hand": true,
       "handoff": "the pointing hand",
       "hero": false,
-      "scale": "small",
-      "delivery": "My job is to surface the evidence: the bull case, the bear case, risks and catalysts.",
+      "scale": "diagram",
+      "delivery": "What I can do is lay out the evidence — the bull case, the bear case, the risks, the catalysts.",
       "source": [
         2
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the sheet stack",
+        "from": "the stacked sheets",
         "to": "a paper hand",
-        "colour": "violet"
+        "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "I can't tell you whether to buy Diginex shares. That's a decision only you can make. What I can do is lay out the evidence — the bull case, the bear case, the risks, the catalysts."
     },
     {
       "scene": 2,
-      "line": "The bull case starts with regulation. Climate and sustainability rules are creating structural demand for this software.",
-      "headline": "REGULATORY DEMAND",
-      "ground": "lime",
-      "subjects": [
-        "the paper bar chart",
-        "stacked grid-paper sheets"
-      ],
-      "action": "The previous chip slides off the left edge as the pointing hand folds down into a paper bar chart; stacked grid-paper sheets pile up behind it, an orange ribbon running from the bar chart to a paper coin stack.",
-      "hand": false,
-      "handoff": "the paper bar chart",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "The bull case starts with regulation. Climate and sustainability rules are creating structural demand for this software.",
-      "source": [
-        4,
-        5
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "the paper bar chart",
-        "to": "a paper coin stack",
-        "colour": "orange"
-      },
-      "tag": null
-    },
-    {
-      "scene": 2,
-      "line": "Revenue grew two hundred and ninety-three percent year on year, to two million dollars in the first half.",
+      "line": "Start with the bull case. Revenue grew two hundred and ninety-three percent year on year, to two million dollars.",
       "headline": "+293% YOY",
       "ground": "lime",
       "subjects": [
-        "the paper bar chart"
+        "a paper bar chart"
       ],
-      "action": "The previous chip flips away as the paper bar chart's bars grow tall and hold; a coin-sized cream tag reading '293%' sits beside the orange ribbon, a short black line pointing at it.",
+      "action": "The pointing hand's fingers straighten into paper bars that rise into a bar chart and lock at full height; a coin-sized cream tag reading '293%' sits beside the orange string, a short black line pointing at it.",
       "hand": false,
       "handoff": "the paper bar chart",
       "hero": true,
       "scale": "oversized",
-      "delivery": "[excited] Revenue grew two hundred and ninety-three percent year on year, to two million dollars in the first half.",
+      "delivery": "[excited] Start with the bull case. Revenue grew two hundred and ninety-three percent year on year, to two million dollars.",
       "source": [
         6
       ],
       "connector": {
-        "kind": "paper ribbon",
-        "from": "the paper bar chart",
-        "to": "a paper coin stack",
+        "kind": "string",
+        "from": "a paper bar chart",
+        "to": "a folded paper document",
         "colour": "orange"
       },
       "tag": {
@@ -109,57 +84,115 @@
         "source": [
           6
         ]
-      }
+      },
+      "narration": "Start with the bull case. Revenue grew two hundred and ninety-three percent year on year, to two million dollars. Regulation's doing the work — CSRD, SEC climate rules, ISSB, all creating demand for sustainability software. And at a thirty-four million dollar market cap, the upside is asymmetric."
     },
     {
       "scene": 2,
-      "line": "An October warrant exercise raised thirteen point eight million, extending runway. Market cap sits at thirty-four million.",
-      "headline": "+$13.8M",
+      "line": "Regulation's doing the work — CSRD, SEC climate rules, ISSB, all creating demand for sustainability software.",
+      "headline": "CSRD · SEC · ISSB",
       "ground": "lime",
       "subjects": [
         "the paper bar chart",
-        "a paper coin stack"
+        "a folded paper document"
       ],
-      "action": "The previous chip is covered as the bar chart's tallest bar topples into a paper coin stack at the far end of the orange ribbon, and the stack settles.",
+      "action": "The tallest bar of the paper bar chart peels over into a folded paper document that stamps itself down beside the chart, the orange string already in place between them.",
       "hand": false,
-      "handoff": "the coin stack",
+      "handoff": "the folded paper document",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Regulation's doing the work — CSRD, SEC climate rules, ISSB, all creating demand for sustainability software.",
+      "source": [
+        4,
+        5
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "a paper bar chart",
+        "to": "a folded paper document",
+        "colour": "orange"
+      },
+      "tag": null,
+      "narration": "Start with the bull case. Revenue grew two hundred and ninety-three percent year on year, to two million dollars. Regulation's doing the work — CSRD, SEC climate rules, ISSB, all creating demand for sustainability software. And at a thirty-four million dollar market cap, the upside is asymmetric."
+    },
+    {
+      "scene": 2,
+      "line": "And at a thirty-four million dollar market cap, the upside is asymmetric.",
+      "headline": "$34M CAP",
+      "ground": "lime",
+      "subjects": [
+        "the folded paper document",
+        "a small paper card"
+      ],
+      "action": "The folded paper document creases down into a small paper card that tips upward and holds at an angle, the orange string still running from the bar chart.",
+      "hand": false,
+      "handoff": "the small paper card",
       "hero": false,
       "scale": "small",
-      "delivery": "An October warrant exercise raised thirteen point eight million, extending runway. Market cap sits at thirty-four million.",
+      "delivery": "And at a thirty-four million dollar market cap, the upside is asymmetric.",
       "source": [
-        9,
         10
       ],
       "connector": {
-        "kind": "paper ribbon",
-        "from": "the paper bar chart",
-        "to": "a paper coin stack",
+        "kind": "string",
+        "from": "a paper bar chart",
+        "to": "a folded paper document",
         "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Start with the bull case. Revenue grew two hundred and ninety-three percent year on year, to two million dollars. Regulation's doing the work — CSRD, SEC climate rules, ISSB, all creating demand for sustainability software. And at a thirty-four million dollar market cap, the upside is asymmetric."
     },
     {
       "scene": 3,
-      "line": "Cash was one point eight five million at the end of September, against burn near one point three million monthly.",
-      "headline": "1.4 MONTHS",
+      "line": "But execution risk is severe. Cash sat at one point eight five million, burning one point three million a month.",
+      "headline": "$1.85M",
       "ground": "magenta",
       "subjects": [
-        "the coin stack",
-        "a paper calendar strip"
+        "the coin stack"
       ],
-      "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin on magenta ground; a black string runs from the coin stack to a paper calendar strip, and a coin-sized cream tag reading '1.4 months' sits beside it with a short black line pointing at it.",
+      "action": "The small paper card thickens into the coin stack, which settles and then loses coins off its top one by one.",
       "hand": false,
       "handoff": "the coin stack",
       "hero": false,
       "scale": "oversized",
-      "delivery": "Cash was one point eight five million at the end of September, against burn near one point three million monthly.",
+      "delivery": "But execution risk is severe. Cash sat at one point eight five million, burning one point three million a month.",
       "source": [
+        12,
         19
       ],
       "connector": {
-        "kind": "paper string",
+        "kind": "arrow",
         "from": "the coin stack",
-        "to": "a paper calendar strip",
+        "to": "a torn paper runway",
+        "colour": "black"
+      },
+      "tag": null,
+      "narration": "But execution risk is severe. Cash sat at one point eight five million, burning one point three million a month. That's about one point four months of runway. Four acquisitions absorbed, two of them stalled. And bigger rivals have deeper resources — Diginex has an eighteen to twenty-four month window."
+    },
+    {
+      "scene": 3,
+      "line": "That's about one point four months of runway. Four acquisitions absorbed, two of them stalled.",
+      "headline": "1.4 MONTHS",
+      "ground": "magenta",
+      "subjects": [
+        "the coin stack",
+        "a torn paper runway"
+      ],
+      "action": "Coins from the coin stack lay themselves into a torn paper runway that stops short; a black arrow runs from stack to runway, and a coin-sized cream tag reading '1.4 months' sits beside it with a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the torn paper runway",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "[fast-paced] That's about one point four months of runway. Four acquisitions absorbed, two of them stalled.",
+      "source": [
+        13,
+        16,
+        19
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "the coin stack",
+        "to": "a torn paper runway",
         "colour": "black"
       },
       "tag": {
@@ -167,112 +200,82 @@
         "source": [
           19
         ]
-      }
-    },
-    {
-      "scene": 3,
-      "line": "Execution risk is severe. Four acquisitions absorbed, and general costs rose to eight point one million.",
-      "headline": "G&A $8.1M",
-      "ground": "magenta",
-      "subjects": [
-        "the coin stack",
-        "torn paper strips"
-      ],
-      "action": "The previous chip flips away as the coin stack splits into four leaning piles; torn paper strips slide in above them and stack, the black string still in place to the calendar strip.",
-      "hand": false,
-      "handoff": "the torn strip",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "[fast-paced] Execution risk is severe. Four acquisitions absorbed, and general costs rose to eight point one million.",
-      "source": [
-        12,
-        13,
-        14
-      ],
-      "connector": {
-        "kind": "paper string",
-        "from": "the coin stack",
-        "to": "a paper calendar strip",
-        "colour": "black"
       },
-      "tag": null
+      "narration": "But execution risk is severe. Cash sat at one point eight five million, burning one point three million a month. That's about one point four months of runway. Four acquisitions absorbed, two of them stalled. And bigger rivals have deeper resources — Diginex has an eighteen to twenty-four month window."
     },
     {
       "scene": 3,
-      "line": "Resulticks remains in limbo, conditional on debt financing. Two other deals have stalled.",
-      "headline": "DEALS STALLED",
+      "line": "And bigger rivals have deeper resources — Diginex has an eighteen to twenty-four month window.",
+      "headline": "18–24 MONTHS",
       "ground": "magenta",
       "subjects": [
         "the coin stack",
-        "torn paper strips"
+        "a paper grid wall"
       ],
-      "action": "The previous chip is covered as the torn strip tears twice more and the pieces drift apart, none reaching the coin stack, the black string sagging between them.",
+      "action": "The torn paper runway tilts up into a tall paper grid wall that towers over the small coin stack and holds, the black arrow still in place.",
       "hand": false,
-      "handoff": "the torn strip",
+      "handoff": "the paper grid wall",
       "hero": false,
       "scale": "small",
-      "delivery": "Resulticks remains in limbo, conditional on debt financing. Two other deals have stalled.",
+      "delivery": "And bigger rivals have deeper resources — Diginex has an eighteen to twenty-four month window.",
       "source": [
-        15,
-        16
+        21,
+        22
       ],
       "connector": {
-        "kind": "paper string",
+        "kind": "arrow",
         "from": "the coin stack",
-        "to": "a paper calendar strip",
+        "to": "a torn paper runway",
         "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "But execution risk is severe. Cash sat at one point eight five million, burning one point three million a month. That's about one point four months of runway. Four acquisitions absorbed, two of them stalled. And bigger rivals have deeper resources — Diginex has an eighteen to twenty-four month window."
     },
     {
       "scene": 4,
-      "line": "Before committing capital, demand cross-sell traction, a Resulticks closure, and operating leverage as losses narrow.",
-      "headline": "WHAT TO SEE",
+      "line": "So what changes it? Cross-sell traction, the Resulticks deal closing, and losses narrowing quarter on quarter.",
+      "headline": "3 THINGS TO SEE",
       "ground": "violet",
       "subjects": [
-        "the sheet stack",
+        "the stacked sheets",
         "a paper calendar page"
       ],
-      "action": "The previous chip slides off the right edge as the torn strips gather and press back into the sheet stack on violet ground; a paper calendar page lands beside it, a cream ribbon running from the stack to the page.",
+      "action": "The paper grid wall folds down flat into the stacked sheets; a paper calendar page slides out from under them and a cream ribbon links the two.",
       "hand": false,
-      "handoff": "the sheet stack",
+      "handoff": "the paper calendar page",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Before committing capital, demand cross-sell traction, a Resulticks closure, and operating leverage as losses narrow.",
+      "delivery": "So what changes it? Cross-sell traction, the Resulticks deal closing, and losses narrowing quarter on quarter.",
       "source": [
-        27,
         28,
         29,
         30
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the sheet stack",
+        "from": "the stacked sheets",
         "to": "a paper calendar page",
         "colour": "cream"
       },
-      "tag": {
-        "text": "Q3 2026",
-        "source": [
-          32
-        ]
-      }
+      "tag": null,
+      "narration": "So what changes it? Cross-sell traction, the Resulticks deal closing, and losses narrowing quarter on quarter. The next earnings report is critical. This is a high-risk bet on execution, not a defensive holding."
     },
     {
       "scene": 4,
-      "line": "The next earnings report is critical. This is a high-conviction, high-risk bet on execution, not a defensive holding.",
-      "headline": "HIGH-RISK BET",
+      "line": "The next earnings report is critical. This is a high-risk bet on execution, not a defensive holding.",
+      "headline": "Q3 2026",
       "ground": "violet",
       "subjects": [
-        "the sheet stack",
-        "a paper calendar page"
+        "the stacked sheets",
+        "a paper calendar page",
+        "a rubber stamp"
       ],
-      "action": "The previous chip flips down as the calendar page is pinned onto the sheet stack, which fills the frame and holds, the cream ribbon still in place.",
+      "action": "The paper calendar page tucks back into the stacked sheets and a rubber stamp presses down on top of the pile, the cream ribbon still running between them.",
       "hand": false,
-      "handoff": "the sheet stack",
+      "handoff": "the stacked sheets",
       "hero": false,
       "scale": "oversized",
-      "delivery": "The next earnings report is critical. This is a high-conviction, high-risk bet on execution, not a defensive holding.",
+      "delivery": "The next earnings report is critical. This is a high-risk bet on execution, not a defensive holding.",
       "source": [
         32,
         35,
@@ -280,11 +283,12 @@
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the sheet stack",
+        "from": "the stacked sheets",
         "to": "a paper calendar page",
         "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So what changes it? Cross-sell traction, the Resulticks deal closing, and losses narrowing quarter on quarter. The next earnings report is critical. This is a high-risk bet on execution, not a defensive holding."
     }
   ],
   "dropped": [],
@@ -292,15 +296,19 @@
     [],
     [],
     [],
+    [
+      "headline is 5 words (limit 4)"
+    ],
     [],
     [],
     [],
     [],
-    [],
-    [],
+    [
+      "headline number \"3\" not found as a figure in cited sentences [28,29,30] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 52567,
+  "ms": 69131,
   "clipSeconds": 15
 }

@@ -1,273 +1,290 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "What is Diginex",
   "beats": [
     {
       "scene": 1,
-      "line": "Diginex is repositioning itself as a unified sustainability, data and compliance platform.",
+      "line": "So what is Diginex? It's a company repositioning itself as one unified sustainability, data and compliance platform.",
       "headline": "ONE PLATFORM",
       "ground": "violet",
       "subjects": [
-        "the document stack"
+        "the stacked sheets"
       ],
-      "action": "A halftone stack of paper documents drops onto open violet ground and settles square.",
+      "action": "Loose halftone sheets drift in from the edges and press together into one thick stacked block at centre, where they hold.",
       "hand": false,
-      "handoff": "the document stack",
+      "handoff": "the stacked sheets",
       "hero": false,
       "scale": "oversized",
-      "delivery": "[presenting to camera] Diginex is repositioning itself as a unified sustainability, data and compliance platform.",
+      "delivery": "[presenting to camera] So what is Diginex? It's a company repositioning itself as one unified sustainability, data and compliance platform.",
       "source": [
         1
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the document stack",
-        "to": "a paper screen",
-        "colour": "cream"
+        "from": "the stacked sheets",
+        "to": "a torn price strip",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So what is Diginex? It's a company repositioning itself as one unified sustainability, data and compliance platform. It builds software that helps organisations collect, manage and report ESG, climate and supply-chain data. And right now it's small. In early September twenty twenty-six, the shares trade at one dollar sixteen."
     },
     {
       "scene": 1,
-      "line": "It provides software and advisory solutions helping organisations collect, manage and report ESG and supply-chain data.",
+      "line": "It builds software that helps organisations collect, manage and report ESG, climate and supply-chain data.",
       "headline": "ESG DATA",
       "ground": "violet",
       "subjects": [
-        "the document stack",
-        "a paper screen"
+        "the stacked sheets",
+        "a grid-paper screen"
       ],
-      "action": "The previous chip slides off the left edge; the top sheet of the document stack lifts and folds upright into a paper screen, and a cream paper ribbon runs from the document stack to that screen.",
+      "action": "The top of the stacked sheets peels up and squares off into a grid-paper screen; rows of punched holes fill it and settle.",
       "hand": false,
-      "handoff": "the paper screen",
+      "handoff": "the grid-paper screen",
       "hero": false,
       "scale": "diagram",
-      "delivery": "It provides software and advisory solutions helping organisations collect, manage and report ESG and supply-chain data.",
+      "delivery": "It builds software that helps organisations collect, manage and report ESG, climate and supply-chain data.",
       "source": [
         2
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the document stack",
-        "to": "a paper screen",
-        "colour": "cream"
+        "from": "the stacked sheets",
+        "to": "a torn price strip",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So what is Diginex? It's a company repositioning itself as one unified sustainability, data and compliance platform. It builds software that helps organisations collect, manage and report ESG, climate and supply-chain data. And right now it's small. In early September twenty twenty-six, the shares trade at one dollar sixteen."
     },
     {
       "scene": 1,
-      "line": "Following acquisitions, it is evolving from point solutions into a fully integrated end-to-end platform.",
-      "headline": "END-TO-END",
+      "line": "And right now it's small. In early September twenty twenty-six, the shares trade at one dollar sixteen.",
+      "headline": "$1.16",
       "ground": "violet",
       "subjects": [
-        "the document stack",
-        "the folded platform sheet"
+        "the grid-paper screen",
+        "a torn price strip",
+        "the stacked sheets"
       ],
-      "action": "The previous chip flips away; the paper screen tips flat and unfolds into one wide platform sheet beside the document stack, the cream ribbon already in place between them.",
+      "action": "The grid-paper screen narrows into a torn price strip that drops low beside the stacked sheets; a cyan ribbon runs from the sheets to the strip and stays.",
       "hand": false,
-      "handoff": "the folded platform sheet",
+      "handoff": "the torn price strip",
       "hero": false,
       "scale": "small",
-      "delivery": "Following acquisitions, it is evolving from point solutions into a fully integrated end-to-end platform.",
-      "source": [
-        3
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "the document stack",
-        "to": "a paper screen",
-        "colour": "cream"
-      },
-      "tag": null
-    },
-    {
-      "scene": 2,
-      "line": "Enterprises face fragmented, manual processes for ESG and supply-chain compliance.",
-      "headline": "FRAGMENTED WORK",
-      "ground": "cyan",
-      "subjects": [
-        "the paper grid",
-        "torn paper strips"
-      ],
-      "action": "The previous chip is covered as the ground turns cyan; the folded platform sheet is ruled into a paper grid, and torn paper strips scatter unevenly across its squares.",
-      "hand": false,
-      "handoff": "the paper grid",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "[fast-paced] Enterprises face fragmented, manual processes for ESG and supply-chain compliance.",
-      "source": [
-        17
-      ],
-      "connector": {
-        "kind": "arrow",
-        "from": "the paper grid",
-        "to": "the paper bank building",
-        "colour": "blue"
-      },
-      "tag": null
-    },
-    {
-      "scene": 2,
-      "line": "Unified in one platform, it targets regulated banks and asset managers facing ESG disclosure requirements.",
-      "headline": "BANKS & FUNDS",
-      "ground": "cyan",
-      "subjects": [
-        "the paper grid",
-        "the paper bank building"
-      ],
-      "action": "The previous chip slides off the top edge; the torn strips press down into the paper grid's squares, and a blue paper arrow runs from the grid to a cutout paper bank building that rises at the right.",
-      "hand": false,
-      "handoff": "the paper bank building",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "Unified in one platform, it targets regulated banks and asset managers facing ESG disclosure requirements.",
-      "source": [
-        18,
-        19
-      ],
-      "connector": {
-        "kind": "arrow",
-        "from": "the paper grid",
-        "to": "the paper bank building",
-        "colour": "blue"
-      },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Diginex is in active integration mode after the one point five billion dollar Resulticks acquisition.",
-      "headline": "$1.5B",
-      "ground": "magenta",
-      "subjects": [
-        "the paper ledger sheet",
-        "paper coins"
-      ],
-      "action": "The previous chip flips down as the ground turns magenta; the paper bank building's facade peels forward into a single paper ledger sheet, and paper coins stack heavily at its corner.",
-      "hand": false,
-      "handoff": "the paper ledger sheet",
-      "hero": true,
-      "scale": "small",
-      "delivery": "[excited] Diginex is in active integration mode after the one point five billion dollar Resulticks acquisition.",
-      "source": [
-        15
-      ],
-      "connector": {
-        "kind": "string",
-        "from": "the paper ledger sheet",
-        "to": "the paper bar chart",
-        "colour": "black"
-      },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "General and administrative expenses rose three point four million, to eight point one million.",
-      "headline": "G&A $8.1M",
-      "ground": "magenta",
-      "subjects": [
-        "the paper ledger sheet",
-        "the paper bar chart"
-      ],
-      "action": "The previous chip slides off the right edge; the coins fold up into a paper bar chart whose columns climb, a black string runs from the ledger sheet to that chart, and a coin-sized cream tag reading '$2.2M' sits beside the string with a short black line pointing at it.",
-      "hand": false,
-      "handoff": "the paper bar chart",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "General and administrative expenses rose three point four million, to eight point one million.",
-      "source": [
-        26
-      ],
-      "connector": {
-        "kind": "string",
-        "from": "the paper ledger sheet",
-        "to": "the paper bar chart",
-        "colour": "black"
-      },
-      "tag": {
-        "text": "$2.2M",
-        "source": [
-          26
-        ]
-      }
-    },
-    {
-      "scene": 3,
-      "line": "It has absorbed four distinct businesses across multiple jurisdictions. Integration execution is the primary risk.",
-      "headline": "4 BUSINESSES",
-      "ground": "magenta",
-      "subjects": [
-        "the paper ledger sheet",
-        "four paper folders",
-        "a paper hand"
-      ],
-      "action": "The previous chip is covered; the bar chart's columns tilt apart into four paper folders that land on the paper ledger sheet, and a paper hand presses the pile flat while the black string stays in place.",
-      "hand": true,
-      "handoff": "the paper ledger sheet",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "It has absorbed four distinct businesses across multiple jurisdictions. Integration execution is the primary risk.",
-      "source": [
-        24,
-        25
-      ],
-      "connector": {
-        "kind": "string",
-        "from": "the paper ledger sheet",
-        "to": "the paper bar chart",
-        "colour": "black"
-      },
-      "tag": null
-    },
-    {
-      "scene": 4,
-      "line": "In early September twenty twenty-six, shares traded at one dollar sixteen, market cap around thirty-four million.",
-      "headline": "$1.16 / $34M",
-      "ground": "violet",
-      "subjects": [
-        "the paper price tag",
-        "paper coins"
-      ],
-      "action": "The previous chip flips away as the ground returns to violet; the paper ledger sheet is punched and trimmed into a hole-punched paper price tag, with a few paper coins resting under it.",
-      "hand": false,
-      "handoff": "the paper price tag",
-      "hero": false,
-      "scale": "small",
-      "delivery": "In early September twenty twenty-six, shares traded at one dollar sixteen, market cap around thirty-four million.",
+      "delivery": "And right now it's small. In early September twenty twenty-six, the shares trade at one dollar sixteen.",
       "source": [
         14
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the paper price tag",
-        "to": "the document stack",
-        "colour": "cream"
+        "from": "the stacked sheets",
+        "to": "a torn price strip",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So what is Diginex? It's a company repositioning itself as one unified sustainability, data and compliance platform. It builds software that helps organisations collect, manage and report ESG, climate and supply-chain data. And right now it's small. In early September twenty twenty-six, the shares trade at one dollar sixteen."
     },
     {
-      "scene": 4,
-      "line": "Diginex stays a higher-risk, speculative position, suited to investors patient with multi-year integration.",
-      "headline": "SPECULATIVE",
-      "ground": "violet",
+      "scene": 2,
+      "line": "It got there by buying. Plan A, Matter, The Remedy Project, and then Resulticks — four businesses folded into one end-to-end platform.",
+      "headline": "4 ACQUISITIONS",
+      "ground": "cyan",
       "subjects": [
-        "the document stack",
-        "the paper price tag"
+        "four cutout folders",
+        "the stacked sheets"
       ],
-      "action": "The previous chip slides off the left edge; the paper price tag hinges over and rebuilds itself into the document stack, now with the tag pinned to its top sheet by a cream ribbon.",
+      "action": "The torn price strip tears into four cutout folders; each folder slides in turn onto the stacked sheets and lies flat.",
       "hand": false,
-      "handoff": "the document stack",
+      "handoff": "the stacked sheets",
+      "hero": true,
+      "scale": "diagram",
+      "delivery": "It got there by buying. Plan A, Matter, The Remedy Project, and then Resulticks — four businesses folded into one end-to-end platform.",
+      "source": [
+        3,
+        25
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "four cutout folders",
+        "to": "the stacked sheets",
+        "colour": "orange"
+      },
+      "tag": null,
+      "narration": "It got there by buying. Plan A, Matter, The Remedy Project, and then Resulticks — four businesses folded into one end-to-end platform. Resulticks is the pivotal move: it adds AI-driven customer data to a compliance core."
+    },
+    {
+      "scene": 2,
+      "line": "Resulticks is the pivotal move: it adds AI-driven customer data to a compliance core.",
+      "headline": "AI CUSTOMER DATA",
+      "ground": "cyan",
+      "subjects": [
+        "the stacked sheets",
+        "four cutout folders",
+        "a paper hand"
+      ],
+      "action": "The stacked sheets swell as a paper hand presses one folder deep into their centre; the orange arrow from the folders is already in place, and a coin-sized cream tag reading 'Resulticks' sits beside it with a short black line pointing at it.",
+      "hand": true,
+      "handoff": "the pressed stack",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[excited] Resulticks is the pivotal move: it adds AI-driven customer data to a compliance core.",
+      "source": [
+        20
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "four cutout folders",
+        "to": "the stacked sheets",
+        "colour": "orange"
+      },
+      "tag": {
+        "text": "Resulticks",
+        "source": [
+          20
+        ]
+      },
+      "narration": "It got there by buying. Plan A, Matter, The Remedy Project, and then Resulticks — four businesses folded into one end-to-end platform. Resulticks is the pivotal move: it adds AI-driven customer data to a compliance core."
+    },
+    {
+      "scene": 3,
+      "line": "But integration is the primary risk. Four businesses across multiple jurisdictions is complex.",
+      "headline": "INTEGRATION RISK",
+      "ground": "magenta",
+      "subjects": [
+        "the paper ledger sheet",
+        "string and pins"
+      ],
+      "action": "The pressed stack flattens out into one wide paper ledger sheet; four pins drop into it and string crosses between them, pulling taut.",
+      "hand": false,
+      "handoff": "the paper ledger sheet",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Diginex stays a higher-risk, speculative position, suited to investors patient with multi-year integration.",
+      "delivery": "But integration is the primary risk. Four businesses across multiple jurisdictions is complex.",
       "source": [
-        39
+        24,
+        25
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the paper price tag",
-        "to": "the document stack",
-        "colour": "cream"
+        "from": "the paper ledger sheet",
+        "to": "a torn price strip",
+        "colour": "red"
       },
-      "tag": null
+      "tag": null,
+      "narration": "But integration is the primary risk. Four businesses across multiple jurisdictions is complex. General and administrative expenses rose three point four million to eight point one million in the six months to September twenty twenty-five. And the stock's collapse to one dollar sixteen suggests market scepticism about scale and profitability."
+    },
+    {
+      "scene": 3,
+      "line": "General and administrative expenses rose three point four million to eight point one million in the six months to September twenty twenty-five.",
+      "headline": "G&A $8.1M",
+      "ground": "magenta",
+      "subjects": [
+        "the paper ledger sheet",
+        "a paper bar chart"
+      ],
+      "action": "The paper ledger sheet folds upright into a paper bar chart; one bar climbs and locks at the top, a coin-sized cream tag reading '$8.1M' beside it with a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper bar chart",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[fast-paced] General and administrative expenses rose three point four million to eight point one million in the six months to September twenty twenty-five.",
+      "source": [
+        26
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper ledger sheet",
+        "to": "a torn price strip",
+        "colour": "red"
+      },
+      "tag": {
+        "text": "$8.1M",
+        "source": [
+          26
+        ]
+      },
+      "narration": "But integration is the primary risk. Four businesses across multiple jurisdictions is complex. General and administrative expenses rose three point four million to eight point one million in the six months to September twenty twenty-five. And the stock's collapse to one dollar sixteen suggests market scepticism about scale and profitability."
+    },
+    {
+      "scene": 3,
+      "line": "And the stock's collapse to one dollar sixteen suggests market scepticism about scale and profitability.",
+      "headline": "SCEPTICISM",
+      "ground": "magenta",
+      "subjects": [
+        "a torn price strip",
+        "the paper ledger sheet"
+      ],
+      "action": "The tall bar tips over and tears down into a torn price strip lying low; the red ribbon from the ledger sheet is already in place, holding it there.",
+      "hand": false,
+      "handoff": "the torn price strip",
+      "hero": false,
+      "scale": "small",
+      "delivery": "And the stock's collapse to one dollar sixteen suggests market scepticism about scale and profitability.",
+      "source": [
+        28
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper ledger sheet",
+        "to": "a torn price strip",
+        "colour": "red"
+      },
+      "tag": null,
+      "narration": "But integration is the primary risk. Four businesses across multiple jurisdictions is complex. General and administrative expenses rose three point four million to eight point one million in the six months to September twenty twenty-five. And the stock's collapse to one dollar sixteen suggests market scepticism about scale and profitability."
+    },
+    {
+      "scene": 4,
+      "line": "So what changes it? Evidence the platform's winning new customers in banking and asset management. Resulticks synergies.",
+      "headline": "NEW LOGOS",
+      "ground": "violet",
+      "subjects": [
+        "the stacked sheets",
+        "hole-punched tags"
+      ],
+      "action": "The torn price strip lifts and thickens back into the stacked sheets; hole-punched tags clip onto their edge one after another and hang there.",
+      "hand": false,
+      "handoff": "the tagged stack",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "So what changes it? Evidence the platform's winning new customers in banking and asset management. Resulticks synergies.",
+      "source": [
+        32,
+        33
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "the stacked sheets",
+        "to": "a paper map",
+        "colour": "green"
+      },
+      "tag": null,
+      "narration": "So what changes it? Evidence the platform's winning new customers in banking and asset management. Resulticks synergies. And Brazil — a seventy-seven billion dollar sustainability market the company's signalled a focus on."
+    },
+    {
+      "scene": 4,
+      "line": "And Brazil — a seventy-seven billion dollar sustainability market the company's signalled a focus on.",
+      "headline": "$77B BRAZIL",
+      "ground": "violet",
+      "subjects": [
+        "the stacked sheets",
+        "a paper map"
+      ],
+      "action": "The tagged stack settles back into the stacked sheets and a paper map unfolds beside them, a green string running from the sheets to the map and holding.",
+      "hand": false,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "small",
+      "delivery": "And Brazil — a seventy-seven billion dollar sustainability market the company's signalled a focus on.",
+      "source": [
+        35
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "the stacked sheets",
+        "to": "a paper map",
+        "colour": "green"
+      },
+      "tag": null,
+      "narration": "So what changes it? Evidence the platform's winning new customers in banking and asset management. Resulticks synergies. And Brazil — a seventy-seven billion dollar sustainability market the company's signalled a focus on."
     }
   ],
   "dropped": [],
@@ -275,17 +292,17 @@
     [],
     [],
     [],
-    [],
-    [],
-    [],
-    [],
     [
-      "headline number \"4\" not found as a figure in cited sentences [24,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
+      "headline number \"4\" not found as a figure in cited sentences [3,25] (fine if it is a count of items those sentences enumerate; flagged either way)"
     ],
+    [],
+    [],
+    [],
+    [],
     [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 65026,
+  "ms": 66564,
   "clipSeconds": 15
 }

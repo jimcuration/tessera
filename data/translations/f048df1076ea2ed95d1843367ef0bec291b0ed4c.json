@@ -1,134 +1,110 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "What are the key risks for Diginex?",
   "beats": [
     {
       "scene": 1,
-      "line": "The ESG reporting landscape stays highly fragmented, with standards varying across jurisdictions and industries.",
+      "line": "Start with the data itself. ESG reporting is highly fragmented — standards vary by country, by industry.",
       "headline": "FRAGMENTED STANDARDS",
       "ground": "violet",
       "subjects": [
-        "a paper document stack",
-        "a paper map grid"
+        "the stacked sheets",
+        "torn paper strips"
       ],
-      "action": "A halftone paper document stack drops onto a paper map grid and settles, its sheets fanning apart into uneven tiers.",
+      "action": "A neat pile of halftone stacked sheets lands centre frame, then torn paper strips slide in and split it into mismatched piles that hold apart.",
       "hand": false,
-      "handoff": "the document stack",
+      "handoff": "the stacked sheets",
       "hero": false,
       "scale": "oversized",
-      "delivery": "[presenting to camera] The ESG reporting landscape stays highly fragmented, with standards varying across jurisdictions and industries.",
+      "delivery": "[presenting to camera] Start with the data itself. ESG reporting is highly fragmented — standards vary by country, by industry.",
       "source": [
         9
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the document stack",
-        "to": "a paper map grid",
-        "colour": "cream"
+        "from": "the stacked sheets",
+        "to": "a paper stamp",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Start with the data itself. ESG reporting is highly fragmented — standards vary by country, by industry. So data quality, reliability and comparability are real challenges. And if Diginex's platforms can't deliver accurate, auditable, regulatory-grade data, credibility with institutional clients or regulators could suffer."
     },
     {
       "scene": 1,
-      "line": "So data quality, reliability and comparability pose significant challenges.",
+      "line": "So data quality, reliability and comparability are real challenges.",
       "headline": "DATA RELIABILITY",
       "ground": "violet",
       "subjects": [
-        "the document stack",
-        "a paper map grid"
+        "the stacked sheets",
+        "grid paper"
       ],
-      "action": "The previous chip slides off the left edge as the document stack tilts; a cream paper ribbon already runs from it to the paper map grid, and mismatched sheets slip loose.",
+      "action": "The mismatched stacked sheets flatten onto a sheet of grid paper, and a cyan paper ribbon unrolls from them toward the empty right edge and holds there.",
       "hand": false,
-      "handoff": "the loose sheets",
+      "handoff": "the cyan ribbon",
       "hero": false,
       "scale": "diagram",
-      "delivery": "So data quality, reliability and comparability pose significant challenges.",
+      "delivery": "So data quality, reliability and comparability are real challenges.",
       "source": [
         10
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the document stack",
-        "to": "a paper map grid",
-        "colour": "cream"
+        "from": "the stacked sheets",
+        "to": "a paper stamp",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Start with the data itself. ESG reporting is highly fragmented — standards vary by country, by industry. So data quality, reliability and comparability are real challenges. And if Diginex's platforms can't deliver accurate, auditable, regulatory-grade data, credibility with institutional clients or regulators could suffer."
     },
     {
       "scene": 1,
-      "line": "If Diginex fails to deliver auditable, regulatory-grade data, credibility with institutional clients could suffer.",
+      "line": "And if Diginex's platforms can't deliver accurate, auditable, regulatory-grade data, credibility with institutional clients or regulators could suffer.",
       "headline": "CREDIBILITY AT RISK",
       "ground": "violet",
       "subjects": [
-        "the document stack",
-        "a rubber stamp",
-        "a paper hand"
+        "a paper stamp",
+        "the stacked sheets"
       ],
-      "action": "The previous chip flips away as the loose sheets gather back into the document stack; a paper hand presses a rubber stamp down and lifts it, leaving the mark torn, the cream ribbon still in place.",
-      "hand": true,
-      "handoff": "the torn stamp mark",
+      "action": "The end of the cyan ribbon folds up into a paper stamp, which presses down on the stacked sheets and lifts away leaving a smudged mark.",
+      "hand": false,
+      "handoff": "the paper stamp",
       "hero": false,
       "scale": "small",
-      "delivery": "If Diginex fails to deliver auditable, regulatory-grade data, credibility with institutional clients could suffer.",
+      "delivery": "And if Diginex's platforms can't deliver accurate, auditable, regulatory-grade data, credibility with institutional clients or regulators could suffer.",
       "source": [
         11
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the document stack",
-        "to": "a paper map grid",
-        "colour": "cream"
+        "from": "the stacked sheets",
+        "to": "a paper stamp",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Start with the data itself. ESG reporting is highly fragmented — standards vary by country, by industry. So data quality, reliability and comparability are real challenges. And if Diginex's platforms can't deliver accurate, auditable, regulatory-grade data, credibility with institutional clients or regulators could suffer."
     },
     {
       "scene": 2,
-      "line": "The sharp decline in the share price suggests investor expectations have not been met.",
+      "line": "Then there's execution. The share price has fallen sharply, so investor expectations haven't been met.",
       "headline": "SHARE PRICE FALL",
       "ground": "magenta",
       "subjects": [
-        "the paper price chart",
-        "a torn strip"
+        "a paper bar chart",
+        "a stencilled arrow"
       ],
-      "action": "The previous chip is covered as the torn stamp mark unfolds into the paper price chart; its line tears downward and holds at the low corner.",
+      "action": "The paper stamp tips over and unfolds into a paper bar chart whose bars shorten left to right; a stencilled arrow slides down its edge and stops low.",
       "hand": false,
-      "handoff": "the paper price chart",
+      "handoff": "the paper bar chart",
       "hero": false,
       "scale": "oversized",
-      "delivery": "The sharp decline in the share price suggests investor expectations have not been met.",
+      "delivery": "Then there's execution. The share price has fallen sharply, so investor expectations haven't been met.",
       "source": [
         15
       ],
       "connector": {
-        "kind": "paper arrow",
-        "from": "the paper price chart",
-        "to": "a paper acquisition folder",
-        "colour": "orange"
-      },
-      "tag": null
-    },
-    {
-      "scene": 2,
-      "line": "Revenue growth has been strong, up two hundred and ninety-three percent to two million dollars.",
-      "headline": "+293% TO $2.0M",
-      "ground": "magenta",
-      "subjects": [
-        "the paper price chart",
-        "a paper bar chart"
-      ],
-      "action": "The previous chip slides off as the paper price chart's torn line rebuilds into a rising paper bar chart; an orange paper arrow unrolls from it toward a paper acquisition folder, and a coin-sized cream tag reading '+293%' sits beside the arrow with a short black line pointing at it.",
-      "hand": false,
-      "handoff": "the orange arrow",
-      "hero": true,
-      "scale": "diagram",
-      "delivery": "[excited] Revenue growth has been strong, up two hundred and ninety-three percent to two million dollars.",
-      "source": [
-        16
-      ],
-      "connector": {
-        "kind": "paper arrow",
-        "from": "the paper price chart",
-        "to": "a paper acquisition folder",
+        "kind": "arrow",
+        "from": "a paper bar chart",
+        "to": "two paper documents",
         "colour": "orange"
       },
       "tag": {
@@ -136,113 +112,147 @@
         "source": [
           16
         ]
-      }
+      },
+      "narration": "Then there's execution. The share price has fallen sharply, so investor expectations haven't been met. Revenue growth was strong — up two hundred and ninety-three percent, to two million dollars. But the market's asking how repeatable that is, and the Resulticks integration has to deliver."
     },
     {
       "scene": 2,
-      "line": "The strategy leans on acquisitions and partnerships, so execution is the key risk after Resulticks.",
-      "headline": "EXECUTION RISK",
+      "line": "Revenue growth was strong — up two hundred and ninety-three percent, to two million dollars.",
+      "headline": "+293% TO $2.0M",
       "ground": "magenta",
       "subjects": [
-        "a paper acquisition folder",
-        "the paper price chart",
-        "paper clips"
+        "a paper bar chart",
+        "a coin-sized cream tag"
       ],
-      "action": "The previous chip flips down as the orange arrow lands in a paper acquisition folder; paper clips press onto its edge one by one and the folder strains open, the arrow still running back to the paper price chart.",
+      "action": "The paper bar chart's bars grow tall again in one sweep, and an orange arrow runs off its top edge with a coin-sized cream tag reading '+293%' beside it, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the acquisition folder",
-      "hero": false,
+      "handoff": "the orange arrow",
+      "hero": true,
       "scale": "small",
-      "delivery": "[fast-paced] The strategy leans on acquisitions and partnerships, so execution is the key risk after Resulticks.",
+      "delivery": "[excited] Revenue growth was strong — up two hundred and ninety-three percent, to two million dollars.",
       "source": [
-        17
+        16
       ],
       "connector": {
-        "kind": "paper arrow",
-        "from": "the paper price chart",
-        "to": "a paper acquisition folder",
+        "kind": "arrow",
+        "from": "a paper bar chart",
+        "to": "two paper documents",
         "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Then there's execution. The share price has fallen sharply, so investor expectations haven't been met. Revenue growth was strong — up two hundred and ninety-three percent, to two million dollars. But the market's asking how repeatable that is, and the Resulticks integration has to deliver."
+    },
+    {
+      "scene": 2,
+      "line": "But the market's asking how repeatable that is, and the Resulticks integration has to deliver.",
+      "headline": "INTEGRATION RISK",
+      "ground": "magenta",
+      "subjects": [
+        "two paper documents",
+        "a paper bar chart",
+        "a paper hand"
+      ],
+      "action": "The orange arrow splits into two paper documents that drift apart; a paper hand enters and pushes them back together until their edges meet.",
+      "hand": true,
+      "handoff": "the two paper documents",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "But the market's asking how repeatable that is, and the Resulticks integration has to deliver.",
+      "source": [
+        16,
+        17,
+        18
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "a paper bar chart",
+        "to": "two paper documents",
+        "colour": "orange"
+      },
+      "tag": null,
+      "narration": "Then there's execution. The share price has fallen sharply, so investor expectations haven't been met. Revenue growth was strong — up two hundred and ninety-three percent, to two million dollars. But the market's asking how repeatable that is, and the Resulticks integration has to deliver."
     },
     {
       "scene": 3,
-      "line": "Adoption stays uneven across sectors and geographies. Smaller firms may delay on cost or complexity.",
+      "line": "And then adoption. Regulatory pressure is mounting, but ESG uptake is uneven across sectors and geographies.",
       "headline": "UNEVEN ADOPTION",
       "ground": "violet",
       "subjects": [
-        "a paper map grid",
-        "small paper buildings"
+        "a paper map",
+        "paper pins"
       ],
-      "action": "The previous chip slides off the top edge as the acquisition folder flattens into a paper map grid; small paper buildings rise across it, some standing and some staying folded flat.",
+      "action": "The two paper documents flatten and join into a paper map; paper pins drop onto it in scattered clusters, leaving wide gaps bare.",
       "hand": false,
-      "handoff": "the paper map grid",
+      "handoff": "the paper map",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "Adoption stays uneven across sectors and geographies. Smaller firms may delay on cost or complexity.",
+      "scale": "oversized",
+      "delivery": "[fast-paced] And then adoption. Regulatory pressure is mounting, but ESG uptake is uneven across sectors and geographies.",
       "source": [
-        20,
-        21
+        20
       ],
       "connector": {
-        "kind": "paper string",
-        "from": "the paper calendar strip",
-        "to": "the document stack",
-        "colour": "cream"
+        "kind": "string",
+        "from": "a paper map",
+        "to": "the stacked sheets",
+        "colour": "lime"
       },
-      "tag": null
+      "tag": null,
+      "narration": "And then adoption. Regulatory pressure is mounting, but ESG uptake is uneven across sectors and geographies. Smaller firms may delay on cost or complexity. Many corporates still treat compliance as box-ticking. If that holds, sales cycles lengthen and ARR growth slows."
     },
     {
       "scene": 3,
-      "line": "If ESG stays underprioritised, sales cycles may lengthen, slowing recurring revenue growth.",
-      "headline": "LONGER SALES CYCLES",
+      "line": "Smaller firms may delay on cost or complexity. Many corporates still treat compliance as box-ticking.",
+      "headline": "BOX-TICKING",
       "ground": "violet",
       "subjects": [
-        "the paper calendar strip",
-        "small paper buildings"
+        "a paper map",
+        "hole-punched tags"
       ],
-      "action": "The previous chip is covered as the paper map grid rolls into the paper calendar strip; the strip stretches out month by month and stops, a cream string trailing from its far end.",
+      "action": "Small hole-punched tags rise from the paper map's bare gaps and hang in a row, each ticked and left dangling; a lime string runs from the map toward the right edge.",
       "hand": false,
-      "handoff": "the paper calendar strip",
+      "handoff": "the hole-punched tags",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "If ESG stays underprioritised, sales cycles may lengthen, slowing recurring revenue growth.",
+      "scale": "diagram",
+      "delivery": "Smaller firms may delay on cost or complexity. Many corporates still treat compliance as box-ticking.",
+      "source": [
+        21,
+        22
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "a paper map",
+        "to": "the stacked sheets",
+        "colour": "lime"
+      },
+      "tag": null,
+      "narration": "And then adoption. Regulatory pressure is mounting, but ESG uptake is uneven across sectors and geographies. Smaller firms may delay on cost or complexity. Many corporates still treat compliance as box-ticking. If that holds, sales cycles lengthen and ARR growth slows."
+    },
+    {
+      "scene": 3,
+      "line": "If that holds, sales cycles lengthen and ARR growth slows.",
+      "headline": "SLOWER ARR",
+      "ground": "violet",
+      "subjects": [
+        "the stacked sheets",
+        "the hole-punched tags"
+      ],
+      "action": "The hanging hole-punched tags settle back down and gather into the stacked sheets from the opening, now stretched into a longer, slower pile with the lime string still pinned across it.",
+      "hand": false,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "small",
+      "delivery": "If that holds, sales cycles lengthen and ARR growth slows.",
       "source": [
         23
       ],
       "connector": {
-        "kind": "paper string",
-        "from": "the paper calendar strip",
-        "to": "the document stack",
-        "colour": "cream"
+        "kind": "string",
+        "from": "a paper map",
+        "to": "the stacked sheets",
+        "colour": "lime"
       },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Diginex must educate the market, streamline onboarding and demonstrate return on investment.",
-      "headline": "PROVE ROI",
-      "ground": "violet",
-      "subjects": [
-        "the document stack",
-        "a paper hand"
-      ],
-      "action": "The previous chip flips away as the cream string pulls the paper calendar strip back into the document stack; a paper hand squares the sheets and lays a clean stamped ribbon across the top.",
-      "hand": true,
-      "handoff": "the document stack",
-      "hero": false,
-      "scale": "small",
-      "delivery": "Diginex must educate the market, streamline onboarding and demonstrate return on investment.",
-      "source": [
-        24
-      ],
-      "connector": {
-        "kind": "paper string",
-        "from": "the paper calendar strip",
-        "to": "the document stack",
-        "colour": "cream"
-      },
-      "tag": null
+      "tag": null,
+      "narration": "And then adoption. Regulatory pressure is mounting, but ESG uptake is uneven across sectors and geographies. Smaller firms may delay on cost or complexity. Many corporates still treat compliance as box-ticking. If that holds, sales cycles lengthen and ARR growth slows."
     }
   ],
   "dropped": [],
@@ -258,6 +268,6 @@
     []
   ],
   "model": "claude-opus-5",
-  "ms": 38558,
+  "ms": 48103,
   "clipSeconds": 15
 }

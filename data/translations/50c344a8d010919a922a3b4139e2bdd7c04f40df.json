@@ -1,292 +1,234 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "What is the regulatory driver behind demand for Diginex's products?",
   "beats": [
     {
       "scene": 1,
-      "line": "The rules on ESG reporting have shifted in the past eighteen to twenty-four months.",
-      "headline": "18–24 MONTHS",
-      "ground": "violet",
-      "subjects": [
-        "the rulebook stack",
-        "a cream paper chip"
-      ],
-      "action": "A halftone stack of paper rulebooks drops onto a cream chip and settles square to the frame.",
-      "hand": false,
-      "handoff": "the rulebook stack",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "[presenting to camera] The rules on ESG reporting have shifted in the past eighteen to twenty-four months.",
-      "source": [
-        1
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "the rulebook stack",
-        "to": "a grid of paper company cards",
-        "colour": "orange"
-      },
-      "tag": null
-    },
-    {
-      "scene": 1,
-      "line": "Europe's reporting directive asks around fifty thousand large companies for detailed ESG metrics from twenty twenty-five.",
+      "line": "Here's what's driving demand. A rule called CSRD makes about fifty thousand large companies report detailed ESG metrics from twenty twenty-five.",
       "headline": "~50,000 COMPANIES",
       "ground": "violet",
       "subjects": [
-        "the rulebook stack",
-        "a grid of paper company cards"
+        "a stack of paper documents",
+        "a paper calendar page"
       ],
-      "action": "The previous chip slides off the top edge as the rulebook stack fans open into a grid of paper company cards; an orange paper ribbon runs from the rulebook stack to the grid, and a coin-sized cream tag reading '~50,000' sits beside the ribbon, a short black line pointing at it.",
+      "action": "A tall halftone stack of paper documents drops onto open ground; a paper calendar page slides in beside it and a cream ribbon settles between them, with a coin-sized cream tag reading '~50,000' beside the ribbon, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the card grid",
+      "handoff": "the document stack",
       "hero": true,
-      "scale": "diagram",
-      "delivery": "[excited] Europe's reporting directive asks around fifty thousand large companies for detailed ESG metrics from twenty twenty-five.",
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Here's what's driving demand. A rule called CSRD makes about fifty thousand large companies report detailed ESG metrics from twenty twenty-five.",
       "source": [
         3
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the rulebook stack",
-        "to": "a grid of paper company cards",
-        "colour": "orange"
+        "from": "a stack of paper documents",
+        "to": "a paper calendar page",
+        "colour": "cream"
       },
       "tag": {
         "text": "~50,000",
         "source": [
           3
         ]
-      }
+      },
+      "narration": "Here's what's driving demand. A rule called CSRD makes about fifty thousand large companies report detailed ESG metrics from twenty twenty-five. It's the single largest driver of demand for ESG software globally. And what they must disclose — carbon emissions, supply chains, human rights — is exactly where Diginex works."
     },
     {
       "scene": 1,
-      "line": "That directive is the single largest driver of demand for ESG software globally.",
-      "headline": "LARGEST DRIVER",
+      "line": "It's the single largest driver of demand for ESG software globally.",
+      "headline": "LARGEST DEMAND DRIVER",
       "ground": "violet",
       "subjects": [
-        "a grid of paper company cards",
-        "the rulebook stack"
+        "the document stack",
+        "a paper globe"
       ],
-      "action": "The previous chip flips away as the card grid tilts and stacks into one tall column beside the rulebook stack, the orange ribbon still in place between them.",
+      "action": "The document stack leans and its top sheets curl into a paper globe that rises above it and holds, the cream ribbon still running between stack and calendar page.",
       "hand": false,
-      "handoff": "the card column",
+      "handoff": "the paper globe",
       "hero": false,
-      "scale": "small",
-      "delivery": "That directive is the single largest driver of demand for ESG software globally.",
+      "scale": "diagram",
+      "delivery": "It's the single largest driver of demand for ESG software globally.",
       "source": [
         4
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the rulebook stack",
-        "to": "a grid of paper company cards",
-        "colour": "orange"
+        "from": "a stack of paper documents",
+        "to": "a paper calendar page",
+        "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Here's what's driving demand. A rule called CSRD makes about fifty thousand large companies report detailed ESG metrics from twenty twenty-five. It's the single largest driver of demand for ESG software globally. And what they must disclose — carbon emissions, supply chains, human rights — is exactly where Diginex works."
     },
     {
-      "scene": 2,
-      "line": "America's climate rule is delayed and contested. Still, climate data must become auditable and consistent.",
-      "headline": "SEC CLIMATE RULE",
-      "ground": "cyan",
+      "scene": 1,
+      "line": "And what they must disclose — carbon emissions, supply chains, human rights — is exactly where Diginex works.",
+      "headline": "3 DISCLOSURES",
+      "ground": "violet",
       "subjects": [
-        "the folded paper map",
-        "a paper filing document"
+        "a paper globe",
+        "three torn strips"
       ],
-      "action": "The previous chip is covered as the card column unfolds flat into the folded paper map; a paper filing document lands on it and holds.",
+      "action": "The paper globe unpeels into three torn strips that fan out and lie flat side by side, the cream ribbon already in place behind them.",
       "hand": false,
-      "handoff": "the folded paper map",
+      "handoff": "the three torn strips",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "America's climate rule is delayed and contested. Still, climate data must become auditable and consistent.",
+      "scale": "small",
+      "delivery": "And what they must disclose — carbon emissions, supply chains, human rights — is exactly where Diginex works.",
       "source": [
-        6,
-        7
+        5
       ],
       "connector": {
-        "kind": "paper string",
-        "from": "the folded paper map",
-        "to": "the paper platform slab",
-        "colour": "orange"
+        "kind": "paper ribbon",
+        "from": "a stack of paper documents",
+        "to": "a paper calendar page",
+        "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Here's what's driving demand. A rule called CSRD makes about fifty thousand large companies report detailed ESG metrics from twenty twenty-five. It's the single largest driver of demand for ESG software globally. And what they must disclose — carbon emissions, supply chains, human rights — is exactly where Diginex works."
     },
     {
       "scene": 2,
-      "line": "Companies working across jurisdictions face fragmented requirements. Global standards work aims to standardise them.",
-      "headline": "FRAGMENTED RULES",
+      "line": "And CSRD isn't alone. The SEC wants climate risk in financial filings, and ISSB is pulling fragmented global standards together.",
+      "headline": "SEC + ISSB",
       "ground": "cyan",
       "subjects": [
-        "the folded paper map",
-        "the paper platform slab"
+        "the ring binder",
+        "grid paper"
       ],
-      "action": "The previous chip slides left as the folded paper map tears into scattered panels, then a paper platform slab slides under them; an orange paper string runs from the map to the slab.",
+      "action": "The three torn strips fold together and clamp into a ring binder that lands on a sheet of grid paper and settles open.",
       "hand": false,
-      "handoff": "the paper platform slab",
+      "handoff": "the ring binder",
       "hero": false,
       "scale": "diagram",
-      "delivery": "[fast-paced] Companies working across jurisdictions face fragmented requirements. Global standards work aims to standardise them.",
+      "delivery": "[fast-paced] And CSRD isn't alone. The SEC wants climate risk in financial filings, and ISSB is pulling fragmented global standards together.",
       "source": [
+        6,
+        7,
         8,
         9
       ],
       "connector": {
         "kind": "paper string",
-        "from": "the folded paper map",
-        "to": "the paper platform slab",
-        "colour": "orange"
+        "from": "the ring binder",
+        "to": "the paper clip chain",
+        "colour": "blue"
       },
-      "tag": null
+      "tag": null,
+      "narration": "And CSRD isn't alone. The SEC wants climate risk in financial filings, and ISSB is pulling fragmented global standards together. Then SFDR and the UK Modern Slavery Act add supply chain and human rights checks, which Diginex's supply chain module addresses."
     },
     {
       "scene": 2,
-      "line": "Diginex's supply chain module addresses Europe's disclosure rules and the UK Modern Slavery Act.",
-      "headline": "SUPPLY CHAIN",
+      "line": "Then SFDR and the UK Modern Slavery Act add supply chain and human rights checks, which Diginex's supply chain module addresses.",
+      "headline": "SFDR / MODERN SLAVERY",
       "ground": "cyan",
       "subjects": [
-        "the paper platform slab",
-        "a chain of paper supply cards",
+        "the ring binder",
+        "the paper clip chain",
         "a paper hand"
       ],
-      "action": "The previous chip flips down as the paper platform slab sprouts a chain of paper supply cards; a paper hand enters and presses the chain flat, the orange string still running to the slab.",
+      "action": "A paper hand pulls a long paper clip chain out of the ring binder until it stretches across the frame and holds taut, a blue string running from binder to chain.",
       "hand": true,
-      "handoff": "the paper chain",
+      "handoff": "the paper clip chain",
       "hero": false,
-      "scale": "small",
-      "delivery": "Diginex's supply chain module addresses Europe's disclosure rules and the UK Modern Slavery Act.",
+      "scale": "oversized",
+      "delivery": "Then SFDR and the UK Modern Slavery Act add supply chain and human rights checks, which Diginex's supply chain module addresses.",
       "source": [
         11,
         12
       ],
       "connector": {
         "kind": "paper string",
-        "from": "the folded paper map",
-        "to": "the paper platform slab",
-        "colour": "orange"
+        "from": "the ring binder",
+        "to": "the paper clip chain",
+        "colour": "blue"
       },
-      "tag": null
+      "tag": null,
+      "narration": "And CSRD isn't alone. The SEC wants climate risk in financial filings, and ISSB is pulling fragmented global standards together. Then SFDR and the UK Modern Slavery Act add supply chain and human rights checks, which Diginex's supply chain module addresses."
     },
     {
       "scene": 3,
-      "line": "Larger competitors ride the same regulatory wave, and they have deeper resources.",
-      "headline": "DEEPER RESOURCES",
-      "ground": "magenta",
+      "line": "But it's not just compliance. Investors and banks are baking ESG into where capital goes.",
+      "headline": "CAPITAL ALLOCATION",
+      "ground": "lime",
       "subjects": [
-        "a paper bar chart",
-        "a paper window frame"
+        "the coin stack",
+        "a paper bank building"
       ],
-      "action": "The previous chip slides off as the paper chain folds up into a paper bar chart with two tall bars; a paper window frame drops in beside it and a black arrow runs from the chart to the frame.",
+      "action": "The paper clip chain coils tight and becomes the coin stack; a cutout paper bank building slides in behind it and stops.",
       "hand": false,
-      "handoff": "the paper window frame",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "Larger competitors ride the same regulatory wave, and they have deeper resources.",
-      "source": [
-        31
-      ],
-      "connector": {
-        "kind": "arrow",
-        "from": "a paper bar chart",
-        "to": "a paper window frame",
-        "colour": "black"
-      },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Diginex must prove platform traction and cross-sell before that regulatory window closes.",
-      "headline": "WINDOW CLOSES",
-      "ground": "magenta",
-      "subjects": [
-        "a paper window frame",
-        "a paper bar chart"
-      ],
-      "action": "The previous chip is covered as the paper window frame slides shut over the bar chart and stops half open, the black arrow still pointing at it.",
-      "hand": false,
-      "handoff": "the paper window frame",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "Diginex must prove platform traction and cross-sell before that regulatory window closes.",
-      "source": [
-        32
-      ],
-      "connector": {
-        "kind": "arrow",
-        "from": "a paper bar chart",
-        "to": "a paper window frame",
-        "colour": "black"
-      },
-      "tag": null
-    },
-    {
-      "scene": 4,
-      "line": "The regulatory tailwind is real and durable. These mandates are not going away.",
-      "headline": "DURABLE TAILWIND",
-      "ground": "violet",
-      "subjects": [
-        "a paper wave",
-        "the rulebook stack"
-      ],
-      "action": "The previous chip flips away as the paper window frame curls over into a paper wave; the rulebook stack rises behind it and a cream ribbon runs from the stack to the wave.",
-      "hand": false,
-      "handoff": "the paper wave",
+      "handoff": "the coin stack",
       "hero": false,
       "scale": "small",
-      "delivery": "The regulatory tailwind is real and durable. These mandates are not going away.",
+      "delivery": "But it's not just compliance. Investors and banks are baking ESG into where capital goes.",
       "source": [
-        29
+        14,
+        15
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the rulebook stack",
-        "to": "a paper wave",
-        "colour": "cream"
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "But it's not just compliance. Investors and banks are baking ESG into where capital goes. Doctolib picked Diginex's Plan A platform for quarterly carbon reporting. The deadline creates urgency; the operational value creates stickiness."
     },
     {
-      "scene": 4,
-      "line": "Diginex isn't betting on voluntary adoption. It is riding a regulatory wave.",
-      "headline": "RIDING THE WAVE",
-      "ground": "violet",
+      "scene": 3,
+      "line": "Doctolib picked Diginex's Plan A platform for quarterly carbon reporting. The deadline creates urgency; the operational value creates stickiness.",
+      "headline": "QUARTERLY REPORTING",
+      "ground": "lime",
       "subjects": [
-        "the rulebook stack",
-        "a paper wave",
-        "a cream paper chip"
+        "the coin stack",
+        "a paper calendar strip"
       ],
-      "action": "The previous chip slides off the top edge as the paper wave flattens back under the rulebook stack, which settles onto a cream chip with the cream ribbon now taped across it.",
+      "action": "The coin stack tips and a paper calendar strip unrolls from it into quarter panels; an orange ribbon runs from the coin stack to the strip, and a coin-sized cream tag reading 'Plan A' sits beside the ribbon, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the rulebook stack",
+      "handoff": "the calendar strip",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "Diginex isn't betting on voluntary adoption. It is riding a regulatory wave.",
+      "scale": "diagram",
+      "delivery": "Doctolib picked Diginex's Plan A platform for quarterly carbon reporting. The deadline creates urgency; the operational value creates stickiness.",
       "source": [
-        25
+        17,
+        18
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the rulebook stack",
-        "to": "a paper wave",
-        "colour": "cream"
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "orange"
       },
-      "tag": null
+      "tag": {
+        "text": "Plan A",
+        "source": [
+          17
+        ]
+      },
+      "narration": "But it's not just compliance. Investors and banks are baking ESG into where capital goes. Doctolib picked Diginex's Plan A platform for quarterly carbon reporting. The deadline creates urgency; the operational value creates stickiness."
     }
   ],
-  "dropped": [],
+  "dropped": [
+    {
+      "raw": {
+        "_unparseable": "{\"scene\":4,\"line\":\"So Diginex isn't betting on voluntary adoption — it's riding a regulatory wave that isn't going away.\",\"headline\":\"REGULATORY WAVE\",\"ground\":\"violet\",\"subjects\":[\"the paper wave\",\"the document stack\"],\"action\":\"The calendar strip curls upward into a paper wave; the document stack rides up its face and holds at the crest, a purple ribbon running from wave to stack.\",\"hand\":false,\"handoff\":\"the paper wave\",\"hero\":false,\"scale\":\"oversized\",\"delivery\":\"[excited] So Diginex isn't betting on voluntary adoption — it's riding a regulatory wave that isn't going away.\",\"source\":[25,29],\"connector\":{\"kind\":\"paper ribbon\",\"from\":\"the paper wave\",\"to\":\"the document stack\",\"colour\":\"purple\"},\"tag\":null,\"narration\":\"So Diginex isn't betting on voluntary adoption — it's riding a regulatory wave that isn't going away. The question isn't whether enterprises buy ESG software, but from whom. Bigger players like Workiva ride the same wave with deeper resources, so Diginex has to prove"
+      },
+      "reason": "no scene (positive integer)"
+    }
+  ],
   "warnings": [
     [],
     [],
-    [],
-    [],
-    [],
-    [],
+    [
+      "headline number \"3\" not found as a figure in cited sentences [5] (fine if it is a count of items those sentences enumerate; flagged either way)"
+    ],
     [],
     [],
     [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 51606,
+  "ms": 77192,
   "clipSeconds": 15
 }

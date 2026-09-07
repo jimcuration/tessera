@@ -1,57 +1,83 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "What would change your mind on Diginex — what's the exit signal?",
   "beats": [
     {
       "scene": 1,
-      "line": "Conviction should be conditional on evidence. Here are the signals that would break this thesis.",
-      "headline": "EXIT SIGNALS",
-      "ground": "violet",
-      "subjects": [
-        "the signal card stack",
-        "a cream paper chip"
-      ],
-      "action": "A squared stack of halftone paper cards drops onto a cream chip and settles, top card facing us.",
-      "hand": false,
-      "handoff": "the signal card stack",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "[presenting to camera] Conviction should be conditional on evidence. Here are the signals that would break this thesis.",
-      "source": [
-        2,
-        3
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "the signal card stack",
-        "to": "a torn paper contract",
-        "colour": "black"
-      },
-      "tag": null
-    },
-    {
-      "scene": 1,
-      "line": "Diginex says the Resulticks close depends on debt financing, without further equity dilution.",
+      "line": "So here's the one that ends it. Diginex said in December that closing Resulticks depends on debt financing, without further equity dilution.",
       "headline": "DEBT, NOT EQUITY",
       "ground": "violet",
       "subjects": [
-        "the signal card stack",
-        "a torn paper contract"
+        "the contract document",
+        "a rubber stamp"
       ],
-      "action": "The previous chip slides off the top edge as the stack's top card peels up into a torn paper contract; a black paper ribbon runs from the signal card stack to the contract, and a coin-sized cream tag reading '$1.5B' sits beside the ribbon, a short black line pointing at it.",
+      "action": "A large halftone contract document drops onto open ground; a rubber stamp presses down once and lifts, leaving the sheet flat and held.",
       "hand": false,
-      "handoff": "the torn paper contract",
+      "handoff": "the contract document",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] So here's the one that ends it. Diginex said in December that closing Resulticks depends on debt financing, without further equity dilution.",
+      "source": [
+        6
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the contract document",
+        "to": "a torn paper strip",
+        "colour": "black"
+      },
+      "tag": null,
+      "narration": "So here's the one that ends it. Diginex said in December that closing Resulticks depends on debt financing, without further equity dilution. If that falls through — a raise above twenty percent dilution, or no deal at all — the platform thesis dies. The whole one point five billion bet hinges on it."
+    },
+    {
+      "scene": 1,
+      "line": "If that falls through — a raise above twenty percent dilution, or no deal at all — the platform thesis dies.",
+      "headline": ">20% DILUTION",
+      "ground": "violet",
+      "subjects": [
+        "the contract document",
+        "a torn paper strip"
+      ],
+      "action": "The contract document splits along one edge and a torn paper strip peels away from it; a black ribbon runs from the contract document to the torn paper strip and stays in place.",
+      "hand": false,
+      "handoff": "the torn paper strip",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Diginex says the Resulticks close depends on debt financing, without further equity dilution.",
+      "delivery": "If that falls through — a raise above twenty percent dilution, or no deal at all — the platform thesis dies.",
       "source": [
-        6,
+        7
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the contract document",
+        "to": "a torn paper strip",
+        "colour": "black"
+      },
+      "tag": null,
+      "narration": "So here's the one that ends it. Diginex said in December that closing Resulticks depends on debt financing, without further equity dilution. If that falls through — a raise above twenty percent dilution, or no deal at all — the platform thesis dies. The whole one point five billion bet hinges on it."
+    },
+    {
+      "scene": 1,
+      "line": "The whole one point five billion bet hinges on it.",
+      "headline": "$1.5B BET",
+      "ground": "violet",
+      "subjects": [
+        "the contract document",
+        "a paper coin stack"
+      ],
+      "action": "The torn paper strip rolls up into a tall paper coin stack that balances on the corner of the contract document; a coin-sized cream tag reading '$1.5B' sits beside the black ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": true,
+      "scale": "small",
+      "delivery": "[excited] The whole one point five billion bet hinges on it.",
+      "source": [
         8
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the signal card stack",
-        "to": "a torn paper contract",
+        "from": "the contract document",
+        "to": "a torn paper strip",
         "colour": "black"
       },
       "tag": {
@@ -59,197 +85,209 @@
         "source": [
           8
         ]
-      }
+      },
+      "narration": "So here's the one that ends it. Diginex said in December that closing Resulticks depends on debt financing, without further equity dilution. If that falls through — a raise above twenty percent dilution, or no deal at all — the platform thesis dies. The whole one point five billion bet hinges on it."
     },
     {
       "scene": 2,
-      "line": "If customers keep buying point solutions instead of bundled platform, the unified platform thesis has failed.",
-      "headline": "NO CROSS-SELL",
+      "line": "Now, two things to watch in the numbers.",
+      "headline": "2 TO WATCH",
       "ground": "magenta",
       "subjects": [
-        "the paper grid",
+        "the stacked sheets",
         "a paper hand"
       ],
-      "action": "The previous chip flips away as the torn contract folds into a paper grid of separate unconnected boxes; a paper hand taps one box and it stays alone.",
+      "action": "The coin stack flattens and fans out into stacked sheets; a paper hand slides two sheets clear of the pile and holds them apart.",
       "hand": true,
-      "handoff": "the paper grid",
+      "handoff": "the stacked sheets",
       "hero": false,
       "scale": "small",
-      "delivery": "If customers keep buying point solutions instead of bundled platform, the unified platform thesis has failed.",
+      "delivery": "Now, two things to watch in the numbers.",
+      "source": [
+        11,
+        16
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "the stacked sheets",
+        "to": "a paper bar chart",
+        "colour": "orange"
+      },
+      "tag": null,
+      "narration": "Now, two things to watch in the numbers. If customers keep buying point solutions instead of the bundle, the unified platform thesis has failed. And if organic growth drops below fifty percent by the fourth quarter of twenty twenty-six, the core business isn't gaining traction."
+    },
+    {
+      "scene": 2,
+      "line": "If customers keep buying point solutions instead of the bundle, the unified platform thesis has failed.",
+      "headline": "POINT SOLUTIONS",
+      "ground": "magenta",
+      "subjects": [
+        "the stacked sheets",
+        "a paper bar chart"
+      ],
+      "action": "The two loose sheets drift away from the stacked sheets one by one instead of binding together; an orange arrow lays in from the stacked sheets toward a paper bar chart and remains.",
+      "hand": false,
+      "handoff": "the orange arrow",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "If customers keep buying point solutions instead of the bundle, the unified platform thesis has failed.",
       "source": [
         11
       ],
       "connector": {
         "kind": "arrow",
-        "from": "the paper grid",
-        "to": "the paper bar chart",
-        "colour": "red"
+        "from": "the stacked sheets",
+        "to": "a paper bar chart",
+        "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Now, two things to watch in the numbers. If customers keep buying point solutions instead of the bundle, the unified platform thesis has failed. And if organic growth drops below fifty percent by the fourth quarter of twenty twenty-six, the core business isn't gaining traction."
     },
     {
       "scene": 2,
-      "line": "Today's two hundred and ninety-three percent growth is inflated. Below fifty percent organic, the core isn't gaining traction.",
-      "headline": "<50% YOY",
+      "line": "And if organic growth drops below fifty percent by the fourth quarter of twenty twenty-six, the core business isn't gaining traction.",
+      "headline": "BELOW 50% YOY",
       "ground": "magenta",
       "subjects": [
-        "the paper grid",
-        "the paper bar chart"
+        "the stacked sheets",
+        "a paper bar chart"
       ],
-      "action": "The previous chip is covered as one grid box unfolds into a tall paper bar chart whose bars are trimmed shorter; a red paper arrow runs from the paper grid to the paper bar chart and holds, with a coin-sized cream tag reading '293%' beside it, a short black line pointing at it.",
+      "action": "The orange arrow stiffens into a paper bar chart whose bars shorten step by step and settle low; a coin-sized cream tag reading '50% YoY' sits beside the arrow, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the paper bar chart",
-      "hero": true,
+      "handoff": "the bar chart",
+      "hero": false,
       "scale": "oversized",
-      "delivery": "[excited] Today's two hundred and ninety-three percent growth is inflated. Below fifty percent organic, the core isn't gaining traction.",
+      "delivery": "And if organic growth drops below fifty percent by the fourth quarter of twenty twenty-six, the core business isn't gaining traction.",
       "source": [
-        14,
         16
       ],
       "connector": {
         "kind": "arrow",
-        "from": "the paper grid",
-        "to": "the paper bar chart",
-        "colour": "red"
+        "from": "the stacked sheets",
+        "to": "a paper bar chart",
+        "colour": "orange"
       },
-      "tag": null
+      "tag": {
+        "text": "50% YoY",
+        "source": [
+          16
+        ]
+      },
+      "narration": "Now, two things to watch in the numbers. If customers keep buying point solutions instead of the bundle, the unified platform thesis has failed. And if organic growth drops below fifty percent by the fourth quarter of twenty twenty-six, the core business isn't gaining traction."
     },
     {
-      "scene": 2,
-      "line": "With one point eight five million in cash and burn near one point three million a month, it is capital constrained.",
+      "scene": 3,
+      "line": "Then there's the cash. One point eight five million, burning about one point three million a month.",
       "headline": "$1.85M CASH",
-      "ground": "magenta",
+      "ground": "cyan",
       "subjects": [
-        "the paper grid",
-        "the paper bar chart",
-        "a coin stack"
+        "the coin stack",
+        "a paper calendar strip"
       ],
-      "action": "The previous chip slides off as the shortest bar tips over into a coin stack that loses coins one by one; the red arrow from the paper grid to the paper bar chart stays in place behind it.",
+      "action": "The bar chart's tallest bar rolls into the coin stack; a paper calendar strip unrolls beside it and coins slide off the stack onto the strip, month by month, then stop.",
       "hand": false,
       "handoff": "the coin stack",
       "hero": false,
       "scale": "diagram",
-      "delivery": "With one point eight five million in cash and burn near one point three million a month, it is capital constrained.",
+      "delivery": "Then there's the cash. One point eight five million, burning about one point three million a month.",
       "source": [
         18
       ],
       "connector": {
-        "kind": "arrow",
-        "from": "the paper grid",
-        "to": "the paper bar chart",
-        "colour": "red"
-      },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Closing Resulticks on debt, with no equity dilution, would validate management's ability to execute deals.",
-      "headline": "CLEAN CLOSE",
-      "ground": "lime",
-      "subjects": [
-        "the signed paper contract"
-      ],
-      "action": "The previous chip flips down as the coin stack presses flat into a signed paper contract that lands alone on lime ground.",
-      "hand": false,
-      "handoff": "the signed paper contract",
-      "hero": false,
-      "scale": "small",
-      "delivery": "Closing Resulticks on debt, with no equity dilution, would validate management's ability to execute deals.",
-      "source": [
-        31,
-        32
-      ],
-      "connector": {
         "kind": "string",
-        "from": "the signed paper contract",
-        "to": "a rising paper bar chart",
-        "colour": "green"
-      },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Customers adopting several products, with net dollar retention above one hundred and twenty percent, would add credibility.",
-      "headline": "CROSS-SELL TRACTION",
-      "ground": "lime",
-      "subjects": [
-        "the signed paper contract",
-        "a rising paper bar chart"
-      ],
-      "action": "The previous chip slides off as the contract's corner lifts into a rising paper bar chart; a green paper string runs from the signed paper contract to the chart, and a coin-sized cream tag reading '>120%' sits beside the string, a short black line pointing at it.",
-      "hand": false,
-      "handoff": "the rising paper bar chart",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "[fast-paced] Customers adopting several products, with net dollar retention above one hundred and twenty percent, would add credibility.",
-      "source": [
-        35
-      ],
-      "connector": {
-        "kind": "string",
-        "from": "the signed paper contract",
-        "to": "a rising paper bar chart",
-        "colour": "green"
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "cyan"
       },
       "tag": {
-        "text": ">120%",
+        "text": "$1.3M",
         "source": [
-          35
+          18
         ]
-      }
+      },
+      "narration": "Then there's the cash. One point eight five million, burning about one point three million a month. And an eight-for-one share consolidation was approved in March to keep Diginex compliant with Nasdaq."
+    },
+    {
+      "scene": 3,
+      "line": "And an eight-for-one share consolidation was approved in March to keep Diginex compliant with Nasdaq.",
+      "headline": "8-FOR-1",
+      "ground": "cyan",
+      "subjects": [
+        "the coin stack",
+        "a rubber stamp"
+      ],
+      "action": "Eight coins from the coin stack fold together into one thicker coin; a rubber stamp presses it flat and lifts, the cyan string still running to the calendar strip.",
+      "hand": false,
+      "handoff": "the folded coin",
+      "hero": false,
+      "scale": "small",
+      "delivery": "And an eight-for-one share consolidation was approved in March to keep Diginex compliant with Nasdaq.",
+      "source": [
+        23
+      ],
+      "connector": {
+        "kind": "string",
+        "from": "the coin stack",
+        "to": "a paper calendar strip",
+        "colour": "cyan"
+      },
+      "tag": null,
+      "narration": "Then there's the cash. One point eight five million, burning about one point three million a month. And an eight-for-one share consolidation was approved in March to keep Diginex compliant with Nasdaq."
     },
     {
       "scene": 4,
-      "line": "You have until fourth quarter earnings, likely February twenty twenty-seven, to see material evidence of platform traction.",
-      "headline": "Q4 2026",
+      "line": "So here's your clock. You have until the fourth quarter of twenty twenty-six earnings, likely February twenty twenty-seven, to see platform traction.",
+      "headline": "FEB 2027",
       "ground": "violet",
       "subjects": [
-        "the signal card stack",
-        "a paper calendar page"
+        "the calendar page",
+        "a paper hand"
       ],
-      "action": "The previous chip flips away as the bar chart's bars slide together into the signal card stack on violet ground; a paper calendar page lands beside it and a cream ribbon runs from the stack to the page.",
-      "hand": false,
-      "handoff": "the signal card stack",
+      "action": "The folded coin widens into a single calendar page that lands centre ground; a paper hand taps its lower corner twice and rests there.",
+      "hand": true,
+      "handoff": "the calendar page",
       "hero": false,
-      "scale": "small",
-      "delivery": "You have until fourth quarter earnings, likely February twenty twenty-seven, to see material evidence of platform traction.",
+      "scale": "oversized",
+      "delivery": "So here's your clock. You have until the fourth quarter of twenty twenty-six earnings, likely February twenty twenty-seven, to see platform traction.",
       "source": [
         46
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the signal card stack",
-        "to": "a paper calendar page",
-        "colour": "cream"
+        "from": "the calendar page",
+        "to": "the contract document",
+        "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So here's your clock. You have until the fourth quarter of twenty twenty-six earnings, likely February twenty twenty-seven, to see platform traction. Delays, weak cross-sell, widening losses — that's the exit signal."
     },
     {
       "scene": 4,
-      "line": "Weak cross-sell, slowing revenue or widening losses, and the exit signal is clear.",
-      "headline": "EXIT SIGNAL CLEAR",
+      "line": "Delays, weak cross-sell, widening losses — that's the exit signal.",
+      "headline": "EXIT SIGNAL",
       "ground": "violet",
       "subjects": [
-        "the signal card stack",
-        "a paper calendar page",
+        "the contract document",
+        "the calendar page",
         "a rubber stamp"
       ],
-      "action": "The previous chip is covered as the calendar page folds back onto the signal card stack; a rubber stamp presses a torn strip onto the top card, the cream ribbon still in place.",
+      "action": "The calendar page slides under the returning contract document and a black ribbon runs between them; a rubber stamp presses the document once and holds it flat.",
       "hand": false,
-      "handoff": "the signal card stack",
+      "handoff": "the contract document",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "Weak cross-sell, slowing revenue or widening losses, and the exit signal is clear.",
+      "scale": "diagram",
+      "delivery": "Delays, weak cross-sell, widening losses — that's the exit signal.",
       "source": [
         53
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the signal card stack",
-        "to": "a paper calendar page",
-        "colour": "cream"
+        "from": "the calendar page",
+        "to": "the contract document",
+        "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So here's your clock. You have until the fourth quarter of twenty twenty-six earnings, likely February twenty twenty-seven, to see platform traction. Delays, weak cross-sell, widening losses — that's the exit signal."
     }
   ],
   "dropped": [],
@@ -262,9 +300,10 @@
     [],
     [],
     [],
+    [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 61234,
+  "ms": 63855,
   "clipSeconds": 15
 }

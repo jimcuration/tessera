@@ -1,107 +1,167 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "Has the collective discussed Diginex's path to profitability given the M&A spend?",
   "beats": [
     {
       "scene": 1,
-      "line": "The collective hasn't discussed this much lately, so this view draws on outside sources.",
+      "line": "Straight up: the collective hasn't said much about this lately, so we're drawing on outside sources.",
       "headline": "OUTSIDE SOURCES",
       "ground": "violet",
       "subjects": [
-        "a pinned paper noticeboard",
-        "a cream paper chip"
+        "the ledger sheet",
+        "a torn-paper arrow"
       ],
-      "action": "A halftone paper noticeboard drops onto open ground, mostly bare, and a cream chip settles at its corner.",
+      "action": "A halftone ledger sheet unfolds onto open ground and settles flat, a torn-paper arrow resting at its edge.",
       "hand": false,
-      "handoff": "the noticeboard",
+      "handoff": "the ledger sheet",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "[presenting to camera] The collective hasn't discussed this much lately, so this view draws on outside sources.",
+      "scale": "small",
+      "delivery": "[presenting to camera] Straight up: the collective hasn't said much about this lately, so we're drawing on outside sources.",
       "source": [
         0
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "a pinned paper noticeboard",
-        "to": "a paper balance scale",
-        "colour": "cream"
+        "from": "the ledger sheet",
+        "to": "a torn-paper arrow",
+        "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Straight up: the collective hasn't said much about this lately, so we're drawing on outside sources. And what they describe is a classic M&A math problem. Integration costs squeeze margins now. Later, as the combined platform scales, the costs stop growing as fast as the money coming in."
     },
     {
       "scene": 1,
-      "line": "Diginex faces a classic deal problem. Near-term margin compression, then operating leverage as the platform scales.",
+      "line": "And what they describe is a classic M&A math problem. Integration costs squeeze margins now.",
       "headline": "M&A MATH",
       "ground": "violet",
       "subjects": [
-        "a pinned paper noticeboard",
-        "a paper balance scale"
+        "the ledger sheet",
+        "a torn-paper arrow"
       ],
-      "action": "The previous chip slides off the top edge as a pinned paper noticeboard sprouts a paper balance scale; a cream ribbon already runs between them as one pan dips.",
+      "action": "The ledger sheet folds in half and its crease becomes the torn-paper arrow, which bends downward and holds; a black ribbon runs between them.",
       "hand": false,
-      "handoff": "the balance scale",
+      "handoff": "the torn-paper arrow",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "Diginex faces a classic deal problem. Near-term margin compression, then operating leverage as the platform scales.",
+      "scale": "oversized",
+      "delivery": "And what they describe is a classic M&A math problem. Integration costs squeeze margins now.",
       "source": [
         2
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "a pinned paper noticeboard",
-        "to": "a paper balance scale",
-        "colour": "cream"
+        "from": "the ledger sheet",
+        "to": "a torn-paper arrow",
+        "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Straight up: the collective hasn't said much about this lately, so we're drawing on outside sources. And what they describe is a classic M&A math problem. Integration costs squeeze margins now. Later, as the combined platform scales, the costs stop growing as fast as the money coming in."
+    },
+    {
+      "scene": 1,
+      "line": "Later, as the combined platform scales, the costs stop growing as fast as the money coming in.",
+      "headline": "OPERATING LEVERAGE",
+      "ground": "violet",
+      "subjects": [
+        "the torn-paper arrow",
+        "stacked sheets",
+        "the ledger sheet"
+      ],
+      "action": "The torn-paper arrow straightens and lifts into a run of stacked sheets that climb step by step and hold, the black ribbon still in place.",
+      "hand": false,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Later, as the combined platform scales, the costs stop growing as fast as the money coming in.",
+      "source": [
+        2
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the ledger sheet",
+        "to": "a torn-paper arrow",
+        "colour": "black"
+      },
+      "tag": null,
+      "narration": "Straight up: the collective hasn't said much about this lately, so we're drawing on outside sources. And what they describe is a classic M&A math problem. Integration costs squeeze margins now. Later, as the combined platform scales, the costs stop growing as fast as the money coming in."
     },
     {
       "scene": 2,
-      "line": "The company is in active integration mode across four acquisitions.",
+      "line": "Diginex is integrating four acquisitions at once.",
       "headline": "4 ACQUISITIONS",
       "ground": "magenta",
       "subjects": [
-        "a paper ledger sheet",
-        "four torn paper squares"
+        "four paper folders",
+        "a paper calendar strip"
       ],
-      "action": "The previous chip flips away as the balance scale flattens into a paper ledger sheet; four torn paper squares slide onto it and lock in a row.",
+      "action": "The stacked sheets separate into four paper folders that fan out across the ground and hold.",
       "hand": false,
-      "handoff": "the paper ledger sheet",
+      "handoff": "four paper folders",
       "hero": false,
       "scale": "diagram",
-      "delivery": "The company is in active integration mode across four acquisitions.",
+      "delivery": "Diginex is integrating four acquisitions at once.",
       "source": [
         11
       ],
       "connector": {
-        "kind": "paper string",
-        "from": "a paper ledger sheet",
-        "to": "a paper calendar page",
+        "kind": "paper ribbon",
+        "from": "four paper folders",
+        "to": "a paper calendar strip",
         "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Diginex is integrating four acquisitions at once. In the six months to September twenty twenty-five, general and administrative expenses climbed three point four million dollars, to eight point one. Two point two million of that was M&A work — and Resulticks likely stretches that integration tax into twenty twenty-seven."
     },
     {
       "scene": 2,
-      "line": "Admin costs climbed three point four million to eight point one million, with two point two million from deal work.",
-      "headline": "$8.1M G&A",
+      "line": "In the six months to September twenty twenty-five, general and administrative expenses climbed three point four million dollars, to eight point one.",
+      "headline": "$3.4M → $8.1M",
       "ground": "magenta",
       "subjects": [
-        "a paper ledger sheet",
-        "a paper bar rising"
+        "four paper folders",
+        "a paper bar chart"
       ],
-      "action": "The previous chip is covered as a paper bar grows upward from the ledger sheet; a coin-sized cream tag reading '$2.2M' sits beside the orange string, a short black line pointing at it.",
+      "action": "The four paper folders align edge to edge and rise into a paper bar chart, the tallest bar locking upright.",
       "hand": false,
-      "handoff": "the paper ledger sheet",
+      "handoff": "the paper bar chart",
       "hero": true,
       "scale": "oversized",
-      "delivery": "[excited] Admin costs climbed three point four million to eight point one million, with two point two million from deal work.",
+      "delivery": "[fast-paced] In the six months to September twenty twenty-five, general and administrative expenses climbed three point four million dollars, to eight point one.",
       "source": [
         12
       ],
       "connector": {
-        "kind": "paper string",
-        "from": "a paper ledger sheet",
-        "to": "a paper calendar page",
+        "kind": "paper ribbon",
+        "from": "four paper folders",
+        "to": "a paper calendar strip",
+        "colour": "orange"
+      },
+      "tag": null,
+      "narration": "Diginex is integrating four acquisitions at once. In the six months to September twenty twenty-five, general and administrative expenses climbed three point four million dollars, to eight point one. Two point two million of that was M&A work — and Resulticks likely stretches that integration tax into twenty twenty-seven."
+    },
+    {
+      "scene": 2,
+      "line": "Two point two million of that was M&A work — and Resulticks likely stretches that integration tax into twenty twenty-seven.",
+      "headline": "INTO 2027",
+      "ground": "magenta",
+      "subjects": [
+        "a paper bar chart",
+        "a paper calendar strip",
+        "four paper folders"
+      ],
+      "action": "The tallest bar tips over and unrolls into a paper calendar strip that runs to the far edge; a coin-sized cream tag reading \"$2.2M\" sits beside the orange ribbon, a short black line pointing at it.",
+      "hand": false,
+      "handoff": "the paper calendar strip",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Two point two million of that was M&A work — and Resulticks likely stretches that integration tax into twenty twenty-seven.",
+      "source": [
+        12,
+        15
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "four paper folders",
+        "to": "a paper calendar strip",
         "colour": "orange"
       },
       "tag": {
@@ -109,179 +169,110 @@
         "source": [
           12
         ]
-      }
-    },
-    {
-      "scene": 3,
-      "line": "Profitability needs revenue growing thirty to fifty percent while admin costs stay flat.",
-      "headline": "+30-50% YOY",
-      "ground": "cyan",
-      "subjects": [
-        "a paper bar chart",
-        "a flat paper strip"
-      ],
-      "action": "The previous chip flips down as the calendar page folds into a paper bar chart; bars step upward while a flat paper strip lies unmoving beneath them.",
-      "hand": false,
-      "handoff": "the paper bar chart",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "[fast-paced] Profitability needs revenue growing thirty to fifty percent while admin costs stay flat.",
-      "source": [
-        19
-      ],
-      "connector": {
-        "kind": "paper arrow",
-        "from": "a paper bar chart",
-        "to": "a paper map",
-        "colour": "green"
       },
-      "tag": null
+      "narration": "Diginex is integrating four acquisitions at once. In the six months to September twenty twenty-five, general and administrative expenses climbed three point four million dollars, to eight point one. Two point two million of that was M&A work — and Resulticks likely stretches that integration tax into twenty twenty-seven."
     },
     {
       "scene": 3,
-      "line": "Cross-sell has to work. Without it, you get two siloed businesses with duplicate overhead.",
-      "headline": "VALUE TRAP",
+      "line": "Diginex customers actually adopting Resulticks, and the other way round. Otherwise it's two siloed businesses with duplicate overhead.",
+      "headline": "CROSS-SELL",
       "ground": "cyan",
       "subjects": [
-        "a paper bar chart",
-        "two separated paper boxes",
+        "three paper cards",
         "a paper hand"
       ],
-      "action": "The previous chip slides off as two paper boxes split apart beside the bar chart; a paper hand pushes at the gap and they refuse to meet.",
+      "action": "Two of the three paper cards drift apart into separate stacks; a paper hand enters, pushes them further apart and holds.",
       "hand": true,
-      "handoff": "the two separated paper boxes",
+      "handoff": "three paper cards",
       "hero": false,
       "scale": "small",
-      "delivery": "Cross-sell has to work. Without it, you get two siloed businesses with duplicate overhead.",
+      "delivery": "Diginex customers actually adopting Resulticks, and the other way round. Otherwise it's two siloed businesses with duplicate overhead.",
       "source": [
         22,
         23
       ],
       "connector": {
-        "kind": "paper arrow",
-        "from": "a paper bar chart",
-        "to": "a paper map",
-        "colour": "green"
+        "kind": "string",
+        "from": "three paper cards",
+        "to": "a paper map of Brazil",
+        "colour": "cyan"
       },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Diginex has signalled focus on Brazil's seventy-seven billion dollar sustainability market.",
-      "headline": "$77B MARKET",
-      "ground": "cyan",
-      "subjects": [
-        "a paper map",
-        "a paper bar chart"
-      ],
-      "action": "The previous chip is covered as the two boxes unfold into a paper map; the green arrow already runs from the bar chart and lands on it. A coin-sized cream tag reading '$77B' sits beside the arrow, a short black line pointing at it.",
-      "hand": false,
-      "handoff": "the paper map",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "Diginex has signalled focus on Brazil's seventy-seven billion dollar sustainability market.",
-      "source": [
-        25
-      ],
-      "connector": {
-        "kind": "paper arrow",
-        "from": "a paper bar chart",
-        "to": "a paper map",
-        "colour": "green"
-      },
-      "tag": {
-        "text": "$77B",
-        "source": [
-          25
-        ]
-      }
-    },
-    {
-      "scene": 4,
-      "line": "The next two to three earnings reports must show revenue accelerating and admin costs decelerating.",
-      "headline": "NEXT 2-3 REPORTS",
-      "ground": "violet",
-      "subjects": [
-        "three paper earnings sheets",
-        "a pinned paper noticeboard"
-      ],
-      "action": "The previous chip flips away as the paper map tears into three paper earnings sheets, which pin themselves onto a returning noticeboard.",
-      "hand": false,
-      "handoff": "the three paper earnings sheets",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "The next two to three earnings reports must show revenue accelerating and admin costs decelerating.",
-      "source": [
-        31
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "a pinned paper noticeboard",
-        "to": "three paper earnings sheets",
-        "colour": "cream"
-      },
-      "tag": null
-    },
-    {
-      "scene": 4,
-      "line": "Until then, profitability remains a narrative, not a fact.",
-      "headline": "NOT YET A FACT",
-      "ground": "violet",
-      "subjects": [
-        "a pinned paper noticeboard",
-        "a rubber stamp"
-      ],
-      "action": "The previous chip slides off as the earnings sheets settle back into the noticeboard; a rubber stamp presses one blank sheet and lifts, leaving it unmarked.",
-      "hand": false,
-      "handoff": "the noticeboard",
-      "hero": false,
-      "scale": "small",
-      "delivery": "Until then, profitability remains a narrative, not a fact.",
-      "source": [
-        32
-      ],
-      "connector": {
-        "kind": "paper ribbon",
-        "from": "a pinned paper noticeboard",
-        "to": "three paper earnings sheets",
-        "colour": "cream"
-      },
-      "tag": null
+      "tag": null,
+      "narration": "Three things have to happen. Revenue growing thirty to fifty percent a year while G and A holds flat. Diginex customers actually adopting Resulticks, and the other way round. Otherwise it's two siloed businesses with duplicate overhead. And Brazil's seventy-seven billion dollar sustainability market gaining traction."
     }
   ],
   "dropped": [
     {
       "raw": {
-        "scene": 2,
-        "line": "Resulticks, at one point five billion, is the largest. That integration tax likely runs into twenty twenty-seven.",
-        "headline": "INTO 2027",
-        "ground": "magenta",
+        "scene": 3,
+        "line": "Three things have to happen. Revenue growing thirty to fifty percent a year while G and A holds flat.",
+        "headline": "30–50% YOY",
+        "ground": "cyan",
         "subjects": [
-          "a paper ledger sheet",
-          "a paper calendar page"
+          "three paper cards",
+          "a paper map of Brazil"
         ],
-        "action": "The previous chip slides off as the orange string pulls a paper calendar page across to the ledger sheet, and the page holds there.",
+        "action": "The paper calendar strip tears into three paper cards that lay out in a row and hold, the first card sliding forward.",
         "hand": false,
-        "handoff": "the paper calendar page",
+        "handoff": "three paper cards",
         "hero": false,
-        "scale": "small",
-        "delivery": "Resulticks, at one point five billion, is the largest, and that integration tax likely runs into twenty twenty-seven.",
+        "scale": "diagram",
+        "delivery": "Three things have to happen. Revenue growing thirty to fifty percent a year while G and A holds flat.",
         "source": [
-          14,
-          15
+          17,
+          19
         ],
         "connector": {
-          "kind": "paper string",
-          "from": "a paper ledger sheet",
-          "to": "a paper calendar page",
-          "colour": "orange"
+          "kind": "string",
+          "from": "three paper cards",
+          "to": "a paper map of Brazil",
+          "colour": "cyan"
         },
-        "tag": null
+        "tag": null,
+        "narration": "Three things have to happen. Revenue growing thirty to fifty percent a year while G and A holds flat. Diginex customers actually adopting Resulticks, and the other way round. Otherwise it's two siloed businesses with duplicate overhead. And Brazil's seventy-seven billion dollar sustainability market gaining traction."
       },
-      "reason": "delivery, stripped of tags, does not match line"
+      "reason": "subject \"a paper map of Brazil\" names a person (looks like a proper name)"
+    },
+    {
+      "raw": {
+        "scene": 3,
+        "line": "And Brazil's seventy-seven billion dollar sustainability market gaining traction.",
+        "headline": "$77B BRAZIL",
+        "ground": "cyan",
+        "subjects": [
+          "three paper cards",
+          "a paper map of Brazil"
+        ],
+        "action": "The three paper cards fold together into a paper map of Brazil that fills the frame, the cyan string already running to it.",
+        "hand": false,
+        "handoff": "the paper map",
+        "hero": false,
+        "scale": "oversized",
+        "delivery": "And Brazil's seventy-seven billion dollar sustainability market gaining traction.",
+        "source": [
+          25,
+          26
+        ],
+        "connector": {
+          "kind": "string",
+          "from": "three paper cards",
+          "to": "a paper map of Brazil",
+          "colour": "cyan"
+        },
+        "tag": null,
+        "narration": "Three things have to happen. Revenue growing thirty to fifty percent a year while G and A holds flat. Diginex customers actually adopting Resulticks, and the other way round. Otherwise it's two siloed businesses with duplicate overhead. And Brazil's seventy-seven billion dollar sustainability market gaining traction."
+      },
+      "reason": "subject \"a paper map of Brazil\" names a person (looks like a proper name)"
+    },
+    {
+      "raw": {
+        "_unparseable": "{\"scene\":4,\"line\":\"Meanwhile the market cap sits at thirty-four million with negative earnings. Priced for execution risk.\",\"headline\":\"$34M CAP\",\"ground\":\"violet\",\"subjects\":[\"the ledger sheet\",\"three paper report pages\"],\"action\":\"The paper map shrinks and flattens back into the ledger sheet on violet ground, which settles alone and holds.\",\"hand\":false,\"handoff\":\"the ledger sheet\",\"hero\":false,\"scale\":\"small\",\"delivery\":\"Meanwhile the market cap sits at thirty-four million with negative earnings. Priced for execution risk.\",\"source\":[28],\"connector\":{\"kind\":\"arrow\",\"from\":\"the ledger sheet\",\"to\":\"three paper report pages\",\"colour\":\"black\"},\"tag\":null,\"narration\":\"Meanwhile the market cap sits at thirty-four million with negative earnings. Priced for execution risk. So watch the next two to three earnings reports: revenue accelerating, G and A decelerating. Until then"
+      },
+      "reason": "no scene (positive integer)"
     }
   ],
   "warnings": [
+    [],
     [],
     [],
     [
@@ -289,12 +280,9 @@
     ],
     [],
     [],
-    [],
-    [],
-    [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 38758,
+  "ms": 77350,
   "clipSeconds": 15
 }

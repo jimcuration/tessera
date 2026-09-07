@@ -1,55 +1,55 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "What should someone watch for in the next twelve months?",
   "beats": [
     {
       "scene": 1,
-      "line": "Diginex has faced significant headwinds. The stock collapsed to one dollar sixteen.",
+      "line": "Start where Diginex is now. The stock's collapsed to one dollar sixteen.",
       "headline": "$1.16",
       "ground": "violet",
       "subjects": [
-        "the coin stack",
-        "a cream paper chip"
+        "the paper price tag"
       ],
-      "action": "A halftone stack of paper coins drops onto a cream chip, topples half its height and holds.",
+      "action": "A single oversized paper price tag swings down on a string and settles dead centre.",
       "hand": false,
-      "handoff": "the coin stack",
+      "handoff": "the paper price tag",
       "hero": false,
       "scale": "oversized",
-      "delivery": "[presenting to camera] Diginex has faced significant headwinds. The stock collapsed to one dollar sixteen.",
+      "delivery": "[presenting to camera] Start where Diginex is now. The stock's collapsed to one dollar sixteen.",
       "source": [
         1
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the coin stack",
-        "to": "the torn runway",
+        "from": "the paper price tag",
+        "to": "a torn paper runway",
         "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Start where Diginex is now. The stock's collapsed to one dollar sixteen. Cash runway's down to about one point four months at current burn. And they're still integrating four acquisitions at once."
     },
     {
       "scene": 1,
-      "line": "Cash runway tightened to roughly one point four months at operating burn rates.",
+      "line": "Cash runway's down to about one point four months at current burn.",
       "headline": "1.4 MONTHS",
       "ground": "violet",
       "subjects": [
-        "the coin stack",
-        "the torn runway"
+        "the paper price tag",
+        "a torn paper runway"
       ],
-      "action": "The previous chip slides off the top edge as the coin stack unrolls into a torn runway that stops short; a black paper ribbon runs from the coin stack to the torn runway, and a coin-sized cream tag reading '1.4 months' sits beside the ribbon, a short black line pointing at it.",
+      "action": "The price tag's string unrolls into a torn paper runway that stops short; a black ribbon links tag to runway, and a coin-sized cream tag reading '1.4 months' sits beside the ribbon with a short black line pointing at it.",
       "hand": false,
-      "handoff": "the torn runway",
-      "hero": true,
+      "handoff": "the torn paper runway",
+      "hero": false,
       "scale": "diagram",
-      "delivery": "Cash runway tightened to roughly one point four months at operating burn rates.",
+      "delivery": "Cash runway's down to about one point four months at current burn.",
       "source": [
         1
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the coin stack",
-        "to": "the torn runway",
+        "from": "the paper price tag",
+        "to": "a torn paper runway",
         "colour": "black"
       },
       "tag": {
@@ -57,227 +57,247 @@
         "source": [
           1
         ]
-      }
+      },
+      "narration": "Start where Diginex is now. The stock's collapsed to one dollar sixteen. Cash runway's down to about one point four months at current burn. And they're still integrating four acquisitions at once."
+    },
+    {
+      "scene": 1,
+      "line": "And they're still integrating four acquisitions at once.",
+      "headline": "4 ACQUISITIONS",
+      "ground": "violet",
+      "subjects": [
+        "the paper price tag",
+        "four stacked sheets"
+      ],
+      "action": "The torn runway tears lengthwise into four stacked sheets that fan out beside the paper price tag and hold, the black ribbon still in place.",
+      "hand": false,
+      "handoff": "four stacked sheets",
+      "hero": false,
+      "scale": "small",
+      "delivery": "And they're still integrating four acquisitions at once.",
+      "source": [
+        1
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the paper price tag",
+        "to": "a torn paper runway",
+        "colour": "black"
+      },
+      "tag": null,
+      "narration": "Start where Diginex is now. The stock's collapsed to one dollar sixteen. Cash runway's down to about one point four months at current burn. And they're still integrating four acquisitions at once."
     },
     {
       "scene": 2,
-      "line": "Management promised further updates on its unified business strategy over the second quarter of twenty twenty-six.",
+      "line": "The headline catalyst is Q two twenty twenty-six. Management promised updates on executing its unified business strategy.",
       "headline": "Q2 2026",
       "ground": "cyan",
       "subjects": [
-        "the stacked sheets"
+        "the platform sheet",
+        "four stacked sheets"
       ],
-      "action": "The previous chip flips away as the torn runway folds up into a small pile of stacked sheets alone on open ground.",
+      "action": "The four stacked sheets slide together and press flat into one large platform sheet that holds centre frame.",
       "hand": false,
-      "handoff": "the stacked sheets",
+      "handoff": "the platform sheet",
       "hero": false,
-      "scale": "small",
-      "delivery": "Management promised further updates on its unified business strategy over the second quarter of twenty twenty-six.",
+      "scale": "oversized",
+      "delivery": "The headline catalyst is Q two twenty twenty-six. Management promised updates on executing its unified business strategy.",
       "source": [
+        4,
         5
       ],
       "connector": {
-        "kind": "arrow",
-        "from": "the stacked sheets",
-        "to": "a paper calendar page",
-        "colour": "orange"
+        "kind": "paper ribbon",
+        "from": "the platform sheet",
+        "to": "four stacked sheets",
+        "colour": "blue"
       },
-      "tag": null
+      "tag": null,
+      "narration": "The headline catalyst is Q two twenty twenty-six. Management promised updates on executing its unified business strategy. Watch whether those four businesses actually run as one, whether customers buy more than one product, and whether revenue's tracking toward the two hundred and eighty million dollar target by twenty twenty-seven."
     },
     {
       "scene": 2,
-      "line": "Watch whether the four acquired businesses are operationally unified, not siloed. Cross-sell traction is the test.",
-      "headline": "UNIFIED OR SILOED",
+      "line": "Watch whether those four businesses actually run as one, whether customers buy more than one product,",
+      "headline": "CROSS-SELL",
       "ground": "cyan",
       "subjects": [
-        "the stacked sheets",
-        "a paper calendar page",
+        "the platform sheet",
+        "four stacked sheets",
         "a paper hand"
       ],
-      "action": "The previous chip is covered as the stacked sheets fan into four separate sheets; a paper hand presses them back together, and an orange paper arrow now runs from the stacked sheets to a paper calendar page.",
+      "action": "The platform sheet's edge lifts and four stacked sheets slot into it; a blue ribbon runs from the sheet to the stack, and a paper hand taps the join.",
       "hand": true,
-      "handoff": "the stacked sheets",
+      "handoff": "the platform sheet",
       "hero": false,
       "scale": "diagram",
-      "delivery": "[fast-paced] Watch whether the four acquired businesses are operationally unified, not siloed. Cross-sell traction is the test.",
+      "delivery": "Watch whether those four businesses actually run as one, whether customers buy more than one product,",
       "source": [
         7,
         8
       ],
       "connector": {
-        "kind": "arrow",
-        "from": "the stacked sheets",
-        "to": "a paper calendar page",
-        "colour": "orange"
+        "kind": "paper ribbon",
+        "from": "the platform sheet",
+        "to": "four stacked sheets",
+        "colour": "blue"
       },
-      "tag": null
+      "tag": null,
+      "narration": "The headline catalyst is Q two twenty twenty-six. Management promised updates on executing its unified business strategy. Watch whether those four businesses actually run as one, whether customers buy more than one product, and whether revenue's tracking toward the two hundred and eighty million dollar target by twenty twenty-seven."
     },
     {
       "scene": 2,
-      "line": "Also watch revenue run-rate progress toward the two hundred and eighty million dollar group revenue target by twenty twenty-seven.",
+      "line": "and whether revenue's tracking toward the two hundred and eighty million dollar target by twenty twenty-seven.",
       "headline": "$280M BY 2027",
       "ground": "cyan",
       "subjects": [
-        "the stacked sheets",
+        "the platform sheet",
         "a paper bar chart"
       ],
-      "action": "The previous chip slides off as the stacked sheets rise into a paper bar chart that fills the frame, its tallest bar locking upright; the orange arrow stays in place beneath it.",
+      "action": "The platform sheet folds upward into a rising paper bar chart whose tallest bar stops just under a pinned cream line, blue ribbon still trailing to the stacked sheets.",
       "hand": false,
       "handoff": "the paper bar chart",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "Also watch revenue run-rate progress toward the two hundred and eighty million dollar group revenue target by twenty twenty-seven.",
+      "hero": true,
+      "scale": "small",
+      "delivery": "[excited] and whether revenue's tracking toward the two hundred and eighty million dollar target by twenty twenty-seven.",
       "source": [
         9
       ],
       "connector": {
-        "kind": "arrow",
-        "from": "the stacked sheets",
-        "to": "a paper calendar page",
-        "colour": "orange"
+        "kind": "paper ribbon",
+        "from": "the platform sheet",
+        "to": "four stacked sheets",
+        "colour": "blue"
       },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "The one point five billion dollar Resulticks acquisition is the transformative bet.",
-      "headline": "$1.5B",
-      "ground": "magenta",
-      "subjects": [
-        "the large paper document"
-      ],
-      "action": "The previous chip flips down as the paper bar chart collapses sideways into one large paper document resting alone on open ground.",
-      "hand": false,
-      "handoff": "the large paper document",
-      "hero": false,
-      "scale": "small",
-      "delivery": "The one point five billion dollar Resulticks acquisition is the transformative bet.",
-      "source": [
-        13
-      ],
-      "connector": {
-        "kind": "paper string",
-        "from": "the large paper document",
-        "to": "a paper calendar page",
-        "colour": "red"
-      },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Without cross-sell evidence by the third or fourth quarter of twenty twenty-six, it becomes a financial burden.",
-      "headline": "Q3–Q4 2026",
-      "ground": "magenta",
-      "subjects": [
-        "the large paper document",
-        "a paper calendar page"
-      ],
-      "action": "The previous chip slides off as a corner of the large paper document tears into a paper calendar page; a red paper string runs from the document to that page and pulls taut.",
-      "hand": false,
-      "handoff": "the large paper document",
-      "hero": false,
-      "scale": "diagram",
-      "delivery": "Without cross-sell evidence by the third or fourth quarter of twenty twenty-six, it becomes a financial burden.",
-      "source": [
-        15
-      ],
-      "connector": {
-        "kind": "paper string",
-        "from": "the large paper document",
-        "to": "a paper calendar page",
-        "colour": "red"
-      },
-      "tag": null
-    },
-    {
-      "scene": 3,
-      "line": "Cash stood at one point eight five million, with operating burn near one point three million a month.",
-      "headline": "$1.85M CASH",
-      "ground": "magenta",
-      "subjects": [
-        "the large paper document",
-        "paper coins"
-      ],
-      "action": "The previous chip is covered as the large paper document swells to fill the frame and paper coins slide off its lower edge one by one; a coin-sized cream tag reading '$1.3M' sits beside the red string, a short black line pointing at it.",
-      "hand": false,
-      "handoff": "the paper coins",
-      "hero": false,
-      "scale": "oversized",
-      "delivery": "Cash stood at one point eight five million, with operating burn near one point three million a month.",
-      "source": [
-        21
-      ],
-      "connector": {
-        "kind": "paper string",
-        "from": "the large paper document",
-        "to": "a paper calendar page",
-        "colour": "red"
-      },
-      "tag": {
-        "text": "$1.3M",
-        "source": [
-          21
-        ]
-      }
+      "tag": null,
+      "narration": "The headline catalyst is Q two twenty twenty-six. Management promised updates on executing its unified business strategy. Watch whether those four businesses actually run as one, whether customers buy more than one product, and whether revenue's tracking toward the two hundred and eighty million dollar target by twenty twenty-seven."
     },
     {
       "scene": 4,
-      "line": "Diginex needs credible evidence of platform traction by the fourth quarter of twenty twenty-six.",
+      "line": "So the clock. They need credible evidence of platform traction by the fourth quarter of twenty twenty-six.",
       "headline": "Q4 2026",
       "ground": "violet",
       "subjects": [
-        "the coin stack",
-        "two paper calendar pages"
+        "a paper calendar page",
+        "the paper price tag"
       ],
-      "action": "The previous chip flips away as the loose paper coins gather back into the coin stack; two paper calendar pages land beside it and a cream paper ribbon runs from the coin stack to those pages.",
+      "action": "The low coin stack squares off into a paper calendar page; an orange ribbon runs from the returning paper price tag across to it.",
       "hand": false,
-      "handoff": "the coin stack",
+      "handoff": "a paper calendar page",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "Diginex needs credible evidence of platform traction by the fourth quarter of twenty twenty-six.",
+      "scale": "small",
+      "delivery": "So the clock. They need credible evidence of platform traction by the fourth quarter of twenty twenty-six.",
       "source": [
         50
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the coin stack",
-        "to": "two paper calendar pages",
-        "colour": "cream"
+        "from": "the paper price tag",
+        "to": "a paper calendar page",
+        "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So the clock. They need credible evidence of platform traction by the fourth quarter of twenty twenty-six. Otherwise the stock risks further downside. The next six to nine months are make-or-break."
     },
     {
       "scene": 4,
-      "line": "The next six to nine months are make-or-break for the investment case.",
-      "headline": "6–9 MONTHS",
+      "line": "Otherwise the stock risks further downside. The next six to nine months are make-or-break.",
+      "headline": "6-9 MONTHS",
       "ground": "violet",
       "subjects": [
-        "the coin stack",
-        "a paper hand",
-        "tape pieces"
+        "the paper price tag",
+        "a paper calendar page",
+        "a stencilled arrow"
       ],
-      "action": "The previous chip slides off as the coin stack stands alone again; a paper hand presses a strip of tape across its middle and holds it there, the cream ribbon still in place.",
-      "hand": true,
-      "handoff": "the coin stack",
+      "action": "The calendar page slides behind the paper price tag, which swings back to centre with a stencilled arrow now pinned beside it pointing down, the orange ribbon holding.",
+      "hand": false,
+      "handoff": "the paper price tag",
       "hero": false,
-      "scale": "small",
-      "delivery": "The next six to nine months are make-or-break for the investment case.",
+      "scale": "diagram",
+      "delivery": "Otherwise the stock risks further downside. The next six to nine months are make-or-break.",
       "source": [
+        51,
         52
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the coin stack",
-        "to": "two paper calendar pages",
-        "colour": "cream"
+        "from": "the paper price tag",
+        "to": "a paper calendar page",
+        "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So the clock. They need credible evidence of platform traction by the fourth quarter of twenty twenty-six. Otherwise the stock risks further downside. The next six to nine months are make-or-break."
     }
   ],
-  "dropped": [],
+  "dropped": [
+    {
+      "raw": {
+        "scene": 3,
+        "line": "Then there's the one point five billion dollar Resulticks bet. Cross-sell has to show up by the third or fourth quarter.",
+        "headline": "$1.5B BET",
+        "ground": "magenta",
+        "subjects": [
+          "the Resulticks sheet",
+          "a paper coin stack"
+        ],
+        "action": "The bar chart's tallest bar peels off and flattens into the Resulticks sheet, which lands heavily and pins a red ribbon toward a paper coin stack.",
+        "hand": false,
+        "handoff": "the Resulticks sheet",
+        "hero": false,
+        "scale": "oversized",
+        "delivery": "Then there's the one point five billion dollar Resulticks bet. Cross-sell has to show up by the third or fourth quarter.",
+        "source": [
+          13,
+          15
+        ],
+        "connector": {
+          "kind": "paper ribbon",
+          "from": "the Resulticks sheet",
+          "to": "a paper coin stack",
+          "colour": "red"
+        },
+        "tag": null,
+        "narration": "Then there's the one point five billion dollar Resulticks bet. Cross-sell has to show up by the third or fourth quarter. Otherwise it's a financial burden. And with one point three million a month burning, there's little room."
+      },
+      "reason": "subject \"the Resulticks sheet\" names a person (looks like a proper name)"
+    },
+    {
+      "raw": {
+        "scene": 3,
+        "line": "Otherwise it's a financial burden. And with one point three million a month burning, there's little room.",
+        "headline": "$1.3M / MONTH",
+        "ground": "magenta",
+        "subjects": [
+          "the Resulticks sheet",
+          "a paper coin stack"
+        ],
+        "action": "The Resulticks sheet tilts and presses down on the paper coin stack, coins sliding off one by one until the stack is low, the red ribbon still in place.",
+        "hand": false,
+        "handoff": "the paper coin stack",
+        "hero": false,
+        "scale": "diagram",
+        "delivery": "Otherwise it's a financial burden. And with one point three million a month burning, there's little room.",
+        "source": [
+          15,
+          21
+        ],
+        "connector": {
+          "kind": "paper ribbon",
+          "from": "the Resulticks sheet",
+          "to": "a paper coin stack",
+          "colour": "red"
+        },
+        "tag": {
+          "text": "$1.3M per month",
+          "source": [
+            21
+          ]
+        },
+        "narration": "Then there's the one point five billion dollar Resulticks bet. Cross-sell has to show up by the third or fourth quarter. Otherwise it's a financial burden. And with one point three million a month burning, there's little room."
+      },
+      "reason": "subject \"the Resulticks sheet\" names a person (looks like a proper name)"
+    }
+  ],
   "warnings": [
-    [],
-    [],
     [],
     [],
     [],
@@ -288,6 +308,6 @@
     []
   ],
   "model": "claude-opus-5",
-  "ms": 55105,
+  "ms": 58970,
   "clipSeconds": 15
 }
