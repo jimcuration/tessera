@@ -178,9 +178,134 @@ export function compilePrompt(args: {
   return { prompt, styleSheetVersion: STYLE_SHEET_VERSION, voice };
 }
 
-/** Seconds a section for beat index `i` (0-based) within a scene starts at. */
+/** Seconds a section for beat index `i` (0-based) within a scene starts at. WP8.1's fixed-5s-per-beat timing; used as the fallback when voice-led timing (WP8.2) is unavailable. */
 export function sceneOffsetSeconds(i: number): number {
   return i * 5;
+}
+
+/**
+ * WP8.2: the accepted range for fal's `duration` input on
+ * minimax/h3-max-turbo/{text,image}-to-video, found empirically —
+ * `scripts/probe-duration.mts`, run 2026-09-07 against the real API (the
+ * published schema documents only `duration: integer, default 5`, no
+ * min/max/step). 4s and every value from 16s up returned HTTP 422
+ * (Unprocessable Entity) before any render started; every integer 5-15
+ * rendered, each at (very close to, not exactly) its requested length —
+ * e.g. requested 11 measured 11.55s, requested 15 measured 15.10s. Not an
+ * enum restricted to {5,10,15}: 6, 11 and 13 all rendered too.
+ */
+export const FAL_DURATION_MIN = 5;
+export const FAL_DURATION_MAX = 15;
+
+/**
+ * WP8.2 follow-up: a scene whose own narration exceeds this many seconds
+ * gets split at a beat boundary into two (or, recursively, more) chained
+ * clips instead of one clip whose requested duration would have to be
+ * clamped to FAL_DURATION_MAX. Set below FAL_DURATION_MAX so that even
+ * after CLIP_AIR_SECONDS (1.0s) is added and rounded up, a group at or
+ * under budget requests at most FAL_DURATION_MAX (14 + 1.0 -> ceil ->
+ * 15) — a split scene should never itself need clamping.
+ */
+export const SCENE_AUDIO_BUDGET_SECONDS = 14;
+
+/**
+ * WP8.2 follow-up: split a scene's beats (and their parallel per-beat
+ * audio durations) at a beat boundary into contiguous groups, each at or
+ * under `budget` seconds of its own narration — or a single beat, if one
+ * beat alone already exceeds budget (nothing left to split further). The
+ * split point is chosen to minimize the larger of the two resulting
+ * groups' own narration totals (not just beat count), recursing into
+ * either side that still exceeds budget. A scene within budget already
+ * (the common case) returns unchanged, as its own single group.
+ *
+ * Generic over the caller's own per-beat item shape (`lib/programme.ts`'s
+ * `{n, beat, warnings}` and `scripts/render.mts`'s identical shape both
+ * use this as-is) — `durations[i]` must correspond to `items[i]`.
+ */
+export function splitSceneByAudioBudget<T>(items: T[], durations: number[], budget: number = SCENE_AUDIO_BUDGET_SECONDS): T[][] {
+  if (items.length <= 1) return [items];
+  const total = durations.reduce((sum, d) => sum + d, 0);
+  if (total <= budget) return [items];
+
+  let bestSplit = 1;
+  let bestMax = Infinity;
+  let prefix = 0;
+  for (let k = 1; k < items.length; k += 1) {
+    prefix += durations[k - 1];
+    const candidateMax = Math.max(prefix, total - prefix);
+    if (candidateMax < bestMax) {
+      bestMax = candidateMax;
+      bestSplit = k;
+    }
+  }
+
+  const left = splitSceneByAudioBudget(items.slice(0, bestSplit), durations.slice(0, bestSplit), budget);
+  const right = splitSceneByAudioBudget(items.slice(bestSplit), durations.slice(bestSplit), budget);
+  return [...left, ...right];
+}
+
+/** One beat's on-screen section, seconds within the shot's own clip. */
+export interface SceneSection {
+  start: number;
+  end: number;
+}
+
+export interface VoiceLedTiming {
+  sections: SceneSection[];
+  /** Seconds requested of fal for the whole scene clip — integer, clamped to FAL_DURATION_MIN/MAX. */
+  requestedDuration: number;
+  /** Sum of the beats' own narrated-audio durations, before the 1.0s air and the clamp. */
+  totalNarrationSeconds: number;
+  /** True when totalNarrationSeconds + 1.0s, rounded up, fell outside fal's accepted range and had to be clamped. */
+  clamped: boolean;
+}
+
+const SECTION_LEAD_SECONDS = 0.4;
+const CLIP_AIR_SECONDS = 1.0;
+
+function round1(n: number): number {
+  return Math.round(n * 10) / 10;
+}
+
+/**
+ * WP8.2 items 2-3: turn each beat's own narrated-audio duration (from
+ * ElevenLabs, per-beat, already measured from the actually-cut mp3 —
+ * app/api/voice/route.ts's `durationSeconds`, populated the same way
+ * whether the split came from timestamps or the silence-gap fallback) into
+ * the scene's on-screen section timecodes and the clip's requested
+ * duration.
+ *
+ * Each section runs from the end of the previous line to the end of its
+ * own line, plus a lead that grows by 0.4s at every boundary crossed (so
+ * the picture holds a beat longer than Saskia's own line at each cut,
+ * compensating for the model's tendency to front-load — brief's own
+ * example: [0-d1+0.4s], [d1+0.4-d1+d2+0.8s], ...). Beat 1 always starts at
+ * 0. The last section's end is pinned to the clip's actual requested
+ * duration (not the boundary formula) since that is the true length of the
+ * clip the video model is being asked to fill, and the two numbers can
+ * differ once the requested duration is clamped to fal's range.
+ *
+ * The clip's requested duration is the total narration plus 1.0s of
+ * trailing air, rounded up to the whole second fal's `duration` field
+ * requires, clamped to FAL_DURATION_MIN/MAX above.
+ */
+export function computeVoiceLedTiming(durations: number[]): VoiceLedTiming {
+  const totalNarrationSeconds = durations.reduce((sum, d) => sum + d, 0);
+  const raw = Math.ceil(totalNarrationSeconds + CLIP_AIR_SECONDS);
+  const requestedDuration = Math.min(FAL_DURATION_MAX, Math.max(FAL_DURATION_MIN, raw));
+  const clamped = requestedDuration !== raw;
+
+  const sections: SceneSection[] = [];
+  let cumulative = 0;
+  let start = 0;
+  for (let i = 0; i < durations.length; i += 1) {
+    cumulative += durations[i];
+    const isLast = i === durations.length - 1;
+    const end = isLast ? Math.max(requestedDuration, start + 0.5) : cumulative + SECTION_LEAD_SECONDS * (i + 1);
+    sections.push({ start: round1(start), end: round1(end) });
+    start = end;
+  }
+  return { sections, requestedDuration, totalNarrationSeconds, clamped };
 }
 
 /**
@@ -192,21 +317,30 @@ export function sceneOffsetSeconds(i: number): number {
  * numbered list as the single-beat path (beat 1's ground: a scene holds
  * one ground throughout, so any beat's would do); its duration line always
  * needs the override since a scene is never 5s.
+ *
+ * WP8.2: `sections`/`clipSeconds`, when passed, override the fixed 5s-per-
+ * beat timing below with voice-led timecodes (computeVoiceLedTiming) and
+ * the audio-derived total duration. Omitted (or when voice-led timing
+ * could not be computed — native voice, or Saskia's per-beat durations
+ * were unavailable), this falls back to WP8.1's original fixed-5s-per-beat
+ * behaviour unchanged.
  */
 export function compileScenePrompt(args: {
   beats: Beat[];
   voice: Voice;
   previousHandoff: string | null;
+  sections?: SceneSection[];
+  clipSeconds?: number;
 }): CompiledPrompt {
   const { beats, voice, previousHandoff } = args;
-  const clipSeconds = beats.length * 5;
+  const sections_ = args.sections ?? beats.map((_, i) => ({ start: sceneOffsetSeconds(i), end: sceneOffsetSeconds(i) + 5 }));
+  const clipSeconds = args.clipSeconds ?? beats.length * 5;
   const sheet = styleSheet(beats[0].ground)
     .map((line, i) => `${i + 1}. ${line}`)
     .join("\n");
 
   const sections = beats.map((beat, i) => {
-    const start = sceneOffsetSeconds(i);
-    const end = start + 5;
+    const { start, end } = sections_[i];
     const opens =
       i === 0
         ? previousHandoff
@@ -214,7 +348,7 @@ export function compileScenePrompt(args: {
           : `Opens cold on the ground colour; the first subject enters on the first frame.`
         : `Opens on ${beats[i - 1].handoff}, carried over from the previous section, which transforms as this section's action begins.`;
     const lines = [
-      `[${start}-${end}s] SECTION ${i + 1}`,
+      `[${start.toFixed(1)}-${end.toFixed(1)}s] SECTION ${i + 1}`,
       `Subjects: ${beat.subjects.join("; ")}.`,
       opens,
       `Action: ${beat.action}`,

@@ -12,7 +12,7 @@
  */
 
 import { cancelInFlight } from "./fal";
-import { compilePrompt, compileScenePrompt, STYLE_SHEET_VERSION } from "./prompt";
+import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, type SceneSection } from "./prompt";
 import { registerShot, recordSession } from "./recorder";
 import { createRenderer } from "./render";
 import type { Stream, Shot } from "./stream";
@@ -82,12 +82,24 @@ export class Session {
   private firstBeatMs: number | null = null;
   private warnings: string[][] = [];
   private droppedRaw: unknown[] = [];
-  /** WP8: Saskia is generated per scene, not per line (brief §2) — beats of the scene in progress, held until the next beat's scene number changes or the translation ends. */
+  /** WP8: Saskia is generated per scene, not per line (brief §2) — beats of the scene in progress, held until the next beat's scene number changes or the translation ends. Only used at 5s/10s (WP8.2: at 15s, flushVideoScene below handles narration itself, since it needs the durations before it can compile the prompt). */
   private sceneBuffer: { scene: number; beats: { n: number; text: string }[] } | null = null;
   /** WP8.1 §1: at CLIP_SECONDS=15, one shot is a whole scene — beats of the scene in progress, held the same way as sceneBuffer above but carrying full Beat objects for compileScenePrompt. Unused at 5s/10s. */
   private videoSceneBuffer: { scene: number; items: { n: number; beat: Beat; warnings: string[] }[] } | null = null;
   private previousHandoff: string | null = null;
   private streamStarted = false;
+  /**
+   * WP8.2: scenes must dispatch to `stream` in the order they were
+   * translated, but `flushVideoScene` is now async (it awaits Saskia's
+   * audio before it can compute voice-led timing) — scene N+1's beats can
+   * finish buffering, and its ElevenLabs round-trip can resolve, before
+   * scene N's does. This chain serializes only the flush functions
+   * themselves (audio fetch + compile + dispatch), not the render pipeline
+   * (`stream` renders whatever it's handed independently, in its own time),
+   * so it costs cross-scene latency in the narration fetch only, not in
+   * video render throughput.
+   */
+  private flushChain: Promise<void> = Promise.resolve();
 
   stream: Stream | null = null;
   narrator: Narrator | null = null;
@@ -156,45 +168,125 @@ export class Session {
   }
 
   /**
-   * WP8.1 §1: compile the buffered scene's 2-3 beats into one shot (one
-   * fal request, one clip) and hand it to the stream. Only used at
-   * CLIP_SECONDS=15 — at 5s/10s each beat is dispatched immediately
-   * instead (see the "beat" case in run()).
+   * WP8.1 §1 / WP8.2: take the buffered scene's 2-3 beats off the buffer and
+   * queue their compile+dispatch on `flushChain` so scenes still reach
+   * `stream.addShots` in translation order even though the work in between
+   * (awaiting Saskia's audio) is now async. Only used at CLIP_SECONDS=15 —
+   * at 5s/10s each beat is dispatched immediately instead (see the "beat"
+   * case in run()).
    */
-  private flushVideoScene(voice: SessionSwitches["voice"], chain: SessionSwitches["chain"]) {
+  private queueFlushVideoScene(voice: SessionSwitches["voice"], chain: SessionSwitches["chain"]) {
     const buffered = this.videoSceneBuffer;
     this.videoSceneBuffer = null;
     if (!buffered || buffered.items.length === 0) return;
-    const beats = buffered.items.map((it) => it.beat);
-    const { prompt } = compileScenePrompt({ beats, voice, previousHandoff: this.previousHandoff });
-    this.previousHandoff = beats[beats.length - 1].handoff;
-    const shot: Shot = {
-      n: buffered.items[0].n,
-      beats: buffered.items.map((it, i) => ({ n: it.n, beat: it.beat, offsetSeconds: i * 5 })),
-      prompt,
-      duration: beats.length * 5,
-      chain: chain === "on",
-    };
-    registerShot(prompt, {
-      session: this.id,
-      n: shot.n,
-      question: this.state.answer?.question ?? this.state.question,
-      beats: buffered.items.map((it, i) => ({
-        n: it.n,
-        beat: it.beat,
-        offsetSeconds: i * 5,
-        sources: it.beat.source.map((idx) => this.state.answer?.sentences[idx] ?? ""),
-        warnings: it.warnings,
-      })),
-      voice,
-      chain,
-      translatorVersion: TRANSLATOR_VERSION,
-      styleSheetVersion: STYLE_SHEET_VERSION,
+    this.flushChain = this.flushChain.then(() => this.flushVideoScene(buffered, voice, chain)).catch((cause) => {
+      console.error(`[session] scene ${buffered.scene} failed to stage:`, cause instanceof Error ? cause.message : cause);
     });
-    this.stream?.addShots([shot]);
-    if (!this.streamStarted) {
-      this.streamStarted = true;
-      this.stream?.start();
+  }
+
+  private async flushVideoScene(
+    buffered: { scene: number; items: { n: number; beat: Beat; warnings: string[] }[] },
+    voice: SessionSwitches["voice"],
+    chain: SessionSwitches["chain"]
+  ) {
+    // WP8.2 items 1-3: for Saskia, generate this scene's narration first —
+    // and wait for it — so the video prompt's section timecodes and the
+    // clip's own requested duration come from the beats' real audio
+    // lengths, not a fixed 5s-per-beat guess. Native voice has no separate
+    // narration track to time against (the video model speaks the line
+    // itself), so it keeps WP8.1's fixed timing unchanged.
+    let groups: { n: number; beat: Beat; warnings: string[] }[][] = [buffered.items];
+    let timingMethod: "voice-led" | "fixed" = "fixed";
+    let splitMethod: "timestamps" | "silence-gap" | null = null;
+    let durationsByGroup: (number | null)[][] = [buffered.items.map(() => null)];
+
+    if (voice === "saskia" && this.narrator) {
+      const sceneBeatsForAudio = buffered.items.map((it) => ({ n: it.n, text: it.beat.delivery }));
+      const result = await this.narrator.prefetchScene(buffered.scene, sceneBeatsForAudio);
+      const durations = buffered.items.map((it) => result.beats.get(it.n)?.durationSeconds ?? null);
+      if (durations.every((d): d is number => typeof d === "number" && d > 0)) {
+        splitMethod = result.splitMethod;
+        timingMethod = "voice-led";
+        // WP8.2 follow-up: a scene whose own narration exceeds
+        // SCENE_AUDIO_BUDGET_SECONDS is split at a beat boundary into two
+        // (or more, recursively) chained clips instead of one clip whose
+        // requested duration would otherwise have to be clamped to
+        // FAL_DURATION_MAX — the clamp cascade WP8.2's own report found.
+        groups = splitSceneByAudioBudget(buffered.items, durations);
+        let cursor = 0;
+        durationsByGroup = groups.map((g) => {
+          const slice = durations.slice(cursor, cursor + g.length);
+          cursor += g.length;
+          return slice;
+        });
+        if (groups.length > 1) {
+          console.info(
+            `[session] scene ${buffered.scene}: narration ${durations.reduce((s, d) => s + d, 0).toFixed(1)}s exceeds budget, split into ${groups.length} chained clips (${groups.map((g) => g.length).join("+")} beats)`
+          );
+        }
+      } else {
+        console.warn(`[session] scene ${buffered.scene}: Saskia audio durations unavailable, falling back to fixed 5s-per-beat timing`);
+      }
+    }
+
+    for (let gi = 0; gi < groups.length; gi += 1) {
+      const groupItems = groups[gi];
+      const groupBeats = groupItems.map((it) => it.beat);
+      const durations = durationsByGroup[gi];
+
+      let sections: SceneSection[] | undefined;
+      let requestedDuration = groupBeats.length * 5;
+      let totalNarrationSeconds: number | null = null;
+      let durationClamped = false;
+
+      if (timingMethod === "voice-led" && durations.every((d): d is number => typeof d === "number" && d > 0)) {
+        const timing = computeVoiceLedTiming(durations);
+        sections = timing.sections;
+        requestedDuration = timing.requestedDuration;
+        totalNarrationSeconds = timing.totalNarrationSeconds;
+        durationClamped = timing.clamped;
+      }
+
+      const { prompt } = compileScenePrompt({ beats: groupBeats, voice, previousHandoff: this.previousHandoff, sections, clipSeconds: requestedDuration });
+      this.previousHandoff = groupBeats[groupBeats.length - 1].handoff;
+      const offsets = sections ? sections.map((s) => s.start) : groupBeats.map((_, i) => sceneOffsetSeconds(i));
+      const ends = sections ? sections.map((s) => s.end) : groupBeats.map((_, i) => sceneOffsetSeconds(i) + 5);
+      const shot: Shot = {
+        n: groupItems[0].n,
+        beats: groupItems.map((it, i) => ({ n: it.n, beat: it.beat, offsetSeconds: offsets[i] })),
+        prompt,
+        duration: requestedDuration,
+        chain: chain === "on",
+      };
+      registerShot(prompt, {
+        session: this.id,
+        n: shot.n,
+        question: this.state.answer?.question ?? this.state.question,
+        beats: groupItems.map((it, i) => ({
+          n: it.n,
+          beat: it.beat,
+          offsetSeconds: offsets[i],
+          sectionEndSeconds: ends[i],
+          audioDurationSeconds: durations[i] ?? null,
+          sources: it.beat.source.map((idx) => this.state.answer?.sentences[idx] ?? ""),
+          warnings: it.warnings,
+        })),
+        voice,
+        chain,
+        translatorVersion: TRANSLATOR_VERSION,
+        styleSheetVersion: STYLE_SHEET_VERSION,
+        requestedDuration,
+        timingMethod,
+        splitMethod,
+        totalNarrationSeconds,
+        durationClamped,
+        sceneSplit: groups.length > 1 ? { scene: buffered.scene, part: gi + 1, of: groups.length } : null,
+      });
+      this.stream?.addShots([shot]);
+      if (!this.streamStarted) {
+        this.streamStarted = true;
+        this.stream?.start();
+      }
     }
   }
 
@@ -290,10 +382,13 @@ export class Session {
           if (switches.clipSeconds === 15) {
             // WP8.1 §1: one shot = one whole scene. Buffer this beat;
             // dispatch the scene as one fal request the moment the next
-            // beat starts a new scene (or at "done" for the last scene) —
-            // mirrors the Saskia scene buffer below.
+            // beat starts a new scene (or at "done" for the last scene).
+            // WP8.2: narration for this scene is now generated (and
+            // awaited) inside flushVideoScene itself, ahead of compiling
+            // the prompt, so there's no separate sceneBuffer/flushScene
+            // step for this path any more (see the else branch below).
             if (this.videoSceneBuffer && this.videoSceneBuffer.scene !== beat.scene) {
-              this.flushVideoScene(switches.voice, switches.chain);
+              this.queueFlushVideoScene(switches.voice, switches.chain);
             }
             if (!this.videoSceneBuffer) this.videoSceneBuffer = { scene: beat.scene, items: [] };
             this.videoSceneBuffer.items.push({ n, beat, warnings });
@@ -316,6 +411,8 @@ export class Session {
                   n,
                   beat,
                   offsetSeconds: 0,
+                  sectionEndSeconds: switches.clipSeconds,
+                  audioDurationSeconds: null,
                   sources: beat.source.map((i) => this.state.answer?.sentences[i] ?? ""),
                   warnings,
                 },
@@ -324,21 +421,30 @@ export class Session {
               chain: switches.chain,
               translatorVersion: TRANSLATOR_VERSION,
               styleSheetVersion: STYLE_SHEET_VERSION,
+              requestedDuration: switches.clipSeconds,
+              timingMethod: "fixed",
+              splitMethod: null,
+              totalNarrationSeconds: null,
+              durationClamped: false,
+              sceneSplit: null,
             });
             this.stream?.addShots([shot]);
             if (!this.streamStarted) {
               this.streamStarted = true;
               this.stream?.start();
             }
-          }
 
-          // WP8: Saskia's narration is generated per scene, not per line
-          // (brief §2): buffer this beat and flush the scene the moment the
-          // next beat starts a new one (or at "done" for the last scene).
-          if (this.narrator) {
-            if (this.sceneBuffer && this.sceneBuffer.scene !== beat.scene) this.flushScene();
-            if (!this.sceneBuffer) this.sceneBuffer = { scene: beat.scene, beats: [] };
-            this.sceneBuffer.beats.push({ n, text: beat.delivery });
+            // WP8: Saskia's narration is generated per scene, not per line
+            // (brief §2), for the 5s/10s per-beat path only — buffer this
+            // beat and flush the scene the moment the next beat starts a
+            // new one (or at "done" for the last scene). At 15s scene mode
+            // (the `if` branch above), flushVideoScene handles narration
+            // generation itself (WP8.2).
+            if (this.narrator) {
+              if (this.sceneBuffer && this.sceneBuffer.scene !== beat.scene) this.flushScene();
+              if (!this.sceneBuffer) this.sceneBuffer = { scene: beat.scene, beats: [] };
+              this.sceneBuffer.beats.push({ n, text: beat.delivery });
+            }
           }
           this.set({ status: "staging", beats: [...this.state.beats, beat] });
           break;
@@ -383,8 +489,17 @@ export class Session {
     }
     if (!this.alive) return;
     if (this.state.status === "error") return;
-    if (switches.clipSeconds === 15) this.flushVideoScene(switches.voice, switches.chain);
-    this.flushScene();
+    if (switches.clipSeconds === 15) {
+      this.queueFlushVideoScene(switches.voice, switches.chain);
+      // WP8.2: the last scene's flush is now async (it awaits Saskia's
+      // audio before dispatching) — wait for the whole chain to drain
+      // before telling `stream` no more shots are coming, or `finish()`
+      // could mark the programme "ended" before the final shot ever
+      // reaches `addShots`.
+      await this.flushChain;
+    } else {
+      this.flushScene();
+    }
 
     stream.finish();
     this.set({ status: "done" });

@@ -78,6 +78,11 @@ export async function generateClip(args: {
   };
   if (args.seed !== undefined) input.seed = args.seed;
   let endpoint = TURBO_T2V;
+  // WP8.2: fal's image-to-video schema has no `aspect_ratio` input field at
+  // all (checked against the published API schema, not assumed) — only
+  // text-to-video accepts it. A chained (i2v) shot's aspect ratio is
+  // whatever the model does with the input frame; recorded, not requested.
+  const aspectRatioParamSent = !args.fromFrame;
   if (args.fromFrame) {
     endpoint = TURBO_I2V;
     input.image_url = args.fromFrame;
@@ -130,6 +135,8 @@ export async function generateClip(args: {
       resolution,
       renderMs: ms,
       timings: data.timings ?? null,
+      requestedAspectRatio: "16:9",
+      aspectRatioParamSent,
     });
     return clip;
   } finally {

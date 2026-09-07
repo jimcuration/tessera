@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { type NextRequest } from "next/server";
 import { recordingsDir } from "@/lib/config";
+import { dimensionsOf, durationOf } from "../../../scripts/ffmpeg.mjs";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -62,8 +63,36 @@ export async function POST(req: NextRequest) {
       try {
         const upstream = await fetch(rawUrl, { cache: "no-store" });
         if (upstream.ok) {
-          writeFileSync(path.join(dir, `${n}.mp4`), new Uint8Array(await upstream.arrayBuffer()));
+          const mp4Path = path.join(dir, `${n}.mp4`);
+          writeFileSync(mp4Path, new Uint8Array(await upstream.arrayBuffer()));
           saved = true;
+          // WP8.2 item 3: fal's response has no field for the clip's actual
+          // duration or aspect ratio (confirmed against the published API
+          // schema, scripts/probe-duration.mts) — measure the downloaded
+          // file directly and merge the result into the already-written
+          // <n>.json so it's a self-contained record.
+          try {
+            const returnedDurationSeconds = durationOf(mp4Path);
+            const dims = dimensionsOf(mp4Path);
+            const returnedAspectRatio = dims ? Number((dims.width / dims.height).toFixed(4)) : null;
+            writeFileSync(
+              path.join(dir, `${n}.json`),
+              JSON.stringify(
+                {
+                  ...meta,
+                  returnedDurationSeconds,
+                  returnedWidth: dims?.width ?? null,
+                  returnedHeight: dims?.height ?? null,
+                  returnedAspectRatio,
+                  savedAt: new Date().toISOString(),
+                },
+                null,
+                2
+              )
+            );
+          } catch (cause) {
+            console.warn(`[record] clip ${n}: could not measure returned clip:`, cause instanceof Error ? cause.message : cause);
+          }
         } else {
           console.warn(`[record] clip ${n}: upstream ${upstream.status}`);
         }
