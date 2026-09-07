@@ -34,6 +34,18 @@ import type { Beat, Ground, Scale } from "./translator";
 
 export const STYLE_SHEET_VERSION = "style-sheet-v0.3";
 
+/**
+ * WP8.2 changed how a scene's on-screen timing is computed
+ * (computeVoiceLedTiming, below) without touching the style sheet or
+ * translator. Recordings made before that change carry no per-section
+ * timecodes built from Saskia's real narration lengths, so they must not be
+ * offered as cache hits alongside recordings made after — bump this string
+ * whenever the timing computation changes and it needs to invalidate the
+ * cache. Threaded through FindCacheInput/session.json the same way
+ * TRANSLATOR_VERSION and STYLE_SHEET_VERSION are (lib/cache.ts).
+ */
+export const TIMING_VERSION = "timing-v1-voice-led";
+
 export type Voice = "native" | "saskia";
 
 const GROUND_NAMES: Record<Ground, string> = {

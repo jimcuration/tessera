@@ -37,6 +37,8 @@ export interface ShotMeta {
   chain: "on" | "off";
   translatorVersion: string;
   styleSheetVersion: string;
+  /** Versions the timing computation this shot's sections were built with (lib/prompt.ts#TIMING_VERSION) — bumped when computeVoiceLedTiming changes, so cache matching (lib/cache.ts) can't offer a shot timed under the old method as a hit for a new question. */
+  timingVersion: string;
   /** WP8.2: seconds requested of fal for this shot's clip (previously not recorded at all — inferred, wrongly once shots could vary in length, from beat count). */
   requestedDuration: number;
   /** WP8.2 item 6: "voice-led" when section boundaries/duration came from Saskia's own per-beat audio durations; "fixed" when WP8.1's flat 5s-per-beat timing was used instead (native voice, clipSeconds !== 15, or voice-led timing could not be computed for this scene). */

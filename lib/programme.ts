@@ -12,7 +12,7 @@
  */
 
 import { cancelInFlight } from "./fal";
-import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, type SceneSection } from "./prompt";
+import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, TIMING_VERSION, type SceneSection } from "./prompt";
 import { registerShot, recordSession } from "./recorder";
 import { createRenderer } from "./render";
 import type { ReadyClip, Stream, Shot } from "./stream";
@@ -125,8 +125,11 @@ export class Session {
 
   stream: Stream | null = null;
   narrator: Narrator | null = null;
+  /** FRESH (Shift+Enter on the ask line): this question's own cache lookup is skipped, live render only — CACHE=off's blanket switch is untouched. */
+  private fresh: boolean;
 
-  constructor(question: string) {
+  constructor(question: string, opts?: { fresh?: boolean }) {
+    this.fresh = opts?.fresh ?? false;
     this.state = {
       id: `${stamp()}-${slug(question) || "question"}`,
       question,
@@ -297,6 +300,7 @@ export class Session {
         chain,
         translatorVersion: TRANSLATOR_VERSION,
         styleSheetVersion: STYLE_SHEET_VERSION,
+        timingVersion: TIMING_VERSION,
         requestedDuration,
         timingMethod,
         splitMethod,
@@ -437,7 +441,12 @@ export class Session {
     // where the WP9 brief puts it) so the FAL_KEY/ELEVENLABS_API_KEY
     // secrets checks above still run first — see briefs/WP9-handoff.md for
     // why that ordering was kept.
-    if (config.cache !== "off") {
+    //
+    // FRESH (Shift+Enter on the ask line, this.fresh) skips the lookup for
+    // this one question only, leaving CACHE=off's blanket switch alone.
+    if (this.fresh) {
+      console.info(`[session] FRESH: cache bypassed for "${this.state.question}"`);
+    } else if (config.cache !== "off") {
       const hit = await this.tryCache(switches, signal, narratorMuted);
       if (!this.alive) return;
       if (hit) return;
@@ -549,6 +558,7 @@ export class Session {
               chain: switches.chain,
               translatorVersion: TRANSLATOR_VERSION,
               styleSheetVersion: STYLE_SHEET_VERSION,
+              timingVersion: TIMING_VERSION,
               requestedDuration: switches.clipSeconds,
               timingMethod: "fixed",
               splitMethod: null,
@@ -640,8 +650,10 @@ export class Session {
       fromSpine: this.state.answer?.fromSpine ?? false,
       sentences: this.state.answer?.sentences ?? [],
       switches,
+      fresh: this.fresh,
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
+      timingVersion: TIMING_VERSION,
       translateSource,
       translateMs,
       firstBeatMs: this.firstBeatMs,

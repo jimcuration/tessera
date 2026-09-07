@@ -7,7 +7,7 @@ import type { Resolution } from "./fal";
 
 /**
  * WP9: matches a question + the current runtime switches + the current
- * translator/style-sheet versions against RECORDINGS_DIR's saved sessions,
+ * translator/style-sheet/timing versions against RECORDINGS_DIR's saved sessions,
  * and checks that a match is actually complete (every beat has a shot clip,
  * and, under Saskia, its own split narration) before it is offered as a
  * cache hit. Server-only (uses node:fs) — imported by
@@ -30,6 +30,7 @@ interface SessionJson {
   switches?: { voice?: string; chain?: string; clipSeconds?: number };
   translatorVersion?: string;
   styleSheetVersion?: string;
+  timingVersion?: string;
   beats?: Beat[];
   savedAt?: string;
 }
@@ -72,6 +73,7 @@ export interface FindCacheInput {
   clipSeconds: ClipSeconds;
   translatorVersion: string;
   styleSheetVersion: string;
+  timingVersion: string;
 }
 
 function readJson<T>(file: string): T | null {
@@ -164,6 +166,7 @@ export function listMatchingSessions(input: FindCacheInput): MatchedSession[] {
     if (session.switches?.clipSeconds !== input.clipSeconds) continue;
     if (session.translatorVersion !== input.translatorVersion) continue;
     if (session.styleSheetVersion !== input.styleSheetVersion) continue;
+    if (session.timingVersion !== input.timingVersion) continue;
     matches.push({ dir, sessionId: name, session });
   }
   matches.sort((a, b) => {

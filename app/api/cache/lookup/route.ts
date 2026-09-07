@@ -2,7 +2,7 @@ import { type NextRequest } from "next/server";
 import { findCachedProgramme } from "@/lib/cache";
 import { readSwitches, recordingsDir } from "@/lib/config";
 import { getAnswer } from "@/lib/curation";
-import { STYLE_SHEET_VERSION } from "@/lib/prompt";
+import { STYLE_SHEET_VERSION, TIMING_VERSION } from "@/lib/prompt";
 import { TRANSLATOR_VERSION } from "@/lib/translator";
 
 export const dynamic = "force-dynamic";
@@ -39,6 +39,7 @@ export async function POST(req: NextRequest) {
     clipSeconds: switches.clipSeconds,
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
+    timingVersion: TIMING_VERSION,
   });
   if (!cached) return Response.json({ hit: false }, { status: 404 });
 

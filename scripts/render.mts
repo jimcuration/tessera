@@ -33,7 +33,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fal } from "@fal-ai/client";
 import { checkRemoteClipForFaces } from "../lib/faceGate.ts";
-import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, type SceneSection, type Voice } from "../lib/prompt.ts";
+import { compilePrompt, compileScenePrompt, computeVoiceLedTiming, sceneOffsetSeconds, splitSceneByAudioBudget, STYLE_SHEET_VERSION, TIMING_VERSION, type SceneSection, type Voice } from "../lib/prompt.ts";
 import { TRANSLATOR_VERSION, type Beat } from "../lib/translator.ts";
 import { ffmpeg } from "./ffmpeg.mjs";
 import { writeFileSync, mkdirSync } from "node:fs";
@@ -341,6 +341,7 @@ async function main() {
       chain,
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
+      timingVersion: TIMING_VERSION,
       requestedDuration: clipSeconds,
       timingMethod: "fixed",
       splitMethod: null,
@@ -448,6 +449,7 @@ async function main() {
       chain,
       translatorVersion: TRANSLATOR_VERSION,
       styleSheetVersion: STYLE_SHEET_VERSION,
+      timingVersion: TIMING_VERSION,
       requestedDuration,
       timingMethod,
       splitMethod,
@@ -582,6 +584,7 @@ async function main() {
     switches: { voice, chain, music, faceGate, render: "queue", clipSeconds },
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
+    timingVersion: TIMING_VERSION,
     translateSource,
     translateMs,
     firstBeatMs,

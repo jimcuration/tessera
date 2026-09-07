@@ -23,7 +23,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { findCachedProgramme, type FindCacheInput } from "../lib/cache.ts";
-import { STYLE_SHEET_VERSION } from "../lib/prompt.ts";
+import { STYLE_SHEET_VERSION, TIMING_VERSION } from "../lib/prompt.ts";
 import { TRANSLATOR_VERSION } from "../lib/translator.ts";
 
 function loadEnvLocal() {
@@ -110,13 +110,14 @@ function lookup(question: string): ReturnType<typeof findCachedProgramme> {
     clipSeconds,
     translatorVersion: TRANSLATOR_VERSION,
     styleSheetVersion: STYLE_SHEET_VERSION,
+    timingVersion: TIMING_VERSION,
   };
   return findCachedProgramme(input);
 }
 
 async function main() {
   console.log(
-    `[cache] voice=${voice} chain=${chain} clip-seconds=${clipSeconds} translator=${TRANSLATOR_VERSION} style-sheet=${STYLE_SHEET_VERSION}`
+    `[cache] voice=${voice} chain=${chain} clip-seconds=${clipSeconds} translator=${TRANSLATOR_VERSION} style-sheet=${STYLE_SHEET_VERSION} timing=${TIMING_VERSION}`
   );
   console.log(`[cache] recordings dir: ${recordingsDirPath}`);
 

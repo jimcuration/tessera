@@ -29,8 +29,6 @@ import { GROUNDS } from "@/lib/translator";
 
 /** Auto-continue into the top suggestion after this long idle. */
 const AUTO_CONTINUE_SECONDS = 10;
-/** WP9 §2 "playing": show the corner hold cursor once the last frame has held this long with nothing ready. */
-const HOLD_CURSOR_MS = 2000;
 /** How many suggestions sit under the screen. */
 const SUGGESTION_LINES = 3;
 /** Theatre mode never renders below this viewport width (CLAUDE.md → WP4). */
@@ -222,8 +220,6 @@ export function Player() {
   const [needsTap, setNeedsTap] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [inputFocused, setInputFocused] = useState(false);
-  /** WP9 §2 "playing": the clip on screen has held its last frame for more than HOLD_CURSOR_MS. */
-  const [holdCursor, setHoldCursor] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   /** The live session, outside React state so an ask never runs twice. */
@@ -231,7 +227,6 @@ export function Player() {
   const pictureRef = useRef<Picture | null>(null);
   /** Whether the clip on screen has played to its end (holding its last frame). */
   const endedRef = useRef(false);
-  const holdTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const focusInput = useCallback(() => inputRef.current?.focus(), []);
   useEffect(() => {
@@ -241,21 +236,16 @@ export function Player() {
   // Ask: interrupt whatever is running and start the new programme. The
   // picture stays until the new programme's first clip exists.
   const ask = useCallback(
-    (question: string) => {
+    (question: string, opts?: { fresh?: boolean }) => {
       const q = question.trim();
       if (!q) return;
       sessionRef.current?.cancel();
-      const next = new Session(q);
+      const next = new Session(q, opts);
       sessionRef.current = next;
       next.start();
       setSession(next);
       setTyped("");
       setCountdown(null);
-      if (holdTimerRef.current) {
-        clearTimeout(holdTimerRef.current);
-        holdTimerRef.current = null;
-      }
-      setHoldCursor(false);
       focusInput();
     },
     [focusInput]
@@ -265,7 +255,6 @@ export function Player() {
   useEffect(
     () => () => {
       sessionRef.current?.cancel();
-      if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
     },
     []
   );
@@ -293,11 +282,6 @@ export function Player() {
 
   const onStarted = useCallback((clip: ReadyClip) => {
     endedRef.current = false;
-    if (holdTimerRef.current) {
-      clearTimeout(holdTimerRef.current);
-      holdTimerRef.current = null;
-    }
-    setHoldCursor(false);
     const live = sessionRef.current;
     const shown = pictureRef.current;
     // Saskia: the narration for this clip's first beat starts with the clip.
@@ -322,15 +306,8 @@ export function Player() {
     endedRef.current = true;
     // Hold the last frame if nothing is ready: the next shot chains from
     // this exact image, so the hold reads as a beat and the cut is seamless.
+    // The console seam is the buffer-state indicator for this wait.
     sessionRef.current?.stream?.advance();
-    // WP9 §2 "playing": if the hold outlasts HOLD_CURSOR_MS, show the
-    // corner cursor until the next clip starts (onStarted above clears it).
-    if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
-    holdTimerRef.current = setTimeout(() => {
-      holdTimerRef.current = null;
-      console.info("[player] hold > 2s");
-      setHoldCursor(true);
-    }, HOLD_CURSOR_MS);
   }, []);
 
   const onNeedsTap = useCallback(() => {
@@ -425,7 +402,8 @@ export function Player() {
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      ask(typed);
+      // FRESH: Shift+Enter bypasses the cache for this question only.
+      ask(typed, event.shiftKey ? { fresh: true } : undefined);
     } else if (event.key === "Escape") {
       setTyped("");
     }
@@ -468,21 +446,33 @@ export function Player() {
     }
   }, [musicPlaying]);
 
+  // "none" (below MATCH_THRESHOLD, lib/curation.ts) gets its own on-screen
+  // deflection line (ScreenStatus, below) instead of this below-screen one.
   const statusLine = (() => {
     if (!sessionState) return null;
-    if (sessionState.status === "none") return "no captured answer for that yet";
     if (sessionState.status === "error") return sessionState.error?.toLowerCase() ?? "something went wrong";
     return null;
   })();
 
   const strip = formatCard(sessionState?.answer?.card ?? null);
 
-  // WP9 §2: the four screen states. idle = no programme yet; assembling =
-  // the existing `pending` window; end = sessionIdle with nothing left to
-  // auto-continue into (§4); playing otherwise (the corner hold cursor is a
-  // sub-state of playing, handled by holdCursor above).
+  // WP9 §2: the screen states. idle = no programme yet; assembling = the
+  // existing `pending` window; deflection = the typed question matched no
+  // captured record (status "none" — lib/curation.ts's MATCH_THRESHOLD miss,
+  // never the nearest record); end = sessionIdle with nothing left to
+  // auto-continue into (§4); playing otherwise — a late next clip just
+  // freezes the picture (screen.tsx) with the console seam as the buffer
+  // indicator, no overlay of its own.
   const screenState: ScreenState =
-    session === null ? "idle" : pending ? "assembling" : isEndState ? "end" : "playing";
+    session === null
+      ? "idle"
+      : pending
+        ? "assembling"
+        : status === "none"
+          ? "deflection"
+          : isEndState
+            ? "end"
+            : "playing";
 
   // Re-render while waiting on Saskia's first track so the "voicing scene
   // 1" → "rendering scene 1" transition shows up: Narrator.isReady() is a
@@ -510,7 +500,7 @@ export function Player() {
       <Screen
         picture={picture?.clip ?? null}
         next={next}
-        className={`${theatre ? "screen--theatre" : ""}${screenState === "end" ? " screen--dim" : ""}`.trim() || undefined}
+        className={`${theatre ? "screen--theatre" : ""}${screenState === "end" || screenState === "deflection" ? " screen--dim" : ""}`.trim() || undefined}
         // WP9: AUDIO=off mutes native voice's embedded speech (and any SFX)
         // the same way the viewer's own mute button does, without touching
         // `muted` state itself — the tap-for-sound flow stays about the
@@ -525,7 +515,6 @@ export function Player() {
       <ScreenStatus
         state={screenState}
         stage={stageText}
-        showHoldCursor={holdCursor}
         endLine="ask me anything about diginex"
       />
     </div>

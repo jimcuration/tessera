@@ -11,10 +11,11 @@
  *   assembling — a question is pending: "assembling" + cursor, and one
  *                small line beneath it for the current pipeline sub-stage
  *                (components/player.tsx derives which one).
- *   playing    — normal video; this component renders nothing UNLESS the
- *                clip on screen has held its last frame for more than 2s
- *                (showHoldCursor), in which case a lone cursor blinks in
- *                the same low-left corner until the next clip starts.
+ *   playing    — normal video; this component renders nothing. A late next
+ *                clip freezes the picture on its last frame (screen.tsx)
+ *                while the console seam carries the buffer state (WP9 §2
+ *                left the corner hold-cursor here as a second, redundant
+ *                signal — dropped so the seam is the one thing to read).
  *   end        — nothing left to auto-continue into: the dimming itself is
  *                applied to the <Screen> element by the caller (a CSS
  *                filter, not this overlay — see app/globals.css's
@@ -24,21 +25,28 @@
  *                nearby); this renders only the end line + cursor, kept at
  *                full brightness so it stays readable over the dimmed
  *                picture.
+ *   deflection — the typed question matched no captured record above
+ *                lib/curation.ts's MATCH_THRESHOLD (never the nearest
+ *                record below it — that stays a miss). Same dimmed
+ *                treatment as end, fixed copy: "curationai hasn't answered
+ *                that one yet". The suggestions below the screen are the
+ *                spine in this state (components/player.tsx), so the
+ *                viewer always has a captured question to fall into.
  */
 
-export type ScreenState = "idle" | "assembling" | "playing" | "end";
+export type ScreenState = "idle" | "assembling" | "playing" | "end" | "deflection";
 
 export interface ScreenStatusProps {
   state: ScreenState;
   /** assembling only: "reading the answer" | "writing the programme" | "voicing scene 1" | "rendering scene 1". */
   stage?: string | null;
-  /** playing only: the clip has held its last frame past the 2s threshold. */
-  showHoldCursor?: boolean;
   /** end only. */
   endLine?: string;
 }
 
-export function ScreenStatus({ state, stage, showHoldCursor, endLine }: ScreenStatusProps) {
+const DEFLECTION_LINE = "curationai hasn't answered that one yet";
+
+export function ScreenStatus({ state, stage, endLine }: ScreenStatusProps) {
   if (state === "idle") {
     return (
       <div className="screen-status" aria-hidden="true">
@@ -70,13 +78,17 @@ export function ScreenStatus({ state, stage, showHoldCursor, endLine }: ScreenSt
     );
   }
 
-  // playing
-  if (showHoldCursor) {
+  if (state === "deflection") {
     return (
-      <div className="screen-status" aria-hidden="true">
-        <span className="cursor blink" />
+      <div className="screen-status screen-status--end" aria-hidden="true">
+        <div className="screen-status-line">
+          <span>{DEFLECTION_LINE}</span>
+          <span className="cursor blink" />
+        </div>
       </div>
     );
   }
+
+  // playing — the console seam is the buffer-state indicator.
   return null;
 }
