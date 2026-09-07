@@ -1,156 +1,214 @@
 {
-  "translator": "translator-v0.2",
+  "translator": "translator-v0.3.1",
   "question": "What are the key catalysts for Diginex?",
   "beats": [
     {
-      "line": "Diginex faces execution milestones deciding whether the platform thesis gains traction.",
+      "scene": 1,
+      "line": "Diginex faces execution milestones that decide whether its platform thesis holds.",
       "headline": "EXECUTION MILESTONES",
       "ground": "violet",
       "subjects": [
-        "a paper checklist",
-        "a cream paper chip"
+        "a paper milestone marker",
+        "stacked sheets"
       ],
-      "action": "A halftone paper checklist unrolls onto a cream chip and settles flat.",
-      "handoff": "the checklist",
+      "action": "A halftone milestone marker drops onto stacked paper sheets and settles upright.",
+      "hand": false,
+      "handoff": "the milestone marker",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Diginex faces execution milestones that decide whether its platform thesis holds.",
       "source": [
         8
       ]
     },
     {
-      "line": "Strategy updates land in the second quarter of twenty twenty-six.",
-      "headline": "Q2 2026",
-      "ground": "violet",
-      "subjects": [
-        "a paper calendar page",
-        "the checklist"
-      ],
-      "action": "The previous chip slides off the top edge as the checklist folds into a single calendar page that drops to centre and holds.",
-      "handoff": "the calendar page",
-      "source": [
-        11,
-        12
-      ]
-    },
-    {
-      "line": "Four acquired businesses must run unified, not as separate silos.",
+      "scene": 2,
+      "line": "Investors want four acquired businesses unified, not run as silos.",
       "headline": "4 BUSINESSES",
       "ground": "cyan",
       "subjects": [
-        "four paper document blocks",
-        "a paper ribbon"
+        "four paper boxes",
+        "string and pins"
       ],
-      "action": "The previous chip flips away as the calendar page tears into four document blocks; a paper ribbon loops round and binds them together.",
-      "handoff": "the bound block",
+      "action": "The previous chip flips away as the calendar page tears into four paper boxes; string and pins draw between them and hold.",
+      "hand": false,
+      "handoff": "the linked boxes",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "Investors want four acquired businesses unified, not run as silos.",
       "source": [
         14
       ]
     },
     {
-      "line": "Brazil's seventy-seven billion dollar sustainability market is the diversification play.",
-      "headline": "$77B BRAZIL",
-      "ground": "cyan",
-      "subjects": [
-        "a cutout map shape",
-        "a torn-paper arrow"
-      ],
-      "action": "The previous chip is covered as the bound block flattens into a cutout map shape; a torn-paper arrow enters, points into it and stops.",
-      "handoff": "the map shape",
-      "source": [
-        22,
-        23
-      ]
-    },
-    {
-      "line": "The one point five billion Resulticks deal is the transformative bet.",
+      "scene": 3,
+      "line": "The one point five billion dollar Resulticks deal is the transformative bet.",
       "headline": "$1.5B BET",
       "ground": "magenta",
       "subjects": [
-        "a large paper coin",
-        "a paper document"
+        "a large paper document",
+        "paper coins"
       ],
-      "action": "The previous chip slides off as the map shape curls into one large paper coin; a document lands beside it and holds.",
-      "handoff": "the large coin",
+      "action": "The previous chip slides off as the arrow folds into a large paper document; paper coins stack across its corner and hold.",
+      "hand": false,
+      "handoff": "the document",
+      "hero": true,
+      "scale": "oversized",
+      "delivery": "[excited] The one point five billion dollar Resulticks deal is the transformative bet.",
       "source": [
         18
       ]
     },
     {
-      "line": "Without cross-sell evidence, it becomes a burden, not an unlock.",
-      "headline": "CROSS-SELL OR BURDEN",
+      "scene": 3,
+      "line": "Without cross-sell evidence, it becomes a financial burden instead.",
+      "headline": "BURDEN RISK",
       "ground": "magenta",
       "subjects": [
-        "the large coin",
-        "a paper key",
-        "tape pieces"
+        "the document",
+        "a paper weight block"
       ],
-      "action": "The previous chip flips down as the large coin splits; half becomes a paper key that fails to turn, taped shut at frame centre.",
-      "handoff": "the taped key",
+      "action": "The previous chip flips down as a paper weight block lowers onto the document and presses it flat.",
+      "hand": false,
+      "handoff": "the pressed document",
+      "hero": false,
+      "scale": "small",
+      "delivery": "Without cross-sell evidence, it becomes a financial burden instead.",
       "source": [
-        19,
         20
       ]
     },
     {
+      "scene": 4,
       "line": "Revenue grew two hundred and ninety-three percent to two million dollars.",
       "headline": "+293% YOY",
       "ground": "lime",
       "subjects": [
-        "a rising paper bar",
-        "paper coins"
+        "paper bar charts",
+        "the paper map"
       ],
-      "action": "The previous chip slides off as the taped key straightens into a rising paper bar; coins stack along it and settle at the top.",
-      "handoff": "the rising bar",
+      "action": "The previous chip slides off as the paper map creases into rising paper bar charts that lock upright.",
+      "hand": false,
+      "handoff": "the bar charts",
+      "hero": false,
+      "scale": "oversized",
+      "delivery": "[fast-paced] Revenue grew two hundred and ninety-three percent to two million dollars.",
       "source": [
         31
       ]
     },
     {
-      "line": "October's warrant exercise raised thirteen point eight million in cash.",
+      "scene": 5,
+      "line": "October's warrant exercise added thirteen point eight million in cash.",
       "headline": "+$13.8M",
-      "ground": "lime",
+      "ground": "violet",
       "subjects": [
-        "fresh paper coins",
-        "a paper vault door"
+        "a coin stack",
+        "tape pieces"
       ],
-      "action": "The previous chip flips away as the rising bar folds into a paper vault door; fresh coins slide in behind it and rest.",
-      "handoff": "the vault door",
+      "action": "The previous chip flips away as the bar charts collapse into a coin stack; tape pieces fix fresh coins to its top.",
+      "hand": false,
+      "handoff": "the coin stack",
+      "hero": false,
+      "scale": "small",
+      "delivery": "October's warrant exercise added thirteen point eight million in cash.",
       "source": [
-        34,
-        35
+        34
       ]
     },
     {
-      "line": "At a thirty-four million market cap, Diginex is priced for scepticism.",
-      "headline": "$34M MARKET CAP",
-      "ground": "magenta",
-      "subjects": [
-        "a shrunken paper coin",
-        "a price tag cutout"
-      ],
-      "action": "The previous chip is covered as the vault door contracts into one shrunken coin; a paper price tag drops onto it and hangs still.",
-      "handoff": "the price tag",
-      "source": [
-        38
-      ]
-    },
-    {
+      "scene": 5,
       "line": "The next six to nine months are make-or-break.",
-      "headline": "6–9 MONTHS",
-      "ground": "magenta",
+      "headline": "6-9 MONTHS",
+      "ground": "violet",
       "subjects": [
-        "nine paper calendar pages",
+        "the milestone marker",
+        "a paper calendar strip",
         "a paper hand"
       ],
-      "action": "The previous chip slides off as the price tag fans into nine calendar pages; a paper hand enters and holds over the last one.",
-      "handoff": "the pointing hand",
+      "action": "The previous chip is covered as the coin stack rebuilds into the milestone marker beside a paper calendar strip; a paper hand enters and taps the strip's end.",
+      "hand": true,
+      "handoff": "the milestone marker",
+      "hero": false,
+      "scale": "diagram",
+      "delivery": "The next six to nine months are make-or-break.",
       "source": [
         41
       ]
     }
   ],
-  "dropped": [],
+  "dropped": [
+    {
+      "raw": {
+        "scene": 1,
+        "line": "The critical one is a strategy update in the second quarter of twenty twenty-six.",
+        "headline": "Q2 2026",
+        "ground": "violet",
+        "subjects": [
+          "a paper calendar page",
+          "the milestone marker"
+        ],
+        "action": "The previous chip slides off the top edge as the milestone marker unfolds into a paper calendar page that flips open.",
+        "hand": false,
+        "handoff": "the calendar page",
+        "hero": false,
+        "scale": "small",
+        "delivery": "The critical one is a strategy update in the second quarter of twenty twenty-six.",
+        "source": [
+          10,
+          11,
+          12
+        ]
+      },
+      "reason": "line is 14 words (limit 12)"
+    },
+    {
+      "raw": {
+        "scene": 2,
+        "line": "They also watch cross-sell traction toward a two hundred and eighty million revenue target.",
+        "headline": "$280M BY 2027",
+        "ground": "cyan",
+        "subjects": [
+          "the linked boxes",
+          "a torn-paper arrow"
+        ],
+        "action": "The previous chip is covered as the linked boxes compress into a torn-paper arrow that climbs and stops at a ruled line.",
+        "hand": false,
+        "handoff": "the arrow",
+        "hero": false,
+        "scale": "small",
+        "delivery": "They also watch cross-sell traction toward a two hundred and eighty million revenue target.",
+        "source": [
+          15,
+          16
+        ]
+      },
+      "reason": "line is 14 words (limit 12)"
+    },
+    {
+      "raw": {
+        "scene": 4,
+        "line": "Brazil's seventy-seven billion dollar sustainability market is the diversification play.",
+        "headline": "$77B BRAZIL",
+        "ground": "lime",
+        "subjects": [
+          "a paper map",
+          "a rubber stamp"
+        ],
+        "action": "The previous chip is covered as the pressed document unfolds into a paper map; a rubber stamp presses down and lifts away.",
+        "hand": false,
+        "handoff": "the paper map",
+        "hero": false,
+        "scale": "diagram",
+        "delivery": "Diginex signalled focus on Brazil's seventy-seven billion dollar sustainability market.",
+        "source": [
+          22
+        ]
+      },
+      "reason": "delivery, stripped of tags, does not match line"
+    }
+  ],
   "warnings": [
-    [],
     [],
     [
       "headline number \"4\" not found as a figure in cited sentences [14] (fine if it is a count of items those sentences enumerate; flagged either way)"
@@ -159,10 +217,8 @@
     [],
     [],
     [],
-    [],
-    [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 36594
+  "ms": 18832
 }
