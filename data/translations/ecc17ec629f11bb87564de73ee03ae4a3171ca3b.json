@@ -1,31 +1,31 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "pinned": true,
-  "note": "WP8.1's 15s spine (D33): a live translation under the CLIP_SECONDS=15 scene-generation rules (connector/tag on every beat, plain single-movement action per beat — no [0-5s]/[5-10s] internal-cut instruction, since compileScenePrompt places each beat in its own timecoded section), promoted to pinned after passing npm run check cleanly (0 failures, 0 warnings) on first generation. Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live.",
+  "note": "WP10's 15s spine, re-pinned: a live translation under the new voice/structure (\"write the scene, then cut it\", VOICE, EXAMPLE PASSAGES — briefs/WP10.md), generated against the running dev server and promoted to pinned after passing `npm run check` cleanly (0 failures, 0 warnings, 11 beats / 4 scenes). Delete this file (or set TRANSLATE_CACHE=off) to translate the answer live again.",
   "question": "What is the cash position and runway?",
   "beats": [
     {
       "scene": 1,
-      "line": "By the end of September, Diginex held one point eight five million in cash.",
+      "line": "So here's the number that matters. At the end of September, Diginex held one point eight five million in cash.",
       "headline": "$1.85M",
       "ground": "violet",
       "subjects": [
-        "the coin stack",
+        "a stack of paper coins",
         "a cream paper chip"
       ],
-      "action": "A single halftone stack of paper coins drops onto a cream chip and settles; a coin-sized cream tag reading '$1.85M' sits beside the black ribbon, a short black line pointing at it.",
+      "action": "A single halftone stack of paper coins drops onto a cream chip and settles; a coin-sized cream tag reading '$1.85M' sits beside the ribbon, a short black line pointing at it.",
       "hand": false,
       "handoff": "the coin stack",
       "hero": false,
       "scale": "oversized",
-      "delivery": "[presenting to camera] By the end of September, Diginex held one point eight five million in cash.",
+      "delivery": "[presenting to camera] So here's the number that matters. At the end of September, Diginex held one point eight five million in cash.",
       "source": [
         9
       ],
       "connector": {
         "kind": "paper ribbon",
         "from": "the coin stack",
-        "to": "a torn-paper arrow",
+        "to": "a paper ledger sheet",
         "colour": "black"
       },
       "tag": {
@@ -33,52 +33,82 @@
         "source": [
           9
         ]
-      }
+      },
+      "narration": "So here's the number that matters. At the end of September, Diginex held one point eight five million in cash. Six months earlier? Three point one one. Net current assets look better, ten point six million. But that's deferred revenue and payables — not cash generation."
     },
     {
       "scene": 1,
-      "line": "Six months earlier it was three point one one million.",
+      "line": "Six months earlier? Three point one one. Net current assets look better, ten point six million.",
       "headline": "$3.11M → $1.85M",
       "ground": "violet",
       "subjects": [
         "the coin stack",
-        "a torn-paper arrow"
+        "a paper ledger sheet"
       ],
-      "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; the black ribbon already in place tugs a torn-paper arrow in, pointing down.",
+      "action": "The previous chip slides off the top edge as the coin stack shrinks coin by coin; a paper ledger sheet slides in beneath it and holds, the black ribbon already running between them.",
       "hand": false,
-      "handoff": "the arrow",
+      "handoff": "the ledger sheet",
       "hero": false,
-      "scale": "small",
-      "delivery": "Six months earlier it was three point one one million.",
+      "scale": "diagram",
+      "delivery": "Six months earlier? Three point one one. Net current assets look better, ten point six million.",
       "source": [
-        9
+        9,
+        12
       ],
       "connector": {
         "kind": "paper ribbon",
         "from": "the coin stack",
-        "to": "a torn-paper arrow",
+        "to": "a paper ledger sheet",
         "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So here's the number that matters. At the end of September, Diginex held one point eight five million in cash. Six months earlier? Three point one one. Net current assets look better, ten point six million. But that's deferred revenue and payables — not cash generation."
+    },
+    {
+      "scene": 1,
+      "line": "But that's deferred revenue and payables — not cash generation.",
+      "headline": "NOT CASH",
+      "ground": "violet",
+      "subjects": [
+        "a paper ledger sheet",
+        "two torn paper strips"
+      ],
+      "action": "The previous chip flips away as the ledger sheet tears into two paper strips that fan apart and rest, the black ribbon still in place.",
+      "hand": false,
+      "handoff": "the torn strips",
+      "hero": false,
+      "scale": "small",
+      "delivery": "But that's deferred revenue and payables — not cash generation.",
+      "source": [
+        13,
+        14
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the coin stack",
+        "to": "a paper ledger sheet",
+        "colour": "black"
+      },
+      "tag": null,
+      "narration": "So here's the number that matters. At the end of September, Diginex held one point eight five million in cash. Six months earlier? Three point one one. Net current assets look better, ten point six million. But that's deferred revenue and payables — not cash generation."
     },
     {
       "scene": 2,
-      "line": "Operating burn ran three point nine million over six months. Investing took another eight point eight.",
-      "headline": "$3.9M + $8.8M",
+      "line": "Over six months, the company consumed twelve point seven million.",
+      "headline": "$12.7M USED",
       "ground": "magenta",
       "subjects": [
         "a paper calendar strip",
         "paper coins"
       ],
-      "action": "The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month, and an orange string runs from the strip toward the right edge.",
+      "action": "The previous chip is covered as the torn strips join into a paper calendar strip; paper coins slide off its far end and drop away.",
       "hand": false,
-      "handoff": "the strip",
+      "handoff": "the calendar strip",
       "hero": false,
       "scale": "diagram",
-      "delivery": "Operating burn ran three point nine million over six months. Investing took another eight point eight.",
+      "delivery": "Over six months, the company consumed twelve point seven million.",
       "source": [
-        17,
-        18
+        19
       ],
       "connector": {
         "kind": "paper string",
@@ -86,26 +116,26 @@
         "to": "a paper runway",
         "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Over six months, the company consumed twelve point seven million. Operating burn alone was three point nine million — about one point three million a month. Which means one point eight five million covers one point four months. That's dangerously thin."
     },
     {
       "scene": 2,
-      "line": "Twelve point seven million was consumed, offset by eleven point four million from warrant exercises.",
-      "headline": "$12.7M OUT",
+      "line": "Operating burn alone was three point nine million — about one point three million a month.",
+      "headline": "$1.3M / MONTH",
       "ground": "magenta",
       "subjects": [
         "a paper calendar strip",
-        "a torn strip of paper"
+        "paper coins"
       ],
-      "action": "The previous chip is covered as the strip curls and a torn strip of paper is taped back across the gap; the orange string stays in place, still running to the right.",
+      "action": "The previous chip slides off as the calendar strip unrolls month by month, one coin lifting away at each fold; a coin-sized cream tag reading '$1.3M' sits beside the orange string, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the taped strip",
+      "handoff": "the calendar strip",
       "hero": false,
       "scale": "small",
-      "delivery": "Twelve point seven million was consumed, offset by eleven point four million from warrant exercises.",
+      "delivery": "Operating burn alone was three point nine million — about one point three million a month.",
       "source": [
-        19,
-        20
+        22
       ],
       "connector": {
         "kind": "paper string",
@@ -118,25 +148,25 @@
         "source": [
           22
         ]
-      }
+      },
+      "narration": "Over six months, the company consumed twelve point seven million. Operating burn alone was three point nine million — about one point three million a month. Which means one point eight five million covers one point four months. That's dangerously thin."
     },
     {
       "scene": 2,
-      "line": "At about one point three million a month, that cash covers one point four months.",
+      "line": "Which means one point eight five million covers one point four months. That's dangerously thin.",
       "headline": "1.4 MONTHS",
       "ground": "magenta",
       "subjects": [
         "a paper runway",
         "a cutout aircraft"
       ],
-      "action": "The previous chip slides off as the taped strip flattens into a paper runway torn short; a cutout aircraft rolls to the torn end and stops, the orange string still attached.",
+      "action": "The previous chip flips away as the calendar strip flattens into a paper runway torn short; a cutout aircraft rolls to the torn end and stops there.",
       "hand": false,
-      "handoff": "the runway",
+      "handoff": "the torn runway",
       "hero": true,
       "scale": "oversized",
-      "delivery": "[excited] At about one point three million a month, that cash covers one point four months.",
+      "delivery": "[excited] Which means one point eight five million covers one point four months. That's dangerously thin.",
       "source": [
-        22,
         23
       ],
       "connector": {
@@ -145,30 +175,33 @@
         "to": "a paper runway",
         "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Over six months, the company consumed twelve point seven million. Operating burn alone was three point nine million — about one point three million a month. Which means one point eight five million covers one point four months. That's dangerously thin."
     },
     {
       "scene": 3,
-      "line": "October's warrant exercise generated thirteen point eight million, strengthening the balance sheet after that snapshot.",
-      "headline": "+$13.8M",
+      "line": "What kept them afloat? Eleven point four million from warrant exercises. Then October brought thirteen point eight million more.",
+      "headline": "+$11.4M, +$13.8M",
       "ground": "cyan",
       "subjects": [
+        "a paper warrant document",
         "fresh paper coins",
-        "a paper balance sheet"
+        "tape pieces"
       ],
-      "action": "The previous chip flips away as the runway folds up into a paper balance sheet; fresh paper coins drop onto it and a cream arrow links them, with a coin-sized tag reading '$13.8M' beside it.",
+      "action": "The previous chip is covered as the torn runway folds up into a paper warrant document; fresh paper coins are taped onto it in two batches, one after the other.",
       "hand": false,
-      "handoff": "the balance sheet",
+      "handoff": "the warrant document",
       "hero": false,
-      "scale": "small",
-      "delivery": "[fast-paced] October's warrant exercise generated thirteen point eight million, strengthening the balance sheet after that snapshot.",
+      "scale": "diagram",
+      "delivery": "[fast-paced] What kept them afloat? Eleven point four million from warrant exercises. Then October brought thirteen point eight million more.",
       "source": [
+        20,
         27
       ],
       "connector": {
         "kind": "arrow",
-        "from": "fresh paper coins",
-        "to": "a paper balance sheet",
+        "from": "a paper warrant document",
+        "to": "a paper market board",
         "colour": "cream"
       },
       "tag": {
@@ -176,89 +209,123 @@
         "source": [
           27
         ]
-      }
+      },
+      "narration": "What kept them afloat? Eleven point four million from warrant exercises. Then October brought thirteen point eight million more. So survival hinges on the capital markets. And with a collapsed stock price, future raises will be dilutive."
     },
     {
       "scene": 3,
-      "line": "Survival hinges on capital markets. The company is not yet self-sustaining.",
-      "headline": "NOT SELF-SUSTAINING",
+      "line": "So survival hinges on the capital markets.",
+      "headline": "CAPITAL MARKETS",
       "ground": "cyan",
       "subjects": [
-        "a paper balance sheet",
-        "fresh paper coins",
+        "a paper warrant document",
+        "a paper market board"
+      ],
+      "action": "The previous chip slides off as the warrant document leans against a paper market board that rises behind it; a cream arrow already runs between them.",
+      "hand": false,
+      "handoff": "the market board",
+      "hero": false,
+      "scale": "small",
+      "delivery": "So survival hinges on the capital markets.",
+      "source": [
+        25
+      ],
+      "connector": {
+        "kind": "arrow",
+        "from": "a paper warrant document",
+        "to": "a paper market board",
+        "colour": "cream"
+      },
+      "tag": null,
+      "narration": "What kept them afloat? Eleven point four million from warrant exercises. Then October brought thirteen point eight million more. So survival hinges on the capital markets. And with a collapsed stock price, future raises will be dilutive."
+    },
+    {
+      "scene": 3,
+      "line": "And with a collapsed stock price, future raises will be dilutive.",
+      "headline": "DILUTIVE RAISES",
+      "ground": "cyan",
+      "subjects": [
+        "a paper market board",
+        "a paper bar chart",
         "a paper hand"
       ],
-      "action": "The previous chip slides off as the balance sheet tilts and a paper hand enters to hold its edge steady; the cream arrow from the coins is already in place.",
+      "action": "The previous chip flips down as the market board's face becomes a paper bar chart stepping downward; a paper hand presses the last bar flat and holds it there.",
       "hand": true,
-      "handoff": "the balance sheet",
+      "handoff": "the flattened bar",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "Survival hinges on capital markets. The company is not yet self-sustaining.",
+      "scale": "oversized",
+      "delivery": "And with a collapsed stock price, future raises will be dilutive.",
       "source": [
-        25,
         29
       ],
       "connector": {
         "kind": "arrow",
-        "from": "fresh paper coins",
-        "to": "a paper balance sheet",
+        "from": "a paper warrant document",
+        "to": "a paper market board",
         "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "What kept them afloat? Eleven point four million from warrant exercises. Then October brought thirteen point eight million more. So survival hinges on the capital markets. And with a collapsed stock price, future raises will be dilutive."
     },
     {
       "scene": 4,
-      "line": "Subscription revenue grew two hundred and ninety-three percent year on year in the first half.",
+      "line": "There's a way out. Subscription revenue grew two hundred and ninety-three percent, and if losses narrow, the runway extends.",
       "headline": "+293% YOY",
       "ground": "violet",
       "subjects": [
         "the coin stack",
-        "a paper bar chart"
+        "a rising paper bar chart"
       ],
-      "action": "The previous chip flips down as the balance sheet folds into a paper bar chart rising beside the returning coin stack; an orange string runs from the stack to the right edge.",
+      "action": "The previous chip slides off as the flattened bar springs back up into a rising paper bar chart, and the coin stack reappears beside it; a coin-sized cream tag reading '293%' sits beside the ribbon, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the bar chart",
+      "handoff": "the coin stack",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "Subscription revenue grew two hundred and ninety-three percent year on year in the first half.",
+      "scale": "diagram",
+      "delivery": "There's a way out. Subscription revenue grew two hundred and ninety-three percent, and if losses narrow, the runway extends.",
       "source": [
         33
       ],
       "connector": {
-        "kind": "paper string",
+        "kind": "paper ribbon",
         "from": "the coin stack",
-        "to": "two paper calendar pages",
-        "colour": "orange"
+        "to": "a rising paper bar chart",
+        "colour": "black"
       },
-      "tag": null
+      "tag": {
+        "text": "293%",
+        "source": [
+          33
+        ]
+      },
+      "narration": "There's a way out. Subscription revenue grew two hundred and ninety-three percent, and if losses narrow, the runway extends. The next six to nine months are critical."
     },
     {
       "scene": 4,
-      "line": "The next six to nine months are critical. Later results will show whether runway extends.",
-      "headline": "NEXT 6-9 MONTHS",
+      "line": "The next six to nine months are critical.",
+      "headline": "NEXT 6–9 MONTHS",
       "ground": "violet",
       "subjects": [
         "the coin stack",
-        "two paper calendar pages",
-        "a paper hand"
+        "a cream paper chip",
+        "a paper calendar page"
       ],
-      "action": "The previous chip is covered as the bar chart splits into two paper calendar pages landing beside the coin stack; the orange string holds, and a paper hand taps the second page.",
-      "hand": true,
+      "action": "The previous chip is covered as the rising bar chart folds into a paper calendar page that settles behind the coin stack, and the coin stack drops back onto its cream chip and holds.",
+      "hand": false,
       "handoff": "the coin stack",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "The next six to nine months are critical. Later results will show whether runway extends.",
+      "scale": "small",
+      "delivery": "The next six to nine months are critical.",
       "source": [
-        42,
-        43
+        42
       ],
       "connector": {
-        "kind": "paper string",
+        "kind": "paper ribbon",
         "from": "the coin stack",
-        "to": "two paper calendar pages",
-        "colour": "orange"
+        "to": "a rising paper bar chart",
+        "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "There's a way out. Subscription revenue grew two hundred and ninety-three percent, and if losses narrow, the runway extends. The next six to nine months are critical."
     }
   ],
   "dropped": [],
@@ -271,9 +338,11 @@
     [],
     [],
     [],
+    [],
+    [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 46551,
+  "ms": 46141,
   "clipSeconds": 15
 }

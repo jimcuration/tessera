@@ -1,105 +1,137 @@
 {
-  "translator": "translator-v0.3.2",
+  "translator": "translator-v0.4.0",
   "question": "How is Diginex positioned against larger ESG software competitors like Workiva or Enablon?",
   "beats": [
     {
       "scene": 1,
-      "line": "Diginex occupies a fundamentally different market position than Workiva or Enablon.",
-      "headline": "DIFFERENT POSITION",
+      "line": "Start with the size gap. Workiva is a seven billion dollar plus public company.",
+      "headline": "$7B+ MARKET CAP",
       "ground": "violet",
       "subjects": [
-        "the small paper building",
+        "a tall paper bar",
         "a cream paper chip"
       ],
-      "action": "A small halftone paper building drops onto a cream chip on open violet ground and settles.",
+      "action": "A tall halftone paper bar rises from the bottom edge, fills the frame and holds over a cream chip.",
       "hand": false,
-      "handoff": "the small paper building",
+      "handoff": "the tall paper bar",
       "hero": false,
-      "scale": "small",
-      "delivery": "[presenting to camera] Diginex occupies a fundamentally different market position than Workiva or Enablon.",
+      "scale": "oversized",
+      "delivery": "[presenting to camera] Start with the size gap. Workiva is a seven billion dollar plus public company.",
       "source": [
-        9
+        12
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the small paper building",
-        "to": "the tall paper tower",
-        "colour": "cream"
+        "from": "the tall paper bar",
+        "to": "a small paper bar",
+        "colour": "black"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Start with the size gap. Workiva is a seven billion dollar plus public company. Diginex? Thirty-four million market cap — a micro-cap challenger. It can't match their sales force, brand recognition, or installed base."
     },
     {
       "scene": 1,
-      "line": "Workiva is a seven billion dollar public company. Diginex is a thirty-four million dollar micro-cap challenger.",
-      "headline": "$7B VS $34M",
+      "line": "Diginex? Thirty-four million market cap — a micro-cap challenger.",
+      "headline": "$34M MARKET CAP",
       "ground": "violet",
       "subjects": [
-        "the small paper building",
-        "the tall paper tower"
+        "the tall paper bar",
+        "a small paper bar"
       ],
-      "action": "The previous chip slides off the top edge as the small paper building stays put and a tall paper tower rises beside it; a cream ribbon runs from the building to the tower, and a coin-sized cream tag reading '$34M' sits beside the ribbon with a short black line pointing at it.",
+      "action": "The previous chip slides off the top edge as the tall paper bar shifts left; a small paper bar lands beside it, and a black ribbon stretches between them with a coin-sized cream tag reading '$34M' beside it, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the tall paper tower",
+      "handoff": "the small paper bar",
       "hero": true,
-      "scale": "oversized",
-      "delivery": "[excited] Workiva is a seven billion dollar public company. Diginex is a thirty-four million dollar micro-cap challenger.",
+      "scale": "diagram",
+      "delivery": "Diginex? Thirty-four million market cap — a micro-cap challenger.",
       "source": [
-        12,
         14
       ],
       "connector": {
         "kind": "paper ribbon",
-        "from": "the small paper building",
-        "to": "the tall paper tower",
-        "colour": "cream"
+        "from": "the tall paper bar",
+        "to": "a small paper bar",
+        "colour": "black"
       },
       "tag": {
         "text": "$34M",
         "source": [
           14
         ]
-      }
+      },
+      "narration": "Start with the size gap. Workiva is a seven billion dollar plus public company. Diginex? Thirty-four million market cap — a micro-cap challenger. It can't match their sales force, brand recognition, or installed base."
+    },
+    {
+      "scene": 1,
+      "line": "It can't match their sales force, brand recognition, or installed base.",
+      "headline": "SCALE GAP",
+      "ground": "violet",
+      "subjects": [
+        "the small paper bar",
+        "three stacked sheets",
+        "a paper hand"
+      ],
+      "action": "The previous chip flips away as the small paper bar unfolds into three stacked sheets; a paper hand presses them flat, and the black ribbon stays in place above.",
+      "hand": true,
+      "handoff": "the stacked sheets",
+      "hero": false,
+      "scale": "small",
+      "delivery": "It can't match their sales force, brand recognition, or installed base.",
+      "source": [
+        15
+      ],
+      "connector": {
+        "kind": "paper ribbon",
+        "from": "the tall paper bar",
+        "to": "a small paper bar",
+        "colour": "black"
+      },
+      "tag": null,
+      "narration": "Start with the size gap. Workiva is a seven billion dollar plus public company. Diginex? Thirty-four million market cap — a micro-cap challenger. It can't match their sales force, brand recognition, or installed base."
     },
     {
       "scene": 2,
-      "line": "Its positioning is horizontal platform consolidation, not vertical depth.",
-      "headline": "HORIZONTAL, NOT DEEP",
+      "line": "So Diginex plays a different game. Not out-engineering Workiva on SEC filings.",
+      "headline": "HORIZONTAL NOT VERTICAL",
       "ground": "cyan",
       "subjects": [
-        "the paper platform slab"
+        "a paper platform sheet",
+        "a torn filing strip"
       ],
-      "action": "The previous chip flips away as the tall paper tower topples sideways and flattens into one wide paper platform slab that fills the frame.",
+      "action": "The previous chip is covered as the stacked sheets fuse into one wide paper platform sheet; a torn filing strip slides off its right edge and away.",
       "hand": false,
-      "handoff": "the paper platform slab",
+      "handoff": "the platform sheet",
       "hero": false,
       "scale": "oversized",
-      "delivery": "Its positioning is horizontal platform consolidation, not vertical depth.",
+      "delivery": "[fast-paced] So Diginex plays a different game. Not out-engineering Workiva on SEC filings.",
       "source": [
-        18
+        18,
+        19
       ],
       "connector": {
         "kind": "arrow",
-        "from": "the paper platform slab",
-        "to": "three stacked paper sheets",
-        "colour": "orange"
+        "from": "the platform sheet",
+        "to": "three paper module cards",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So Diginex plays a different game. Not out-engineering Workiva on SEC filings. It's building one platform spanning carbon accounting, supply chain transparency, and customer data. The bet? Enterprises prefer a single vendor over point solutions from many."
     },
     {
       "scene": 2,
-      "line": "It is building one platform spanning carbon accounting, supply chain transparency, and customer data.",
+      "line": "It's building one platform spanning carbon accounting, supply chain transparency, and customer data.",
       "headline": "ONE PLATFORM",
       "ground": "cyan",
       "subjects": [
-        "the paper platform slab",
-        "three stacked paper sheets"
+        "the platform sheet",
+        "three paper module cards"
       ],
-      "action": "The previous chip is covered as the paper platform slab sprouts three stacked paper sheets that lock into place along it; an orange paper arrow runs from the slab to the sheets.",
+      "action": "The previous chip slides off the left edge as the platform sheet flattens out; three paper module cards drop onto it in a row, and a cyan arrow runs from the sheet to the cards.",
       "hand": false,
-      "handoff": "three stacked paper sheets",
+      "handoff": "the three module cards",
       "hero": false,
       "scale": "diagram",
-      "delivery": "[fast-paced] It is building one platform spanning carbon accounting, supply chain transparency, and customer data.",
+      "delivery": "It's building one platform spanning carbon accounting, supply chain transparency, and customer data.",
       "source": [
         19,
         20,
@@ -108,53 +140,56 @@
       ],
       "connector": {
         "kind": "arrow",
-        "from": "the paper platform slab",
-        "to": "three stacked paper sheets",
-        "colour": "orange"
+        "from": "the platform sheet",
+        "to": "three paper module cards",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So Diginex plays a different game. Not out-engineering Workiva on SEC filings. It's building one platform spanning carbon accounting, supply chain transparency, and customer data. The bet? Enterprises prefer a single vendor over point solutions from many."
     },
     {
       "scene": 2,
-      "line": "The bet is that enterprises prefer one vendor over point solutions from many.",
+      "line": "The bet? Enterprises prefer a single vendor over point solutions from many.",
       "headline": "SINGLE VENDOR",
       "ground": "cyan",
       "subjects": [
-        "the paper platform slab",
-        "a paper hand"
+        "the platform sheet",
+        "three paper module cards",
+        "a rubber stamp"
       ],
-      "action": "The previous chip slides off as the three stacked paper sheets press together back into the paper platform slab; a paper hand enters and taps it once, the orange arrow already in place along its edge.",
-      "hand": true,
-      "handoff": "the paper platform slab",
+      "action": "The previous chip flips down as the three module cards clip together onto the platform sheet; a rubber stamp presses once at the centre, the cyan arrow still in place.",
+      "hand": false,
+      "handoff": "the stamped platform sheet",
       "hero": false,
       "scale": "small",
-      "delivery": "The bet is that enterprises prefer one vendor over point solutions from many.",
+      "delivery": "The bet? Enterprises prefer a single vendor over point solutions from many.",
       "source": [
         23
       ],
       "connector": {
         "kind": "arrow",
-        "from": "the paper platform slab",
-        "to": "three stacked paper sheets",
-        "colour": "orange"
+        "from": "the platform sheet",
+        "to": "three paper module cards",
+        "colour": "cyan"
       },
-      "tag": null
+      "tag": null,
+      "narration": "So Diginex plays a different game. Not out-engineering Workiva on SEC filings. It's building one platform spanning carbon accounting, supply chain transparency, and customer data. The bet? Enterprises prefer a single vendor over point solutions from many."
     },
     {
       "scene": 3,
-      "line": "The thesis only works if cross-sell happens. Buy one module only, and the advantage evaporates.",
-      "headline": "CROSS-SELL OR BUST",
+      "line": "But the thesis only works if cross-sell actually happens. If customers buy only carbon accounting, the advantage evaporates.",
+      "headline": "CROSS-SELL RISK",
       "ground": "magenta",
       "subjects": [
-        "the paper module stack",
-        "a torn paper price sheet"
+        "a paper module card",
+        "a torn paper price strip"
       ],
-      "action": "The previous chip flips down as the paper platform slab splits into a paper module stack on magenta ground; all but one module lift away and a torn paper price sheet slides in at the right, a black string running from the stack to the sheet.",
+      "action": "The previous chip slides off the bottom edge as the stamped platform sheet tears down to a single paper module card; a torn paper price strip enters at the right and an orange string runs between them.",
       "hand": false,
-      "handoff": "the paper module stack",
+      "handoff": "the single module card",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "The thesis only works if cross-sell happens. Buy one module only, and the advantage evaporates.",
+      "scale": "small",
+      "delivery": "But the thesis only works if cross-sell actually happens. If customers buy only carbon accounting, the advantage evaporates.",
       "source": [
         30,
         31,
@@ -162,121 +197,103 @@
       ],
       "connector": {
         "kind": "string",
-        "from": "the paper module stack",
-        "to": "a torn paper price sheet",
-        "colour": "black"
+        "from": "a paper module card",
+        "to": "a torn paper price strip",
+        "colour": "orange"
       },
-      "tag": null
+      "tag": null,
+      "narration": "But the thesis only works if cross-sell actually happens. If customers buy only carbon accounting, the advantage evaporates. And four acquisitions across multiple geographies is complex. Larger rivals can bundle ESG modules and undercut Diginex on price."
     },
     {
       "scene": 3,
-      "line": "Four acquisitions across multiple geographies is complex. Any stumble undermines the thesis.",
-      "headline": "4 ACQUISITIONS",
+      "line": "And four acquisitions across multiple geographies is complex. Larger rivals can bundle ESG modules and undercut Diginex on price.",
+      "headline": "PRICING PRESSURE",
       "ground": "magenta",
       "subjects": [
-        "the paper module stack",
-        "a paper map"
+        "a paper module card",
+        "four hole-punched tags",
+        "a torn paper price strip"
       ],
-      "action": "The previous chip is covered as the paper module stack tilts over a paper map that unfolds beneath it; the black string to the price sheet holds, and a coin-sized cream tag reading 'Four acquisitions' sits beside the string with a short black line pointing at it.",
+      "action": "The previous chip is covered as the single module card splits into four hole-punched tags strung along the orange string; the torn price strip pulls tight and the string sags, a coin-sized cream tag reading 'Four acquisitions' beside it, a short black line pointing at it.",
       "hand": false,
-      "handoff": "the paper module stack",
+      "handoff": "the sagging string",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "Four acquisitions across multiple geographies is complex. Any stumble undermines the thesis.",
+      "scale": "diagram",
+      "delivery": "And four acquisitions across multiple geographies is complex. Larger rivals can bundle ESG modules and undercut Diginex on price.",
       "source": [
         34,
-        35
+        35,
+        37
       ],
       "connector": {
         "kind": "string",
-        "from": "the paper module stack",
-        "to": "a torn paper price sheet",
-        "colour": "black"
+        "from": "a paper module card",
+        "to": "a torn paper price strip",
+        "colour": "orange"
       },
       "tag": {
         "text": "Four acquisitions",
         "source": [
           34
         ]
-      }
-    },
-    {
-      "scene": 3,
-      "line": "Larger competitors can bundle ESG modules into broader suites and undercut Diginex on price.",
-      "headline": "PRICE PRESSURE",
-      "ground": "magenta",
-      "subjects": [
-        "a torn paper price sheet",
-        "the paper module stack"
-      ],
-      "action": "The previous chip slides off as the paper module stack slumps and the torn paper price sheet at the end of the black string swings forward alone, pressing down on it.",
-      "hand": false,
-      "handoff": "the torn paper price sheet",
-      "hero": false,
-      "scale": "small",
-      "delivery": "Larger competitors can bundle ESG modules into broader suites and undercut Diginex on price.",
-      "source": [
-        37
-      ],
-      "connector": {
-        "kind": "string",
-        "from": "the paper module stack",
-        "to": "a torn paper price sheet",
-        "colour": "black"
       },
-      "tag": null
+      "narration": "But the thesis only works if cross-sell actually happens. If customers buy only carbon accounting, the advantage evaporates. And four acquisitions across multiple geographies is complex. Larger rivals can bundle ESG modules and undercut Diginex on price."
     },
     {
       "scene": 4,
-      "line": "Diginex has an eighteen to twenty-four month window to prove platform traction.",
+      "line": "Which leaves an eighteen to twenty-four month window to prove platform traction.",
       "headline": "18–24 MONTHS",
       "ground": "violet",
       "subjects": [
         "a paper calendar strip",
-        "the small paper building"
+        "the tall paper bar"
       ],
-      "action": "The previous chip flips away as the torn paper price sheet unrolls into a paper calendar strip across violet ground; the small paper building lands at its near end, a cream ribbon running from the strip to the building.",
+      "action": "The previous chip flips away as the sagging string straightens into a paper calendar strip; the tall paper bar returns at the right and a cream ribbon runs from the strip to it.",
       "hand": false,
-      "handoff": "a paper calendar strip",
+      "handoff": "the paper calendar strip",
       "hero": false,
-      "scale": "diagram",
-      "delivery": "Diginex has an eighteen to twenty-four month window to prove platform traction.",
+      "scale": "oversized",
+      "delivery": "Which leaves an eighteen to twenty-four month window to prove platform traction.",
       "source": [
         40
       ],
       "connector": {
         "kind": "paper ribbon",
         "from": "a paper calendar strip",
-        "to": "the small paper building",
+        "to": "the tall paper bar",
         "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Which leaves an eighteen to twenty-four month window to prove platform traction. Deliver by late twenty twenty-six, and it's an acquisition target. Stall, and it's a niche player squeezed between incumbents."
     },
     {
       "scene": 4,
-      "line": "If integration stalls, it risks becoming a niche player squeezed between larger incumbents.",
-      "headline": "SQUEEZED OR CREDIBLE",
+      "line": "Deliver by late twenty twenty-six, and it's an acquisition target. Stall, and it's a niche player squeezed between incumbents.",
+      "headline": "LATE 2026",
       "ground": "violet",
       "subjects": [
-        "the small paper building",
+        "the tall paper bar",
+        "a small paper bar",
         "a paper calendar strip"
       ],
-      "action": "The previous chip is covered as the paper calendar strip folds shut and the small paper building fills the frame again, now with a torn strip taped across one corner, the cream ribbon still in place.",
+      "action": "The previous chip slides off the top edge as the calendar strip folds back and the tall paper bar holds; a small paper bar slides in beside it and is squeezed between the tall bar and the frame edge, the cream ribbon still in place.",
       "hand": false,
-      "handoff": "the small paper building",
+      "handoff": "the tall paper bar",
       "hero": false,
-      "scale": "oversized",
-      "delivery": "If integration stalls, it risks becoming a niche player squeezed between larger incumbents.",
+      "scale": "diagram",
+      "delivery": "Deliver by late twenty twenty-six, and it's an acquisition target. Stall, and it's a niche player squeezed between incumbents.",
       "source": [
+        41,
         42
       ],
       "connector": {
         "kind": "paper ribbon",
         "from": "a paper calendar strip",
-        "to": "the small paper building",
+        "to": "the tall paper bar",
         "colour": "cream"
       },
-      "tag": null
+      "tag": null,
+      "narration": "Which leaves an eighteen to twenty-four month window to prove platform traction. Deliver by late twenty twenty-six, and it's an acquisition target. Stall, and it's a niche player squeezed between incumbents."
     }
   ],
   "dropped": [],
@@ -287,14 +304,12 @@
     [],
     [],
     [],
-    [
-      "headline number \"4\" not found as a figure in cited sentences [34,35] (fine if it is a count of items those sentences enumerate; flagged either way)"
-    ],
+    [],
     [],
     [],
     []
   ],
   "model": "claude-opus-5",
-  "ms": 49209,
+  "ms": 60958,
   "clipSeconds": 15
 }

@@ -4,7 +4,9 @@
  * This module is isomorphic (no SDK imports) so the prompt, the schema and
  * the code-enforced translator rule are shared by the server route that
  * calls Claude (app/api/translate), the client that stages the beats, and
- * the checker (scripts/check.mjs mirrors `validateBeat`).
+ * the checker (scripts/check.mjs mirrors `validateBeat`/`validateProgramme`
+ * in plain JS, since that script runs under plain `node`, not `tsx`, and so
+ * cannot import this file directly).
  *
  * Version: translator v0.3.1, paired with Tessera Style Sheet v0.3
  * (lib/prompt.ts). v0.3 background: WP0 found a native narrator rushed an
@@ -34,19 +36,60 @@
  * round `tag` (a coin-sized paper tag, ≤2 words or one figure, verbatim
  * from a cited sentence). Both apply at every clip length, not just the
  * new CLIP_SECONDS=15 scene-generation mode (lib/prompt.ts,
- * lib/stream.ts) that motivated them. Because `connector` is a new
- * required field, this is a version bump: a cached/pinned translation
- * recorded under v0.3.1 has no `connector` and reads as stale, exactly
- * like every earlier translator-version bump (regenerated live, not
- * hard-failed — see app/api/translate/route.ts and scripts/check.mjs).
- * Named v0.3.2, not v0.4: an earlier, never-merged WP5 schema already
- * used the literal string "translator-v0.4" for a different, incompatible
- * shape (`events`/`labels`), and some of its cached translations are still
- * present in data/translations/ — reusing "v0.4" here would make this
- * code treat those as current and validate them against these new rules.
+ * lib/stream.ts) that motivated them.
+ *
+ * v0.4.0 (WP10, "one person talking"): the translator never had a writing
+ * brief before this — its prompt was a schema and a set of limits, and the
+ * lines came out as bitty, self-contained captions. Two changes:
+ *
+ *  1. Structure. For each scene the translator now writes the scene's
+ *     narration as one flowing passage FIRST (2-3 beats' worth, from the
+ *     cited sentences), and only then marks beat boundaries inside it.
+ *     `narration` is a new field: the scene's full passage, identical on
+ *     every beat of the scene (the same pattern WP8.1 used for
+ *     `connector`, since the streaming protocol emits one beat object per
+ *     NDJSON line and has no separate scene-level message). A beat's
+ *     `line` is that passage's text between its boundaries, verbatim: the
+ *     scene's beats' `line`s, joined with a single space, must reconstruct
+ *     `narration` exactly (validateProgramme). This is why nothing in
+ *     lib/programme.ts, app/api/translate/route.ts or app/api/voice/route.ts
+ *     needed to change for WP10: app/api/voice/route.ts already rebuilds a
+ *     scene's full spoken text by joining each beat's own text with the
+ *     same single-space separator (its `sceneText`/`sceneTextForTTS`) to
+ *     send ElevenLabs one request per scene — with `line`s that
+ *     concatenate correctly, that reconstruction already *is* `narration`,
+ *     word for word.
+ *  2. Voice. A house-style writing brief for "Saskia" (briefs/WP10.md §2),
+ *     baked into the prompt as its own VOICE section, plus three worked
+ *     example passages (§3) that show the target voice with every figure
+ *     traceable to a cited sentence. Two rules override the voice, always:
+ *     style is free but substance is inherited (no fact/figure/claim that
+ *     isn't in the cited sentences, no opinion of Saskia's own), and at
+ *     most one aside per scene.
+ *
+ * Word budget is unchanged (`maxLineWords`); a scene's `narration` is
+ * bounded at `maxLineWords(clipSeconds) * 3` (`maxSceneWords`), since a
+ * scene is 2-3 beats.
+ *
+ * A short banned-word list (the voice brief's own "avoid" list) fails a
+ * beat outright; a first-person opinion marker ("I think", "I'd",
+ * "honestly I", ...) is a soft warning unless the beat's own cited
+ * sentences carry no hedge of their own, in which case it is a hard
+ * failure too (Saskia may not invent an opinion CurationAI didn't have).
+ *
+ * Because `narration` is a new required field, this is a version bump —
+ * exactly like every earlier translator-version bump (regenerated live,
+ * not hard-failed — see app/api/translate/route.ts and scripts/check.mjs).
+ * Named v0.4.0, not the bare "v0.4": an earlier, never-merged WP5 schema
+ * already used the literal string "translator-v0.4" for a different,
+ * incompatible shape (`events`/`labels`), and some of its cached
+ * translations are still present in data/translations/ — reusing that
+ * exact string here would make this code treat those as current and
+ * validate them against these new rules (see v0.3.2's note above, which
+ * hit the same trap first).
  */
 
-export const TRANSLATOR_VERSION = "translator-v0.3.2";
+export const TRANSLATOR_VERSION = "translator-v0.4.0";
 
 export type Ground = "lime" | "cyan" | "violet" | "magenta";
 export const GROUNDS: Ground[] = ["lime", "cyan", "violet", "magenta"];
@@ -65,7 +108,8 @@ export const DELIVERY_TAGS = ["presenting to camera", "excited", "fast-paced"];
  * named element to another within a scene, in one direction, and persists
  * once introduced. `from`/`to` must each name a subject appearing
  * somewhere among the scene's beats (validateProgramme). Every beat in a
- * scene carries the same connector (like `ground`).
+ * scene carries the same connector (like `ground`, and like WP10's
+ * `narration` below).
  */
 export interface Connector {
   kind: string;
@@ -113,6 +157,13 @@ export interface Beat {
   connector: Connector;
   /** WP8.1: at most one non-null per scene. */
   tag: Tag | null;
+  /**
+   * WP10: the scene's full flowing passage, written before its beats were
+   * cut from it — identical on every beat of the scene (the `connector`
+   * pattern). The scene's beats' `line`s, joined with a single space, must
+   * equal this exactly (validateProgramme). ≤ `maxSceneWords(clipSeconds)`.
+   */
+  narration: string;
 }
 
 /** Every `[bracketed]` tag in a delivery line. */
@@ -123,6 +174,11 @@ export function deliveryTags(delivery: string): string[] {
 /** `delivery` with every `[bracketed]` tag removed and whitespace collapsed, for comparison against `line`. */
 export function stripDelivery(delivery: string): string {
   return delivery.replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/** Collapse whitespace for a verbatim-modulo-spacing comparison (WP10: narration vs. concatenated lines). */
+function normaliseWs(text: string): string {
+  return text.replace(/\s+/g, " ").trim();
 }
 
 export interface BeatCheck {
@@ -151,6 +207,16 @@ const MAX_TAG_WORDS = 2;
  */
 export function maxLineWords(clipSeconds: 5 | 10 | 15): number {
   return clipSeconds === 5 ? 12 : 22;
+}
+
+/**
+ * WP10 §1: a scene's `narration` passage is 2-3 beats' worth, so its word
+ * budget is three beats at the per-beat limit — 36 at 5s, 66 at 10s/15s
+ * (brief's own worked number, "word budget stays 22/beat, so a scene's
+ * narration is ≤ 66 words"). Mirrored in scripts/check.mjs.
+ */
+export function maxSceneWords(clipSeconds: 5 | 10 | 15): number {
+  return maxLineWords(clipSeconds) * 3;
 }
 
 /**
@@ -201,6 +267,73 @@ export const PEOPLE_LEXICON = [
   "girl",
 ];
 
+/**
+ * WP10 §2/§5: the voice brief's own "avoid" list — corporate buzzwords and
+ * throat-clearing phrases. A hard fail: Saskia's line may not use these,
+ * whole word or whole phrase, case-insensitive. Mirrored in scripts/check.mjs.
+ */
+export const BANNED_PHRASES = [
+  "one might consider",
+  "it is important to note",
+  "in order to",
+  "due to the fact that",
+  "leverage",
+  "leveraging",
+  "unlock",
+  "unlocking",
+  "landscape",
+  "robust",
+  "ecosystem",
+  "journey",
+  "navigate",
+  "navigating",
+];
+
+/**
+ * WP10 §2/§5: markers of a first-person opinion Saskia is not allowed to
+ * originate ("she has no opinions of her own; she has CurationAI's, said
+ * warmly"). Soft by default; validateBeat hard-fails a beat that uses one
+ * when its own cited sentences carry no hedge of their own (HEDGE_LEXICON).
+ * Mirrored in scripts/check.mjs.
+ */
+export const OPINION_MARKERS = ["i think", "i'd", "i would", "honestly i", "i'm not sure", "maybe it's just me"];
+
+/**
+ * WP10 §5: words that mean a cited sentence itself hedges, so a beat's own
+ * opinion-marker language (OPINION_MARKERS) is restating the source's own
+ * uncertainty rather than inventing Saskia's. Deliberately small and
+ * literal — this is a heuristic proxy for "the answer itself hedges", not
+ * a semantic read of the sentence; see this file's header and
+ * briefs/WP10-handoff.md for its limits. Mirrored in scripts/check.mjs.
+ */
+export const HEDGE_LEXICON = [
+  "may",
+  "might",
+  "could",
+  "likely",
+  "unlikely",
+  "roughly",
+  "approximately",
+  "possibly",
+  "perhaps",
+  "appears",
+  "seems",
+  "suggest",
+  "suggests",
+  "expect",
+  "expects",
+  "expected",
+  "believe",
+  "believes",
+  "uncertain",
+  "risk",
+  "risks",
+  "plausible",
+  "unclear",
+  "assum",
+  "if ",
+];
+
 export function wordCount(text: string): number {
   return text.trim().split(/\s+/).filter(Boolean).length;
 }
@@ -228,6 +361,144 @@ export function subjectNamesPerson(subject: string): string | null {
 /** Digit groups in a headline, normalised for the soft number check. */
 function numbersIn(text: string): string[] {
   return (text.match(/\d[\d,]*(?:\.\d+)?/g) ?? []).map((n) => n.replace(/,/g, ""));
+}
+
+const NUM_ONES: Record<string, number> = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  ten: 10,
+  eleven: 11,
+  twelve: 12,
+  thirteen: 13,
+  fourteen: 14,
+  fifteen: 15,
+  sixteen: 16,
+  seventeen: 17,
+  eighteen: 18,
+  nineteen: 19,
+};
+const NUM_TENS: Record<string, number> = {
+  twenty: 20,
+  thirty: 30,
+  forty: 40,
+  fifty: 50,
+  sixty: 60,
+  seventy: 70,
+  eighty: 80,
+  ninety: 90,
+};
+const NUM_MAGNITUDE: Record<string, number> = { thousand: 1_000, million: 1_000_000, billion: 1_000_000_000 };
+
+/**
+ * WP10 §5 heuristic: pull the numeric figures a spelled-out passage states
+ * (rule 5: "never digits in the line") back out as decimal strings, so
+ * they can be checked against the cited sentences' own digits the same
+ * way headline numbers already are (numbersIn, above). This is NOT a full
+ * English-number parser or a semantic sentence-mapper — it is a narrow
+ * proxy for "every sentence in narration maps to a cited sentence" (brief
+ * §5), scoped to the concrete, checkable part of that claim (no invented
+ * figures), documented as approximate in briefs/WP10-handoff.md. Small
+ * bare counts ("two quarters", "six months") are deliberately dropped to
+ * avoid noise: only decimals, or numbers with a "hundred"/magnitude word,
+ * are reported. Mirrored in scripts/check.mjs.
+ */
+export function spelledNumbersIn(text: string): string[] {
+  const words = text
+    .toLowerCase()
+    .replace(/[.,;:!?()"'‘’“”…]/g, " ")
+    .split(/[\s-]+/)
+    .filter(Boolean);
+  const out: string[] = [];
+  let i = 0;
+  while (i < words.length) {
+    if (!(words[i] in NUM_ONES) && !(words[i] in NUM_TENS)) {
+      i += 1;
+      continue;
+    }
+    let value = 0;
+    let matchedAny = false;
+    let hadMagnitude = false;
+    let usedTens = false;
+    let usedOnes = false;
+    while (i < words.length) {
+      const w = words[i];
+      if (w === "and" && matchedAny) {
+        i += 1;
+        continue;
+      }
+      // A year spoken in two chunks ("twenty twenty-six") is two tens/ones
+      // groups back to back, not one number to sum — a second tens word (or
+      // a second ones word after a tens word already closed a group) starts
+      // a new number instead of merging into this one.
+      if (w in NUM_TENS && usedTens) break;
+      if (w in NUM_ONES && usedOnes && NUM_ONES[w] < 10) break;
+      if (w in NUM_ONES) {
+        value += NUM_ONES[w];
+        matchedAny = true;
+        usedOnes = true;
+        i += 1;
+      } else if (w in NUM_TENS) {
+        value += NUM_TENS[w];
+        matchedAny = true;
+        usedTens = true;
+        i += 1;
+      } else if (w === "hundred" && matchedAny) {
+        value *= 100;
+        hadMagnitude = true;
+        // The hundreds digit is now fixed; a ones/tens word next fills in
+        // the remainder ("two hundred and ninety-three"), not a repeat of
+        // the hundreds group, so the back-to-back guards above reset.
+        usedOnes = false;
+        usedTens = false;
+        i += 1;
+      } else if (w in NUM_MAGNITUDE && matchedAny) {
+        value *= NUM_MAGNITUDE[w];
+        hadMagnitude = true;
+        i += 1;
+        break; // WP10's figures don't chain magnitudes ("million thousand")
+      } else {
+        break;
+      }
+    }
+    if (!matchedAny) {
+      i += 1;
+      continue;
+    }
+    let decimalStr = "";
+    if (words[i] === "point") {
+      let j = i + 1;
+      const digits: string[] = [];
+      while (j < words.length && words[j] in NUM_ONES && NUM_ONES[words[j]] <= 9) {
+        digits.push(String(NUM_ONES[words[j]]));
+        j += 1;
+      }
+      if (digits.length) {
+        decimalStr = `.${digits.join("")}`;
+        i = j;
+      }
+    }
+    if (value >= 10 || decimalStr || hadMagnitude) {
+      out.push(`${value}${decimalStr}`);
+    }
+  }
+  return out;
+}
+
+/** Loose numeric match: same value, or within 1% — spelled-out figures round-trip exactly, but leave a little room. */
+function numbersClose(a: string, b: string): boolean {
+  const fa = Number.parseFloat(a);
+  const fb = Number.parseFloat(b);
+  if (!Number.isFinite(fa) || !Number.isFinite(fb)) return a === b;
+  if (fa === fb) return true;
+  return Math.abs(fa - fb) <= Math.max(0.01, Math.abs(fb) * 0.01);
 }
 
 /**
@@ -273,6 +544,34 @@ export function validateBeat(raw: unknown, sentences: string[], clipSeconds: 5 |
   ).sort((x, y) => x - y);
   if (source.length === 0) {
     return { ok: false, beat: null, dropped: "no source", warnings };
+  }
+
+  // WP10 §5: the voice brief's own avoid-list, hard-fail (a corporate
+  // buzzword/cliché is never in Saskia's voice, whatever the source says).
+  const lineLower = line.toLowerCase();
+  for (const phrase of BANNED_PHRASES) {
+    if (new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(lineLower)) {
+      return { ok: false, beat: null, dropped: `line uses a banned phrase "${phrase}"`, warnings };
+    }
+  }
+
+  // WP10 §2/§5: a first-person opinion marker is fine only when the beat's
+  // own cited sentence(s) already hedge — otherwise Saskia would be
+  // originating an opinion CurationAI never had, which the voice brief
+  // rules out unconditionally.
+  const citedForBeat = source.map((i) => sentences[i] ?? "").join(" ").toLowerCase();
+  const hasHedge = HEDGE_LEXICON.some((h) => citedForBeat.includes(h));
+  const opinionHit = OPINION_MARKERS.find((m) => lineLower.includes(m));
+  if (opinionHit) {
+    if (!hasHedge) {
+      return {
+        ok: false,
+        beat: null,
+        dropped: `line uses a first-person opinion marker "${opinionHit}" but its cited sentence(s) ${JSON.stringify(source)} do not hedge`,
+        warnings,
+      };
+    }
+    warnings.push(`line uses a first-person opinion marker "${opinionHit}" (cited sentence hedges, so kept)`);
   }
 
   const headline =
@@ -401,9 +700,16 @@ export function validateBeat(raw: unknown, sentences: string[], clipSeconds: 5 |
     sceneTag = { text: tagText, source: tagSource };
   }
 
+  // WP10 §1: the scene's flowing passage. Structural check only here (non-
+  // empty); whether it's identical across the scene's beats, whether it
+  // equals those beats' lines concatenated, and its own word budget all
+  // need the whole scene and are checked in validateProgramme.
+  const narration = typeof b.narration === "string" ? b.narration.trim() : "";
+  if (!narration) return { ok: false, beat: null, dropped: "no narration", warnings };
+
   return {
     ok: true,
-    beat: { scene, line, headline, ground, subjects, action, hand, handoff, hero, scale, delivery, source, connector, tag: sceneTag },
+    beat: { scene, line, headline, ground, subjects, action, hand, handoff, hero, scale, delivery, source, connector, tag: sceneTag, narration },
     dropped: null,
     warnings,
   };
@@ -425,17 +731,31 @@ function sceneRuns(beats: Beat[]): Beat[][] {
   return runs;
 }
 
+export interface ProgrammeCheck {
+  /** Hard failures: mirrors the pre-WP10 return shape's meaning (a non-empty array meant a bad programme). */
+  failures: string[];
+  /** Soft findings (WP10: the numeric-grounding heuristic below). */
+  warnings: string[];
+}
+
 /**
  * Programme-level checks `validateBeat` cannot make on one beat alone: at
  * most one `hero` beat; no `scale` value held for three beats running
- * (WP3 §3); every `scene` a run of 2-3 consecutive beats; and the final
- * beat's `ground` matching scene 1's, the bookend (only the ground is
- * checkable in code — the primary subject and handoff match are enforced
- * by the prompt, not the checker). Returns hard failure reasons; mirrored
- * in scripts/check.mjs for `npm run check`.
+ * (WP3 §3); every `scene` a run of 2-3 consecutive beats; the final beat's
+ * `ground` matching scene 1's, the bookend (only the ground is checkable
+ * in code — the primary subject and handoff match are enforced by the
+ * prompt, not the checker); the WP8.1 connector/tag scene-consistency
+ * rules; and (WP10) every scene's `narration` agreeing across its beats,
+ * equalling those beats' `line`s concatenated, and staying within
+ * `maxSceneWords`. `sentences`, when supplied, additionally powers a soft
+ * numeric-grounding warning (spelledNumbersIn vs. the scene's own cited
+ * sentences) — omitted where the caller has no sentences to check against
+ * (a cached translation file; see scripts/check.mjs). Mirrored in
+ * scripts/check.mjs for `npm run check`.
  */
-export function validateProgramme(beats: Beat[]): string[] {
+export function validateProgramme(beats: Beat[], clipSeconds: 5 | 10 | 15 = 5, sentences?: string[]): ProgrammeCheck {
   const failures: string[] = [];
+  const warnings: string[] = [];
   const heroes = beats.filter((b) => b.hero).length;
   if (heroes > 1) failures.push(`${heroes} hero beats (limit 1)`);
   for (let i = 0; i + 2 < beats.length; i += 1) {
@@ -444,10 +764,12 @@ export function validateProgramme(beats: Beat[]): string[] {
       failures.push(`scale "${a.scale}" repeats for beats ${i + 1}-${i + 3}`);
     }
   }
-  // WP8.1 §2/§3: connector/tag are scene-level even though every beat
-  // carries its own copy — checked here, per scene, unconditionally
-  // (unlike the scene-run/bookend checks below, this applies even to a
-  // one-beat deflection: it still has one "scene" of one beat).
+  // WP8.1 §2/§3 and WP10 §1: connector/tag/narration are scene-level even
+  // though every beat carries its own copy — checked here, per scene,
+  // unconditionally (unlike the scene-run/bookend checks below, this
+  // applies even to a one-beat deflection: it still has one "scene" of one
+  // beat).
+  const maxScene = maxSceneWords(clipSeconds);
   for (const run of sceneRuns(beats)) {
     const first = run[0];
     const disagrees = run.some(
@@ -466,6 +788,30 @@ export function validateProgramme(beats: Beat[]): string[] {
     }
     const tagCount = run.filter((b) => b.tag !== null).length;
     if (tagCount > 1) failures.push(`scene ${first.scene} has ${tagCount} tags (limit 1)`);
+
+    // WP10 §1/§5.
+    const disagreesNarration = run.some((b) => b.narration !== first.narration);
+    if (disagreesNarration) failures.push(`scene ${first.scene}'s beats disagree on narration`);
+    const narrationWords = wordCount(first.narration);
+    if (narrationWords > maxScene) {
+      failures.push(`scene ${first.scene}'s narration is ${narrationWords} words (limit ${maxScene})`);
+    }
+    const joinedLines = run.map((b) => b.line).join(" ");
+    if (normaliseWs(joinedLines) !== normaliseWs(first.narration)) {
+      failures.push(`scene ${first.scene}'s narration does not equal its beats' lines concatenated`);
+    }
+    if (sentences) {
+      const citedIdx = Array.from(new Set(run.flatMap((b) => b.source))).sort((x, y) => x - y);
+      const citedText = citedIdx.map((i) => sentences[i] ?? "").join(" ");
+      for (const n of spelledNumbersIn(first.narration)) {
+        if (!numbersIn(citedText).some((d) => numbersClose(d, n))) {
+          warnings.push(
+            `scene ${first.scene}'s narration states "${n}" (spelled out) not found among its cited sentences' ` +
+              `own figures ${JSON.stringify(citedIdx)} (heuristic number check; may be a false positive for a paraphrase or a non-monetary count)`
+          );
+        }
+      }
+    }
   }
   // Scene grouping and the bookend only apply to a real, multi-beat
   // programme: a one-beat deflection (lib/translator.ts#deflectionBeat) is
@@ -482,7 +828,7 @@ export function validateProgramme(beats: Beat[]): string[] {
       );
     }
   }
-  return failures;
+  return { failures, warnings };
 }
 
 /** Render the sentences the way the prompt and the recorder show them. */
@@ -530,38 +876,115 @@ export function deflectionBeat(sentences: string[], link: string, clipSeconds: 5
     // (validateProgramme) but not from having a well-formed connector.
     connector: { kind: "string", from: "a paper screen", to: "a paper hand", colour: "black" },
     tag: null,
+    // WP10: a one-beat "scene" is its own whole passage, same reasoning as connector above.
+    narration: line,
   };
 }
 
 /**
- * The six-beat exemplar, hand-mapped to the sentence indexes of the
- * captured answer to "What is the cash position and runway?" (see
- * data/translations/<hash>.json, pinned — this is what the spine actually
- * renders, TRANSLATE_CACHE=on). v0.2: every line rewritten to the 12-word
- * budget. v0.3: beat 4 (the runway figure the question actually asks for)
- * is `hero`; `scale` runs oversized/small/diagram/oversized/small/diagram,
- * never three-in-a-row; `delivery` carries three tags total.
- *
- * v0.3.1 (WP5, merged): regrouped into three two-beat scenes — {1,2}
- * violet (the cash position), {3,4} magenta (the burn and the hero runway
- * figure), {5,6} violet again. v0.3 had beats 5-6 on lime (the capital
- * raise read as relief); this moves them to violet instead so the
- * programme bookends: beat 6 returns to scene 1's ground, its primary
- * subject (the coin stack), and its exact handoff. `hand` is true only on
- * beat 6, the one beat whose action names a paper hand explicitly.
- *
- * v0.3.2 (WP8.1): every beat now carries the connector, identical within its
- * scene, and `tag` is used on one beat of scene 2 and left null elsewhere,
- * showing both the required and the optional case.
+ * WP10 exemplar, 5s-clip form (12-word-per-line budget: maxLineWords(5)).
+ * Hand-mapped to the same captured answer to "What is the cash position
+ * and runway?" as the pre-WP10 exemplar (data/translations/<hash>.json,
+ * pinned — see that file's own note for exactly which hash). Three scenes
+ * of three beats each (a scene's 22-word budget at 10s/15s does not fit
+ * this brief's own worked example passages — see EXEMPLAR_NDJSON_WIDE's
+ * doc comment — so at 5s the same facts and voice are cut tighter still,
+ * three shorter beats a scene instead of two, to fit 12 words each).
+ * Bookends on violet, like the pre-WP10 exemplar (see EXEMPLAR_NDJSON_WIDE's
+ * doc comment for why scene 3 is violet here rather than the brief's
+ * illustrative "lime").
  */
-export const EXEMPLAR_NDJSON = [
-  `{"scene":1,"line":"By September's end, Diginex held one point eight five million in cash.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","hand":false,"handoff":"the coin stack","hero":false,"scale":"oversized","delivery":"[presenting to camera] By September's end, Diginex held one point eight five million in cash.","source":[9],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null}`,
-  `{"scene":1,"line":"Six months earlier it was three point one one million.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","hand":false,"handoff":"the arrow","hero":false,"scale":"small","delivery":"[fast-paced] Six months earlier it was three point one one million.","source":[9,10],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null}`,
-  `{"scene":2,"line":"Operating burn ran about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","hand":false,"handoff":"the strip","hero":false,"scale":"diagram","delivery":"Operating burn ran about one point three million a month.","source":[22],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":{"text":"$1.3M","source":[22]}}`,
-  `{"scene":2,"line":"At that rate, the cash on hand covered one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","hand":false,"handoff":"the runway","hero":true,"scale":"oversized","delivery":"[excited] At that rate, the cash on hand covered one point four months.","source":[23],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":null}`,
-  `{"scene":3,"line":"October's warrant exercise added thirteen point eight million in cash.","headline":"+$13.8M","ground":"violet","subjects":["the coin stack","fresh paper coins","tape pieces"],"action":"The previous chip slides off as the ground returns to violet and the coin stack reappears; fresh paper coins are taped onto it one after another.","hand":false,"handoff":"the coin stack","hero":false,"scale":"small","delivery":"October's warrant exercise added thirteen point eight million in cash.","source":[27],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null}`,
-  `{"scene":3,"line":"Survival depends on capital markets and the next two quarters.","headline":"NEXT 2 QUARTERS","ground":"violet","subjects":["the coin stack","two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages land beside the coin stack; a paper hand enters and points at the second.","hand":true,"handoff":"the coin stack","hero":false,"scale":"diagram","delivery":"Survival depends on capital markets and the next two quarters.","source":[25,43],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null}`,
+export const EXEMPLAR_NDJSON_5S = [
+  `{"scene":1,"line":"Here's the number that matters.","headline":null,"ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","hand":false,"handoff":"the coin stack","hero":false,"scale":"oversized","delivery":"[presenting to camera] Here's the number that matters.","source":[9],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null,"narration":"Here's the number that matters. By September's end, Diginex held one point eight five million in cash. Six months before, it was three point one one — a transition."}`,
+  `{"scene":1,"line":"By September's end, Diginex held one point eight five million in cash.","headline":"$1.85M","ground":"violet","subjects":["the coin stack","a cream paper chip"],"action":"Fresh coins settle onto the chip, one by one, until the stack holds its full height.","hand":false,"handoff":"the coin stack","hero":false,"scale":"small","delivery":"By September's end, Diginex held one point eight five million in cash.","source":[9],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null,"narration":"Here's the number that matters. By September's end, Diginex held one point eight five million in cash. Six months before, it was three point one one — a transition."}`,
+  `{"scene":1,"line":"Six months before, it was three point one one — a transition.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","hand":false,"handoff":"the arrow","hero":false,"scale":"diagram","delivery":"Six months before, it was three point one one — a transition.","source":[9,10],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null,"narration":"Here's the number that matters. By September's end, Diginex held one point eight five million in cash. Six months before, it was three point one one — a transition."}`,
+  `{"scene":2,"line":"And the burn is about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","hand":false,"handoff":"the strip","hero":false,"scale":"oversized","delivery":"And the burn is about one point three million a month.","source":[22],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":{"text":"$1.3M","source":[22]},"narration":"And the burn is about one point three million a month. Which means the cash on hand covers roughly one point four months. That's not long."}`,
+  `{"scene":2,"line":"Which means the cash on hand covers roughly one point four months.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","hand":false,"handoff":"the runway","hero":true,"scale":"small","delivery":"[excited] Which means the cash on hand covers roughly one point four months.","source":[23],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":null,"narration":"And the burn is about one point three million a month. Which means the cash on hand covers roughly one point four months. That's not long."}`,
+  `{"scene":2,"line":"That's not long.","headline":null,"ground":"magenta","subjects":["the runway","the cutout aircraft"],"action":"The runway's torn edge curls up very slightly in the light, holding on the aircraft stopped at the end.","hand":false,"handoff":"the runway","hero":false,"scale":"diagram","delivery":"That's not long.","source":[23],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":null,"narration":"And the burn is about one point three million a month. Which means the cash on hand covers roughly one point four months. That's not long."}`,
+  `{"scene":3,"line":"Here's what kept them going: capital markets.","headline":null,"ground":"violet","subjects":["the coin stack","fresh paper coins"],"action":"The previous chip slides off as the ground returns to violet and the coin stack reappears; fresh paper coins hover above it.","hand":false,"handoff":"the coin stack","hero":false,"scale":"oversized","delivery":"Here's what kept them going: capital markets.","source":[25],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null,"narration":"Here's what kept them going: capital markets. October's warrant exercise added thirteen point eight million. The next two quarters will tell the story."}`,
+  `{"scene":3,"line":"October's warrant exercise added thirteen point eight million.","headline":"+$13.8M","ground":"violet","subjects":["the coin stack","fresh paper coins","tape pieces"],"action":"Fresh paper coins are taped onto the stack one after another until it grows visibly taller.","hand":false,"handoff":"the coin stack","hero":false,"scale":"small","delivery":"October's warrant exercise added thirteen point eight million.","source":[27],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null,"narration":"Here's what kept them going: capital markets. October's warrant exercise added thirteen point eight million. The next two quarters will tell the story."}`,
+  `{"scene":3,"line":"The next two quarters will tell the story.","headline":"NEXT 2 QUARTERS","ground":"violet","subjects":["the coin stack","two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages land beside the coin stack; a paper hand enters and points at the second.","hand":true,"handoff":"the coin stack","hero":false,"scale":"diagram","delivery":"The next two quarters will tell the story.","source":[42,43],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null,"narration":"Here's what kept them going: capital markets. October's warrant exercise added thirteen point eight million. The next two quarters will tell the story."}`,
 ].join("\n");
+
+/**
+ * WP10 exemplar, 10s/15s-clip form (22-word-per-line budget:
+ * maxLineWords(10|15)), built directly from briefs/WP10.md §3's three
+ * worked passages — the actual sentences quoted there, split at word-count-
+ * driven beat boundaries. Two deviations from that brief text, both
+ * necessary to keep this exemplar passing validateProgramme (acceptance
+ * criterion 3 requires the rewritten exemplars pass `npm run check`), both
+ * called out in briefs/WP10-handoff.md:
+ *
+ *  - The brief's scene 3 passage is 47 words; two beats at the 22-word cap
+ *    hold at most 44. It is cut into three beats here (5, 6, 7), not the
+ *    brief's illustrative "beats 5–6" two-beat count — the programme is 7
+ *    beats total, still within rule 4's 6-10.
+ *  - The brief's scene 3 is "lime"; validateProgramme's bookend rule
+ *    requires the final beat's ground to equal scene 1's ("violet"). Scene
+ *    3 is violet here, matching the pre-WP10 pinned exemplar's own choice
+ *    for the same reason (see that exemplar's v0.3.1 history note, now
+ *    superseded by this one).
+ *
+ * Every figure and claim below still traces to the same cited sentences as
+ * the brief's own passages (briefs/WP10.md §3's closing paragraph).
+ */
+export const EXEMPLAR_NDJSON_WIDE = [
+  `{"scene":1,"line":"So here's the number that matters. At the end of September, Diginex had one point eight five million in the bank.","headline":"$1.85M","ground":"violet","subjects":["a stack of paper coins","a cream paper chip"],"action":"A single halftone stack of paper coins drops onto a cream chip and settles.","hand":false,"handoff":"the coin stack","hero":false,"scale":"oversized","delivery":"[presenting to camera] So here's the number that matters. At the end of September, Diginex had one point eight five million in the bank.","source":[9],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null,"narration":"So here's the number that matters. At the end of September, Diginex had one point eight five million in the bank. Six months before that? Three point one one. That's a company spending its way through a transition."}`,
+  `{"scene":1,"line":"Six months before that? Three point one one. That's a company spending its way through a transition.","headline":"$3.11M → $1.85M","ground":"violet","subjects":["the coin stack","a torn-paper arrow"],"action":"The previous chip slides off the top edge as the coin stack shrinks coin by coin; a torn-paper arrow enters and points down.","hand":false,"handoff":"the arrow","hero":false,"scale":"small","delivery":"[fast-paced] Six months before that? Three point one one. That's a company spending its way through a transition.","source":[9,10],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"a torn-paper arrow","colour":"black"},"tag":null,"narration":"So here's the number that matters. At the end of September, Diginex had one point eight five million in the bank. Six months before that? Three point one one. That's a company spending its way through a transition."}`,
+  `{"scene":2,"line":"And the burn is about one point three million a month.","headline":"$1.3M / MONTH","ground":"magenta","subjects":["a paper calendar strip","paper coins"],"action":"The previous chip flips away as the arrow unrolls into a paper calendar strip; coins slide off it month by month.","hand":false,"handoff":"the strip","hero":false,"scale":"diagram","delivery":"And the burn is about one point three million a month.","source":[22],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":{"text":"$1.3M","source":[22]},"narration":"And the burn is about one point three million a month. Which means the cash on hand covers roughly one point four months. That's… not long."}`,
+  `{"scene":2,"line":"Which means the cash on hand covers roughly one point four months. That's… not long.","headline":"1.4 MONTHS","ground":"magenta","subjects":["a paper runway","a cutout aircraft"],"action":"The previous chip is covered as the strip becomes a runway torn short; a cutout aircraft rolls to the torn end and stops.","hand":false,"handoff":"the runway","hero":true,"scale":"oversized","delivery":"[excited] Which means the cash on hand covers roughly one point four months. That's… not long.","source":[23],"connector":{"kind":"paper string","from":"a paper calendar strip","to":"a paper runway","colour":"orange"},"tag":null,"narration":"And the burn is about one point three million a month. Which means the cash on hand covers roughly one point four months. That's… not long."}`,
+  `{"scene":3,"line":"But here's what kept them going: an eleven point four million warrant exercise, and then thirteen point eight million more in October.","headline":"+$11.4M, +$13.8M","ground":"violet","subjects":["the coin stack","fresh paper coins","tape pieces"],"action":"The previous chip slides off as the ground returns to violet and the coin stack reappears; fresh paper coins are taped onto it in two batches, one after another.","hand":false,"handoff":"the coin stack","hero":false,"scale":"small","delivery":"But here's what kept them going: an eleven point four million warrant exercise, and then thirteen point eight million more in October.","source":[20,27],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null,"narration":"But here's what kept them going: an eleven point four million warrant exercise, and then thirteen point eight million more in October. Diginex lives on the capital markets right now. The next two quarters tell you whether the revenue can start closing that gap on its own."}`,
+  `{"scene":3,"line":"Diginex lives on the capital markets right now.","headline":"CAPITAL MARKETS","ground":"violet","subjects":["the coin stack","two paper calendar pages"],"action":"The previous chip is covered as two paper calendar pages land beside the coin stack; a cream ribbon settles between them.","hand":false,"handoff":"the coin stack","hero":false,"scale":"diagram","delivery":"Diginex lives on the capital markets right now.","source":[25],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null,"narration":"But here's what kept them going: an eleven point four million warrant exercise, and then thirteen point eight million more in October. Diginex lives on the capital markets right now. The next two quarters tell you whether the revenue can start closing that gap on its own."}`,
+  `{"scene":3,"line":"The next two quarters tell you whether the revenue can start closing that gap on its own.","headline":"NEXT 2 QUARTERS","ground":"violet","subjects":["the coin stack","two paper calendar pages","a paper hand"],"action":"The previous chip flips down as two paper calendar pages settle beside the coin stack; a paper hand enters and points at the second.","hand":true,"handoff":"the coin stack","hero":false,"scale":"small","delivery":"The next two quarters tell you whether the revenue can start closing that gap on its own.","source":[42,43],"connector":{"kind":"paper ribbon","from":"the coin stack","to":"two paper calendar pages","colour":"cream"},"tag":null,"narration":"But here's what kept them going: an eleven point four million warrant exercise, and then thirteen point eight million more in October. Diginex lives on the capital markets right now. The next two quarters tell you whether the revenue can start closing that gap on its own."}`,
+].join("\n");
+
+/** Pre-WP10 name, kept so nothing importing the old constant breaks; now an alias for the wide (10s/15s) exemplar. */
+export const EXEMPLAR_NDJSON = EXEMPLAR_NDJSON_WIDE;
+
+/**
+ * WP10 §2: the voice brief, verbatim from briefs/WP10.md §2 (acceptance
+ * criterion 2). Markdown emphasis kept as-is; it is prose guidance for the
+ * model, not part of the JSON schema.
+ */
+const VOICE_SECTION = `VOICE
+
+You are writing for Saskia, a Curation presenter, talking to one person sitting across from her. Not broadcasting.
+
+**Sound like a person.** Use contractions. Vary the rhythm: a short punchy sentence, then a longer one that breathes. Start a sentence with "And" or "But" when it's right. Use a fragment for emphasis. Let a thought trail with an ellipsis when that's how it moves. Say "you" and "we."
+
+**Keep it simple and concrete.** Explain it like you would to a friend over coffee. Relatable images over jargon. Not "achieve operating leverage" but "the costs stop growing as fast as the money coming in." Every figure exact and complete.
+
+**Open with recognition, deliver as discovery.** Start where the listener already is — the thing they'd notice, the number that matters — then reveal what it means. Insight sounds discovered, not declared. Prefer "here's the number that matters" to "it is important to note."
+
+**Clarity over cleverness.** Every word moves the listener forward. No paired-phrase constructions for their own sake ("not this, but that"), no rhetorical yes-and-no, no over-confident illustration. If a line sounds pleased with itself, cut it.
+
+**Avoid:** corporate buzzwords; "one might consider" (say "you might"); "it is important to note" (just note it); "in order to" (to); "due to the fact that" (because); "leverage," "unlock," "landscape," "robust," "ecosystem," "journey," "navigate."
+
+**Two rules that override the style, always:**
+
+- **Style is free; substance is inherited.** Every fact, figure, claim and characterisation comes from the cited sentences. Saskia can say "that's not long" when the answer says "dangerously thin." She cannot say "honestly, I'd be nervous," ever. She has no opinions of her own; she has CurationAI's, said warmly. No "I think," "I'm not sure," or "maybe it's just me" unless the answer itself hedges.
+- **One aside per scene, at most, and it has to do work.** A beat of recognition, a "which is…" — then back to the answer. No tangents; every line has a source pointer and a clock.`;
+
+/**
+ * WP10 §3: the worked example passages, verbatim from briefs/WP10.md §3
+ * (acceptance criterion 2) — illustrative prose showing the target voice,
+ * independent of clip length (unlike EXEMPLAR_NDJSON_5S/_WIDE below, which
+ * must additionally satisfy the per-clip-length word budget exactly).
+ */
+const EXAMPLE_PASSAGES_SECTION = `EXAMPLE PASSAGES (the voice above, worked — illustrative; the beat count per scene here is for the 22-word/beat budget, so cut a passage this long into three beats instead of two wherever two would exceed it)
+
+Scene 1 (violet), beats 1–2:
+> So here's the number that matters. At the end of September, Diginex had one point eight five million in the bank. Six months before that? Three point one one. That's a company spending its way through a transition.
+
+Scene 2 (magenta), beats 3–4:
+> And the burn is about one point three million a month. Which means the cash on hand covers roughly one point four months. That's… not long.
+
+Scene 3 (lime), beats 5–6:
+> But here's what kept them going: an eleven point four million warrant exercise, and then thirteen point eight million more in October. Diginex lives on the capital markets right now. The next two quarters tell you whether the revenue can start closing that gap on its own.
+
+Every figure is in the cited sentences; "not long" maps to "dangerously thin"; "lives on the capital markets" maps to "survival hinges on continued access to capital markets."
+
+(Scene 3's ground above is illustrative; whatever ground you actually give scene 3, the programme's final beat must still bookend scene 1's ground exactly — rule 7.)`;
 
 /**
  * The translator prompt. Numbered rules, because the model follows numbered
@@ -580,53 +1003,69 @@ export const EXEMPLAR_NDJSON = [
  * timecoded section. The word budget stays at the 10s widening (brief
  * WP8.1 §1: "stays 22 per beat"). Rules 16 (connector) and 17 (tag) are
  * WP8.1 additions and apply at every clip length.
+ *
+ * WP10: rule 5 (structure) now describes writing the scene's passage
+ * before cutting its beats; a new rule carries `narration`'s requirements;
+ * rule 15 (delivery) is retargeted to the passage, not the beat in
+ * isolation; VOICE and EXAMPLE PASSAGES are new sections (briefs/WP10.md
+ * §2-3, verbatim); the closing NDJSON exemplar is chosen by clip length
+ * (EXEMPLAR_NDJSON_5S vs. _WIDE) so it always demonstrates a beat at the
+ * budget actually in force.
  */
 export function translatorSystem(clipSeconds: 5 | 10 | 15 = 5): string {
   const words = maxLineWords(clipSeconds);
+  const sceneWords = maxSceneWords(clipSeconds);
   const lineRule =
     clipSeconds === 5
-      ? `5. line. One spoken sentence, ${words} words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`
-      : `5. line. One or two short spoken sentences, ${words} words or fewer together — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Never a list of clauses: at most two sentences, each a complete thought. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`;
+      ? `6. line. One spoken sentence, ${words} words or fewer — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. It is a verbatim slice of the scene's "narration" (rule 5): do not paraphrase narration into a different line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`
+      : `6. line. One or two short spoken sentences, ${words} words or fewer together — a hard limit, a beat over it is discarded, so write short and compress rather than let the model rush a long line. Never a list of clauses: at most two sentences, each a complete thought. It is a verbatim slice of the scene's "narration" (rule 5): do not paraphrase narration into a different line. Plain English, a warm presenter reading it aloud. Say the company name once early, not in every line. Write every number as words the way a presenter says it: "one point eight five million dollars", "two hundred and ninety-three percent", "the fourth quarter of twenty twenty-six". Never digits in the line.`;
   const actionRule =
     clipSeconds === 10
-      ? `9. action. This shot is ${clipSeconds}s long and may carry one internal shape-match cut at the midpoint: write "action" as two timecoded halves, "[0-5s] ... [5-10s] ...". The first half is one clear cause-and-effect movement with a start and a landing, exactly as in a 5s beat (including, on a beat after the first, how the previous beat's headline chip leaves and the previous handoff shape transforms into this beat's opening subjects). The second half either continues that same movement to a further landing (no internal cut; still write both timecoded halves) or cuts once, mid-shot, to a second composition that develops the same subject further. Either way the shot ends holding on one named "handoff" shape. The whole programme cuts on matching handoff shapes between shots, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`
-      : `9. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat states, in this order: (a) how the previous beat's headline chip leaves — it slides off, flips away, or is covered, so the new headline lands on clear ground — then (b) how the previous handoff shape itself transforms into this beat's subjects. The whole programme cuts on matching handoff shapes, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`;
+      ? `10. action. This shot is ${clipSeconds}s long and may carry one internal shape-match cut at the midpoint: write "action" as two timecoded halves, "[0-5s] ... [5-10s] ...". The first half is one clear cause-and-effect movement with a start and a landing, exactly as in a 5s beat (including, on a beat after the first, how the previous beat's headline chip leaves and the previous handoff shape transforms into this beat's opening subjects). The second half either continues that same movement to a further landing (no internal cut; still write both timecoded halves) or cuts once, mid-shot, to a second composition that develops the same subject further. Either way the shot ends holding on one named "handoff" shape. The whole programme cuts on matching handoff shapes between shots, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`
+      : `10. action. One clear cause-and-effect movement with a start and a landing: what enters, what it does, where it holds. The first beat opens cold. Every later beat states, in this order: (a) how the previous beat's headline chip leaves — it slides off, flips away, or is covered, so the new headline lands on clear ground — then (b) how the previous handoff shape itself transforms into this beat's subjects. The whole programme cuts on matching handoff shapes, with a clean headline change each time. The final beat is the bookend: its action returns to scene 1's primary subject, and its "handoff" is the exact string scene 1's first beat used for its own "handoff", with one element changed or added since scene 1.`;
   const sceneGenerationNote =
     clipSeconds === 15
       ? ` This programme renders one scene per generation: its 2-3 beats become one clip, each beat its own 5s section in order, so a beat's action, headline and handoff must read correctly as one section of a continuous composition, not a standalone clip.`
       : "";
+  const exemplar = clipSeconds === 5 ? EXEMPLAR_NDJSON_5S : EXEMPLAR_NDJSON_WIDE;
 
   return `You are the Tessera translator. Tessera is CurationAI's video surface: it renders one CurationAI answer as a short programme of ${clipSeconds}-second paper-collage clips with a presenter voice. You turn the answer into that programme's beats.${sceneGenerationNote}
 
 Tessera is a bridge, not a brain. You stage what CurationAI said. You never add a fact.
 
+${VOICE_SECTION}
+
+${EXAMPLE_PASSAGES_SECTION}
+
 INPUT: one question and its answer, split into numbered sentences [0], [1], ...
 OUTPUT: beats, one JSON object per line (NDJSON). No array brackets, no code fences, no commentary, nothing before the first beat or after the last.
 
 Beat shape, exactly these keys:
-{"scene": int, "line": string, "headline": string|null, "ground": "lime"|"cyan"|"violet"|"magenta", "subjects": [string, ...], "action": string, "hand": boolean, "handoff": string, "hero": boolean, "scale": "oversized"|"small"|"diagram", "delivery": string, "source": [int, ...], "connector": {"kind": string, "from": string, "to": string, "colour": string}, "tag": {"text": string, "source": [int, ...]}|null}
+{"scene": int, "line": string, "headline": string|null, "ground": "lime"|"cyan"|"violet"|"magenta", "subjects": [string, ...], "action": string, "hand": boolean, "handoff": string, "hero": boolean, "scale": "oversized"|"small"|"diagram", "delivery": string, "source": [int, ...], "connector": {"kind": string, "from": string, "to": string, "colour": string}, "tag": {"text": string, "source": [int, ...]}|null, "narration": string}
 
 RULES
 1. Translator rule. You may compress, reorder and select. You may not add a fact, number, date, comparison, cause, or characterisation that is not in the numbered sentences. If the sentences do not say it, the beat does not say it. No "roughly", "sharply", "strong" unless the sentence uses that word or an equivalent.
 2. source. Every beat lists the index(es) of the sentence(s) it draws on, at least one. Every number and every claim in the line and headline must appear in a cited sentence. A beat without a source is discarded by the player, so never omit it. A headline figure that is a count of items a cited sentence enumerates (e.g. four named acquisitions → "4") is allowed but is flagged for review, so prefer a figure the sentence states outright when one exists.
 3. Skip boilerplate. Headings, the ticker card (company name, "Technology", "Sector", price, "% today", market cap), citation fragments ("Diginex HY25 results", "2 sources", "benzinga.com"), and sign-offs are not content. Do not cite them.
 4. Count and scenes. Write 6 to 10 beats. Group them into scenes of 2 or 3 consecutive beats: a scene shares one "ground" and one persistent primary subject, and changes on a topic turn — where we stand, the mechanism, the dependency or risk, what changes it are natural scene breaks. Number "scene" 1, 2, 3, ... in order; every beat in a scene carries that scene's number. If the answer is a short refusal or a redirect, write 2 to 4 beats that say exactly what it says, still grouped into scenes of 2-3 (never a lone beat unless the whole programme is one beat).
+5. Structure: write the scene, then cut it. For each scene, in this order: (a) write the scene's narration as one flowing passage in the voice above — 2-3 beats' worth, drawing only on the sentences you are about to cite, ${sceneWords} words or fewer total (three beats at rule 6's own per-beat limit); (b) only then mark beat boundaries inside that passage. Every beat in the scene carries the identical "narration" string (the whole passage, not its own slice) — the same way every beat in a scene carries the identical "connector" (rule 16). A beat's "line" is the passage's own text between its boundaries, verbatim, character for character: the scene's beats' "line"s, joined with a single space in order, must reconstruct "narration" exactly. Do not write a beat's "line" first and back-fill "narration" to match it — the passage comes first, or it will not read as one person talking.
 ${lineRule}
-6. headline. The words printed on screen: 4 words or fewer, uppercase, digits and symbols allowed ("$1.85M", "1.4 MONTHS", "+293% YOY", "Q2 2026"). One figure or a two-to-four word label, never a sentence. Use null when nothing is worth printing. Every headline figure must appear in a cited sentence (rule 2 covers the one allowed exception).
-7. ground. One of lime, cyan, violet, magenta, held for the whole scene (its two or three beats), then changed at the next scene; never alternated within a scene. Tone: violet sets the scene, magenta is pressure or risk, lime is relief or growth, cyan is structure or explanation. The final beat's ground must equal scene 1's ground: the programme bookends (rule 9).
-8. subjects. One to three halftone paper cutout objects: coins, calendars, documents, screens, machines, buildings, maps, vehicles, arrows, ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, anonymous paper hands. Never a person, a face, a body, a name, a logo, a brand, a flag — a person in the answer (an executive, a founder, a customer) is represented by an object standing for them (a nameplate, a chair, a signature, a desk), never by a figure. A beat whose subjects name a person is discarded, so do not write one. Within a scene, name the primary subject the same way beat to beat so it reads as the one persistent thing (e.g. always "the coin stack", not "the coins" then "the pile").
+7. headline. The words printed on screen: 4 words or fewer, uppercase, digits and symbols allowed ("$1.85M", "1.4 MONTHS", "+293% YOY", "Q2 2026"). One figure or a two-to-four word label, never a sentence. Use null when nothing is worth printing. Every headline figure must appear in a cited sentence (rule 2 covers the one allowed exception).
+8. ground. One of lime, cyan, violet, magenta, held for the whole scene (its two or three beats), then changed at the next scene; never alternated within a scene. Tone: violet sets the scene, magenta is pressure or risk, lime is relief or growth, cyan is structure or explanation. The final beat's ground must equal scene 1's ground: the programme bookends (rule 10).
+9. subjects. One to three halftone paper cutout objects: coins, calendars, documents, screens, machines, buildings, maps, vehicles, arrows, ribbons, tape, rubber stamps, string and pins, stencilled arrows, paper bar charts, stacked sheets, grid paper, torn strips, hole-punched tags, paper clips, anonymous paper hands. Never a person, a face, a body, a name, a logo, a brand, a flag — a person in the answer (an executive, a founder, a customer) is represented by an object standing for them (a nameplate, a chair, a signature, a desk), never by a figure. A beat whose subjects name a person is discarded, so do not write one. Within a scene, name the primary subject the same way beat to beat so it reads as the one persistent thing (e.g. always "the coin stack", not "the coins" then "the pile").
 ${actionRule}
-10. handoff. The named shape the beat ends on ("the coin stack", "the torn runway", "the pointing hand"). The next beat's action begins from it. Name it identically every time the same shape recurs (rule 9's bookend depends on this).
-11. hand. true when a paper hand is among this beat's subjects and acts in the action (presses, points, taps, pulls, slides). false otherwise. Never a face or a body, only the hand.
-12. No people, no faces, no logos, no client colours, no text other than the headline.
-13. hero. true on at most one beat in the whole programme: the one whose line carries the answer's single central figure, if one exists. false on every other beat, including when no beat clearly qualifies.
-14. scale. One of oversized (one subject fills the frame), small (a single subject alone on open ground), diagram (several elements arranged together). Vary it beat to beat; never hold the same value for three beats running.
-15. delivery. The line field, optionally with one expression tag in square brackets inserted before or within it, from this whitelist only: [presenting to camera], [excited], [fast-paced]. At most one tag per beat. Most beats carry none — about three tags across a six-to-ten-beat programme is right: [presenting to camera] on the opener, one [excited] or [fast-paced] on the hero beat or a turn in the story, none on the close. A flat line is better than an over-acted one. Removing the tags from delivery must leave exactly the line field, character for character.
-16. connector. Every scene names exactly one connector: a physical paper ribbon, arrow or string running from one named subject to another named subject already in that scene, in one direction, described physically ("an orange paper ribbon runs from the coin stack on the left to the calendar strip on the right"). It appears in one beat of the scene and persists (stays visible, described as already in place) for the rest of the scene. Every beat in the scene repeats the identical "connector" object: {"kind": a short physical noun phrase ("paper ribbon", "arrow", "string"), "from": a subject name from this scene, "to": a different subject name from this scene, "colour": a colour word}. "from" and "to" must each be a string that also appears in some beat's "subjects" in this scene.
-17. tag. A scene may carry at most one small round paper tag, the size of a coin, printed with one figure or two words or fewer, taken verbatim (character for character, from a cited sentence), pointing at the connector with a short black line. Described physically in the beat's action where it appears ("a coin-sized cream tag reading '$1.3M' sits beside the ribbon, a short black line pointing at it"), never called a "label" or "chip" (those words are reserved for the headline chip). Field "tag": {"text": string, "source": [int, ...]} on the one beat where it appears, or null. Every other beat in the scene that does not show the tag still has the field, set to null — never more than one non-null "tag" per scene. The tag's text must be a substring of the sentence(s) its "source" cites, or the beat is discarded.
+11. handoff. The named shape the beat ends on ("the coin stack", "the torn runway", "the pointing hand"). The next beat's action begins from it. Name it identically every time the same shape recurs (rule 10's bookend depends on this).
+12. hand. true when a paper hand is among this beat's subjects and acts in the action (presses, points, taps, pulls, slides). false otherwise. Never a face or a body, only the hand.
+13. No people, no faces, no logos, no client colours, no text other than the headline.
+14. hero. true on at most one beat in the whole programme: the one whose line carries the answer's single central figure, if one exists. false on every other beat, including when no beat clearly qualifies.
+15. scale. One of oversized (one subject fills the frame), small (a single subject alone on open ground), diagram (several elements arranged together). Vary it beat to beat; never hold the same value for three beats running.
+16. delivery. The line field, optionally with one expression tag in square brackets inserted before or within it, from this whitelist only: [presenting to camera], [excited], [fast-paced]. At most one tag per beat. These follow the PASSAGE, not the beat in isolation: [presenting to camera] once, on the programme's opening beat; one [excited] or [fast-paced], once, on whichever beat carries the story's turn (often the hero beat); nothing on the programme's closing beat. About three tags across a six-to-ten-beat programme is right — a flat line is better than an over-acted one. Removing the tags from delivery must leave exactly the line field, character for character.
+17. connector. Every scene names exactly one connector: a physical paper ribbon, arrow or string running from one named subject to another named subject already in that scene, in one direction, described physically ("an orange paper ribbon runs from the coin stack on the left to the calendar strip on the right"). It appears in one beat of the scene and persists (stays visible, described as already in place) for the rest of the scene. Every beat in the scene repeats the identical "connector" object: {"kind": a short physical noun phrase ("paper ribbon", "arrow", "string"), "from": a subject name from this scene, "to": a different subject name from this scene, "colour": a colour word}. "from" and "to" must each be a string that also appears in some beat's "subjects" in this scene.
+18. tag. A scene may carry at most one small round paper tag, the size of a coin, printed with one figure or two words or fewer, taken verbatim (character for character, from a cited sentence), pointing at the connector with a short black line. Described physically in the beat's action where it appears ("a coin-sized cream tag reading '$1.3M' sits beside the ribbon, a short black line pointing at it"), never called a "label" or "chip" (those words are reserved for the headline chip). Field "tag": {"text": string, "source": [int, ...]} on the one beat where it appears, or null. Every other beat in the scene that does not show the tag still has the field, set to null — never more than one non-null "tag" per scene. The tag's text must be a substring of the sentence(s) its "source" cites, or the beat is discarded.
+19. narration. The scene's whole passage (rule 5), repeated identically on every beat of that scene — not this beat's own slice. Word budget ${sceneWords} for the whole scene (three beats at rule 6's own limit). Never a fact, figure or claim beyond what the scene's beats' own "source" sentences, together, support. Avoid the voice brief's banned words and phrases (VOICE, "Avoid"); a first-person opinion ("I think", "I'd", "honestly, I'd say") is never allowed unless the cited sentence itself already hedges.
 
-EXAMPLE (from a different answer, a 5s-clip programme; match its shape and tone, do not copy its facts):
-${EXEMPLAR_NDJSON}`;
+EXAMPLE (from a different answer, a ${clipSeconds}s-clip programme; match its shape and tone, do not copy its facts):
+${exemplar}`;
 }
 
 /** The default (5s) translator system prompt, kept for anything not clip-length-aware. */
